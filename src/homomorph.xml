@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+
+
+<chapter xml:id="homomorph" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>Homomorfismos</title>
+
+	<introduction>
+		<p>Una de las ideas clásicas del álgebra es el concepto de homomorfismo, una generalización natural de isomorfismo. Si relajamos el requerimiento de que un isomorfismo sea biyectivo, obtenemos un homomorfismo.</p>
+	</introduction>
+
+<!-- % TWJ, 2010/03/31 -->
+<!-- % The chapter HOMOMORPHISMS AND FACTOR GROUPS is now -->
+<!-- % two chapters: (10) NORMAL SUBGROUPS AND FACTOR GROUPS -->
+<!-- % (11) HOMOMORPHISMS -->
+
+	<section xml:id="section-group-homomorphisms">
+		<title>Homomofismos de Grupos</title>
+ 
+		<p>Un <term>homomorfismo</term><idx><h>Grupos</h><h>homomorfismo de</h></idx><idx><h>Homomorfismo</h><h>de grupos</h></idx> entre los grupos <m>(G, \cdot)</m> y <m>(H, \circ)</m> es una función <m>\phi :G \rightarrow H</m> tal que  
+			<me>\phi( g_1 \cdot g_2 ) = \phi( g_1 ) \circ \phi( g_2 )\qquad \forall g_1, g_2 \in G</me>
+		La imagen de <m>\phi</m> en <m>H</m> se llama <term>imagen homomorfa</term><idx><h>Imagen homomorfa</h></idx> de <m>\phi</m>.</p>
+
+		<p>Dos grupos están relacionados de la forma más fuerte posible si son isomorfos; sin embargo nua relación más débil puede también existir entre dos grupos.  Por ejemplo, el grupo simétrico <m>S_n</m> y el grupo <m>{\mathbb Z}_2</m> están relacionados por el hecho de que <m>S_n</m> puede ser dividido en permutaciones pares e impares que exhiben una estructura de grupos similar a la de <m>{\mathbb Z}_2</m>, como se muestra en la siguiente tabla de multiplicación.</p>
+
+		<sidebyside width="100%"> <!-- math table -->
+			<p><me>\begin{array}{c|cc}
+	            <![CDATA[& \text{even} & \text{odd} \\ \hline
+				\text{even} & \text{even} & \text{odd} \\
+				\text{odd}  & \text{odd}  & \text{even}]]>
+				\end{array}</me></p>
+		</sidebyside>
+
+		<p>Podemos usar homomorfismos para estudiar relaciones como la que acabamos de describir.</p> 
+ 
+		<example xml:id="example-homomorph-zn">
+			<p>Sea <m>G</m> un grupo y <m>g \in G</m>. Defina una función <m>\phi : {\mathbb Z} \rightarrow G</m> como <m>\phi( n ) = g^n</m>. Entonces <m>\phi</m> es un homomorfismo de grupos, pues 
+				<me>\phi( m + n ) = g^{ m + n} = g^m g^n = \phi( m ) \phi( n ).</me>
+			Este homomorfismo envía a <m>{\mathbb Z}</m> en el subgrupo cíclico de <m>G</m> generado por <m>g</m>.</p>
+		</example>
+ 
+		<example xml:id="example-homomorph-gl2">
+			<p>Sea <m>G = GL_2( {\mathbb R })</m>. Si
+				<me>A =
+				\begin{pmatrix}<![CDATA[
+				a & b \\
+				c & d
+				]]>\end{pmatrix}</me>
+			está en <m>G</m>, entonces el determinante es distinto de cero; es decir, <m>\det(A) = ad - bc \neq 0</m>.  Además, para dos elementos <m>A</m> y <m>B</m> en <m>G</m>, <m>\det(AB) = \det(A) \det(B)</m>. Usando el determinante, podemos definir un homomorfismo <m>\phi : GL_2( {\mathbb R }) \rightarrow {\mathbb R}^\ast</m> como <m>A \mapsto \det(A)</m>.</p>
+		</example>
+ 
+		<example xml:id="example-homomorph-circle-group">
+			<p>Recuerde que el grupo de la circunferencia <m>{ \mathbb T}</m> consiste de todos los números complejos <m>z</m> tales que <m>|z|=1</m>. Podemos definir un homomorfismo <m>\phi</m> del grupo aditivo de los números reales <m>{\mathbb R}</m> a <m>{\mathbb T}</m> por <m>\phi : \theta \mapsto \cos \theta + i \sin \theta</m>. De hecho, 
+				<md>
+					<mrow>\phi( \alpha + \beta ) &amp; = \cos( \alpha + \beta ) + i \sin( \alpha + \beta )</mrow>
+					<mrow>&amp; = (\cos \alpha \cos \beta - \sin \alpha \sin \beta)  + i( \sin \alpha  \cos \beta + \cos \alpha \sin \beta )</mrow>
+					<mrow>&amp; = (\cos \alpha + i \sin \alpha )(\cos \beta + i \sin \beta)</mrow>
+					<mrow>&amp; = \phi( \alpha ) \phi( \beta ).</mrow>
+				</md>
+			Geométricamente, simplemente estamos enrollando la recta real sobre la circunferencia.</p>
+		</example>
+		
+		<p>La siguiente proposición lista algunas propiedades básicas de los homomorfismos de grupos.</p>
+ 
+		<proposition xml:id="proposition-homorphism-subgroup">
+			<statement>
+				<p>Sea <m>\phi : G_1 \rightarrow G_2</m> un homomorfismo de grupos. Entonces 
+					<ol>
+					
+						<li><p>Si <m>e</m> es la identidad de <m>G_1</m>, entonces <m>\phi( e)</m> es la identidad de <m>G_2</m>;</p></li> 
+ 
+
+						<li><p>Para cualquier elemento <m>g \in G_1</m>, <m>\phi( g^{-1}) = [\phi( g )]^{- 1}</m>;</p></li>
+ 
+						<li><p>Si <m>H_1</m> es un subgrupo de <m>G_1</m>, entonces <m>\phi( H_1 )</m> es un subgrupo de <m>G_2</m>;</p></li>
+ 
+						<li><p>Si <m>H_2</m> es un subgrupo de <m>G_2</m>, entonces <m>\phi^{-1}(H_2) = \{ g \in G _1: \phi(g) \in H_2 \}</m> es un subgrupo de <m>G_1</m>. Más aún, si <m>H_2</m> es normal en <m>G_2</m>, entonces <m>\phi^{-1}(H_2)</m> es normal en <m>G_1</m>.</p></li>
+
+<!-- % TWJ, 2011/09/15 -->
+<!-- % Changed G to G_1 -->
+<!-- % Suggested by Tony Perkins -->
+
+					</ol></p>
+			</statement>
+			<proof>
+				<p>(1) Supongamos que <m>e</m> y <m>e'</m> son las identidades de <m>G_1</m> y <m>G_2</m>, respectivamente; entonces
+					<me>e' \phi(e) = \phi(e) = \phi(e e) = \phi(e) \phi(e).</me>
+				Por cancelación, <m>\phi(e) = e'</m>.</p>
+ 
+				<p>(2) Es consecuencia del hecho que
+					<me>\phi( g^{-1}) \phi(g) = \phi(g^{-1} g) = \phi(e) = e'.</me></p>
+
+ <!--  Corrected notation error.  Suggested by P. Diethelm.  TWJ 16/8/2013. -->
+
+				<p>(3) El conjunto <m>\phi(H_1)</m> es no vacío pues la identidad de <m>G_2</m> está en <m>\phi(H_1)</m>. Si <m>x</m> e <m>y</m> en <m>\phi(H_1)</m>, entonces existen elementos <m>a, b \in H_1</m> tales que <m>\phi(a) = x</m> y <m>\phi(b)=y</m>. Como 
+					<me>xy^{-1} = \phi(a)[ \phi(b)]^{-1} = \phi(a b^{-1} ) \in \phi(H_1),</me>
+				<m>\phi(H_1)</m> es un subgrupo de <m>G_2</m> por la Proposición<nbsp /><xref ref="proposition-subgroup" />.</p>
+
+<!-- H_2 changed to G_2 in proof.  Suggested by K. Wenholz. -->
+<!-- TWJ - 12/19/2011 -->
+ 
+				<p>(4) Sea <m>H_2</m> un subgrupo de <m>G_2</m> y defina <m>H_1</m> como <m>\phi^{-1}(H_2)</m>; es decir, <m>H_1</m> es el conjunto de todos los <m>g \in G_1</m> tales que <m>\phi(g) \in H_2</m>.  La identidad está en <m>H_1</m> pues <m>\phi(e) = e'</m>. Si <m>a</m> y <m>b</m> están en <m>H_1</m>, entonces <m>\phi(ab^{-1}) = \phi(a)[ \phi(b) ]^{-1}</m> está en <m>H_2</m> pues <m>H_2</m> es un subgrupo de <m>G_2</m>.  Por lo tanto, <m>ab^{-1} \in H_1</m> y <m>H_1</m> es un subgrupo de <m>G_1</m>. Si <m>H_2</m> es normal en <m>G_2</m>, debemos probar que <m>g^{-1} h g \in H_1</m> para <m>h \in H_1</m> y <m>g \in G_1</m>. Pero 
+					<me>\phi( g^{-1} h g) = [ \phi(g) ]^{-1} \phi( h ) \phi( g ) \in H_2,</me>
+				pues <m>H_2</m> es un subgrupo normal de <m>G_2</m>.  Por lo tanto, <m>g^{-1}hg \in H_1</m>.</p>
+			</proof>
+		</proposition>
+ 
+		<p>Sea <m>\phi : G \rightarrow H</m> un homomorfismo de grupos y supongamos que <m>e</m> es la identidad de <m>H</m>. Por la Proposición<nbsp /><xref ref="proposition-homorphism-subgroup" />, <m>\phi^{-1} ( \{ e \} )</m> es un subgrupo de <m>G</m>. Este subgrupo se llama <term>núcleo</term><idx><h>Núcleo</h><h>de un homomorfismo de grupos</h></idx><idx><h>Homomorfismode grupos</h><h>núcleo de un</h></idx> de <m>\phi</m> y se denotará por <m>\ker \phi</m>. <notation><usage>\ker \phi</usage><description>núcleo de <m>\phi</m></description></notation> De hecho, este subgrupo es un subgrupo normal de <m>G</m> pues el subgrupo trivial es normal en <m>H</m>.  Enunciamos este resultado en el siguiente teorema, que dice que a cada homomorfismo de grupos podemos asociar de forma natural un subgrupo normal.</p> 
+ 
+		<theorem>
+			<statement>
+				<p>Sea <m>\phi : G \rightarrow H</m> un homomorfismo de grupos. Entonces el núcleo de <m>\phi</m> es un subgrupo normal de <m>G</m>.</p>
+			</statement>
+		</theorem>
+ 
+		<example xml:id="example-homomorph-g2-to-r">
+			<p>Examinemos el homorfismo <m>\phi : GL_2( {\mathbb R }) \rightarrow {\mathbb R}^\ast</m> definido por <m>A \mapsto \det( A )</m>. Como 1 es la identidad de <m>{\mathbb R}^\ast</m>, el núcleo de este homomorfismo consiste de toda las matrices de <m>2 \times 2</m> que tienen determinante uno. Es decir, <m>\ker \phi = SL_2( {\mathbb R })</m>.</p>
+		</example>
+ 
+		<example xml:id="example-homomorph-kernel">
+			<p>El núcleo del homomorfismo de grupos <m>\phi : {\mathbb R} \rightarrow {\mathbb C}^\ast</m> definido por <m>\phi( \theta ) = \cos \theta + i \sin \theta</m> es <m>\{ 2 \pi n : n \in {\mathbb Z} \}</m>. Notemos que <m>\ker \phi \cong {\mathbb Z}</m>.</p>
+		</example>
+ 
+		<example xml:id="example-homomorph-z7">
+			<p>Supongamos que queremos determiar todos los posibles homomorfismos <m>\phi</m> de <m>{\mathbb Z}_7</m> a  <m>{\mathbb Z}_{12}</m>. Como el núcleo de <m>\phi</m> debe ser un subgrupo de <m>{\mathbb Z}_7</m>, solo hay dos núcleos posibles, <m>\{ 0 \}</m> y todo <m>{\mathbb Z}_7</m>.  La imagen de un subgrupo de <m>{\mathbb Z}_7</m> debe ser un subgrupo de <m>{\mathbb Z}_{12}</m>. Luego, no hay homomorfismos inyectivos; de lo contrario, <m>{\mathbb Z}_{12}</m> tendría un subgrupo de orden 7, lo que es imposible. Por lo tanto, el único homomorfismo posible de <m>{\mathbb Z}_7</m> a  <m>{\mathbb Z}_{12}</m> es el que envía todos los elementos cero.</p>
+		</example>
+ 
+		<example xml:id="example-homomorph-gn">
+			<p>Sea <m>G</m> un grupo. Supongamos que <m>g \in G</m> y <m>\phi</m> es el homomorfismo de <m>{\mathbb Z}</m> a <m>G</m> dado por <m>\phi( n ) = g^n</m>. Si el orden de <m>g</m> es infinito, entonces el núcleo de este homomorfismo es <m>\{ 0 \}</m> pues <m>\phi</m> envía <m>{\mathbb Z}</m> en el subgrupo cíclico de <m>G</m> generado por <m>g</m>. Si en cambio, el orden de <m>g</m> es finito, digamos <m>n</m>, entonces el núcleo de <m>\phi</m> es <m>n {\mathbb Z}</m>.</p>
+		</example>
+
+	</section>
+
+	<section xml:id="section-group-isomorphism-theorems">
+		<title>Los Teoremas de Isomorfía</title>
+ 
+		<p>Si bien no es evidente al comienzo, los grupos cociente corresponden exactamente con las imágenes homomorfas, y podemos usar grupos cociente para estudiar homomorfismos. Ya sabemos que con cada homomorfismo de grupos <m>\phi: G \rightarrow H</m> podemos asociar un subgrupo normal de <m>G</m>, <m>\ker \phi</m>.  El recíproco también es cierto; es decir, todo subgrupo normal de un grupo  <m>G</m> da lugar a un homomorfismo de grupos.</p>
+ 
+		<p>Sea <m>H</m> un subgrupo normal de <m>G</m>. Defina el <term>homorfismo natural</term><idx><h>Natural</h><h>homomorfismo</h></idx> o <term>homomorfismo canónico</term><idx><h>Canónico</h><h>homomorfismo</h></idx>  
+			<me>\phi : G \rightarrow G/H</me>
+		por
+			<me>\phi(g) = gH.</me>
+		Este de hecho es un homomorfismo, pues
+			<me>\phi( g_1 g_2 ) = g_1 g_2 H =  g_1 H g_2 H = \phi( g_1) \phi( g_2 ).</me>
+		El núcleo de este homomorfismo es <m>H</m>. Los siguientes teoremas describen la relación entre homomorfismos de grupos, subgrupos normales, y grupos cociente.</p>
+
+		<theorem xml:id="theorem-first-isomorphism">
+			<title>Primer Teorema de Isomorfía</title>
+			<idx><h>Primer Teorema de Isomorfía</h><h>para grupos</h></idx>
+			<statement>
+				<p>Si <m>\psi : G \rightarrow H</m> es un homomorfismo de grupos con <m>K =\ker \psi</m>, entonces <m>K</m> es normal en <m>G</m>. Sea <m>\phi: G \rightarrow G/K</m> el homomorfismo canónico.  Entonce eciste un único isomorfismo <m>\eta: G/K \rightarrow \psi(G)</m> tal que <m>\psi =  \eta \phi</m>.</p>
+			</statement>
+			<proof>
+				<p>Ya vimos que <m>K</m> es normal en <m>G</m>. Defina <m>\eta: G/K \rightarrow \psi(G)</m> por <m>\eta(gK) = \psi(g)</m>.  Primero demostraremos que <m>\eta</m> es una función bien definida.  Si <m>g_1 K =g_2 K</m>, entonces existe <m>k \in K</m>, tal que <m>g_1 k=g_2</m>; por lo tanto, 
+					<me>\eta(g_1 K) = \psi(g_1) = \psi(g_1) \psi(k) = \psi(g_1k) = \psi(g_2) = \eta(g_2 K).</me>
+				Luego, <m>\eta</m> no depende de la elección de representante de la clase lateral y la función <m>\eta: G/K \rightarrow \psi(G)</m> está únicamente definida pues <m>\psi =  \eta \phi</m>. Debemos mostrar además que <m>\eta</m> es un homomorfismo, pero 
+					<md>
+						<mrow>\eta( g_1K g_2K ) &amp; = \eta(g_1 g_2K)</mrow>
+						<mrow> &amp; = \psi(g_1 g_2)</mrow>
+						<mrow>&amp; = \psi(g_1) \psi(g_2)</mrow>
+						<mrow>&amp; = \eta( g_1K) \eta( g_2K ).</mrow>
+					</md>
+				Claramente, <m>\eta</m> es sobre <m>\psi( G)</m>. Para mostrar que <m>\eta</m> es 1-1, supongamos que <m>\eta(g_1 K) = \eta(g_2 K)</m>. Entonces <m>\psi(g_1) = \psi(g_2)</m>. Esto implica que <m>\psi( g_1^{-1} g_2 ) = e</m>, y <m>g_1^{-1} g_2</m> está en el núcleo de <m>\psi</m>;  luego, <m>g_1^{-1} g_2K = K</m>; es decir, <m>g_1K =g_2K</m>.  </p>
+			</proof>
+		</theorem>
+ 
+ <!--  Proof rewritten for clarification.  Suggested by P. Diethelm.  TWJ 16/8/2013. -->
+
+		<p>Los matemáticos a menudo usamos diagramas llamados <term>diagramas conmutativos</term><idx><h>Diagramas conmutativos</h></idx> par describir teoremas como este.  El siguiente diagrama <q>conmuta</q> pues <m>\psi = \eta \phi</m>.</p>
+
+		<sidebyside width="40%" margins="auto"> <!-- duplicate widths? -->
+			<image width="40%" xml:id="homomorphs-first-isomorphism">
+				<latex-image-code><![CDATA[
+					\begin{tikzpicture}[scale=0.8]
+
+					\node at (1.5,2) [above] {$\psi$};
+					\node at (0.25,0.65) {$\phi$};
+					\node at (2.75,0.65) {$\eta$};
+					\draw [->] (0,2)  node [left] {$G$} -- (3,2) node [right] {$H$};
+					\node at (1.5,0) [below] {$G/K$};
+					\draw [->] (0,1.7) -- (1.3,0);
+					\draw [->] (1.7,0) -- (3,1.7);
+
+					\end{tikzpicture}]]>
+				</latex-image-code>
+			</image>
+		</sidebyside>
+
+		<example xml:id="homo_cyclic">
+			<p>Sea <m>G</m> un grupo cíclico con generador <m>g</m>. Definamos una función <m>\phi : {\mathbb Z} \rightarrow G</m> por <m>n \mapsto g^n</m>.  Esta función es un homomorfismo epiyectivo pues  
+				<me>\phi( m + n) = g^{m+n} = g^m g^n = \phi(m) \phi(n).</me>
+			Claramente <m>\phi</m> es sobre. Si <m>|g| = m</m>, entonces  <m>g^m = e</m>. Luego, <m>\ker \phi = m {\mathbb Z}</m> y <m>{\mathbb Z} / \ker \phi =  {\mathbb Z} / m {\mathbb Z} \cong G</m>. Por otra parte, si el orden de <m>g</m> es infinito, entonces <m>\ker \phi = 0</m> y <m>\phi</m> es un isomorfismo de <m>G</m> en <m>{\mathbb Z}</m>. Luego, dos grupos cíclicos son isomorfos exactamente cuando tienen el mismo orden. Salvo isomorfismo, los únicos grupos cíclicos son <m>{\mathbb Z}</m> y <m>{\mathbb Z}_n</m>.</p>
+		</example>
+
+		<theorem xml:id="theorem-second-isomorphism">
+			<title>Segundo Teorema de Isomorfía</title>
+			<idx><h>Segundo Teorema de Isomorfía</h><h>para grupos</h></idx>
+			<statement>
+				<p>Sea  <m>H</m> un subgrupo de <m>G</m> (no necesariamente normal) y sea <m>N</m> un subgrupo normal de <m>G</m>.  Entonces <m>HN</m> es un subgrupo de <m>G</m>, <m>H \cap N</m> es un subgrupo normal de <m>H</m>, y  
+					<me>H / H \cap N \cong HN /N.</me></p>
+			</statement>
+			<proof>
+				<p>Demostraremos primero que <m>HN = \{ hn : h \in H, n \in N \}</m> es un subgrupo de <m>G</m>.  Supongamos que  <m>h_1 n_1, h_2 n_2 \in HN</m>. Como <m>N</m> is normal, <m>(h_2)^{-1} n_1 h_2 \in N</m>. Así 
+					<me>(h_1 n_1)(h_2 n_2) = h_1 h_2 ( (h_2)^{-1} n_1 h_2 )n_2</me>
+				está en <m>HN</m>. El inverso de <m>hn \in HN</m> está en <m>HN</m> pues
+					<me>( hn )^{-1} = n^{-1 } h^{-1} = h^{-1} (h n^{-1} h^{-1} ).</me></p>
+ 
+				<p>A continuación, demostraremos que <m>H \cap N</m> es normal en <m>H</m>. Sea <m>h \in H</m> y <m>n \in H \cap N</m>. Entonces <m>h^{-1} n h \in H</m> pues cada elemento está en <m>H</m>. Además, <m>h^{-1} n h \in N</m> pues <m>N</m> es normal en <m>G</m>; por lo tanto, <m>h^{-1} n h \in H \cap N</m>.</p>
+ 
+				<p>Ahora defina una función <m>\phi</m> de <m>H</m> a <m> HN / N</m> por <m>h \mapsto h N</m>. La función  <m>\phi</m> es sobreyectiva, pues cualquier clase lateral <m>h n N = h N</m> es la imagen de <m>h</m> en <m>H</m>. También sabemos que <m>\phi</m> es un homomorfismo pues 
+					<me>\phi( h  h')  = h h' N =  h N h' N =  \phi( h ) \phi( h').</me>
+				Por el Primer Teorema de Isomorfía, la imagen de <m>\phi</m> es isomorfa a <m>H / \ker \phi</m>; es decir,
+					<me>HN/N = \phi(H) \cong H / \ker \phi.</me>
+				Como
+					<me>\ker \phi = \{ h \in H : h \in N \} = H \cap N,</me>
+				<m>HN/N = \phi(H) \cong H / H \cap N</m>.</p>
+			</proof>
+		</theorem>
+ 
+		<theorem xml:id="theorem-correspondence">
+			<title>Teorema de Correspondencia</title>
+			<idx><h>Teorema de Correspondencia</h><h>para grupos</h></idx>
+			<statement>
+				<p>Sea <m>N</m> un subgrupo normal de un grupo <m>G</m>. Entonces <m>H \mapsto H/N</m> es una correspondencia 1-1 entre el conjunto de subgrupos <m>H</m> que contienen a <m>N</m>  y el conjunto de subgrupos de <m>G/N</m>. Más aún, los subgrupos normales de <m>G</m> que contienen a <m>N</m> corresponden a los subgrupos normales de <m>G/N</m>.</p>
+			</statement>
+			<proof>
+				<p>Sea <m>H</m> un subgrupo de <m>G</m> que contiene a <m>N</m>. Como <m>N</m> es normal en <m>H</m>, <m>H/N</m> tiene sentido.  Sean  <m>aN</m> y <m>bN</m> elementos de <m>H/N</m>. Entonces <m>(aN)( b^{-1} N )= ab^{-1}N \in H/N</m>; luego, <m>H/N</m> es un subgrupo de <m>G/N</m>.</p>
+
+				<p>Sea <m>S</m> un subgrupo debe <m>G/N</m>. Este subgrupo es un conjunto de clases laterales de <m>N</m>.  Si  <m>H= \{ g \in G : gN \in S \}</m>, entonces para <m>h_1, h_2 \in H</m>, tenemos que <m>(h_1 N)( h_2 N )= h_1 h_2 N \in S</m> y <m>h_1^{-1} N \in S</m>. Por lo tanto, <m>H</m> debe ser un subgrupo de <m>G</m>. Claramente, <m>H</m> contiene a <m>N</m>. Por lo tanto, <m>S = H / N</m>. Concluimos que, la función <m>H \mapsto H/N</m> es sobreyectiva.</p>
+
+<!--  Notation error corrected.  Suggested by P. Diethelm.  TWJ 16/8/2013. -->
+    
+				<p>Supongamos que <m>H_1</m> y <m>H_2</m> son subgrupos de <m>G</m> que contienen a <m>N</m> tales que <m>H_1/N = H_2/N</m>. Si <m>h_1 \in H_1</m>, entonces <m>h_1 N \in H_1/N</m>. Luego, <m>h_1 N = h_2 N \subset H_2</m> para algún <m>h_2</m> en <m>H_2</m>. Pero, como <m>N</m> está contenido en <m>H_2</m>, sabemos que <m>h_1 \in H_2</m> o <m>H_1 \subset H_2</m>. Similarmente, <m>H_2 \subset H_1</m>.  Como <m>H_1 = H_2</m>, la función  <m>H \mapsto H/N</m> es 1-1.</p>
+
+<!-- H/N changed to N/H.  Suggested by S. Engle. -->
+<!-- TWJ - 12/19/2011 -->
+
+<!-- Changed it back.  What was I thinking?  Suggested by R. Beezer. -->
+<!-- TWJ - 11/29/2012 -->
+ 
+				<p>Supongamos que <m>H</m> es normal en <m>G</m> y que <m>N</m> es un subgrupo de  <m>H</m>.  Entonces es fácil verificar que la función <m>G/N \rightarrow G/H</m> definida por <m>gN \mapsto gH</m> es un homomorfismo.  El núncleo de este homomorfismo es  <m>H/N</m>, lo que demuestra que <m>H/N</m> es normal en <m>G/N</m>.</p>
+ 
+				<p>Recíprocamente, supongamos que <m>H/N</m> es normal en <m>G/N</m>. El homomorfismo dado por  
+					<me>G \rightarrow G/N \rightarrow \frac{G/N}{H/N}</me>
+				tiene núcleo <m>H</m>. Luego, <m>H</m> es normal en <m>G</m>.</p>
+			</proof>
+		</theorem>
+
+<!--  Statement of the Correspondence Theorem corrected.  Suggested by P. Diethelm.  TWJ 16/8/2013. -->
+ 
+		<p>Notemos que en la demostración del Teorema<nbsp /><xref ref="theorem-correspondence" />, también hemos demostrado el siguiente teorema.</p>
+ 
+		<theorem xml:id="theorem-third-isomorphism">
+			<title>Tercer Teorema de Isomorfía</title>
+			<idx><h>Tercer Teorema de Isomorfía</h><h>para grupos</h></idx>
+			<statement>
+				<p>Sea <m>G</m> un grupo y sean <m>N</m> y <m>H</m> subgrupos normales de <m>G</m> con <m>N \subset H</m>.  Entonces 
+					<me>G/H \cong \frac{G/N}{H/N}.</me></p>
+			</statement>
+		</theorem>
+ 
+		<example xml:id="example-homomorph-third-isomorphism">
+			<p>Por el Tercer Teorema de Isomorfía,
+				<me>{\mathbb Z} / m {\mathbb Z} \cong ({\mathbb Z}/ mn {\mathbb Z})/ (m {\mathbb Z}/ mn {\mathbb Z}).</me>
+			Como <m>| {\mathbb Z} / mn {\mathbb Z} | = mn</m> y  <m>|{\mathbb Z} / m{\mathbb Z}| = m</m>, tenemos <m>| m {\mathbb Z} / mn {\mathbb Z}| = n</m>.</p>
+		</example>
+ 
+		<xi:include href="./sage/homomorph-info.xml" />
+
+	</section> 
+
+	<xi:include href="./exercises/homomorph.xml" />
+
+	<exercises xml:id="homomorph-exercises-automorphisms">
+		<title>Ejercicios adicionales: Automorfismos</title>
+
+		<exercise>
+			<statement>
+				<p>Sea <m>\aut(G)</m> el conjunto de todos los automorfismos de <m>G</m>; es decir, isomorfismos de <m>G</m> en sí mismo. Demuestre que este conjunto forma un grupo y que es un subgrupo del grupo de permutaciones de <m>G</m>; es decir, <m>\aut(G) \leq S_G</m>.</p>
+			</statement>
+		</exercise>
+ 
+		<exercise>
+			<statement>
+				<p>Un <term>automorfismo interno</term><idx><h>Interno</h><h>automorfismo</h></idx> de <m>G</m>,
+					<me>i_g : G \rightarrow G,</me>
+				está definido por la  función
+					<me>i_g(x) = g x g^{-1},</me>
+				para <m>g \in G</m>. Demuestre que <m>i_g \in \aut(G)</m>.</p>
+			</statement>
+		</exercise>
+ 
+		<exercise>
+			<statement>
+				<p>El conjunto de todos los automorfismos internos se denota por <m>\inn(G)</m>. Muestre que <m>\inn(G)</m> es un subgrupo de  <m>\aut(G)</m>.</p>
+			</statement>
+		</exercise>
+ 
+		<exercise>
+			<statement>
+				<p>Encuentre un automorfismo de un grupo <m>G</m> que no sea un automorfismo interno.</p>
+			</statement>
+		</exercise>
+ 
+		<exercise>
+			<statement>
+				<p>Sea <m>G</m> un grupo y sea <m>i_g</m> un automorfismo interno de <m>G</m>. Defina la función  
+					<me>G \rightarrow \aut(G)</me>
+				por
+					<me>g \mapsto i_g.</me>
+				Demuestre que esta función es un homomorfismo con imagen <m>\inn(G)</m> y núcleo <m>Z(G)</m>. Use este resultado para concluir que  
+					<me>G/Z(G) \cong \inn(G).</me></p>
+			</statement>
+		</exercise>
+ 
+		<exercise>
+			<statement>
+				<p>Calcule <m>\aut(S_3)</m> y <m>\inn(S_3)</m>.  Haga lo mismo para <m>D_4</m>.</p>
+			</statement>
+		</exercise>
+ 
+		<exercise>
+			<statement>
+				<p>Encuentre todos los homomorfismos <m>\phi : {\mathbb Z} \rightarrow {\mathbb Z}</m>. ¿Qué es <m>\aut({\mathbb Z})</m>? </p>
+			</statement>
+		</exercise>
+ 
+		<exercise>
+			<statement>
+				<p>Encuentre todos los automorfismos de <m>{\mathbb Z}_8</m>.  Demuestre que <m>\aut({\mathbb Z}_8) \cong U(8)</m>.</p>
+			</statement>
+		</exercise>
+ 
+		<exercise>
+			<statement>
+				<p>Para <m>k \in {\mathbb Z}_n</m>, defina una función <m>\phi_k : {\mathbb Z}_n \rightarrow {\mathbb Z}_n</m> por <m>a \mapsto ka</m>.  Demuestre que <m>\phi_k</m> es un homomorfismo. </p>
+			</statement>
+		</exercise>
+ 
+		<exercise>
+			<statement>
+				<p>Demuestre que <m>\phi_k</m> es un isomorfismo si y solo si <m>k</m> es un generador de <m>{\mathbb Z}_n</m>. </p>
+			</statement>
+		</exercise>
+ 
+		<exercise>
+			<statement>
+				<p>Muestre que todo automorfismo de <m>{\mathbb Z}_n</m> es de la forma <m>\phi_k</m>, con <m>k</m> un generador de <m>{\mathbb Z}_n</m>. </p>
+			</statement>
+		</exercise>
+ 
+		<exercise>
+			<statement>
+				<p>Demuestre que <m>\psi : U(n) \rightarrow \aut({\mathbb Z}_n)</m> es un isomorfismo, donde <m>\psi : k \mapsto \phi_k</m>. </p>
+			</statement>
+		</exercise>
+ 
+	</exercises>
+
+
+<xi:include href="./sage/homomorph-sage.xml" />
+<xi:include href="./sage/homomorph-sage-exercises.xml" />
+
+</chapter>
+ 
+ 
+ 
+ 

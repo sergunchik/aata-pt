@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+
+	<p>El desarrollo inicial de Sage tuvo rutinas poderosas para la teoría de números, y luego comenzó a incluir estructuras algebraicas y otras áreas de las matemáticas discretas.  Es por lo tanto una herramienta natural para el estudio de criptografía, incluyendo tópicos tales como RSA, criptografía de curvas elípticas, y AES (Advanced Encryption Standard o estándar avanzado de encriptación).</p>
+	
+</paragraphs>

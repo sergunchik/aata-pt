@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+
+	<p>Muchos de los cálculos en Sage, en diversos contextos algebraicos, se basan en resolver problemas de álgebra lineal.  Por esta razón la funcionalidad de Sage relativa al álgebra lineal es extensa.  Más aún, se pueden usar estructura como cuerpos finitos, para encontrar espacios vectoriales en nuevos contextos.</p>
+</paragraphs>

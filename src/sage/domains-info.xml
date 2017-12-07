@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+
+	<p>Sage permite doferenciar entre anillos en general, dominios, dominios de ideales principales y cuerpos.  Todo suele ir bien con las construcciones y los cálculos con DIP's, pero las cosas se pueden complicar bastante (computacionalmente) cuando el anillo tiene menos estructura.  No todas las preguntas se pueden contestar con Sage en este contexto más general.</p>
+</paragraphs>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+
+	<p>Sage es capaz de crear productos diectos de grupos cíclicos, pero esto se realizan como grupos de permutaciones.  Esta es una situación que debiera mejorar.  Sin embargo, con una clasificación de los grupos abelianos finitos, podemos describir como construir todo grupo de orden menor a 16 en Sage.</p>
+</paragraphs>

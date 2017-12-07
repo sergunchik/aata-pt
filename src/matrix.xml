@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+
+
+<chapter xml:id="matrix" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>Grupos de Matrices y Simetría</title>
+
+	<introduction>
+		<p>Cuando Felix Klein<idx><h>Klein, Felix</h></idx> (1849<ndash />1925) aceptó una cátedra en la Universidad de Erlangen, en su discurso inaugural, describió un programa para clasificar diferentes geometrías. Central al programa de Klein era la teoría de grupos: él consideraba que la geometría consiste en estudiar las propiedades que quedan invariantes bajo grupos de transformaciones. Los grupos, especialmente los grupos de matrices, ha ganado mucha importancia en el estudio de simetrías y tienen aplicaciones en otras disciplinas tales como química y física. En la primera parte de este capítulo, examinaremos algunos de los grupos de matrices clásicos, tales como el grupo lineal general, el grupo lineal especial, y el grupo ortogonal.  Usaremos luego estos grupos para estudiar algunas de las ideas detrás de la simetría geométrica.</p>
+	</introduction>
+
+	<section xml:id="section-matrix-groups">
+	<title>Grupos de Matrices</title>
+
+		<subsection xml:id="matrix-subsection-linear-algebra">
+			<title>Algunos Resultados de Álgebra Lineal</title>
+
+			<p>Antes de estudiar grupos de matrices, debemos ercordar algunos resultados básicos de álgebra lineal.  Una de las ideas fundamentales de álgebra lineal es la de una transformación lineal. Una <term>transformación lineal</term><idx><h>Transformación lineal</h><h>definición de</h></idx> o <term>función lineal</term><idx><h>Función lineal</h></idx> <m>T : {\mathbb R}^n \rightarrow {\mathbb R}^m</m> es una función que respeta (o preserva) la suma de vectores y la multiplicación por escalares; es decir, para vectores <m>{\mathbf x}</m> e <m>{\mathbf y}</m> en <m>{\mathbb R}^n</m> y un escalar <m>\alpha \in {\mathbb R}</m>, 
+				<md>
+				<mrow>T({\mathbf x}+{\mathbf y}) &amp; = T({\mathbf x}) + T({\mathbf y})</mrow>
+				<mrow>T(\alpha {\mathbf y}) &amp; = \alpha T({\mathbf y}).</mrow>
+				</md>
+			Una matriz de <m>m \times n</m> con coeficientes en <m>{\mathbb R}</m> representa una transformación lineal de <m>{\mathbb R}^n</m> a <m>{\mathbb R}^m</m>. Si escribimos vectores <m>{\mathbf x} = (x_1, \ldots, x_n)^{\rm t}</m> e <m>{\mathbf y} = (y_1, \ldots, y_n)^{\rm t}</m> en <m>{\mathbb R}^n</m> como matrices de una columna, entonces una matriz de <m>m \times n</m> 
+				<me>A
+				=
+				\begin{pmatrix}<![CDATA[
+				a_{11} & a_{12} & \cdots & a_{1n} \\
+				a_{21} & a_{22} & \cdots & a_{2n} \\
+				\vdots & \vdots & \ddots & \vdots \\
+				a_{m1} & a_{m2} & \cdots & a_{mn}
+				]]>\end{pmatrix}</me>
+			envía a los vectores en  <m>{\mathbb R}^m</m> linealmente por multiplicación matricial.  Observe que si <m>\alpha</m> es un número real,
+				<me>A({\mathbf x} + {\mathbf y} ) 
+				 = 
+				A {\mathbf x }+ A {\mathbf y} 
+				\qquad \text{and} \qquad
+				\alpha A {\mathbf x} 
+				 = 
+				A ( \alpha {\mathbf x}),</me>
+			donde
+				<me>{\mathbf x}
+				=
+				\begin{pmatrix}<![CDATA[
+				x_1 \\
+				x_2 \\
+				\vdots \\
+				x_n
+				]]>\end{pmatrix}.</me>
+			Con frecuencia abreviaremos la matriz <m>A</m> escribiendo <m>(a_{ij})</m>. <notation><usage>(a_{ij})</usage><description>matriz</description></notation></p> 
+ 
+			<p>Recíprocamente, si <m>T : {\mathbb R}^n \rightarrow {\mathbb R}^m</m> es una función lineal, podemos asociar una matriz <m>A</m> con <m>T</m> considerando lo que <m>T</m> le hace a los vectores 
+				<md>
+					<mrow>{\mathbf e}_1 &amp; = (1, 0, \ldots, 0)^{\rm t}</mrow>
+					<mrow>{\mathbf e}_2 &amp; = (0, 1, \ldots, 0)^{\rm t}</mrow>
+					<mrow>&amp;  \vdots &amp; </mrow>
+					<mrow>{\mathbf e}_n &amp; = (0, 0, \ldots, 1)^{\rm t}.</mrow>
+				</md>
+			Podemos escribir cualquier vector <m>{\mathbf x} = (x_1, \ldots, x_n)^{\rm t}</m> como
+				<me>x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2 + \cdots + x_n {\mathbf e}_n.</me>
+			Así, si
+				<md>
+					<mrow>T({\mathbf e}_1) &amp; = (a_{11}, a_{21}, \ldots, a_{m1})^{\rm t},</mrow>
+					<mrow>T({\mathbf e}_2) &amp; = (a_{12}, a_{22}, \ldots, a_{m2})^{\rm t},</mrow>
+					<mrow>&amp;  \vdots &amp; </mrow>
+					<mrow>T({\mathbf e}_n) &amp; = (a_{1n}, a_{2n}, \ldots, a_{mn})^{\rm t},</mrow>
+				</md>
+			entonces
+				<md>
+					<mrow>T({\mathbf x} ) &amp; = T(x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2 + \cdots + x_n {\mathbf e}_n)</mrow>
+					<mrow>&amp; = x_1 T({\mathbf e}_1) + x_2 T({\mathbf e}_2) + \cdots + x_n T({\mathbf e}_n)</mrow>
+					<mrow>&amp; = \left( \sum_{k=1}^{n} a_{1k} x_k, \ldots,  \sum_{k=1}^{n} a_{mk} x_k \right)^{\rm t}</mrow>
+					<mrow>&amp; = A {\mathbf x}.</mrow>
+				</md></p>
+	 
+			<example xml:id="example-linear-transform">
+				<p>Si <m>T : {\mathbb R}^2 \rightarrow {\mathbb R}^2</m> es la función dada por
+					<me>T(x_1, x_2) = (2 x_1 + 5 x_2, - 4 x_1 + 3 x_2),</me>
+				los axiomas que <m>T</m> debe satisfacer para ser una transformación lineal se verifican fácilmente. Los vectores columna <m>T {\mathbf e}_1 = (2, -4)^{\rm t}</m> y <m>T {\mathbf e}_2 = (5,3)^{\rm t}</m>  nos dicen que <m>T</m> está dada por la matriz
+					<me>A =
+					\begin{pmatrix}<![CDATA[
+					2 & 5 \\
+					-4 & 3
+					]]>\end{pmatrix}.</me></p>
+			</example>
+ 
+			<p>Como estamos interesados en grupos de matrices, necesitamos saber qué matrices tienen inverso multiplicativo. Recuerde que una matriz <m>A</m> de <m>n \times n</m> es <term>invertible</term><idx><h>Matriz</h><h>invertible</h></idx> si y solo si existe otra matriz <m>A^{-1}</m> tal que <m>A A^{-1} = A^{-1} A = I</m>, donde 
+				<me>I =
+				\begin{pmatrix}<![CDATA[
+				1 & 0 & \cdots & 0 \\
+				0 & 1 & \cdots & 0 \\
+				\vdots & \vdots & \ddots & \vdots \\
+				0 & 0 & \cdots & 1
+				]]>\end{pmatrix}</me>
+			es la matriz identidad de <m>n \times n</m>. De álgebra lineal sabemos que <m>A</m> es invertible si y solo si el determinante de <m>A</m> es distinto de cero. También se dice que una matriz invertible es <term>no singular</term><idx><h>Matriz</h><h>no singular</h></idx>.</p> 
+ 
+			<example xml:id="inverse_matrix">
+				<p>Si <m>A</m> es la matriz
+					<me>\begin{pmatrix}<![CDATA[
+					2 & 1 \\
+					5 & 3
+					]]>\end{pmatrix},</me>
+					entonces la inversa de <m>A</m> es
+					<me>A^{-1} =
+					\begin{pmatrix}<![CDATA[
+					3 & -1 \\
+					-5 & 2
+					]]>\end{pmatrix}.</me>
+				Sabemos que <m>A^{-1}</m> existe, pues <m>\det(A) = 2 \cdot 3 - 5 \cdot 1 = 1</m> no es cero.</p>
+			</example>
+ 
+			<p>Algunos otros hechos sobre determinantes resultarán útiles en el transcurso de este capítulo.   Sean <m>A</m> y <m>B</m> matrices de <m>n \times n</m>. De álgebra lineal tenemos las siguientes propiedades de los determinantes.
+				<ul>
+	 
+					<li><p>El determinante es un homomorfismo al grupo multiplicativo de los números reales; es decir, <m>\det( A B) = (\det A )(\det B)</m>.</p></li>
+	 
+					<li><p>Si <m>A</m> es una matriz invertible, entonces <m>\det(A^{-1}) = 1 / \det A</m>.</p></li>
+	 
+					<li><p>Si definimos la transpuesta de una matriz <m>A = (a_{ij})</m> como <m>A^{\rm t} = (a_{ji})</m>, entonces <m>\det(A^{\rm t}) = \det A</m>.</p></li>
+	 
+					<li><p>Sea <m>T</m> la transformación lineal asociada con una matriz <m>A</m> de <m>n \times n</m>. Entonces <m>T</m> multiplica volúmenes por un facor de <m>|\det A|</m>. En el caso de <m>{\mathbb R}^2</m>, esto quiere decir que <m>T</m> multiplica áreas por <m>|\det A|</m>.</p></li>
+	 
+				</ul></p>
+
+			<p>Funciones lineales, matrices, y determinantes se pasan en un curso elemental de álgebra lineal; pero, si no ha tenido un curso así, es un proceso simple verificar estas propiedades directamente para matrices de  <m>2 \times 2</m>, que es el caso que más nos interesará.</p>
+
+		</subsection>
+		
+		<subsection xml:id="matrix-subsection-general-linear-group">
+			<title>El Grupo Lineal General y el Grupo Lineal Especial</title>
+ 
+			<p>El conjunto de todas las matrices invertibles de <m>n \times n</m> forma un grupo llamado <term>grupo lineal general</term><idx><h>Grupo</h><h>lineal general</h></idx>.  Denotaremos este grupo por<m>GL_n({\mathbb R})</m>.  El grupo lineal general tiene varios subgrupos importantes. La propiedad multiplicativa del determinante implica que el conjunto de las matrices cuyo determinante es uno es un subgrupo del grupo lineal general.  Dicho de otra forma, supongamos que <m>\det(A) =1</m> y que <m>\det(B) = 1</m>. Entonces <m>\det(AB) = \det(A) \det (B) = 1</m> y <m>\det(A^{-1}) = 1 / \det A = 1</m>. Este subgrupo se llama <term>grupo lineal especial</term><idx><h>Grupo</h><h>lineal especial</h></idx> y se denota por <m>SL_n({\mathbb R})</m>.</p>
+ 
+
+			<example xml:id="example-determinant">
+				<p>Dada una matriz de <m>2 \times 2</m> 
+					<me>A =
+					\begin{pmatrix}<![CDATA[
+					a & b \\
+					c & d
+					]]>\end{pmatrix},</me>
+				el determinante de <m>A</m> es <m>ad-bc</m>. El grupo <m>GL_2({\mathbb R})</m> consiste de aquellas matrices para las que <m>ad-bc \neq 0</m>. La inversa de <m>A</m> es 
+					<me>A^{-1} =
+					\frac{1}{ad-bc}
+					\begin{pmatrix}<![CDATA[
+					d & -b \\
+					-c & a
+					]]>\end{pmatrix}.</me>
+				Si <m>A</m> está en <m>SL_2({\mathbb R})</m>, entonces
+					<me>A^{-1} =
+					\begin{pmatrix}<![CDATA[
+					d & -b \\
+					-c & a
+					]]>\end{pmatrix}.</me>
+				Geométricamente, <m>SL_2({\mathbb R})</m> es el grupo que preserva las áreas de los paralelógramos.  Sea 
+					<me>A =
+					\begin{pmatrix}<![CDATA[
+					1 & 1 \\
+					0 & 1
+					]]>\end{pmatrix}</me>
+				en <m>SL_2({\mathbb R})</m>. En la Figura<nbsp /><xref ref="figure-sl2" />, el cuadrado unitario correspondiente a los vectores <m>{\mathbf x} = (1,0)^{\rm t}</m> y <m>{\mathbf y} =  (0,1)^{\rm t}</m> es enviado por <m>A</m> al paralelógramo con lados <m>(1,0)^{\rm t}</m> y <m>(1, 1)^{\rm t}</m>; es decir, <m>A {\mathbf x} = (1,0)^{\rm t}</m> y <m>A {\mathbf y} = (1, 1)^{\rm t}</m>. Note que estos dos paralelógramos tienen la misma área.</p>
+			</example>
+
+			<figure xml:id="figure-sl2">
+				<caption><m>SL_2(\mathbb R)</m> actuando en el cuadrado unitario</caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
+				<image xml:id="matrix-sl2r">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1.5]
+
+						\draw [->]  (0,-0.5) -- (0,2);
+						\draw  [->] (-0.5,0) -- (2,0);
+						\node [right] at (0,2) {$y$};
+						\node [below] at (2,0) {$x$};
+						\draw [->, very thick, black]  (0,0) -- (0,1) node [left] {$(0,1)$};
+						\draw  [->, very thick, black] (0,0) -- (1,0) node [below] {$(1,0)$};
+						\draw (0,1) -- (1,1) -- (1,0);
+
+						\draw [->]  (4,-0.5) -- (4,2);
+						\draw  [->] (3.5,0) -- (6,0);
+						\node [right] at (4,2) {$y$};
+						\node [below] at (6,0) {$x$};
+						\draw [->, very thick, black]  (4,0) -- (5,1) node [above] {$(1,1)$};
+						\draw  [->, very thick, black] (4,0) -- (5,0) node [below] {$(1,0)$};
+						\draw (5,1) -- (6,1) -- (5,0);
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+
+			</figure>
+
+		</subsection>
+		
+		<subsection xml:id="matrix-subsection-orthogonal-group">
+			<title>El Grupo Ortogonal <m>O(n)</m></title>
+ 
+			<p>Otro subgrupo de <m>GL_n({\mathbb R})</m> es el grupo ortogonal. Una matriz <m>A</m> es <term>ortogonal</term><idx><h>Matriz ortogonal</h></idx><idx><h>Matriz</h><h>ortogonal</h></idx> si <m>A^{-1} = A^{\rm t}</m>. El <term>grupo ortogonal</term><idx><h>Grupo</h><h>ortogonal</h></idx><idx><h>El grupo ortogonal</h></idx> consiste en el conjunto de todas las matrices ortogonales. Escribimos <m>O(n)</m> para el grupo ortogonal de <m>n \times n</m>. <notation><usage>O(n)</usage><description>grupo ortogonal</description></notation> Dejamos como ejercicio demostrar que <m>O(n)</m> es un subgrupo de <m>GL_n( {\mathbb R})</m>.</p>
+ 
+			<example xml:id="orthogonal">
+				<p>Las siguiente matrices son ortogonales:
+					<me>\begin{pmatrix}<![CDATA[
+					3/5 & -4/5 \\
+					4/5 & 3/5
+					]]>\end{pmatrix}, 
+					\quad
+					\begin{pmatrix}<![CDATA[
+					1/2 & -\sqrt{3}/2 \\
+					\sqrt{3}/2 & 1/2
+					]]>\end{pmatrix}, 
+					\quad
+					\begin{pmatrix}<![CDATA[
+					-1/\sqrt{2} & 0 & 1/ \sqrt{2} \\
+					1/\sqrt{6} & -2/\sqrt{6} & 1/\sqrt{6} \\
+					1/ \sqrt{3} & 1/ \sqrt{3} & 1/ \sqrt{3} 
+					]]>\end{pmatrix}.</me></p>
+			</example>
+
+			<p>Hay una forma más geométrica de ver el grupo <m>O(n)</m>. Las matrices ortogonales son exactamente aquellas que preservan lad longitudes de los vectores. Podemos definir la longitud de un vector usando el <term>producto interno Euclideano</term>,<idx><h>Producto interno Euclideano</h></idx> o <term>producto punto</term>, de dos vectores. El producto interno Euclideano de dos vectores <m>{\mathbf x}=(x_1, \ldots, x_n)^{\rm t}</m> y <m>{\mathbf y}=(y_1, \ldots, y_n)^{\rm t}</m> es
+				<me>\langle  {\mathbf x}, {\mathbf y} \rangle
+				=
+				{\mathbf x}^{\rm t}  {\mathbf y}
+				=
+				(x_1, x_2, \ldots, x_n)
+				\begin{pmatrix}<![CDATA[
+				y_1 \\ y_2 \\ \vdots \\ y_n
+				]]>\end{pmatrix}
+				=
+				x_1 y_1 + \cdots + x_n y_n.</me>
+			Definimos la longitud de un vector <m>{\mathbf x}=(x_1, \ldots, x_n)^{\rm t}</m> como <notation><usage>\| {\mathbf x} \|</usage><description>longitud de un vector <m>\mathbf x</m></description></notation>
+				<me>\| {\mathbf x} \| = \sqrt{\langle  {\mathbf x}, {\mathbf x} \rangle}  = \sqrt{x_1^2 + \cdots + x_n^2}.</me>
+			Asociada a la noción de longitud de un vector está la idea de distancia entre dos vectores. Definimos la <term>distancia</term> entre dos vectores <m>{\mathbf x}</m> e <m>{\mathbf y}</m> como <m>\| {\mathbf x}-{\mathbf y} \|</m>. Dejamos como ejercicio demostrar la siguiente proposición sobre las propiedades de los productos internos Euclideanos.</p>  
+
+			<proposition>
+				<statement>
+					<p>Sean <m>{\mathbf x}</m>, <m>{\mathbf y}</m>, y <m>{\mathbf w}</m> vectores en <m>{\mathbb R}^n</m> y <m>\alpha \in {\mathbb R}</m>. Entonces
+						<ol>
+ 
+							<li><p><m>\langle {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf y}, {\mathbf x} \rangle</m>.</p></li>
+ 
+							<li><p><m>\langle {\mathbf x}, {\mathbf y} + {\mathbf w} \rangle = \langle {\mathbf x}, {\mathbf y} \rangle + \langle {\mathbf x}, {\mathbf w} \rangle</m>.</p></li>
+ 
+							<li><p><m>\langle \alpha {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf x}, \alpha {\mathbf y} \rangle = \alpha \langle  {\mathbf x}, {\mathbf y} \rangle</m>.</p></li>
+
+							<li><p><m>\langle {\mathbf x}, {\mathbf x} \rangle \geq 0</m> con igualdad exactamente cuando <m>{\mathbf x} = 0</m>.</p></li>
+ 
+							<li><p>Si <m>\langle {\mathbf x}, {\mathbf y} \rangle = 0</m>  para todo <m>{\mathbf x}</m> en <m>{\mathbb R}^n</m>, entonces <m>{\mathbf y} = 0</m>.</p></li>
+ 
+						</ol></p>
+				</statement>
+			</proposition>
+ 
+			<example xml:id="example-on-preserves-length">
+				<p>El vector <m>{\mathbf x} =(3,4)^{\rm t}</m> tiene longitud <m>\sqrt{3^2 + 4^2} = 5</m>.  Podemos también ver que la matriz ortogonal 
+					<me>A=
+					\begin{pmatrix}<![CDATA[
+					3/5 & -4/5 \\
+					4/5 & 3/5
+					]]>\end{pmatrix}</me>
+				preserva la longitud de este vector. El vector <m>A{\mathbf x} = (-7/5,24/5)^{\rm t}</m> también tiene longitud 5.</p>
+			</example>
+
+			<p>Como <m>\det(A A^{\rm t}) = \det(I) = 1</m> y <m>\det(A) = \det( A^{\rm t} )</m>, el determinante de cualquier matriz ortogonal es  1 o <m>-1</m>. Considere los vectores columna 
+				<me>{\mathbf a}_j =
+				\begin{pmatrix}<![CDATA[
+				a_{1j} \\ a_{2j} \\ \vdots \\ a_{nj}
+				]]>\end{pmatrix}</me>
+			de la matriz ortogonal <m>A= (a_{ij})</m>. Since <m>AA^{\rm t} = I</m>, <m>\langle {\mathbf a}_r, {\mathbf a}_s \rangle = \delta_{rs}</m>, donde
+				<me>\delta_{rs}
+				=
+				\left\{
+				\begin{array}{cc}
+				1 &amp; r = s \\
+				0 &amp; r \neq s
+				\end{array}
+				\right.</me>
+			es la delta de Kronecker <idx><h>delta de Kronecker</h></idx>. Así, los vectores columna de una matriz ortogonal todos tienen longitud 1; y el producto interno Euclideano de vectores columna distintos es cero. Cualquier conjunto de vectores que satisface esta propiedad se llama <term>conjunto ortonormal</term><idx><h>Conjunto ortonormal</h></idx>. Recíprocamente, dada una matriz <m>A</m> de <m>n \times n</m> cuyas columnas forman un conjunto ortonormal, se tiene que <m>A^{-1} = A^{\rm t}</m>.</p>
+
+			<p>Decimos que una matriz <m>A</m> <term>preserva distancias</term><idx><h>Matriz</h><h>preserva distancias</h></idx>, o <term>preserva el producto interno</term><idx><h>Matriz</h><h>preserva el producto interno</h></idx> cuando <m>\| T{\mathbf x}- T{\mathbf y} \| =\| {\mathbf x}- {\mathbf y} \|</m>, <m>\| T{\mathbf x} \| =\| {\mathbf x} \|</m>, o <m>\langle  T{\mathbf x}, T{\mathbf y} \rangle = \langle {\mathbf x},{\mathbf y} \rangle</m>, respectivamente. El siguiente teorema, que caracteriza el grupo ortogonal, establece que estos conceptos son iguales.</p>
+
+			<theorem xml:id="theorem-orthnormal-matrix">
+				<statement>
+					<p>Sea <m>A</m> una matriz de <m>n \times n</m>.  Los siguientes enunciados son equivalentes. 
+						<ol>
+
+							<li><p>Las columnas de la matriz <m>A</m> forman un conjunto ortonormal.</p></li>
+
+							<li><p><m>A^{-1} = A^{\rm t}</m>.</p></li>
+
+							<li><p>Para vectores cualquiera <m>{\mathbf x}</m> e <m>{\mathbf y}</m>, <m>\langle  A{\mathbf x}, A {\mathbf y} \rangle = \langle  {\mathbf x}, {\mathbf y} \rangle</m>.</p></li>
+
+							<li><p>Para vectores cualquiera <m>{\mathbf x}</m> e <m>{\mathbf y}</m>, <m>\| A{\mathbf x}- A{\mathbf y} \| = \| {\mathbf x}- {\mathbf y} \|</m>.</p></li>
+
+							<li><p>Para cualquier vector <m>{\mathbf x}</m>, <m>\| A{\mathbf x} \| = \| {\mathbf x}\|</m>.</p></li>
+ 
+						</ol></p>
+				</statement>
+				<proof>
+					<p>Ya hemos mostrado la equivalencia de (1) y (2).</p>
+ 
+					<p><m>(2) \Rightarrow (3)</m>.
+						<md>
+							<mrow>\langle A{\mathbf x}, A{\mathbf y} \rangle &amp; = (A {\mathbf x})^{\rm t} A {\mathbf y}</mrow>
+							<mrow>&amp; = {\mathbf x}^{\rm t} A^{\rm t} A {\mathbf y}</mrow>
+							<mrow>&amp; = {\mathbf x}^{\rm t} {\mathbf y}</mrow>
+							<mrow>&amp; = \langle {\mathbf x}, {\mathbf y} \rangle.</mrow>
+						</md></p>
+ 
+					<p><m>(3) \Rightarrow (2)</m>. Como
+						<md>
+							<mrow>\langle {\mathbf x}, {\mathbf x} \rangle &amp; = \langle A{\mathbf x}, A{\mathbf x} \rangle</mrow>
+							<mrow>&amp; = {\mathbf x}^{\rm t} A^{\rm t} A {\mathbf x}</mrow>
+							<mrow>&amp; = \langle {\mathbf x}, A^{\rm t} A{\mathbf x} \rangle,</mrow>
+						</md>
+					sabemos que <m>\langle {\mathbf x}, (A^{\rm t} A - I){\mathbf x} \rangle = 0</m> para todo <m>{\mathbf x}</m>.  Por lo tanto, <m>A^{\rm t} A -I = 0</m> o <m>A^{-1} = A^{\rm t}</m>.</p>
+
+<!-- Replaced y with x in <m>(2) \Rightarrow (3)</m>. -->
+<!-- Suggested by M. Huggins -->
+<!-- TWJ 24/4/2013 -->
+
+					<p><m>(3) \Rightarrow (4)</m>. Si <m>A</m> preserva el producto interno, entonces <m>A</m> preserva distancias, pues 
+						<md>
+							<mrow>\| A{\mathbf x} - A{\mathbf y} \|^2 &amp; = \| A({\mathbf x} - {\mathbf y}) \|^2</mrow>
+							<mrow>&amp; = \langle A({\mathbf x} - {\mathbf y}), A({\mathbf x} - {\mathbf y}) \rangle</mrow>
+							<mrow>&amp; = \langle {\mathbf x} - {\mathbf y}, {\mathbf x} - {\mathbf y} \rangle</mrow>
+							<mrow>&amp; = \| {\mathbf x} - {\mathbf y} \|^2.</mrow>
+						</md></p>
+ 
+					<p><m>(4) \Rightarrow (5)</m>. Si <m>A</m> preserva distancias, entonces <m>A</m> preserva longitudes. Tomando <m>{\mathbf y} = 0</m>, tenemos
+						<me>\| A{\mathbf x}\| = \| A{\mathbf x}- A{\mathbf y} \| = \| {\mathbf x}- {\mathbf y} \| = \| {\mathbf x} \|.</me></p>
+
+					<p><m>(5) \Rightarrow (3)</m>. Usamos la siguiente identidad para mostrar que la preservación de longitudes implica la preservación del producto interno: 
+						<me>\langle {\mathbf x}, {\mathbf y} \rangle = \frac{1}{2} \left[ \|{\mathbf x} +{\mathbf y}\|^2 - \|{\mathbf x}\|^2 - \|{\mathbf y}\|^2 \right].</me>
+					Observe que
+						<md>
+							<mrow>\langle A {\mathbf x}, A {\mathbf y} \rangle &amp; = \frac{1}{2} \left[ \|A {\mathbf x} + A {\mathbf y} \|^2 - \|A {\mathbf x} \|^2 -  \|A {\mathbf y} \|^2 \right]</mrow>
+							<mrow>&amp; = \frac{1}{2} \left[ \|A ( {\mathbf x} + {\mathbf y} ) \|^2 - \|A {\mathbf x} \|^2 -  \|A {\mathbf y} \|^2 \right]</mrow>
+							<mrow>&amp; = \frac{1}{2} \left[ \|{\mathbf x} + {\mathbf y}\|^2 - \|{\mathbf x}\|^2 - \|{\mathbf y}\|^2 \right]</mrow>
+							<mrow>&amp; = \langle {\mathbf x}, {\mathbf y} \rangle.</mrow>
+						</md></p>
+				</proof>
+			</theorem>
+ 
+			<figure xml:id="figure-o2">
+				<caption><m>O(2)</m> actuando en <m>\mathbb R^2</m></caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
+				<!-- Fixed tikz figure - TWJ 12/8/2011 -->
+				<image xml:id="matrix-o2">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1.5]
+
+						\draw [->]  (0,-1) -- (0,1.75);
+						\draw  [->] (-1,0) -- (1.75,0);
+						\node [right] at (0,2) {$y$};
+						\node [below] at (2,0) {$x$};
+						\draw [->, very thick, black]  (0,0) -- (30:1.25) node [right] {$(a,b)$};
+						\draw  [->, very thick, black] (0,0) -- (330:1.25) node [right] {$(a,-b)$};
+
+						\draw [->]  (4,-1) -- (4,1.75);
+						\draw  [->] (3,0) -- (5.75,0);
+						\node [right] at (4,2) {$y$};
+						\node [below] at (6,0) {$x$};
+						\draw [->, very thick, black]  (4,0) -- ++(120:1.25);
+						\draw  [->, very thick, black] (4,0) -- ++(30:1.25) node [right] {$(\cos \theta, \sin \theta)$};
+						\node at (3.15,1.3) {$(\sin \theta, - \cos \theta)$};
+						\draw (4.5,0) arc (0:30:0.5);
+						\node at (4.6,0.2) {$\theta$};
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+ 
+			<!-- Clarified what it means to be a reflection - TWJ 12/8/2011 -->
+
+			<example xml:id="example-o2">
+				<p>Examinemos el grupo ortogonal en<m>{\mathbb R}^2</m> en mayor detalle.  Un elemento <m>T \in O(2)</m> está determinado por su acción en <m>{\mathbf e}_1 = (1, 0)^{\rm t}</m> y <m>{\mathbf e}_2 = (0, 1)^{\rm t}</m>. Si <m>T({\mathbf e}_1) = (a,b)^{\rm t}</m>, entonces <m>a^2 + b^2 = 1</m> y <m>T({\mathbf e}_2) = (-b, a)^{\rm t}</m>. Luego, <m>T</m> puede ser representada por 
+					<me>A
+					=
+					\begin{pmatrix}<![CDATA[
+					a & -b \\
+					b & a
+					]]>\end{pmatrix}
+					=
+					\begin{pmatrix}<![CDATA[
+					\cos \theta & - \sin \theta \\
+					\sin \theta & \cos \theta
+					]]>\end{pmatrix},</me>
+				donde <m>0 \leq \theta \lt 2 \pi</m>. Una matriz <m>T</m> en <m>O(2)</m> ya sea refleja o rota un vector en <m>{\mathbb R}^2</m> (Figura<nbsp /><xref ref="figure-o2" />). Una reflexión respecto al eje horizontal está dada por la matriz 
+					<me>\begin{pmatrix}<![CDATA[
+					1 & 0 \\
+					0 & -1
+					]]>\end{pmatrix},</me>
+				mientras una rotación en un ángulo <m>\theta</m> en sentido antihorario debe venir de una matriz de la forma
+					<me>\begin{pmatrix}<![CDATA[
+					\cos \theta & \sin \theta \\
+					\sin \theta & -\cos \theta
+					]]>\end{pmatrix}.</me>
+				Una reflexión respecto a una recta <m>\ell</m> es simplemente una relfexión respecto al eje horizontal seguida de una rotación.  Si <m>\det A =-1</m>, entonces <m>A</m> corresponde a una reflexión.</p>
+			</example>
+ 
+			<p>Dos de los otros grupos de matrices o relacionados a matrices que consideraremos son el grupo ortogonal especial y el grupo de movimientos Euclideanos. El <term>grupo ortogonal especial</term><idx><h>Grupo</h><h>ortogonal especial</h></idx>, <m>SO(n)</m>, e simplemente  la intersección de <m>O(n)</m> y <m>SL_n({\mathbb R})</m>; es decir, aquellos elementos en <m>O(n)</m> con determinante uno. <notation><usage>SO(n)</usage><description>grupo ortogonal especial</description></notation> El <term>grupo Euclideano</term><idx><h>Grupo Euclideano</h></idx><idx><h>Euclideano</h><h>grupo</h></idx>, <m>E(n)</m>, puede ser escrito como pares ordenados <m>(A, {\mathbf x})</m>, donde <m>A</m> está en <m>O(n)</m> y <m>{\mathbf x}</m> está en <m>{\mathbb R}^n</m>. Definimos la multiplicación como <notation><usage>E(n)</usage><description>Grupo Euclideano</description></notation>
+				<me>(A, {\mathbf x}) (B, {\mathbf y}) = (AB, A {\mathbf y} +{\mathbf x}).</me>
+			La identidad del grupo es <m>(I,{\mathbf 0})</m>; el inverso de <m>(A, {\mathbf x})</m> es <m>(A^{-1}, -A^{-1} {\mathbf x})</m>. En el Ejercicio<nbsp /><xref ref="exercise-matrix-en-group" />, debe verificar que <m>E(n)</m> es realmente un grupo con esta operación.</p> 
+ 
+			<figure xml:id="figure-isometries">
+				<caption>Traslaciones en <m>\mathbb R^2</m></caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
+				<image xml:id="matrix-r2-translations">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1.5]
+
+						\draw [->]  (0,-1) -- (0,1.75);
+						\draw  [->] (-1,0) -- (1.75,0);
+						\node [right] at (0,2) {$y$};
+						\node [below] at (2,0) {$x$};
+						\draw [->, very thick, black]  (0,0) -- (30:1.25) node [right] {$\mathbf x$};
+
+						\draw [->]  (4,-1) -- (4,1.75);
+						\draw  [->] (3,0) -- (5.75,0);
+						\node [right] at (4,2) {$y$};
+						\node [below] at (6,0) {$x$};
+						\draw [->, very thick, black]  (4.5,1) -- +(30:1.25) node [right] {${\mathbf x} + {\mathbf y}$};
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+		</subsection>
+
+	</section>
+	
+	<section xml:id="section-symmetry">
+		<title>Simetría</title>
+
+		<introduction>
+ 
+			<p>Una <term>isometría</term><idx><h>Isometría</h></idx> o <term>movimiento rígido</term><idx><h>Movimiento rígido</h></idx> en <m>{\mathbb R}^n</m> es una función <m>f</m> de <m>{\mathbb R}^n</m> en <m>{\mathbb R}^n</m> que preserva distancias. Esto quiere decir que <m>f</m> debe satisfacer
+				<me>\| f({\mathbf x}) - f({\mathbf y}) \| =\|{\mathbf x} - {\mathbf y} \|</me>
+			para todo <m>{\mathbf x}, {\mathbf y} \in {\mathbb R}^n</m>. No es difícil mostrar que <m>f</m> debe ser inyectiva. Por el Teorema<nbsp /><xref ref="theorem-orthnormal-matrix" />, cualquier elemento en <m>O(n)</m> es una isometría en <m>{\mathbb R}^n</m>; pero, <m>O(n)</m> no incluye todas las posibles isometrías en <m>{\mathbb R}^n</m>. La traslación por un vector <m>{\mathbf x}</m>, <m>T_{\mathbf y}({\mathbf x}) = {\mathbf x} + {\mathbf y}</m> también es una isometría (Figura<nbsp /><xref ref="figure-isometries" />); pero, <m>T</m> no puede estar en <m>O(n)</m> pues no es una función lineal. </p>
+
+			<p>Estamos fundamentalmente interesados en las isometrías en <m>{\mathbb R}^2</m>. De hecho, las únicas isometrías en <m>{\mathbb R}^2</m> son rotaciones en torno al origen, reflexiones respecto a rectas, traslaciones y combinaciones de estas. Por ejemplo, una <term>reflexión deslizante</term><idx><h>Reflexión deslizante</h></idx> es una traslación seguida de una reflexión (Figura<nbsp /><xref ref="figure-glide" />). En <m>{\mathbb R}^n</m> todas las isometrías están dadas de la misma forma. La demostrción se generaliza fácilmente.</p>
+	 
+			<figure xml:id="figure-glide">
+				<caption>Reflexión deslizante</caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
+				<image xml:id="matrix-glide-reflections">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1.5]
+
+						\draw [->]  (0,-1.5) -- (0,1.5);
+						\draw  [->] (-1,0) -- (1.75,0);
+						\node [right] at (0,2) {$y$};
+						\node [below] at (2,0) {$x$};
+						\draw [->, very thick, black]  (0,0) -- (30:1.25) node [right] {$\mathbf x$};
+
+						\draw [->]  (4,-1.5) -- (4,1.5);
+						\draw  [->] (3,0) -- (5.75,0);
+						\node [right] at (4,2) {$y$};
+						\node [below] at (6,0) {$x$};
+						\draw [->, very thick, black]  (4.5,0) -- +(330:1.25) node [right] {$T({\mathbf x})$};
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+			<lemma>
+				<statement>
+					<p>Una isometría<m>f</m> que fija el origen en <m>{\mathbb R}^2</m> es una transformación lineal.  En particular, <m>f</m> está dada por un elemento en <m>O(2)</m>.</p>
+				</statement>
+				<proof>
+					<p>Sea <m>f</m> una isometría en <m>{\mathbb R}^2</m> que fija el origen. Mostraremos primero que <m>f</m> preserva el producto interno. Como <m>f(0) = 0</m>, <m>\| f({\mathbf x})\| = \| {\mathbf x} \|</m>; por lo tanto,
+						<md>
+							<mrow>\| {\mathbf x} \|^2 - 2 \langle f({\mathbf x}), f({\mathbf y}) \rangle + \| {\mathbf y} \|^2  &amp; = \| f({\mathbf x}) \|^2 - 2 \langle f({\mathbf x}), f({\mathbf y}) \rangle + \| f({\mathbf y}) \|^2</mrow>
+							<mrow> &amp; = \langle f({\mathbf x}) -  f({\mathbf y}), f({\mathbf x}) -  f({\mathbf y}) \rangle</mrow>
+							<mrow>&amp; = \| f({\mathbf x}) -  f({\mathbf y}) \|^2</mrow>
+							<mrow>&amp; = \| {\mathbf x} -  {\mathbf y} \|^2</mrow>
+							<mrow>&amp; = \langle {\mathbf x} -  {\mathbf y}, {\mathbf x} -  {\mathbf y} \rangle</mrow>
+							<mrow>&amp; = \| {\mathbf x} \|^2 - 2 \langle {\mathbf x}, {\mathbf y} \rangle + \| {\mathbf y} \|^2.</mrow>
+						</md>
+					Así,
+						<me>\langle f({\mathbf x}), f({\mathbf y}) \rangle = \langle {\mathbf x}, {\mathbf y} \rangle.</me>
+					Sean <m>{\mathbf e}_1</m> y <m>{\mathbf e_2}</m>  <m>(1, 0)^{\rm t}</m> y <m>(0, 1)^{\rm t}</m>, respectivamente. Si
+						<me>{\mathbf x} = (x_1, x_2) = x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2,</me>
+					entonces
+						<me>f({\mathbf x}) = \langle f({\mathbf x}), f({\mathbf e}_1) \rangle f({\mathbf e}_1) + \langle f({\mathbf x}), f({\mathbf e}_2) \rangle f({\mathbf e}_2) = x_1 f({\mathbf e}_1)+x_2 f({\mathbf e}_2).</me>
+					La linealidad de <m>f</m> se deduce fácilmente.</p>
+				</proof>
+			</lemma>
+ 
+			<p>Para una isometría arbitraria, <m>f</m>,  <m>T_{\mathbf x} f</m> fijará el origen para algún vector <m>{\mathbf x}</m> en <m>{\mathbb R}^2</m>; luego, <m>T_{\mathbf x} f({\mathbf y}) = A {\mathbf y}</m> para alguna matriz <m>A \in O(2)</m>. Así, <m>f({\mathbf y}) = A {\mathbf y} + {\mathbf x}</m>.  Dadas las isometrías 
+				<md>
+					<mrow>f({\mathbf y}) &amp; = A {\mathbf y} + {\mathbf x}_1</mrow>
+					<mrow>g({\mathbf y}) &amp; = B {\mathbf y} + {\mathbf x}_2,</mrow>
+				</md>
+			s composición es
+				<me>f(g({\mathbf y})) = f(B {\mathbf y} + {\mathbf x}_2) = AB {\mathbf y} + A{\mathbf x}_2 + {\mathbf x}_1.</me>
+			Este último cálculo nos permite identificar el grupo de isometrías en <m>{\mathbb R}^2</m> con <m>E(2)</m>.</p>
+ 
+			<theorem>
+				<statement>
+					<p>El grupo de isometrías en <m>{\mathbb R}^2</m> es el grupo Euclideano, <m>E(2)</m>.</p>
+				</statement>
+			</theorem>
+ 
+			<p>Un <term>grupo de simetría</term><idx><h>Simetría</h><h>grupo de</h></idx> en <m>{\mathbb R}^n</m> es un subgrupo del grupo de isometrías en <m>{\mathbb R}^n</m> que fija un conjunto de puntos <m>X \subset {\mathbb R}^n</m>.  Es importante darse cuenta que el grupo de simetría de <m>X</m> depende <em>tanto</em> de <m>{\mathbb R}^n</m> como de <m>X</m>. Por ejemplo, el grupo de simetría del origen en <m>{\mathbb R}^1</m> es <m>{\mathbb Z}_2</m>, pero el grupo de simetría del origen en <m>{\mathbb R}^2</m> es <m>O(2)</m>.</p> 
+
+			<theorem>
+				<statement>
+					<p>Los únicos grupos de simetría finitos en <m>{\mathbb R}^2</m> son <m>{\mathbb Z}_n</m> y <m>D_n</m>.</p>
+				</statement>
+				<proof>					
+					<p>Sea <m>G = \{ f_1, f_2, \ldots, f_n \}</m> un grupo de simetría finito que fija un conjunto de puntos <m>X \subset \mathbb R^2</m>.  Escoja un punto <m>\mathbf x \in X</m>.  Este punto puede no ser un punto fijo<mdash />puede ser llevado por <m>G</m> a otro punto en <m>X</m>. Definamos un conjunto <m>S =\{ \mathbf y_1, \mathbf y_2, \ldots \mathbf y_n\}</m>, donde <m>\mathbf y_i = f_i(\mathbf x)</m>.  Ahora, sea
+						<me>\mathbf z = \frac{1}{n} \sum_{i=1}^n \mathbf x_i.</me>
+					Si bien el punto <m>\mathbf z</m> no necesariamente está en el conjunto <m>X</m>, queda fijo por todos los elementos del grupo de simetría. Sin pérdida de generalidad, podemos suponer que <m>\mathbf z</m> es el origen.</p>
+
+					<p>Un grupo de simetría finito <m>G</m> en <m>{\mathbb R}^2</m> que fija el origen debe ser un subgrupo finito de <m>O(2)</m>, pues las traslaciones y tralaciones deslizantes tienen orden infinito. NO ENTIENDO  Por el Ejemplo<nbsp /><xref ref="example-o2" />, los elementos en <m>O(2)</m> son ya sea rotaciones de la forma
+						<me>R_{\theta}
+						=
+						\begin{pmatrix}<![CDATA[
+						\cos \theta & - \sin \theta \\
+						\sin \theta & \cos \theta
+						]]>\end{pmatrix}
+						</me>
+					o reflexiones de la forma
+						<me>T_{\phi}
+						=
+						\begin{pmatrix}<![CDATA[
+						\cos \phi &  - \sin \phi \\
+						\sin \phi & \cos \phi
+						]]>\end{pmatrix}
+						\begin{pmatrix}<![CDATA[
+						1 & 0 \\
+						0 & -1
+						]]>\end{pmatrix}
+						=
+						\begin{pmatrix}<![CDATA[
+						\cos \phi &  \sin \phi \\
+						\sin \phi & - \cos \phi
+						]]>\end{pmatrix}.</me>
+					Notemos que <m>\det(R_{\theta})=1</m>,  <m>\det(T_{\phi})=-1</m>, y <m>T_{\phi}^2=I</m>. Podemos dividir la demostración en dos casos. En el primer caso, todos los elementos en <m>G</m> tienen determinante uno. En el segundo caso, existe al menos un elemento en <m>G</m> con determinante <m>-1</m>.</p>
+
+					<p><em>Caso 1.</em>   El determinante de cada elemento en <m>G</m> es uno. En este caso todo elemento en <m>G</m> debe ser una rotación. Como <m>G</m> es finito, existe un ángulo positivo mínimo, digamos <m>\theta_0</m>, tal que el correspondiente elemento <m>R_{\theta_0}</m> es la menor rotación en la dirección positiva.  Afirmamos que <m>R_{\theta_0}</m> genera a <m>G</m>.  Si no, para algún entero positivo <m>n</m> hay un ángulo <m>\theta_1</m> entre <m>n \theta_0</m> y <m>(n+1) \theta_0</m>. Si es así, entonces <m>(n+1) \theta_0 - \theta_1</m> corresponde a una rotación menor a <m>\theta_0</m>, lo que contradice la minimalidad de <m>\theta_0</m>.</p>
+
+					<p><em>Caso 2.</em> El grupo <m>G</m> contiene una reflexión <m>T</m>.  El núcleo del homomorfismo <m>\phi : G \rightarrow \{-1, 1\}</m> dado por <m>A \mapsto \det(A)</m> consiste de los elmentos cuyo determinante es 1.  Por lo tanto, <m>|G/ \ker \phi|=2</m>.  Sabemos que el núcleo es cíclico por el caso 1 y es un subgrupo de <m>G</m> de, digamos, orden <m>n</m>. Luego, <m>|G| = 2n</m>. Los elementos de <m>G</m> son
+						<me>R_{\theta}, \ldots, R_{\theta}^{n-1},  TR_{\theta}, \ldots, TR_{\theta}^{n-1}.</me>
+					Estos elementos satisfacen la relación
+						<me>TR_{\theta}T = R_{\theta}^{-1}.</me>
+					De manera que, <m>G</m> es isomorfo a  <m>D_n</m> en este caso.</p>
+				</proof>
+			</theorem>
+
+		</introduction>
+
+		<subsection xml:id="matrix-subsection-wallpaper">
+			<title>Los Grupos Cristalográficos del Plano</title>
+			
+			<p>Supongamos que queremos deseamos estudiar los patrones de empapelamiento del plano o los cristales en tres dimensiones. Los patrones de empapelamiento son simplemente patrones que se repiten en el plano (Figura<nbsp /><xref ref="figure-wallpaper" />). Los análogos de estos patrones en <m>{\mathbb R}^3</m> son cristales, que podemos entender como patrones repetidos de moléculas en tres dimensiones (Figura<nbsp /><xref ref="figure-crystals" />). El equivalente matemático de un empapelamiento o patrón cristalográfico se llama reticulado.</p>
+
+			<figure xml:id="figure-wallpaper">
+				<caption>Un patrón de empapelamiento en <m>\mathbb R^2</m></caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
+				<image xml:id="matrix-wallpaper-r2">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1]
+
+						\draw  (0,0) -- (1,-0.75) -- (2,0) -- (3,-0.75) -- (4, 0) -- (5,-0.75)-- (6, 0) -- (7,-0.75)-- (8, 0) -- (9,-0.75)-- (10, 0);
+						\draw  (0,0.5) -- (1,-0.25) -- (2,0.5) -- (3,-0.25) -- (4, 0.5) -- (5,-0.25)-- (6, 0.5) -- (7,-0.25)-- (8, 0.5) -- (9,-0.25)-- (10, 0.5) -- (11,-0.25);
+						\draw  (0,1) -- (1,0.25) -- (2,1) -- (3,0.25) -- (4, 1) -- (5,0.25)-- (6, 1) -- (7,0.25)-- (8, 1) -- (9,0.25)-- (10, 1) -- (11,0.25);
+						\draw  (0,1.5) -- (1,0.75) -- (2,1.5) -- (3,0.75) -- (4, 1.5) -- (5,0.75)-- (6, 1.5) -- (7,0.75)-- (8, 1.5) -- (9,0.75)-- (10, 1.5) -- (11,0.75);
+						\draw  (0,2) -- (1,1.25) -- (2,2) -- (3,1.25) -- (4, 2) -- (5,1.25)-- (6, 2) -- (7,1.25)-- (8, 2) -- (9,1.25)-- (10, 2) -- (11,1.25);
+						\draw  (0,2.5) -- (1,1.75) -- (2,2.5) -- (3,1.75) -- (4, 2.5) -- (5,1.75)-- (6, 2.5) -- (7,1.75)-- (8, 2.5) -- (9,1.75)-- (10, 2.5) -- (11,1.75);
+						\draw  (0,3) -- (1,2.25) -- (2,3) -- (3,2.25) -- (4, 3) -- (5,2.25)-- (6, 3) -- (7,2.25)-- (8, 3) -- (9,2.25)-- (10, 3) -- (11,2.25);
+						\draw  (0,3.5) -- (1,2.75) -- (2,3.5) -- (3,2.75) -- (4, 3.5) -- (5,2.75)-- (6, 3.5) -- (7,2.75)-- (8,3.5) -- (9,2.75)-- (10, 3.5);
+
+						\draw (0,0) -- (0,0.5)   (0,1) -- (0,1.5)  (0,2) -- (0,2.5)  (0,3) -- (0,3.5);
+						\draw (2,0) -- (2,0.5)   (2,1) -- (2,1.5)  (2,2) -- (2,2.5)  (2,3) -- (2,3.5);
+						\draw (4,0) -- (4,0.5)   (4,1) -- (4,1.5)  (4,2) -- (4,2.5)  (4,3) -- (4,3.5);
+						\draw (6,0) -- (6,0.5)   (6,1) -- (6,1.5)  (6,2) -- (6,2.5)  (6,3) -- (6,3.5);
+						\draw (8,0) -- (8,0.5)   (8,1) -- (8,1.5)  (8,2) -- (8,2.5)  (8,3) -- (8,3.5);
+						\draw (10,0) -- (10,0.5)   (10,1) -- (10,1.5)  (10,2) -- (10,2.5)  (10,3) -- (10,3.5);
+
+						\draw (1,-0.25)  -- (1,0.25)  (1,0.75) -- (1,1.25) (1,1.75) -- (1,2.25);
+						\draw (3,-0.25) --  (3,0.25)  (3,0.75) -- (3,1.25) (3,1.75) -- (3,2.25);
+						\draw (5,-0.25)  -- (5,0.25)  (5,0.75) --  (5,1.25)  (5,1.75) -- (5,2.25);
+						\draw (7,-0.25) --  (7,0.25) (7,0.75)  --(7,1.25) (7,1.75) -- (7,2.25);
+						\draw (9,-0.25)  -- (9,0.25) (9,0.75) -- (9,1.25) (9,1.75)  --(9,2.25);
+						\draw (11,-0.25)  -- (11,0.25) (11,0.75) -- (11,1.25)  (11,1.75) -- (11,2.25);
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+ 			<figure xml:id="figure-crystals">
+				<caption>Una estructura cristalina en <m>\mathbb R^3</m></caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
+				<image width="50%" xml:id="matrix-crystal-r3">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1.75]
+
+						\draw  (0,0) -- (2,0)  (0.25,0.25) -- (2.25,0.25)  (0.5,0.5) -- (2.5,0.5);
+
+						\foreach \x in {0,1,2} \filldraw[fill=black, draw=black] (\x,0) circle (0.03);
+						\foreach \x in {0.25,1.25,2.25} \filldraw[fill=black, draw=black] (\x,0.25) circle (0.03);
+						\foreach \x in {0.5,1.5,2.5} \filldraw[fill=black, draw=black] (\x,0.5) circle (0.03);
+
+						\draw  (0.2,1) -- (2.2,1)  (0.45,1.25) -- (2.45,1.25)  (0.7,1.5) -- (2.7,1.5) ;
+
+						\foreach \x in {0.2,1.2,2.2} \filldraw[fill=black, draw=black] (\x,1) circle (0.03);
+						\foreach \x in {0.45,1.45,2.45} \filldraw[fill=black, draw=black] (\x,1.25) circle (0.03);
+						\foreach \x in {0.7,1.7,2.7} \filldraw[fill=black, draw=black] (\x,1.5) circle (0.03);
+
+						\draw  (0.4,2) -- (2.4,2)  (0.65,2.25) -- (2.65,2.25)  (0.9,2.5) -- (2.9,2.5) ;
+
+						\foreach \x in {0.4,1.4,2.4} \filldraw[fill=black, draw=black] (\x,2) circle (0.03);
+						\foreach \x in {0.65,1.65,2.65} \filldraw[fill=black, draw=black] (\x,2.25) circle (0.03);
+						\foreach \x in {0.9,1.9,2.9} \filldraw[fill=black, draw=black] (\x,2.5) circle (0.03);
+
+						\draw (0,0) -- (0.4,2)  (0.25,0.25) -- (0.65,2.25) (0.5,0.5) -- (0.9,2.5);
+						\draw (1,0) -- (1.4,2)  (1.25,0.25) -- (1.65,2.25) (1.5,0.5) -- (1.9,2.5);
+						\draw (2,0) -- (2.4,2)  (2.25,2.25) -- (2.65,2.25) (2.5,0.5) -- (2.9,2.5);
+
+						\draw (0,0) -- (0.5,0.5)  (1,0) -- (1.5,0.5)  (2,0) -- (2.5,0.5);
+
+						\draw  (0.2,1) -- (0.7,1.5)  (1.2,1) -- (1.7,1.5)  (2.2,1) -- (2.7,1.5);
+
+						\draw  (0.4,2) -- (0.9,2.5) (1.4,2) -- (1.9,2.5)   (2.4,2) -- (2.9,2.5);
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+			<p>Examinemos los patrones en el plano con un poco más de detalle. Supongamos que <m>{\mathbf x}</m> e <m>{\mathbf y}</m> son vectores linealmente independientes en <m>{\mathbb R}^2</m>; es decir, uno de ellos no puede ser un múltiplo escalar del otro. El <term>reticulado</term><idx><h>Reticulado de puntos</h></idx> de <m>{\mathbf x}</m> e <m>{\mathbf y}</m> es el conjunto de todas las combinaciones lineales <m>m {\mathbf x} + n {\mathbf y}</m>, donde <m>m</m> y <m>n</m> son enteros. Los vectores <m>{\mathbf x}</m> e <m>{\mathbf y}</m> se dice que son una <term>base</term><idx><h>Base de un reticulado</h></idx> para el reticulado.</p>
+ 
+			<p>Note que un reticulado puede tener diferentes bases. Por ejemplo, los vectores <m>(1,1)^{\rm t}</m> y <m>(2,0)^{\rm t}</m> forman el mismo reticulado que los vectores <m>(-1, 1)^{\rm t}</m> y <m>(-1, -1)^{\rm t}</m> (Figura<nbsp /><xref ref="figure-lattice" />). Pero, cualquier reticulado está completamente determinado por una base. Dadas dos bases para el mismo reticulado, digamos <m>\{ {\mathbf x}_1, {\mathbf x}_2 \}</m> y <m>\{ {\mathbf y}_1, {\mathbf y}_2 \}</m>, podemos escribir 
+				<md>
+					<mrow>{\mathbf y}_1 &amp; = \alpha_1  {\mathbf x}_1 + \alpha_2 {\mathbf x}_2</mrow>
+					<mrow>{\mathbf y}_2 &amp; = \beta_1  {\mathbf x}_1 + \beta_2 {\mathbf x}_2,</mrow>
+				</md>
+			donde <m>\alpha_1</m>, <m>\alpha_2</m>, <m>\beta_1</m>, y <m>\beta_2</m> son enteros. La matriz correspondiente a esta transformación es
+				<me>U
+				=
+				\begin{pmatrix}<![CDATA[
+				\alpha_1 & \alpha_2 \\
+				\beta_1 & \beta_2
+				]]>\end{pmatrix}.</me>
+			Si queremos expresar <m>{\mathbf x}_1</m> y <m>{\mathbf x}_2</m> en términs de <m>{\mathbf y}_1</m> e <m>{\mathbf y}_2</m>, solo debemos calcular <m>U^{-1}</m>; es decir, 
+				<me>U^{-1}
+				\begin{pmatrix}<![CDATA[
+				{\mathbf y}_1 \\ {\mathbf y}_2
+				]]>\end{pmatrix}
+				=
+				\begin{pmatrix}<![CDATA[
+				{\mathbf x}_1 \\ {\mathbf x}_2
+				]]>\end{pmatrix}.</me>
+			Como <m>U</m> tiene coeficientes enteros, <m>U^{-1}</m> también debe tener coeficientes enteros; luego los determinantes de <m>U</m> y <m>U^{-1}</m> deben ser enteros. Como <m>U U^{-1} = I</m>,  
+				<me>\det(U U^{-1}) =\det(U) \det( U^{-1}) = 1;</me>
+			de manera que, <m>\det(U) = \pm 1</m>. Una matriz con determinante <m>\pm 1</m> y coeficientes enteros se llama <term>unimodular</term><idx><h>Matriz</h><h>unimodular</h></idx>. Por ejemplo, la matriz 
+				<me>\begin{pmatrix}<![CDATA[
+				3 & 1 \\
+				5 & 2
+				]]>\end{pmatrix}</me>
+			es unimodular. Debería ser claro que hay una longitud mínima para los vectores en un reticulado.</p>
+
+			<figure xml:id="figure-lattice">
+				<caption>Un reticulado en <m>\mathbb R^2</m></caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
+				<image xml:id="matrix_lattice-r2">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1]
+
+						\foreach \x in {-2, -1, 0, 1, 2} \draw  (-6,\x) -- (6,\x); 
+
+						\draw (3.5,-2.5) -- (6,0);
+						\draw (1.5,-2.5) -- (6,2);
+						\draw (-0.5,-2.5) -- (4.5,2.5);
+						\draw (-2.5,-2.5) -- (2.5,2.5);
+						\draw (-4.5,-2.5) -- (0.5,2.5);
+						\draw (-6,-2) -- (-1.5,2.5);
+						\draw (-6,0) -- (-3.5,2.5);
+
+						\draw [->, very thick, black]  (0,0) -- (2,0);
+						\draw [->, very thick, black]  (0,0) -- (1,1);
+						\draw [->, very thick, black]  (0,0) -- (-1,1);
+						\draw [->, very thick, black]  (0,0) -- (-1,-1); 
+
+						\node [right] at (1.9,-0.3) {$(2,0)$};
+						\node [above] at (1.9,1) {$(1,1)$};
+						\node [above] at (-1.45,1) {$(-1,1)$};
+						\node [below] at (-0.4,-1) {$(-1,-1)$};
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+			<p>Podemos clasificar los reticulados estudiando sus grupos de simetría. El grupo de simetría de un reticulado es el subgrupo de <m>E(2)</m> que envía el reticulado en sí mismo. Consideramos que dos reticulados en <m>{\mathbb R}^2</m> son equivalentes si tienen el mismo grupo de simetría.  De forma similar, la clasificación de cristales en <m>{\mathbb R}^3</m> se obtiene asociando un grupo de simetría, llamado <term>grupo espacial</term>, con cada tipo de cristal<idx><h>Grupo</h><h>espacial</h></idx>. Dos reticulados se consideran diferentes si sus grupos espaciales no son iguales.  La pregunta natural que surge ahora es cuántos grupos espaciales existen.</p>
+ 
+			<p>Un grupo espacial está compuesto de dos partes: un <term>subgrupo de traslación</term><idx><h>Subgrupo</h><h>de traslación</h></idx> y uno <term>puntual</term><idx><h>Grupo</h><h>puntual</h></idx>.  Un subgrupo de traslación es un subgrupo abeliano infinito del grupo espacial formado por las simetrias traslacionales del cristal; el grupo puntual es un grupo finito que consiste de rotaciones y reflexiones del cristal en torno a un punto. Más específicamente, un grupo espacial es un subgrupo <m>G \subset E(2)</m> cuyas traslaciones son un conjunto de la forma <m>\{ (I, t) : t \in L \}</m>, donde <m>L</m> es un reticulado. Los grupos espaciales son, por supuesto, infinitos. Usando argumentos geométricos, podemos demostrar el siguiente teorema (ver [5] o [6]).</p>
+
+			<theorem>
+				<statement>
+					<p>Todo grupo d etraslación en <m>{\mathbb R}^2</m> es isomorfo a <m>{\mathbb Z} \times {\mathbb Z}</m>.</p>
+				</statement>
+			</theorem>
+
+			<p>El grupo puntual de <m>G</m> es <m>G_0 = \{A : (A,b) \in G \text{ for some } b \}</m>. En particular, <m>G_0</m> es un subgrupo de <m>O(2)</m>. Supongamos que <m>{\mathbf x}</m> es un vector en un reticulado <m>L</m> con grupo espacial <m>G</m>, grupo de traslación <m>H</m>, y grupo puntual <m>G_0</m>. Para cualquier elemento <m>(A, {\mathbf y})</m> en <m>G</m>,   
+				<md>
+					<mrow>(A, {\mathbf y}) (I, {\mathbf x}) (A, {\mathbf y})^{-1} &amp; = (A,A {\mathbf x} + {\mathbf y}) (A^{-1},-A^{-1} {\mathbf y})</mrow>
+					<mrow>&amp; = (A A^{-1},-A A^{-1} {\mathbf y} + A {\mathbf x} + {\mathbf y})</mrow>
+					<mrow>&amp; = (I, A {\mathbf x});</mrow>
+				</md>
+			luego, <m>(I, A {\mathbf x})</m> está en el grupo de traslación de <m>G</m>. Más específicamente, <m>A {\mathbf x}</m> deve estar en el reticulado <m>L</m>. IEs importante notar que <m>G_0</m> no es usualmente un subgrupo del grupo espacial <m>G</m>; pero, si <m>T</m> es el grupo de traslación de <m>G</m>, entonces <m>G/T \cong G_0</m>. La demostración del siguiente teorema se puede encontrar en [2], [5], o [6].</p>
+ 
+			<theorem>
+				<statement>
+					<p>El grupo puntual en un grupo cristalográfico plano es isomorfo a <m>{\mathbb Z}_n</m> o a <m>D_n</m>, donde <m>n = 1, 2, 3, 4, 6</m>.</p>
+				</statement>
+			</theorem>
+ 
+			<p>Para contestar la pregunta de cómo los grupos puntuales y los grupos de trslación pueden ser combinados, debemos mirar los distintos tipos de reticulados. Los reticulados pueden ser clasificados por la estructura de una celda del reticulado. Las posibles formas de celda son paralelógramo, rectangular, cuadrada, rómbica y hexagonal (Figura<nbsp /><xref ref="figure-lattice-types" />). Los grupos cristalográficos planos pueden ahora ser clasificados de acuerdo a los tipos de reflexiones que ocurren en cada grupo: estas son reflexiones ordinarias, reflexiones deslizantes, ambas o ninguna.</p>
+
+			<figure xml:id="figure-lattice-types">
+				<caption>Types of lattices in  <m>\mathbb R^2</m></caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 6/14/2010 -->
+				<image xml:id="matrix-lattices-r2">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1]
+
+						\node [above] at (0,7) {Rectangular};
+						\draw (-1,4) -- (1,4) -- (1,7) -- (-1,7) -- cycle;
+						\draw  (0,4) -- (0,7)  (-1,5.5) -- (1,5.5);
+						\draw [very thick] (-1,5.5) -- (-1,7) -- (0,7) -- (0,5.5) -- cycle;
+						\foreach \x in {-1,0,1} \filldraw[fill=black, draw=black] (\x,4) circle (0.03);
+						\foreach \x in {-1,0,1} \filldraw[fill=black, draw=black] (\x,5.5) circle (0.03);
+						\foreach \x in {-1,0,1} \filldraw[fill=black, draw=black] (\x,7) circle (0.03);
+
+						\node [above] at (-3.5,6.5) {Cuadrada};
+						\draw (-2,4.5) -- (-5,4.5) -- (-5,6.5) -- (-2,6.5) -- cycle;
+						\draw  (-2,5.5) -- (-5,5.5)  (-3,4.5) -- (-3,6.5) (-4,4.5) -- (-4,6.5);
+						\draw [very thick] (-5,5.5) -- (-5,6.5) -- (-4,6.5) -- (-4,5.5) -- cycle;
+						\foreach \x in {-2, -3, -4, -5} \filldraw[fill=black, draw=black] (\x,4.5) circle (0.03);
+						\foreach \x in {-2, -3, -4, -5} \filldraw[fill=black, draw=black] (\x,5.5) circle (0.03);
+						\foreach \x in {-2, -3, -4, -5} \filldraw[fill=black, draw=black] (\x,6.5) circle (0.03);
+
+						\node [above] at (3.8,6.5) {Rómbica};
+						\draw (3.5,4.5)   -- (6.5,4.5) -- (5.3,6.5) -- (2.3,6.5) -- cycle;
+						\draw (2.9,5.5) -- (5.9,5.5);
+						\draw (4.5,4.5) -- (3.3,6.5);
+						\draw  (5.5,4.5) -- (4.3,6.5);
+						\draw [very thick] (2.3,6.5) -- (3.3,6.5) -- (3.9,5.5) -- (2.9,5.5) -- cycle;
+						\foreach \x in {3.5,4.5,5.5,6.5} \filldraw[fill=black, draw=black] (\x,4.5) circle (0.03);
+						\foreach \x in {2.9,3.9,4.9,5.9} \filldraw[fill=black, draw=black] (\x,5.5) circle (0.03);
+						\foreach \x in {2.3,3.3,4.3,5.3} \filldraw[fill=black, draw=black] (\x,6.5) circle (0.03);
+
+						\node [above] at (-2.5,3) {Paralelógramo};
+						\draw (-1,0) -- (-3,0) -- (-3.5,3) -- (-1.5,3) -- cycle;
+						\draw  (-2,0) -- (-2.5,3)  (-3.25,1.5) -- (-1.25,1.5);
+						\draw [very thick] (-3.25,1.5) -- (-3.5,3) -- (-2.5,3) -- (-2.25,1.5) -- cycle;
+						\foreach \x in {-1,-2,-3} \filldraw[fill=black, draw=black] (\x,0) circle (0.03);
+						\foreach \x in {-1.25,-2.25,-3.25} \filldraw[fill=black, draw=black] (\x,1.5) circle (0.03);
+						\foreach \x in {-1.5,-2.5,-3.5} \filldraw[fill=black, draw=black] (\x,3) circle (0.03);
+
+						\node [above] at (2,2.6) {Hexagonal}; <!-- Couldn't figure out an elegant way to do the hexagonal lattice - TWJ 6/14/2010 -->
+						\draw (2,0) -- (5,0);
+						\draw (1.5,0.866) -- (4.5,0.866);
+						\draw (1,1.732) -- (4,1.732);
+						\draw (0.5,2.598) -- (3.5,2.598);
+						\draw (2,0) -- (0.5,2.598);
+						\draw (3,0) -- (1.5,2.598);
+						\draw (4,0) -- (2.5,2.598);
+						\draw (5,0) -- (3.5,2.598);
+						\draw (2,0) -- (3.5,2.598);
+						\draw (3,0) -- (4,1.732);
+						\draw (4,0) -- (4.5,0.866);
+						\draw (1.5,0.866) -- (2.5,2.598);
+						\draw (1,1.732) -- (1.5,2.598);
+						\draw [very thick] (1.5,0.866) -- (1,1.732) -- (1.5,2.598) -- (2.5,2.598) -- (3,1.732) --  (2.5,0.866) -- cycle;
+						\foreach \x in {2,3,4,5} \filldraw[fill=black, draw=black] (\x,0) circle (0.03);
+						\foreach \x in {1.5,2.5,3.5,4.5} \filldraw[fill=black, draw=black] (\x,0.866) circle (0.03);
+						\foreach \x in {1,2,3,4} \filldraw[fill=black, draw=black] (\x,1.732) circle (0.03);
+						\foreach \x in {0.5, 1.5,2.5,3.5} \filldraw[fill=black, draw=black] (\x,2.598) circle (0.03);
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+			<table xml:id="table-wallpaper">
+				<caption>The 17 wallpaper groups</caption>
+			   <tabular halign="center" top="medium">
+		            <row>
+		            	<cell>Notación y </cell><cell></cell><cell></cell><cell>Reflexiones o</cell>
+		            </row>
+					<row bottom="medium">
+						<cell>Grupos Espaciales</cell><cell>Grupo Puntual</cell><cell>Tipo de Reticulado</cell><cell>Reflexiones Deslizantes?</cell>
+					</row>
+		       		<row>
+		       			<cell>p1</cell><cell><m>{\mathbb Z}_1</m></cell><cell>paralelógramo</cell><cell>ninguna</cell>
+		       		</row>
+					<row>
+						<cell>p2</cell><cell><m>{\mathbb Z}_2</m></cell><cell>paralelógramo</cell><cell>ninguna</cell>
+					</row>
+					<row>
+						<cell>p3</cell><cell><m>{\mathbb Z}_3</m></cell><cell>hexagonal</cell><cell>ninguna</cell>
+					</row>
+					<row>
+						<cell>p4</cell><cell><m>{\mathbb Z}_4</m></cell><cell>cuadrada</cell><cell>ninguna</cell>
+					</row>
+					<row>
+						<cell>p6</cell><cell><m>{\mathbb Z}_6</m></cell><cell>hexagonal</cell><cell>ninguna</cell>
+					</row>
+					<row>
+						<cell>pm</cell><cell><m>D_1</m></cell><cell>rectangular</cell><cell>reflexiones</cell>
+					</row>
+					<row>
+						<cell>pg</cell><cell><m>D_1</m></cell><cell>rectangular</cell><cell>reflexiones deslizantes</cell>
+					</row>
+					<row>
+						<cell>cm</cell><cell><m>D_1</m></cell><cell>rómbica</cell><cell>ambas</cell>
+					</row>
+					<row>
+						<cell>pmm</cell><cell><m>D_2</m></cell><cell>rectangular</cell><cell>reflexiones</cell>
+					</row>
+					<row>
+						<cell>pmg</cell><cell><m>D_2</m></cell><cell>rectangular</cell><cell>reflexiones deslizantes</cell>
+					</row>
+					<row>
+						<cell>pgg</cell><cell><m>D_2</m></cell><cell>rectangular</cell><cell>ambas</cell>
+					</row>
+					<row>
+						<cell>c2mm</cell><cell><m>D_2</m></cell><cell>rómbica</cell><cell>ambas</cell>
+					</row>
+					<row>
+						<cell>p3m1, p31m</cell><cell><m>D_3</m></cell><cell>hexagonal </cell><cell>ambas</cell>
+					</row>
+					<row>
+						<cell>p4m, p4g</cell><cell><m>D_4</m></cell><cell>cuadrada</cell><cell>ambas</cell>
+					</row>
+					<row bottom="medium">
+						<cell>p6m</cell><cell><m>D_6</m></cell><cell>hexagonal</cell><cell>ambas</cell>
+					</row>
+			   </tabular>
+			</table>
+
+			<theorem>
+				<statement>
+					<p>Hay exactamente 17 grupos critalográficos planos.</p>
+				</statement>
+			</theorem>
+ 
+			<figure xml:id="figure-p4m">
+				<caption>Los grupos cristalográficos p4m y p4g</caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 6/14/2010 -->
+				<image xml:id="matrix-p4m-p4g">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1]
+
+						\draw[step=1] (-5,0) grid (-1,4);
+						\node [below] at (-3,0) {$p4m$};
+
+						\draw[step=1] (1,0) grid (5,4);
+						\node [below] at (3,0) {$p4g$};
+						\draw (1.25,0) -- (1.25,0.5) -- (1.75,0.5) -- (1.75,1.5) -- (1.25,1.5) -- (1.25,2.5) -- (1.75,2.5) -- (1.75,3.5) -- (1.25,3.5) -- (1.25,4);
+						\draw  (2.75,0) -- (2.75,0.5) -- (2.25,0.5) -- (2.25,1.5) -- (2.75,1.5) -- (2.75,2.5) -- (2.25,2.5) -- (2.25,3.5) -- (2.75,3.5) -- (2.75,4);
+						\draw   (3.25,0) -- (3.25,0.5) -- (3.75,0.5) -- (3.75,1.5) -- (3.25,1.5) -- (3.25,2.5) -- (3.75,2.5) -- (3.75,3.5) -- (3.25,3.5) -- (3.25,4);
+						\draw   (4.75,0) -- (4.75,0.5) -- (4.25,0.5) -- (4.25,1.5) -- (4.75,1.5) -- (4.75,2.5) -- (4.25,2.5) -- (4.25,3.5) -- (4.75,3.5) -- (4.75,4);
+
+						\draw  (1,0.75) -- (1.5,0.75) -- (1.5,0.25) -- (2.5,0.25) -- (2.5,0.75) -- (3.5,0.75) -- (3.5,0.25) -- (4.5,0.25) -- (4.5,0.75) -- (5, 0.75);
+						\draw  (1,1.25) -- (1.5,1.25) -- (1.5,1.75) -- (2.5,1.75) -- (2.5,1.25) -- (3.5,1.25) -- (3.5,1.75) -- (4.5,1.75) -- (4.5,1.25) -- (5, 1.25);
+
+						\draw  (1,2.75) -- (1.5,2.75) -- (1.5,2.25) -- (2.5,2.25) -- (2.5,2.75) -- (3.5,2.75) -- (3.5,2.25) -- (4.5,2.25) -- (4.5,2.75) -- (5, 2.75);
+						\draw (1,3.25) -- (1.5,3.25) -- (1.5,3.75) -- (2.5,3.75) -- (2.5,3.25) -- (3.5,3.25) -- (3.5,3.75) -- (4.5,3.75) -- (4.5,3.25) -- (5, 3.25);
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+ 
+			<p>Los 17 grupos critalográficos planos están listados en la Tabla<nbsp /><xref ref="table-wallpaper" />. Los grupos p3m1 y p31m pueden ser distinguidos según si todos sus centros triples están en los ejes de reflexión: los de p3m1 deben estar, mientras los de p31m puede que no. Similarmente, los centros cuuádruples de p4m deben estar en los ejes de reflexión mientras los de p4g no necesariamente (Figura<nbsp /><xref ref="figure-p4m" />). La demostración completa de este teorema se puede encontar en varias de las referencias la final de este capítulo, incluyendo [5], [6], [10], y [11].</p>
+
+			<xi:include href="./sage/matrix-info.xml" />
+ 
+ 		</subsection>
+ 
+		<subsection xml:id="matrix-subsection-historical-note">
+			<title>Nota Histórica</title>
+				<p>Los grupos de simetría han intrigado a matemáticos por mucho tiempo. Leonardo da Vinci fue probablemente la primera persona en conocer todos los grupos puntuales.  En el Congreso Internacional de Matemáticos en 1900, David Hilbert<idx><h>Hilbert, David</h></idx> dio una ahora famosa charla indicando los 23 problemas apra guiar las matemáticas en el siglo XX.  El problema 18 de Hilbertpreguntaba si los grupos critalograficos en dimensión <m>n</m> serían siempre un número finito.  En 1910, L. Bieberbach<idx><h>Bieberbach, L.</h></idx> demostró que los grupos cristalográficos son un número finito en cada dimensión.  Descubrir cuñantos de estos grupos existen en cada dimensión es harina de otro costal. En <m>{\mathbb R}^3</m> hay 230 grupos espaciales diferentes; en <m>{\mathbb R}^4</m> hay 4783. Nadie ha sido capaz de calcular el número de grupos espaciales para <m>{\mathbb R}^5</m> y más allá. Es interesante notar que los grupos cristalográficos fueron encontrados matemáticamente para <m>{\mathbb R}^3</m> antes de que los 230 diferentes tipos de cristales hubieran sido descubiertos en la naturaleza.</p>
+		</subsection>
+	</section>
+
+	<xi:include href="./exercises/matrix.xml" />
+ 
+	<references xml:id="matrix-references">
+		<title>Referencias y Lecturas Recomendadas</title>
+
+<!-- %References checked <ndash /> TWJ 6/14/2010 -->
+ 
+		<biblio type="raw"> <!-- was [1] -->
+		Coxeter, H. M. and Moser, W. O. J. <title>Generators and Relations for Discrete Groups</title>, 3rd ed. Springer-Verlag, New York, 1972.</biblio>
+ 
+		<biblio type="raw"> <!-- was [2] -->
+		Grove, L. C. and Benson, C. T. <title>Finite Reflection Groups</title>. 2nd ed. Springer-Verlag, New York, 1985.</biblio>
+ 
+		<biblio type="raw"> <!-- was [3] -->
+		Hiller, H. <q>Crystallography and Cohomology of Groups,</q> <title>American Mathematical Monthly</title> <volume>93</volume> (1986), 765<ndash />79.</biblio>
+ 
+		<biblio type="raw"> <!-- was [4] -->
+		Lockwood, E. H. and Macmillan, R. H. <title>Geometric Symmetry</title>. Cambridge University Press, Cambridge, 1978.</biblio>
+ 
+		<biblio type="raw"> <!-- was [5] -->
+		Mackiw, G. <title>Applications of Abstract Algebra</title>. Wiley, New York, 1985.</biblio>
+ 
+		<biblio type="raw"> <!-- was [6] -->
+		Martin,  G.  <title>Transformation  Groups:  An Introduction to Symmetry</title>.  Springer-Verlag, New York, 1982.</biblio> 
+
+		<biblio type="raw"> <!-- was [7] -->
+		Milnor, J. <q>Hilbert's Problem 18: On Crystallographic Groups, Fundamental Domains, and Sphere Packing,</q> <title>t Proceedings of Symposia in Pure Mathematics</title> <volume>18</volume>, American Mathematical Society, 1976.</biblio>
+
+		<biblio type="raw"> <!-- was [8] -->
+		Phillips, F. C. <title>An Introduction to Crystallography</title>. 4th ed. Wiley, New York, 1971.</biblio>
+
+		<biblio type="raw"> <!-- was [9] -->
+		Rose, B. I. and Stafford, R. D. <q>An Elementary Course in Mathematical Symmetry,</q> <title>American Mathematical Monthly</title> <volume>88</volume> (1980), 54<ndash />64.</biblio> 
+
+		<biblio type="raw"> <!-- was [10] -->
+		Schattschneider, D. <q>The Plane Symmetry Groups: Their Recognition and Their Notation,</q> <title>American Mathematical  Monthly</title> <volume>85</volume>(1978), 439<ndash />50.</biblio>
+
+		<biblio type="raw"> <!-- was [11] -->
+		Schwarzenberger, R. L. <q>The 17 Plane Symmetry Groups,</q> <title>Mathematical Gazette</title> <volume>58</volume>(1974), 123<ndash />31.</biblio>
+
+		<biblio type="raw"> <!-- was [12] -->
+		Weyl, H. <title>Symmetry</title>. Princeton University Press, Princeton, NJ, 1952.</biblio>
+ 
+	</references>
+
+	<xi:include href="./sage/matrix-sage.xml" />
+	<xi:include href="./sage/matrix-sage-exercises.xml" />
+
+</chapter>
+ 

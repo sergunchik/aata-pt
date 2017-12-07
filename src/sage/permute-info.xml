@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+
+	<p>Un grupo de permutaciones es una representación muy concreta de un grupo, y la herramientas de Sage para trabajar con grupos de permutaciones son muy buenas <mdash /> convirtiendo a Sage en un lugar natural para que principiantes aprendan sobre teoría de grupos.</p>
+</paragraphs>

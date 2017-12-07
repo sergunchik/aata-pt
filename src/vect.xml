@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<chapter xml:id="vect" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Espacios Vectoriales</title>
+
+	<introduction>
+		<p>En un sistema físico, una cantidad puede muchas veces ser descrita por un número. Por ejemplo, se necesita solo un número para describir la temperatura, la masa o el volumen.  Sin embargo, para algunas cantidades, como la posición, se necesitan varios números. Para dar la ubicación de un punto en el espacio, necesitamos sus coordenadas <m>x</m>, <m>y</m>, y <m>z</m>. La distribución de temperaturas en un objeto sólido: tres para identificar cada punto en el objeto y un cuarto para describir la temperatura en ese punto.  Además, las <m>n</m>-tuplas de números, o vectores, tienen propiedades algebraicas, como la adición y la multiplicación por escalar.</p>
+
+		<p>En este capítulo estudiaremos estructuras matemáticas llamadas espacios vectoriales.  Tal como con los anillos y los grupos, es deseable tener una lista simple de axiomas que deben ser satisfechos para que un conjunto de vectores sea una estructura interesante de estudiar.</p>
+	</introduction>
+
+	<section xml:id="section-vect-definitions-and-examples">
+		<title>Definiciones y Ejemplos</title>
+ 
+		<p>Un <term>espacio vectorial</term><idx><h>Espacio vectorial</h><h>definición de</h></idx> <m>V</m> sobre un cuerpo <m>F</m> es un grupo abeliano con un <term>producto escalar</term><idx><h>Producto Escalar</h></idx> <m>\alpha \cdot v</m> o <m>\alpha v</m> definido para todo <m>\alpha \in F</m> y para todo <m>v \in V</m> que satisface los siguientes axiomas.
+			<ul>
+
+				<li><p><m>\alpha(\beta v) =(\alpha \beta)v</m>;</p></li>
+
+				<li><p><m>(\alpha + \beta)v =\alpha v + \beta v</m>;</p></li>
+
+				<li><p><m>\alpha(u + v) = \alpha u + \alpha v</m>;</p></li>
+
+				<li><p><m>1v=v</m>;</p></li>
+
+			</ul>
+		donde <m>\alpha, \beta \in F</m> y <m>u, v \in V</m>.</p>
+
+		<p>Los elementos de <m>V</m> se llaman <term>vectores</term>; los elementos de <m>F</m> se llaman <term>escalares</term>.  Es importante notar que en la mayoría de los casos no es posible multiplicar dos vectores.  En general solo es posible multiplicar un vector por un escalar. Para diferenciar entre el escalar cero y el vector cero, los escribiremos como 0 y <m>{\mathbf 0}</m>, respectivamente.</p>
+
+		<p>Examinemos varios ejemplos de espacios vectoriales.  Algunos resultarán muy familiares, otros le pueden parecer menos conocidos.</p>
+
+		<example xml:id="example-vect-space0-rn">
+			<p>Las <m>n</m>-tuplas de números reales, denotadas por <m>{\mathbb R}^n</m>, forman un espacio vectorial sobre <m>{\mathbb R}</m>. Dados los vectores <m>u = (u_1, \ldots, u_n)</m> y <m>v = (v_1, \ldots, v_n)</m> en <m>{\mathbb R}^n</m> y <m>\alpha</m> en <m>{\mathbb R}</m>, podemos definir la suma de vectores como
+				<me>u + v = (u_1, \ldots, u_n) + (v_1, \ldots, v_n) = (u_1 + v_1, \ldots, u_n + v_n)</me>
+			y el producto escalar como 
+				<me>\alpha u = \alpha(u_1, \ldots, u_n)= (\alpha u_1, \ldots, \alpha u_n).</me></p>
+		</example>
+ 
+		<example xml:id="example-vect-space-fx">
+			<p>Si <m>F</m> es un cuerpo, entonces <m>F[x]</m> es un espacio vectorial sobre <m>F</m>. Los vectores en <m>F[x]</m> son polinomios y la suma de vectores es la suma de polinomios. Si <m>\alpha \in F</m> y <m>p(x) \in F[x]</m>, entonces la multiplicación por escalar está definida como <m>\alpha p(x)</m>.</p>
+		</example>
+ 
+		<example xml:id="example-vect-space-cont-func">
+			<p>El conjunto de todas las funciones continuas con valores reales definidas en un intervalo cerrado <m>[a,b]</m> es un espacio vectorial sobre <m>{\mathbb R}</m>.  Si <m>f(x)</m> y <m>g(x)</m> son continuas en <m>[a, b]</m>, entonces <m>(f+g)(x)</m> se define como <m>f(x) + g(x)</m>.  La multiplicación escalar se define como <m>(\alpha f)(x) = \alpha f(x)</m> para <m>\alpha \in  {\mathbb R}</m>. Por ejemplo, si <m>f(x) = \sin x</m> y <m>g(x)= x^2</m>, entonces <m>(2f + 5g)(x) =2 \sin x + 5 x^2</m>.</p>
+		</example>
+ 
+		<example xml:id="example-vect-space-sqrt2">
+			<p>Sea <m>V = {\mathbb Q}(\sqrt{2}\, ) = \{ a + b \sqrt{2} : a, b \in  {\mathbb Q } \}</m>. Entonces <m>V</m> es un espacio vectorial sobre <m>{\mathbb Q}</m>. Si <m>u = a + b \sqrt{2}</m> y <m>v = c + d \sqrt{2}</m>, entonces <m>u + v = (a + c) + (b + d ) \sqrt{2}</m> está nuevamente en <m>V</m>. Además, para <m>\alpha \in {\mathbb Q}</m>, <m>\alpha v</m> está en <m>V</m>.  Dejaremos como ejercicio la verificación de que se cumplen los axiomas de espacio vectorial en <m>V</m>.</p>
+		</example>
+
+		<proposition>
+			<statement>
+				<p>Sea <m>V</m> un espacio vectorial sobre <m>F</m>. Entonces cada uno de los siguiented enunciados es verdadero.
+					<ol>
+
+						<li><p><m>0v ={\mathbf 0}</m> para todo <m>v \in V</m>.</p></li>
+
+						<li><p><m>\alpha {\mathbf 0} = {\mathbf 0}</m> para todo <m>\alpha \in F</m>.</p></li>
+
+						<li><p>Si <m>\alpha v = {\mathbf 0}</m>, entonces ya sea <m>\alpha = 0</m> o <m>v = {\mathbf 0}</m>.</p></li>
+
+						<li><p><m>(-1) v = -v</m> para todo <m>v \in V</m>.</p></li>
+
+						<li><p><m>-(\alpha v) = (-\alpha)v = \alpha(-v)</m> para todo <m>\alpha \in F</m> y para todo <m>v \in V</m>.</p></li>
+
+					</ol></p>
+			</statement>
+			<proof>
+				<p>Para demostrar (1), observe que 
+					<me>0 v = (0 + 0)v = 0v + 0v;</me>
+				en consecuencia, <m>{\mathbf 0} + 0 v = 0v + 0v</m>. Como <m>V</m> es un grupo abeliano, <m>{\mathbf 0} = 0v</m>.</p>
+
+				<p>La demostración de (2) es casi idéntica a la demostración de (1). Para (3), estamos listos si <m>\alpha = 0</m>.  Supongamos que <m>\alpha \neq 0</m>. Multiplicando ambos lados de <m>\alpha v = {\mathbf 0}</m> por <m>1/ \alpha</m>, tenemos <m>v = {\mathbf 0}</m>.</p>
+
+				<p>Para demostrar (4), observemos que
+					<me>v + (-1)v = 1v + (-1)v = (1-1)v = 0v = {\mathbf 0},</me>
+				y así <m>-v = (-1)v</m>. Dejamos la demostración de (5) como ejercicio.</p>
+			</proof>
+		</proposition>
+
+	</section>
+	
+	<section xml:id="section-subspaces">
+		<title>Subespacios</title>
+
+		<p>Así como los grupos tienen subgrupo y los anillos tienen subanillos, los espacios vectoriales también tienen subestructuras. Sea <m>V</m> un espacio vectorial sobre un cuerpo <m>F</m>, y <m>W</m> un subconjunto de <m>V</m>. Entonces <m>W</m> es un <term>subespacio</term><idx><h>Espacio vectorial</h><h>subespacio de</h></idx> de <m>V</m> si es cerrado bajo adición de vectores y bajo multiplicación escalar; es decir, si <m>u, v \in W</m> y <m>\alpha \in F</m>, siempre se tiene que <m>u + v</m> y <m>\alpha v</m> también están en <m>W</m>.</p>   
+ 
+		<example xml:id="example-vect-subspace-w">
+			<p>Sea <m>W</m> el subconjunto de <m>{\mathbb R}^3</m> definido por <m>W = \{ (x_1, 2 x_1 + x_2, x_1 - x_2) : x_1, x_2 \in {\mathbb R} \}</m>. Afirmamos que <m>W</m> es un subespacio de <m>{\mathbb R}^3</m>.  Como
+				<md>
+					<mrow>\alpha (x_1, 2 x_1 + x_2, x_1 - x_2) &amp; =  (\alpha x_1, \alpha(2 x_1 + x_2), \alpha( x_1 - x_2))</mrow>
+					<mrow>&amp; =  (\alpha x_1, 2(\alpha x_1) + \alpha x_2, \alpha x_1 -\alpha x_2),</mrow>
+				</md>
+			<m>W</m> es cerrado bajo multiplicación por escalares. Para mostrar que <m>W</m> es cerrado bajo la adición de vectores, sean <m>u = (x_1, 2 x_1 + x_2, x_1 - x_2)</m> y  <m>v = (y_1, 2 y_1 + y_2, y_1 - y_2)</m> vectores en <m>W</m>. Entonces
+				<me>u + v = (x_1 + y_1, 2( x_1 + y_1) +( x_2 + y_2), (x_1 + y_1) - (x_2+ y_2)).</me></p>
+		</example>
+ 
+		<example xml:id="example-vect-subspace-poly">
+			<p>Sea <m>W</m> el subconjunto de los polinomios en <m>F[x]</m> sin términos de grado impar. Si <m>p(x)</m> y <m>q(x)</m> no tienen términos de grado impar, entonces tampoco los tendrá <m>p(x) + q(x)</m>.  Además, <m>\alpha p(x) \in W</m> para <m>\alpha \in F</m> y <m>p(x) \in W</m>.</p>
+		</example>
+
+<!--  2010/05/18 R Beezer, "vector field" to "vector space" -->
+
+		<p>Sea <m>V</m> cualquier espacio vectorial sobre un cuerpo <m>F</m> y supongamos que <m>v_1, v_2, \ldots, v_n</m> son vectores en <m>V</m> y <m>\alpha_1, \alpha_2, \ldots, \alpha_n</m> son escalares en <m>F</m>. Cualquier vector <m>w</m> en <m>V</m> de la forma
+			<me>w = \sum_{i=1}^n \alpha_i v_i = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n</me>
+		se llama <term>combinación lineal</term><idx><h>Combinación lineal</h></idx> de los vectores <m>v_1, v_2, \ldots, v_n</m>. El <term>conjunto generado</term><idx><h>Conjunto generado</h></idx> por los vectores <m>v_1, v_2, \ldots, v_n</m> es el conjunto de vectores obtenido a partir de todas las combinaciones lineales posibles de <m>v_1, v_2, \ldots, v_n</m>. Si <m>W</m> es el conjunto generado por <m>v_1, v_2, \ldots, v_n</m>, entonces decimos que <m>W</m> está <term>generado</term> por <m>v_1, v_2, \ldots, v_n</m>.</p>
+ 
+		<proposition>
+			<statement>
+				<p>Sea <m>S= \{v_1, v_2, \ldots, v_n \}</m> un conjunto de vectores en un espacio vectorial <m>V</m>. Entonces el conjunto generado por <m>S</m> es un subespacio de <m>V</m>.</p>
+			</statement>
+			<proof>
+				<p>Sean <m>u</m> y <m>v</m> en <m>S</m>. Podemos escribir cada uno de ellos como combinación lineal de los <m>v_i</m>:
+					<md>
+						<mrow>u &amp; =  \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n</mrow>
+						<mrow>v &amp; =  \beta_1 v_1 + \beta_2 v_2 + \cdots + \beta_n v_n.</mrow>
+					</md>
+				Entonces
+					<me>u + v =( \alpha_1 + \beta_1) v_1 + (\alpha_2+ \beta_2) v_2 + \cdots + (\alpha_n + \beta_n) v_n </me>
+				es una combinación lineal de los <m>v_i</m>. Para <m>\alpha \in F</m>,
+					<me>\alpha u = (\alpha \alpha_1) v_1 + ( \alpha \alpha_2) v_2 + \cdots + (\alpha \alpha_n ) v_n </me>
+				está en el conjunto generado por <m>S</m>.</p>
+			</proof>
+		</proposition>
+
+	</section>
+
+	<section xml:id="section-linear-independence">
+		<title>Independencia Lineal</title>
+
+		<p>Sea <m>S = \{v_1, v_2, \ldots, v_n\}</m> un conjunto de vectores en un espacio vectorial <m>V</m>. Si existen escalares <m>\alpha_1, \alpha_2 \ldots \alpha_n \in F</m> de manera que no todos los <m>\alpha_i</m> son cero y
+			<me>\alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = {\mathbf 0 },</me>
+		entonces <m>S</m> se dice <term>linealmente dependiente</term><idx><h>Dependencia lineal</h></idx>. Si el conjunto <m>S</m> no es linealmente dependiente, entonces se dice que es <term>linealmente independiente</term><idx><h>Independencia lineal</h></idx>. Más específicamente, <m>S</m> es un conjunto linealmente independiente si
+			<me>\alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = {\mathbf 0 }</me>
+		implica que
+			<me>\alpha_1 = \alpha_2 = \cdots = \alpha_n = 0</me>.</p>
+
+		<proposition>
+			<statement>
+				<p>Sea <m>\{ v_1, v_2, \ldots, v_n \}</m> un conjunto linealmente independiente de vectores en un espacio vectorial. Supongamos que
+					<me>v = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = \beta_1 v_1 + \beta_2 v_2 + \cdots + \beta_n v_n.</me>
+				Entonces <m>\alpha_1 = \beta_1, \alpha_2 = \beta_2, \ldots, \alpha_n = \beta_n</m>.</p>
+			</statement>
+			<proof>
+				<p>Si 
+					<me>v = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = \beta_1 v_1 + \beta_2 v_2 + \cdots + \beta_n v_n,</me>
+				entonces
+					<me>(\alpha_1 - \beta_1) v_1 + (\alpha_2 - \beta_2) v_2 + \cdots + (\alpha_n - \beta_n) v_n = {\mathbf 0}.</me>
+				Como <m>v_1, \ldots, v_n</m> son linealmente independientes, <m>\alpha_i - \beta_i = 0</m> para <m>i = 1, \ldots, n</m>.</p>
+			</proof>
+		</proposition>
+
+		<p>La definición de dependencia lineal tiene más sentido si consideramos la siguiente proposición.</p>
+
+		<proposition>
+			<statement>
+				<p>Un conjunto <m>\{ v_1, v_2, \dots, v_n \}</m> de vectores en un espacio vectorial <m>V</m> es linealmente dependiente si y solo si uno de los <m>v_i</m> es combinación lineal del resto. </p>
+			</statement>
+			<proof>
+				<p>Supongamos que <m>\{ v_1, v_2, \dots, v_n \}</m> es un conjunto linealmente dependiente de vectores.  Entonces existen escalares <m>\alpha_1, \ldots, \alpha_n</m> tales que
+					<me>\alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = {\mathbf 0 },</me>
+				con al menos uno de los <m>\alpha_i</m> distinto de cero.  Supongamos que <m>\alpha_k \neq 0</m>. Entonces
+					<me>v_k = - \frac{\alpha_1}{\alpha_k} v_1 - \cdots - \frac{\alpha_{k - 1}}{\alpha_k}	v_{k-1} - \frac{\alpha_{k + 1}}{\alpha_k}	v_{k + 1} - \cdots  - \frac{\alpha_n}{\alpha_k} v_n.</me></p>
+
+				<p>Recíprocamente, supongamos que
+					<me>v_k = \beta_1 v_1 + \cdots + \beta_{k - 1} v_{k - 1} + \beta_{k + 1} v_{k + 1} + \cdots + \beta_n v_n.</me>
+				Entonces
+					<me>\beta_1 v_1 + \cdots + \beta_{k - 1} v_{k - 1} - v_k + \beta_{k + 1} v_{k + 1} + \cdots + \beta_n v_n = {\mathbf 0}.</me></p>
+			</proof>
+		</proposition>
+
+		<p>La siguiente proposición es consecuencia del hecho de que cualquier sistema homogéneo de ecuaciones lineales con más variables que ecuaciones tiene soluciones no triviales.  Dejamos los detalles de la demostración como ejercicio al final del capítulo.</p>
+ 
+		<proposition xml:id="proposition-linearly-independent">
+			<statement>
+				<p>Supongamos que un espacio vectorial <m>V</m> es generado por <m>n</m> vectores. Si <m>m \gt n</m>, entonces cualquier conjunto de <m>m</m> vectores en <m>V</m> es linealmente dependiente.</p>
+			</statement>
+		</proposition>
+ 
+		<p>Un conjunto <m>\{ e_1, e_2, \ldots, e_n \}</m> de vectores en un espacio vectorial <m>V</m> se llama <term>base</term><idx><h>Espacio vectorial</h><h>base de</h></idx> para <m>V</m> si <m>\{ e_1, e_2, \ldots, e_n \}</m> es un conjunto linealmente independiente que genera <m>V</m>.</p>
+ 
+		<example xml:id="example-vect-basis-r3">
+			<p>Los vectores <m>e_1 = (1, 0, 0)</m>, <m>e_2 = (0, 1, 0)</m>, y <m>e_3 =(0, 0, 1)</m> forman una base para <m>{\mathbb R}^3</m>.  El conjunto ciertamente genera <m>{\mathbb R}^3</m>, pues un vector arbitrario <m>(x_1, x_2, x_3)</m> en <m>{\mathbb R}^3</m> se puede escribir como <m>x_1 e_1 + x_2 e_2 + x_3 e_3</m>. Además, ninguno de los vectores <m>e_1, e_2, e_3</m> se puede escribir como combinación lineal de los otros dos; luego, son linealmente independientes.  Los vectores <m>e_1, e_2, e_3</m> no son la única base de <m>{\mathbb R}^3</m>:  el conjunto <m>\{ (3, 2, 1), (3, 2, 0), (1, 1, 1) \}</m> también es una base para <m>{\mathbb R}^3</m>.</p>
+		</example>
+
+		<example xml:id="example-vect-basis-sqrt2">
+			<p>Sea <m>{\mathbb Q}( \sqrt{2}\, ) = \{ a + b \sqrt{2} : a, b \in {\mathbb Q} \}</m>. Los conjuntos <m>\{1, \sqrt{2}\,  \}</m> y <m>\{1 + \sqrt{2}, 1 - \sqrt{2}\,  \}</m> son bases para <m>{\mathbb Q}( \sqrt{2}\, )</m>.</p>
+		</example>
+
+		<p>De los dos ejemplos anteriores debiese quedar claro que un espacio vectorial dado tienen diferentes bases. De hecho, existe un número infinito de bases para cada uno de estos ejemplos. <em>En general, no hay una base única para un espacio vectorial.</em>  Pero, cualquier base de <m>{\mathbb R}^3</m> consiste de exactamente tres vectores, y cualquier base de <m>{\mathbb Q}(\sqrt{2}\, )</m> consiste de exactamente dos vectores. Esto es una consecuencia de la siguiente proposición.</p>
+
+		<proposition>
+			<statement>
+				<p>Sean <m>\{ e_1, e_2, \ldots, e_m \}</m> y <m>\{ f_1, f_2, \ldots, f_n \}</m> dos bases de un espacio vectorial <m>V</m>. Entonces <m>m = n</m>.</p>
+			</statement>
+			<proof>
+				<p>Como <m>\{ e_1, e_2, \ldots, e_m \}</m> es una base, es un conjunto linealmente independiente. Por la Proposición<nbsp /><xref ref="proposition-linearly-independent" />, <m>n \leq m</m>. Similarmente, <m>\{ f_1, f_2, \ldots, f_n \}</m> es un conjunto linealmente independiente, y la misma proposición implica que <m>m \leq n</m>. Concluimos que <m>m = n</m>.</p>
+			</proof>
+		</proposition>
+
+<!-- Label repaired.  Suggested by R. Beezer. -->
+<!-- TWJ - 12/19/2011 -->
+
+		<p>Si <m>\{ e_1, e_2, \ldots, e_n \}</m> es una base para un espacio vectorial <m>V</m>, decimos que la <term>dimensión</term><idx><h>Espacio vectorial</h><h>dimensión de</h></idx> de <m>V</m> es <m>n</m> y escribimos <m>\dim V =n</m>. <notation><usage>\dim V</usage><description>dimensión de un espacio vectorial <m>V</m></description></notation> Dejaremos la demostración del siguiente teorema como ejercicio.</p>
+
+		<theorem>
+			<statement>
+				<p>Sea <m>V</m> un espacio vectorial de dimensión <m>n</m>.
+					<ol>
+
+						<li><p>Si <m>S = \{v_1, \ldots, v_n \}</m> es un conjunto de vectores linealmente independiente en <m>V</m>, entonces <m>S</m> es una base para <m>V</m>.</p></li> 
+
+						<li><p>Si <m>S = \{v_1, \ldots, v_n \}</m> genera <m>V</m>, entonces <m>S</m> es una base para <m>V</m>.</p></li>
+
+						<li><p>Si <m>S = \{v_1, \ldots, v_k \}</m> es un conjunto de vectores linealmente independiente en <m>V</m> con <m>k \lt n</m>, entonces existen vectores <m>v_{k + 1}, \ldots, v_n</m> tales que  
+							<me>\{v_1, \ldots, v_k, v_{k + 1}, \ldots, v_n \}</me>
+						es una base para <m>V</m>.</p></li>
+
+					</ol></p>
+			</statement>
+		</theorem>
+
+		<xi:include href="./sage/vect-info.xml" />
+
+	</section>
+
+	<xi:include href="./exercises/vect.xml" />
+
+	<references xml:id="vect-references">  <!-- References updated - TWJ 8/19/2010 -->
+		<title>Referencias y Lecturas Recomendadas</title>
+
+		<biblio type="raw"> <!-- was [1] -->
+<!-- Reference added - TWJ 8/19/2010 -->
+		Beezer, R. <title>A First Course in Linear Algebra</title>. Available online at <url href="http://linear.ups.edu/"/>.  2004<ndash />2014.</biblio>
+
+		<biblio type="raw"> <!-- was [2] -->
+<!-- Reference added - TWJ 8/19/2010 -->
+		Bretscher, O. <title>Linear Algebra with Applications</title>. 4th ed. Pearson, Upper Saddle River, NJ, 2009.</biblio>
+
+		<biblio type="raw"> <!-- was [3] -->
+		Curtis, C. W. <title>Linear Algebra: An Introductory Approach</title>. 4th ed. Springer, New York, 1984.</biblio>
+
+		<biblio type="raw"> <!-- was [4] -->
+		Hoffman, K. and Kunze, R. <title>Linear Algebra</title>. 2nd ed. Prentice-Hall, Englewood Cliffs, NJ, 1971.</biblio>
+
+		<biblio type="raw"> <!-- was [5] -->
+<!-- Reference updated.  Not yet published. - TWJ 8/19/2010 -->
+		Johnson, L. W., Riess, R. D., and Arnold, J. T. <title>Introduction to Linear Algebra</title>. 6th ed. Pearson, Upper Saddle River, NJ, 2011.</biblio>
+
+		<biblio type="raw"> <!-- was [6] -->
+<!-- Reference updated - TWJ 8/19/2010 -->
+		Leon, S. J. <title>Linear Algebra with Applications</title>. 8th ed. Pearson, Upper Saddle River, NJ, 2010.</biblio>
+
+	</references> 
+
+	<xi:include href="./sage/vect-sage.xml" />
+	<xi:include href="./sage/vect-sage-exercises.xml" />
+
+</chapter>
+
+

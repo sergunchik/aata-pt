@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+
+	<p>Los anillos de polinomios son muy importantes para el álgebra computacionasl, y Sage permite calcular de manera fácil con polinomios, tanto sobre anillos como sobre cuerpor.  Y es trivial verificar si un polinomio es irreducible.</p>
+</paragraphs>

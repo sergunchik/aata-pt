@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+
+	<p>Sage es software libre, de código abierto, que tiene capacidades bastante impresionantes para el estudio de álgebra abstracta.  Vea <xref ref="preface" autoname="yes" /> para más información sobre cómo obtener Sage y el material suplementario en las versiones digitales del texto que describen como usar Sage en el estudio de álegbra abstracta.  En esta versión no-electrónica, tendremos una breve explicación de las capacidades relevantes de Sage como una observación al final de cada capítulo.  Así como esta.</p>
+</paragraphs>

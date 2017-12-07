@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="poly-sage">
+	<title>Sage</title>
+
+	<introduction>
+
+		<p>Sage es particularmente bueno para construir, analizar y manipular anillos de polinomios. Hemos visto algo de esto en el capítulo
+		 anterior.  Comencemos creando tres anillo de polinomios y comprobemos algunas de sus propiedades básicas.  Existen difierentes formas de construir anillos de polinomios, pero la sintaxis usada acá es la más directa.</p>
+
+	</introduction>
+
+
+	<subsection>
+		<title>Anillos de Polinomios y sus Elementos</title>
+
+		<sage>
+		<input>
+		R.&lt;x&gt; = Integers(8)[]; R
+		</input>
+		<output>
+		Univariate Polynomial Ring in x over Ring of integers modulo 8
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		S.&lt;y&gt; = ZZ[]; S
+		</input>
+		<output>
+		Univariate Polynomial Ring in y over Integer Ring
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		T.&lt;z&gt; = QQ[]; T
+		</input>
+		<output>
+		Univariate Polynomial Ring in z over Rational Field
+		</output>
+		</sage>
+
+		<p>Las propiedades básicas de los anillos se pueden usar en estos ejemplos.</p>
+
+		<sage>
+		<input>
+		R.is_finite()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		R.is_integral_domain()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		S.is_integral_domain()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		T.is_field()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		R.characteristic()
+		</input>
+		<output>
+		8
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		T.characteristic()
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<p>Con la construcción y la sintaxis de arriba, las variables se pueden usar para crear elementos del anillo de polinomios sin coercionarlos explícitamente (aunque tenemos que tener cuidado con los polinomios constantes).</p>
+
+		<sage>
+		<input>
+		y in S
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		x in S
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		q = (3/2) + (5/4)*z^2
+		q in T
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		3 in S
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		r = 3
+		r.parent()
+		</input>
+		<output>
+		Integer Ring
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		s = 3*y^0
+		s.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in y over Integer Ring
+		</output>
+		</sage>
+
+		<p>Los polinomios pueden ser evaluados como si fueran funciones, de manera que podemos imitar el homomorfismo de evaluación.</p>
+
+		<sage>
+		<input>
+		p = 3 + 5*x + 2*x^2
+		p.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in x over Ring of integers modulo 8
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		p(1)
+		</input>
+		<output>
+		2
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		[p(t) for t in Integers(8)]
+		</input>
+		<output>
+		[3, 2, 5, 4, 7, 6, 1, 0]
+		</output>
+		</sage>
+
+		<p>Notemos que <c>p</c> es un polinomio de grado dos, sin embargo podemos verificar a fuerza-bruta que solo tiene una raíz, contrario a nuestra expectativa usual.  Puede ser incluso más inusual.</p>
+
+		<sage>
+		<input>
+		q = 4*x^2+4*x
+		[q(t) for t in Integers(8)]
+		</input>
+		<output>
+		[0, 0, 0, 0, 0, 0, 0, 0]
+		</output>
+		</sage>
+
+		<p>Sage puede crear y manipular anillos de polinomios en más de una variable, pero no tendremos mayores oportunidades de analizar esa funcionalidad en este curso.</p>
+
+		<sage>
+		<input>
+		M.&lt;s, t&gt; = QQ[]; M
+		</input>
+		<output>
+		Multivariate Polynomial Ring in s, t over Rational Field
+		</output>
+		</sage>
+
+	</subsection>
+
+	<subsection>
+		<title>Polinomios Irreducibles</title>
+
+		<p>Si un polinomio se factoriza o no, tomando en consideración el anillo usado para sus coeficientes, es una pregunta importante en este capítulo y en muchos de los que siguen.  Sage es capaz de factorizar, y de determinar irreducibilidad, sobre los enteros, los racionales, y los cuerpos finitos.</p>
+
+		<p>Primero, sobre los racionales.</p>
+
+		<sage>
+		<input>
+		R.&lt;x&gt; = QQ[]
+		p = 1/4*x^4 - x^3 + x^2 - x - 1/2
+		p.is_irreducible()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		p.factor()
+		</input>
+		<output>
+		(1/4) * (x^4 - 4*x^3 + 4*x^2 - 4*x - 2)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		q = 2*x^5 + 5/2*x^4 + 3/4*x^3 - 25/24*x^2 - x - 1/2
+		q.is_irreducible()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		q.factor()
+		</input>
+		<output>
+		(2) * (x^2 + 3/2*x + 3/4) * (x^3 - 1/4*x^2 - 1/3)
+		</output>
+		</sage>
+
+		<p>Factorizar sobre los enteros no es realmente diferente a hacerlo sobre los racionales.  Esto es lo que nos dice el Teorema<nbsp /><xref ref="theorem-gauss-lemma" /> <mdash /> encontrar una factorización sobre los enteros puede ser convertido en encontrar una factorización sobre los racionales.  Así es en Sage, hay poca diferencia entre trabajar sobre los racionales y sobre los enteros.  Es un poco diferente cuando trabajamos sobre un cuerpo finito.  Un comentario viene más adelante.</p>
+
+		<sage>
+		<input>
+		F.&lt;a&gt; = FiniteField(5^2)
+		S.&lt;y&gt; = F[]
+		p = 2*y^5 + 2*y^4 + 4*y^3 + 2*y^2 + 3*y + 1
+		p.is_irreducible()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		p.factor()
+		</input>
+		<output>
+		(2) * (y^5 + y^4 + 2*y^3 + y^2 + 4*y + 3)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		q = 3*y^4+2*y^3-y+4; q.factor()
+		</input>
+		<output>
+		(3) * (y^2 + (a + 4)*y + 2*a + 3) * (y^2 + 4*a*y + 3*a)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		r = y^4+2*y^3+3*y^2+4; r.factor()
+		</input>
+		<output>
+		(y + 4) * (y^3 + 3*y^2 + y + 1)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		s = 3*y^4+2*y^3-y+3; s.factor()
+		</input>
+		<output>
+		(3) * (y + 1) * (y + 3) * (y + 2*a + 4) * (y + 3*a + 1)
+		</output>
+		</sage>
+
+		<p>Para verificar estas factorizaciones, debemos calcular en el cuerpo finito, <c>F</c>, por lo que necesitamos saber como se comporta el símbolo <c>a</c> behaves.  Este símbolo corresponde a una raíz de un polinomio de grado 2 sobre los enteros mód 5, que podemos obtener con el método <c>.modulus()</c>.</p>
+
+		<sage>
+		<input>
+		F.modulus()
+		</input>
+		<output>
+		x^2 + 4*x + 2
+		</output>
+		</sage>
+
+		<p>Así <m>a^2+4a+2=0</m>, o <m>a^2=-4a-3=a+2</m>.  Así, al verificar las factorizaciones, cada vez que aparezca <m>a^2</m> lo podemos reemplazar por <m>a+2</m>.  Notemos que por el Corolario<nbsp /><xref ref="corollary-poly-factor" /> podríamos encontrar el factor lineal de <c>r</c>, y los cuatro factores lineales de <c>s</c>, mediante una búsqueda a la bruta de sus raíces.  Esto es realizable dado que el cuerpo es finito.</p>
+
+		<sage>
+		<input>
+		[t for t in F if r(t)==0]
+		</input>
+		<output>
+		[1]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		[t for t in F if s(t)==0]
+		</input>
+		<output>
+		[2, 3*a + 1, 4, 2*a + 4]
+		</output>
+		</sage>
+
+		<p>Pero, <c>q</c> se factoriza en dos polinomios de grado 2, de manera que ninguna búsque de raíces nos permitirá descubrir estos factores.</p>
+
+		<p>Por el criterio de Eisenstein, podemos crear polinomios irreducibles, como en el Ejemplo<nbsp /><xref ref="example-poly-eisenstein" />.</p>
+
+		<sage>
+		<input>
+		W.&lt;w&gt; = QQ[]
+		p = 16*w^5 - 9*w^4 +3*w^2 + 6*w -21
+		p.is_irreducible()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Sobre el cuerpo <m>{\mathbb Z}_p</m>, los polinomios de Conway son elecciones canónicas para un polinomio de grado <m>n</m>irreducible sobre <m>{\mathbb Z}_p</m>.  Vea los ejercicios para aprender más sobre estos polinomios.</p>
+
+	</subsection>
+
+	<subsection>
+		<title>Polinomios sobre Cuerpos</title>
+
+		<p>Si <m>F</m> es un cuerpo, entonces todo ideal de <m>F[x]</m> es principal (Teorema<nbsp /><xref ref="theorem-poly-principal-ideal" />).  Nada nos impide darle a Sage dos (o más) generadores para construir un ideal, pero Sage determinará un elemento para usarlo en la descripción del ideal como ideal principal.</p>
+
+		<sage>
+		<input>
+		W.&lt;w&gt; = QQ[]
+		r = -w^5 + 5*w^4 - 4*w^3 + 14*w^2 - 67*w + 17
+		s = 3*w^5 - 14*w^4 + 12*w^3 - 6*w^2 + w
+		S = W.ideal(r, s)
+		S
+		</input>
+		<output>
+		Principal ideal (w^2 - 4*w + 1) of
+		Univariate Polynomial Ring in w over Rational Field
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		(w^2)*r + (3*w-6)*s in S
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>El Teorema<nbsp /><xref ref="theorem-max-ideal-poly" /> es el hecho clave que nos permite construir cuerpos finitos fácilmente.  Acá hay una construcción de un cuero finito de orden <m>7^5=16\,807</m>.  Todo lo que necesitamos es un polinomio de grado <m>5</m> que sea irreducible sobre <m>{\mathbb Z}_7</m>.</p>
+
+		<sage>
+		<input>
+		F = Integers(7)
+		R.&lt;x&gt; = F[]
+		p = x^5+ x + 4
+		p.is_irreducible()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		id = R.ideal(p)
+		Q = R.quotient(id); Q
+		</input>
+		<output>
+		Univariate Quotient Polynomial Ring in xbar over
+		Ring of integers modulo 7 with modulus x^5 + x + 4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.is_field()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.order() == 7^5
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>El símbolo <c>xbar</c> es un generador del cuerpo, pero en este momento no es accesible.  <c>xbar</c> es la clase <m>x + \langle x^5+ x + 4\rangle</m>.  Una mejor construcción incluiría la especificación de este generador.</p>
+
+		<sage>
+		<input>
+		Q.gen(0)
+		</input>
+		<output>
+		xbar
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.&lt;t&gt; = R.quotient(id); Q
+		</input>
+		<output>
+		Univariate Quotient Polynomial Ring in t over
+		Ring of integers modulo 7 with modulus x^5 + x + 4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		t^5 + t + 4
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		t^5 == -(t+4)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		t^5
+		</input>
+		<output>
+		6*t + 3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		(3*t^3 + t + 5)*(t^2 + 4*t + 2)
+		</input>
+		<output>
+		5*t^4 + 2*t^2 + 5*t + 5
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		a = 3*t^4 - 6*t^3 + 3*t^2 + 5*t + 2
+		ainv = a^-1; ainv
+		</input>
+		<output>
+		6*t^4 + 5*t^2 + 4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		a*ainv
+		</input>
+		<output>
+		1
+		</output>
+		</sage>
+
+	</subsection>
+
+</section>

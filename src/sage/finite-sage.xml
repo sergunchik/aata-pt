@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="finite-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Habrá notado en este capítulo que los cuerpos finitos son bastante estructurados.  También henos visto cuerpos finitos en Sage como ejemplos de anillos y cuerpos.  Ahora podemos combinar los dos, principalmente usando comandos que ya conocemos, además de unos pocos nuevos.</p>
+	</introduction>
+
+
+	<subsection>
+		<title>Creando Cuerpos Finitos</title>
+
+		<p>Por el Teorema<nbsp /><xref ref="theorem-finite-splitting-field" /> sabemos que todos los cuerpos finitos de un orden dado son isomorfos y que los órdenes posibles se limitan a las potencias de primos.  Podemos usar el comando <c>FiniteField()</c>, como antes, o uno equivalente más corto que es <c>GF()</c>.  Opcionalmente, podemos especificar un polinomio irreducible para la construcción del cuerpo.  Podemos ver este polinomio como el generador del ideal principal de un anillo de polinomios, o lo podemos ver como una regla de <q>re-escritura</q> para las potencias del generador del cuerpo que nos permite multiplicar elementos y reformularlos como combinaciones lineales de potencias menores.</p>
+
+		<p>De no proveerse un polinomio irreducible, Sage usará un polinomio de Conway.  Usted puede determinarlos con el comando <c>conway_polynomial()</c>, o simplemente construir un cuerpo finito y recuperar el polinomio que lo define con el método <c>.polynomial()</c>.</p>
+
+		<sage>
+		<input>
+		F.&lt;a&gt; = GF(7^15); F
+		</input>
+		<output>
+		Finite Field in a of size 7^15
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		F.polynomial()
+		</input>
+		<output>
+		a^15 + 5*a^6 + 6*a^5 + 6*a^4 + 4*a^3 + a^2 + 2*a + 4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		a^15 + 5*a^6 + 6*a^5 + 6*a^4 + 4*a^3 + a^2 + 2*a + 4
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		conway_polynomial(7, 15)
+		</input>
+		<output>
+		x^15 + 5*x^6 + 6*x^5 + 6*x^4 + 4*x^3 + x^2 + 2*x + 4
+		</output>
+		</sage>
+
+		<p>Solo para facilitar la lectura, coercionamos una lista de coeficientes al anillo de polinomios (obtenido con el método <c>.parent()</c> en un polinomio simple) para definir un polinomio.</p>
+
+		<sage>
+		<input>
+		y = polygen(Integers(7), 'y')
+		P = y.parent()
+		p = P([4, 5, 2, 6, 3, 3, 6, 2, 1, 1, 2, 5, 6, 3, 5, 1]); p
+		</input>
+		<output>
+		y^15 + 5*y^14 + 3*y^13 + 6*y^12 + 5*y^11 + 2*y^10 + y^9 +
+		y^8 + 2*y^7 + 6*y^6 + 3*y^5 + 3*y^4 + 6*y^3 + 2*y^2 + 5*y + 4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		p.is_irreducible()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		T.&lt;b&gt; = GF(7^15, modulus=p); T
+		</input>
+		<output>
+		Finite Field in b of size 7^15
+		</output>
+		</sage>
+	</subsection>
+
+	<subsection>
+		<title>Logaritmos en Cuerpos Finitos</title>
+
+		<p>Un comando útil que no hemos descrito es el método <c>.log()</c> para elementos de un cuerpo finito.  Como sabemos que el grupo multiplicativo de lementos distintos de cero es cíclico, podemos expresar cualquier elemento como una potencia del generador.  El método <c>.log()</c> devuelve esa potencia.</p>
+
+		<p>Usualmente querremos usar el generador como la base de un cálculo de logaritmos en el cuerpo finito.  Pero también es posible usar otra base, en el entendimiento que si la base no es un generador del grupo, entonces el logaritmo podría no existir (<ie /> puede no haber una solución a la ecuación relevante).</p>
+
+		<sage>
+		<input>
+		F.&lt;a&gt; = GF(5^4)
+		a^458
+		</input>
+		<output>
+		3*a^3 + 2*a^2 + a + 3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		(3*a^3 + 2*a^2 + a + 3).log(a)
+		</input>
+		<output>
+		458
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		exponent = (3*a^3 + 2*a^2 + a + 3).log(2*a^3 + 4*a^2 + 4*a)
+		exponent
+		</input>
+		<output>
+		211
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		(2*a^3 + 4*a^2 + 4*a)^exponent == 3*a^3 + 2*a^2 + a + 3
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		(3*a^3 + 2*a^2 + a + 3).log(a^2 + 4*a + 4)
+		</input>
+		<output>
+		Traceback (most recent call last):
+		...
+		ValueError: No discrete log of 3*a^3 + 2*a^2 + a + 3 found
+		to base a^2 + 4*a + 4
+		</output>
+		</sage>
+
+		<p>Como ya conocemos muchos comandos en Sage, no hay mucho más que sea necesario introducir para trabajar provechosamente con cuerpos finitos. Los ejercicios exploran formas en que podemos examinar y aprovechar la estructura de los cuerpos finitos en Sage.</p>
+
+	</subsection>
+
+</section>
+

@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+
+
+<chapter xml:id="poly" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Polinomios</title>
+
+	<introduction>
+		<p>La mayoría de las personas está razonablemente familiarizada con los polinomios cuando comienza a estudiar álgebra abstracta.  Cuando examinamos expresiones polinomiales como
+			<md>
+				<mrow>p(x) &amp; = x^3 -3x +2</mrow>
+				<mrow>q(x) &amp; = 3x^2 -6x +5,</mrow>
+			</md>
+		tenemos una idea bastante clara de lo que significan <m>p(x) + q(x)</m> y <m>p(x) q(x)</m>.  Simplemente sumamos y multiplicamos polinomios como funciones; es decir, 
+			<md>
+				<mrow>(p +q)(x) &amp; = p(x) + q(x)</mrow>
+				<mrow>&amp; =  ( x^3 - 3 x + 2 ) + ( 3 x^2 - 6 x + 5 )</mrow>
+				<mrow>&amp; = x^3 + 3 x^2 - 9 x + 7</mrow>
+			</md>
+		y
+			<md>
+				<mrow>(p q)(x) &amp; = p(x)  q(x)</mrow>
+				<mrow>&amp; =  ( x^3 - 3 x + 2 )  ( 3 x^2 - 6 x + 5 )</mrow>
+				<mrow>&amp; = 3 x^5 - 6 x^4 - 4 x^3 + 24 x^2 - 27 x + 10.</mrow>
+			</md>
+		Probablemente no es una sorpresa que los polinomios forman un anillo.  En este capítulo enfatizaremos la estructura algebraica de los polinomios estudiando anillos de polinomios.  Podemos demostrar muchos resultados para anillos de polinomio que son similares a los teoremas que demostramos para los enteros.  Existen análogos de los números primos, el algoritmo de división y el algoritmo de Euclides para polinomios.</p>
+	</introduction>
+
+	<section xml:id="section-poly-rings">
+		<title>Anillos de Polinomios</title>
+
+		<p>En todo este capítulo supondremos que <m>R</m> es un anillo conmutativo con uno.  Una expresión de la forma
+			<me>f(x) = \sum^{n}_{i=0} a_i x^i = a_0 + a_1 x +a_2 x^2 + \cdots + a_n x^n,</me>
+		donde <m>a_i \in R</m> y <m>a_n \neq 0</m>, se llama <term>polinomio sobre <m>R</m></term><idx><h>Polinomio</h><h>definición de</h></idx> con <term>indeterminada</term><idx><h>Indeterminada</h></idx> <m>x</m>.  Los elementos <m>a_0, a_1, \ldots, a_n</m> se llaman <term>coeficientes</term> de <m>f</m>.  El coeficiente <m>a_n</m> se llama <term>coeficiente líder</term><idx><h>Polinomio</h><h>coeficiente líder del</h></idx>.  Un polinomio se llama <term>mónico</term><idx><h>Polinomio mónico</h></idx><idx><h>Mónico</h><h>polinomio</h></idx> si su coeficiente líder es 1.  Si <m>n</m> es el mayor entero no negativo para el que <m>a_n \neq 0</m>, decimos que el <term>grado</term><idx><h>Polinomio</h><h>grado de</h></idx> de <m>f</m> es <m>n</m> y escribimos <m>\deg f(x) = n</m>.  <notation><usage>\deg f(x)</usage><description>grado de un polinomio</description></notation>  Si no existe tal <m>n</m><mdash />es decir, si <m>f=0</m> es el polinomio cero<mdash />entonces el grado de <m>f</m> se define como <m>-\infty</m>.  Denotaremos por <m>R[x]</m> al conjunto de todos los polinomios con coeficientes en un anillo <m>R</m>.  <notation><usage>R[x]</usage><description>anillo de polinomios sobre un anillo <m>R</m></description></notation>  Dos polinomios son iguales exactamente cuando sus coeficientes correspondientes son iguales; es decir, si    
+			<md>
+				<mrow>p(x) &amp; = a_0 + a_1 x + \cdots + a_n x^n</mrow>
+				<mrow>q(x) &amp; = b_0 + b_1 x + \cdots + b_m x^m,</mrow>
+			</md>
+		entonces <m>p(x) = q(x)</m> si y solo si <m>a_i = b_i</m> para todo <m>i \geq 0</m>.</p>
+
+		<p>Para mostrar que el conjunto de todos los polinomios forma un anillo, debemos primero definir adición y multiplicación.  Definimos la suma de dos polinomios como sigue.  Sean
+			<md>
+				<mrow>p(x) &amp; = a_0 + a_1 x + \cdots + a_n x^n</mrow>
+				<mrow>q(x) &amp; = b_0 + b_1 x + \cdots + b_m x^m.</mrow>
+			</md>
+		Entonces la suma de <m>p(x)</m> y <m>q(x)</m> es
+			<me>p(x) + q(x) = c_0 + c_1 x + \cdots + c_k x^k,</me>
+		donde <m>c_i = a_i + b_i</m> for each <m>i</m>.  Definimos el producto de <m>p(x)</m> y <m>q(x)</m> como
+			<me>p(x) q(x) = c_0 + c_1 x + \cdots + c_{m + n} x^{m + n},</me>
+		donde
+			<me>c_i = \sum_{k = 0}^i a_k b_{i - k} = a_0  b_i + a_1 b_{i -1} + \cdots + a_{i -1} b _1 + a_i b_0</me>
+		para cada <m>i</m>.  Notemos que en cada caso algunos de los coeficientes pueden ser cero.</p>
+	
+		<example xml:id="example-poly-operations">
+			<p>Supongamos que
+				<me>p(x) = 3 + 0 x + 0 x^2 + 2 x^3 + 0 x^4</me>
+			y
+				<me>q(x) = 2 + 0 x - x^2 + 0 x^3 + 4 x^4</me>
+			son polinomios en <m>{\mathbb Z}[x]</m>.  Si el coeficiente de algún término en un polinomio es cero, entonces simplemente omitiremos ese término.  En este caso escribiremos <m>p(x) =  3 + 2 x^3</m> y <m>q(x) = 2 - x^2 + 4 x^4</m>.  La suma de estos dos polinomios es
+				<me>p(x) + q(x)= 5 - x^2 + 2 x^3 + 4 x^4.</me>
+			El producto,
+				<me>p(x) q(x) = (3 + 2 x^3)( 2 - x^2 + 4 x^4 ) =  6 - 3x^2 + 4 x^3 + 12 x^4  - 2 x^5 + 8 x^7,</me>
+			puede ser calculado ya sea determinando los <m>c_i</m> en la definición o simplemente multiplicando los polinomios de la misma forma en que lo hemos hecho siempre.</p>
+		</example>
+
+		<example xml:id="example-poly-integral-domains">
+			<p>Sean
+				<me>p(x) = 3 + 3 x^3 \qquad \text{and} \qquad q(x) = 4 + 4 x^2 + 4 x^4</me>
+			polinomios en <m>{\mathbb Z}_{12}[x]</m>. La suma de <m>p(x)</m> y <m>q(x)</m> es <m>7 + 4 x^2 + 3 x^3 + 4 x^4</m>.  El producto de los dos polinomios es el polinomio cero.  Este ejemplo nos muestra que no podemos esperar que  <m>R[x]</m> sea un dominio integral si <m>R</m> no es un dominio integral.</p>
+		</example>
+ 
+		<theorem xml:id="theorem-poly-1">
+			<statement>
+				<p>Sea <m>R</m> un anillo conmutativo con identidad.  Entonces <m>R[x]</m> es un anillo conmutativo con identidad.</p>
+			</statement>
+			<proof>
+				<p>Nuestra primera tarea es mostrar que <m>R[x]</m> es un grupo abeliano con la operación de suma de polinomios.  El polinomio cero, <m>f(x) = 0</m>, es el neutro aditivo.  Dado un polinomio <m>p(x) = \sum_{i = 0}^{n} a_i x^i</m>, el inverso aditivo de <m>p(x)</m> es <m>-p(x) = \sum_{i = 0}^{n} (-a_i) x^i = -\sum_{i = 0}^{n} a_i x^i</m>.  La conmutatividad y la asociatividad son consecuencia inmediata de la definición de la suma de polinomios y del hecho que la adición en <m>R</m> es tanto conmutativa como asociativa.</p>
+
+				<p>Para mostrar que la multiplicación de polinomios es asociativa, sean
+					<md>
+						<mrow>p(x) &amp; = \sum_{i = 0}^{m} a_i x^i,</mrow>
+						<mrow>q(x) &amp; = \sum_{i = 0}^{n} b_i x^i,</mrow>
+						<mrow>r(x) &amp; = \sum_{i = 0}^{p} c_i x^i.</mrow>
+					</md>
+				Entonces
+					<md>
+						<mrow>[p(x) q(x)] r(x) &amp; = \left[ \left( \sum_{i=0}^{m} a_i x^i  \right) \left(  \sum_{i=0}^{n} b_i x^i \right) \right] \left( \sum_{i = 0}^{p} c_i x^i \right)</mrow>
+						<mrow>&amp; = \left[ \sum_{i = 0}^{m+n} \left(  \sum_{j = 0}^{i} a_j b_{i - j} \right) x^i \right] \left( \sum_{i = 0}^{p} c_i x^i \right)</mrow>
+						<mrow>&amp; = \sum_{i = 0}^{m + n + p} \left[ \sum_{j = 0}^{i} \left( \sum_{k=0}^j a_k b_{j-k} \right) c_{i-j} \right] x^i</mrow>
+						<mrow>&amp; = \sum_{i = 0}^{m + n + p} \left(\sum_{j + k + l = i} a_j b_k c_l \right) x^i</mrow>
+						<mrow>&amp; = \sum_{i = 0}^{m+n+p} \left[ \sum_{j = 0}^{i} a_j  \left( \sum_{k = 0}^{i - j} b_k c_{i - j - k} \right) \right]  x^i</mrow>
+						<mrow>&amp; = \left( \sum_{i = 0}^{m} a_i x^i  \right) \left[ \sum_{i = 0}^{n + p}  \left( \sum_{j = 0}^{i} b_j c_{i - j} \right) x^i \right]</mrow>
+						<mrow>&amp; = \left( \sum_{i = 0}^{m} a_i x^i \right) \left[ \left(  \sum_{i = 0}^{n} b_i x^i \right) \left( \sum_{i = 0}^{p} c_i x^i \right) \right]</mrow>
+						<mrow>&amp; = p(x) [ q(x) r(x) ]</mrow>
+					</md>
+				La conmutatividad y la distributividad se demuestran de forma similar.  Dejaremos estas demostraciones como ejercicios.</p>
+			</proof>
+		</theorem>
+
+<!-- Subscript typo corrected in the above associativity proof -->
+<!-- TWJ 17/1/2013 -->
+
+<!-- Subscript typo corrected in the above associativity proof.  Suggested by  M. Sergeyev. -->
+<!-- TWJ 5/2/2013 -->
+
+		<proposition xml:id="proposition-poly-integral-domain">
+			<statement>
+				<p>Sean <m>p(x)</m> y <m>q(x)</m> polinomios en <m>R[x]</m>, donde <m>R</m> es un dominio integral.  Entonces <m>\deg p(x) + \deg q(x) = \deg( p(x) q(x) )</m>.  Además, <m>R[x]</m> es un dominio integral.</p>
+			</statement>
+			<proof>
+				<p>Supongamos que tenemos dos polinomios distintos de cero 
+					<me>p(x) = a_m x^m + \cdots + a_1 x + a_0</me>
+				y 
+					<me>q(x) = b_n x^n + \cdots + b_1 x + b_0</me>
+				con <m>a_m \neq 0</m> y <m>b_n \neq 0</m>. Los grados de <m>p(x)</m> y <m>q(x)</m> son <m>m</m> y <m>n</m>, respectivamente.  El término líder de <m>p(x) q(x)</m> es <m>a_m b_n x^{m + n}</m>, que no puede ser cero pues <m>R</m> es un dominio integral; Vemos que el grado de <m>p(x) q(x)</m> es <m>m + n</m>, y <m>p(x)q(x) \neq 0</m>.  Como <m>p(x) \neq 0</m> y <m>q(x) \neq 0</m> implica que <m>p(x)q(x) \neq 0</m>, concluimos que <m>R[x]</m> también es un dominio integral.</p>
+			</proof>
+		</proposition>
+
+<!-- Changed p and q to p(x) and q(x).  Suggested by  P. Diethelm. -->
+<!-- TWJ 24/4/2013 -->
+
+		<p>También queremos considerar polynomios en dos o más variables, tales cómo <m>x^2 - 3 x y + 2 y^3</m>.  Sea <m>R</m> un anillo y supongamos que tenemos dos variables <m>x</m> e <m>y</m>.  Ciertamente podemos formar el anillo <m>(R[x])[y]</m>.  Es directo, aunque quizás tedioso, demostrar que <m>(R[x])[y] \cong R([y])[x]</m>.  Identificaremos estos dos anillos por medio de este isomorfismo y simplemente escribiremos <m>R[x,y]</m>.  El anillo <m>R[x, y]</m> se llama <term>anillo de polinomios en dos variables <m>x</m> e <m>y</m> con coeficientes en </term> <m>R</m>.  Podemos definir similarmente el <term>anillo de polinomios en</term><idx><h>Polinomio en<m>n</m> variables</h></idx> <m>n</m> <term>variables con coeficientes en</term> <m>R</m>.  Denotaremos este anillo por <m>R[x_1, x_2, \ldots, x_n]</m>. <notation><usage>R[x_1, x_2, \ldots, x_n]</usage><description>anillo de polinomios en <m>n</m> variables</description></notation></p>
+
+		<theorem xml:id="theorem-poly-3">
+			<statement>
+				<p>Sea <m>R</m> un anillo conmutativo con identidad y sea <m>\alpha \in R</m>.  Entonces tenemos un homomorfismo de anillos <m>\phi_{\alpha} : R[x] \rightarrow R</m> definido por <notation><usage>\phi_\alpha</usage><description>homomorfismo de evaluación en <m>\alpha</m></description></notation>
+					<me>\phi_{\alpha} (p(x) ) = p( \alpha ) = a_n \alpha^n + \cdots + a_1 \alpha + a_0,</me>
+				donde <m>p( x ) = a_n x^n + \cdots + a_1 x + a_0</m>.</p>
+			</statement>
+			<proof>
+				<p>Sean <m>p(x) = \sum_{i = 0}^n a_i x^i</m> y <m>q(x) = \sum_{i = 0}^m b_i x^i</m>.  Es fácil mostrar que <m>\phi_{\alpha}(p(x) + q(x)) = \phi_{\alpha}(p(x))  + \phi_{\alpha}(q(x))</m>.  Para mostrar que la multiplicación es preservada por la función <m>\phi_{\alpha}</m>, observemos que
+					<md>
+						<mrow>\phi_{\alpha} (p(x) ) \phi_{\alpha} (q(x)) &amp; = p( \alpha ) q(\alpha)</mrow>
+						<mrow>&amp; = \left( \sum_{i = 0}^n a_i \alpha^i \right) \left( \sum_{i = 0}^m b_i \alpha^i \right)</mrow>
+						<mrow>&amp; = \sum_{i = 0}^{m + n} \left( \sum_{k = 0}^i a_k b_{i - k} \right) \alpha^i</mrow>
+						<mrow>&amp; = \phi_{\alpha} (p(x) q(x)).</mrow>
+					</md></p>
+			</proof>
+		</theorem>
+
+		<p>La función <m>\phi_{\alpha} : R[x] \rightarrow R</m> se llama <term>homomorfismo de evaluación</term><idx><h>Evaluación</h><h>homomorfismo de</h></idx> en <m>\alpha</m>.</p>
+ 
+	</section>
+	
+	<section xml:id="section-poly-division-algorithm">
+		<title>El Algoritmo de División</title>
+
+		<p>Recuerde que el algoritmo de división para enteros (Teorema<nbsp /><xref ref="theorem-integers-division_algorithm" />) dice que si <m>a</m> y <m>b</m> son enteros con  <m>b \gt 0</m>, entonces existen únicos enteros <m>q</m> y <m>r</m> tales que <m>a = bq+r</m>, con <m>0 \leq r \lt b</m>.  Un teorema similar existe para polinomios.	El algoritmo de división para polinomios tiene varias consecuencias importantes. Como su demostración es muy similar a la demostración correspondiente para los enteros, resulta conveniente revisar el Teorema<nbsp /><xref ref="theorem-integers-division_algorithm" /> antes de seguir.</p>
+
+		<theorem>
+			<title>Algoritmo de División</title>
+			<idx><h>Algoritmo de división</h><h>para polinomios</h></idx>
+			<idx><h>División</h><h>algoritmo de</h></idx>
+			<statement>
+				<p>Sean <m>f(x)</m> y <m>g(x)</m> polinomios en <m>F[x]</m>, donde <m>F</m> es un cuerpo y <m>g(x)</m> es un polinomio distinto de cero.  Entonces existen polinomios únicos <m>q(x), r(x) \in F[x]</m> tales que
+					<me>f(x) = g(x) q(x) + r(x),</me>
+				con  <m>\deg r(x) \lt \deg g(x)</m> o <m>r(x)=0</m>.</p>
+			</statement>
+
+<!-- Statement of the division algorithm and the proof corrected.  Suggested by  P. Diethelm. -->
+<!-- TWJ 16/8/2013 -->
+
+			<proof>
+				<p>Primero demostraremos la existencia de <m>q(x)</m> y <m>r(x)</m>.  Si <m>f(x)</m> es el polinomio cero, entonces 
+					<me>0 = 0 \cdot g(x) + 0;</me>
+				luego, tanto <m>q</m> como <m>r</m> también son el polinomio cero.  Ahora supongamos que <m>f(x)</m> no es polinomio cero y que <m>\deg f(x) = n</m> y <m>\deg g(x) = m</m>.   Si <m>m \gt n</m>, entonces <m>q(x) = 0</m> y <m>r(x) = f(x)</m>.  Podemos ahora suponer que <m>m  \leq n</m> y proceder por inducción en <m>n</m>.   Si
+					<md>
+						<mrow>f(x) &amp; = a_n x^n + a_{n-1} x^{n - 1} + \cdots + a_1 x + a_0</mrow>
+						<mrow>g(x) &amp; = b_m x^m + b_{m-1} x^{m - 1} + \cdots + b_1 x + b_0</mrow>
+					</md>
+				entonces el polinomio
+					<me>f'(x) = f(x) - \frac{a_n}{b_m} x^{n - m} g(x)</me>
+				tiene grado menor a <m>n</m> o es el polinomio cero.  Por la hipótesis de inducción, existens polinomios <m>q'(x)</m> y <m>r(x)</m> tales que 
+					<me>f'(x) = q'(x) g(x) + r(x),</me>
+				donde <m>r(x) = 0</m> o el grado de <m>r(x)</m> es menor al grado de <m>g(x)</m>.  Ahora, sea 
+					<me>q(x) = q'(x) + \frac{a_n}{b_m} x^{n - m}.</me>
+				Entonces
+					<me>f(x) = g(x) q(x) + r(x),</me>
+				con <m>r(x)</m> el polinomio cero o <m>\deg r(x) \lt \deg g(x)</m>.</p>
+ 
+				<p>Para mostrar que <m>q(x)</m> y <m>r(x)</m> son únicos, supongamos que además existen <m>q_1(x)</m> y <m>r_1(x)</m> tales que <m>f(x) = g(x) q_1(x) + r_1(x)</m> con <m>\deg r_1(x) \lt \deg g(x)</m> o <m>r_1(x) = 0</m>, de manera que
+					<me>f(x) = g(x) q(x) + r(x) = g(x) q_1(x) + r_1(x),</me>
+				y
+					<me>g(x) [q(x) - q_1(x) ] = r_1(x) - r(x).</me>
+				Si <m>g(x)</m> no es el polinomio cero, entonces
+					<me>\deg( g(x) [q(x) - q_1(x) ] )= \deg( r_1(x) - r(x) ) \geq \deg g(x).</me>
+				Pero, los grados tanto de <m>r(x)</m> como de <m>r_1(x)</m> son estrictamente menores que el grado de <m>g(x)</m>; por lo tanto, <m>r(x) = r_1(x)</m> y <m>q(x) = q_1(x)</m>.</p>
+			</proof>
+		</theorem>
+
+<!-- Changed g to g(x).  Suggested by  P. Diethelm. -->
+<!-- TWJ 24/4/2013 -->
+ 
+		<example xml:id="example-poly-division">
+			<p>El algoritmo de división meramente formaliza la división larga de polinomios, una tarea con la que probablemente estamos familiarizados desde el colegio. Por ejemplo, supongamos que dividimos <m>x^3 - x^2 + 2 x - 3</m> por <m>x - 2</m>.</p>
+
+			<sidebyside width="40%" margins="auto">
+                <tabular halign="right">
+                    <row>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell bottom="medium"><m>x^2</m></cell>
+                        <cell bottom="medium"><m>+</m></cell>
+                        <cell bottom="medium"><m>x</m></cell>
+                        <cell bottom="medium"><m>+</m></cell>
+                        <cell bottom="medium"><m>4</m></cell>
+                        <cell bottom="medium"></cell>
+                        <cell bottom="medium"></cell>
+                    </row>
+                    <row>
+                        <cell><m>x</m></cell>
+                        <cell><m>-</m></cell>
+                        <cell right="medium"><m>2</m></cell>
+                        <cell><m>x^3</m></cell>
+                        <cell><m>-</m></cell>
+                        <cell><m>x^2</m></cell>
+                        <cell><m>+</m></cell>
+                        <cell><m>2x</m></cell>
+                        <cell><m>-</m></cell>
+                        <cell><m>3</m></cell>
+                    </row>
+                    <row>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell bottom="minor"><m>x^3</m></cell>
+                        <cell bottom="minor"><m>-</m></cell>
+                        <cell bottom="minor"><m>2x^2</m></cell>
+                        <cell bottom="minor"></cell>
+                        <cell bottom="minor"></cell>
+                        <cell bottom="minor"></cell>
+                        <cell bottom="minor"></cell>
+                    </row>
+                    <row>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell><m>x^2</m></cell>
+                        <cell><m>+</m></cell>
+                        <cell><m>2x</m></cell>
+                        <cell><m>-</m></cell>
+                        <cell><m>3</m></cell>
+                    </row>
+                    <row>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell bottom="minor"><m>x^2</m></cell>
+                        <cell bottom="minor"><m>-</m></cell>
+                        <cell bottom="minor"><m>2x</m></cell>
+                        <cell bottom="minor"></cell>
+                        <cell bottom="minor"></cell>
+                    </row>
+                    <row>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell><m>4x</m></cell>
+                        <cell><m>-</m></cell>
+                        <cell><m>3</m></cell>
+                    </row>
+                    <row>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell bottom="minor"><m>4x</m></cell>
+                        <cell bottom="minor"><m>-</m></cell>
+                        <cell bottom="minor"><m>8</m></cell>
+                    </row>
+                    <row>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell></cell>
+                        <cell><m>5</m></cell>
+                    </row>
+                </tabular>
+            </sidebyside>
+
+			<p>Luego, <m>x^3 - x^2 + 2 x - 3 = (x - 2) (x^2 + x + 4 ) + 5</m>.</p>
+		</example>
+ 
+		<p>Sea <m>p(x)</m> un polinomio en <m>F[x]</m> y <m>\alpha \in F</m>.  Decimos que <m>\alpha</m> es un <term>cero</term><idx><h>Polinomio</h><h>cero del</h></idx><idx><h>Cero</h><h>de un polinomio</h></idx> o <term>raíz</term><idx><h>Polinomio</h><h>raíz del</h></idx> de <m>p(x)</m> si <m>p(x)</m> está en el núcleo del homomorfismo de evaluación <m>\phi_{\alpha}</m>. Lo único que estamos dicendo realmente es que <m>\alpha</m> es un cero de <m>p(x)</m> si <m>p(\alpha) = 0</m>.</p>
+ 
+		<corollary xml:id="corollary-poly-factor">
+			<statement>
+				<p>Sea <m>F</m> un cuerpo. Un elemento <m>\alpha \in F</m> es un cero de <m>p(x) \in F[x]</m> si y solo si <m>x - \alpha</m> divide a <m>p(x)</m> en <m>F[x]</m>.</p>
+			</statement>
+			<proof>
+				<p>Supongamos que <m>\alpha \in F</m> y <m>p( \alpha ) = 0</m>. Por el algoritmo de la división, existen polinomios <m>q(x)</m> y <m>r(x)</m> tales que
+					<me>p(x) = (x -\alpha) q(x) + r(x)</me>
+				y el grado de  <m>r(x)</m> es menor que el grado de <m>x -\alpha</m>. Como el grado de  <m>r(x)</m> es menor a 1, <m>r(x) = a</m> para algún <m>a \in F</m>; por lo tanto, 
+					<me>p(x) = (x -\alpha) q(x) + a.</me>
+				Pero 
+					<me>0 = p(\alpha) = 0 \cdot q(\alpha) + a = a;</me>
+				Por ende, <m>p(x) = (x - \alpha) q(x)</m>, y <m>x - \alpha</m> es un factor de <m>p(x)</m>.</p>
+ 
+ 				<p>Recíprocamente, supongamos que <m>x - \alpha</m> es un factor de <m>p(x)</m>; digamos <m>p(x) = (x - \alpha) q(x)</m>. Entonces <m>p( \alpha ) = 0 \cdot q(\alpha) = 0</m>.</p>
+ 			</proof>
+		</corollary>
+
+<!-- changed x to \alpha in the appropriate places in the proof. -->
+<!-- Suggested by  P. Diethelm. -->
+<!-- TWJ 24/4/2013 -->
+
+		<corollary xml:id="corollary-poly-zeros">
+			<statement>
+				<p>Sea <m>F</m> un cuerpo. Un polinomio <m>p(x)</m> distinto de cero y de grado <m>n</m> en <m>F[x]</m> puede tener a lo sumo <m>n</m> ceros distintos en <m>F</m>.</p>
+			</statement>
+			<proof>
+				<p>Procederemos por inducción sobre el grado de <m>p(x)</m>. Si <m>\deg p(x) = 0</m>, entonces <m>p(x)</m> es un polinomio constante y no tiene ceros.  Si <m>\deg p(x) = 1</m>, entonces <m>p(x) = ax +b</m> para ciertos <m>a</m> y <m>b</m> en <m>F</m>. Si <m>\alpha_1</m> y <m>\alpha_2</m> so ceros de <m>p(x)</m>, entonces <m>a\alpha_1 + b = a\alpha_2 +b</m> y <m>\alpha_1 = \alpha_2</m>.</p>
+ 
+				<p>Ahora supongamos que <m>\deg p(x) \gt 1</m>. Si <m>p(x)</m> no tiene ceros en <m>F</m>, estamos listos.  Por otra parte, si <m>\alpha</m> es un cero de <m>p(x)</m>, entonces <m>p(x) = (x - \alpha ) q(x)</m> para cierto <m>q(x) \in F[x]</m> por el Corolario<nbsp /><xref ref="corollary-poly-factor" />. El grado de <m>q(x)</m> es <m>n-1</m> por la Proposición<nbsp /><xref ref="proposition-poly-integral-domain" />. Sea <m>\beta</m> algún otro cero de <m>p(x)</m> distinto de <m>\alpha</m>. Entonces <m>p(\beta) = (\beta - \alpha) q(\beta) = 0</m>. Como <m>\alpha \neq \beta</m> y <m>F</m> es un cuerpo, <m>q(\beta ) = 0</m>. Por la hipótesis de inducción, <m>q(x)</m> puede tener a lo sumo <m>n -1</m> ceros distintos en <m>F</m>. Por lo tanto, <m>p(x)</m> tiene a lo sumo <m>n</m> ceros distintos en <m>F</m>.</p>
+			</proof>
+		</corollary>
+
+		<p>Sea <m>F</m> un cuerpo.  Un polinomio mónico <m>d(x)</m> es un <term>máximo común divisor</term><idx><h>Polinomios</h><h>máximo común divisor de</h></idx><idx><h>Máximo común divisor</h><h>de dos polinomios</h></idx> de los polinomios <m>p(x), q(x) \in F[x]</m> si <m>d(x)</m> divide tanto a <m>p(x)</m> como a <m>q(x)</m>; y, si para cualquier otro polinomio <m>d'(x)</m> que divida tanto a <m>p(x)</m> como a <m>q(x)</m>,  <m>d'(x) \mid d(x)</m>.  Escribiremos <m>d(x) = \gcd( p(x), q( x))</m>. Dos polinomios <m>p(x)</m> y <m>q(x)</m> son <term>relativamente primos</term> si <m>\gcd(p(x), q(x) ) = 1</m>.</p> 
+
+		<proposition xml:id="proposition-poly-gcd">
+			<statement>
+				<p>Sea <m>F</m> un cuerpo y supongamos que <m>d(x)</m> es un máximo común divisor de dos polinomios <m>p(x)</m> y <m>q(x)</m> en <m>F[x]</m>. Entonces existen polinomios <m>r(x)</m> y <m>s(x)</m> tales que
+					<me>d(x) = r(x) p(x) + s(x) q(x).</me>
+				Además, el máximo común divisor de dos polinomios es único.</p>
+			</statement>
+			<proof>
+				<p>Sea <m>d(x)</m> el polinomio mónico de menor grado en el conjunto
+					<me>S = \{ f(x) p(x) + g(x) q(x) : f(x), g(x) \in F[x]  \}.</me>
+				Podemos escribir <m>d(x) = r(x) p(x) + s(x) q(x)</m> para dos polinomios  <m>r(x)</m> y <m>s(x)</m> en <m>F[x]</m>. Debemos demostrar que <m>d(x)</m> divide a <m>p(x)</m> y a <m>q(x)</m>. Primero mostraremos que <m>d(x)</m> divide a <m>p(x)</m>. Por el algoritmo de división, existen polinomios <m>a(x)</m> y <m>b(x)</m> tales que <m>p(x) = a(x) d(x) + b(x)</m>, donde <m>b(x)</m> es el polinomio cero o <m>\deg b(x) \lt \deg d(x)</m>.  Por lo tanto, 
+					<md>
+						<mrow>b(x) &amp; = p(x) - a(x) d(x)</mrow>
+						<mrow>&amp; = p(x) - a(x)( r(x) p(x) + s(x) q(x)) </mrow>
+						<mrow>&amp; = p(x) - a(x) r(x) p(x) - a(x)  s(x) q(x)</mrow>
+						<mrow>&amp; = p(x)( 1  - a(x) r(x) ) + q(x) ( - a(x)  s(x) )</mrow>
+					</md>
+				es una combinación lineal de <m>p(x)</m> y <m>q(x)</m> y por lo tanto está en <m>S</m>. Entonces, <m>b(x)</m> debe ser el polinomio cero pues <m>d(x)</m> fue elegido de grado minimal; Concluimos que <m>d(x)</m> divide a <m>p(x)</m>.  Un argumento simétrico muestra que <m>d(x)</m> también divide a <m>q(x)</m>; luego, <m>d(x)</m> es un divisor común de <m>p(x)</m> y <m>q(x)</m>.</p>
+ 
+				<p>Para mostrar que <m>d(x)</m> es un máximo común divisor de <m>p(x)</m> y <m>q(x)</m>, supongamos que <m>d'(x)</m> es otro divisor común de <m>p(x)</m> y <m>q(x)</m>. Mostraremos que <m>d'(x) \mid d(x)</m>.  Como <m>d'(x)</m> es un divisor común de <m>p(x)</m> y <m>q(x)</m>, existen polinomios <m>u(x)</m> y <m>v(x)</m> tales que <m>p(x) = u(x) d'(x)</m> y <m>q(x) = v(x) d'(x)</m>. Por lo tanto, 
+					<md>
+						<mrow>d(x) &amp; = r(x) p(x) + s(x) q(x)</mrow>
+						<mrow>&amp; =  r(x) u(x) d'(x) + s(x) v(x) d'(x)</mrow>
+						<mrow>&amp; = d'(x) [r(x) u(x) + s(x) v(x)].</mrow>
+					</md>
+				Como <m>d'(x) \mid d(x)</m>, <m>d(x)</m> es un máximo común divisor de <m>p(x)</m>  y <m>q(x)</m>.</p>
+
+<!-- removed and extra parenthesis below. -->
+<!-- Suggested by  P. Diethelm. -->
+<!-- TWJ 24/4/2013 -->
+
+				<p>Finalmente, debemos mostrar que el máximo común divisor de <m>p(x)</m> y <m>q(x)</m> es único. Supongamos que <m>d'(x)</m> también es un máximo común divisor de <m>p(x)</m> y <m>q(x)</m>. Acabamos de mostrar que existen polinomios <m>u(x)</m> y <m>v(x)</m> en <m>F[x]</m> tales que <m>d(x) = d'(x)[r(x) u(x) + s(x) v(x)]</m>. Como
+					<me>\deg d(x) =  \deg d'(x) + \deg[r(x) u(x) + s(x) v(x)]</me>
+				y <m>d(x)</m> y <m>d'(x)</m> son ambos máximo común divisor, <m>\deg d(x) = \deg d'(x)</m>. Como <m>d(x)</m> y <m>d'(x)</m> son ambos polinomios mónicos del mismo grado, se debe tener que <m>d(x) =~d'(x)</m>.</p>
+			</proof>
+		</proposition>
+ 
+		<p>Notemos la similaridad entre la demostración de la Proposición<nbsp /><xref ref="proposition-poly-gcd" /> y la demostración del Teorema<nbsp /><xref ref="theorem-integers-gcd" />.</p>
+
+	</section>
+
+	<section xml:id="section-irreducible-poly">
+		<title>Polinomios Irreducibles</title>
+ 
+ 		<introduction>
+
+			<p>Un polinomio no constante <m>f(x) \in F[x]</m> es <term>irreducible</term><idx><h>Irreducible</h><h>polinomio</h></idx><idx><h>Polinomio irreducible</h></idx> sobre un cuerpo <m>F</m> si <m>f(x)</m> no puede ser expresado como producto de dos polinomios <m>g(x)</m> y <m>h(x)</m> en <m>F[x]</m>, donde los grados de <m>g(x)</m> y <m>h(x)</m> son ambos menores que el grado de <m>f(x)</m>.  Los polinomios irreducibles funcionan como los <q>números primos</q> de los anillos de polinomios.</p>
+	 
+			<example xml:id="example-poly-irreducible">
+				<p>El polinomio <m>x^2 - 2 \in {\mathbb Q}[x]</m> es irreducible pues no puede ser factorizado sobre los números racionales. Similarmente, <m>x^2 + 1</m> es  irreducible sobre los números reales.</p>
+			</example>
+	 
+			<example xml:id="example-poly-finite">
+				<p>El polinomio <m>p(x) = x^3 + x^2 + 2</m> es irreducible sobre <m>{\mathbb Z}_3[x]</m>. Supongamos que este polinomio fuera reducible sobre <m>{\mathbb Z}_3[x]</m>.  Por el algoritmo de división tendría que haber un factor de la forma <m>x - a</m>, donde <m>a</m> es algún elemento en <m>{\mathbb Z}_3[x]</m>. Es decir, tendríamos que tener <m>p(a) = 0</m>.  Pero,
+				<md>
+					<mrow>p(0) &amp; = 2</mrow>
+					<mrow>p(1) &amp; = 1</mrow>
+					<mrow>p(2) &amp; = 2.</mrow>
+				</md>
+				Por lo tanto, <m>p(x)</m> no tiene ceros en <m>{\mathbb Z}_3</m> y es irreducible.</p>
+			</example>
+
+			<lemma xml:id="lemma-poly-integer-coef">
+				<statement>
+					<p>Sea <m>p(x) \in {\mathbb Q}[x]</m>.  Entonces
+						<me>p(x) = \frac{r}{s}(a_0 + a_1 x + \cdots + a_n x^n),</me>
+					donde <m>r, s, a_0, \ldots, a_n</m> son enteros, los <m>a_i</m> son relativamente primos, y <m>r</m> y <m>s</m> son relativamente primos.</p>
+				</statement>
+				<proof>
+					<p>Supongamos que
+						<me>p(x) = \frac{b_0}{c_0} + \frac{b_1}{c_1} x + \cdots + \frac{b_n}{c_n} x^n,</me>
+					donde los <m>b_i</m> y los  <m>c_i</m> son enteros. Podemos reescribir <m>p(x)</m> como 
+						<me>p(x) = \frac{1}{c_0 \cdots c_n} (d_0 + d_1 x + \cdots + d_n x^n),</me>
+					donde <m>d_0, \ldots, d_n</m> son enteros. Sea <m>d</m> el máximo común divisor de <m>d_0, \ldots, d_n</m>.  Entonces
+						<me>p(x) = \frac{d}{c_0 \cdots c_n} (a_0 + a_1 x + \cdots + a_n x^n),</me>
+					donde <m>d_i = d a_i</m> y los <m>a_i</m> son relativamente primos. Reduciendo <m>d /(c_0 \cdots c_n)</m> to its lowest terms, podemos escribir
+						<me>p(x) = \frac{r}{s}(a_0 + a_1 x + \cdots + a_n x^n),</me>
+					donde <m>\gcd(r,s) = 1</m>.</p>
+				</proof>
+			</lemma>
+	 
+			<theorem xml:id="theorem-gauss-lemma">
+				<title>Lema de Gauss</title>
+				<statement>
+					<p>Sea <m>p(x) \in {\mathbb Z}[x]</m> un polinomio mónico tal que <m>p(x)</m> se factoriza como producto de dos polinomios <m>\alpha(x)</m> y <m>\beta(x)</m> en <m>{\mathbb Q}[x]</m>, donde los grados de <m>\alpha(x)</m> y de <m>\beta(x)</m> son menores que el grado de <m>p(x)</m>. Entonces <m>p(x) = a(x) b(x)</m>, donde <m>a(x)</m> y <m>b(x)</m> son polinomios mónicos en <m>{\mathbb Z}[x]</m> con <m>\deg \alpha(x) = \deg a(x)</m> y <m>\deg \beta(x) = \deg b(x)</m>.</p>
+				</statement>
+				<proof>
+					<p>Por el Lema<nbsp /><xref ref="lemma-poly-integer-coef" />, podemos suponer que
+						<md>
+							<mrow>\alpha(x)  &amp; =  \frac{c_1}{d_1} (a_0 + a_1 x + \cdots + a_m x^m ) = \frac{c_1}{d_1} \alpha_1(x)</mrow>
+							<mrow>\beta(x)  &amp; =  \frac{c_2}{d_2} (b_0 + b_1 x + \cdots + b_n x^n)  = \frac{c_2}{d_2} \beta_1(x),</mrow>
+						</md>
+					donde los <m>a_i</m> son relativamente primos y los <m>b_i</m> son relativamente primos. En consecuencia, 
+						<me>p(x) = \alpha(x) \beta(x) = \frac{c_1 c_2}{d_1 d_2} \alpha_1(x) \beta_1(x) = \frac{c}{d} \alpha_1(x) \beta_1(x),</me>
+					donde  <m>c/d</m> es el producto de <m>c_1/d_1</m> y <m>c_2/d_2</m> expresado de forma reducida. Luego, <m>d p(x) = c \alpha_1(x) \beta_1(x)</m>.</p> 
+
+					<p>Si <m>d = 1</m>, entonces <m>c a_m b_n = 1</m> pues <m>p(x)</m> es un polinomio mónico. Luego, ya sea <m>c=1</m> o <m>c = -1</m>. Si <m>c=1</m>, entonces ya sea <m>a_m = b_n = 1</m> o <m>a_m = b_n = -1</m>. En el primer caso <m>p(x) = \alpha_1(x) \beta_1(x)</m>, donde <m>\alpha_1(x)</m> y <m>\beta_1(x)</m> son polinomios mónicos con <m>\deg \alpha(x) = \deg \alpha_1(x)</m> y <m>\deg \beta(x) = \deg \beta_1(x)</m>. En el segundo caso <m>a(x) = -\alpha_1(x)</m> y <m>b(x) = -\beta_1(x)</m> son los polinomios mónicos correctos pues <m>p(x) = (-\alpha_1(x))(- \beta_1(x)) = a(x) b(x)</m>. El caso cuando <m>c = -1</m> se resuelve de forma similar.</p>
+	 
+					<p>Ahora supongamos que <m>d \neq 1</m>. Como <m>\gcd(c, d) = 1</m>, existe un primo <m>p</m> tal que <m>p \mid d</m> y <m>p \notdivide c</m>. Además, como los coeficientes de <m>\alpha_1(x)</m> son relativamente primos, existe un coeficiente <m>a_i</m> tal que <m>p \notdivide a_i</m>.  Similarmente, existe un coeficiente <m>b_j</m> de <m>\beta_1(x)</m> tal que <m>p \notdivide b_j</m>. Sean  <m>\alpha_1'(x)</m> y <m>\beta_1'(x)</m> los polinomios en <m>{\mathbb Z}_p[x]</m> obtenidos de reducir los coeficientes de <m>\alpha_1(x)</m> y <m>\beta_1(x)</m> módulo <m>p</m>. Como <m>p \mid d</m>, <m>\alpha_1'(x) \beta_1'(x) = 0</m> en <m>{\mathbb Z}_p[x]</m>. Pero esto es imposible, pues ni <m>\alpha_1'(x)</m> ni <m>\beta_1'(x)</m> es el polinomio cero y <m>{\mathbb Z}_p[x]</m> es un dominio integral.  Por lo tanto, <m>d=1</m> y el teorema está demostrado.</p>
+				</proof>
+			</theorem>
+	 
+			<corollary xml:id="corollary-rational-roots-theorem">
+				<statement>
+					<p>Sea <m>p(x) = x^n + a_{n - 1} x^{n - 1} + \cdots + a_0</m> un polinomio con coeficientes en <m>{\mathbb Z}</m> y <m>a_0 \neq 0</m>. Si <m>p(x)</m> tiene un cero en <m>{\mathbb Q}</m>, entonces <m>p(x)</m> también tiene un cero <m>\alpha</m> en <m>{\mathbb Z}</m>. Más aún, <m>\alpha</m> divide a <m>a_0</m>.</p>
+				</statement>
+				<proof>
+					<p>Supongamos que <m>p(x)</m> tiene un cero <m>a \in {\mathbb Q}</m>. Entonces <m>p(x)</m> debe tener un factor lineal <m>x-a</m>. Por el Lema de Gauss, <m>p(x)</m> tiene una factorización con un factor lineal en <m>{\mathbb Z}[x]</m>. Luego, para algún <m>\alpha \in {\mathbb Z}</m>
+						<me>p(x) = (x - \alpha)( x^{n - 1} + \cdots - a_0 / \alpha ).</me>
+					Por lo tanto <m>a_0 /\alpha \in {\mathbb Z}</m> y <m>\alpha \mid a_0</m>.</p>
+				</proof>
+			</corollary>
+	 
+			<example xml:id="example-poly-factor">
+				<p>Sea <m>p(x) = x^4 - 2 x^3 + x + 1</m>. Demostraremos que <m>p(x)</m> es irreducible sobre <m>{\mathbb Q}[x]</m>.  Supongamos que <m>p(x)</m> es reducible. Entonces ya sea <m>p(x)</m> tiene un factor lineal, digamos <m>p(x) = (x - \alpha) q(x)</m>, donde <m>q(x)</m> es un polinomio d egrado tres, o  <m>p(x)</m> tiene dos factores cuadráticos.</p>
+
+				<p>Si <m>p(x)</m> tiene un factor lineal en <m>{\mathbb Q}[x]</m>, entonces tiene un cero en <m>{\mathbb Z}</m>.  Por el Corolario<nbsp /><xref ref="corollary-rational-roots-theorem" />, cualquier cero debe dividir a 1 y por lo tanto debe ser <m>\pm 1</m>; pero, <m>p(1) = 1</m> y <m>p(-1)= 3</m>. Así hemos descartado la posibilidad de que <m>p(x)</m> tenga un factor lineal.</p>
+	 
+				<p>Por lo tanto, si <m>p(x)</m> es reducible debe ser como producto de dos factores cuadráticos, digamos
+					<md>
+						<mrow>p(x) &amp; = (x^2 + ax + b )( x^2 + cx + d )</mrow>
+						<mrow>&amp; = x^4 + (a + c)x^3 + (ac + b + d)x^2 + (ad + bc)x + bd,</mrow>
+					</md>
+				donde cada factor está en <m>{\mathbb Z}[x]</m> por el Lema de Gauss. Luego,
+					<md>
+						<mrow>a + c &amp; = - 2</mrow>
+						<mrow>ac + b + d &amp; = 0</mrow>
+						<mrow>ad + bc &amp; = 1</mrow>
+						<mrow>bd &amp; = 1.</mrow>
+					</md>
+				Como <m>bd = 1</m>, ya sea <m>b = d = 1</m> o <m> b = d = -1</m>. En cualquier caso <m>b = d</m> y así 
+					<me>ad + bc  = b( a + c ) = 1.</me>
+				Como <m>a + c = -2</m>, sabemos que <m>-2b = 1</m>. Esto es imposible pues <m>b</m> es un entero.  Por lo tanto, <m>p(x)</m> es irreducible sobre <m>{\mathbb Q}</m>.</p>
+			</example>
+
+	<!--  2010/05/18 R Beezer, fixed n-1 in range for p \mid a_i -->
+
+			<theorem xml:id="theorem-eisenstein">
+				<title>Criterio de Eisenstein</title>
+				<idx><h>Criterio de Eisenstein</h></idx>
+				<statement>
+					<p>Sea <m>p</m> un número primo y supongamos que
+						<me>f(x) = a_n x^n + \cdots + a_0 \in {\mathbb Z}[x].</me>
+					Si <m>p \mid a_i</m> for <m>i = 0, 1, \ldots, n-1</m>, pero <m>p \notdivide a_n</m> y <m>p^2 \notdivide a_0</m>, entonces <m>f(x)</m> es irreducible sobre <m>{\mathbb Q}</m>.</p>
+				</statement>
+				<proof>
+					<p>Por el Lema de Gauss, solo necesitamos demostrar que <m>f(x)</m> no se factoriza como producto de polinomios de grado menor en  <m>{\mathbb Z}[x]</m>. Supongamos que
+						<me>f(x) = (b_rx^r + \cdots + b_0)(c_s x^s + \cdots + c_0 )</me>
+					es una factorización en <m>{\mathbb Z}[x]</m>, con <m>b_r</m> y <m>c_s</m> ndistinto de cero y <m>r, s \lt n</m>. Como <m>p^2</m> no divide a <m>a_0 = b_0 c_0</m>, ya sea <m>b_0</m> o <m>c_0</m> no es divisible por <m>p</m>. Supongamos que <m>p \notdivide b_0</m> y <m>p \mid c_0</m>. Como <m>p \notdivide a_n</m> y <m>a_n = b_r c_s</m>, ni <m>b_r</m> ni <m>c_s</m> es divisible por <m>p</m>. Sea <m>m</m> el menor valor de <m>k</m> tal que <m>p \notdivide c_k</m>. Entonces 
+						<me>a_m = b_0 c_m + b_1 c_{m - 1} + \cdots + b_m c_0</me>
+					no es divisible por <m>p</m>, como cada término del lado derecho de la ecuación es divisible por <m>p</m> excepto <m>b_0 c_m</m>. Por lo tanto, <m>m = n</m> pues <m>a_i</m> es divisible por <m>p</m> para <m>m \lt n</m>.  Luego, <m>f(x)</m> no puede ser factorizado como producto de polinomios de grado menor y por lo tanto es irreducible.</p>
+				</proof>
+			</theorem>
+
+			<example xml:id="example-poly-eisenstein">
+				<p>El polinomio
+					<me>f(x) = 16 x^5  - 9 x^4 + 3x^2 + 6 x - 21</me>
+				es irreducible sobre <m>{\mathbb Q}</m> por el Criterio de Eisenstein con <m>p = 3</m>.</p>
+			</example>
+
+	<!-- changed p(x) to f(x) -->
+	<!-- Suggested by  P. Diethelm. -->
+	<!-- TWJ 24/4/2013 -->
+	 
+			<p>El Criterio de Eisenstein es más útil para construir polinomios irreducibles de cierto grado sobre <m>{\mathbb Q}</m> que para determinar la irreducibilidad de un polinomio arbitrario en <m>{\mathbb Q}[x]</m>: dado cualquier polinomio, no es muy probable que podamos aplicar el  Criterio de Eisenstein.  La importancia del Teorema<nbsp /><xref ref="theorem-eisenstein" /> es que ahora tenemos una herramienta sencilla para generar polinomios irreducibles de cualquier grado.</p>
+			
+		</introduction>
+	 
+		<subsection xml:id="poly-subsection-ideals">
+			<title>Ideales en <m>F\lbrack x \rbrack</m></title>
+ 
+			<p>Sea <m>F</m> un cuerpo. Recuerde que un ideal principal en <m>F[x]</m> es un ideal <m>\langle p(x) \rangle</m> generado por algún polinomio  <m>p(x)</m>; es decir,
+				<me>\langle p(x) \rangle = \{ p(x) q(x) : q(x) \in F[x] \}.</me></p>
+ 
+			<example xml:id="example-poly-ideal">
+				<p>El polinomio <m>x^2</m> en <m>F[x]</m> genera el ideal <m>\langle x^2 \rangle</m> que consiste de todos los polinomios que no tienen término constante ni de grado 1.</p>
+			</example>
+
+			<theorem xml:id="theorem-poly-principal-ideal">
+				<statement>
+					<p>Si <m>F</m> es un cuerpo, entonces todo ideal en <m>F[x]</m> es un ideal principal.</p>
+				</statement>
+				<proof>
+					<p>Sea <m>I</m> un ideal de <m>F[x]</m>.  Si <m>I</m> es el ideal cero, no hay nada que demostrar. Supongamos que <m>I</m> es un ideal no trivial en <m>F[x]</m>, y sea <m>p(x) \in I</m> un elemento distinto de cero de grado minimal. Si <m>\deg p(x)= 0</m>, entonces <m>p(x)</m> es una constante no nula y 1 está en <m>I</m>. Como 1 genera todo <m>F[x]</m>, <m>\langle 1 \rangle = I = F[x]</m> y <m>I</m> es un ideal principal.</p>
+	 
+					<p>Ahora supongamos que <m>\deg p(x) \geq 1</m> y sea <m>f(x)</m> cualquier elemento en <m>I</m>.  Por el algoritmo de división existen <m>q(x)</m> y <m>r(x)</m> en <m>F[x]</m> tales que <m>f(x) = p(x) q(x) + r(x)</m> y <m>\deg r(x) \lt \deg  p(x)</m>. Como <m>f(x), p(x) \in I</m> e<m>I</m> es un ideal, <m>r(x) = f(x) - p(x) q(x)</m> también está en <m>I</m>. Pero, como escogimos <m>p(x)</m> de grado minimal, <m>r(x)</m> debe ser el polinomio cero. Como podemos escribir cualquier elemento <m>f(x)</m> en <m>I</m> como <m>p(x) q(x)</m> para algún <m>q(x) \in F[x]</m>, tenemos que <m>I = \langle p(x) \rangle</m>.</p>
+				</proof>
+			</theorem>
+
+			<example xml:id="example-poly-xy">
+				<p>No todo ideal en el anillo <m>F[x,y]</m> es un ideal principal. Consideremos el ideal de <m>F[x, y]</m> generado por los polinomios <m>x</m> e <m>y</m>.  Este es el ideal de <m>F[x, y]</m> que consiste de todos los polinomios que no tienen término constante. Como tanto <m>x</m> como <m>y</m> están en el ideal, ningún polinomio puede pos si solo generar todo el ideal.</p>
+			</example>
+	 
+			<theorem xml:id="theorem-max-ideal-poly">
+				<statement>
+					<p>Let <m>F</m> be a field and suppose that <m>p(x) \in F[x]</m>. Then the ideal generated by <m>p(x)</m> is maximal if and only if <m>p(x)</m> is irreducible.</p>
+				</statement>
+				<proof>
+					<p>Supongamos que <m>p(x)</m> genera un ideal maximal de <m>F[x]</m>. Entonces <m>\langle p(x) \rangle</m> es también un ideal primo de <m>F[x]</m>. Como un ideal maximal debe estar propiamente contenido en <m>F[x]</m>, <m>p(x)</m> no puede ser un polinoio constante. Supongamos que  <m>p(x)</m> se factoriza en dos polinomios de grado menor, digamos <m>p(x) = f(x) g(x)</m>. Como <m>\langle p(x) \rangle</m> es un ideal primo uno de estos factores, digamos <m>f(x)</m>, está en <m>\langle p(x) \rangle</m> y por lo tanto es un múltiplo de <m>p(x)</m>. Pero esto implicaría que <m>\langle p(x) \rangle \subset \langle f(x) \rangle</m>, lo que es imposible pues <m>\langle p(x) \rangle</m> es maximal.</p>
+	 
+	 
+					<p>Recíprocamente, supongamos que <m>p(x)</m> es irreducible sobre <m>F[x]</m>. Sea <m>I</m> un ideal en <m>F[x]</m> que contenga <m>\langle p(x) \rangle</m>. Por el Teorema<nbsp /><xref ref="theorem-poly-principal-ideal" />, <m>I</m> es un ideal principal; luego, <m>I = \langle f(x) \rangle</m> para algún <m>f(x) \in F[x]</m>. Como <m>p(x) \in I</m>, debe ser que <m>p(x) = f(x) g(x)</m> para algún <m>g(x) \in F[x]</m>. Pero, <m>p(x)</m> es irreducible; luego, ya sea <m>f(x)</m> o <m>g(x)</m> es un polinomio constante. Si <m>f(x)</m> es constante, entonces <m>I = F[x]</m> y estamos listos.  Si <m>f(x)</m> no es constante, entonces <m>f(x)</m> es un múltiplo constante de <m>p(x)</m> e <m>I = \langle p(x) \rangle</m>. Por lo tanto, no existen ideales propios de <m>F[x]</m> que contengan propiamente a <m>\langle p(x)\rangle</m>.</p>
+				</proof>
+			</theorem>
+
+			<xi:include href="./sage/poly-info.xml" />
+ 
+		</subsection>
+
+		<subsection xml:id="poly-subsection-historical-note">
+			<title>Nota Histórica</title>
+
+			<p>A lo largo de la historia, resolver ecuaciones polinomiales ha sido un problema desafiante.  Los Babilonios sabían cómo resolver la ecuación <m>ax^2 + bx + c = 0</m>.  Omar Khayyam (1048<ndash />1131) ideó métodos para resolver ecuaciones cúbicasmediante el uso de cnonstrucciones geométricas y secciones cónicas.  La solución algebraica de la ecuación cúbica general <m>ax^3 + bx^2 + cx + d = 0</m> no fue descubierta hasta el siglo XVI.  Un matemático italiano, Luca Pacioli (ca. 1445<ndash />1509), escribió  en <booktitle>Summa de Arithmetica</booktitle> que la solución a la cúbica era imposible.  Esto fue tomado como un desafío por el resto de la comunidad matemática.</p>
+
+<!-- % 2010/11/1 T Judson Spelling corrected Luca Pacioli (Thanks to Roberto Derenzi) -->
+
+			<p>Scipione del Ferro<idx><h>Ferro, Scipione del</h></idx> (1465<ndash />1526), de la Universidad de Bologna, resolvió la <q>cúbica reducida,</q> 
+				<me>ax^3 + cx + d = 0.</me>
+			Mantuvo en absoluto secreto esta solución.  Esto puede parecer sorprendente hoy en día, cuando los matemáticos suelen estar muy interesados en publicar sus resultados, pero en durante el Renacimiento Italiano el secretismo era costumbre. Los cargos académicos no eran fáciles de mantener y dependían de ganar competencias públicas.  Estos desafíos podían ser declarados en cualquier momento.  En consecuencia cualquier nuevo descubrimiento de importancia era un arma valiosa en una competencia de ese tipo. Si un oponente presentaba una lista de problemas a resolver, del Ferro podía a su vez presentar una lista de cúbicas reducidas.  Mantuvo el secreto de su descubrimiento durante toda su vida, comunicándoselo en el lecho de muerte a su estudiante Antonio Fior<idx><h>Fior, Antonio</h></idx> (ca. 1506<ndash />?).</p> 
+
+			<p>Si bien Fior no era igual a su tutor, de inmediato lanzó un desafío a Niccolo Fontana (1499<ndash />1557).  Fontana era conocido como Tartaglia<idx><h>Tartaglia</h></idx> (el Tartamudo).  Cuando joven había recibido un golpe de espada por parte de un soldado francés durante un ataque a su aldea. Sobrevivió la feroz herida, pero mantuvo el defecto de la dicción por el resto de su vida.  Tartaglia envió a Fior una lista de 30 problemas matemáticos variados; Fior respondió enviando a Tartaglia una lista de 30 cúbicas reducidas.  Tartaglia ya sea podría resolver todos los problemas de la lista o fallar absolutamente.  Luego de un gran esfuerzo Tartaglia finalmente tovo éxito en resolver la cúbica reducida y venció a Fior, quien pasó al olvido.</p>
+
+			<p>En este momento otro matemático, Gerolamo Cardano<idx><h>Cardano, Gerolamo</h></idx> (1501<ndash />1576), entra en el relato.  Cardano le escribió a Tartaglia, rogándole que le diera la solución de la cúbica reducida.  Tartaglia se rehusó a varias de sus súplicas, pero finalmente reveló la solución a Cardano después que este último jurara que no publicaría el secreto ni se lo transmitiría a nadie más. Usando lo que había aprendido de Tartaglia, Cardano finalmente resolvió la ecuación cúbica general 
+				<me>a x^3 + bx^2 +cx +d = 0.</me>
+			Cardano compartió el secreto con su pupilo, Ludovico Ferrari<idx><h>Ferrari, Ludovico</h></idx> (1522<ndash />1565), quien resolvió la ecuación general de cuarto grado, 
+				<me>a x^4 + b x^3 + cx^2 + d x + e = 0.</me>
+			En 1543, Cardano y Ferrari esxaminaronlos trabajos de del Ferro y descubrieron que él también había resuelto  la cúbica reducida.  Cardano sintió que esto le absolvía de su compromiso con Tartaglia, de manera que publicó las soluciones en <booktitle>Ars Magna</booktitle> (1545), dándole crédito a del Ferro por resolver el caso especial de la cúbica.  Esto resultó en una amarga disputa entre Cardano y Tartaglia, quien publicó la historia del juramento un año después.</p>
+
+		</subsection>
+
+	</section>
+
+	<xi:include href="./exercises/poly.xml" />	
+
+	<exercises xml:id="poly-exercises-cubics-quartics">
+		<title>Ejercicios Adicionales:  Resolviendo las Ecuaciones Cúbica y Cuártica</title>
+
+		<exercise>
+			<statement>
+				<p>Resuelva la ecuación cuadrática general
+					<me>ax^2 + bx + c = 0</me>
+				obteniendo
+					<me>x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.</me>
+				El <term>discriminante</term><idx><h>Discriminante</h><h>de la ecuación cuadrática</h></idx> de la ecuación cuadrática <m>\Delta = b^2 - 4ac</m> determina la naturaleza de las soluciones de la ecuación.  Si <m>\Delta \gt 0</m>, la ecuación tiene dos soluciones reales diferentes.  Si <m>\Delta = 0</m>, la ecuación tiene una única solución real repetida. Si <m>\Delta \lt 0</m>, existen dos soluciones imaginarias diferentes.</p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>Muestre que cualquier ecuación cúbica de la forma
+					<me>x^3 + bx^2 + cx + d = 0</me> puede ser reducida a la forma <m>y^3 + py + q = 0</m> haciendo la sustitución <m>x = y - b/3</m>.</p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>Demuestre que las raíces cúbicas de 1 están dadas por
+					<md>
+						<mrow>\omega &amp; = \frac{-1+ i \sqrt{3}}{2}</mrow>
+						<mrow>\omega^2 &amp; = \frac{-1- i \sqrt{3}}{2}</mrow>
+						<mrow>\omega^3 &amp; = 1.</mrow>
+					</md></p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>Haga la sustitución
+					<me>y = z - \frac{p}{3 z}</me>
+				para <m>y</m> en la ecuación <m>y^3 + py + q = 0</m> ay obtenga dos soluciones <m>A</m> y <m>B</m> para <m>z^3</m>.</p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>Muestre que el producto de las soluciones obtenidas en (4) es <m>-p^3/27</m>, deduciendo que <m>\sqrt[3]{A B} = -p/3</m>.</p>
+			</statement>
+		</exercise>
+
+		<exercise>
+<!--  2010/05/18 R Beezer, changed one omega to omega-squared in general solution below -->
+<!-- % RAB 2010/08/26  Two seemingly spurious \  necessary for translation by tex4ht to Sage -->
+			<statement>
+				<p>Demuestre que las posibles soluciones para <m>z</m> en (4) están dadas por
+					<me>\sqrt[3]{A}, \quad \omega \sqrt[3]{A}, \quad \omega^2 \sqrt[3]{A}, \quad \sqrt[3]{B}, \quad \omega \sqrt[3]{B}, \quad \omega^2 \sqrt[3]{B}</me>
+				y use este resultado para mostrar que las  tres posibles soluciones para <m>y</m> son
+					<me>\omega^i \sqrt[3]{-\frac{q}{2}+ \sqrt{\ \frac{p^3}{27}  + \frac{q^2}{4}}  } + \omega^{2i} \sqrt[3]{-\frac{q}{2}- \sqrt{\ \frac{p^3}{27}  + \frac{q^2}{4}}  },</me>
+				donde <m>i = 0, 1, 2</m>.</p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>El <term>discriminante</term><idx><h>Discriminante</h><h>de la ecuación cúbica</h></idx> de la ecuación cúbica es  
+					<me>\Delta = \frac{p^3}{27}  + \frac{q^2}{4}.</me>
+				Muestre que <m>y^3 + py + q=0</m> 
+					<ol>
+						<li><p>tiene tres raíces reales, de las que al menos dos son iguales, si <m>\Delta = 0</m>.</p></li>
+ 
+						<li><p>tiene una raíz real y dos raíces complejas no reales conjugadas si <m>\Delta \gt 0</m>.</p></li>
+ 
+						<li><p>tiene tres raíces reales distintas si <m>\Delta \lt 0</m>.</p></li>
+					</ol></p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>Resueva las siguientes ecuaciones cúbicas.
+					<ol>
+
+						<li><p><m>x^3 - 4x^2 + 11 x + 30 = 0</m></p></li>
+
+						<li><p><m>x^3 - 3x +5 = 0</m></p></li>
+
+						<li><p><m>x^3 - 3x +2 = 0</m></p></li>
+
+						<li><p><m>x^3 + x + 3 = 0</m></p></li>
+
+					</ol></p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>Muestre que la ecuación cuártica general
+					<me>x^4 + ax^3 + bx^2 + cx + d = 0</me>
+				se reduce a
+					<me>y^4 + py^2 + qy + r = 0</me>
+				busando la sustitución <m>x = y - a/4</m>.</p>
+			</statement>
+		</exercise>
+
+
+		<exercise xml:id="exercise-cubic-poly-10">
+			<statement>
+				<p>Muestre que
+					<me>\left( y^2 + \frac{1}{2} z \right)^2 = (z - p)y^2 - qy +  \left( \frac{1}{4} z^2 - r \right).</me></p>
+			</statement>
+		</exercise>
+
+		<exercise xml:id="exercise-cubic-poly-11">
+			<statement>
+				<p>Muestre que el lado derecho del Ejercicio<nbsp /><xref ref="exercise-cubic-poly-10" /> puede ser puesto en la forma <m>(my + k)^2</m> si y solo si
+					<me>q^2 - 4(z - p)\left( \frac{1}{4} z^2 - r \right) = 0.</me></p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>Del Ejercicio<nbsp /><xref ref="exercise-cubic-poly-11" /> obtenga la <term>ecuación cúbica resolvente</term><idx><h>Resolvente cúbica</h></idx>
+					<me>z^3 - pz^2 - 4rz + (4pr - q^2) = 0.</me>
+				Resolviendo la resolvente cúbica, ponga la ecuación encontrada en el Ejercicio<nbsp /><xref ref="exercise-cubic-poly-10" /> en la forma
+					<me>\left( y^2 + \frac{1}{2} z \right)^2 = (my + k)^2</me>
+				para obtener la solución de la ecuación cuártica.</p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>Use este método para resolver las siguientes ecuaciones cuárticas.
+					<ol>
+
+						<li><p><m>x^4 - x^2 - 3x + 2 = 0</m></p></li>
+
+						<li><p><m>x^4 +  x^3 - 7 x^2 - x + 6 = 0</m></p></li>
+
+						<li><p><m>x^4 -2 x^2 + 4 x -3 = 0</m></p></li>
+
+						<li><p><m>x^4 - 4 x^3 + 3x^2 - 5x +2 = 0</m></p></li>
+
+					</ol></p>
+			</statement>
+		</exercise>
+
+	</exercises>
+
+	<xi:include href="./sage/poly-sage.xml" />
+	<xi:include href="./sage/poly-sage-exercises.xml" />
+
+</chapter>
+ 

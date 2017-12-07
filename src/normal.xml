@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+
+
+<chapter xml:id="normal" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>Subgrupos Normales y Grupos Cociente</title>
+
+	<introduction>
+		<p>Si <m>H</m> es un subgrupo de un grupo <m>G</m>, entonces las clases laterales derechas no son siempre las mismas que las clases laterales izquierdas; es decir, no siempre se cumple que <m>gH = Hg</m> para todo <m>g \in G</m>.  Los subgrupos que tienen esta propiedad juegan un papel crítico en la teoría de grupos<mdash />permiten la construcción de una nueva clase de grupos, llamados grupos cociente.  Los grupos cociente pueden ser estudiados directamente o usando homomorfismos, una generalización de los isomorfismos. Estudiaremos homomorfismos en el Capítulo<nbsp /><xref ref="homomorph" />.</p>
+	</introduction>
+
+<!-- % TWJ, 2010/03/31 -->
+<!-- % The chapter HOMOMORPHISMS AND FACTOR GROUPS is now -->
+<!-- % two chapters: (10) NORMAL SUBGROUPS AND FACTOR GROUPS -->
+<!-- % (11) HOMOMORPHISMS -->
+
+
+	<section xml:id="section-factor-groups">
+		<title>Grupos Cociente y Subgrupos Normales</title>
+
+		<subsection xml:id="normal-subsection-normal-subgroups">
+			<title>Subgrupos Normales</title>
+
+			<p>Un subgrupo <m>H</m> de un grupo <m>G</m> es <term>normal</term><idx><h>Normal</h><h>subgrupo</h></idx><idx><h>Subgrupo normal</h></idx> en G se <m>gH = Hg</m> para todo <m>g \in G</m>. Es decir, un subgrupo normal de un grupo <m>G</m> es un subgrupo para el que las clases laterales derechas e izquierdas coinciden.</p>
+ 
+
+			<example xml:id="example-normal-abelian">
+				<p>Sea <m>G</m> un grupo abeliano. Todo subgrupo <m>H</m> de <m>G</m> es un subgrupo normal.  Como <m>gh = hg</m> para todo <m>g \in G</m> y <m>h \in H</m>, siempre se cumple que <m>gH = Hg</m>.</p>
+			</example>
+ 
+			<example xml:id="example-normal-s3">
+				<p>Sea <m>H</m> el subgrupo de <m>S_3</m> que consiste de los elementos <m>(1)</m> y <m>(12)</m>. Como 
+					<me>(123) H = \{ (123), (13) \} \quad \text{and} \quad H (123) = \{ (123), (23) \},</me>
+				<m>H</m> no puede ser un subgrupo normal de <m>S_3</m>.  Sin embargo, el subgrupo <m>N</m>, que consiste de las permutaciones <m>(1)</m>, <m>(123)</m>, y <m>(132)</m>, es normal pues las clases laterales de <m>N</m> son 
+					<md>
+						<mrow>N  =   \{ (1), (123), (132) \}</mrow>
+						<mrow>(12) N =  N (12)  =  \{ (12), (13), (23) \}.</mrow>
+					</md></p>
+			</example>
+ 
+			<p>El siguiente teorema es fundamental para nuestra comprensión de los subgrupo normales.</p>
+ 
+			<theorem xml:id="theorem-normal-equivalents">
+				<statement>
+					<p>Sea <m>G</m> un grupo y <m>N</m> un subgrupo de <m>G</m>. Entonces las siguientes proposiciones son equivalentes.
+					<ol>
+
+						<li><p>El subgrupo <m>N</m> es normal en <m>G</m>.</p></li>
+
+						<li><p>Para todo <m>g \in G</m>, <m>gNg^{-1} \subset N</m>.</p></li>
+ 
+						<li><p>Para todo <m>g \in G</m>, <m>gNg^{-1} = N</m>.</p></li>
+ 
+					</ol></p>
+				</statement>
+				<proof>
+					<p>(1) <m>\Rightarrow</m> (2). Como <m>N</m> es normal en <m>G</m>, <m>gN = Ng</m> para todo <m>g \in G</m>. Luego, para un  <m>g \in G</m> dado y para <m>n \in N</m>, existe <m>n'</m> en <m>N</m> tal que <m>g n = n' g</m>. Por lo tanto, <m>gng^{-1} = n' \in N</m> y <m>gNg^{-1} \subset N</m>.</p>
+ 
+ 					<p>(2)  <m>\Rightarrow</m> (3).  Sea <m>g \in G</m>. Como <m>gNg^{-1} \subset N</m>, solo debemos demostrar que <m>N \subset gNg^{-1}</m>. Para <m>n \in N</m>,  <m>g^{-1}ng=g^{-1}n(g^{-1})^{-1} \in N</m>.  Luego, <m>g^{-1}ng = n'</m> para algún <m>n' \in N</m>. Por lo tanto, <m>n = g n' g^{-1}</m> está en <m>g N g^{-1}</m>.</p>
+  
+					<p>(3) <m>\Rightarrow</m> (1). Supongamos que <m>gNg^{-1} = N</m> para todo <m>g \in G</m>. Entonces para cualquier <m>n \in N</m> existe <m>n' \in N</m> tal que <m>gng^{-1} = n'</m>.  Por lo tanto, <m>gn = n' g</m> y <m>gN \subset Ng</m>. Similarmente, <m>Ng \subset gN</m>.</p>
+				</proof>
+			</theorem>
+
+		</subsection>
+
+		<subsection xml:id="normal-subsection-factor-groups">
+			<title>Grupos cociente</title>
+
+			<p>Si <m>N</m> es un subgrupo normal de un grupo <m>G</m>, entonces las clases laterales de <m>N</m> en <m>G</m> forman un grupo <m>G/N</m> con la operación <m>(aN) (bN) = abN</m>. Este grupo se llama <term>cociente</term><idx><h>Cociente</h><h>grupo</h></idx>  de <m>G</m> por <m>N</m>.  <notation><usage>G/N</usage><description>grupo cociente de <m>G</m> mód <m>N</m></description></notation> Nuestra primera tarea es demostrar que <m>G/N</m> es realmente un grupo.</p>  
+ 
+			<theorem>
+				<statement>
+					<p>Sea <m>N</m> un subgrupo normal de un grupo <m>G</m>. Las clases laterales de <m>N</m> en <m>G</m> forman un grupo <m>G/N</m> de orden <m>[G:N]</m>.</p>
+				</statement>
+				<proof>
+					<p>La operación de grupo en <m>G/N</m> es <m>(a N ) (b N)= a b N</m>.  Debemos verificar que esta operación está bien definida; es decir, el producto en el grupo debe ser independiente de la elección de representantes para las clases laterales. Sean <m>aN = bN</m> y <m>cN = dN</m>. Debemos mostrar que
+						<me>(aN) (cN) = acN = bd N = (b N)(d N).</me>
+					Entonces <m>a = b n_1</m> y <m>c = d n_2</m> para algún <m>n_1</m> y algún <m>n_2</m> en <m>N</m>. Luego, 
+						<md>
+							<mrow>acN &amp; = b n_1 d n_2 N</mrow>
+							<mrow>&amp; = b n_1 d N</mrow>
+							<mrow>&amp; = b n_1 N d</mrow>
+							<mrow>&amp; = b N d</mrow>
+							<mrow>&amp; = b d N.</mrow>
+						</md>
+					El resto del teorema es fácil: <m>eN = N</m> es la identidad y <m>g^{-1} N</m> es el inverso de <m>gN</m>. El orden de <m>G/N</m> es, por supuesto, el número de clases laterales de <m>N</m> en <m>G</m>.</p>
+				</proof>
+			</theorem>
+ 
+			<p>Es muy importante recordar que los elementos de un grupo cociente son  <em>conjuntos de elementos</em> en el grupo original.</p>
+
+			<example xml:id="example-normal-factor-s3">
+				<p>Considere el subgrupo normal de <m>S_3</m>, <m>N = \{ (1), (123), (132)  \}</m>. Las clases laterales de <m>N</m> en <m>S_3</m> son <m>N</m> y <m>(12) N</m>. El grupo cociente <m>S_3 / N</m> tiene la siguiente tabla de multiplicación.</p>
+
+				<sidebyside width="100%"> <!-- math table -->
+					<p><me>\begin{array}{c|cc}
+						<![CDATA[& N & (12) N \\ \hline
+						N & N & (12) N \\
+						(12) N & (12) N & N]]>
+					\end{array}</me></p>
+				</sidebyside>
+
+				<p>Este grupo es isomorfo a <m>{\mathbb Z}_2</m>. Al inicio, multiplicar clases laterales puede parecer complicado y extraño; sin embargo, note que  <m>S_3 / N</m> es un grupo más pequeño. El grupo cociente entrega cierta información acerca de <m>S_3</m>.  En realidad, <m>N = A_3</m>, es el conjunto de permutaciones pares, y <m>(12) N = \{ (12), (13), (23) \}</m> es el conjunto de permutaciones impares. La información capturada en <m>G/N</m> es la paridad; es decir, multiplicar dos elementos pares o dos elementos impares resulta en una permutación par, mientra que multiplicar un elemento par con un impar resulta en una permutación impar.</p>
+			</example>
+ 
+			<example xml:id="example-normal-factor-z3">
+				<p>Considere el subgrupo normal <m>3 {\mathbb Z}</m> de <m>{\mathbb Z}</m>. Las clases laterales de <m>3 {\mathbb Z}</m> en <m>{\mathbb Z}</m> son 
+					<md>
+						<mrow>0 + 3 {\mathbb Z} &amp; = \{ \ldots, -3, 0, 3, 6, \ldots \}</mrow>
+						<mrow>1 + 3 {\mathbb Z} &amp; = \{ \ldots, -2, 1, 4, 7, \ldots \}</mrow>
+						<mrow>2 + 3 {\mathbb Z} &amp; = \{ \ldots, -1, 2, 5, 8, \ldots \}.</mrow>
+					</md>
+				El grupo <m>{\mathbb Z}/ 3 {\mathbb Z}</m> está dado por la tabla de multiplicación de más abajo.</p> 
+
+				<sidebyside width="100%"> <!-- math table -->
+					<p><me>\begin{array}{c|ccc}
+					<![CDATA[+ & 0 + 3{\mathbb Z} & 1 + 3{\mathbb Z} & 2 + 3{\mathbb Z} \\\hline
+					0 + 3{\mathbb Z} & 0 + 3{\mathbb Z} & 1 + 3{\mathbb Z} & 2 + 3{\mathbb Z} \\
+					1 + 3{\mathbb Z} & 1 + 3{\mathbb Z} & 2 + 3{\mathbb Z} & 0 + 3{\mathbb Z} \\
+					2 + 3{\mathbb Z} & 2 + 3{\mathbb Z} & 0 + 3{\mathbb Z} & 1 + 3{\mathbb Z}]]>
+					\end{array}</me></p>
+				</sidebyside>
+
+				<p>En general, el subgrupo <m>n {\mathbb Z}</m> de <m>{\mathbb Z}</m> es normal. Las clases laterales de <m>{\mathbb Z } / n {\mathbb Z}</m> son 
+					<md>
+						<mrow>n {\mathbb Z}</mrow>
+						<mrow>1 + n {\mathbb Z}</mrow>
+						<mrow>2 + n {\mathbb Z}</mrow>
+						<mrow>\vdots</mrow>
+						<mrow>(n-1) + n {\mathbb Z}.</mrow>
+					</md>
+				La suma de clases laterales <m>k + {\mathbb Z}</m> y <m>l + {\mathbb Z}</m> es <m>k+l + {\mathbb Z}</m>. Note que hemos escrito las clases laterales de forma aditiva, pues la operación del grupo es la adición de enteros.</p>
+			</example>
+
+			<example xml:id="example-normal-factor_dn">
+				<p>Considere el grupo dihedral <m>D_n</m>, generado por dos elementos <m>r</m> y <m>s</m>, que satisfacen las relaciones 
+					<md>
+						<mrow>r^n &amp; = \identity</mrow>
+						<mrow>s^2 &amp; = \identity</mrow>
+						<mrow>srs &amp; = r^{-1}.</mrow>
+					</md>
+				El elemento <m>r</m> en realidad genera el subgrupo cíclico de las rotaciones, <m>R_n</m>, en <m>D_n</m>.  Como <m>srs^{-1} = srs = r^{-1} \in R_n</m>, el grupo de rotaciones es un subgrupo normal de <m>D_n</m>; por lo tanto, <m>D_n / R_n</m> es un grupo.  Como hay exactamente dos elementos en este grupo, debe ser isomorfo a <m>{\mathbb Z}_2</m>.</p>
+			</example>
+
+		</subsection>
+	</section>
+
+	<section xml:id="section-simplicity-of-an">
+		<title>La Simplicidad del Grupo Alternante</title>
+
+		<introduction>
+ 
+			<p>De especial interés resultan ser los grupos que no tienen subgrupos normales propios no triviales. Tales grupos se llaman <term>grupos simples</term><idx><h>Simple</h><h>grupo</h></idx><idx><h>Grupo simple</h></idx>.  Por supuesto, ya tenemos una clase completa de grupos simples, <m>{\mathbb Z}_p</m>, donde <m>p</m> es primo.  Estos grupos son trivialmente simples pues no tienen otro subgrupo propio que no sea solamente la identidad. Otros ejemplos de grupos simpple no son tan fáciles de encontrar. Podemos, sin embargo, mostar que el grupo alternante, <m>A_n</m>, es simple para <m>n \geq 5</m>. La demostración de este resultado requiere de varios lemas.</p>
+	 
+			<lemma xml:id="lemma-1-normal-3cycle">
+				<statement>
+					<p>El grupo alternante <m>A_n</m> es generado por <m>3</m>-ciclos para <m>n \geq 3</m>.</p>
+				</statement>
+				<proof>
+					<p>Para mostrar que los 3-ciclos generan <m>A_n</m>, solo necesitamos mostrar que cualquier par de transpociones puede ser escrito como el producto de 3-ciclos. Como <m>(a b) = (b a)</m>, todo par de transpociciones debe ser uno de los siguientes: 
+						<md>
+							<mrow>(ab)(ab) &amp; = \identity</mrow>
+							<mrow>(ab)(cd) &amp; = (acb)(acd)</mrow>
+							<mrow>(ab)(ac) &amp; = (acb).</mrow>
+						</md></p>
+				</proof>
+			</lemma>
+
+			<lemma xml:id="lemma-2-normal-3cycle">
+				<statement>
+					<p>Sea <m>N</m> un subgrupo normal de <m>A_n</m>, donde <m>n \geq 3</m>. Si <m>N</m> contiene un 3-ciclo, entonces <m>N = A_n</m>.</p>
+				</statement>
+				<proof>
+					<p>Demostraremos primero que <m>A_n</m> es generado por 3-ciclos de la forma específica <m>(ijk)</m>, donde <m>i</m> y <m>j</m> están fijos en <m>\{ 1, 2, \ldots, n \}</m> y hacemos variar <m>k</m>. Cada 3-ciclo es el producto de 3-ciclos de este tipo, pues
+						<md>
+							<mrow>(i a j) &amp; = (i j a)^2 </mrow>
+							<mrow>(i a b) &amp; = (i j b) (i j a)^2</mrow>
+							<mrow>(j a b) &amp; = (i j b)^2 (i j a)</mrow>
+							<mrow>(a b c) &amp; = (i j a)^2 (i j c) (i j b)^2 (i j a).</mrow>
+						</md>
+					Ahora supongamos que <m>N</m> es un subgrupo normal no trivial de <m>A_n</m> para <m>n  \geq 3</m>  tal que <m>N</m> contiene un 3-ciclo de la forma <m>(i j a)</m>. Usando la normalidad de <m>N</m>, vemos que 
+						<me>[(i j)(a k)](i j a)^2 [(i j)(a k)]^{-1} = (i j k)</me>
+					está en <m>N</m>. Luego, <m>N</m> debe contener todos los 3-ciclos <m>(i j k)</m>  para <m>1 \leq k \leq n</m>. Por el Lema<nbsp /><xref ref="lemma-1-normal-3cycle" />, estos 3-ciclos generan <m>A_n</m>; luego, <m>N = A_n</m>.</p>
+				</proof>
+			</lemma>
+	 
+			<lemma xml:id="lemma-3-normal-3cycle">
+				<statement>
+					<p>Para <m>n \geq 5</m>, todo subgrupo normal no trivial <m>N</m> de <m>A_n</m> contiene un 3-ciclo.</p>
+				</statement>
+				<proof>
+					<p>Sea <m>\sigma</m> un elemento arbitrario, distinto de la identidad,en un subgrupo normal <m>N</m>. Existen varias posibles estructuras de ciclos para <m>\sigma</m>.
+						<ul>
+	 
+							<li><p><m>\sigma</m> es un 3-ciclo.</p></li>
+	 
+							<li><p><m>\sigma</m> es el producto de ciclos disjuntos, <m>\sigma = \tau(a_1 a_2 \cdots a_r) \in N</m>, con <m>r \gt 3</m>.</p></li>
+	 
+							<li><p><m>\sigma</m> es el producto de ciclos disjuntos, <m>\sigma = \tau(a_1 a_2 a_3)(a_4 a_5 a_6)</m>.</p></li>
+
+							<li><p><m>\sigma = \tau(a_1 a_2 a_3)</m>, donde <m>\tau</m> es el producto de 2-ciclos disjuntos.</p></li>
+
+							<li><p><m>\sigma = \tau (a_1 a_2) (a_3 a_4)</m>, donde <m>\tau</m> es el producto de un número par de 2-ciclos disjuntos.</p></li>
+	 
+						</ul>
+					Si <m>\sigma</m> es un 3-ciclo, entonces estamos listos. Si <m>N</m> contiene un producto de ciclos disjuntos, <m>\sigma</m>, y al menos uno de esos ciclos tiene largo mayor a 3, digamos <m>\sigma = \tau(a_1 a_2 \cdots a_r)</m>, entonces   
+						<me>(a_1 a_2 a_3)\sigma(a_1 a_2 a_3)^{-1}</me>
+					está en <m>N</m> pues <m>N</m> es normal; luego,
+						<me>\sigma^{-1}(a_1 a_2 a_3)\sigma(a_1 a_2 a_3)^{-1}</me>
+					también está en <m>N</m>. Como
+						<md>
+							<mrow>\sigma^{-1}(a_1 a_2 a_3)\sigma(a_1 a_2 a_3)^{-1} &amp; = \sigma^{-1}(a_1 a_2 a_3)\sigma(a_1 a_3 a_2)</mrow>
+							<mrow>&amp; = (a_1 a_2 \cdots a_r)^{-1}\tau^{-1}(a_1 a_2 a_3) \tau(a_1 a_2 \cdots a_r)(a_1 a_3 a_2)</mrow>
+							<mrow>&amp; = (a_1 a_r a_{r-1} \cdots a_2 )(a_1 a_2 a_3) (a_1 a_2 \cdots a_r)(a_1 a_3 a_2)</mrow>
+							<mrow>&amp; = (a_1 a_3 a_r),</mrow>
+						</md>
+					<m>N</m> debe contener un 3-ciclo; luego, <m>N = A_n</m>.</p>
+
+					<p>Ahora supongamos que <m>N</m> contiene un producto disjunto de la forma
+						<me>\sigma = \tau(a_1 a_2 a_3)(a_4 a_5 a_6).</me>
+					Entonces
+						<me>\sigma^{-1}(a_1 a_2 a_4)\sigma(a_1 a_2 a_4)^{-1} \in N</me>
+					pues
+						<me>(a_1 a_2 a_4)\sigma(a_1 a_2 a_4)^{-1} \in N.</me>
+					Así
+						<md>
+							<mrow>\sigma^{-1}(a_1 a_2 a_4) \sigma(a_1 a_2 a_4)^{-1} &amp; = [ \tau (a_1 a_2 a_3) (a_4 a_5 a_6) ]^{-1}  (a_1 a_2 a_4) \tau (a_1 a_2 a_3) (a_4 a_5 a_6) (a_1 a_2 a_4)^{-1}</mrow>
+							<mrow>&amp; = (a_4 a_6 a_5) (a_1 a_3 a_2) \tau^{-1}(a_1 a_2 a_4) \tau (a_1 a_2 a_3) (a_4 a_5 a_6) (a_1 a_4 a_2)</mrow>
+							<mrow>&amp; = (a_4 a_6 a_5)(a_1 a_3 a_2) (a_1 a_2 a_4) (a_1 a_2 a_3) (a_4 a_5 a_6)(a_1 a_4 a_2)</mrow>
+							<mrow>&amp; = (a_1 a_4 a_2 a_6 a_3).</mrow>
+						</md>
+					Así <m>N</m> contiene un ciclo disjunto de largo mayor a 3, y podemos aplicar el caso anterior.</p>
+
+					<p>Supongamos que <m>N</m> es un producto disjunto de la forma <m>\sigma = \tau(a_1 a_2 a_3)</m>, donde <m>\tau</m> es el producto disjunto de 2-ciclos. Como <m>\sigma \in N</m>, <m>\sigma^2 \in N</m>, y
+						<md>
+							<mrow>\sigma^2 &amp; = \tau(a_1 a_2 a_3)\tau(a_1 a_2 a_3)</mrow>
+							<mrow>&amp; =(a_1 a_3 a_2).</mrow>
+						</md>
+					Así <m>N</m> contiene un 3-ciclo.</p>
+
+					<p>El único caso que nos queda es un producto disjunto de la forma
+						<me>\sigma = \tau (a_1 a_2) (a_3 a_4),</me>
+					donde <m>\tau</m> es el producto de un número par de 2-ciclos disjuntos. Pero 
+						<me>\sigma^{-1}(a_1 a_2 a_3)\sigma(a_1 a_2 a_3)^{-1}</me>
+					está en <m>N</m> pues <m>(a_1 a_2 a_3)\sigma(a_1 a_2 a_3)^{-1}</m> está en <m>N</m>; de manera que 
+						<md>
+							<mrow>\sigma^{-1}(a_1 a_2 a_3)\sigma(a_1 a_2 a_3)^{-1} &amp; = \tau^{-1} (a_1 a_2) (a_3 a_4) (a_1 a_2 a_3)  \tau (a_1 a_2)(a_3 a_4)(a_1 a_2 a_3)^{-1}</mrow>
+							<mrow>&amp; = (a_1 a_3)(a_2 a_4).</mrow>
+						</md>
+					Como  <m>n \geq 5</m>, podemos encontrar <m>b \in \{1, 2, \ldots, n \}</m> de manera que <m>b \neq a_1, a_2, a_3, a_4</m>. Sea <m>\mu = (a_1 a_3 b)</m>. Entonces
+						<me>\mu^{-1} (a_1 a_3)(a_2 a_4) \mu (a_1 a_3)(a_2 a_4) \in N</me>
+					y
+						<md>
+							<mrow>\mu^{-1} (a_1 a_3)(a_2 a_4) \mu (a_1 a_3)(a_2 a_4) &amp; = (a_1 b a_3)(a_1 a_3)(a_2 a_4) (a_1 a_3 b)(a_1 a_3)(a_2 a_4)</mrow>
+							<mrow>&amp; = (a_1 a_3 b ).</mrow>
+						</md>
+					Por lo tanto, <m>N</m> contiene un 3-ciclo. Esto completa la demostración del lema.</p>
+				</proof>
+			</lemma>
+
+	<!-- TWJ - 1/13/2014 -->
+	<!-- nontrivial added to the lemma statement.  Suggested by M. Faucette. -->
+	 
+			<theorem xml:id="theorem-an-simple">
+				<statement>
+					<p>El grupo alternante, <m>A_n</m>, es simple para <m>n \geq 5</m>.</p>
+				</statement>
+				<proof>
+					<p>Sea <m>N</m> un subgrupo normal no trivial de <m>A_n</m>. Por el Lema<nbsp /><xref ref="lemma-3-normal-3cycle" />, <m>N</m> contiene un 3-ciclo. Por el Lema<nbsp /><xref ref="lemma-2-normal-3cycle" />, <m>N = A_n</m>; por lo tanto, <m>A_n</m> no contiene ningún subgrupo normal que sea propio y no trivial para <m>n \geq 5</m>.</p>
+				</proof> 
+			</theorem>
+
+			<xi:include href="./sage/normal-info.xml" />
+
+		</introduction>
+
+		<subsection xml:id="normal-subsection-historical-note">
+			<title>Nota Histórica</title>
+				<p>Uno de los principales problemas de la teoría de grupos finitos ha sido el de clasificar todos los grupos finitos simples<idx><h>Simple</h><h>grupo</h></idx>. Este problema tiene más de un siglo y recién fue resuelto en las últimas décadas del siglo XX.  En cierto sentido, los grupos finitos simples son los bloques para construir todos los grupos finitos. Los primeros grupos simples no abelianos en ser descubiertos fueron los grupos alternantes. Galois fue el primero en demostrar que <m>A_5</m> era simple. Más tarde, matemáticos tales como C. Jordan<idx><h>Jordan, C.</h></idx> y L. E. Dickson<idx><h>Dickson, L. E.</h></idx> encontraron varias familias infinitas de grupos de matrices que eran simples. Otras familias de grupos simples fueron descubiertas en la década de 1950.  Alrededor del 1900, William Burnside<idx><h>Burnside, William</h></idx> conjecturó que todos los grupos simples no abelianos debían tener orden par. En 1963, W. Feit<idx><h>Feit, W.</h></idx> y J. Thompson<idx><h>Thompson, J.</h></idx> demostraron la conjetura de Burnside y publicaron sus resultados en el trabajo <q>Solvability of Groups of Odd Order,</q> que apareció en el <booktitle>Pacific Journal of Mathematics</booktitle>. Su demostración, de unas 250 páginas, dio impulso a un programa en los 1960s y los 1970s para clasificar todos los grupos finitos simples.  Daniel Gorenstein<idx><h>Gorenstein, Daniel</h></idx> fue el organizador de este notable esfuerzo. Uno de los últimos grupos simples fue el <q>Monster,</q> descubierto por R. Greiss<idx><h>Greiss, R.</h></idx>. El Monster, un grupo de matrices de 196,833<m>\times</m>196,833, es uno de  los 26 grupos simples esporádicos, o especiales. Estos grupos simples esporádicos son grupos que no calzan en ninguna familia infinita de grupos simples. Algunos de los grupos esporádicos juegan un rol importante en la física.</p>
+
+		</subsection> 
+
+	</section>
+ 
+	<xi:include href="./exercises/normal.xml" />
+	<xi:include href="./sage/normal-sage.xml" />
+	<xi:include href="./sage/normal-sage-exercises.xml" />
+
+</chapter>
+ 
+ 

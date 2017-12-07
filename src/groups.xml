@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<chapter xml:id="groups" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>Grupos</title>
+
+	<introduction>
+		<p>Comenzaremos nuestro estudio de estructuras algebraicas investigando conjuntos dotados de una operación que satisfaga ciertos axiomas razonables; es decir, queremos definir una operación en un conjunto de forma de generalizar estructuras familiares como los enteros <m>{\mathbb Z}</m> con la operación única de suma, o matrices invertibles de <m>2 \times 2</m> con la operación única de multiplicación de matrices.  Los enteros y las matrices de <m>2 \times 2</m>, junto con sus respectivas operaciones únicas, son ejemplos de estructuras algebraicas conocidas como grupos.</p>
+
+		<p>La teoría de grupos ocupa una posición central en matemáticas. La teoría moderna de grupos surgió del intento de encontrar las raíces de un polinomio en términos de sus coeficientes. Los grupos tienen hoy un rol central en áreas tales como teoría de códigos, conteo, y el estudio de simetrías; muchas áreas de la biología, la química, y la física se han visto beneficiadas por la teoría de grupos.</p>
+ 	</introduction>
+
+	<section xml:id="section-mod-n-sym">
+		<title>Clases de Equivalencia de Enteros y Simetrías</title>
+ 
+ 		<introduction>
+
+			<p>Investiguemos ahora ciertas estructuras matemáticas que pueden ser vistas como conjuntos con una sola operación.</p>
+ 
+ 		</introduction>
+
+		<subsection xml:id="groups-subsection-integers-mod-n">
+			<title>Los Enteros módulo <m>n</m></title>
+
+			<p>Los enteros mód <m>n</m> se han vuelto indispensables en la teoría y las aplicaciones del álgebra.  En matemáticas se usan en criptografía, teoría de códigos, y la detección de errores en códigos de identificación.</p>
+
+			<p>Ya hemos visto que dos enteros  <m>a</m> y <m>b</m> son equivalentes mód <m>n</m> si <m>n</m> divide a <m>a - b</m>.  Los enteros mód <m>n</m> también particionan <m>{\mathbb Z}</m> en <m>n</m> distintas clases de equivalencia; denotaremos el conjunto de estas clases de equivalencia por <m>{\mathbb Z}_n</m>. <notation><usage>\mathbb Z_n</usage><description>los enteros módulo <m>n</m></description></notation> Considere los enteros  módulo 12 y la correspondiente partición de los enteros:  
+				<md>
+					<mrow>{[0]} &amp; = \{ \ldots, -12, 0, 12, 24, \ldots \},</mrow>
+					<mrow> {[1]} &amp; = \{ \ldots, -11, 1, 13, 25, \ldots \},</mrow>
+					<mrow> &amp; \vdots</mrow>
+					<mrow> {[11]} &amp; = \{ \ldots, -1, 11, 23, 35, \ldots \}.</mrow>
+				</md>
+			Cuando no haya posibilidad de confusión, usaremos  <m>0, 1, \ldots, 11</m> para indicar las clases de equivalencia <m>{[0]}, {[1]}, \ldots, {[11]}</m> respectivamente.  Podemos hacer aritmética en <m>{\mathbb Z}_n</m>.  Para dos enteros <m>a</m> y <m>b</m>, definimos adición módulo <m>n</m> como  <m>(a + b) \pmod{n}</m>; es decir, el resto de la división de <m>a + b</m> entre <m>n</m>.  Similarmente, la multiplicación módulo <m>n</m> se define como <m>(a  b) \pmod{ n}</m>, el resto de la división de <m>a  b</m> entre <m>n</m>.</p>
+
+			<example xml:id="example-groups-zn-addition">
+				<p>Los siguiente ejemplos ilustran la aritméticas de los enteros módulo <m>n</m>:<md>
+						<mrow>7 + 4  &amp; \equiv  1 \pmod{ 5}   &amp; 7 \cdot 3 &amp; \equiv 1 \pmod{ 5}</mrow> 
+						<mrow>3 + 5  &amp; \equiv  0 \pmod{ 8}   &amp; 3 \cdot 5 &amp; \equiv 7 \pmod{ 8}</mrow>
+						<mrow>3 + 4  &amp; \equiv  7 \pmod{ 12}  &amp; 3 \cdot 4 &amp; \equiv 0 \pmod{ 12}</mrow>
+					</md>.  En particular, notemos que es posible que el producto de dos números no equivalentes a <m>0 </m> módulo <m>n</m> sea equivalente a <m>0 </m> módulo <m>n</m>. 
+				</p>
+			</example>
+
+			<example xml:id="example-groups-zn-arithmetic-laws">
+				<p>La mayoría, pero no todas, las reglas usuales de la aritmética se cumplen para la adición y la multiplicación en <m>{\mathbb Z}_n</m>.  Por ejemplo, no es necesariamente cierto que haya un inverso multiplicativo.  Considere la tabla de multiplicación para <m>{\mathbb Z}_8</m> en el Cuadro<nbsp /><xref ref="table-z8-mult" />.  Note que 2, 4, y 6 no tienen inversos multiplicativos; es decir, para <m>n = 2</m>, 4, o 6, no hay un entero <m>k</m> tal que <m>k n \equiv 1 \pmod{ 8}</m>.</p>
+			</example>
+
+            <table xml:id="table-z8-mult"> <!-- math table -->
+				<caption>Tabla de multiplicación para <m>{\mathbb Z_8}</m></caption>
+
+				<p><me>\begin{array}{c|cccccccc}
+					<![CDATA[\cdot & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+					\hline
+					0       & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+					1       & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+					2       & 0 & 2 & 4 & 6 & 0 & 2 & 4 & 6 \\
+					3       & 0 & 3 & 6 & 1 & 4 & 7 & 2 & 5 \\
+					4       & 0 & 4 & 0 & 4 & 0 & 4 & 0 & 4 \\
+					5       & 0 & 5 & 2 & 7 & 4 & 1 & 6 & 3 \\
+					6       & 0 & 6 & 4 & 2 & 0 & 6 & 4 & 2 \\
+					7       & 0 & 7 & 6 & 5 & 4 & 3 & 2 & 1 ]]>
+					\end{array}</me></p>
+           
+            </table>
+
+			<proposition xml:id="proposition-zn-equiv-classes">
+				<statement>
+					<p>Sea <m>{\mathbb Z}_n</m> el conjunto de clases de equivalencia de los enteros mód <m>n</m> y sean <m>a, b, c \in {\mathbb Z}_n</m>.
+						<ol>
+							<li><p>Adición y multiplicación son conmutativas:
+								<md>
+									<mrow> a + b  &amp; \equiv  b + a \pmod{ n}</mrow>
+									<mrow> a  b   &amp; \equiv  b  a \pmod{ n}. </mrow>
+								</md></p></li>
+
+							<li><p>Adición y multiplicación son asociativas:
+								<md>
+									<mrow> (a + b) + c  &amp; \equiv  a + (b + c)\pmod{ n}</mrow>
+									<mrow> (a  b)  c    &amp; \equiv  a   (b  c) \pmod{ n}.</mrow>
+								</md></p></li>
+
+							<li><p> Hay neutros para ambas operaciones:
+								<md>
+									<mrow> a + 0  &amp; \equiv  a \pmod{ n}</mrow>
+									<mrow> a \cdot  1  &amp; \equiv  a \pmod{ n}.</mrow>
+								</md></p></li>
+
+							<li><p>La multiplicación distribuye sobre la adición: 
+								<me>a  (b  + c)  \equiv a  b + a  c  \pmod{ n}.</me></p></li>
+
+							<li><p>Para cada entero <m>a</m> hay un inverso aditivo <m>-a</m>: 
+								<me> a + (-a)  \equiv 0 \pmod{ n}. </me></p></li>
+
+							<li><p>Sea <m>a</m> un entero no nulo.  Entonces <m>\gcd(a,n) = 1</m> si y solo si hay un inverso multiplicativo <m>b</m> para <m>a \pmod{n}</m>; es decir, un entero no nulo <m>b</m> tal que <me> a  b  \equiv 1 \pmod{ n}.</me></p></li> 
+
+						</ol> </p>
+				</statement>
+
+				<todo>RAB: consider cases in proofs for mathBook XML</todo>
+				<todo>See if id/ref works on items in ordered lists</todo>
+
+				<proof>
+					<p>Demostraremos  (1) y (6) y dejaremos las demás propiedades para ser demostradas en los ejercicios.</p>
+
+					<p>(1) Adición y multiplicación son conmutativas módulo <m>n</m> pues el resto obtenido al dividir <m>a + b</m> entre <m>n</m> es el mismo que el resto obtenido al dividir  <m>b + a</m> entre <m>n</m>.</p>
+				 
+					<p>(6) Supongamos que <m>\gcd(a, n) = 1</m>.  Entonces existen enteros <m>r</m> y <m>s</m> tales que <m>ar + ns = 1</m>.  Como <m>ns = 1 - ar</m>, se cumple que <m>ar \equiv 1 \pmod{n}</m>.  Si <m>b</m> es la clase de equivalencia de <m>r</m>, <m>a b \equiv 1\pmod{n}</m>.</p>
+				 
+					<p>Recíprocamente, supongamos que hay un entero <m>b</m> tal que <m>ab  \equiv 1 \pmod{ n}</m>.  Entonces  <m>n</m> divide a <m>ab -1</m>, de manera que hay un entero <m>k</m> tal que <m>ab - nk = 1</m>.  Sea <m>d = \gcd(a,n)</m>.  Como <m>d</m> divide a <m>ab - nk</m>, <m>d</m> también divide a 1; luego, <m>d = 1</m>.</p>
+				</proof>
+			</proposition>
+		</subsection>
+
+		<subsection xml:id="groups-subsection-symmetries">
+			<title>Simetrías</title>
+
+  			<!-- Symmetries of a rectangle  Replaced diagram with a tikz figure - TWJ 5/4/2010 -->
+			<figure xml:id="figure-groups-rectangle">
+				<caption>Movimientos rígidos de un rectángulo</caption>
+				<image xml:id="groups-rectangle">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1.2]
+						\draw (-3,0) -- (-1.25,0) -- (-1.25,1) -- (-3,1) -- cycle;
+						\draw (3,0) -- (1.25,0) -- (1.25,1) -- (3,1) -- cycle;
+						\draw [->] (-1,0.5) -- (1,0.5);
+						\node [above] at (0,0.5) {\emph{reflexi\'on}};
+						\node [below] at (0,0.5) {\emph{eje horizontal}};
+						\node [above,left] at (-3,1) {$A$};
+						\node [below,left] at (-3,0) {$D$};
+						\node [above,right] at (-1.25,1) {$B$};
+						\node [below,right] at (-1.25,0) {$C$};
+						\node [above,right] at (3,1) {$C$};
+						\node [below,right] at (3,0) {$B$};
+						\node [above,left] at (1.25,1) {$D$};
+						\node [below,left] at (1.25,0) {$A$};
+
+						\draw (-3,2) -- (-1.25,2) -- (-1.25,3) -- (-3,3) -- cycle;
+						\draw (3,2) -- (1.25,2) -- (1.25,3) -- (3,3) -- cycle;
+						\draw [->] (-1,2.5) -- (1,2.5);
+						\node [above] at (0,2.5) {\emph{reflexi\'on}};
+						\node [below] at (0,2.5) {\emph{eje vertical}};
+						\node [above,left] at (-3,3) {$A$};
+						\node [below,left] at (-3,2) {$D$};
+						\node [above,right] at (-1.25,3) {$B$};
+						\node [below,right] at (-1.25,2) {$C$};
+						\node [above,right] at (3,3) {$A$};
+						\node [below,right] at (3,2) {$D$};
+						\node [above,left] at (1.25,3) {$B$};
+						\node [below,left] at (1.25,2) {$C$};
+
+						\draw (-3,4) -- (-1.25,4) -- (-1.25,5) -- (-3,5) -- cycle;
+						\draw (3,4) -- (1.25,4) -- (1.25,5) -- (3,5) -- cycle;
+						\draw [->] (-1,4.5) -- (1,4.5);
+						\node [above] at (0,4.5) {\emph{rotaci\'on}};
+						\node [below] at (0,4.5) {$180^\circ$};
+						\node [above,left] at (-3,5) {$A$};
+						\node [below,left] at (-3,4) {$D$};
+						\node [above,right] at (-1.25,5) {$B$};
+						\node [below,right] at (-1.25,4) {$C$};
+						\node [above,right] at (3,5) {$D$};
+						\node [below,right] at (3,4) {$A$};
+						\node [above,left] at (1.25,5) {$C$};
+						\node [below,left] at (1.25,4) {$B$};
+
+						\draw (-3,6) -- (-1.25,6) -- (-1.25,7) -- (-3,7) -- cycle;
+						\draw (3,6) -- (1.25,6) -- (1.25,7) -- (3,7) -- cycle;
+						\draw [->] (-1,6.5) -- (1,6.5);
+						\node [above] at (0,6.5) {\emph{identidad}};
+						\node [above,left] at (-3,7) {$A$};
+						\node [below,left] at (-3,6) {$D$};
+						\node [above,right] at (-1.25,7) {$B$};
+						\node [below,right] at (-1.25,6) {$C$};
+						\node [above,right] at (3,7) {$B$};
+						\node [below,right] at (3,6) {$C$};
+						\node [above,left] at (1.25,7) {$A$};
+						\node [below,left] at (1.25,6) {$D$};
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+			<p>Una <term>simetría</term> de una figura geométrica es un reposicionamiento de la figura que preserva las relaciones entre sus lados y vértices tal como las distancias y los ángulos.  Una función del plano en sí mismo que preserva la simetría de un objeto se llama <term>movimiento rígido</term><idx><h>Movimiento rígido</h></idx>.  Por ejemplo, si miramos el rectángulo de la Figura<nbsp /><xref ref="figure-groups-rectangle" />, es fácil ver que una rotación en <m>180^{\circ}</m> o <m>360^{\circ}</m> devuelve un rectángulo en el plano con la misma orientación como el rectángulo original y la misma relación entre sus vértices.  Una reflexión del rectángulo por su eje vertical o su eje horizontal también puede ser reconocida como simetría de éste.  Sin embargo, una rotación en <m>90^{\circ}</m> en cualquier dirección no puede ser una simetría del rectángulo a menos que sea un cuadrado.</p>
+
+ 			<!-- Replaced diagram with a tikz figure - TWJ 5/5/2010 -->
+			<figure xml:id="figure-s3-symmetry">
+				<caption>Simetrías de un triángulo</caption>
+				<image xml:id="groups-s3-symmetry">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=0.7]
+						\draw (0,0) -- (0:2) -- (60:2) -- cycle;
+						\node [left] at (0,0) {$A$};
+						\node at (1,2.1) {$B$};
+						\node [right] at (0:2) {$C$};
+
+						\draw [->] (2,1) -- (4,1);
+						\node [above] at (3,1) {\emph{reflexi\'on}};
+
+						\draw (4,0) -- (0:6) -- ++(120:2) -- cycle;
+						\node [left] at (4,0) {$B$};
+						\node [right] at (0:6) {$C$};
+						\node at (5,2.1) {$A$};
+
+						\node [right] at (7,1) {$ \mu_3 = \begin{pmatrix}A & B & C \\ B & A & C\end{pmatrix}$};
+
+						\draw (0,3) -- (2,3) -- ++(120:2) -- cycle;
+						\node [left] at (0,3) {$A$};
+						\node at (1,5.1) {$B$};
+						\node [right] at (2,3) {$C$};
+
+						\draw [->] (2,4) -- (4,4);
+						\node [above] at (3,4) {\emph{reflexi\'on}};
+
+						\draw (4,3) -- (6,3) -- ++(120:2) -- cycle;
+						\node [left] at (4,3) {$C$};
+						\node [right] at (6,3) {$A$};
+						\node at (5,5.1) {$B$};
+						\node [right] at (7,4) {$ \mu_2 = \begin{pmatrix}A & B & C \\ C & B & A\end{pmatrix}$};
+
+						\draw (0,6) -- (2,6) -- ++(120:2) -- cycle;
+						\node [left] at (0,6) {$A$};
+						\node at (1,8.1) {$B$};
+						\node [right] at (2,6) {$C$};
+
+						\draw [->] (2,7) -- (4,7);
+						\node [above] at (3,7) {\emph{reflexi\'on}};
+
+						\draw (4,6) -- (6,6) -- ++(120:2) -- cycle;
+						\node [left] at (4,6) {$A$};
+						\node [right] at (6,6) {$B$};
+						\node at (5,8.1) {$C$};
+						\node [right] at (7,7) {$ \mu_1 = \begin{pmatrix}A & B & C \\ A & C & B\end{pmatrix}$};
+
+						\draw (0,9) -- (2,9) -- ++(120:2) -- cycle;
+						\node [left] at (0,9) {$A$};
+						\node at (1,11.1) {$B$};
+						\node [right] at (2,9) {$C$};
+
+						\draw [->] (2,10) -- (4,10);
+						\node [above] at (3,10) {\emph{rotaci\'on}};
+
+						\draw (4,9) -- (6,9) -- ++(120:2) -- cycle;
+						\node [left] at (4,9) {$B$};
+						\node [right] at (6,9) {$A$};
+						\node at (5,11.1) {$C$};
+						\node [right] at (7,10) {$ \rho_2 = \begin{pmatrix}A & B & C \\ C & A & B\end{pmatrix}$};
+
+						\draw (0,12) -- (2,12) -- ++(120:2) -- cycle;
+						\node [left] at (0,12) {$A$};
+						\node at (1,14.1) {$B$};
+						\node [right] at (2,12) {$C$};
+
+						\draw [->] (2,13) -- (4,13);
+						\node [above] at (3,13) {\emph{rotaci\'on}};
+
+						\draw (4,12) -- (6,12) -- ++(120:2) -- cycle;
+						\node [left] at (4,12) {$C$};
+						\node [right] at (6,12) {$B$};
+						\node at (5,14.1) {$A$};
+						\node [right] at (7,13) {$ \rho_1 = \begin{pmatrix}A & B & C \\ B & C & A\end{pmatrix}$};
+
+						\draw (0,15) -- (2,15) -- ++(120:2) -- cycle;
+						\node [left] at (0,15) {$A$};
+						\node at (1,17.1) {$B$};
+						\node [right] at (2,15) {$C$};
+
+						\draw [->] (2,16) -- (4,16);
+						\node [above] at (3,16) {\emph{identidad}};
+
+						\draw (4,15) -- (6,15) -- ++(120:2) -- cycle;
+						\node [left] at (4,15) {$A$};
+						\node [right] at (6,15) {$C$};
+						\node at (5,17.1) {$B$};
+						\node [right] at (7,16) {$ id = \begin{pmatrix}A & B & C \\ A & B & C\end{pmatrix}$};
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+			<p>Encontremos las simetrías de un triángulo equilátero <m>\bigtriangleup ABC</m>.  Para encontrar las simetrías de  <m>\bigtriangleup ABC</m>, debemos primero examinar las permutaciones de los vértices <m>A</m>, <m>B</m>, y <m>C</m> para luego preguntarnos si una permutación se extiende a una simetría del triángulo.  Recuerde que una <term>permutación</term> de un conjunto <m>S</m> es una función biyectiva <m>\pi :S \rightarrow S</m>.  Los tres vértices tienen <m>3! = 6</m> permutaciones, de manera que el triángulo tiene a lo más seis simetrías.  Para ver que hay seis permutaciones, observe que hay tres diferentes elecciones para el primer vértice, y dos para el segundo, y que el vértice restante está determinado por la posición de los primeros dos.  Así tenemos <m>3 \cdot 2 \cdot 1 = 3! = 6</m> arreglos diferentes.  Para describir una permutación de los vértices de un triángulo equilátero que envía  <m>A</m> en <m>B</m>, <m>B</m> en <m>C</m>, y <m>C</m> en <m>A</m>, escribiremos el arreglo
+				<me>\begin{pmatrix}<![CDATA[
+				A & B & C \\
+				B & C & A
+				]]>\end{pmatrix}.</me>
+			Note que esta permutación en particular corresponde al movimiento rígido de rotar el triángulo en <m>120^{\circ}</m> en dirección horaria.  De hecho, cada permutación produce una simetría del triángulo.  Todas estas simetría se muestran en la Figura<nbsp /><xref ref="figure-s3-symmetry" />.</p>
+	 
+			<p>Es natural preguntarse qué pasa si un movimiento del triángulo <m>\bigtriangleup ABC</m> es seguido por otro.  ¿Qué simetría es <m>\mu_1 \rho_1</m>; es decir, si realizamos la permutación <m>\rho_1</m> y luego la permutación <m>\mu_1</m>?  <em>Recuerde que acá estamos componiendo funciones.  A pesar de que usualmente multiplicamos de izquierda a derecha, componemos funciones de derecha a izquierda.</em> Tenemos
+				<md>
+					<mrow>(\mu_1 \rho_1)(A) &amp; = \mu_1( \rho_1( A ) ) = \mu_1( B ) = C</mrow>
+					<mrow>(\mu_1 \rho_1)(B) &amp; = \mu_1( \rho_1( B ) ) = \mu_1( C ) = B</mrow>
+					<mrow>(\mu_1 \rho_1)(C) &amp; = \mu_1( \rho_1( C ) ) = \mu_1( A ) = A.</mrow>
+				</md> 
+				Esta es la misma simetría que <m>\mu_2</m>. Supongamos que hacemos estas mismas operaciones en el orden opuesto, <m>\rho_1 \mu_1</m>.  Es fácil determinar que esto es lo mismo que la simetría <m>\mu_3</m>; luego, <m>\rho_1 \mu_1 \neq \mu_1 \rho_1</m>.  Una tabla de multiplicación de simetrías de un triángulo equilátero <m>\bigtriangleup ABC</m> se encuentra en el Cuadro<nbsp /><xref ref="table-s3" />.</p>
+
+			<p>Note que en la tabla de multiplicación para las simetrías de un triángulo equilátero, para cada movimiento   <m>\alpha</m> del triángulo, hay otro movimiento <m>\beta</m> tal que <m>\alpha \beta = \identity</m>; es decir, para cada movimiento hay otro movimiento que devuelve al triángulo a su orientación original.</p>
+
+	        <table xml:id="table-s3"> <!-- math table -->
+				<caption>Simetrías de un triángulo equilátero</caption>
+
+				<p><me>\begin{array}{c|cccccc}
+					<![CDATA[\circ  & \identity     & \rho_1 & \rho_2 & \mu_1 & \mu_2 & \mu_3 \\
+					\hline
+					\identity     & \identity     & \rho_1 & \rho_2 & \mu_1 & \mu_2 & \mu_3 \\
+					\rho_1 & \rho_1 & \rho_2 & \identity     & \mu_3 & \mu_1 & \mu_2 \\
+					\rho_2 & \rho_2 & \identity     & \rho_1 & \mu_2 & \mu_3 & \mu_1 \\
+					\mu_1  & \mu_1  & \mu_2  & \mu_3  & \identity    & \rho_1& \rho_2\\
+					\mu_2  & \mu_2  & \mu_3  & \mu_1  & \rho_2 & \identity    & \rho_1\\
+					\mu_3  & \mu_3  & \mu_1  & \mu_2  & \rho_1 & \rho_2& \identity]]>
+					\end{array}</me></p>
+
+			</table>
+
+		</subsection>
+	</section>
+
+	<section xml:id="section-groups-define">
+		<title>Definiciones y Ejemplos</title>
+
+		<!-- % TWJ, 2010/03/31 -->
+		<!-- % Fixed the error  <m>(a,b) \in G \times G</m> -->
+ 
+ 		<introduction>
+			<p>Los enteros mód <m>n</m> y las simetrías de un triángulo o un rectángulo son ejemplos de grupos.  Una <term>operación binaria</term><idx><h>Operación binaria</h></idx> o <term>ley de composición</term> en un conjunto <m>G</m> es una función <m>G \times G \rightarrow G</m> que asigna a cada par <m>(a,b) \in G \times G</m> un único elemento <m>a \circ b</m>, o <m>ab</m> en <m>G</m>, llamado composición de <m>a</m> y <m>b</m>.  Un <term>grupo</term><idx><h>Grupo</h><h>definición de</h></idx> <m>(G, \circ )</m> es un conjunto <m>G</m> junto a una ley de composición <m>(a,b) \mapsto a \circ b</m> que satisface los siguientes axiomas.
+				<ul>
+					<li><p> La ley de composición es  <term>asociativa</term>. Es decir, <me> (a \circ b) \circ c = a \circ (b \circ c) </me> para <m>a, b, c \in G</m>.</p></li>
+
+					<li><p> Existe un elemento <m>e \in G</m>, llamado <term>elemento identidad</term><idx><h>Identidad</h><h>elemento</h></idx>, tal que para cualquier elemento <m>a \in G</m> <me> e \circ a = a \circ e = a. </me></p></li>
+
+					<li><p> Para cada elemento <m>a \in G</m>, existe un <term>elemento inverso</term><idx><h>Inverso</h><h>elemento</h></idx> en G, denotado por <m>a^{-1}</m>, tal que <me> a \circ a^{-1} = a^{-1} \circ a = e. </me></p></li> 
+				</ul></p>
+
+			<p>Un grupo <m>G</m> con la propiedad que <m>a \circ b = b \circ a</m> para todo <m>a, b \in G</m> se llama <term>abeliano</term><idx><h>Grupo abeliano</h></idx><idx><h>Abeliano</h><h>grupo</h></idx> o <term>conmutativo</term><idx><h>Conmutativo</h><h>grupo</h></idx>.  Grupos que no satisfacen esta propiedad se dicen  <term>no abelianos</term><idx><h>No abeliano</h><h>grupo</h></idx> o <term>no conmutativos</term><idx><h>No conmutativo</h><h>grupo</h></idx>.</p>
+
+			<example xml:id="example-groups-integers">
+				<p>Los enteros <m>{\mathbb Z } = \{ \ldots , -1, 0, 1, 2, \ldots \}</m> forman un grupo bajo la operación de adición.  La operación binaria en dos enteros <m>m, n \in {\mathbb Z}</m> es simplemente su suma.  Como la suma de enteros tiene una notación bien establecida, usaremos el operador <m>+</m> en lugar de <m>\circ</m>; es decir, escribiremos <m>m + n</m> en lugar de <m>m \circ n</m>.  La identidad es 0, y el inverso de <m>n \in {\mathbb Z}</m> se escribe como <m>-n</m> en lugar de <m>n^{-1}</m>.  Note que el conjunto de los enteros bajo adición tiene la propiedad adicional de que  <m>m + n = n + m</m> y por lo tanto forma un grupo abeliano.</p>
+			</example>
+
+			<p>La mayor parte de las veces escribiremos <m>ab</m> en lugar de <m>a \circ b</m>; sin embargo, si el grupo ya tiene una operación natural, como la suma en los enteros, usaremos aquella operación.  Esto es, si estamos sumando dos enteros, aún escribiremos <m>m + n</m>, <m>-n</m> para el inverso, y 0 para la identidad como de costumbre. También escribiremos <m>m - n</m> en lugar de <m>m + (-n)</m>.</p>
+	 
+			<p>Frecuentemente es conveniente describir un grupo en términos de su tabla de adición o de multiplicación.  Una tal tabla se llama <term>tabla de Cayley</term><idx><h>Tabla de Cayley</h></idx>.</p>
+
+			<example xml:id="example-groups-z5">
+				<p>Los enteros mód <m>n</m> forman un grupo bajo adición módulo <m>n</m>.  Considere <m>{\mathbb Z}_5</m>, que consiste de las clases de equivalencia de los enteros 0, 1, 2, 3, y 4.  Definimos la operación de grupo en <m>{\mathbb Z}_5</m> por adición módulo 5.  Escribimos esta operación binaria en el grupo de forma aditiva, es decir, escribimos <m>m + n</m>.  El elemento 0 es la identidad del grupo y cada elemento en <m>{\mathbb Z}_5</m> tiene un inverso. Por ejemplo, <m>2 + 3 = 3 + 2 = 0</m>.  El Cuadro<nbsp /><xref ref="table-z5-cayley" /> es una tabla de Cayley para <m>{\mathbb Z}_5</m>.  Por la Proposición<nbsp /><xref ref="proposition-zn-equiv-classes" />, <m>{\mathbb Z}_n = \{0, 1, \ldots, n-1 \}</m> es un grupo bajo la operación binaria de adición mód <m>n</m>.</p>
+			</example>
+
+			<table xml:id="table-z5-cayley"> <!-- math table -->
+				<caption>Tabla de Cayley para <m>({\mathbb Z_5}, +)</m></caption>
+
+				<p><me>\begin{array}{c|ccccc}
+					<![CDATA[+ & 0 & 1 & 2 & 3 & 4 \\
+					\hline
+					  0 & 0 & 1 & 2 & 3 & 4 \\
+					  1 & 1 & 2 & 3 & 4 & 0 \\
+					  2 & 2 & 3 & 4 & 0 & 1 \\
+					  3 & 3 & 4 & 0 & 1 & 2 \\
+					  4 & 4 & 0 & 1 & 2 & 3]]>
+					\end{array}</me></p>
+
+			</table>
+
+			<example xml:id="example-groups-z6-mult">
+				<p>No todo conjunto con una operación binaria es un grupo.  Por ejemplo, si tomamos como operación binaria la multiplicación modular en <m>{\mathbb Z}_n</m>, entonces <m>{\mathbb Z}_n</m> no es un grupo.  El elemento 1 actúa como una identidad de grupo pues <m>1 \cdot k = k \cdot 1 = k</m> para cualquier <m>k \in {\mathbb Z}_n</m>; sin embargo, no existe un inverso multiplicativo para <m>0</m> pues <m>0 \cdot k = k \cdot 0 = 0</m> para todo  <m>k</m> en <m>{\mathbb Z}_n</m>.  Incluso si consideramos el conjunto <m>{\mathbb Z}_n \setminus \{0 \}</m>, aún es posible que no tengamos un grupo.  Por ejemplo, <m>2 \in {\mathbb Z}_6</m> no tiene inverso multiplicativo pues 
+					<md>
+						<mrow> 0 \cdot 2 &amp; = 0 \qquad 1 \cdot 2 = 2</mrow>
+						<mrow> 2 \cdot 2 &amp; = 4 \qquad 3 \cdot 2 = 0</mrow>
+						<mrow> 4 \cdot 2 &amp; = 2 \qquad 5 \cdot 2 = 4.</mrow>
+					</md> 
+				Por la Proposición<nbsp /><xref ref="proposition-zn-equiv-classes" />, todo elemento no nulo <m>k</m> tiene un inverso multiplicativo en <m>{\mathbb Z}_n</m> si <m>k</m> es relativamente primo con <m>n</m>.  Denotemos el conjunto de tales elementos en <m>{\mathbb Z}_n</m> por <m>U(n)</m>. <notation><usage>U(n)</usage><description>grupo de unidades en <m>\mathbb Z_n</m></description></notation>  Entonces <m>U(n)</m> es un grupo llamado el <term>grupo de unidades</term><idx><h>Grupo</h><h>de unidades</h></idx> de <m>{\mathbb Z}_n</m>.  El Cuadro<nbsp /><xref ref="table-cayley-u8" /> es una tabla de Cayley para el grupo <m>U(8)</m>.</p>
+			</example>
+
+			<table xml:id="table-cayley-u8"> <!-- math table -->
+			<caption>Tabla de multiplicación para <m>U(8)</m></caption>
+
+				<p><me>\begin{array}{c|cccc}
+					<![CDATA[\cdot & 1 & 3 & 5 & 7 \\
+					\hline
+					1       & 1 & 3 & 5 & 7 \\
+					3       & 3 & 1 & 7 & 5 \\
+					5       & 5 & 7 & 1 & 3 \\
+					7       & 7 & 5 & 3 & 1]]>
+					\end{array}</me></p>
+
+			</table>
+
+			<example xml:id="example-groups-nonabelian">
+				<p>Las simetrías de un triángulo equilátero descritas en la Sección<nbsp /><xref ref="section-mod-n-sym" /> forman un grupo no abeliano. Como observamos, no es necesariamente cierto que <m>\alpha \beta = \beta \alpha</m> para dos simetrías <m>\alpha</m> y <m>\beta</m>.  Usando el Cuadro<nbsp /><xref ref="table-s3" />, que es una tabla de Cayley para este grupo, podemos fácilmente verificar que las simetrías de un triángulo equilátero forman efectivamente un grupo. Denotaremos este grupo como <m>S_3</m> o <m>D_3</m>, por razones que explicaremos más adelante.</p>
+			</example>
+
+			<example xml:id="example-groups-gl2">
+				<p>Usaremos  <m>{\mathbb M}_2 ( {\mathbb R})</m> para denotar al conjunto de todas las matrices de <m>2 \times 2</m>.  Sea <m>GL_2({\mathbb R})</m> el subconjunto de  <m>{\mathbb M}_2 ( {\mathbb R})</m> que consiste de las matrices invertibles; es decir, una matriz <notation><usage>\mathbb M_n(\mathbb R)</usage><description>las matrices de <m>n \times n</m> con entradas en <m>\mathbb R</m></description></notation>
+					<me>A =
+					\begin{pmatrix}<![CDATA[
+					a & b \\
+					c & d
+					]]>\end{pmatrix}</me> 
+				está en  <m>GL_2( {\mathbb R})</m> si existe una matriz <m>A^{-1}</m> tal que
+				<m>A A^{-1} = A^{-1} A = I</m>, donde <m>I</m> la matriz identidad de <m>2 \times 2</m>. Que <m>A</m> tenga una inversa es equivalente a que el determinante de <m>A</m> no sea cero; es decir, <m>\det A = ad - bc \neq 0</m>. <notation><usage>\det A</usage><description>el determinante de <m>A</m></description></notation> El conjunto de las matrices invertibles forma un grupo llamado el <term>grupo lineal general</term><idx><h>Lineal general</h><h>grupo</h></idx>.  <notation><usage>GL_n(\mathbb R)</usage><description>el grupo lineal general</description></notation> La identidad del grupo es la matriz identidad.
+					<me>I =
+					\begin{pmatrix}<![CDATA[
+					1 & 0 \\
+					0 & 1
+					]]>\end{pmatrix}.</me>
+				La inversa de <m>A \in GL_2( {\mathbb R})</m> es
+					<me>A^{-1} =
+					\frac{1}{ad-bc}
+					\begin{pmatrix}<![CDATA[
+					d & -b \\
+					-c & a
+					]]>\end{pmatrix}.</me>
+				El producto de dos matrices invertibles es nuevamente invertible. La multiplicación de matrices es asociativa, satisfaciendo así el otro axioma de grupos. Para las matrices en general  no se cumple que <m>AB = BA</m>; por lo tanto, <m>GL_2({\mathbb R})</m> es otro ejemplo de un grupo no abeliano.</p>
+			</example>
+
+			<!-- % Changed <m>AB \neq BA</m> to <m>AB = BA</m>. Suggested by Isaac Coombs. TWJ 8/24/2011 -->
+
+			<example xml:id="example-groups-quaterions">
+				<p>Sean 
+					<md>
+						<mrow>1 &amp; = 
+						\begin{pmatrix}<![CDATA[
+						1 & 0\\
+						0 & 1
+						]]>\end{pmatrix}
+						\qquad
+						I
+						=
+						\begin{pmatrix}<![CDATA[
+						0 & 1\\
+						-1 & 0
+						]]>\end{pmatrix}</mrow>
+						<mrow>J &amp; = 
+						\begin{pmatrix}<![CDATA[
+						0 & i\\
+						i & 0
+						]]>\end{pmatrix}
+						\qquad
+						K =
+						\begin{pmatrix}<![CDATA[
+						i & 0\\
+						0 & -i
+						]]>\end{pmatrix},</mrow>
+					</md> 
+				con <m>i^2 = -1</m>. Entonces las relaciones <m>I^2 = J^2 = K^2 = -1</m>, <m>IJ=K</m>, <m>JK = I</m>, <m>KI = J</m>, <m>JI = -K</m>, <m>KJ = -I</m>, y <m>IK = -J</m> se satisfacen. El conjunto <notation><usage>Q_8</usage><description>el grupo de cuaterniones</description></notation> <m>Q_8 = \{\pm 1, \pm I, \pm J, \pm K  \}</m> es un grupo llamado <term>grupo de cuaterniones</term><idx><h>Cuaterniones</h><h>grupo de</h></idx><idx><h>cuaterniones</h></idx>. Note que <m>Q_8</m> es no conmutativo.</p>
+			</example>
+	 
+			<example xml:id="example-groups-c-star">
+				<p>Sea <m>{\mathbb C}^\ast</m>el conjunto de los números complejos no nulos. <notation><usage>\mathbb C^*</usage><description>el grupo multiplicativo de los complejos</description></notation> <m>{\mathbb C}^\ast</m> forma un grupo bajo la operación de multiplicación.  La identidad es 1. Si <m>z = a+bi</m> es un número complejo no nulo, entonces <me>z^{-1} = \frac{a -bi}{a^2 +b^2}</me> es el inverso de <m>z</m>.  Es fácil verificar que se cumplen los demás axiomas de grupo.</p>
+			</example>
+	 
+			<p>Un grupo es <term>finito</term><idx><h>Finito</h><h>grupo</h></idx>, o tiene <term>orden finito</term>, si contiene un número finito de elementos; de otro modo, el grupo se dice <term>infinito</term> o que tiene <term>orden infinito</term><idx><h>Infinito</h><h>grupo</h></idx>. El <term>orden</term><idx><h>Grupo</h><h>orden de</h></idx> de un grupo finito es el número de elementos que contiene. Si <m>G</m> es un grupo que contiene <m>n</m> elementos, escribiremos <m>|G| = n</m>. <notation><usage>|G|</usage><description>el orden de un grupo</description></notation> El grupo <m>{\mathbb Z}_5</m> es un grupo finito de orden 5; los enteros <m>{\mathbb Z}</m> forman un grupo infinito bajo la adición, y en ocasiones escribiremos <m>|{\mathbb Z}| = \infty</m>.</p>
+	 
+		</introduction>
+
+		<subsection  xml:id="groups-subsection-basic-properties">
+			<title>Propiedades básicas de los Grupos</title>
+	 
+			<proposition>
+
+				<statement>
+					<p>El elemento identidad en un grupo <m>G</m> es único; es decir, hay solo un elemento <m>e \in G</m> tal que <m>eg = ge = g</m> para todo <m>g \in G</m>.</p>
+				</statement>
+
+			 	<proof>
+			 		<p>Supongamos que <m>e</m> y <m>e'</m> son ambas identidades en <m>G</m>. Entonces <m>eg = ge = g</m> y <m>e'g = ge' = g</m> para todo <m>g \in G</m>. Debemos demostrar que <m>e = e'</m>. Si pensamos en  <m>e</m> como la identidad, entonces <m>ee' = e'</m>; pero si <m>e'</m> es la identidad, entonces <m>ee' = e</m>. Combinando estas dos ecuaciones, tenemos <m>e = ee' = e'</m>.</p>
+			 	</proof>
+			 </proposition>
+	 
+			<p>Los inversos en un grupo también son únicos. Si <m>g'</m> y <m>g''</m> son ambos inversos de un elemento <m>g</m> en un grupo <m>G</m>, entonces <m>gg' = g'g = e</m> y <m>gg'' = g''g = e</m>. Queremos mostrar que <m>g' = g''</m>, pero <m>g' = g'e = g'(gg'') = (g'g)g'' = eg'' = g''</m>. Resumimos este hecho en la siguiente proposición.</p>
+	 
+			<proposition>
+				<statement>
+					<p>Si <m>g</m> es un elemento en un grupo <m>G</m>, entonces el inverso de <m>g</m>, denotado por <m>g^{-1}</m>, es único.</p>
+				</statement>
+			</proposition>
+	 
+			<proposition xml:id="proposition-inverse-of-products">
+				<statement>
+					<p>Sea <m>G</m> un grupo. Si <m>a, b \in G</m>, entonces <m>(ab)^{-1} = b^{-1}a^{-1}</m>.</p>
+				</statement>
+				<proof>
+					<p> Sean <m>a, b \in G</m>. Entonces <m>abb^{-1}a^{-1} = aea^{-1} = aa^{-1} = e</m>. Similarmente, <m>b^{-1}a^{-1}ab = e</m>. Por la proposición anterior, los inversos son únicos; luego, <m>(ab)^{-1} = b^{-1}a^{-1}</m>.</p>
+				</proof>
+			</proposition>
+
+			<proposition>
+				<statement>
+					<p>Sea <m>G</m> un grupo.  Para cualquier  <m>a \in G</m>, <m>(a^{-1})^{-1} = a</m>.</p>
+				</statement>
+
+				<proof>
+					<p> Notemos que <m>a^{-1} (a^{-1})^{-1} = e</m>. Por lo tanto, multiplicando ambos lados de esta ecuación por <m>a</m>, tenemos <me>(a^{-1})^{-1} = e (a^{-1})^{-1} = a a^{-1} (a^{-1})^{-1} = ae = a.</me></p>
+				</proof>
+			</proposition>
+	 
+			<p>Tiene sentido escribir ecuaciones con elementos y operaciones de un grupo. Si <m>a</m> y <m>b</m> son dos elementos en un grupo <m>G</m>, ¿existe un elemento <m>x \in G</m> tal que <m>ax = b</m>? ¿Si tal <m>x</m> existe, es único? La siguiente proposición entrega una respuesta afirmativa a ambas preguntas.</p>
+	 
+			<proposition xml:id="proposition-group-equations"> 
+				<statement>
+					<p>Sea <m>G</m> un grupo y sean <m>a</m> y <m>b</m> dos elementos cualquiera en <m>G</m>. Entonces las ecuaciones <m>ax = b</m> y <m>xa = b</m> tienen una única solución en <m>G</m>.</p>
+				</statement>
+
+				<proof>
+					<p>Supongamos que <m>ax = b</m>. Debemos demostrar que tal  <m>x</m> existe. Podemos multiplicar ambos lados de <m>ax = b</m> por <m>a^{-1}</m> para encontrar <m>x = ex = a^{-1}ax = a^{-1}b</m>.</p> 
+
+					<p>Para demostrar la unicidad, supongamos que <m>x_1</m> y <m>x_2</m> son ambas soluciones de <m>ax = b</m>; entonces <m>ax_1 = b = ax_2</m>. Luego <m>x_1 = a^{-1}ax_1 = a^{-1}ax_2 = x_2</m>. La demostración de la existencia y unicidad de la solución de  <m>xa = b</m> es similar.</p>
+				</proof>
+			</proposition>
+	 
+			<proposition>
+				<statement>
+					<p>Si <m>G</m> es un grupo y <m>a, b, c \in G</m>, entonces <m>ba = ca</m> implica <m>b = c</m> y <m>ab = ac</m> implica <m>b = c</m>.</p>
+				</statement>
+			</proposition>
+
+			<p>Esta proposición nos dice que las <term>leyes de cancelación derecha e izquierda</term><idx><h>Ley de cancelación</h><h>para grupos</h></idx> se cumple para grupos.  Dejamos la demostración como ejercicio.</p>
+	 
+			<p>Podemos utilizar la notación exponencial en grupos de la forma en que estamos acostumbrados. Si <m>G</m> es un grupo y <m>g \in G</m>, definimos <m>g^0 = e</m>. Para <m>n \in {\mathbb N}</m>, definimos 
+			<me>g^n = \underbrace{g \cdot g \cdots g}_{n \; \text{times}} </me> 
+			y
+			<me>g^{-n} = \underbrace{g^{-1} \cdot g^{-1} \cdots g^{-1}}_{n \; \text{times}}.</me></p>
+	 
+			<theorem xml:id="theorem-exponent-laws">
+				<statement>
+					<p>En un grupo, se cumplen las reglas usuales de los exponentes; es decir, para todo  <m>g, h \in G</m>, 
+						<ol>
+							<li><p><m>g^mg^n = g^{m+n}</m> para todo <m>m, n \in {\mathbb Z}</m>;</p></li>
+							<li><p><m>(g^m)^n = g^{mn}</m> para todo <m>m, n \in {\mathbb Z}</m>;</p></li>
+							<li><p><m>(gh)^n = (h^{-1}g^{-1})^{-n}</m> para todo <m>n \in {\mathbb Z}</m>. Más aún, si <m>G</m> es abeliano, entonces <m>(gh)^n = g^nh^n</m>.</p></li>
+						</ol></p>
+				</statement> 
+			</theorem>
+	 
+				<p>Dejaremos la demostración de este teorema como un ejercicio. Note que <m>(gh)^n \neq g^nh^n</m> en general, pues el grupo puede no ser abeliano. Si el grupo es <m>{\mathbb Z}</m> o <m>{\mathbb Z}_n</m>, escribiremos la operación del grupo de forma aditiva y la operación exponencial como multiplicación; es decir, escribimos <m>ng</m> en lugar de <m>g^n</m>. Las leyes de los exponentes ahora son 
+				<ol>
+		 			<li><p><m>mg + ng = (m+n)g</m> para todo <m>m, n \in {\mathbb Z}</m>;</p></li>
+		 			<li><p><m>m(ng) = (mn)g</m> para todo <m>m, n \in {\mathbb Z}</m>;</p></li>
+		 			<li><p><m>m(g + h) = mg + mh</m> para todo <m>n \in {\mathbb Z}</m>.</p></li>
+		 		</ol></p>
+
+			<p>Es importante notar que esto solo es posible dado que <m>{\mathbb Z}</m> y  <m>{\mathbb Z}_n</m> son grupos conmutativos.</p>
+	 
+		</subsection>
+
+		<subsection xml:id="groups-subsection-historical-note">
+			<title>Nota Histórica</title>
+
+			<p>Si bien la primera definición axiomática clara de grupo recién fue dada a finales del siglo XIX, los métodos de teoría de grupos ya habían sido usados anteriormente en el desarrollo de muchas áreas de las matemáticas, incluyendo la geometría y la teoría de ecuaciones algebraicas.</p>
+
+			<p>Joseph-Louis Lagrange<idx><h>Lagrange, Joseph-Louis</h></idx> usó teoría de grupos en una memoria de 1770<ndash />1771 para estudiar métodos de resolución de ecuaciones polinomiales.  Más tarde, Évariste Galois<idx><h>Galois, Évariste</h></idx> (1811<ndash />1832) desarrolló con éxito las matemáticas necesarias para determinar exactamente cuáles ecuaciones polinomiales podían ser resueltas en términos de los coeficientes del polinomio en cuestión. La herramienta principal que usó Galois' fue la teoría de grupos.</p>
+
+			<p>El estudio de la geometría sufrió cambios revolucionarios en 1872 cuando Felix Klein<idx><h>Klein, Felix</h></idx> propuso que los espacios geométricos debían ser estudiados examinandos aquellas propiedades que son invariantes bajo una trasformación del espacio. Sophus Lie<idx><h>Lie, Sophus</h></idx>, coetáneo de Klein, usó teoría de grupos para estudiar las soluciones de ecuaciones diferenciales parciales.  Uno de los primeros libros en tratar la teoría de grupos en forma moderna es el de William Burnside<idx><h>Burnside, William</h></idx> <booktitle>The Theory of Groups of Finite Order</booktitle> [1], publicado originalmente en 1897.</p>
+		</subsection>
+
+	</section>
+
+	<section xml:id="section-subgroups">
+		<title>Subgrupos</title>
+
+		<subsection xml:id="groups-subsection-subgroup-examples">
+			<title>Definiciones y Ejemplos</title>
+ 
+			<p>En ocasiones necesitaremos estudiar grupos más pequeños dentro de un grupo mayor.   El conjunto de los enteros pares <m>2{\mathbb Z} = \{\ldots, -2, 0, 2, 4, \ldots \}</m> es un grupo bajo la operación de adición. Este grupo está naturalmente contenido en el grupo de enteros bajo adición.  Definimos un <term>subgrupo</term><idx><h>Subgrupo</h><h>definición de</h></idx> <m>H</m> de un grupo <m>G</m> como un subconjunto <m>H</m> de <m>G</m> tal que con la operación de <m>G</m> restringida a <m>H</m>, <m>H</m> es un grupo. Observe que todo grupo <m>G</m> con al menos dos elementos siempre tiene al menos dos subgrupos, el subgrupo que consiste únicamente del elemento identidad y el grupo completo. El subgrupo <m>H = \{ e \}</m> de un grupo <m>G</m> se llama <term>subgrupo trivial</term><idx><h>Trivial</h><h>subgrupo</h></idx>.  Un subgrupo que es un subconjunto propio de <m>G</m> se llama <term>subgrupo propio</term><idx><h>Propio</h><h>subgrupo</h></idx>. En muchos de los ejemplos que hemos considerado hasta ahora, existen otros subgrupos aparte de los subgrupos trivial e impropio.</p>
+ 
+			<example xml:id="example-groups-multiplicative-subgroup">
+				<p>Considere el conjunto de los números reales no nulos, <m>{\mathbb R}^*</m>, con la operación de multiplicación para formar un grupo. <notation><usage>\mathbb R^*</usage><description>el grupo multiplicativo de los números reales</description></notation> La identidad de este grupo es 1 y el inverso de cualquier elemento  <m>a \in {\mathbb R}^*</m> es simplemente <m>1/a</m>. Mostraremos que
+					<me>{\mathbb Q}^* = \{ p/q : p \, {\rm y }\, q\, {\rm son\, enteros\, no\, nulos} \}</me>
+				es un subgrupo de <m>{\mathbb R}^*</m>. <notation><usage>\mathbb Q^*</usage><description>el grupo multiplicativo de los números racionales</description></notation> La identidad de <m>{\mathbb R}^*</m> es 1; sin embargo,  <m>1 = 1/1</m> es el cociente de dos enteros no nulos. Por lo tanto, la identidad de <m>{\mathbb R}^*</m> está en <m>{\mathbb Q}^*</m>. Dados dos elementos en <m>{\mathbb Q}^*</m>, digamos <m>p/q</m> y <m>r/s</m>, su producto <m>pr/qs</m> también está en <m>{\mathbb Q}^*</m>. El inverso de cualquier elemento <m>p/q \in {\mathbb Q}^*</m> está nuevamente en <m>{\mathbb Q}^*</m> pues <m>(p/q)^{-1} = q/p</m>. Como la multiplicación en <m>{\mathbb R}^*</m> es asociativa, multiplicación en <m>{\mathbb Q}^*</m> es asociativa. </p> 
+			</example>
+ 
+			<example xml:id="example-groups-subgroup-h">
+				<p>Recuerde que <m>{\mathbb C}^{\ast}</m>  es el grupo multiplicativo de los números complejo no nulos. Sea <m>H = \{ 1, -1, i, -i \}</m>. Entonces <m>H</m> es un subgrupo de <m>{\mathbb C}^{\ast}</m>. Es fácil verificar que <m>H</m> es un grupo con la operación de multiplicación y que <m>H \subset {\mathbb C}^{\ast}</m>.</p>
+			</example>
+ 
+			<example xml:id="example-groups-sl2">
+				<p>Sea <m>SL_2( {\mathbb R})</m> el subconjunto de <m>GL_2( {\mathbb R })</m> que contiene las matrices de determinante uno; es decir, una matriz <notation><usage>SL_n(\mathbb R)</usage><description>el grupo lineal especial</description></notation>
+					<me>A =
+					\begin{pmatrix}<![CDATA[
+					a & b \\
+					c & d
+					]]>\end{pmatrix}</me>
+					está en <m>SL_2( {\mathbb R})</m> precisamente cuando <m>ad - bc = 1</m>. Para mostrar que <m>SL_2( {\mathbb R})</m> es un subgrupo del grupo lineal general, debemos demostrar que también es un grupo con la operación de multiplicación de matrices.  La matriz identidad de <m>2 \times 2</m> está en <m>SL_2( {\mathbb R})</m>, así como la inversa de la matriz <m>A</m>:  
+					<me>A^{-1} =
+				\begin{pmatrix}<![CDATA[
+				d  & -b \\
+				-c &  a
+				]]>\end{pmatrix}.</me>
+				Falta mostrar que la multiplicación es cerrada; es decir, que el producto de dos matrices de determinante uno también tiene determinante uno. Dejaremos esta tarea como ejercicio. El grupo <m>SL_2({\mathbb R})</m> se llama  <term>grupo lineal especial</term><idx><h>Lineal especial</h><h>grupo</h></idx>.</p>
+			</example>
+ 
+ 
+			<example xml:id="example-groups-gl2-subgroup">
+				<p>Es importante notar que un subconjunto <m>H</m> de un grupo <m>G</m> puede ser un grupo sin ser un subgrupo de <m>G</m>. Para que <m>H</m> sea un subgrupo de <m>G</m> debe heredar la operación binaria de <m>G</m>.  El conjunto de todas las matrices de <m>2 \times 2</m>, <m>{\mathbb M}_2(\mathbb R)</m>, forma un grupo con la operación de adición. El grupo lineal general <m>GL_2( {\mathbb R})</m> es un subconjunto de <m>{\mathbb M}_2(\mathbb R)</m> y es un grupo con la operación de multiplicación de matrices, pero no es un subgrupo de <m>{\mathbb M}_2(\mathbb R)</m>.  Si sumamos dos matrices invertibles no necesariamente obtendremos otra matriz invertible. Observe que<me>
+				\begin{pmatrix}<![CDATA[
+				1 & 0 \\
+				0 & 1
+				]]>\end{pmatrix}
+				+
+				\begin{pmatrix}<![CDATA[
+				-1 &  0 \\
+				0  & -1
+				]]>\end{pmatrix}
+				=
+				\begin{pmatrix}<![CDATA[
+				0 & 0 \\
+				0 & 0
+				]]>\end{pmatrix},
+				</me>
+				pero la matriz cero no está en <m>GL_2( {\mathbb R })</m>.</p>
+			</example>
+ 
+			<example xml:id="example-groups-z2xz2">
+				<p>Una manera de saber si dos grupos son el mismo grupo, es examinando sus subgrupos.  Aparte del subgrupo trivial y del grupo mismo, el grupo <m>{\mathbb Z}_4</m> tiene exactamente un subgrupo adicional que consiste de los elementos 0 y 2. A partir del grupo <m>{\mathbb Z}_2</m>, podemos formar otro grupo de cuatro elementos como sigue.  Como conjunto, este grupo es <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>. Realizamos las operacioens coordenada a coordenada; es decir, <m>(a,b) + (c,d) = (a+c, b+d)</m>. El Cuadro<nbsp /><xref ref="table-z2xz2" /> es una tabla de sumas para <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>. Como hay tres subgrupos propios no triviales de  <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>, <m>H_1 = \{ (0,0), (0,1) \}</m>, <m>H_2 = \{ (0,0), (1,0) \}</m>, y <m>H_3 = \{ (0,0), (1,1) \}</m>, <m>{\mathbb Z}_4</m> y <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> deben ser grupos diferentes.</p>
+			</example>
+
+			<table xml:id="table-z2xz2"> <!-- math table -->
+				<caption>Tabla de sumas para <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m></caption>
+
+				<p><me>\begin{array}{c|cccc}
+				<![CDATA[+     & (0,0) & (0,1) & (1,0) & (1,1) \\
+				\hline
+				(0,0) & (0,0) & (0,1) & (1,0) & (1,1) \\
+				(0,1) & (0,1) & (0,0) & (1,1) & (1,0) \\
+				(1,0) & (1,0) & (1,1) & (0,0) & (0,1) \\
+				(1,1) & (1,1) & (1,0) & (0,1) & (0,0)]]>
+				\end{array}</me></p>
+
+			</table>
+
+		</subsection>
+
+		<subsection xml:id="groups-subsection-subgroup-theorems">
+			<title>Algunos Teoremas para Subgrupos</title>
+ 
+			<p>Examinemos algunos criterios para determinar exactamente cuándo un subconjunto de un  grupo es un subgrupo.</p>
+
+			<proposition>
+				<statement>
+					<p>Un subconjunto <m>H</m> de <m>G</m> es un subgrupo si y solo si satiface las siguientes condiciones. <ol> 
+						<li><p>La identidad  <m>e</m> de <m>G</m> está en <m>H</m>.</p></li>
+						<li><p>Si <m>h_1, h_2 \in H</m>, entonces <m>h_1h_2 \in H</m>.</p></li>
+						<li><p>Si <m>h \in H</m>, entonces <m>h^{-1} \in H</m>.</p></li>
+					</ol></p>
+				</statement> 
+
+				<proof>
+					<p> Primero supongamos que <m>H</m> es un subgrupo de <m>G</m>.  Debemos mostrar que se cumplen las tres condiciones. Como <m>H</m> es un grupo, debe tener una identidad <m>e_H</m>.  Debemos demostrar que <m>e_H = e</m>, donde <m>e</m> es la identidad de <m>G</m>. Sabemos que <m>e_H e_H = e_H</m> y que  <m>ee_H = e_H e = e_H</m>; por lo tanto, <m>ee_H = e_H e_H</m>.  Por cancelación a la derecha, <m>e =e_H</m>.  La segunda condición se cumple pues un subgrupo de <m>H</m> es un grupo.  Para demostrar la tercera condición, sea <m>h \in H</m>.  Como <m>H</m> es un grupo, hay un elemento <m>h' \in H</m> tal que <m>hh' = h'h = e</m>.  Por la unicidad del inverso en <m>G</m>, <m>h' = h^{-1}</m>.</p>
+
+					<p>Recíprocamente, si se cumplen la tres condiciones, debemos demostrar que <m>H</m> es un grupo con la misma operación que <m>G</m>; pero, estas tres condiciones más la asociatividad de la operación binaria son exactamente las condiciones de la definición de grupo.</p>
+				</proof> 
+			</proposition>
+			 
+			<proposition xml:id="proposition-subgroup">
+				<statement>
+					<p>Sea <m>H</m> un subconjunto de un grupo <m>G</m>.  Entonces <m>H</m> es un subgrupo de  <m>G</m> si y solo si <m>H \neq \emptyset</m>, y para todo <m>g, h \in H</m> se tiene que <m>gh^{-1}</m> está en <m>H</m>.</p>
+				</statement>
+
+				<proof>
+					<p>Supongamos primero que <m>H</m> es un subgrupo de <m>G</m>.  Queremos mostrar que <m>gh^{-1} \in H</m> cada vez que <m>g</m> y <m>h</m> están en <m>H</m>.  Como <m>h</m> está en <m>H</m>, su inverso <m>h^{-1}</m> también debe estar en <m>H</m>.  Por la clausura de la operación de grupo, <m>gh^{-1} \in H</m>.</p>
+
+					<p>Recíprocamente, supongamos que <m>H \subset G</m> tal que <m>H \neq \emptyset</m> y  <m>g h^{-1} \in H</m> cada vez que <m>g, h \in H</m>.  Si <m>g \in H</m>, entonces <m>gg^{-1} = e</m> está en <m>H</m>.  Si <m>g \in H</m>, entonces <m>eg^{-1} = g^{-1}</m> también está en <m>H</m>. Sean ahora <m>h_1, h_2 \in H</m>. Debemos demostrar que su producto está también en <m>H</m>.  pero, <m>h_1(h_2^{-1})^{-1} = h_1 h_2 \in H</m>.  Luego, <m>H</m> es un subgrupo de <m>G</m>.</p>
+				</proof>
+			</proposition>
+
+			<!-- % TWJ, 2012/11/21 -->
+			<!-- % Proof rewritten for clarity.  Suggested by R. Beezer. -->
+
+			<!-- Let <m>H</m> be a nonempty subset of <m>G</m>.  Then <m>H</m> contains some element <m>g</m>.  So <m>gg^{-1} = e</m> is in <m>H</m>.  If <m>g \in H</m>, then <m>eg^{-1} = g^{-1}</m> is also in <m>H</m>. Finally, let <m>g, h \in H</m>. We must show that their product is also in <m>H</m>.  However, <m>g(h^{-1})^{-1} = gh \in H</m>.  Hence, <m>H</m> is indeed a subgroup of <m>G</m>. Conversely, if <m>g</m> and <m>h</m> are in <m>H</m>, we want to show that <m>gh^{-1} \in H</m>.  Since <m>h</m> is in <m>H</m>, its inverse <m>h^{-1}</m> must also be in <m>H</m>.  Because of the closure of the group operation, <m>gh^{-1} \in H</m>.  -->
+
+			<xi:include href="./sage/groups-info.xml" />
+
+		</subsection>
+	</section>
+
+ 	<xi:include href="./exercises/groups.xml" />
+ 	
+	<exercises xml:id="groups-exercises-detecting-errors">
+		<title>Ejercicios Adicionales: Detectando Errores</title>
+
+<!--EXERCISE GROUP
+
+		<introduction>
+			<p>Credit card companies, banks, book publishers, and supermarkets all take advantage of the properties of integer arithmetic modulo <m>n</m> and group theory to obtain error detection schemes for the identification codes that they use.</p>
+		</introduction>
+	-->
+
+	<todo>Add intro</todo>
+
+		<!-- % TWJ, 2010/03/31 -->
+		<!-- % Fixed figure reference -->
+
+		<!-- % TWJ, 2012/10/21 -->
+		<!-- % Deleted the word "now" in the description of <acro>UPC</acro> symbols.  Suggested by R. Beezer. -->
+
+		<exercise>
+			<title>Códigos <acro>UPC</acro></title>
+
+			<statement>
+				<p>El Código Universal de Productos<idx><h>Código Universal de Productos</h></idx> (<acro>UPC</acro> por su sigla en inglés) se encuentra en la mayoría de los productos de supermercados y tiendas del retail. El <acro>UPC</acro> es un código de 12 dígitos que identifica al fabricante de un producto y al producto mismo (Figura<nbsp /><xref ref="figure-upc-codes" />). Los primeros 11 dígitos contienen información sobre el producto; el último dígito se usa para la detección de errores. Si <m>d_1 d_2 \cdots d_{12}</m> es un número <acro>UPC</acro> válido, entonces
+				<me>3 \cdot d_1 + 1 \cdot d_2 + 3 \cdot d_3 + \cdots + 3 \cdot d_{11} + 1 \cdot d_{12} \equiv 0 \pmod{10}.</me>
+				<ol> 
+					<li><p>Muestre que el número <acro>UPC</acro> 0-50000-30042-6, que aparece en la Figura<nbsp /><xref ref="figure-upc-codes" />, es un número <acro>UPC</acro> válido.</p></li>
+					<li><p>Muestre que el número 0-50000-30043-6 no es un número <acro>UPC</acro> válido.</p></li>
+					<li><p>Escriba una fórmula para calcular el dígito verificador, <m>d_{12}</m>, de un número <acro>UPC</acro>.</p></li>
+					<li><p>El método de detección de errores del <acro>UPC</acro> puede detectar la mayor parte de los errores de transposición; es decir, puede tereminar si dos dígitos fueron intercambiados.  Muestre que el error de transposición 0-05000-30042-6 no es detectado.  Encuentre un error de transposición que sí sea detectado. ¿Puede encontrar una regla general sobre cuáles son los errores de transposición que son detectados? </p></li>
+					<!-- % Corrected exercise. Suggested by John Watterlond. TWJ 8/24/2011 -->
+					<li><p>Escriba un programa que determina si un número <acro>UPC</acro> es válido.</p></li>
+				</ol>
+				</p>
+				<figure xml:id="figure-upc-codes">
+					<caption>Un código <acro>UPC</acro></caption>
+					<!-- image width measured in points for latex, pixels for HTML -->
+					<image width="60%" source="images/UPCcode.png" />
+				</figure>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>Con frecuencia es útil usar la notación de producto interno para este método de detección de errores; de manera que usaremos la notación
+					<me>(d_1, d_2, \ldots, d_k ) \cdot (w_1, w_2, \ldots, w_k ) \equiv 0 \pmod{ n }</me>
+				para decir que
+					<me>d_1 w_1 +  d_2 w_2 + \cdots +  d_k w_k  \equiv 0  \pmod{ n}.</me></p>
+
+				<p>Supongamos que <m>(d_1, d_2, \ldots, d_k ) \cdot (w_1, w_2, \ldots, w_k ) \equiv 0 \pmod{ n}</m> es un método de detección de errores para el número de identificación de <m>k</m> dígitos <m>d_1 d_2 \cdots d_k</m>, donde <m>0 \leq d_i \lt n</m>.  Demuestre que todos los errores en un solo dígito son detectados si y solo si <m>\gcd( w_i, n ) = 1</m> para  <m>1 \leq i \leq k</m>.</p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>Sea <m>(d_1, d_2, \ldots, d_k ) \cdot (w_1, w_2, \ldots, w_k ) \equiv 0 \pmod{ n}</m> un método de detección de errores para el número de identificación de <m>k</m> dígitos <m>d_1 d_2 \cdots d_k</m>, donde <m>0 \leq d_i \lt n</m>.  Demuestre que todas las transposiciones de dos dígitos <m>d_i</m> y <m>d_j</m> son detectadas si y solo si <m>\gcd( w_i - w_j, n ) = 1</m> para <m>i</m> y  <m>j</m> entre 1 y <m>k</m>.</p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<title>Códigos <acro>ISBN</acro></title>
+
+			<statement>
+				<p>Todo libro tiene un International Standard Book Number<idx><h>International standard book number</h></idx> (<acro>ISBN</acro>).  Este es un código de 10 dígitos que indica la editorial y el título del libro.  El décimo dígito es un dígito verificador que satisface 
+					<me>(d_1, d_2, \ldots, d_{10} ) \cdot (10, 9, \ldots, 1 )  \equiv 0 \pmod{11}.</me>
+				Un problema es que <m>d_{10}</m> puede tener que ser 10 para que el producto interno sea cero; en ese caso, se requieren 11 dígitos para que funcione el método.  Por lo tanto se usa una X como undécimo dígito para representar el 10.  Así el <acro>ISBN</acro> 3-540-96035-X es un código <acro>ISBN</acro> válido. <ol>
+	 
+		 			<li><p>¿Es el <acro>ISBN</acro> 0-534-91500-0 un código <acro>ISBN</acro> válido?  ¿Y el <acro>ISBN</acro> 0-534-91700-0 o el <acro>ISBN</acro> 0-534-19500-0?</p></li>
+
+		 			<li><p>¿Sirve este método para detectar todos los errores en un solo dígito?  ¿y todos los errores de transposición?</p></li>
+
+		 			<li><p>¿Cuántos códigos <acro>ISBN</acro> diferentes hay?</p></li>
+
+		 			<li><p>Escriba un programa que permita calcular el dígito verificador para los primeros nueve dígitos de un código <acro>ISBN</acro>.</p></li>
+
+					<li><p>Una editorial tiene sedes en Alemania y Estados Unidos.  Su prefijo alemán es 3-540.  Si su prefijo en Estados Unidos es 0-<c>abc</c>, encuentre <c>abc</c> tal que el resto del código <acro>ISBN</acro> sea el mismo para un libro impreso en Alemania y los Estados Unidos. Bajo el método de codificación <acro>ISBN</acro> el primer dígito identifica el idioma; alemán es 3 y e inglés es 0.  El siguiente grupo de número identifica a la editorial, y el último grupo identifica el libro específico.</p></li>
+				</ol></p>
+			</statement>
+		</exercise>
+
+	</exercises>
+	 
+	<references xml:id="groups-references">
+	 <!--  references checked and updated - TWJ 6/22/2010 -->
+	 	<title>Referencias y Lecturas Recomendadas</title>
+<!--Fix intro
+	 	<introduction>
+	 		<p>References [2] and [3] show how group theory can be used in error detection schemes.  Other sources cover more advanced topics in group theory.</p>
+	 	</introduction>
+-->
+		<!-- %Reference updated - TWJ 6/22/2010 -->
+		<!-- was [1] -->
+		<biblio type="raw">Burnside, W. <title>Theory of Groups of Finite Order</title>. 2nd ed. Cambridge University Press, Cambridge, 1911; Dover, New York, 1953.  A classic.  Also available at books.google.com.</biblio>
+
+		<!-- was [2] -->
+		<biblio type="raw">Gallian, J. A. and Winters, S. <q>Modular Arithmetic in the Marketplace,</q> <title>The American Mathematical Monthly</title> <volume> 95</volume> (1988): 548<ndash />51.</biblio>
+
+		<!-- %Reference updated - TWJ 6/22/2010 -->
+		<!-- was [3] -->
+		<biblio type="raw">Gallian, J. A. <title>Contemporary Abstract Algebra</title>. 7th ed. Brooks/Cole, Belmont, CA, 2009. </biblio>
+
+		<!-- %Reference updated - TWJ 6/22/2010 -->
+		<!-- was [4] -->
+		<biblio type="raw"> Hall, M. <title>Theory of Groups</title>. 2nd ed. American Mathematical Society, Providence, 1959.</biblio>
+
+		<!-- %Reference updated - TWJ 6/22/2010 -->
+		<!-- was [5] -->
+		<biblio type="raw">Kurosh, A. E. <title>The Theory of Groups</title>, vols. I and II. American Mathematical Society, Providence, 1979.</biblio>
+
+		<!-- %  The following two books are out of print and probably not readily available - TWJ 6/22/2010  -->
+		<!-- [6] MacDonald, I. D. The Theory of Groups. Krieger, London, 1988. -->
+		<!-- [7] Rose, J. S. A Course on Group Theory. Cambridge University Press, Cambridge, 1978. -->
+
+		<!-- %Reference updated 6/22/2010 - TWJ -->
+		<!-- was [6] -->
+		<biblio type="raw">Rotman, J. J. <title>An Introduction to the Theory of Groups</title>. 4th ed. Springer, New York, 1995.</biblio>
+	</references>
+
+
+	<xi:include href="./sage/groups-sage.xml" />
+	<xi:include href="./sage/groups-sage-exercises.xml" />
+ 
+ </chapter>

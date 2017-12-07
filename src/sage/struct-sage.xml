@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="struct-sage">
+    <title>Sage</title>
+
+    <introduction>
+        <p>Los grupos cíclicos, y los productos directos de grupos cíclicos, están implementados en Sage como grupos de permutaciones.  Pero, estos grupos rápidamente se conviertenen representaciones muy incómodas y debiese haber una mejor forma de trabajar con grupos abelianos finitos en Sage.  Postergaremos la discusión de detalles para este capítulo hasta cuando eso ocurra.  Sin embargo, ahora que entendemos la noción de grupos isomorfos y la estructura de los grupos abelianos finitos, podemos volver a nuestra misión de clasificar todos los grupos de orden menor a <m>16</m>.</p>
+    </introduction>
+
+
+    <subsection>
+        <title>Clasificación de Grupos Finitos</title>
+
+        <p>No se requieren herramientas sofisticadas para entender los grupos de orden <m>2p</m>, donde <m>p</m> es un primo impar.  Hay dos posibilidades <mdash /> un grupo cíclico de orden <m>2p</m> y el grupo dihedral de orden <m>2p</m> que es el conjunto de simetrías del polígono regular de <m>p</m> lados.  La demostración requiere un razonamiento detallado y cuidadoso, pero los teoremas requeridos se refieren principalmente a los órdenes de los elementos, al Teoremas de Lagrange y a clases laterales.  Vea el Ejercicio<nbsp /><xref ref="exercise-classify-2p" />.  Esto resuelve los órdenes <m>n=6,\,10,\,14</m>.</p>
+
+        <p>Para <m>n=9</m>, el Corolario<nbsp /><xref ref="corollary-p2abelian" /> que viene, nos dirá que todo grupo de orden <m>p^2</m> (donde <m>p</m> es un primo) es abeliano.  Así, por lo que sabemos de esta sección, las únicas dos posibilidades son <m>{\mathbb Z}_9</m> y <m>{\mathbb Z}_3\times{\mathbb Z}_3</m>.  Similarmente, el Teorema<nbsp /><xref ref="theorem-pq-cyclic" /> que viene, nos dirá que todo grupo de orden <m>n=15</m> es abeliano.  Eso solo deja una posibilidad para este orden: <m>{\mathbb Z}_3\times{\mathbb Z}_5\cong{\mathbb Z}_{15}</m>.</p>
+
+        <p>Solo nos quedan dos órdenes para analizar:  <m>n=8</m> y <m>n=12</m>.  Las posibilidades son grupos que ya conocemos, con una excepción.  Pero el análisis de que estas son las <em>únicas</em> posibilidades es más complicado, y no lo completaremos ahora, ni en los próximos capítulos.  Notemos que <m>n=16</m> es aún más complicado, con <m>14</m> posibilidades diferentes (lo que explica por qué nos detuvimos acá).</p>
+
+        <p>Para <m>n=8</m> existen <m>3</m> grupos abelianos, y los dos grupos no-abelianos son el grupo dihedral (simetrías de un cuadrado) y el grupo de los cuaterniones.</p>
+
+        <p>Para <m>n=12</m> existen <m>2</m> grupos abelianos, y <m>3</m> no-abelianos.  Conocemos dos de los grupos no-abelianos, el grupo dihedral y en grupo alternante en <m>4</m> símbolos (que también es el grupo de simetrías de un tetrahedro).  El tercer grupo no-abeliano es un ejemplo de un grupo <q>dicíclico</q>, que es una familia infinita de grupos, cada uno de orden divisible por <m>4</m>.  El grupo dicíclico de orden <m>12</m> también puede ser construido como un <q>producto semidirecto</q> de dos grupos cíclicos  <mdash /> esta es una construcción que vale la pena conocer a medida que prosiga sus estudios de teoría de grupos.  El grupo dicíclico de orden <m>8</m> es el grupo de los cuaterniones y más en general, los grupos dicíclicos de orden <m>2^k</m>, <m>k>2</m> se conocen como <q>grupos de cuaterniones generalizados.</q></p>
+
+        <p>Los siguientes ejemplos le mostrarán como construir algunos de estos grupos, mientras ejercita algunos de los comandos y nos permite a la vez estar más seguros que la siguiente tabla es correcta.</p>
+
+        <sage>
+        <input>
+        S = SymmetricGroup(3)
+        D = DihedralGroup(3)
+        S.is_isomorphic(D)
+        </input>
+        <output>
+        True
+        </output>
+        </sage>
+
+        <sage>
+        <input>
+        C3 = CyclicPermutationGroup(3)
+        C5 = CyclicPermutationGroup(5)
+        DP = direct_product_permgroups([C3, C5])
+        C  = CyclicPermutationGroup(15)
+        DP.is_isomorphic(C)
+        </input>
+        <output>
+        True
+        </output>
+        </sage>
+
+        <sage>
+        <input>
+        Q  = QuaternionGroup()
+        DI = DiCyclicGroup(2)
+        Q.is_isomorphic(DI)
+        </input>
+        <output>
+        True
+        </output>
+        </sage>
+
+    </subsection>
+
+    <subsection>
+        <title>Grupos de Orden Pequeño como grupos de Permutaciones</title>
+
+        <p>Acá listamos construcciones, como grupos de permutaciones en Sage, para todos los grupos de orden menor a <m>16</m>.</p>
+
+        <!-- comments are the number of dividing rules following the row in LaTeX original -->
+       <table>
+            <caption>Los Grupos de Orden <m>\mathbf{15}</m> o Menos en Sage</caption>
+            <tabular halign="left" top="medium">
+                <row bottom="medium">
+                    <cell>Orden</cell>
+                    <cell>Construcción</cell>
+                    <cell>Notas, Alternativas</cell>
+                </row>
+                <row><cell> 1</cell><cell><c>CyclicPermutationGroup(1)</c>              </cell><cell>Trivial </cell></row><!--double-->
+                <row><cell> 2</cell><cell><c>CyclicPermutationGroup(2)</c>              </cell><cell><c>SymmetricGroup(2)</c></cell></row><!--double-->
+                <row><cell> 3</cell><cell><c>CyclicPermutationGroup(3)</c>              </cell><cell>Orden primo </cell></row><!--double-->
+                <row><cell> 4</cell><cell><c>CyclicPermutationGroup(4)</c>              </cell><cell>Cíclico </cell></row><!--single-->
+                <row><cell> 4</cell><cell><c>KleinFourGroup()</c>                       </cell><cell>Abeliano, no-cíclico</cell></row><!--double-->
+                <row><cell> 5</cell><cell><c>CyclicPermutationGroup(5)</c>              </cell><cell>Orden primo </cell></row><!--double-->
+                <row><cell> 6</cell><cell><c>CyclicPermutationGroup(6)</c>              </cell><cell>Cíclico</cell></row><!--single-->
+                <row><cell> 6</cell><cell><c>SymmetricGroup(3)</c>                      </cell><cell>No-abeliano</cell></row><!--none-->
+                <row><cell>  </cell><cell>                                              </cell><cell><c>DihedralGroup(3)</c></cell></row><!--double-->
+                <row><cell> 7</cell><cell><c>CyclicPermutationGroup(7)</c>              </cell><cell>Orden primo </cell></row><!--double-->
+                <row><cell> 8</cell><cell><c>CyclicPermutationGroup(8)</c>              </cell><cell>Cíclico</cell></row><!--single-->
+                <row><cell> 8</cell><cell><c>C2=CyclicPermutationGroup(2)</c>           </cell><cell></cell></row><!--none-->
+                <row><cell>  </cell><cell><c>C4=CyclicPermutationGroup(4)</c>           </cell><cell></cell></row><!--none-->
+                <row><cell>  </cell><cell><c>G=direct_product_permgroups([C2,C4])</c>   </cell><cell>Abeliano, no-cíclico</cell></row><!--single-->
+                <row><cell> 8</cell><cell><c>C2=CyclicPermutationGroup(2)</c>           </cell><cell></cell></row><!--none-->
+                <row><cell>  </cell><cell><c>G=direct_product_permgroups([C2,C2,C2])</c></cell><cell>Abeliano, no-cíclico</cell></row><!--single-->
+                <row><cell> 8</cell><cell><c>DihedralGroup(4)</c>                       </cell><cell>No-abeliano</cell></row><!--single-->
+                <row><cell> 8</cell><cell><c>QuaternionGroup()</c>                      </cell><cell>Cuaterniones</cell></row><!--none-->
+                <row><cell>  </cell><cell>                                              </cell><cell><c>DiCyclicGroup(2)</c></cell></row><!--double-->
+                <row><cell> 9</cell><cell><c>CyclicPermutationGroup(9)</c>              </cell><cell>Cíclico</cell></row><!--single-->
+                <row><cell> 9</cell><cell><c>C3=CyclicPermutationGroup(3)</c>           </cell><cell></cell></row><!--none-->
+                <row><cell>  </cell><cell><c>G=direct_product_permgroups([C3,C3])</c>   </cell><cell>Abeliano, no-cíclico</cell></row><!--double-->
+                <row><cell>10</cell><cell><c>CyclicPermutationGroup(10)</c>             </cell><cell>Cíclico</cell></row><!--single-->
+                <row><cell>10</cell><cell><c>DihedralGroup(5)</c>                       </cell><cell>No-abeliano</cell></row><!--double-->
+                <row><cell>11</cell><cell><c>CyclicPermutationGroup(11)</c>             </cell><cell>Orden primo </cell></row><!--double-->
+                <row><cell>12</cell><cell><c>CyclicPermutationGroup(12)</c>             </cell><cell>Cíclico</cell></row><!--single-->
+                <row><cell>12</cell><cell><c>C2=CyclicPermutationGroup(2)</c>           </cell><cell></cell></row><!--none-->
+                <row><cell>  </cell><cell><c>C6=CyclicPermutationGroup(6)</c>           </cell><cell></cell></row><!--none-->
+                <row><cell>  </cell><cell><c>G=direct_product_permgroups([C2,C6])</c>   </cell><cell>Abeliano, no-cíclico</cell></row><!--single-->
+                <row><cell>12</cell><cell><c>DihedralGroup(6)</c>                       </cell><cell>No-abeliano</cell></row><!--single-->
+                <row><cell>12</cell><cell><c>AlternatingGroup(4)</c>                    </cell><cell>No-abeliano</cell></row><!--none-->
+                <row><cell>  </cell><cell>                                              </cell><cell>Simetrías del tetrahedro</cell></row><!--single-->
+                <row><cell>12</cell><cell><c>DiCyclicGroup(3)</c>                       </cell><cell>No-abeliano</cell></row><!--none-->
+                <row><cell>  </cell><cell>                                              </cell><cell>Producto semidirecto <m>Z_3\rtimes Z_4</m></cell></row><!--double-->
+                <row><cell>13</cell><cell><c>CyclicPermutationGroup(13)</c>             </cell><cell>Orden primo </cell></row><!--double-->
+                <row><cell>14</cell><cell><c>CyclicPermutationGroup(14)</c>             </cell><cell>Cíclico</cell></row><!--single-->
+                <row><cell>14</cell><cell><c>DihedralGroup(7)</c>                       </cell><cell>No-abeliano</cell></row><!--double-->
+                <row bottom="medium"><cell>15</cell><cell><c>CyclicPermutationGroup(15)</c>             </cell><cell>Cyclic</cell></row><!--double-->
+            </tabular>
+        </table>
+
+    </subsection>
+
+</section>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+	
+	<p>Los Anillos están en el núcleo del diseño de Sage por lo que encontraremos una gran variedad de posibilidades para calcular con anillos y con cuerpos.  Ideales, cocientes, y homomorfismos están todos disponibles.</p>
+</paragraphs>

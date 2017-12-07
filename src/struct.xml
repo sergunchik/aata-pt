@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<chapter xml:id="struct" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>La Estructura de Grupos</title>
+
+	<introduction>
+		<p>Un objetivo de la teoría de grupos es el de clasificar todos los grupos módulo ismorfismo; es decir, dado un grupo particular, queremos ser capaces de identificarlo con un grupo conocido por medio de un isomorfismo. Por ejemplo, ya demostramos que cualquier grupo cíclico finito de orden <m>n</m> es isomorfo a <m>{\mathbb Z}_n</m>; luego, <q>conocemos</q> todos los grupos cíclicos finitos. Probablemente no es razonable suponer que jamás vayamos a conocer todos los grupos; sin embargo, podemos clasificar ciertos tipos de grupos o distinguir entre grupos en casos especiales.</p> 
+
+		<p>En este capítulo caracterizaremos todos los grupos abelianos finitos. También investigaremos grupos con sucesiones de subgrupos.  Si un grupo contiene una sucesión de subgrupos, digamos
+			<me>G = H_n \supset H_{n - 1} \supset \cdots \supset H_1 \supset H_0 = \{ e \},</me>
+		donde cada <m>H_i</m> es normal en <m>H_{i+1}</m> y cada uno de los grupos cociente <m>H_{i+1}/H_i</m> es abeliano, entonces <m>G</m> es un grupo soluble. Además de permitirnos distinguir entre ciertas clases de grupos, los grupos solubles resultan tener un rol central en el estudio de las soluciones de ecuaciones polinomiales.</p>
+	</introduction>
+
+	<section xml:id="section-finite-abelian-groups">
+		<title>Grupos Abelianos Finitos</title>
+
+		<p>Estudiando los grupos cíclicos descubrimos que todo grupo de orden primo es isomorfo a <m>{\mathbb Z}_p</m>, done <m>p</m> es un número primo.  También establecimos que <m>{\mathbb Z}_{mn} \cong {\mathbb Z}_m \times {\mathbb Z}_n</m> cuando <m>\gcd(m, n) =1</m>. De hecho, hay mucho más. Todo grupo abeliano finito es isomorfo a un producto directo de grupos cíclicos cuyos órdenes son potencias de primos; es decir, todo grupo abeliano finito es isomorfo a un grupo del tipo 
+			<me>{\mathbb Z}_{p_1^{\alpha_1}} \times \cdots \times {\mathbb Z}_{p_n^{\alpha_n}},</me>
+		donde cada <m>p_k</m> es primo (no necesariamente distintos).</p>
+
+		<p>Primero examinemos una leve generalización de los grupos abelianos finitos. Supongamos que <m>G</m> es un grupo y sea <m>\{ g_i\}</m> un conjunto de elementos en <m>G</m>, con <m>i</m> en algún conjunto de índices <m>I</m> (no necesariamente finito).  El menor subgrupo de <m>G</m> que contenga todos los <m>g_i</m> es el subgrupo de <m>G</m> <term>generado</term> por los <m>g_i</m>. Si este subgrupo de <m>G</m> es todo <m>G</m>, entonces <m>G</m> es generado por el conjunto <m>\{g_i : i \in I \}</m>. En este caso diremos que los <m>g_i</m> son <term>generadores</term><idx><h>Generadors para un grupo</h></idx><idx><h>Grupo</h><h>generadores del</h></idx> de <m>G</m>. Si existe un conjunto finito <m>\{ g_i : i \in I \}</m> que genere a <m>G</m>, entonces <m>G</m> es <term>finitamente  generado</term><idx><h>Finitamente generado</h><h>grupo</h></idx><idx><h>Grupo finitamente generado</h></idx>.</p>
+
+		<example xml:id="example-finite-groups">
+			<p>Obviamente, todos los grupos finitos son finitamente generados. Por ejemplo, el grupo <m>S_3</m> es generado por las permutaciones <m>(12)</m> y <m>(123)</m>. El grupo <m>{\mathbb Z} \times {\mathbb Z}_n</m> es un grupo infinito pero es finitamente generado por <m>\{ (1,0), (0,1) \}</m>.</p>
+		</example>
+ 
+		<example xml:id="example-infinite-groups">
+			<p>No todos los grupos son finitamente generados.  Consideremos los números racionales <m>{\mathbb Q}</m> con la suma. Supongamos que <m>{\mathbb Q}</m> es finitamente generado con generadores <m>p_1/q_1, \ldots, p_n/q_n</m>, donde cada <m>p_i/q_i</m> es una fracción reducida.  Sea <m>p</m> un primo que no divide a ninguno de los denominadores <m>q_1, \ldots, q_n</m>. Afirmamos que <m>1/p</m> no puede estar en el subgrupo de <m>{\mathbb Q}</m> generado por <m>p_1/q_1, \ldots, p_n/q_n</m>, pues <m>p</m> no divide al denominador de ningún elemento de este subgrupo. Esto es fácil de ver pues la suma de dos generadores cualquiera es 
+				<me>p_i / q_i + p_j / q_j = (p_i q_j + p_j q_i)/(q_i q_j).</me></p>
+		</example>
+ 
+		<proposition>
+			<statement>
+				<p>Sea <m>H</m> el subgrupo de un grupo <m>G</m> generado por <m>\{ g_i \in G : i \in I \}</m>. Entonces <m>h \in H</m> si y solo si es un producto de la forma
+					<me>h = g_{i_1}^{\alpha_1} \cdots g_{i_n}^{\alpha_n},</me>
+				donde los <m>g_{i_k}</m> no son necesariamente diferentes.</p>
+			</statement>
+
+			<proof>
+				<p>Sea <m>K</m> el conjunto de todos los productos de la forma <m>g_{i_1}^{\alpha_1} \cdots g_{i_n}^{\alpha_n}</m>, donde los <m>g_{i_k}</m> no son necesariamente diferentes. Ciertamente <m>K</m> es un subconjunto de <m>H</m>.  Solo debemos mostrar que <m>K</m> es un subgrupo de <m>G</m>. Si es así, entonces <m>K=H</m>, pues <m>H</m> es el menor subgrupo que contiene todos los <m>g_i</m>.</p>
+				
+				<p>Claramente, <m>K</m> es cerrado bajo la operación del grupo. Como <m>g_i^0 = 1</m>, la identidad está en <m>K</m>. Falta mostrar que el inverso de un elemento <m>g =g_{i_1}^{k_1} \cdots g_{i_n}^{k_n}</m> en <m>K</m> también está en <m>K</m>. Pero, 
+					<me>g^{-1} = (g_{i_1}^{k_{1}} \cdots g_{i_n}^{k_n})^{-1} = (g_{i_n}^{-k_n} \cdots g_{i_{1}}^{-k_{1}}).</me></p>
+			</proof>
+		</proposition>
+
+		<p>El motivo por el que potencias de un cierto <m>g_i</m> podrían ocurrir varias veces en el producto es que el grupo podría no ser abeliano. Pero, si el grupo es abeliano, entonces los <m>g_i</m> solo necesitan aparecer una vez. Por ejemplo, un producto como  <m>a^{-3} b^5 a^7</m> en un grupo abeliano siempre se puede simplificar (en este caso, como <m>a^4 b^5</m>).</p>
+
+<!-- Typo corrected. Suggested by S. Engle. TWJ 11/13/2011 -->
+<!-- Subscript numbering corrected.  TWJ 11/17/2012 -->
+<!-- Subscript numbering corrected<mdash />second try.  TWJ 4/24/2013 -->
+ 
+		<p>Nos concentraremos ahora en los grupos abelianos finitos. Podemos expresar cualquier grupo abeliano finito como un producto directo finito de grupos cíclicos. Más específicamente, si <m>p</m> es un número primo, diremos que un grupo <m>G</m> es un <term><m>p</m>-grupo</term><idx><h>Grupo<m>p</m>-grupo</h></idx> si todo elemento en <m>G</m> tiene como su orden una potencia de <m>p</m>. Por ejemplo, tanto <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> como <m>{\mathbb Z}_4</m> son <m>2</m>-grupos, mientras <m>{\mathbb Z}_{27}</m> es un <m>3</m>-grupo. Demostraremos el Teorema Fundamental de los Grupos Abelianos Finitos que nos dice que todo grupo abeliano finito es isomorfo a un producto directo de <m>p</m>-grupos cíclicos</p>
+ 
+		<theorem xml:id="theorem-finite-abelian-groups">
+			<title>Teorema Fundamental de los Grupos Abelianos Finitos</title>
+			<idx><h>Teorema Fundamental</h><h>de los Grupos Abelianos Finitos</h></idx>
+			<statement>
+				<p>Todo grupo abeliano finito <m>G</m> es isomorfo a un producto directo de grupos cíclicos de la forma
+					<me>{\mathbb Z}_{p_1^{ \alpha_1 }} \times {\mathbb Z}_{p_2^{ \alpha_2 }} \times \cdots \times {\mathbb Z}_{p_n^{ \alpha_n }}</me>
+				acá los <m>p_i</m> son primos (no necesariamente diferentes).</p>
+			</statement>
+		</theorem>
+
+		<example xml:id="example-abelian-540">
+			<p>Supongamos que queremos clasificar todos los grupos abelianos de orden <m>540=2^2 \cdot 3^3 \cdot 5</m>.  El Teorema Fundamental de los Grupos Abelianos Finitos nos dice que tenemos las siguientes seis posibilidades.<ul>
+ 
+					<li><p><m>{\mathbb Z}_2 \times {\mathbb Z}_2 \times {\mathbb Z}_3 \times {\mathbb Z}_3 \times {\mathbb Z}_3 \times {\mathbb Z}_5</m>;</p></li>
+
+					<li><p><m>{\mathbb Z}_2 \times {\mathbb Z}_2 \times {\mathbb Z}_3 \times {\mathbb Z}_9 \times {\mathbb Z}_5</m>;</p></li>
+ 
+					<li><p><m>{\mathbb Z}_2 \times {\mathbb Z}_2 \times {\mathbb Z}_{27} \times {\mathbb Z}_5</m>;</p></li>
+
+					<li><p><m>{\mathbb Z}_4 \times {\mathbb Z}_3 \times {\mathbb Z}_3 \times {\mathbb Z}_3 \times {\mathbb Z}_5</m>;</p></li>
+ 
+					<li><p><m>{\mathbb Z}_4 \times {\mathbb Z}_3 \times {\mathbb Z}_9 \times {\mathbb Z}_5</m>;</p></li>
+
+					<li><p><m>{\mathbb Z}_4 \times {\mathbb Z}_{27} \times {\mathbb Z}_5</m>.</p></li>
+ 
+				</ul></p>
+		</example>
+
+		<p>La demostración del Teorema Fundamental de los Grupos Abelianos Finitos depende de varios lemas.</p>
+
+		 <lemma xml:id="lemma-cauchy-finite-abelian">
+			<statement>
+				<p>Sea <m>G</m> un grupo abeliano finito de orden <m>n</m>.  Si <m>p</m> es un primo que divide a <m>n</m>, entonces <m>G</m> contiene un elemento de orden <m>p</m>.</p>
+			</statement>
+			<proof>
+				<p>Demostraremos este lema por inducción.  Si <m>n = 1</m>, entonces no hay nada que demostrar.  Ahora supongamos que el orden de <m>G</m> es <m>n</m> y que el lema es verdadero para todos los grupos de orden <m>k</m>, donde <m>k \lt n</m>.  Más aún, sea <m>p</m> un primo que divide a <m>n</m>.</p>
+
+				<p>Si <m>G</m> no tiene subgrupos propios no triviales, entonces <m>G = \langle a \rangle</m>, donde <m>a</m> es cualquier elemento distinto de la identidad.  Por el Ejercicio<nbsp /><xref ref="cyclic-exercise-subgroups-exist" />, el orden de <m>G</m> es primo.  Como <m>p</m> divide a <m>n</m>, sabemos que <m>p = n</m>, y <m>G</m> contiene <m>p - 1</m> elementos de orden <m>p</m>.</p>
+
+				<p>Ahora supongamos que <m>G</m> contiene un subgrupo no trivial propio <m>H</m>.  Entonces <m>1 \lt |H| \lt n</m>. Si <m>p \mid |H|</m>, entonces <m>H</m> contiene un elemento de orden <m>p</m> por la hipótesis de inducción y el lema se cumple para <m>G</m>.  Supongamos que <m>p</m> no divide el orden de <m>H</m>.  Como <m>G</m> es abeliano, <m>H</m> es un subgrupo normal de <m>G</m>, y <m>|G| = |H| \cdot |G/H|</m>.  De manera que <m>p</m> divide a <m>|G/H|</m>.  Como <m>|G/H| \lt |G| = n</m>, sabemos que <m>G/H</m> contiene un elemento <m>aH</m> de orden <m>p</m> por la hipótesis de inducción.  Luego,
+					<me>H = (aH)^p = a^pH,</me>
+				y <m>a^p \in H</m> pero <m>a \notin H</m>.  Si <m>|H| = r</m>, entonces <m>p</m> y <m>r</m> son relativamente primos, y existen enteros <m>s</m> y <m>t</m> tales que <m>sp + tr = 1</m>.  Además, el orden de <m>a^p</m> divide a <m>r</m>, y <m>(a^p)^r = (a^r)^p = 1</m>.</p>
+
+				<p>Afirmamos que <m>a^r</m> tiene orden <m>p</m>.  Debemos mostrar que <m>a^r \neq 1</m>.  Supongamos que <m>a^r = 1</m>.  Entonces
+					<md>
+						<mrow>a &amp; = a^{sp + tr}</mrow>
+						<mrow>&amp; = a^{sp} a^{tr}</mrow>
+						<mrow>&amp; = (a^p)^s (a^r)^t</mrow>
+						<mrow>&amp; = (a^p)^s 1</mrow>
+						<mrow>&amp; = (a^p)^s.</mrow>
+					</md>
+				Como <m>a^p \in H</m>, tenemos <m>a= (a^p)^s \in H</m>, lo que es una contradicción.  Por lo tanto, <m>a^r \neq 1</m> es un elemento de orden <m>p</m> in <m>G</m>.</p>
+			</proof>
+
+		</lemma>
+
+		<p>El Lema<nbsp /><xref ref="lemma-cauchy-finite-abelian" /> es un caso particular del Teorema de Cauchy (Teorema<nbsp /><xref ref="theorem-cauchy" />, que dice que si <m>G</m> es un grupo finito y <m>p</m> es un primoque divide el orden de <m>G</m>, entonces <m>G</m> contiene un subgrupo de orden <m>p</m>.  Demostraremos el Teorema de Cauchy en el Capítulo<nbsp /><xref ref="sylow" />.</p>
+
+		<lemma xml:id="lemma-p-group-order">
+			<statement>
+				<p>Un grupo abeliano finito es un <m>p</m>-grupo si y solo si su orden es una potencia de <m>p</m>.</p>
+			</statement>
+			<proof>
+				<p>Si <m>|G| = p^n</m> entonces, por el teorema de Lagrange, el orden de cualquier <m>g \in G</m> divide a <m>p^n</m>, y por lo tanto es una potencia de <m>p</m>. Recíprocamente, si <m>|G|</m> no es una potencia de <m>p</m>, entonces tiene algún otro divisor primo <m>q</m>, y por el Lema<nbsp /><xref ref="lemma-cauchy-finite-abelian" />, <m>G</m> tiene un elemento de orden <m>q</m> por lo que no es un <m>p</m>-grupo.</p>
+			</proof>
+		</lemma>
+
+		<lemma xml:id="lemma-direct-product-p-groups">
+			<statement>
+				<p>Sea <m>G</m> un grupo abeliano finito de orden <m>n = p_1^{\alpha_1} \cdots p_k^{\alpha_k}</m>, con <m>p_1, \ldots, p_k</m> primos distintos y <m>\alpha_1, \alpha_2, \ldots, \alpha_k</m> enteros positivos.  Entonces <m>G</m> es el producto drecto interno de subgrupos <m>G_1, G_2, \ldots, G_k</m>, donde <m>G_i</m> es el subgrupo de <m>G</m> que consiste de todos los elementos de orden <m>p_i^k</m> para algún entero <m>k</m>.</p>
+			</statement>
+			<proof>
+				<p>Como <m>G</m> es un grupo abeliano, tenemos que <m>G_i</m> es un subgrupo de <m>G</m> para <m>i = 1, \ldots, n</m>.  Como la identidad tiene orden <m>p_i^0 = 1</m>, sabemos que <m>1 \in G_i</m>.  Si <m>g \in G_i</m> tiene orden <m>p_i^r</m>, entonces <m>g^{-1}</m> también debe tener orden <m>p_i^r</m>.  Finalmente, si <m>h \in G_i</m> tiene orden <m>p_i^s</m>, entonces
+					<me>(gh)^{p_i^t} = g^{p_i^t} h^{p_i^t} = 1 \cdot 1 = 1,</me>
+				donde <m>t</m> es el mayor entre <m>r</m> y <m>s</m>.</p>
+
+				<p>Debemos mostrar que
+					<me>G = G_1 G_2 \cdots  G_n</me>
+				y <m>G_i \cap G_j = \{1 \}</m> para <m>i \neq j</m>.  Supongamos que <m>g_1 \in G_1</m> está en el subgrupo generado por <m>G_2, G_3, \ldots, G_k</m>.  Entonces <m>g_1 = g_2 g_3 \cdots g_k</m> para <m>g_i \in G_i</m>.  Como <m>g_i</m> tiene orden <m>p^{\alpha_i}</m>, sabemos que <m>g_i^{p^{\alpha_i}} = 1</m> para <m>i = 2, 3, \ldots, k</m>, y <m>g_1^{p_2^{\alpha_2} \cdots p_k^{\alpha_k}} = 1</m>.  Como el orden de <m>g_1</m> es una potencia de <m>p_1</m> y <m>\gcd(p_1, p_2^{\alpha_2} \cdots p_k^{\alpha_k}) = 1</m>, tenemos que <m>g_1 = 1</m> y la intersección de <m>G_1</m> con cualquiera de los subgrupos <m>G_2, G_3, \ldots, G_k</m> ies la identidad.  Un argumento similar muestra que <m>G_i \cap G_j = \{1 \}</m> para <m>i \neq j</m>.  Luego, <m>G_1 G_2 \cdots  G_n</m> es un producto directo interno de subgrupos.  Como
+					<me>|G_1 G_2 \cdots G_k| = p_1^{\alpha_1} \cdots p_k^{\alpha_k} = |G|,</me>
+				tenemos que <m>G = G_1 G_2 \cdots G_k</m>.</p>
+			</proof>
+
+		</lemma>
+
+
+		<p>Nos falta determinar la posible estructura de cada uno de los <m>p_i</m>-grupos <m>G_i</m> en el Lema<nbsp /><xref ref="lemma-direct-product-p-groups" />.</p>
+
+
+		<lemma xml:id="lemma-struct-finite-abelian">
+			<statement>
+				<p>Sea <m>G</m> un <m>p</m>-grupo abeliano finito y supongamos que  <m>g \in G</m> tiene orden maximal. Entonces <m>G</m> es isomorfo a <m>\langle g \rangle \times H</m> para algún subgrupo  <m>H</m> de <m>G</m>.</p>
+			</statement>
+			<proof>
+				<p>Por el Lema<nbsp /><xref ref="lemma-p-group-order" />, podemos suponer que el orden de <m>G</m> es <m>p^n</m>.  Procederemos por inducción en <m>n</m>. Si <m>n= 1</m>, entonces <m>G</m> es cíclico de orden <m>p</m> y debe estar generado por <m>g</m>. Supongamos ahora que el lema se cumple para todos los enteros <m>k</m> con <m>1 \leq k \lt n</m> y sea <m>g</m> de orden maximal en <m>G</m>, digamos <m>|g| = p^{m}</m>.  Entonces <m>a^{p^m} = e</m> para todo <m>a \in G</m>. Ahora elijamos <m>h</m> en <m>G</m> tal que <m>h \notin \langle g \rangle</m>, donde <m>h</m> tiene el menor orden posible.  Ciertamente podemos suponer que tal <m>h</m> existe; de otra manera, <m>G = \langle g \rangle</m> y estamos listos.  Sea <m>H = \langle h \rangle</m>.</p>
+ 
+				<p>Afirmamos que <m>\langle g \rangle \cap H = \{ e \}</m>. Es suficiente con mostrar que <m>|H|=p</m>.  Como <m>|h^p| = |h| / p</m>, el orden de <m>h^p</m> es menor que el orden de <m>h</m> y debe estar en <m>\langle g \rangle</m> por la minimalidad del orden de <m>h</m>; es decir, <m>h^p = g^r</m> para algún <m>r</m>. Luego, 
+					<me>(g^r)^{p^{m - 1}} = (h^p)^{p^{m - 1}} = h^{p^{m}} = e,</me>
+				y el orden de <m>g^r</m> es menor o igual a <m>p^{m-1}</m>. Por lo tanto, <m>g^r</m> no puede generar <m>\langle g \rangle</m>.  Notemos que <m>p</m> debe ser un divisor de <m>r</m>, digamos <m>r = ps</m>, y <m>h^p = g^r = g^{ps}</m>. Definamos <m>a</m> como <m>g^{-s}h</m>. Entonces <m>a</m> no puede estar en <m>\langle g \rangle</m>; de otra manera, <m>h</m> también estaría en <m>\langle g \rangle</m>. Además, 
+					<me>a^p = g^{-sp} h^p = g^{-r} h^p = h^{-p} h^p = e.</me>
+				Hemos formado un elemento <m>a</m> de orden <m>p</m> tal que <m>a \notin \langle g \rangle</m>. Como <m>h</m> fue elegido de orden minimal entre todos los elementos fuera de <m>\langle g\rangle</m>, <m>|H|  = p</m>.</p>
+ 
+				<p>Ahora mostraremos que el orden de <m>gH</m> en el grupo cociente <m>G/H</m> debe ser el mismo que el orden de <m>g</m> en <m>G</m>.  Si <m>|gH| \lt |g| =  p^m</m>, entonces
+					<me>H = (gH)^{p^{m-1}} =  g^{p^{m-1}} H;</me>
+				luego, <m>g^{p^{m-1}}</m> está en <m>\langle g \rangle \cap H = \{ e \}</m>, lo que contradice el hecho de que el orden de <m>g</m> es <m>p^m</m>.  Por lo tanto, <m>gH</m> tiene orden maximal en <m>G/H</m>.  Por el Teorema de Correspondencia y la hipótesis de inducción ,
+					<me>G/H \cong \langle gH \rangle \times K/H</me>
+				para algún subgrupo <m>K</m> de <m>G</m> que contiene a <m>H</m>.  Afirmamos que <m>\langle g \rangle \cap K = \{ e \}</m>. Si <m>b \in \langle g \rangle \cap K</m>, entonces <m>bH \in \langle gH \rangle \cap K/H =  \{ H \}</m> y <m>b \in \langle g \rangle \cap H = \{ e \}</m>. Concluimos que <m>G = \langle g \rangle K</m> implica que <m>G \cong \langle g \rangle \times K</m>.</p>
+			</proof>			
+		</lemma>
+
+<!-- Changed the statement and proof of the theorem to -->
+<!-- reflect that we are dealing with direct products.  Suggested by P. Diethelm. -->
+<!-- TWJ 4/24/2013 -->
+
+		<p>La demostración del Teorema Fundamental de los Grupos Abelianos Finitos sigue rápidamente del Lema<nbsp /><xref ref="lemma-struct-finite-abelian" />.  Procediendo por inducción en el orden del grupo, supongamos que <m>G</m> es un grupo abeliano finito y sea <m>g</m> un elemento de orden maximal en  <m>G</m>. Si <m>\langle g \rangle = G</m>, estamos listos; de lo contrario, <m>G \cong {\mathbb Z}_{|g|} \times H</m> para algún subgrupo <m>H</m> contenido en <m>G</m> por el lema. Como <m>|H| \lt |G|</m>, podemos usar la hipótesis de inducción.</p>
+ 
+		<p>Ahora enunciamos el teorema más general que vale para todos los grupos abelianos finitamente generados.  La demostración de este teorema se puede encontrar en cualquiera de las referencias al final del capítulo.</p>
+ 
+		<theorem>
+			<title>Teorema Fundamental de los Grupos Abelianos Finitamente Generados</title>
+			<statement>
+				<p>Todo grupo abeliano finitamente generado <m>G</m> es isomorfo a un producto directo de grupos cíclicos de la forma 
+					<me>{\mathbb Z}_{p_1^{ \alpha_1 }} \times {\mathbb Z}_{p_2^{ \alpha_2 }} \times \cdots \times {\mathbb Z}_{p_n^{ \alpha_n }} \times {\mathbb Z} \times \cdots \times {\mathbb Z},</me>
+				donde los <m>p_i</m> son primos (no necesariamente distintos).</p>
+			</statement>
+		</theorem>
+
+	</section>
+
+	<section xml:id="section-solvable-groups">
+		<title>Grupos Solubles</title>
+
+		<p>Una <term>serie subnormal</term><idx><h>Serie subnormal de un grupo</h></idx>  de un grupo <m>G</m> es una sucesión finita de subgrupos 
+			<me>G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset H_0 = \{ e \},</me>
+		donde <m>H_i</m> es un subgrupo normal de <m>H_{i+1}</m>. Si cada subgrupo <m>H_i</m> es normal en <m>G</m>, entonces la serie se llama <term>serie normal</term><idx><h>Serie normal de un grupo</h></idx>. El <term>largo</term> de una serie subnormal o normal es el número de inclusiones propias.</p>
+ 
+		<example xml:id="example-normal-series">
+			<p>Toda serie de subgrupos de un grupo abeliano es una serie normal. Considere las siguientes series de grupos: 
+				<md>
+					<mrow>{\mathbb Z} \supset 9{\mathbb Z} \supset 45{\mathbb Z} \supset 180{\mathbb Z} \supset \{0\},</mrow>
+					<mrow>{\mathbb Z}_{24} \supset \langle 2 \rangle \supset \langle 6 \rangle \supset \langle 12 \rangle \supset \{0\}.</mrow>
+				</md></p>
+		</example>
+
+		<example xml:id="example-subnormal-series">
+			<p>Una serie subnormal no es necesariamente una serie normal.  Considere la sguiente serie subnormal del grupo <m>D_4</m>: 
+				<me>D_4 \supset \{ (1), (12)(34), (13)(24), (14)(23) \} \supset \{  (1), (12)(34) \} \supset \{ (1) \}.</me>
+			El subgrupo <m>\{  (1), (12)(34) \}</m> no es normal en <m>D_4</m>; en consecuencia, esta no es una serie normal.</p>
+		</example>
+
+		<p>Una serie subnormal (normal) <m>\{ K_j \}</m> es un <term>refinamiento de una serie subnormal (normal)</term> <m>\{ H_i \}</m> si <m>\{ H_i \} \subset \{ K_j \}</m>. Es decir, cada <m>H_i</m> es uno de los <m>K_j</m>.</p>
+
+		<example xml:id="example-refinement">
+			<p>Las serie
+				<me>{\mathbb Z} \supset 3{\mathbb Z} \supset 9{\mathbb Z} \supset 45{\mathbb Z} \supset 90{\mathbb Z} \supset 180{\mathbb Z} \supset \{0\}</me>
+			es un refinamiento de la serie
+				<me>{\mathbb Z} \supset 9{\mathbb Z} \supset 45{\mathbb Z} \supset 180{\mathbb Z} \supset \{0\}.</me></p>
+		</example>
+ 
+		<p>La mejor forma de estudiar una serie subnormal o normal de subgrupos, <m>\{ H_i \}</m> de <m>G</m>, es realmente estudiar los grupos cociente <m>H_{i+1}/H_i</m>.  Se dice que dos series subnormales (normales) <m>\{H_i \}</m> y <m>\{ K_j \}</m> de un grupo <m>G</m> son <term>isomorfas</term> si existe una correspondencia 1-1 entre las colecciones de grupos cociente <m>\{H_{i+1}/H_i \}</m> y <m>\{ K_{j+1}/ K_j \}</m>.</p>
+
+		<example xml:id="example-isomorph-series">
+			<p>Las dos series normales
+				<md>
+					<mrow>{\mathbb Z}_{60} \supset \langle 3 \rangle \supset  \langle 15 \rangle \supset \{ 0 \}</mrow>
+					<mrow>{\mathbb Z}_{60} \supset \langle 4 \rangle \supset  \langle 20 \rangle \supset \{ 0 \}</mrow>
+				</md>
+			del grupo <m>{\mathbb Z}_{60}</m> son isomorfas pues
+				<md>
+					<mrow>{\mathbb Z}_{60} / \langle 3 \rangle \cong \langle 20 \rangle / \{ 0 \} \cong {\mathbb Z}_{3}</mrow>
+					<mrow>\langle 3 \rangle / \langle 15 \rangle \cong \langle 4 \rangle /  \langle 20 \rangle \cong {\mathbb Z}_{5}</mrow>
+					<mrow>\langle 15 \rangle / \{ 0 \} \cong {\mathbb Z}_{60} / \langle 4 \rangle \cong {\mathbb Z}_4.</mrow>
+				</md></p>
+		</example>
+
+		<p>Una serie subnormal <m>\{ H_i \}</m> de un grupo <m>G</m> es una <term>serie de composición</term><idx><h>Serie de composición</h></idx> si todos los grupos cociente son simples; es decir, ninguno de ellos contiene un subgrupo normal. Una serie normal <m>\{ H_i \}</m> de <m>G</m> es una <term>serie principal</term><idx><h>Serie principal</h></idx> si todos los cocientes son simples.</p>
+ 
+		<example xml:id="example-composition-series">
+			<p>El grupo <m>{\mathbb Z}_{60}</m> tiene una serie de composición 
+				<me>{\mathbb Z}_{60} \supset \langle 3 \rangle \supset  \langle 15 \rangle \supset \langle 30 \rangle  \supset \{ 0 \}</me>
+			con grupos cociente
+				<md>
+					<mrow>{\mathbb Z}_{60} / \langle 3 \rangle &amp; \cong  {\mathbb Z}_{3}</mrow>
+					<mrow>\langle 3 \rangle / \langle 15 \rangle &amp; \cong  {\mathbb Z}_{5}</mrow>
+					<mrow>\langle 15 \rangle / \langle 30 \rangle &amp; \cong  {\mathbb Z}_{2}</mrow>
+					<mrow>\langle 30 \rangle / \{ 0 \} &amp; \cong  {\mathbb Z}_2.</mrow>
+				</md>
+			Como <m>{\mathbb Z}_{60}</m> es un grupo abeliano, esta serie es automáticamente una serie principal. Notemos que una serie de composición no es necesariamente única.  La serie 
+				<me>{\mathbb Z}_{60} \supset \langle 2 \rangle \supset \langle 4 \rangle \supset  \langle 20 \rangle \supset \{ 0 \}</me>
+				también es una serie de composición.</p>
+		</example>
+ 
+		<example xml:id="example-sn_series">
+			<p>Para <m>n \geq 5</m>, la serie
+				<me>S_n \supset A_n \supset \{ (1) \}</me>
+			es una serie de composición para <m>S_n</m> pues <m>S_n / A_n \cong {\mathbb Z}_2</m> y <m>A_n</m> es simple.</p>
+		</example>
+
+<!-- typo corrected.  Suggested by L. Franklin. -->
+<!-- TWJ - 12/19/2011 -->
+ 
+		<example xml:id="example-z-series">
+			<p>No todo grupo tiene una serie de composición o una serie principal. Supongamos que  
+				<me>\{ 0 \} = H_0 \subset H_1 \subset \cdots \subset H_{n-1} \subset H_n = {\mathbb Z}</me>
+			es ua serie subnormal de los enteros bajo la suma. Entonces <m>H_1</m> debe ser de la forma <m>k {\mathbb Z}</m> para algún <m>k \in {\mathbb N}</m>. En ese caso <m>H_1 / H_0 \cong k {\mathbb Z}</m> es un grupo cíclico infinito con muchos subgrupos normales propios no triviales.</p>
+		</example>
+
+<!-- changed n to k in the example.  Suggested by P. Diethelm. -->
+<!-- TWJ 4/24/2013 -->
+ 
+		<p>Si bien una serie de composición no es necesariamente única como en el caso de <m>{\mathbb Z}_{60}</m>, resulta que dos series de composición cualquiera están relacionadas. Los cocientes de las dos series de composición para <m>{\mathbb Z}_{60}</m> son <m>{\mathbb Z}_2</m>,  <m>{\mathbb Z}_2</m>,  <m>{\mathbb Z}_3</m>, y  <m>{\mathbb Z}_5</m>; es decir, las dos series de composición son isomorfasEl Teorema de Jordan-Hölder dice que esto siempre se cumple.</p>
+ 
+		<theorem>
+			<title>Jordan-Hölder</title>
+			<idx><h>Teorema de Jordan-Hölder</h></idx>
+			<statement>
+				<p>Dos series de composición cualquiera de <m>G</m> son isomorfas.</p>
+			</statement>
+			<proof>
+				<p>Procederemos por inducción sobre el largo de la serie de composición.  Si el largo de una serie de composición es 1, entonces <m>G</m> debe ser un grupo simple.  En este caso cualquiera dos series de composición son isomorfas.</p>
+ 
+				<p>Supongamos que el teorema es verdadero para todos los grupos que tengan una serie de composición de largo <m>k</m>, donde <m>1 \leq k \lt n</m>. Sean 
+					<md>
+						<mrow>G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset H_0 = \{ e \}</mrow>
+						<mrow>G = K_m \supset K_{m-1} \supset \cdots \supset K_1 \supset K_0 = \{ e \}</mrow>
+					</md>
+				dos series de composición para <m>G</m>.  Podemos formar dos nuevas series subnormales para  <m>G</m> pues <m>H_i \cap K_{m-1}</m> es normal en <m>H_{i+1} \cap K_{m-1}</m> y <m>K_j \cap H_{n-1}</m> es normal en <m>K_{j+1} \cap H_{n-1}</m>:
+					<md>
+						<mrow>G = H_n \supset H_{n-1} \supset H_{n-1} \cap K_{m-1} \supset \cdots \supset H_0 \cap K_{m-1} = \{ e \}</mrow>
+						<mrow>G = K_m \supset K_{m-1} \supset K_{m-1} \cap H_{n-1} \supset \cdots \supset K_0 \cap H_{n-1} = \{ e \}.</mrow>
+					</md>
+				Como <m>H_i \cap K_{m-1}</m> es normal en <m>H_{i+1} \cap K_{m-1}</m>, el Segundo Teorema de Isomorfía (Teorema<nbsp /><xref ref="theorem-second-isomorphism" />) implica que 
+					<md>
+						<mrow>(H_{i+1} \cap K_{m-1}) / (H_i \cap K_{m-1}) &amp; =  (H_{i+1} \cap K_{m-1}) / (H_i \cap ( H_{i+1} \cap K_{m-1} ))</mrow>
+						<mrow>&amp; \cong  H_i (H_{i+1} \cap K_{m-1})/ H_i,</mrow>
+					</md>
+				donde <m>H_i</m> es normal en <m>H_i (H_{i+1} \cap K_{m-1})</m>. Como <m>\{ H_i \}</m>  es una serie de composición, <m>H_{i+1} / H_i</m> es simple; en consecuencia, <m>H_i (H_{i+1} \cap K_{m-1})/ H_i</m> es ya sea <m>H_{i+1}/H_i</m> o <m>H_i/H_i</m>.  Es decir, <m>H_i (H_{i+1} \cap K_{m-1})</m> debe ser <m>H_i</m> o <m>H_{i+1}</m>. Removiendo las inclusiones impropias de las series 
+					<me>H_{n-1} \supset H_{n-1} \cap K_{m-1} \supset \cdots \supset H_0 \cap K_{m-1} = \{ e \}, </me>
+				tenemos una serie de composición para <m>H_{n-1}</m>. La hipótesis de inducción dice que esta serie es equivalente a la serie de composición
+					<me>H_{n-1} \supset \cdots \supset H_1 \supset H_0 = \{ e \}.</me>
+				Luego, las series de composición
+					<me>G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset H_0 = \{ e \}</me>
+				y
+					<me>G = H_n \supset H_{n-1} \supset H_{n-1} \cap K_{m-1} \supset \cdots \supset H_0 \cap K_{m-1} = \{ e \}</me>
+				son equivalentes. Si <m>H_{n-1} = K_{m-1}</m>, entonces las series de composición <m>\{H_i \}</m> y <m>\{ K_j \}</m> son equivalentes y estamos listos; de lo contrario, <m>H_{n-1} K_{m-1}</m>  es un subgrupo normal de <m>G</m> que contiene propiamente a <m>H_{n-1}</m>.  En este caso <m>H_{n-1} K_{m-1} = G</m> y podemos volver a aplicar el Segundo Teorema de Isomorfía; esto es,
+					<me>K_{m-1} / (K_{m-1} \cap H_{n-1}) \cong (H_{n-1} K_{m-1}) / H_{n-1} = G/H_{n-1}.</me>
+				Por lo tanto,
+					<me>G = H_n \supset H_{n-1} \supset H_{n-1} \cap K_{m-1} \supset \cdots \supset H_0 \cap K_{m-1} = \{ e \}</me>
+				y 
+					<me>G = K_m \supset K_{m-1} \supset K_{m-1} \cap H_{n-1} \supset \cdots \supset K_0 \cap H_{n-1} = \{ e \}</me>
+				son equivalentes completando la demostración del teorema.</p>
+			</proof>
+		</theorem> 
+ 
+		<p>Un grupo <m>G</m> es <term>soluble</term><idx><h>Soluble</h><h>grupo</h></idx> si tiene una serie subnormal <m>\{ H_i \}</m> tal que todos los cocientes <m>H_{i+1} / H_i</m> son abelianos. Los grupos solubles tendrán un rol fundamental cuando estudiemos teoría de Galois y la solución de ecuaciones polinomiales.</p> 
+
+<!-- Corrected the definition of a solvable group.  Suggested by K. Halasz. -->
+<!-- TWJ 1/10/2014 -->
+
+		<example xml:id="solvable">
+			<p>El grupo <m>S_4</m> es soluble pues
+				<me>S_4 \supset A_4 \supset \{ (1), (12)(34), (13)(24), (14)(23) \} \supset \{ (1) \}</me>
+			tiene grupos cociente abelianos; pero, para <m>n \geq 5</m> la serie
+				<me>S_n \supset A_n \supset \{ (1) \}</me>
+			es una serie de composición para <m>S_n</m> con un cociente no-abeliano. Por lo tanto, <m>S_n</m> no es un grupo soluble para <m>n \geq 5</m>.</p>
+		</example>
+
+		<xi:include href="./sage/struct-info.xml" />
+
+	</section>
+	
+	<xi:include href="./exercises/struct.xml" />
+ 
+	<exercises xml:id="struct-exercises-programming">
+		<title>Ejercicios de Programación</title>
+ 
+		<exercise>
+			<statement>
+				<p>Escriba un programa que calcule todos los posibles grupos abelianos de orden <m>n</m>.  ¿Cuál es el mayor valor de <m>n</m> para el que funciona su programa?</p>
+			</statement>
+		</exercise>
+	</exercises>
+ 
+	<references xml:id="struct-references"> <!-- %References checked and updated - TWJ 6/22/2010 -->
+		<title>Referencias y Lecturas Recomendadas</title>
+
+<!--Fix INTRO
+		<p>Each of the following references contains a proof of the Fundamental Theorem of Finitely Generated Abelian Groups.</p>
+
+	-->
+		<biblio type="raw"> <!-- was [1] -->
+		Hungerford, T. W.  <title>Algebra</title>. Springer, New York, 1974.</biblio>
+<!-- %Reference updated 6/22/2010 - TWJ -->
+ 
+
+		<biblio type="raw"> <!-- was [2] -->
+		Lang, S. <title>Algebra</title>. 3rd ed. Springer, New York, 2002.</biblio>
+ <!-- %Reference updated 6/22/2010 - TWJ -->
+ 
+
+		<biblio type="raw"> <!-- was [3] -->
+ <!-- %Reference updated 6/22/2010 - TWJ -->
+		Rotman, J. J. <title>An Introduction to the Theory of Groups</title>. 4th ed. Springer, New York, 1995.</biblio>
+ <!-- %Reference updated 6/22/2010 - TWJ -->
+ 
+		</references>  
+
+	<xi:include href="./sage/struct-sage.xml" />
+	<xi:include href="./sage/struct-sage-exercises.xml" />
+
+</chapter>
+ 
+ 
+ 
+ 

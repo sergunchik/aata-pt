@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="galois-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Nuestra capacidad de examinar cuerpos con Sage nos permitirá estudiar los principales conceptos de la Teoría de Galois con facilidad.  Examinaremos rigurosamente el Ejemplo 7 usando las herramientas computacionales a nuestra disposición.</p>
+	</introduction>
+
+	<subsection>
+		<title>Grupos de Galois</title>
+
+		<p>Repetiremos el Ejemplo<nbsp /><xref ref="example-galois-x4-2" /> y analizaremos cuidadosamente el cuerpo de descomposición del polinomio <m>p(x)=x^4-2</m>.  Comenzamos con un cuerpo de extención inicial que contenga al menos una raíz.</p>
+
+		<sage>
+		<input>
+		x = polygen(QQ, 'x')
+		N.&lt;a&gt; = NumberField(x^4 - 2); N
+		</input>
+		<output>
+		Number Field in a with defining polynomial x^4 - 2
+		</output>
+		</sage>
+
+		<p>El método <c>.galois_closure()</c> crea una extensión que contiene todas las raíces del polinomio usado para definir el cuerpo de números.</p>
+
+		<sage>
+		<input>
+		L.&lt;b&gt; = N.galois_closure(); L
+		</input>
+		<output>
+		Number Field in b with defining polynomial x^8 + 28*x^4 + 2500
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		L.degree()
+		</input>
+		<output>
+		8
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		y = polygen(L, 'y')
+		(y^4 - 2).factor()
+		</input>
+		<output>
+		(y - 1/120*b^5 -  19/60*b) *
+		(y - 1/240*b^5 + 41/120*b) *
+		(y + 1/240*b^5 - 41/120*b) *
+		(y + 1/120*b^5 +  19/60*b)
+		</output>
+		</sage>
+
+		<p>De la factorización, es claro que  <c>L</c> es el cuerpo de descomposición del polinomio, si bien la factorización no es linda.  Es fácil entonces obtener el grupo de Galois de esta extensión de cuerpos.</p>
+
+		<sage>
+		<input>
+		G = L.galois_group(); G
+		</input>
+		<output>
+		Galois group of Number Field in b with
+		defining polynomial x^8 + 28*x^4 + 2500
+		</output>
+		</sage>
+
+		<p>Podemos examinar e identificar este grupo.  Note que como el cuerpo es una extensión de grado  <m>8</m>, el grupo se describe como un grupo de permutaciones en  <m>8</m> símbolos.  (Es solo una coincidencia que el grupo tiene  <m>8</m> elementos.)  Dada la escasez de grupos no abelianos de orden  <m>8</m>, no es difícil descubrir la naturaleza de este grupo.</p>
+
+		<sage>
+		<input>
+		G.is_abelian()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		G.order()
+		</input>
+		<output>
+		8
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		G.list()
+		</input>
+		<output>
+		[(), (1,2,8,7)(3,4,6,5),
+		(1,3)(2,5)(4,7)(6,8), (1,4)(2,3)(5,8)(6,7),
+		(1,5)(2,6)(3,7)(4,8), (1,6)(2,4)(3,8)(5,7),
+		(1,7,8,2)(3,5,6,4), (1,8)(2,7)(3,6)(4,5)]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		G.is_isomorphic(DihedralGroup(4))
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Ahí está.  Pero puede no ser muy satisfactorio.  Veamos en mayor profundidad para entender mejor.  Empezaremos del principio y crearemos el cuerpo de descomposición de  <m>p(x)=x^4-2</m> nuevamente, pero la principal diferencia es que las raíces serán extremadamente obvias de manera que podamos trabajar más cuidadosamente con el grupo de Galois y los cuerpos fijos.  En el camino, veremos otro ejemplo donde el álgebra lineal nos permite ciertos cálculos.  La siguiente construcción debiese resultar familiar a esta altura.</p>
+
+		<sage>
+		<input>
+		x = polygen(QQ, 'x')
+		p = x^4 - 2
+		N.&lt;a&gt; = NumberField(p); N
+		</input>
+		<output>
+		Number Field in a with defining polynomial x^4 - 2
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		y = polygen(N, 'y')
+		p = p.subs(x=y)
+		p.factor()
+		</input>
+		<output>
+		(y - a) * (y + a) * (y^2 + a^2)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		M.&lt;b&gt; = NumberField(y^2 + a^2); M
+		</input>
+		<output>
+		Number Field in b with defining polynomial y^2 + a^2 over
+		its base field
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		z = polygen(M, 'z')
+		(z^4 - 2).factor()
+		</input>
+		<output>
+		(z - b) * (z - a) * (z + a) * (z + b)
+		</output>
+		</sage>
+
+		<p>Lo que debemos notar acá es que hemos organizado el cuerpo de descomposición de manera de que las cuatro raíces, <c>a, -a, b, -b</c>, son funciones muy sencillas en términos de los generadores.  En una notación más tradicional, <c>a</c> es <m>2^{\frac{1}{4}}=\sqrt[4]{2}</m>, y <c>b</c> es <m>2^{\frac{1}{4}}i=\sqrt[4]{2}i</m> (o sus negativos).</p>
+
+		<p>Veremos que es más sencillo realizar cálculos en la torre aplanada, una construcción ya familiar.</p>
+
+		<sage>
+		<input>
+		L.&lt;c&gt; = M.absolute_field(); L
+		</input>
+		<output>
+		Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		fromL, toL = L.structure()
+		</input>
+		</sage>
+
+		<p>Podemos volver a nuestro polinomio original (sobre los racionales), y preguntar por sus raíces en la torre aplanada, diseññada a la medida para contener estas raíces.</p>
+
+		<sage>
+		<input>
+		roots = p.roots(ring=L, multiplicities=False); roots
+		</input>
+		<output>
+		[1/120*c^5 +  19/60*c,
+		 1/240*c^5 - 41/120*c,
+		-1/240*c^5 + 41/120*c,
+		-1/120*c^5 -  19/60*c]
+		</output>
+		</sage>
+
+		<p>Hmmm.  ¿Se ven correctas?  Si volvemos a la factorización obtenida en el cuerpo construído con el método <c>.galois_closure()</c>, se ven bien.  Pero podemos mejorarlas.</p>
+
+		<sage>
+		<input>
+		[fromL(r) for r in roots]
+		</input>
+		<output>
+		[b, a, -a, -b]
+		</output>
+		</sage>
+
+		<p>Sí, esas son las raíces.</p>
+
+		<p>El comando <c>End()</c> creará el grupo de automorfismos del cuerpo <c>L</c>.</p>
+
+		<sage>
+		<input>
+		G = End(L); G
+		</input>
+		<output>
+		Automorphism group of Number Field in c with
+		defining polynomial x^8 + 28*x^4 + 2500
+		</output>
+		</sage>
+
+		<p>Podemos verificar que cada uno de estos automorfismos fija los números racionales.  Si un homomorfismo de cuerpos fija el 1, entonces fija los enteros, y por ende fija todas las fracciones de enteros.</p>
+
+		<sage>
+		<input>
+		[tau(1) for tau in G]
+		</input>
+		<output>
+		[1, 1, 1, 1, 1, 1, 1, 1]
+		</output>
+		</sage>
+
+		<p>Así, cada elemento de <c>G</c> fija los números racionales y por ende <c>G</c> es el grupo de Galois del cuerpo de descomposición <c>L</c> sobre los racionales.</p>
+
+		<p>La Proposición<nbsp /><xref ref="proposition-roots-permute" /> es fundamental.  Dice que todo automorfismo en el grupo de Galois de un cuerpo de extensión induce una permutación de las raíces de un polinomio con coeficientes en el cuerpo base.  Tenemos acá todos estos ingredientes.  Evaluaremos cada automorfismo del grupo de Galois en cada una de las cuatro raíces de nuestro polinomio, que en cada caso debiera ser otra raíz.  (Usamos el constructor <c>Sequence()</c> para obtener una salida bien diagramada.)</p>
+
+		<sage>
+		<input>
+		Sequence([[fromL(tau(r)) for r in roots] for tau in G], cr=True)
+		</input>
+		<output>
+		[
+		[b, a, -a, -b],
+		[-b, -a, a, b],
+		[a, -b, b, -a],
+		[b, -a, a, -b],
+		[-a, -b, b, a],
+		[a, b, -b, -a],
+		[-b, a, -a, b],
+		[-a, b, -b, a]
+		]
+		</output>
+		</sage>
+
+		<p>Cada fila de esta salida es una lista de raíces, pero permutadas, y así corresponde a una permutación de cuatro objetos (las raíces).  Por ejemplo, la segunda fila muestra que el segundo automorfismo intercambia <c>a</c> con <c>-a</c>, y <c>b</c> con <c>-b</c>.  (Note que la primera fila es el resultado del automorfismo identidad, de manera que podemos comparar mentalmente la primera fila con cualquier otra para imaginar la forma de <q>dos filas</q> de una permutación.)  Podemos numerar las raíces, del 1 al 4, y crear cada permutacióncomo un elemento de <m>S_4</m>.  Es más de lo que se requiere, pero podemos construir el grupo de permutaciones dejando que <em>todos</em> estos elementos generen un grupo.</p>
+
+		<sage>
+		<input>
+		S4 = SymmetricGroup(4)
+		elements = [S4([1, 2, 3, 4]),
+		            S4([4, 3, 2, 1]),
+		            S4([2, 4, 1, 3]),
+		            S4([1, 3, 2, 4]),
+		            S4([3, 4, 1, 2]),
+		            S4([2, 1, 4, 3]),
+		            S4([4, 2, 3, 1]),
+		            S4([3, 1, 4, 2])]
+		elements
+		</input>
+		<output>
+		[(), (1,4)(2,3), (1,2,4,3), (2,3), (1,3)(2,4),
+		 (1,2)(3,4), (1,4), (1,3,4,2)]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		P = S4.subgroup(elements)
+		P.is_isomorphic(DihedralGroup(4))
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Note que hemos construido un isomorfismo del grupo de Galois a un grupo de permutaciones <em>usando solo cuatro símbolos</em>, en lugar de los ocho usados previamente.</p>
+
+	</subsection>
+
+	<subsection>
+		<title>Cuerpo Fijos</title>
+
+		<p>En un ejercicio Sage anterior, calculamos los cuerpos fijos de automorfismos individuales para cuerpos finitos.  Esto fue <q>fácil</q> en el sentido de que podíamos verificar con cada uno de los elementos en el cuerpo para ver si quedaba fijo, pues el cuerpo era finito.  Ahora tenemos una extensión de cuerpos infinitos.  ¿Cómo determinaremos qué elementos quedan fijos bajo un automorfismo individual, o subgrupos de automorfismos?</p>
+
+		<p>La respuesta es usar la estructura de espacio vectorial de la torre aplanada.  Como es una extensión de grado 8 de los racionales, las primeras 8 potencias de un elemento primitivo <c>c</c> forman una base cuando el cuerpo se ve como un espacio vectorial con los racionales como escalares.  Es suficiente saber como cada automorfismo de cuerpos actúa en esta base para completamente especificar la definición del automorfismo.  Esto es,<md>
+			<mrow>\tau(x)&amp;=\tau\left(\sum_{i=0}^7\,q_ic^i\right)&amp;&amp;q_i\in{\mathbb Q}</mrow>
+			<mrow>&amp;=\sum_{i=0}^7\,\tau(q_i)\tau(c^i)&amp;&amp;\tau\text{ es un automorfismo de cuerpos}</mrow>
+			<mrow>&amp;=\sum_{i=0}^7\,q_i\tau(c^i)&amp;&amp;\text{los racionales quedan fijos}</mrow>
+		</md>  Así podemos calcular el valor de un automorfismo de cuerpos en cualquier combinación lineal de potencias del elemento primitivo como combinación lineal de los valores del automorfismo de cuerpos solo en las potencias del elemento primitivo.  Esta se conoce como <q>base de potencias</q>, lo que podemos obtener simplemente con el método <c>.power_basis()</c>.  Empezaremos con un ejemplo de como usar esta base.  Ilustraremos con el cuarto automorfismo del grupo de Galois.  Note que el método <c>.vector()</c> es conveniente en tanto transforma una combinación lineal de potencias de <c>c</c> en un vector que solo retiene los coeficientes.  (Note además que  <m>\tau</m> está completamente definido por el valor de <m>\tau(c)</m>,  pues como es un automorfismo de cuerpos <m>\tau(c^k)=(\tau(c))^k</m>.  Sin embargo, igual debemos trabajar con la base de potencias completa para aprovechar la estructura de espacio vectorial.)</p>
+
+		<sage>
+		<input>
+		basis = L.power_basis(); basis
+		</input>
+		<output>
+		[1, c, c^2, c^3, c^4, c^5, c^6, c^7]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		tau = G[3]
+		z = 4 + 5*c+ 6*c^3-7*c^6
+		tz = tau(4 + 5*c+ 6*c^3-7*c^6); tz
+		</input>
+		<output>
+		11/250*c^7 - 98/25*c^6 + 1/12*c^5 + 779/125*c^3 +
+		6006/25*c^2 - 11/6*c + 4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		tz.vector()
+		</input>
+		<output>
+		(4, -11/6, 6006/25, 779/125, 0, 1/12, -98/25, 11/250)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		tau_matrix = column_matrix([tau(be).vector() for be in basis])
+		tau_matrix
+		</input>
+		<output>
+		[  1       0       0        0  -28       0        0          0]
+		[  0  -11/30       0        0    0  779/15        0          0]
+		[  0       0  -14/25        0    0       0  -858/25          0]
+		[  0       0       0  779/750    0       0        0  -4031/375]
+		[  0       0       0        0   -1       0        0          0]
+		[  0    1/60       0        0    0   11/30        0          0]
+		[  0       0   -1/50        0    0       0    14/25          0]
+		[  0       0       0  11/1500    0       0        0   -779/750]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		tau_matrix*z.vector()
+		</input>
+		<output>
+		(4, -11/6, 6006/25, 779/125, 0, 1/12, -98/25, 11/250)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		tau_matrix*(z.vector()) == (tau(z)).vector()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>La última línea expresa el hecho de que  <c>tau_matrix</c> es una representación matricial del automorfismo de cuerpos, visto como transformación lineal en la estructura de espacio vectorial.  En la representación de un homomorfismo de cuerpos invertible, la matriz es invertible. Para una permutación de orden <m>2</m> de las raíces, la inversa de la matriz es ella misma.  Pero estos hechos son solo verificaciones de que tenemos lo que queremos, estamos interesados en otras propiedades.</p>
+
+		<p>Para construir cuerpos fijos, queremos encontrar los elementos que quedan fijos por automorfismos.  Continuando con <c>tau</c> de arriba, buscamos elementos  <c>z</c> (escritos como vectores) tales que <c>tau_matrix*z=z</c>.  Estos vectores propios para el valor propio  <m>1</m>, o elementos del espacio nulo de <c>(tau_matrix - I)</c> (espacios nulos obtenidos con <c>.right_kernel()</c> en Sage).</p>
+
+		<sage>
+		<input>
+		K = (tau_matrix-identity_matrix(8)).right_kernel(); K
+		</input>
+		<output>
+		Vector space of degree 8 and dimension 4 over Rational Field
+		Basis matrix:
+		[    1     0     0     0     0     0     0     0]
+		[    0     1     0     0     0  1/38     0     0]
+		[    0     0     1     0     0     0 -1/22     0]
+		[    0     0     0     1     0     0     0 1/278]
+		</output>
+		</sage>
+
+		<p>Cada fila de la matriz de base es un vector que representa un elemento del cuerpo, esspecíficamente <c>1</c>, <c>c + (1/38)*c^5</c>, <c>c^2 - (1/22)*c^6</c>, <c>c^3 + (1/278)*c^7</c>.  Examinemos en mayor detalle estos elementos fijos, en términos que reconozcamos.</p>
+
+		<sage>
+		<input>
+		fromL(1)
+		</input>
+		<output>
+		1
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		fromL(c + (1/38)*c^5)
+		</input>
+		<output>
+		60/19*b
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		fromL(c^2 - (1/22)*c^6)
+		</input>
+		<output>
+		150/11*a^2
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		fromL(c^3 + (1/278)*c^7)
+		</input>
+		<output>
+		1500/139*a^2*b
+		</output>
+		</sage>
+
+		<p>Cualquier elemento fijo por <c>tau</c> es una combinación lineal de estos cuatro elementos.  Podemos ignorar los múltiplos racionales, el primer elemento está diciendo simplemente que los racionales quedan fijos, y que el último elemento es simplemente el producto de los dos del medio.  Así fundamentalmente <c>tau</c> fija los racionales, <c>b</c> (que es <m>\sqrt[4]{2}i</m>) y <c>a^2</c> (que es <m>\sqrt{2}</m>).  Más aún, <c>b^2 = -a^2</c> (la verificación viene a continuación), de manera que podemos crear cualquier elemento fijo por <c>tau</c> simplemente adjuntando <c>b</c>=<m>\sqrt[4]{2}i</m> a los racionales.  Así los elementos fijos por  <c>tau</c> son <m>{\mathbb Q}(\sqrt[4]{2}i)</m>.</p>
+
+		<sage>
+		<input>
+		a^2 + b^2
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+	</subsection>
+
+	<subsection>
+	<title>Correspondencia de Galois</title>
+
+		<p>La estructura completa de subcuerpos de nuestro cuerpo de descomposición está determinada por la estrcutura de subgrupos del grupo de Galois (Teorema<nbsp /><xref ref="theorem-fundamental-galois" />), que es isomorfo a un grupo que conocemos bien.  ¿Cuáles son los subgrupos de nuestro grupo de Galois, expresados como grupos de permutaciones? (Para ser breves, solo listamos los <em>generadores</em> de cada subgrupo.)</p>
+
+		<sage>
+		<input>
+		sg = P.subgroups();
+		[H.gens() for H in sg]
+		</input>
+		<output>
+		[[()],
+		 [(2,3)],
+		 [(1,4)],
+		 [(1,4)(2,3)],
+		 [(1,2)(3,4)],
+		 [(1,3)(2,4)],
+		 [(2,3), (1,4)],
+		 [(1,2)(3,4), (1,4)(2,3)],
+		 [(1,3,4,2), (1,4)(2,3)],
+		 [(2,3), (1,2)(3,4), (1,4)]]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		[H.order() for H in sg]
+		</input>
+		<output>
+		[1, 2, 2, 2, 2, 2, 4, 4, 4, 8]
+		</output>
+		</sage>
+
+		<p><c>tau</c> arriba, es el cuarto elemento del grupo de automorfismos, y la cuarta permutación en <c>elements</c> es la permutación <c>(2,3)</c>, el generador (de orden 2) para el segundo subgrupo.  Como es el único elemento no trivial de este subgrupo, sabemos que el cuerpo fijo correspondiente es <m>{\mathbb Q}(\sqrt[4]{2}i)</m>.</p>
+
+		<p>Analicemos otro subgrupo de orden  2, si toda la explicación, y comenzando con el subgrupo.  El sexto subgrupo está generado por el quinto automorfismo, así es que determinemos los elementos que quedan fijos.</p>
+
+		<sage>
+		<input>
+		tau = G[4]
+		tau_matrix = column_matrix([tau(be).vector() for be in basis])
+		(tau_matrix-identity_matrix(8)).right_kernel()
+		</input>
+		<output>
+		Vector space of degree 8 and dimension 4 over Rational Field
+		Basis matrix:
+		[     1      0      0      0      0      0      0      0]
+		[     0      1      0      0      0  1/158      0      0]
+		[     0      0      1      0      0      0   1/78      0]
+		[     0      0      0      1      0      0      0 13/614]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		fromL(tau(1))
+		</input>
+		<output>
+		1
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		fromL(tau(c+(1/158)*c^5))
+		</input>
+		<output>
+		120/79*b - 120/79*a
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		fromL(tau(c^2+(1/78)*c^6))
+		</input>
+		<output>
+		-200/39*a*b
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		fromL(tau(c^3+(13/614)*c^7))
+		</input>
+		<output>
+		3000/307*a^2*b + 3000/307*a^3
+		</output>
+		</sage>
+
+		<p>El primer elemento indica que los racionales quedan fijos (lo sabíamos).  Escalando el segundo elemento nos da <c>b - a</c> como elemento fijo.  Escalando el tercer y cuarto elementos fijos, reconocemos que puedens ser obtenidos a partir de potencias de  <c>b - a</c>.</p>
+
+		<sage>
+		<input>
+		(b-a)^2
+		</input>
+		<output>
+		-2*a*b
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		(b-a)^3
+		</input>
+		<output>
+		2*a^2*b + 2*a^3
+		</output>
+		</sage>
+
+		<p>Así el cuerpo fijo de este subgrupo puede ser formado adjuntando  <c>b - a</c> a los racionales, lo que en notación matemática es <m>\sqrt[4]{2}i - \sqrt[4]{2} = (1-i)\sqrt[4]{2}</m>, así el cuerpo fijo es <m>{\mathbb Q}(\sqrt[4]{2}i - \sqrt[4]{2}) = {\mathbb Q}((1-i)\sqrt[4]{2})</m>.</p>
+
+		<p>Podemos crear este cuerpo fijo, aunque como lo hacemos acá no es estrictamente un subcuerpo de  <c>L</c>.  Usaremos una expresión para <c>b - a</c> que es una combinación lineal de potencias de <c>c</c>.</p>
+
+		<sage>
+		<input>
+		subinfo = L.subfield((79/120)*(c+(1/158)*c^5)); subinfo
+		</input>
+		<output>
+		(Number Field in c0 with defining polynomial x^4 + 8, Ring morphism:
+		  From: Number Field in c0 with defining polynomial x^4 + 8
+		  To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+		  Defn: c0 |--> 1/240*c^5 + 79/120*c)
+		</output>
+		</sage>
+
+		<p>El método <c>.subfield()</c> entrega un par.  El primer  ítem es un nuevo cuerpo de números, isomorfo a un subcuerpo de  <c>L</c>.  El segundo ítem es una función inyectiva desde el nuevo cuerpo de números a  <c>L</c>.  En este caso, la imagen del elemento primitivo <c>c0</c> es el elemento que hemos especificado como generador del subcuerpo.  El elemento primitivo del nuevo cuerpo satisface el polinomio  <m>x^4+8</m> <mdash /> puede verificar que  <m>(1-i)\sqrt[4]{2}</m> es de hecho una raíz del polinomio <m>x^4 + 8</m>.</p>
+
+		<p>Existen cuatro subgrupos de orden  <m>2</m>, hemos encontrado cuerpos fijos para dos de ellos.  Los otros tres son similares, y sería un buen ejercicio obtenerlos.  Nuestro grupo de automorfismos tiene tres subgrupos de orden  4, y al menos uno de cada tipo posible (cíclico versus no cíclico).  Cuerpos fijos de subgrupos de mayor tamaño requieren encontrar elementos del cuerpo que queden fijos por todos los automorfismos en el subgrupo.  (Convenientemente ignoramos el automorfismo identidad arriba.)  Esto va a requerir myores cálculos, pero restringirá las posibilidades (cuerpos menores) al punto de que será más fácil determinar un elemento primitivo para cada uno de los cuerpos.</p>
+
+		<p>El séptimo subgrupo es generado por dos elementos de orden  <m>2</m> y se compone completamente de elementos de orden <m>2</m> (exceptuando la identidad), así que es isomorfo a  <m>{\mathbb Z}_2\times{\mathbb Z}_2</m>.  Las permutaciones corresponden a los automorfismos número  0, 1, 3, y 6.  Para determinar el elemento fijo por  <em>los cuatro</em> automorfismos, construiremos el núcleo de cada uno y a medida que avanzamos, formamos la <em>intersección</em> de los cuatro núcleos.  Usaremos un bucle sobre los cuatro automorfismos.</p>
+
+		<sage>
+		<input>
+		V = QQ^8
+		for tau in [G[0], G[1], G[3], G[6]]:
+		  tau_matrix = column_matrix([tau(be).vector() for be in basis])
+		  K = (tau_matrix-identity_matrix(8)).right_kernel()
+		  V = V.intersection(K)
+		V
+		</input>
+		<output>
+		Vector space of degree 8 and dimension 2 over Rational Field
+		Basis matrix:
+		[    1     0     0     0     0     0     0     0]
+		[    0     0     1     0     0     0 -1/22     0]
+		</output>
+		</sage>
+
+		<p>Fuera de los racionales, hay un único elemento fijo.</p>
+
+		<sage>
+		<input>
+		fromL(tau(c^2 - (1/22)*c^6))
+		</input>
+		<output>
+		150/11*a^2
+		</output>
+		</sage>
+
+		<p>Removiendo un múltiplo escalar, nuestro elemento primitivo es <c>a^2</c>, que matemáticamente es <m>\sqrt{2}</m>, así el cuerpo fijo es <m>{\mathbb Q}(\sqrt{2})</m>.  Nuevamente, podemos construir este cuerpo fijo, pero ignorando la función.</p>
+
+		<sage>
+		<input>
+		F, mapping = L.subfield((11/150)*(c^2 - (1/22)*c^6))
+		F
+		</input>
+		<output>
+		Number Field in c0 with defining polynomial x^2 - 2
+		</output>
+		</sage>
+
+		<p>Un subgrupo más.  El penúltimo subgrupo tiene una permutación de orden 4 como generador, así es que es un grupo cíclico de orden  4.  Las permutaciones individuales del subgrupo corresponden a automorfismos de  0, 1, 2, 7.</p>
+
+		<sage>
+		<input>
+		V = QQ^8
+		for tau in [G[0], G[1], G[2], G[7]]:
+		  tau_matrix = column_matrix([tau(be).vector() for be in basis])
+		  K = (tau_matrix-identity_matrix(8)).right_kernel()
+		  V = V.intersection(K)
+		V
+		</input>
+		<output>
+		Vector space of degree 8 and dimension 2 over Rational Field
+		Basis matrix:
+		[1 0 0 0 0 0 0 0]
+		[0 0 0 0 1 0 0 0]
+		</output>
+		</sage>
+
+		<p>Así podemos calcular el elemento primitivo.</p>
+
+		<sage>
+		<input>
+		fromL(tau(c^4))
+		</input>
+		<output>
+		-24*a^3*b - 14
+		</output>
+		</sage>
+
+		<p>Como los racionales quedan fijos, podemos sacar el <m>-14</m> y el múltiplo y tomar <c>a^3*b</c> como el elemento primitivo.  Matemáticamente, esto es <m>2i</m>, así que podemos usar simplemente <m>i</m> como elemento primitivo y el cuerpo fijo es <m>{\mathbb Q}(i)</m>.  Podemos entonces construir el cuerpo fijo (e ignorar la función que obtuvimos además).</p>
+
+		<sage>
+		<input>
+		F, mapping = L.subfield((c^4+14)/-48)
+		F
+		</input>
+		<output>
+		Number Field in c0 with defining polynomial x^2 + 1
+		</output>
+		</sage>
+
+		<p>Hay un subgrupo más de orden <m>4</m>, cuyo análisi dejaremos como ejercicio.  Hay además dos subgrupos triviales (la identidad y el grupo completo) que no son muy interesantes ni sorprendentes.</p>
+
+		<p>Si lo de arriba le parece mucho trabajo, puede siempre dejar que Sage lo haga todo con el método <c>.subfields()</c>.</p>
+
+		<sage>
+		<input>
+		L.subfields()
+		</input>
+		<output>
+		[
+		(Number Field in c0 with defining polynomial x,
+		 Ring morphism:
+		   From: Number Field in c0 with defining polynomial x
+		   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+		   Defn: 0 |--> 0,
+		 None),
+		(Number Field in c1 with defining polynomial x^2 + 112*x + 40000,
+		 Ring morphism:
+		   From: Number Field in c1 with defining polynomial x^2 + 112*x + 40000
+		   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+		   Defn: c1 |--> 4*c^4,
+		 None),
+		(Number Field in c2 with defining polynomial x^2 + 512,
+		 Ring morphism:
+		   From: Number Field in c2 with defining polynomial x^2 + 512
+		   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+		   Defn: c2 |--> 1/25*c^6 + 78/25*c^2,
+		 None),
+		(Number Field in c3 with defining polynomial x^2 - 288,
+		 Ring morphism:
+		   From: Number Field in c3 with defining polynomial x^2 - 288
+		   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+		   Defn: c3 |--> -1/25*c^6 + 22/25*c^2,
+		 None),
+		(Number Field in c4 with defining polynomial x^4 + 112*x^2 + 40000,
+		 Ring morphism:
+		   From: Number Field in c4 with defining polynomial x^4 + 112*x^2 + 40000
+		   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+		   Defn: c4 |--> 2*c^2,
+		 None),
+		(Number Field in c5 with defining polynomial x^4 + 648,
+		 Ring morphism:
+		   From: Number Field in c5 with defining polynomial x^4 + 648
+		   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+		   Defn: c5 |--> 1/80*c^5 + 79/40*c,
+		 None),
+		(Number Field in c6 with defining polynomial x^4 + 8,
+		Ring morphism:
+		  From: Number Field in c6 with defining polynomial x^4 + 8
+		  To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+		  Defn: c6 |--> -1/80*c^5 + 1/40*c,
+		  None),
+		(Number Field in c7 with defining polynomial x^4 - 512,
+		 Ring morphism:
+		   From: Number Field in c7 with defining polynomial x^4 - 512
+		   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+		   Defn: c7 |--> -1/60*c^5 + 41/30*c,
+		 None),
+		(Number Field in c8 with defining polynomial x^4 - 32,
+		 Ring morphism:
+		   From: Number Field in c8 with defining polynomial x^4 - 32
+		   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+		   Defn: c8 |--> 1/60*c^5 + 19/30*c,
+		 None),
+		(Number Field in c9 with defining polynomial x^8 + 28*x^4 + 2500,
+		 Ring morphism:
+		   From: Number Field in c9 with defining polynomial x^8 + 28*x^4 + 2500
+		   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+		   Defn: c9 |--> c,
+		 Ring morphism:
+		   From: Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+		   To:   Number Field in c9 with defining polynomial x^8 + 28*x^4 + 2500
+		   Defn: c |--> c9)
+		]
+		</output>
+		</sage>
+
+		<p>Se describen diez subcuerpos, que es lo que esperábamos, dados los 10 subgrupos del grupo de Galois.  Cada uno empieza con un cuerpo de número que es un subcuerpo.  Técnicamente, cada uno no es un subconjunto de  <c>L</c>, pero el segundo ítem devuelto para cada subcuerpo es un homomorfismo inyectivo, también conocido como una <q>incrustación.</q>  Cada incrustación describe cómo un elemento primitivo del subcuerpo se traduce a un elemento de <c>L</c>.  Algunos de estos elementos primitivos podrían ser manipulados (como hicimos arriba) para darnos polinomios minimales más simples, pero los resultados son bastante impresionantes de todas formas.  Cada ítem en la lista tiene una tercera componente, que es casi siempre  <c>None</c>, excepto cuando el subcuerpo es el cuerpo completo, y ahí la tercera componente es un homomorfismo inyectivo  <q>en la otra dirección.</q></p>
+
+	</subsection>
+
+	<subsection>
+		<title>Exensiones Normales</title>
+
+		<p>Considere el tercer subgrupo en la lista arriba, generado por la permutación <c>(1,4)</c>. Como subgrupo de orden <m>2</m>, tiene solo un elemento no trivial, que acá corresponde con el séptimo automorfismo.  Determinamos los elementos fijos como antes.</p>
+
+		<sage>
+		<input>
+		tau = G[6]
+		tau_matrix = column_matrix([tau(be).vector() for be in basis])
+		(tau_matrix-identity_matrix(8)).right_kernel()
+		</input>
+		<output>
+		Vector space of degree 8 and dimension 4 over Rational Field
+		Basis matrix:
+		[    1     0     0     0     0     0     0     0]
+		[    0     1     0     0     0 -1/82     0     0]
+		[    0     0     1     0     0     0 -1/22     0]
+		[    0     0     0     1     0     0     0 11/58]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		fromL(tau(1))
+		</input>
+		<output>
+		1
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		fromL(tau(c+(-1/82)*c^5))
+		</input>
+		<output>
+		-120/41*a
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		fromL(tau(c^2+(-1/22)*c^6))
+		</input>
+		<output>
+		150/11*a^2
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		fromL(tau(c^3+(11/58)*c^7))
+		</input>
+		<output>
+		3000/29*a^3
+		</output>
+		</sage>
+
+		<p>Como siempre, ignorando múltiplos racionales, vemos potencias de <c>a</c> y reconocemos que  <c>a</c> es un elemento primitivo para el cuerpo fijo, que es por lo tanto <m>{\mathbb Q}(\sqrt[4]{2})</m>.  Reconozcamos que <c>a</c> era nuestra primera raíz de <m>x^4-2</m>, y fue usada para crear la primera parte de nuestra torre original, <c>N</c>.  Así <c>N</c> es tanto <m>{\mathbb Q}(\sqrt[4]{2})</m> como el cuerpo fijo de <m>H=\langle(1,4)\rangle</m>.</p>
+
+		<p><m>{\mathbb Q}(\sqrt[4]{2})</m> contiene al menos una raíz del polinomio irreducible <m>x^4-2</m>, pero no todas las raíces (atestigua la factorización de arriba) y por lo tanto no califica como extensión normal.  Por la parte (4) del Teorema<nbsp /><xref ref="theorem-fundamental-galois" /> el grupo de automorfismos de la extensión no es normal en el grupo de Galois completo.</p>
+
+		<sage>
+		<input>
+		sg[2].is_normal(P)
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>Como se esperaba.</p>
+
+	</subsection>
+</section>

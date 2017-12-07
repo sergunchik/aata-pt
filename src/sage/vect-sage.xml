@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="vect-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Muchos cálculos, en áreas aparentemente muy diversas de las matemáticas, se pueden traducir en preguntas sobre combinaciones lineales, u otras áreas de álgebra lineal.  Por ende Sage tiene una extensa e importante implementación de tópicos como los espacios vectoriales.</p>
+	</introduction>
+
+	<subsection>
+		<title>Espacios Vectoriales</title>
+
+		<p>La forma más simple de crear u espacio vectorial es comenzando con un cuerpo y usando un exponente para indicar el número de coordenadas de los vectores en el espacio.</p>
+
+		<sage>
+		<input>
+		V = QQ^4; V
+		</input>
+		<output>
+		Vector space of dimension 4 over Rational Field
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		F.&lt;a&gt; = FiniteField(3^4)
+		W = F^5; W
+		</input>
+		<output>
+		Vector space of dimension 5 over Finite Field in a of size 3^4
+		</output>
+		</sage>
+
+		<p>Los elementos pueden ser obtenidos con el constructor de vectores.</p>
+
+		<sage>
+		<input>
+		v = vector(QQ, [1, 1/2, 1/3, 1/4]); v
+		</input>
+		<output>
+		(1, 1/2, 1/3, 1/4)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		v in V
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		w = vector(F, [1, a^2, a^4, a^6, a^8]); w
+		</input>
+		<output>
+		(1, a^2, a^3 + 1, a^3 + a^2 + a + 1, a^2 + a + 2)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		w in W
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Notemos que los vectores se muestran con paréntesis, lo que ayuda a distinguirlos de las listas (pero se ven como tuplas).  Los vectores se despliegan horizontalmente, pues en Sage no existe la distinción entre <q>vector fila</q> y <q>vector columna</q>, pero una vez que aparezcan las matrices deberemos preocuparnos de esta distinción.  Finalmente, notemos cómo los elementos del cuerpo finito han sido convertidos a una representación diferente.</p>
+
+		<p>Una vez que tenemos espacios vectoriales llenos de vectores, podemos hacer cálculos con ellos.  En última instancia, toda la acción en un espacio vectorial se reduce a suma de vectores y multiplicación por escalares, que juntas crean combinaciones lineales.</p>
+
+		<sage>
+		<input>
+		u = vector(QQ, [ 1, 2,  3, 4,   5,  6])
+		v = vector(QQ, [-1, 2, -4, 8, -16, 32])
+		3*u - 2*v
+		</input>
+		<output>
+		(5, 2, 17, -4, 47, -46)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		w = vector(F, [1, a^2, a^4, a^6,  a^8])
+		x = vector(F, [1,   a, 2*a,   a,    1])
+		y = vector(F, [1, a^3, a^6, a^9, a^12])
+		a^25*w + a^43*x + a^66*y
+		</input>
+		<output>
+		(a^3 + a^2 + a + 2, a^2 + 2*a, 2*a^3 + a^2 + 2, 2*a^3 + a^2 + a,
+		 a^3 + 2*a^2 + a + 2)
+		</output>
+		</sage>
+	</subsection>
+
+	<subsection>
+		<title>Subespacios</title>
+
+		<p>Sage puede crear subespacios de diferentes formas, tales como en la cración de los espacios de columnas o de filas de matrices. Pero la forma más directa es comenzar con un conjunto de vectores y usarlos como conjunto generador.</p>
+
+		<sage>
+		<input>
+		u = vector(QQ, [1, -1, 3])
+		v = vector(QQ, [2, 1, -1])
+		w = vector(QQ, [3, 0, 2])
+		S = (QQ^3).subspace([u, v, w]); S
+		</input>
+		<output>
+		Vector space of degree 3 and dimension 2 over Rational Field
+		Basis matrix:
+		[   1    0  2/3]
+		[   0    1 -7/3]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		3*u - 6*v + (1/2)*w in S
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		vector(QQ, [4, -1, -2]) in S
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>Notemos que la información mostrada sobre <c>S</c> incluye una <q>matriz base.</q>  Las filas de esta matriz forman una base del espacio vectorial.  Podemos ubtener la base, como una lista de vectores (no como filas de una matriz), con el método <c>.basis()</c>.</p>
+
+		<sage>
+		<input>
+		S.basis()
+		</input>
+		<output>
+		[
+		(1, 0, 2/3),
+		(0, 1, -7/3)
+		]
+		</output>
+		</sage>
+
+		<p>Notemos que Sage convirtió el conjunto generador de dos vectores en una base con dos vectores.  Esto se debe en parte al hecho que el conjunto original de vectores es linealmente dependiente, pero otro cambio más sustantivo tuvo lugar.</p>
+
+		<p>Este es un buen momento para discutir algo se las matemáticas que hacen funcionar las rutinas de Sage.  Un espacio vectorial sobre un cuerpo infinito, como los reales o los racionales, es un conjunto infinito.  Sin importar cuán enorme parezca la memoria de un computador, siempre será finita.  Cómo hace Sage para meter un conjunto infinito en una máquina finita?  La idea principal es que  un espacio vectorial de dimensión finita tiene un conjunto finito de generadores, que conocemos  como una base.  Des esta manera, Sage lo único que realmente necesita es conocer los elementos de una base (dos vectores en el ejemplo anterior) para ser capaza de trabajar con la infinidad de posibles elementos del subespacio.</p>
+
+		<p>Más aún, para cualquier base asociada a un espacio vectorial, Sage calcula combinaciones lineales para convertirla en otra base <q>estándar</q>.  Esta nueva base tiene la propiedad de que como columnas de una matriz, la matriz está en forma escalonada reducida. Usted lo puede apreciar en la matriz base de arriba.  La forma escalonada reducida de una matriz es única, de esta manera la base estándar le permite a Sage reconocer cuándo dos espacios vectoriales son iguales.  Acá hay un ejemplo.</p>
+
+		<sage>
+		<input>
+		u = vector(QQ, [1, -1,  3])
+		v = vector(QQ, [2,  1, -1])
+		w = vector(QQ, [3,  0,  2])
+		u + v == w
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		S1 = (QQ^3).subspace([u, v, w])
+		S2 = (QQ^3).subspace([u-v, v-w, w-u])
+		S1 == S2
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Como se puede sospechar, es fácil determinar la dimensión de un espacio vectorial.</p>
+
+		<sage>
+		<input>
+		u = vector(QQ, [1, -1,  3,  4])
+		v = vector(QQ, [2,  1, -1, -2])
+		S = (QQ^4).subspace([u, v, 2*u + 3*v, -u + 2*v])
+		S.dimension()
+		</input>
+		<output>
+		2
+		</output>
+		</sage>
+	</subsection>
+
+	<subsection>
+		<title>Independencia Lineal</title>
+
+		<p>Hay diversas formas en Sage para determinar si un conjunto de vectores es linealmente independiente, y para encontrar relaciones de dependencia lineal si es que las hay.  La técnica que mostraremos acá es un test simple para saber si un conjunto de vectores es linealmente independiente o no.  Simplemente use los vectores como conjunto generador para un subespacio, y verifique la dimensión de este subespacio.  La dimensión es igual al número de vectores en el conjunto generador si y solo si el  conjunto generador es linealmente independiente.</p>
+
+		<sage>
+		<input>
+		F.&lt;a&gt; = FiniteField(3^4)
+		u = vector(F, [a^i for i in range(0,  7, 1)])
+		v = vector(F, [a^i for i in range(0, 14, 2)])
+		w = vector(F, [a^i for i in range(0, 21, 3)])
+		S = (F^7).subspace([u, v, w])
+		S.dimension()
+		</input>
+		<output>
+		3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		S = (F^7).subspace([u, v, a^3*u + a^11*v])
+		S.dimension()
+		</input>
+		<output>
+		2
+		</output>
+		</sage>
+
+		<p>El primer conjunto de vectores, <c>[u, v, w]</c>, es linealmente independiente, mientras el segundo conjunto, <c>[u, v, a^3*u + a^11*v]</c>, no lo es.</p>
+
+		</subsection>
+
+		<subsection>
+		<title>Espacios Vectoriales Abstractos</title>
+
+		<p>Sage implementa demasiados espacios vectoriales abstractos de forma directa, tales como <m>P_n</m>, el espacio vectorial de polinomios de grado menor o igual a <m>n</m>.  Esto se debe en parte al hecho que un espacio vectorial de dimensión finita sobre un cuerpo <m>F</m> es isomorfo al espacio vectorial <m>F^n</m>.  Por esto Sage captura toda la funcionalidad de los espacios vectoriales de dimensión finita, y le deja al usuario realizar la conversión de acuerdo al isomorfismo (lo que puede ser trivial con la elección de una base obvia).</p>
+
+		<p>Pero hay instancias en que anillos se comportan naturalmente como espacios vectoriales y podemos aprovechar esta estructura adicional.  Veremos mucho más sobre esto en los capítulos sobre cuerpos y teoría de Galois.  Como un ejemplo, los cuerpos finitos tienen un generador (uno) y las primeras potencias del generador forman una base.  Considere crear n espacio vectorial a partir de los elementos de un cuerpo finito de orden <m>7^6=117\,649</m>.  Como elementos de un cuerpo dabemos que se pueden sumar, de manera que <em>definiremos</em> esta como la suma en nuestro espacio vectorial.  Para cualquier entero mód 7, podemos multiplicar un elemento del cuerpo por el entero, así es que <em>definimos</em> este como nuestro producto por escalares.  Más adelante, estaremos seguros que estas definiciones nos llevan a un espacio vectorial, pero créanos por ahora.  Acá algunas operaciones en nuestro espacio vectorial nuevo.</p>
+
+		<sage>
+		<input>
+		F.&lt;a&gt; = FiniteField(7^6)
+		u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
+		v = 4*a^5 + 4*a^4 + 4*a^3 + 6*a^2 + 5*a + 6
+		u + v
+		</input>
+		<output>
+		6*a^5 + 3*a^4 + 6*a^3 + 2*a^2 + 2
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		4*u
+		</input>
+		<output>
+		a^5 + 3*a^4 + a^3 + 5*a^2 + a + 5
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		2*u + 5*v
+		</input>
+		<output>
+		3*a^5 + 4*a^4 + 3*a^3 + a^2 + a + 1
+		</output>
+		</sage>
+
+		<p>Puede que esto le parezca muy parecido a la forma en que sumamos polinomios, y los multiplicamos por escalares.  Tendría razón, pero note que en esta construcción de espacio vectorial, hemos ignorado por completo la posibilidad de multiplicar dos elementos del cuerpo entre ellos.  Como espacio vectorial con escalares en <m>{\mathbb Z}_7</m>, una base consiste de las primeras seis potencias del generador, <m>\{1,\,a,\,a^2,\,a^3,\,a^4,\,a^5\}</m>.  (Note como contar desde cero es natural en este contexto.)  Puede que haya notado que Sage consistentemente reescribe los elementos del cuerpo como combinaciones lineales <mdash /> ahora tenemos una buena explicacíón.</p>
+
+		<p>Acá está lo que sabe Sage sobre un cuerpo finito como un espacio vectorial.  Primero, sabe que el cuerpo finito <em>es</em> un espacio vectorial, y cuál es el cuerpo de escalares.</p>
+
+		<sage>
+		<input>
+		V = F.vector_space(); V
+		</input>
+		<output>
+		Vector space of dimension 6 over Finite Field of size 7
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		R = V.base_ring(); R
+		</input>
+		<output>
+		Finite Field of size 7
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		R == FiniteField(7)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		V.dimension()
+		</input>
+		<output>
+		6
+		</output>
+		</sage>
+
+		<p>Así, el cuerpo finito (como espacio vectoril) es isomorfo al espacio vectorial <m>({\mathbb Z}_7)^6</m>.  Notemos que este no es un isomorfismo de anillos o de cuerpos ya que no se hace cargo completamente de la multiplicación de elementos, aunque ésta es posible en el cuerpo.</p>
+
+		<p>Segundo, los elementos del cuerpo pueden ser convertidos fácilmente en elementos del espacio vectorial.</p>
+
+		<sage>
+		<input>
+		x = V(u); x
+		</input>
+		<output>
+		(3, 2, 3, 2, 6, 2)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		y = V(v); y
+		</input>
+		<output>
+		(6, 5, 6, 4, 4, 4)
+		</output>
+		</sage>
+
+		<p>Notemos que Sage escribe los elementos del cuerpo partiendo de las potencias mayores del generador, mientras la base usada está  ordenada partiendo de las potencias menores.  Los siguientes cálculos ilustran el isomorfismo que preserva la estructura entre el cuerpo finito mismo y su interpretación como el espacio vectorial, <m>({\mathbb Z}_7)^6</m>.</p>
+
+		<sage>
+		<input>
+		V(u + v) == V(u) + V(v)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		two = R(2)
+		V(two*u) == two*V(u)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+	</subsection>
+
+	<subsection>
+	<title>Álgebra Lineal</title>
+
+		<p>Sage tiene mucha funcionalidad para álgebra lineal de lo que hemos descrito o de lo que necesitaremos en los siguientes capítulos. Cree espacios vectoriales y vectores en ellos (con distintos cuerpos de escalares), y use la completación con TAB en estos objetos para ver la gran cantidad de métodos disponibles.</p>
+	</subsection>
+
+</section>

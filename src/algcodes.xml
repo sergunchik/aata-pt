@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+
+<chapter xml:id="algcodes" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>Teoría Algebraica de Códigos</title>
+
+	<introduction>
+		<p>La teoría de códigos es una aplicación del álgebra que se ha vuelto cada vez más importante durante las últimas décadas. Cuando transmitimos datos, estamos preocupados de transmitir datos a través de un canal que podría estar afectado por <q>ruido.</q> Queremos ser capaces de codificar y decodificar la información de forma de poder detectar, y posiblemente corregir, los errores causados por el ruido. Esta situación surge en muchas áreas de comunicación, incluyendo la radio, telefonía, televisión, comunicaciones entre computadores, y tecnologías de almacenamiento digital. Probabilidades, combinatoria, teoría de grupos, álgebra lineal y anillos de polinomios sobre cuerpos finitos todos tienen un rol importante en la teoría de códigos. </p>
+	</introduction>
+ 
+	<section xml:id="section-error-detecting-correcting-codes">
+		<title>Códigos para Detectar y para Corregir Errores</title>
+
+		<introduction>
+
+			<p>Consideremos un modelo simple de sistema de comunicaciones para el envío y recepción de mensajes codificados (ver la Figura<nbsp /><xref ref="figure-encoding" />).</p>  
+
+			<figure xml:id="figure-encoding">
+				<caption>Codificar y Decodificar Mensajes</caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 5/10/2010 -->
+				<image width="60%" xml:id="algcodes-encode-decode">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1]
+
+						\draw [->] (0,8)  node [above] {\emph{mensaje de $m$ dígitos}} -- (0,7.5);
+
+						\node at (0,7) {Codificador};
+						\draw (-1.5,6.5) rectangle (1.5,7.5);
+						\draw (0,6.5)  -- (0,6.25);
+						\draw [->] (0,5.75)  -- (0,5.5);
+						\node at (0,6) {\emph{palabra de $n$ dígitos en el código}};
+
+						\node at (0,5) {Transmisor};
+						\draw (-1.5,4.5) rectangle (1.5,5.5);
+						\draw (0,4.5)  -- (0,4.25);
+						\draw [->] (0,3.75)  -- (0,3.5);
+						\node at (0,4) {\emph{Ruido}};
+
+						\node at (0,3) {Receptor};
+						\draw (-1.5,2.5) rectangle (1.5,3.5);
+						\draw (0,2.5)  -- (0,2.25);
+						\draw [->] (0,1.75)  -- (0,1.5);
+						\node at (0,2) {\emph{palabra recibida de $n$ dígitos}};
+
+						\node at (0,1) {Decodificador};
+						\draw (-1.5,0.5) rectangle (1.5,1.5);
+						\draw [->] (0,0.5)  -- (0,0) node [below] {\emph{mensaje de $m$ dígitos recibido o error}};
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+			<p>Mensajes sin codificar pueden estar compuestos de letras o caracteres, pero típicamente consisten de <m>m</m>-tuplas binarias. Estos mensajes se codifican en palabras de un código, que son <m>n</m>-tuplas binarias, a través de un mecanismo llamado <term>codificador</term>. El mensaje es transmitido y luego decodificado. Consideraremos la aparición de errores durante la transmisión. Un <term>error</term> occure si hay un cambio en uno o más bits de la palabra del código. Un <term>protocolo decodificador</term> es un método que ya sea convierte  <m>n</m>-tupla arbitraria recibida en un mensaje decodificado coherente o da un mensaje de error para esa <m>n</m>-tupla. Si el mensaje recibido es una palabra del código (una de las <m>n</m>-tuplas permitidas), entonces el mensaje decodificado debe ser el mensaje que fue codificado en la palabra del código. Para tuplas recibidas que no están en el código, el protocolo dará una indicación de error, o, si somos más astutos, tratará de corregir el error y reconstruir el mensaje original. Nuestro objetivos es transmitir mensajes libres de errores de la forma más barata y rápida posible.</p>
+ 
+ 
+			<example xml:id="example-algcodes-repeat">
+				<p>Un posible mecanismo de codificación sería enviar el mensaje múltiples veces y comparar las copias recibidas entre ellas. Supongamos que el mensaje a codificar es una <m>n</m>-tupla binaria <m>(x_{1}, x_{2}, \ldots, x_{n})</m>. El mensaje se codifica en una <m>3n</m>-tupla binaria simplemente repitiendo el mensaje tres veces: 
+					<me>(x_{1}, x_{2}, \ldots, x_{n}) \mapsto (x_{1}, x_{2}, \ldots, x_{n}, x_{1}, x_{2}, \ldots, x_{n}, x_{1}, x_{2}, \ldots, x_{n}).</me>
+				Para decodificar el mensaje, escogemos como el <m>i</m>-ésimo dígito el que aparezca en la <m>i</m>-ésima posición de al menos dos de las tres transmisiones. Por ejemplo, si el mensaje original es <m>(0110)</m>, entonces el mensaje transmitido será <m>(0110\;  0110\;  0110)</m>. Si hay un error de transmisión en el quinto dígito, entonces la palabra recibida será <m>(0110\;  1110\;  0110)</m>, la que será correctamente decodificada como <m>(0110)</m>.<fn>Adoptaremos la convención de numerar los dígitos de izquierda a derecha en las <m>n</m>-tuplas binarias.</fn>  Este método de repetición-triple automáticamente detecta y corrige todos los errores individuales, pero es lento e ineficiente: para enviar un mensaje que consista de <m>n</m> bits, se requieren <m>2n</m> bits adicionales, y solo podemos detectar y corregir errores individuales. Veremos que es posible encontrar mecanismos de codificación que codifiquen un mensaje de <m>n</m> bits en uno de <m>m</m> bits con <m>m</m> mucho menor a <m>3n</m>.</p>
+			</example>
+ 
+ 			<example xml:id="example-algcodes-even-parity">
+				<p><term>La paridad</term>, un mecanismo de codificación usual, es mucho más eficiente que la simple repetición. El código <acro>ASCII</acro> (American Standard Code for Information Interchange) usa 8-tuplas binarias, dando lugar a <m>2^{8} = 256</m> 8-tuplas posibles. Pero, solo se necesitan 7 bits pues solo hay <m>2^7 = 128</m> caracteres <acro>ASCII</acro>. ¿Qué se puede o debe hacer con el bit restante? Usando los ocho dígitos, podemos detectar un error individual de transmisión. Por ejemplo, los códigos <acro>ASCII</acro> para A, B, y C son 
+					<md>
+						<mrow>\text{A} &amp; = 65_{10} = 01000001_{2},</mrow>
+						<mrow>\text{B} &amp; = 66_{10} = 01000010_{2},</mrow>
+						<mrow>\text{C} &amp; = 67_{10} = 01000011_{2}.</mrow>
+					</md>
+				Note que el bit de más a la izquierda siempre es 0; es decir, los 128 caracteres <acro>ASCII</acro> tienen códigos 
+					<md>
+						<mrow>00000000_{2} &amp; = 0_{10},</mrow>
+						<mrow>&amp; \vdots</mrow>
+						<mrow>01111111_{2} &amp; = 127_{10}.</mrow>
+					</md>
+				El bit puede ser usado para controlar errores en los otros siete bits. Se pone como 0 o 1 de manera que el número total de bits 1 en la representación del caracter sea par. Usando paridad, los códigos para A, B, y C se convierten en
+					<md>
+						<mrow>\text{A} &amp; = 01000001_{2},</mrow>
+						<mrow>\text{B} &amp; = 01000010_{2},</mrow>
+						<mrow>\text{C} &amp; = 11000011_{2}.</mrow>
+					</md>
+				Supongamos que se envía una A y ocurre un error de transmisión en el sexto bit de manera que se recibe <m>(0100\; 0101)</m>. Sabemos que se produjo un error pues se recibió un número impar de unos, y podemos pedir que la palabra sea retransmitida. Cuando se usa para detectar errores, el bit de más a la izquierda se llama <term>bit de control de paridad</term>.</p> 
+ 
+ 
+				<p>Por lejos el mecanismo más común de detección de errores en los computadores está basado en la adición de un bit de paridad. Típicamente, un computador guarda la información en <m>m</m>-tuplas llamadas <term>palabras</term>. Largos comunes para las palabras son 8, 16, y 32 bits. Un bit en la palabra se reserva como bit de control de paridad, y no se usa para almacenar información. Este bit se pone como 0 o 1, dependiendo del número de unos de la palabra.</p> 
+ 
+				<p>Agregar un control de paridad permite la detección de todos los errores únicos pues cualquier cambio a un solo bit, ya sea aumenta o disminuye en uno el número de unos, y en cualquier caso cambia la paridad de par a impar, de manera que la nueva palabra no es una palabra del código.</p>
+			</example>
+	 
+			<p>El sistema de paridad es fácil de implementar, pero tiene dos desventajas.  En primer lugar, errores múltiples no son detectables. Supongamos que se envía una A y se alteran el primer y séptimo dígitos en la transmisión. La palabra recibida resulta ser una palabra del código, pero será decodificada como una C en lugar de una A. En segundo lugar, no tenemos la habilidad de corregir errores.  Si la 8-tupla <m>(1001\; 1000)</m> es recibida, sabemos que ha ocurrido un error, pero no tenemos idea cuál es el bit que se ha cambiado. Investigaremos ahora un mecanismo de codificación que no solo nos permita detectar errores de transmisión, sino que nos permita corregirlos.</p> 
+
+			<table xml:id="table-repetition-code">
+				<caption>Un código de repetición</caption>
+			    <tabular halign="center" top="medium">
+			   	    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+			   		<row>
+			   			<cell>Palabra</cell><cell colspan="8">Palabra Recibida</cell>
+			   		</row>
+		        	<row bottom="medium">
+		           		<cell>Transmitida</cell><cell>000</cell><cell>001</cell><cell>010</cell><cell>011</cell><cell>100 </cell><cell>101 </cell><cell>110</cell><cell> 111</cell>
+		           	</row>
+		       		<row>
+		       			<cell>000</cell><cell>0</cell><cell>1</cell><cell>1</cell><cell>2</cell><cell>1</cell><cell>2</cell><cell>2</cell><cell>3</cell>
+		       		</row>
+					<row bottom="medium">
+						<cell>111</cell><cell>3</cell><cell>2</cell><cell>2</cell><cell>1</cell><cell>2</cell><cell>1</cell><cell>1</cell><cell>0</cell>
+					</row>
+			    </tabular>
+			</table>
+
+
+			<example xml:id="example-algcodes-nearest">
+				<p>Supongamos que nuestro mensaje original es 0 o 1, y que 0 se codifica en (000) y 1 se codifica en (111). Si ocurre solo un error durante la transmisión, entonces podemos detectar y corregir este error. Por ejemplo, si se recibe un 101, entonces el segundo bit debe haber sido cambiado de 1 a 0.  La palabra transmitida debe haber sido (111). Este método detecterá y corregirá todos los errores únicos.</p> 
+
+				<p>En la Tabla<nbsp /><xref ref="table-repetition-code" />, presentamos todas las posibles palabras que pueden ser recibidas para las palabras transmitidas (000) y (111). La Tabla<nbsp /><xref ref="table-repetition-code" /> también muestra el número de bits en los que cada 3-tupla difiere de la palabra original.</p>
+			</example>
+	 
+		</introduction>
+
+		<subsection  xml:id="algcodes-subsection-max-likelihood">
+			<title>Decodificación de Probabilidad Máxima</title>
+
+<!-- Label repaired.  Suggested by R. Beezer. -->
+<!-- TWJ - 12/19/2011 -->
+
+			<p>El mecanismo de codificación presentado en el Ejemplo<nbsp /><xref ref="example-algcodes-nearest" /> no es una solución completa del problema pues no toma en cuenta la posibilidad de múltiples errores. Por ejemplo, ya sea un (000) o un (111) se podría enviar y se podría recibir un (001). No tenemos forma de decidir a partir de la palabra recibida si se cometió un solo error en el tercer bit o dos errores, uno en el primer bit y uno en el segundo.  Sin importar el mecanismo de codificación usado, un mensaje incorrecto puede ser recibido. Podríamos transmitir un (000), tener errores en los tres bits, y recibir la palabra (111) del código. Es importante explicitar las suposiciones hechas sobre la probabilidad y distribución de los errores de transmisión de manera que, en una aplicación particular, se sabrá si un cierto mecanismo de detección de errores es apropiado. Supondremos que los errores de transmisión son infrecuentes, y, que cuando ocurren, ocurren de forma independiente en cada bit; es decir, si <m>p</m> es la probabilidad de un error en un bit y <m>q</m> es la probabilidad de error en otro bit, entonces la probabilidad de errores en ambos bits al mismo tiempo, es <m>pq</m>. También supondremos que una <m>n</m>-tupla recibida se decodificará en la palabra del código que esté más cerca; es decir, suponemos que el receptor usa <term>decodificación de probabilidad máxima</term><idx><h>Decodificación de probabilidad máxima</h></idx>.<fn>Esta sección requiere conocimientos de probabilidad, pero puede saltarse sin pérdida de continuidad.</fn></p>
+ 
+			<figure xml:id="figure-channel">
+				<caption>Canal binario simétrico</caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 5/10/2010 -->
+				<image width="40%" xml:id="algcodes-binary-channel">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1]
+
+						\node at (1.5,0) [below] {$p$};
+						\draw [->] (0,0)  node [left] {1} -- (3,0) node [right] {1};
+						\node at (1.5,2) [above] {$p$};
+						\draw [->] (0,2)  node [left] {0} -- (3,2) node [right] {0};
+
+						\draw [->] (0,0.2) -- (3,1.8);
+						\draw [->] (0,1.8) -- (3,0.2);
+
+						\node at (1.8,1.15) [above] {$q$};
+						\node at (1.8,0.85) [below] {$q$};
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+			<p>Un <term>canal binario simétrico</term><idx><h>Canal binario simétrico</h></idx> es un modelo que consiste de un transmisor capaz de enviar una señal binaria, ya sea un 0 o un 1, junto a un receptor. Sea <m>p</m> la probabilidad de que la señal se recibe correctamente. Entonces <m>q = 1 - p</m> es la probabilidad de recepción incorrecta. Si se envía un 1, entonces la probabilidad de recibir un 1 es <m>p</m> y la probabilidad de recibir un 0 es <m>q</m> (Figura<nbsp /><xref ref="figure-channel" />). La probabilidad de que no ocurra ningún error durante la transmisión de una palabra binaria del código de largo <m>n</m> es <m>p^{n}</m>. Por ejemplo, si <m>p=0.999</m> y se envía un mensaje consistente de 10,000 bits, entonces la probabilidad de una transmisión perfecta es <me>(0.999)^{10,000} \approx 0.00005.</me></p>
+ 
+		<theorem>
+			<statement>
+				<p>Si una <m>n</m>-tupla binaria <m>(x_{1}, \ldots, x_{n})</m> es transmitida por un canal binario simétrico con probabilidad <m>p</m> de que no ha ocurrido error en cada coordenada, entonces la probabilidad de que no haya errores en exactamente <m>k</m> coordenadas es <me>\binom{n}{k} q^kp^{n - k}.</me></p>
+			</statement>
+			<proof>
+				<p>Fijemos <m>k</m> coordenadas diferentes. Calculemos primero la probabilidad de que un error ha ocurrido en este conjunto fijo de coordenadas. La probabilidad de que haya ocurrido un error en una en particular de estas <m>k</m> coordenadas es <m>q</m>; la probabilidad de que ningún error haya ocurrido en una de las restantes <m>n-k</m> coordenadas es <m>p</m>. La probabilidad de cada una de estos <m>n</m> eventos independientes es <m>q^{k}p^{n-k}</m>. El número posible de patrones de error con exactamente <m>k</m> errores es igual a 
+					<me>\binom{n}{k}  = \frac{n!}{k!(n - k)!},</me>
+				el número de combinaciones de <m>k</m> cosas elegidas entre un total de <m>n</m>. Cada uno de estos patrones de error tiene probabilidad <m>q^{k}p^{n-k}</m> de ocurrir; luego, la probabilidad de todos estos patrones de error es
+					<me>\binom{n}{k}  q^{k}p^{n - k}. </me></p>
+			</proof>
+		</theorem>
+ 
+		<example xml:id="example-algcodes-probability">
+			<p>Supongamos que <m>p = 0.995</m> y que se envía un mensaje de 500-bits. La probabilidad de que el mensaje haya sido enviado sin errores es 
+				<me>p^{n} = (0.995)^{500} \approx 0.082.</me>
+			La probabilidad de que ocurra exactamente un error es
+				<me>\binom{n}{1}  qp^{n - 1}= 500(0.005)(0.995)^{499} \approx 0.204.</me>
+			La probabilidad de exactamente dos errores es
+				<me>\binom{n}{2} q^{2}p^{n - 2}= \frac{500 \cdot 499}{2}(0.005)^{2}(0.995)^{498} \approx 0.257.</me>
+			La probabilidad de más de dos errores es aproximadamente
+				<me>1 - 0.082 - 0.204 - 0.257 = 0.457.</me></p>
+		</example>
+ 
+		</subsection>
+
+		<subsection  xml:id="algcodes-subsection-block-codes">
+			<title>Códigos de Bloque</title>
+ 
+			<p>Si vamos a desarrollar códigos eficientes para detectar y corregir errores, necesitaremos herramientas matemáticas más sofisticadas.  La teoría de grupos permitirá métodos más rápidos y eficientes para codificar y decodificar mensajes. Un código es un  <term>código de bloque</term> <m>(n, m)</m> si la información que se codificará se puede dividir en bloques de <m>m</m> dígitos binarios, cada uno de los cuales puede ser codificado en <m>n</m> dígitos binarios. Más específicamente, un código de bloque <m>(n, m)</m> consiste de una <term>función codificadora</term> 
+				<me>E:{\mathbb Z}^{m}_{2} \rightarrow {\mathbb Z}^{n}_{2}</me>
+			y una <term>función decodificadora</term>
+				<me>D:{\mathbb Z}^{n}_{2} \rightarrow {\mathbb Z}^{m}_{2}.</me>
+			Una <term>palabra del código</term> es cualquier elemento en la imagen de <m>E</m>. También requerimos que <m>E</m> sea 1-1 de manera que dos bloques de información no sean codificados en la misma palabra del código. </p>
+
+<!-- Parece haber un error acá.  En primer lugar el código usualmente se define como la imagen de la función codificadora.  En segundo lugar no es para nada claro que exista una función con el dominio dado y finalmente no se entiende la condición de sobreyectividad ni su relación con la corrección de errores. -->
+
+
+		<example xml:id="example-algcodes-block-code">
+			<p>El código de paridad desarrollado para detectar errores individuales en caracteres <acro>ASCII</acro> es un código de bloque <m>(8,7)</m>. La función codificadora es
+				<me>E(x_7, x_6, \ldots, x_1) = (x_8, x_7,  \ldots, x_1),</me>
+			donde <m>x_8 = x_7 + x_6 + \cdots + x_1</m> con la suma en <m>{\mathbb Z}_2</m>. </p>
+		</example>
+
+		<p>Sean <m>{\mathbf x} = (x_1, \ldots, x_n)</m> y <m>{\mathbf y} = (y_1, \ldots, y_n)</m> <m>n</m>-tuplas binarias. La <term>distancia de Hamming</term><idx><h>Distancia de Hamming</h></idx> o <term>distancia</term>, <m>d({\mathbf x}, {\mathbf y})</m>, entre <m>{\mathbf x}</m> e <m>{\mathbf y}</m> es el número de bits en que <m>{\mathbf x}</m> e <m>{\mathbf y}</m> difieren. La distancia entre dos palabras del código es el mínimo número de errores de transmisión necesarios para transformar una de las palabras en la otra. La <term>distancia mínima</term><idx><h>Código</h><h>distancia mínima del</h></idx> para un código, <m>d_{\min}</m>, es el mínimo de todas las distancias <m>d({\mathbf x}, {\mathbf y})</m>, donde <m>{\mathbf x}</m> e <m>{\mathbf y}</m> son palabras distintas del código. El <term>peso</term><idx><h>Peso de una palabra del código</h></idx>, <m>w({\mathbf x})</m>, de una palabra de un código binario <m>{\mathbf x}</m> es el número de unos en <m>{\mathbf x}</m>. Claramente, <m>w({\mathbf x}) = d({\mathbf x}, {\mathbf 0})</m>, donde <m>{\mathbf 0} = (00 \cdots 0)</m>. <notation><usage>d(\mathbf x, \mathbf y)</usage><description>distancia de Hamming entre <m>\mathbf x</m> e <m>\mathbf y</m></description></notation> <notation><usage>d_{\min}</usage><description>la distancia mínima de un código</description></notation> <notation><usage>w(\mathbf x)</usage><description>el peso de <m>\mathbf x</m></description></notation></p>
+ 
+		<example xml:id="example-algcodes-min-distance">
+			<p>Sean <m>{\mathbf x} = (10101)</m>, <m>{\mathbf y} = (11010)</m>, y <m>{\mathbf z} = (00011)</m> todas las palabras en un código <m>C</m>. Entonces tenemos las siguientes distancias de Hamming: 
+				<me>d({\mathbf x},{\mathbf y}) = 4, \qquad d({\mathbf x},{\mathbf z}) = 3, \qquad d({\mathbf y},{\mathbf z}) = 3.</me>
+			La distancia mínima para este código es 3 y los pesos son: 
+			<me>w({\mathbf x}) = 3, \qquad w({\mathbf y}) = 3, \qquad w({\mathbf z}) = 2.</me></p>
+		</example>
+ 
+		<p>La siguiente proposición lista algunas propiedades básicas sobre el peso de una palabra del código y la distancia entre dos palabras del código. La demostración se deja como ejercicio.</p>
+
+		<proposition>
+			<statement>
+				<p>Sean <m>{\mathbf x}</m>, <m>{\mathbf y}</m>, y <m>{\mathbf z}</m>  <m>n</m>-tuplas binarias. Entonces 
+					<ol>
+
+						<li><p><m>w({\mathbf x}) = d( {\mathbf x}, {\mathbf 0})</m>;</p></li>
+ 
+						<li><p><m>d( {\mathbf x}, {\mathbf y}) \geq 0</m>;</p></li>
+ 
+						<li><p><m>d( {\mathbf x}, {\mathbf y}) = 0</m> si y solo si <m>{\mathbf x} = {\mathbf y}</m>;</p></li>
+ 
+						<li><p><m>d( {\mathbf x}, {\mathbf y})= d( {\mathbf y}, {\mathbf x})</m>;</p></li>
+ 
+						<li><p><m>d( {\mathbf x}, {\mathbf y}) \leq d( {\mathbf x}, {\mathbf z}) + d( {\mathbf z}, {\mathbf y})</m>.</p></li>
+ 
+					</ol></p>
+			</statement>
+		</proposition>
+ 
+		<p>Los pesos en un código particular son usualmente mucho más fáciles de calcular que las distancias de Hamming entre todas las palabras del código. Si un código se construye cuidadosamente, podemos sacar provecho de este hecho.</p>
+ 
+		<p>Supongamos que <m>{\mathbf x} = (1101)</m> e <m>{\mathbf y} = (1100)</m> son palabras en algún código. Si transmitimos (1101) y un error ocurre en el bit de más a la derecha, entonces se recibirá (1100). Como (1100) es una palabra del código, el decodificador  decodificará (1100) como el mensaje transmitido. Este código claramente no es muy apropiado para la detección de errores. El problema es que <m>d({\mathbf x}, {\mathbf y}) = 1</m>. Si <m>{\mathbf x} = (1100)</m> e <m>{\mathbf y} = (1010)</m> son palabras del código, entonces <m>d({\mathbf x}, {\mathbf y}) = 2</m>. Si <m>{\mathbf x}</m> se transmite y ocurre un solo error, entonces <m>{\mathbf y}</m> nunca puede ser recibido. La Tabla<nbsp /><xref ref="table-4-bit-words" /> entrega las distancias entre todas las palabras del código de 4-bits en que los primeros tres bits son de información y el cuarto es un bit de control de paridad. Podemos ver que la distancia mínima acá es 2; luego, el código es apto como código de detección de un error. </p>
+ 
+		<table xml:id="table-4-bit-words">
+			<caption>Distancias entre palabras de código de 4-bit</caption>
+		   <tabular halign="center" top="medium" left="medium" right="medium">
+	           	<row bottom="medium">
+	           		<cell></cell><cell>0000</cell><cell>0011</cell><cell>0101</cell><cell>0110</cell><cell>1001</cell><cell>1010</cell><cell>1100</cell><cell>1111</cell>
+	           	</row>
+	       		<row>
+	       			<cell>0000</cell><cell>0</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>4</cell>
+	       		</row>
+				<row>
+					<cell>0011</cell><cell>2</cell><cell>0</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>4 </cell><cell>2</cell>
+				</row>
+				<row>
+					<cell>0101</cell><cell>2</cell><cell>2</cell><cell>0</cell><cell>2</cell><cell>2</cell><cell>4</cell><cell>2</cell><cell>2</cell>
+				</row>
+				<row>
+					<cell>0110</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>0</cell><cell>4</cell><cell>2</cell><cell>2</cell><cell>2</cell>
+				</row>
+				<row>
+					<cell>1001</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>4</cell><cell>0</cell><cell>2</cell><cell>2</cell><cell>2</cell>
+				</row>
+				<row>
+					<cell>1010</cell><cell>2</cell><cell>2</cell><cell>4</cell><cell>2</cell><cell>2</cell><cell>0</cell><cell>2</cell><cell>2</cell>
+				</row>
+				<row>
+					<cell>1100</cell><cell>2</cell><cell>4</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>0</cell><cell>2</cell>
+				</row>
+				<row bottom="medium">
+					<cell>1111</cell><cell>4</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>0</cell>
+				</row>
+		   </tabular>
+		</table>
+
+		<p>Para determinar exactamente cuáles son las capacidades de detección y corrección de errores de un código, debemos analizar la distancia mínima para el código. Sean <m>{\mathbf x}</m> e <m>{\mathbf y}</m> palabras del código. Si <m>d({\mathbf x}, {\mathbf y}) = 1</m> y ocurre un error donde difieren <m>{\mathbf x}</m> e <m>{\mathbf y}</m>, entonces <m>{\mathbf x}</m> se transforma en <m>{\mathbf y}</m>. La palabra recibida es <m>{\mathbf y}</m> y no se produce ningún mensaje de error. Ahora supongamos que <m>d({\mathbf x}, {\mathbf y}) = 2</m>. Entonces un único error no puede transformar <m>{\mathbf x}</m> en <m>{\mathbf y}</m>. Por lo tanto, si <m>d_{\min} = 2</m>, tenemos la habilidad de detectar errores únicos. Pero, supongamos que <m>d({\mathbf x}, {\mathbf y}) = 2</m>, <m>{\mathbf y}</m> es enviado, y se recibe una palabra <m>{\mathbf z}</m> que no está en el código tal que <me>d({\mathbf x}, {\mathbf z}) = d({\mathbf y}, {\mathbf z}) = 1.</me> Entonces el decodificador no puede decidir entre <m>{\mathbf x}</m> e <m>{\mathbf y}</m>. Si bien estamos concientes de que se cometió un error, no sabemos cuál fue ese error.</p>
+ 
+		<p>Supongamos que <m>d_{\min} \geq 3</m>. Entonces el algoritmo de decodificación de máxima probabilidad corrige todos los errores únicos. Comenzando con una palabra <m>{\mathbf x}</m> del código, un error de un único bit en la transmisión da <m>{\mathbf y}</m> con <m>d({\mathbf x}, {\mathbf y}) = 1</m>, pero <m>d({\mathbf z}, {\mathbf y}) \geq 2</m> para cualquier otra palabra <m>{\mathbf z} \neq {\mathbf x}</m> del código. Si no necesitamos corregir errores, entonces podemos detectar más de un error cuando un código tiene distancia mínima mayor o igual a 3.</p>  
+ 
+		<theorem xml:id="theorem-min-distance">
+			<statement>
+				<p>Sea <m>C</m> un código con <m>d_{\min} = 2n + 1</m>. Entonces <m>C</m> puede corregir cualquiera <m>n</m> o menos errores.  Alternativamente, <m>2n</m> o menos errores cualquiera pueden ser detectados con <m>C</m>.</p>
+			</statement>
+			<proof>
+				<p>Supongamos que se envía una palabra <m>{\mathbf x}</m> del código y que se recibe la palabra <m>{\mathbf y}</m> con a lo más <m>n</m> errores. Entonces <m>d( {\mathbf x}, {\mathbf y}) \leq n</m>. Si <m>{\mathbf z}</m> es cualquier palabra del código distinta de <m>{\mathbf x}</m>, entonces
+					<me>2n+1 \leq d( {\mathbf x}, {\mathbf z}) \leq d( {\mathbf x}, {\mathbf y}) + d( {\mathbf y}, {\mathbf z}) \leq n + d( {\mathbf y}, {\mathbf z}).</me>
+				Luego, <m>d({\mathbf y}, {\mathbf z} ) \geq n+1</m> e <m>{\mathbf y}</m> será decodificada correctamente como <m>{\mathbf x}</m>. Ahora supongamos que se transmite <m>{\mathbf x}</m> recibiéndose <m>{\mathbf y}</m> y que al menos uno pero no más de <m>2n</m> errores han ocurrido. Entonces <m>1 \leq d( {\mathbf x}, {\mathbf y} ) \leq 2n</m>.  Como la distancia mínima entre palabras del código es <m>2n +1</m>, <m>{\mathbf y}</m> no puede ser una palabra del código.  Así, el código puede detectar entre  hasta <m>2n</m> errores.</p>
+			</proof>
+		</theorem>
+
+		<example xml:id="example-algcodes-single-correct">
+			<p>En la Tabla<nbsp /><xref ref="table-hamming-distance" />, las palabras <m>{\mathbf c}_1 = (00000)</m>, <m>{\mathbf c}_2 = (00111)</m>, <m>{\mathbf c}_3 = (11100)</m>, y <m>{\mathbf c}_4 = (11011)</m> determinan un código corrector de un error.</p>
+		</example>
+
+		<table xml:id="table-hamming-distance">
+			<caption>Distancias de Hamming para un código corrector de errores</caption>
+		   <tabular halign="center" top="medium" left="medium" right="medium">
+	           	<row bottom="medium">
+	           		<cell></cell><cell>00000</cell><cell>00111</cell><cell>11100</cell><cell>11011</cell>
+	           	</row>
+	       		<row>
+	       			<cell>00000 </cell><cell>0</cell><cell>3</cell><cell>3</cell><cell>4</cell>
+	       		</row>
+				<row>
+					<cell>00111 </cell><cell>3</cell><cell>0</cell><cell>4</cell><cell>3</cell>
+				</row>
+				<row>
+					<cell>11100 </cell><cell>3</cell><cell>4</cell><cell>0</cell><cell>3</cell>
+				</row>
+				<row bottom="medium">
+					<cell>11011 </cell><cell>4</cell><cell>3</cell><cell>3</cell><cell>0</cell>
+				</row>
+		   </tabular>
+		</table>
+ 
+		</subsection> 
+
+		<subsection  xml:id="algcodes-subsection-historical-note">
+			<title>Nota Histórica</title> 
+
+			<p>La teoría moderna de códigos comenzó en 1948 con la publicación de C. Shannon<idx><h>Shannon, C..</h></idx>, titulada <q>A Mathematical Theory of Information</q> [7]. En su artículo, Shannon ofreció un ejemplo de un código algebraico, y el Teorema de Shannon estableció precisamente qué tan bueno puede llegar a ser un código. Richard Hamming<idx><h>Hamming, R.</h></idx> comenzó a trabajar con códigos lineales en Bell Labs a finales de los 1940s y principios de los 1950s después de sufrir la frustración de que los programas que corría no eran capaces de recuperarse de simples errores generados por ruido. La teoría de códigos ha crecido tremendamente en las décadas siguientes a estos trabajos. <em>The Theory of Error-Correcting Codes</em>, de MacWilliams y Sloane [5], publicado en 1977, ya contenía más de 1500 citas. Códigos lineales (códigos de bloque <m>(32, 6)</m> de Reed-Muller) fueron usados en las sondas espaciales Mariner de la NASA.  Sondas espaciales posteriores como los Voyager han usado los llamados códigos de convolución.  Actualmente, hay investigación activa respecto a códigos Goppa, que dependen fuertemente de geometría algebraica.</p>
+
+ 		</subsection>
+ 		
+	</section>
+
+	<section xml:id="section-linear-codes">
+		<title>Códigos Lineales</title>
+
+		<introduction>
+ 
+			<p>Para ganar más información sobre un código particular y desarrollar técnicas más eficientes de codificación, decodificación y detección de errores, necesitaremos agregar mayor estructura a nuestros códigos. Una forma de lograr esto es pedir que el código además sea un grupo. Un <term>código de grupo</term><idx><h>Grupo</h><h>código de</h></idx> o <term>código lineal</term><idx><h>Lineal</h><h>código</h></idx>es un código que además es un subgrupo de <m>{\mathbb Z}_2^n</m>.</p> 
+	 
+			<p>Para verificar que un código es un código de grupo, solo necesitamos verificar una cosa. Si sumamos dos elementos en el código, el resultado debe ser una <m>n</m>-tupla que nuevamente esté en el código. No es necesario verificar que el elemento inverso de la <m>n</m>-tupla esté en el código, pues cada palabra del código es su propio inverso, tampoco es necesario verificar que <m>{\mathbf 0}</m> sea una palabra del código. Por ejemplo, <me>(11000101) + (11000101) = (00000000).</me></p>
+	 
+
+			<example xml:id="example-algcodes-weights">
+				<p>Supongamos que tenemos un código que consiste de las siguientes 7-tuplas: 
+					<md>
+						<mrow> &amp;(0000000) &amp; &amp; (0001111) &amp;  &amp; (0010101) &amp; &amp; (0011010)</mrow>
+						<mrow> &amp;(0100110) &amp; &amp; (0101001) &amp; &amp; (0110011) &amp; &amp; (0111100)</mrow>
+						<mrow> &amp;(1000011) &amp; &amp; (1001100) &amp; &amp; (1010110) &amp; &amp; (1011001)</mrow>
+						<mrow> &amp;(1100101) &amp; &amp; (1101010) &amp; &amp; (1110000) &amp; &amp; (1111111).</mrow>
+					</md>
+				Es una tarea sencilla, aunque tediosa la de verificar que este código es un subgrupo de <m>{\mathbb Z}_2^7</m> y que por lo tanto, es un código de grupo. Este código detecta un error y corrige un error, pero calcular todas las distancias entre pares de palabras del código para determinar que <m>d_{\min} = 3</m> es un proceso largo y tedioso. Es mucho más sencillo ver que el peso mínimo de todas las palabras no nulas es 3. Como veremos pronto, esto no es una coincidencia. Pero la relación entre pesos y distancias en un código particular es fuertemente dependiente del hecho que el código sea un grupo.</p>
+			</example>
+	 
+			<lemma>
+				<statement>
+					<p>Sean <m>{\mathbf x}</m> e <m>{\mathbf y}</m> <m>n</m>-tuplas binarias. Entonces <m>w({\mathbf x} + {\mathbf y}) = d({\mathbf x}, {\mathbf y})</m>.</p>
+				</statement>
+				<proof>
+					<p>Supongamos que <m>{\mathbf x}</m> e <m>{\mathbf y}</m> son <m>n</m>-tuplas binarias. Entonces la distancia entre <m>{\mathbf x}</m> e <m>{\mathbf y}</m> es exactamente el número de lugares en los que difieren <m>{\mathbf x}</m> e <m>{\mathbf y}</m>. Pero <m>{\mathbf x}</m> e <m>{\mathbf y}</m> difieren en una coordenada particular si y solo si la suma es 1 en esa coordenada, pues
+						<md>
+							<mrow>1 + 1 &amp; = 0</mrow>
+							<mrow>0 + 0 &amp; = 0</mrow>
+							<mrow>1 + 0 &amp; = 1</mrow>
+							<mrow>0 + 1 &amp; = 1.</mrow>
+						</md>
+					Así, el peso de la suma es igual a la distancia entre las dos palabras.</p>
+				</proof>
+			</lemma>
+	 
+			<theorem>
+				<statement>
+					<p>Sea <m>d_{\min}</m> la distancia mínima para un código de grupo <m>C</m>. Entonces <m>d_{\min}</m> es el mínimo de todos los pesos de las palabras no nulas en <m>C</m>. Es decir, 
+						<me>d_{\min} = \min\{ w({\mathbf x}) : { {\mathbf x} \neq {\mathbf 0} } \}.</me></p>
+				</statement>
+				<proof>
+				<p>Observe que
+					<md>
+						<mrow>d_{\min} &amp; =  \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}\neq{\mathbf y} \}</mrow>
+						<mrow>&amp;=  \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}+{\mathbf y} \neq {\mathbf 0} \}</mrow>
+						<mrow>&amp;= \min\{ w({\mathbf x} + {\mathbf y}) : {\mathbf x}+{\mathbf y}\neq {\mathbf 0} \}</mrow>
+						<mrow>&amp; =  \min\{ w({\mathbf z}) : {\mathbf z} \neq {\mathbf 0} \}.</mrow>
+					</md></p>
+				</proof>
+			</theorem>
+		</introduction>
+
+		<subsection  xml:id="algcodes-subsection-linear-codes">
+			<title>Códigos Lineales</title>
+ 
+ 			<p>Del Ejemplo<nbsp /><xref ref="example-algcodes-weights" />, es ahora fácil verificar que el mínimo peso distinto de cero es 3; luego, el código realmente detecta y corrige todos los errores individuales. Hemos reducido el problema de encontrar <q>buenos</q> códigos al de generar códigos de grupo. Una forma fácil de generar códigos de grupo, es emplear un poco de teoría de matrices.</p>
+ 
+			<p>Se define el <term>producto interno</term><idx><h>Producto interno</h></idx> de dos <m>n</m>-tuplas binarias como 
+				<me>{\mathbf x} \cdot {\mathbf y} = x_1 y_1 + \cdots + x_n y_n,</me>
+			donde <m>{\mathbf x} = (x_1, x_2, \ldots, x_n)^{\rm t}</m> e <m>{\mathbf y} = (y_1, y_2, \ldots, y_n)^{\rm t}</m> son vectores columna.<fn> Como estaremos trabajando con matrices, escribiremos las <m>n</m>-tuplas binarias como vectores columna por el resto del capítulo.</fn> Por ejemplo, si <m>{\mathbf x} = (011001)^{\rm t}</m> e <m>{\mathbf y} = (110101)^{\rm t}</m>, entonces <m>{\mathbf x} \cdot {\mathbf y} = 0</m>. También podemos pensar el producto interno como el producto de un vector fila con un vector columna; es decir, 
+				<md>
+					<mrow>{\mathbf x} \cdot {\mathbf y} &amp; = {\mathbf x}^{\rm t}  {\mathbf y}</mrow>
+					<mrow>&amp; =
+					\begin{pmatrix}<![CDATA[
+					x_1 & x_2 & \cdots & x_n
+					]]>\end{pmatrix}
+					\begin{pmatrix}<![CDATA[
+					y_1 \\ y_2 \\ \vdots \\ y_n
+					]]>\end{pmatrix}</mrow>
+					<mrow>&amp; = x_{1}y_{1} + x_{2}y_{2} + \cdots + x_{n}y_{n}.</mrow>
+				</md></p>
+ 
+			<example xml:id="example-algcodes-matrixcodes">
+				<p>Supongamos que las palabras a ser codificadas consisten de todas las 3-tuples binarias y que nuestro mecanismo de codificación es el de control de paridad. Para codificar una 3-tupla arbitraria, agregamos un cuarto bit para obtener un número par de unos. Note que una <m>n</m>-tupla arbitraria <m>{\mathbf x} = (x_1, x_2, \ldots, x_n)^{\rm t}</m> tiene un número par de unos exactamente cuando <m>x_1 + x_2 + \cdots + x_n = 0</m>; luego, una 4-tupla <m>{\mathbf x} = (x_1, x_2, x_3, x_4)^{\rm t}</m> tiene un número par de unos si y solo si <m> x_1+ x_2+ x_3+ x_4 = 0</m>, o 
+					<me>{\mathbf x} \cdot {\mathbf 1} =  {\mathbf x}^{\rm t} {\mathbf 1} =
+					\begin{pmatrix}<![CDATA[
+					x_1 & x_2 & x_3 & x_4
+					]]>\end{pmatrix}
+					\begin{pmatrix}<![CDATA[
+					1 \\ 1 \\ 1 \\ 1
+					]]>\end{pmatrix} = 0.</me>
+				Este ejemplo nos da esperanza de que haya una conexión entre las matrices y la teoría de códigos.</p>
+			</example>
+ 
+			<p>Sea <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m> el conjunto de todas las matrices de <m>m \times n</m> con coeficientes en  <m>{\mathbb Z}_2</m>. Hacemos operaciones entre las matrices como siempre excepto que todas nuestras operaciones de suma y producto ocurren en  <m>{\mathbb Z}_2</m>. Defina el <term>espacio nulo</term><idx><h>Matriz</h><h>espacio nulo de una</h></idx><idx><h>Espacio nulo</h><h>de una matriz</h></idx> de una matriz <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m> como el conjunto de todas las <m>n</m>-tuplas binarias <m>{\mathbf x}</m> tales que <m>H{\mathbf x} = {\mathbf 0}</m>. Denotamos el espacio nulo de una matriz <m>H</m> por <m>\Null(H)</m>. <notation><usage>\mathbb M_{m \times n}(\mathbf Z_2)</usage><description>el conjunto de matrices de <m>m \times n</m> con coeficientes en <m>\mathbb Z_2</m></description></notation> <notation><usage>\Null(H)</usage><description>espacio nulo de una matriz <m>H</m></description></notation></p> 
+
+			<example xml:id="example-algcodes-group-code">
+				<p>Supongamos que
+					<me>H =
+					\begin{pmatrix}<![CDATA[
+					0 & 1 & 0 & 1 & 0 \\
+					1 & 1 & 1 & 1 & 0 \\
+					0 & 0 & 1 & 1 & 1
+					]]>\end{pmatrix}.</me>
+				Para que una 5-tupla <m>{\mathbf x} = (x_1, x_2, x_3, x_4, x_5)^{\rm t}</m> esté en el espacio nulo de <m>H</m>, <m>H{\mathbf x} = {\mathbf 0}</m>. Equivalentemente, se debe satisfacer el siguiente sistema de ecuaciones:   
+					<md>
+					<mrow>x_2 +  x_4  &amp; =  0</mrow>
+					<mrow>x_1 +  x_2 + x_3  + x_4   &amp; =  0</mrow>
+					<mrow>x_3  + x_4  +  x_5 &amp; =  0.</mrow>
+					</md>
+				El conjunto de las 5-tuplas binarias que satisfacen estas ecuaciones es
+				<me>(00000) \qquad (11110) \qquad (10101) \qquad (01011).</me>
+				Es fácil determiar que este código es un código de grupo.</p>
+			</example>
+	 
+			<theorem>
+				<statement>
+					<p>Sea <m>H</m> en <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m>. Entonces el espacio nulo de <m>H</m> es un código de grupo.</p>
+				</statement>
+				<proof>
+					<p>Como cada elemento de <m>{\mathbb Z}_2^n</m> es su propio inverso, lo único que necesita ser verificado es la clausura. Sean <m>{\mathbf x}, {\mathbf y} \in {\rm Null}(H)</m> para alguna matriz <m>H</m> en <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m>. Entonces <m>H{\mathbf x} = {\mathbf 0}</m> y <m>H{\mathbf y} = {\mathbf 0}</m>. Así
+						<me>H({\mathbf x}+{\mathbf y}) = H{\mathbf x} + H{\mathbf y} = {\mathbf 0} + {\mathbf 0} = {\mathbf 0}.</me>
+					Luego, <m>{\mathbf x} + {\mathbf y}</m> está en el espacio nulo de  <m>H</m> y por lo tanto es una palabra del código.</p>
+				</proof>
+			</theorem>
+
+<!-- typo correction.  Suggested by J. Buller. -->
+<!-- TWJ - 12/20/2011 -->
+
+			<p>Un código es un <term>código lineal</term><idx><h>Código</h><h>lineal</h></idx> si está determinado por el espacio nulo de alguna matriz <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m>.</p> 
+ 
+			<example xml:id="example-algcodes-linear-code">
+				<p>Sea <m>C</m> el código dado por la matriz
+					<me>H =
+					\begin{pmatrix}<![CDATA[
+					0 & 0 & 0 & 1 & 1 & 1 \\
+					0 & 1 & 1 & 0 & 1 & 1 \\
+					1 & 0 & 1 & 0 & 0 & 1
+					]]>\end{pmatrix}.</me>
+				Supongamos que se recibe la 6-tupla <m>{\mathbf x} = (010011)^{\rm t}</m>. Es simplemente cuestión de multiplicar matrices para determinar si <m>{\mathbf x}</m> está o no en el código. Como 
+					<me>H{\mathbf x} =
+					\begin{pmatrix}<![CDATA[ 
+					0 \\ 1 \\ 1
+					]]>\end{pmatrix},</me>
+				la palabra recibida no está en el código.  Debemos intentar corregirla o pedir que sea transmitida nuevamente.</p>
+			</example>
+
+<!-- typo correction.  Suggested by J. Buller. -->
+<!-- TWJ - 12/20/2011 -->
+
+		</subsection>
+ 
+	</section>
+
+	<section xml:id="section-parity-check">
+		<title>Matrices Verificadora y Generadora</title>
+ 
+		<p>Debemos encontrar una forma sistemática de generar códigos lineales así como métodos rápidos de decodificación. Examinando las propiedades de la matriz <m>H</m> y eligiendo <m>H</m> cuidadosamente, es posible desarrollar métodos muy eficientes para codificar y decodificar mensajes. Con este objetivo, introduciremos la matriz generadora estándar y la matriz verificadora canónica.</p>
+
+		<p>Supongamos que <m>H</m> es una matriz de <m>m \times n</m> con coeficiente en <m>{\mathbb Z}_2</m> y <m>n \gt m</m>. las últimas <m>m</m> columnas de la matriz forman la matriz identidad de <m>m \times m</m>, <m>I_m</m>, entonces la matriz es una <term>matriz verificadora canónica</term><idx><h>Matriz</h><h>verficadora</h></idx>. Más específicamente, <m>H= (A \mid I_m)</m>, donde <m>A</m> es la matriz de <m>m \times (n-m)</m> 
+			<me>\begin{pmatrix}<![CDATA[
+			a_{11} & a_{12} & \cdots & a_{1,n-m} \\
+			a_{21} & a_{22} & \cdots & a_{2,n-m} \\
+			\vdots & \vdots & \ddots & \vdots    \\
+			a_{m1} & a_{m2} & \cdots & a_{m,n-m}
+			]]>\end{pmatrix}</me>
+		y <m>I_m</m> es la matriz identidad de <m>m \times m</m>
+			<me>\begin{pmatrix}<![CDATA[
+			1 & 0 & \cdots & 0 \\
+			0 & 1 & \cdots & 0 \\
+			\vdots & \vdots & \ddots & \vdots \\
+			0 & 0 & \cdots & 1
+			]]>\end{pmatrix}.</me>
+		Con cada matriz verificadora canónica podemos asociar una <term>matriz generadora estándar</term> de <m>n \times (n-m)</m> <idx><h>Matriz</h><h>generadora</h></idx> 
+			<me>G = \left( \frac{I_{n-m}}{A} \right).</me>
+		Nuestro objetivo será mostrar que existe un <m>\mathbf x</m> que satisfaga <m>G {\mathbf x} = {\mathbf y}</m> si y solo si <m>H{\mathbf y} = {\mathbf 0}</m>.  dado un bloque <m>{\mathbf x}</m> a ser codificado, la matriz <m>G</m> nos permitirá codificarlo rápidamente a una palabra <m>{\mathbf y}</m> del código lineal.</p>
+
+		<example xml:id="example-algcodes-parity-check">
+			<p>Supongamos que tenemos las siguientes ocho palabras por codificar:
+				<me>(000), (001), (010), \ldots, (111).</me>
+			Para
+				<me>A =
+				\begin{pmatrix}<![CDATA[
+				0 & 1 & 1 \\
+				1 & 1 & 0 \\
+				1 & 0 & 1
+				]]>\end{pmatrix},</me>
+			la matrices generadora estándar y verificadora canónica son 
+				<me>G=
+				\begin{pmatrix}<![CDATA[
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				0 & 0 & 1 \\
+				0 & 1 & 1 \\
+				1 & 1 & 0 \\
+				1 & 0 & 1
+				]]>\end{pmatrix}</me>
+			y
+				<me>H =
+				\begin{pmatrix}<![CDATA[
+				0 & 1 & 1 & 1 & 0 & 0 \\
+				1 & 1 & 0 & 0 & 1 & 0 \\
+				1 & 0 & 1 & 0 & 0 & 1
+				]]>\end{pmatrix},</me>
+			respectivamente.</p>
+ 
+			<p>Observe que las filas en <m>H</m>  representan las verificaciones de paridad en ciertas posiciones de las 6-tuplas. Los unos en la matriz identidad sirven como verificadores de paridad para los unos en la misma fila. Si <m>{\mathbf x} = (x_1, x_2, x_3, x_4, x_5, x_6)</m>, entonces 
+				<me>{\mathbf 0}
+				=
+				H{\mathbf x}
+				=
+				\begin{pmatrix}<![CDATA[
+				x_2 + x_3 + x_4 \\
+				x_1 + x_2 + x_5\\
+				x_1 + x_3 + x_6
+				]]>\end{pmatrix},</me>
+			lo que produce un sistema de ecuaciones:
+				<md>
+					<mrow>x_2 + x_3 + x_4 &amp; = 0</mrow>
+					<mrow>x_1 + x_2 + x_5 &amp; = 0</mrow>
+					<mrow>x_1 + x_3 + x_6 &amp; = 0.</mrow>
+				</md>
+			Acá <m>x_4</m> sirve como bit de control para <m>x_2</m> y <m>x_3</m>; <m>x_5</m> es un bit de control para <m>x_1</m> y <m>x_2</m>; y <m>x_6</m> es un bit de control para <m>x_1</m> y <m>x_3</m>. La matriz identidad impide que <m>x_4</m>, <m>x_5</m>, y <m>x_6</m> tengan que controlarse entre ellos. Luego, <m>x_1</m>, <m>x_2</m>, y <m>x_3</m> pueden ser arbitrarios pero <m>x_4</m>, <m>x_5</m>, y <m>x_6</m> deben ser escogidos de manera de asegurar las paridades respectivas. Se calcula fácilmente que el espacio nulo de <m>H</m> es
+				<me>\begin{array}{cccc}
+				(000000) &amp; (001101) &amp; (010110) &amp; (011011) \\
+				(100011) &amp; (101110) &amp; (110101) &amp; (111000).
+				\end{array}</me>
+			Una forma aún más fácil de calcular el espacio nulo es con la matriz generadora <m>G</m> (Tabla<nbsp /><xref ref="table-matrix-gen-code" />). </p>
+		</example>
+		
+		<table xml:id="table-matrix-gen-code">
+			<caption>Un código generado por una matriz</caption>
+		   <tabular halign="center" top="medium">
+		           	<row bottom="medium">
+		           		<cell>Palabra de Mensaje <m>\mathbf x</m></cell><cell>Palabra del código <m>G \mathbf x</m></cell>
+		           	</row>
+		       		<row>
+		       			<cell>000</cell><cell>000000</cell>
+		       		</row>
+					<row>
+						<cell>001</cell><cell>001101</cell>
+					</row>
+					<row>
+						<cell>010</cell><cell>010110</cell>
+					</row>
+					<row>
+						<cell>011</cell><cell>011011</cell>
+					</row>
+					<row>
+						<cell>100</cell><cell>100011</cell>
+					</row>
+					<row>
+						<cell>101</cell><cell>101110</cell>
+					</row>
+					<row>
+						<cell>110</cell><cell>110101</cell>
+					</row>
+					<row bottom="medium">
+						<cell>111</cell><cell>111000</cell>
+					</row>
+		   </tabular>
+		</table>		
+
+		<theorem>
+			<statement>
+				<p>Si <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m> es una matriz verificadora canónica, entonces <m>{\rm Null}(H)</m> consiste de todas las <m>{\mathbf x} \in {\mathbb Z}_2^n</m> cuyos primeros <m>n-m</m> bits son arbitrarios pero cuyos últimos <m>m</m> bits están determinados por <m>H{\mathbf x} = {\mathbf 0}</m>. Cada uno de los últimos <m>m</m> bits sirve como control de paridad para algunos de los primeros <m>n-m</m> bits. Luego, <m>H</m> da lugar a un código de bloque <m>(n, n-m)</m>.</p>
+			</statement>
+		</theorem>
+ 
+		<p>Dejamos la demostración de este teorema como ejercicio. A la luz del teorema, los primeros <m>n - m</m> bits de <m>{\mathbf x}</m> se denominan <term>bits de información</term> y los últimos <m>m</m> bits se denominan <term>bits de verificación</term>. En el Ejemplo<nbsp /><xref ref="example-algcodes-parity-check" />,  los primeros tres bits son de información y los últimos tres son bits de verificación.</p>
+ 
+		<theorem>
+			<statement>
+				<p>Supongamos que <m>G</m> es una matriz generadora estándar de <m>n \times k</m>.  Entonces <m>C = \left\{{\mathbf y} : G{\mathbf x} ={\mathbf y}\text{ para }{\mathbf x}\in {\mathbb  Z}_2^k\right\}</m> es un código de bloque <m>(n,k)</m>. Más específicamente, <m>C</m> es un código de grupo.</p>
+			</statement>
+			<proof>
+				<p>Sean <m>G {\mathbf x}_1 = {\mathbf y}_1</m> y <m>G {\mathbf x}_2 ={\mathbf y}_2</m> dos palabras del código. Entonces <m>{\mathbf y}_1 + {\mathbf y}_2</m> está en <m>C</m> pues 
+					<me>G( {\mathbf x}_1 + {\mathbf x}_2) = G {\mathbf x}_1 + G {\mathbf x}_2 = {\mathbf y}_1 + {\mathbf y}_2.</me>
+				Debemos mostrar además que dos bloques de mensaje diferentes no pueden ser codificados a la misma palabra del código. Es decir, debemos mostrar que si <m>G {\mathbf x} = G {\mathbf y}</m>, entonces <m>{\mathbf x} = {\mathbf y}</m>.  Supongamos que <m>G {\mathbf x} = G {\mathbf y}</m>. Entonces
+					<me>G {\mathbf x} - G {\mathbf y} = G( {\mathbf x} - {\mathbf y}) = {\mathbf 0}.</me>
+				Pero las primeras <m>k</m> coordenadas en <m>G( {\mathbf x} - {\mathbf y})</m> son exactamente <m>x_1 -y_1, \ldots, x_k - y_k</m>, pues están determinadas por la matriz identidad, <m>I_k</m>, que es parte de <m>G</m>. Luego, <m>G( {\mathbf x} - {\mathbf y}) = {\mathbf 0}</m> si y solo si <m>{\mathbf x} = {\mathbf y}</m>.</p>
+			</proof>
+		</theorem>
+ 
+		<p>Antes de demostrar la relación entre la matriz verificadora canónica y la matriz generadora estándar, demostraremos un lema.</p>
+ 
+		<lemma xml:id="lemma-parity-check">
+			<statement>
+				<p>Sea <m>H = (A \mid I_m )</m> una matriz verificadora canónica de <m>m \times n</m> y <m>G = \left( \frac{I_{n-m} }{A} \right)</m> la correspondiente matriz generadora estándar de <m>n \times (n-m)</m>. Entonces <m>HG = {\mathbf 0}</m>.</p>
+			</statement>
+			<proof>
+				<p>Sea <m>C = HG</m>.  El coeficiente <m>ij</m>th de <m>C</m> es
+					<md>
+						<mrow>c_{ij} &amp; = \sum_{k=1}^n h_{ik} g_{kj}</mrow>
+						<mrow>&amp; =  \sum_{k=1}^{n-m} h_{ik} g_{kj} + \sum_{k=n-m+1}^n h_{ik} g_{kj}</mrow>
+						<mrow>&amp; = \sum_{k=1}^{n-m} a_{ik} \delta_{kj} + \sum_{k=n-m+1}^n \delta_{i-(m-n),k} a_{kj}</mrow>
+						<mrow>&amp; =  a_{ij} + a_{ij}</mrow>
+						<mrow>&amp; = 0,</mrow>
+					</md>
+				donde
+					<me>\delta_{ij} =
+					\begin{cases}
+					1, &amp; i = j \\
+					0, &amp; i \neq j
+					\end{cases}</me>
+				es la delta de Kronecker<idx><h>delta de Kronecker</h></idx>. <notation><usage>\delta_{ij}</usage><description>delta de Kronecker</description></notation></p>
+			</proof>
+		</lemma>
+
+		<theorem>
+			<statement>
+				<p>Sea <m>H = (A \mid I_m )</m> una matriz verificadora canónica de <m>m \times n</m> y sea <m>G = \left( \frac{I_{n-m} }{A} \right) </m> la correspondiente matriz generadora estándar de <m>n \times (n-m)</m>. Sea <m>C</m> el código generado por <m>G</m>. Entonces <m>{\mathbf y}</m> está en <m>C</m> si y solo si <m>H {\mathbf y} = {\mathbf 0}</m>. En particular, <m>C</m> es un código lineal con matriz verificadora canónica <m>H</m>.</p>
+			</statement>
+			<proof>
+				<p>Primero supongamos que <m>{\mathbf y} \in C</m>. Entonces <m>G {\mathbf x} = {\mathbf y}</m> para algún <m>{\mathbf x} \in {\mathbb Z}_2^m</m>. Por el Lema<nbsp /><xref ref="lemma-parity-check" />, <m>H {\mathbf y} = HG {\mathbf x} = {\mathbf 0}</m>.</p>
+ 
+				<p>Recíprocamente, supongamos que <m>{\mathbf y} = (y_1, \ldots, y_n)^{\rm t}</m> está en el espacio nulo de  <m>H</m>.  Debemos encontrar <m>{\mathbf x}</m> en <m>{\mathbb Z}_2^{n-m}</m> tal que <m>G {\mathbf x}^{\rm t} = {\mathbf y}</m>. Como <m>H {\mathbf y} = {\mathbf 0}</m>, se debe satisfacer el siguiente conjunto de ecuaciones:  
+					<md>
+						<mrow>a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m} + y_{n-m+1} &amp; = 0</mrow>
+						<mrow>a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m} + y_{n-m+1} &amp; = 0</mrow>
+						<mrow>&amp; \vdots  </mrow>
+						<mrow>a_{m1} y_1 + a_{m2} y_2 + \cdots + a_{m, n-m} y_{n-m} + y_{n-m+1} &amp; = 0.</mrow>
+					</md>
+				Equivalentemente, <m>y_{n-m+1}, \ldots, y_n</m> están determinados por <m>y_1, \ldots, y_{n-m}</m>: 
+					<md>
+						<mrow>y_{n-m+1} &amp; = a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m}</mrow>
+						<mrow>y_{n-m+1} &amp; = a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m}</mrow>
+						<mrow>&amp; \vdots</mrow>
+						<mrow>y_{n-m+1} &amp; = a_{m1} y_1 + a_{m2} y_2 + \cdots + a_{m, n-m} y_{n-m}.</mrow>
+					</md>
+				Por ende podemos tomar <m>x_i = y_i</m> para <m>i= 1, \ldots, n - m</m>.</p>
+			</proof>
+		</theorem>
+ 
+		<p>Sería bueno poder calcular la distancia mínima de un código lineal directamente a partir de su matriz <m>H</m> para poder determinar las capacidades de detección y corrección de errores del código. Supongamos que  
+			<md>
+				<mrow>{\mathbf e}_1 &amp; = (100 \cdots 00)^{\rm t}</mrow>
+				<mrow>{\mathbf e}_2 &amp; = (010 \cdots 00)^{\rm t}</mrow>
+				<mrow>&amp; \vdots</mrow>
+				<mrow>{\mathbf e}_n &amp; = (000 \cdots 01)^{\rm t}</mrow>
+			</md>
+		son la <m>n</m>-tuplas en <m>{\mathbb Z}_2^n</m> de peso 1. Para una matriz binaria <m>H</m> de <m>m \times n</m>, <m>H{\mathbf e}_i</m> es exactamente la columna <m>i</m>-ésima de la matriz <m>H</m>.</p> 
+
+		<example xml:id="example-algcodes-ith-column">
+			<p>Observe que
+				<me>\begin{pmatrix}<![CDATA[
+				1 & 1 & 1 & 0 & 0 \\
+				1 & 0 & 0 & 1 & 0 \\
+				1 & 1 & 0 & 0 & 1
+				]]>\end{pmatrix}
+				\begin{pmatrix}<![CDATA[
+				 0 \\ 1 \\ 0 \\ 0 \\ 0
+				]]>\end{pmatrix}
+				=
+				\begin{pmatrix}<![CDATA[
+				1 \\ 0 \\ 1
+				]]>\end{pmatrix}.</me></p>
+		</example>
+ 
+		<p>Enunciamos el resultado en la siguiente proposición y dejamos su demostración como ejercicio.</p> 
+ 
+		<proposition xml:id="proposition-column">
+			<statement>
+				<p>Sea <m>{\mathbf e}_i</m> la <m>n</m>-tupla binaria con un <m>1</m> en la <m>i</m>-ésima coordenada y <m>0</m> en todas las demás y supongamos que <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m>. Entonces <m>H{\mathbf e}_i</m> es la <m>i</m>-ésima columna de la matriz <m>H</m>. </p>
+			</statement>
+		</proposition>
+ 
+		<theorem xml:id="theorem-single-error">
+			<statement>
+				<p>Sea <m>H</m> una matriz binaria de <m>m \times n</m>. Entonces el espacio nulo de <m>H</m> es un código que puede detectar un error si y solo si ninguna columna de <m>H</m> consiste solamente de ceros.</p>
+			</statement>
+			<proof>
+				<p>Supongamos que <m>{\rm Null}(H)</m> es un código que detecta un error. Entonces la distancia mínima del código debe ser al menos 2. Como el espacio nulo es un código de grupo, es necesario que el código no tenga ninguna palabra de peso menor a 2 aparte de la palabra cero. Es decir, <m>{\mathbf e}_i</m> no debe ser una palabra del código para <m>i = 1, \ldots, n</m>. Como <m>H{\mathbf e}_i</m> es la <m>i</m>-ésima columna de <m>H</m>, la <m>i</m>-ésima columna no tiene puros ceros.</p>  
+
+				<p>Recíprocamente, supongamos que ninguna columna de <m>H</m> es la columna cero. Por la Proposición<nbsp /><xref ref="proposition-column" />, <m>H{\mathbf e}_i \neq {\mathbf 0}</m>; luego, la distancia mínima del código es al menos 2, y el código tiene la capacidad de detectar un error..</p>
+			</proof>
+		</theorem>
+
+		<example xml:id="example-algcodes-null-space">
+			<p>Si consideramos las matrices
+				<me>H_1 =
+				\begin{pmatrix}<![CDATA[
+				1 & 1 & 1 & 0 & 0 \\
+				1 & 0 & 0 & 1 & 0 \\
+				1 & 1 & 0 & 0 & 1
+				]]>\end{pmatrix}</me>
+			y
+				<me>H_2 =
+				\begin{pmatrix}<![CDATA[
+				1 & 1 & 1 & 0 & 0 \\
+				1 & 0 & 0 & 0 & 0 \\
+				1 & 1 & 0 & 0 & 1
+				]]>\end{pmatrix},</me>
+			entonces el espacio nulos de <m>H_1</m> es un código que detecta un error y el espacio nulo de <m>H_2</m> no lo es.</p>
+		</example>
+ 
+ 
+		<p>Podemos mejorar el Teorema<nbsp /><xref ref="theorem-single-error" />. Este teorema nos entrega condiciones sobre la matriz <m>H</m> que nos dicen cuándo el peso mínimo del código formado por el espacio nulo de <m>H</m> es 2.  También podemos determinar cuándo la distancia mínima de un código lineal es 3 examinando la matriz correspondiente.</p>
+ 
+		<example xml:id="example-algcodes-check-matrix">
+			<p>Si hacemos
+				<me>H =
+				\begin{pmatrix}<![CDATA[
+				1 & 1 & 1 & 0 \\
+				1 & 0 & 0 & 1 \\
+				1 & 1 & 0 & 0
+				]]>\end{pmatrix}</me>
+			y queremos determinar si <m>H</m> es la matriz verificadora canónica para un código corrector de un error, es necesario asegurarse que  <m>{\rm Null}(H)</m> no contenga ninguna 4-tupla de peso 2. Es decir, <m>(1100)</m>, <m>(1010)</m>, <m>(1001)</m>, <m>(0110)</m>, <m>(0101)</m>, y <m>(0011)</m> no deben estar en <m>{\rm Null}(H)</m>.  El próximo teorema establece que podemos saber si el código determinado por  <m>H</m> es corrector de errores examinando las columnas de <m>H</m>. Note en este ejemplo que no solo <m>H</m> no tiene columnas nulas, sino que tampoco tiene columnas repetidas.</p>
+		</example>
+ 
+		<theorem>
+			<statement>
+				<p>Sea <m>H</m> una matriz binaria. El espacio nulo de <m>H</m> es un código corrector de un error si <m>H</m> no contiene columnas de puros ceros ni dos columnas iguales.</p>
+			</statement>
+			<proof>
+				<p>La <m>n</m>-tupla <m>{\mathbf e}_{i} +{\mathbf e}_{j}</m> tiene unos en la posiciones <m>i</m>-ésima y <m>j</m>-ésima y ceros en las demás, y <m>w( {\mathbf e}_{i} +{\mathbf e}_{j}) = 2</m> para <m>i \neq j</m>. Como
+					<me>{\mathbf 0} = H({\mathbf e}_{i} +{\mathbf e}_{j}) = H{\mathbf e}_{i} + H{\mathbf e}_{j}</me>
+				Solo puede ocurrir si la <m>i</m>-ésima y la <m>j</m>-ésima columnas son idénticas. Como no contiene palabras de peso menor o igual a 2, el espacio nulo de <m>H</m> es un código corrector de un error.</p>
+			</proof>
+		</theorem>
+ 
+		<p>Supongamos ahora que tenemos una matriz verificadora canónica <m>H</m> con tres filas. Nos podemos preguntar cuántas columnas le podemos agregar a la matriz y seguir teniendo un espacio nulo que sea un código que detecte y corrija un error. Como cada columna tiene tres entradas, hay <m>2^3 = 8</m> columnas diferentes posibles. No podemos agregar las columnas
+			<me>\begin{pmatrix}<![CDATA[
+			 0 \\ 0 \\ 0 
+			]]>\end{pmatrix},
+			\begin{pmatrix}<![CDATA[
+			 1 \\ 0 \\ 0 
+			]]>\end{pmatrix},
+			\begin{pmatrix}<![CDATA[
+			 0 \\ 1 \\ 0 
+			 ]]>\end{pmatrix},
+			\begin{pmatrix}<![CDATA[
+			 0 \\ 0 \\ 1 
+			 ]]>\end{pmatrix}.</me>
+		Podemos entonces agregar hasta cuatro columnas manteniendo una distancia mínima de 3.</p>
+ 
+		<p>En general, si <m>H</m> es una matriz verificadora canónica de <m>m \times n</m>, entonces hay <m>n-m</m> posiciones de información en cada palabra del código. Cada columna tiene <m>m</m> bits, así es que hay <m>2^m</m> posibles columnas diferentes. Es necesario que las columnas <m>{\mathbf 0}, {\mathbf e}_1, \ldots, {\mathbf e}_m</m> sean excluidas, dejando <m>2^m - (1 + m)</m> columnas restantes para información si queremos mantener la habilidad de no solo detectar sino también corregir un error.</p>
+<!-- typo correction.  Suggested by G. Cheng. -->
+<!-- TWJ - 10/1/2014 -->
+
+	</section>
+
+	<section xml:id="section-efficient-decoding">
+		<title>Decodificación Eficiente</title>
+
+		<introduction>
+ 
+			<p>Estamos ahora en el punto donde somos capaces de generar códigos lineales que detecten y corrijan errores con relativa facilidad, pero aún es un proceso lento el de decodificar una <m>n</m>-tupla recibida y determinar cuál es la palabra del código más cercana, pues la <m>n</m>-tupla recibida debe ser comparada con todas las posibles palabras del código para determinar la decodificación apropiada. Este puede ser un impedimento serio si el código es muy grande.</p>
+
+			<example xml:id="example-algcodes-syndrome">
+				<p>Dada la matriz binaria
+					<me>H =
+					\begin{pmatrix}<![CDATA[
+					1 & 1 & 1 & 0 & 0 \\
+					0 & 1 & 0 & 1 & 0 \\
+					1 & 0 & 0 & 0 & 1
+					]]>\end{pmatrix}</me>
+				y las 5-tuplas <m>{\mathbf x} = (11011)^{\rm t}</m> and <m>{\mathbf y} = (01011)^{\rm t}</m>, podemos calcular
+					<me>H{\mathbf x} =
+					\begin{pmatrix}<![CDATA[
+					0 \\ 0 \\ 0 
+					]]>\end{pmatrix}
+					\qquad
+					\text{and}
+					\qquad
+					H{\mathbf y} =
+					\begin{pmatrix}<![CDATA[
+					1 \\ 0 \\ 1 
+					]]>\end{pmatrix}.</me>
+				Luego, <m>{\mathbf x}</m> es una palabra del código e <m>{\mathbf y}</m> no lo es, pues <m>{\mathbf x}</m> está en el espacio nulo e <m>{\mathbf y}</m> no lo está. Notemos que <m>H{\mathbf y}</m> es idéntica a la primera columna de <m>H</m>. De hecho, es ahí donde ocurrió el error. Si cambiamos el primer bit en <m>{\mathbf y}</m> de 0 a 1, obtenemos <m>{\mathbf x}</m>.</p>
+			</example>
+
+<!-- typo correction.  Suggested by E. Martin. -->
+<!-- TWJ - 1/2/2013 -->
+ 
+			<p>Si <m>H</m> es una matriz de <m>m \times n</m> y <m>{\mathbf x} \in {\mathbb Z}_2^n</m>, entonces decimos que el <term>síndrome</term><idx><h>Síndrome de un código</h></idx> de <m>{\mathbf x}</m> es <m>H{\mathbf x}</m>. La siguiente proposición permite la detección y corrección rápida de errores.</p>
+	 
+			<proposition xml:id="proposition-syndrome">
+				<statement>
+					<p>Sea <m>H</m> una matriz de <m>m \times n</m> que determina un código lineal y sea <m>{\mathbf x}</m> la <m>n</m>-tupla recibida. Escribamos <m>{\mathbf x}</m> como <m>{\mathbf x} =  {\mathbf c} +{\mathbf e}</m>, donde <m>{\mathbf c}</m> es la palabra transmitida y <m>{\mathbf e}</m> es el error de transmisión. Entonces el síndrome <m>H{\mathbf x}</m> de la palabra recibida <m>{\mathbf x}</m> es igual al síndrome del error <m>{\mathbf e}</m>.</p>
+				</statement>
+				<proof>
+					<p>La demostración sigue del hecho que 
+						<me>H{\mathbf x} = H({\mathbf c} +{\mathbf e}) = H{\mathbf c} + H{\mathbf e} = {\mathbf 0} + H{\mathbf e} = H{\mathbf e}.</me></p>
+				</proof>
+			</proposition>
+<!--Made the proof into a complete sentence.  TWJ 3/6/2014-->
+ 
+			<p>Esta proposición nos dice que el síndrome de una palabra recibida depende solamente del error y no de la palabra trasmitida. La demostración del siguiente teorema sigue inmediatamente de la Proposición<nbsp /><xref ref="proposition-syndrome" /> y del hecho que <m>H{\mathbf e}</m> es la <m>i</m>-ésima columna de la matriz <m>H</m>.</p>
+ 
+			<theorem>
+				<statement>
+					<p>Sea <m>H \in {\mathbb M}_{ m \times n} ( {\mathbb Z}_2)</m> y supongamos que el código lineal correspondiente a <m>H</m> es corrector de un error. Sea <m>{\mathbf r}</m> una <m>n</m>-tupla recibida que fue trasmitida con a lo más un error. Si el síndrome de <m>{\mathbf r}</m> es <m>{\mathbf 0}</m>, entonces no ha ocurrido ningún error; de lo contrario, si el síndrome de <m>{\mathbf r}</m> es igual a alguna columna de <m>H</m>, digamos la <m>i</m>-ésima columna, entonces el error ocurrió en el <m>i</m>-ésimo bit.</p>
+				</statement>
+			</theorem>
+	 
+			<example xml:id="example-algcodes-detecting-errors">
+				<p>Consideremos la matriz
+					<me>H =
+					\begin{pmatrix}<![CDATA[
+					1 & 0 & 1 & 1 & 0 & 0 \\
+					0 & 1 & 1 & 0 & 1 & 0 \\
+					1 & 1 & 1 & 0 & 0 & 1
+					]]>\end{pmatrix}</me>
+				y supongamos que las 6-tuples <m>{\mathbf x} = (111110)^{\rm t}</m>, <m>{\mathbf y} = (111111)^{\rm t}</m>, y <m>{\mathbf z} = (010111)^{\rm t}</m> fueron recibidas. Entonces  
+					<me>H{\mathbf x} =
+					\begin{pmatrix}<![CDATA[
+					1 \\ 1 \\ 1 
+					]]>\end{pmatrix},
+					H{\mathbf y} =
+					\begin{pmatrix}<![CDATA[
+					1 \\ 1 \\ 0 
+					]]>\end{pmatrix},
+					H{\mathbf z} =
+					\begin{pmatrix}<![CDATA[
+					1 \\ 0 \\ 0
+					]]>\end{pmatrix}.</me>
+				Luego, <m>{\mathbf x}</m> tiene un error en el tercer bit y <m>{\mathbf z}</m> tiene un error en el cuarto bit. Las palabras trasmitidas para <m>{\mathbf x}</m> y <m>{\mathbf z}</m> deben haber sido <m>(110110)</m> y <m>(010011)</m>, respectivamente. El síndrome de <m>{\mathbf y}</m> no aparece en ninguna de las columnas de <m>H</m>, de manera que más de un error debe haber ocurrido para producir <m>{\mathbf y}</m>.</p>
+			</example>
+
+		</introduction>
+
+		<subsection  xml:id="algcodes-subsection-coset-decoding">
+			<title>Decodificación por Clases Laterales</title>
+	 
+			<p>Podemos usar teoría de grupos para obtener otro método de decodificación.  Un código lineal <m>C</m> es un subgrupo de <m>{\mathbb Z}_2^n</m>. Decodificación <term>por Clases Laterales</term><idx><h>Decodificación por Clases Laterales</h></idx> o <term>decodificación estándar</term><idx><h>Decodificación estándar</h></idx> usa las clases laterales de <m>C</m> en <m>{\mathbb Z}_2^n</m> para implementar la decodificación de probabilidad máxima. Supongamos que <m>C</m> un código lineal <m>(n,m)</m>. Una clase lateral de <m>C</m> en <m>{\mathbb Z}_2^n</m> se escribe en la forma <m>{\mathbf x} + C</m>, donde <m>{\mathbf x} \in {\mathbb Z}_2^n</m>. Por el Teorema de Lagrange (Teorema<nbsp /><xref ref="theorem-lagrange" />), hay <m>2^{n-m}</m> clases laterales de <m>C</m> en <m>{\mathbb Z}_2^n</m>.</p>
+
+			<example xml:id="example-algcodes-coset-decoding">
+				<p>Sea <m>C</m> el código lineal <m>(5,3)</m> dado por la matriz verificadora
+					<me>H =
+					\begin{pmatrix}<![CDATA[
+					0 & 1 & 1 & 0 & 0 \\
+					1 & 0 & 0 & 1 & 0 \\
+					1 & 1 & 0 & 0 & 1
+					]]>\end{pmatrix}.</me>
+				El código consiste de las palabras
+					<me>(00000) \quad (01101) \quad (10011) \quad (11110).</me>
+				Hay <m>2^{5-2} = 2^3</m> clases laterales de <m>C</m> en <m>{\mathbb Z}_2^5</m>, cada una de orden <m>2^2 =4</m>.  Estas clases laterales aparecen en la Tabla<nbsp /><xref ref="table-cosets-of-c" />.</p>
+			</example>
+			
+			<table xml:id="table-cosets-of-c">
+				<caption>Clases laterales de <m>C</m></caption>
+			   <tabular halign="center" top="medium">
+		            <row>
+		            	<cell>Representante</cell><cell>Clase lateral</cell>
+		            </row>
+		            <row bottom="medium">
+		            	<cell>de la clase</cell><cell></cell>
+		            </row>
+		            <row>
+		            	<cell><m>C</m> </cell><cell>(00000)  (01101)  (10011)  (11110)</cell>
+		            </row>
+					<row>
+						<cell><m>(10000) + C</m> </cell><cell>(10000)  (11101)  (00011)  (01110)</cell>
+					</row>
+					<row>
+						<cell><m>(01000) + C</m> </cell><cell>(01000)  (00101)  (11011)  (10110)</cell>
+					</row>
+					<row>
+						<cell><m>(00100) + C</m> </cell><cell>(00100)  (01001)  (10111)  (11010)</cell>
+					</row>
+					<row>
+						<cell><m>(00010) + C</m> </cell><cell>(00010)  (01111)  (10001)  (11100)</cell>
+					</row>
+					<row>
+						<cell><m>(00001) + C</m> </cell><cell>(00001)  (01100)  (10010)  (11111)</cell>
+					</row>
+					<row>
+						<cell><m>(10100) + C</m> </cell><cell>(00111)  (01010)  (10100)  (11001)</cell>
+					</row>
+					<row bottom="medium">
+						<cell><m>(00110) + C</m> </cell><cell>(00110)  (01011)  (10101)  (11000)</cell>
+					</row>
+			   </tabular>
+			</table>
+
+			<p>Nuestra tarea es descubrir cómo conocer las clases laterales nos puede ayudar a decodificar un mensaje. Supongamos que <m>{\mathbf x}</m> era la palabra trasmitida y que <m>{\mathbf r}</m> es la <m>n</m>-tupla recibida. Si <m>{\mathbf e}</m> es el error de trasmisión, entonces <m>{\mathbf r} = {\mathbf e} + {\mathbf x}</m> o, equivalentemente, <m>{\mathbf x} = {\mathbf e} + {\mathbf r}</m>. Pero, esto es exactamente equivalente a decir que <m>{\mathbf r}</m> es un elemento de la clase <m>{\mathbf e} + C</m>. En la decodificación de máxima probabilidad esperamos que <m>{\mathbf e}</m> sea lo más pequeño que se pueda; es decir, <m>{\mathbf e}</m> tendrá el menor peso. Una <m>n</m>-tupla de peso mínimo en una clase se denomina <term>líder de clase</term><idx><h>Líder</h><h>de clase</h></idx>. Una vez que hemos determinado un líder para cada clase, el proceso de decodificación se transforma en el de calcular <m>{\mathbf r} + {\mathbf e}</m> para obtener <m>{\mathbf x}</m>.</p>
+
+			<example xml:id="example-algcodes-representative">
+				<p>En la Tabla<nbsp /><xref ref="table-cosets-of-c" />, note que hemos elegido un representante de peso mínimo para cada clase.  Estos representantes son líderes de clase. Ahora supongamos que recibimos la palabra <m>{\mathbf r} = (01111)</m>. Para decodificar <m>{\mathbf r}</m>, lo encontramos en la clase <m>(00010) + C</m>; luego, la palabra del código originalmente trasmitida debe haber sido <m>(01101) = (01111) + (00010)</m>.</p>
+			</example>
+	 
+			<p>Un problema potencial con este método de decodificación es que tengamos que examinar cada clase en busca de la palabra recibida. La siguiente proposición entrega un método para la implementación de la decodificación por clases laterales. Establece que podemos asociar un síndrome con cada clase; luego, podemos hacer una tabla que asigna un líder de clase a cada síndrome. Tal lista se denomina <term>tabla de decodificación</term><idx><h>Tabla de decodificación</h></idx>.</p>
+	 
+			<table xml:id="table-syndrome">
+				<caption>Síndromes para cada clase</caption>
+			   <tabular halign="center" top="medium">
+		        	<row bottom="medium">
+		        		<cell>Síndromes</cell><cell>Líder de clase</cell>
+		        	</row>
+		       		<row>
+		       			<cell>(000)</cell><cell>(00000)</cell>
+		       		</row>
+					<row>
+						<cell>(001)</cell><cell>(00001)</cell>
+					</row>
+					<row>
+						<cell>(010)</cell><cell>(00010)</cell>
+					</row>
+					<row>
+						<cell>(011)</cell><cell>(10000)</cell>
+					</row>
+					<row>
+						<cell>(100)</cell><cell>(00100)</cell>
+					</row>
+					<row>
+						<cell>(101)</cell><cell>(01000)</cell>
+					</row>
+					<row>
+						<cell>(110)</cell><cell>(00110)</cell>
+					</row>
+					<row bottom="medium">
+						<cell>(111)</cell><cell>(10100)</cell>
+					</row>
+			   </tabular>
+			</table>
+			 
+			<proposition>
+				<statement>
+					<p>Sea <m>C</m> un código lineal <m>(n,k)</m> dado por la matriz <m>H</m> y supongamos que <m>{\mathbf x}</m> e <m>{\mathbf y}</m> están en <m>{\mathbb Z}_2^n</m>. Entonces <m>{\mathbf x}</m> e <m>{\mathbf y}</m> están en la misma clase lateral de <m>C</m> si y solo si <m>H{\mathbf x} = H{\mathbf y}</m>. Es decir, dos <m>n</m>-tuplas están en la misma clase lateral si y solo si tienen el mismo síndrome.</p>
+				</statement>
+				<proof>
+					<p>Dos <m>n</m>-tuplas <m>{\mathbf x}</m> e <m>{\mathbf y}</m> están en la misma clase lateral de <m>C</m> precisamente cuando <m>{\mathbf x} - {\mathbf y} \in C</m>; pero, esto es equivalente a que <m>H({\mathbf x} - {\mathbf y}) = 0</m> o <m>H {\mathbf x} = H{\mathbf y}</m>.</p>
+				</proof>
+			</proposition>
+	 
+			<example xml:id="example-algcodes-decoding-table">
+				<p>La Tabla<nbsp /><xref ref="table-syndrome" /> es una tabla de decodificación para el código <m>C</m> dado en el Ejemplo<nbsp /><xref ref="example-algcodes-coset-decoding" />. Si se recibe <m>{\mathbf x} = (01111)</m>, entonces su síndrome se calcula como
+					<me>H {\mathbf x} =
+					\begin{pmatrix}<![CDATA[
+					0 \\ 1 \\ 1
+					]]>\end{pmatrix}.</me>
+				Examinando la tabla de decodificación, determinamos que el líder de clase es <m>(00010)</m>. Es fácil ahora decodificar la palabra recibida.</p>
+			</example>
+	 
+			<p>Dado un código de bloque <m>(n,k)</m>, surge la pregunta si la decodificación por clases laterales es un sistema manejable o no.  Una tabla de decodificación requiere una lista de líderes de clases laterales y síndromes uno para cada una de las <m>2^{n - k}</m> clases laterales de <m>C</m>.  Supongamos que tenemos un código de bloque <m>(32, 24)</m>.  Tenemos una enorme cantidad de palabras en el código, <m>2^{24}</m>, pero hay solamente <m>2^{32 - 24} = 2^{8} = 256</m> clases laterales.</p>
+
+			<xi:include href="./sage/algcodes-info.xml" />
+
+		</subsection>
+ 	</section>
+ 
+	<xi:include href="./exercises/algcodes.xml" />
+
+	<exercises xml:id="algcodes-exercises-programming">
+		<title>Ejercicios de Programación</title>
+ 
+ 		<exercise>
+ 			<statement>
+ 				<p>Escriba un programa para implementar un código lineal <m>(16, 12)</m>.  Su programa debe ser capaz de codificar y decodificar mensajes usando decodificación por clases laterales. Una vez que haya escrito su programa, escriba un programa para simular un canal binario simétrico con ruido de trasmisión.  Compare los resultados de su simulación con la probabilidad de error predicha. </p>
+ 			</statement>
+ 		</exercise>
+
+	</exercises>
+ 
+	<references xml:id="algcodes-references">
+	<title>Referencias y Lecturas Recomendadas</title>
+
+		<biblio type="raw"> <!-- was [1] -->
+		Blake, I. F. <q>Codes and Designs,</q> <title>Mathematics Magazine</title> <volume>52</volume>(1979), 81<ndash />95.</biblio>
+		 
+		 <!-- Reference updated - TWJ 6/1/2010 -->
+		<biblio type="raw"> <!-- was [2] -->
+		Hill, R. <title>A First Course in Coding Theory</title>. Oxford University Press, Oxford, 1990.</biblio> 
+		 
+		<biblio type="raw"> <!-- was [3] -->
+		Levinson, N. <q>Coding Theory: A Counterexample to G. H. Hardy's Conception of Applied Mathematics,</q> <title>American Mathematical Monthly</title> <volume>77</volume>(1970), 249<ndash />58. </biblio>
+
+		<!-- Reference updated - TWJ 6/1/2010 -->
+		<biblio type="raw"> <!-- was [4] -->
+		Lidl, R. and Pilz, G. <title>Applied Abstract Algebra</title>. 2nd ed. Springer, New York, 1998. </biblio>
+
+		<!-- Reference updated - TWJ 6/1/2010 -->
+		<biblio type="raw"> <!-- was [5] -->
+		MacWilliams, F. J. and Sloane, N. J. A. <title>The Theory of Error-Correcting Codes</title>. North-Holland Mathematical Library, 16, Elsevier, Amsterdam, 1983. </biblio>
+		 
+		<biblio type="raw"> <!-- was [6] -->
+		Roman, S. <title>Coding and Information Theory</title>. Springer-Verlag, New York, 1992. </biblio>
+		 
+		<biblio type="raw"> <!-- was [7] -->
+		Shannon, C. E. <q>A Mathematical Theory of Communication,</q> <title>Bell System Technical Journal</title> <volume>27</volume>(1948), 379<ndash />423, 623<ndash />56.</biblio>
+		 
+		<biblio type="raw"> <!-- was [8] -->
+		Thompson, T. M. <title>From Error-Correcting Codes through Sphere Packing to Simple Groups</title>. Carus Monograph Series, No. 21. Mathematical Association of America, Washington, DC, 1983.</biblio> 
+		 
+		<!-- Reference updated - TWJ 6/1/2010 -->
+		<biblio type="raw"> <!-- was [9] -->
+		van Lint, J. H. <title>Introduction to Coding Theory</title>. Springer, New York, 1999.</biblio>
+
+	</references>
+ 
+	<xi:include href="./sage/algcodes-sage.xml" />
+	<xi:include href="./sage/algcodes-sage-exercises.xml" />
+
+</chapter>
+ 
+ 
+ 
+ 
+ 
+ 

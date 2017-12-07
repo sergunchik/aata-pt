@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="isomorph-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Sage tiene una capacidad limitada de creación efectiva de isomorfismos.  Sin embargo, tiene es muy efectivo para determinar si dos grupos de permutaciones son isomorfos.  Esto nos permitirá iniciar un pequeño proyecto para localizar  <em>todos</em> los grupos de orden menor a  <m>16</m> en los grupos de permutaciones de Sage.</p>
+	</introduction>
+
+
+<subsection>
+	<title>Verificación de Isomorfía</title>
+
+	<p>Si <c>G</c> y <c>H</c> son dos grupos de permutaciones, entonces el comando <c>G.is_isomorphic(H)</c> entregará <c>True</c> o <c>False</c> según si los grupos sean o no isomorfos.  Como ser <q>isomorfo a</q> es una relación de equivalencia por el Teorema<nbsp /><xref ref="theorem-isomorph-5" />, no importa cuál grupo ocupa el lugar de <c>G</c> y cuál ocupa el lugar de <c>H</c>.</p>
+
+	<p>Tenemos así algunos ejemplos más con los que trabajar, veamos el comando Sage que crea el producto directo externo.  Si <c>G</c> y <c>H</c> son dos grupos de permutaciones, entonces el comando <c>direct_product_permgroups([G,H])</c> entregará el producto directo externo como un nuevo grupo de permutaciones.  Note que esta es una función (no un método) y el input es una lista.  En lugar de tener solo dos grupos en la lista, cualquier cantidad de grupos puede ser suministrada.  Ilustramos la verificación de isomorfismos en el contexto del Teorema<nbsp /><xref ref="theorem-z-pq" />, que es una equivalencia, de manera que nos dice <em>exactamente</em> cuándo tenemos grupos isomorfos.  Usamos grupos cíclicos de permutaciones en reemplazo de <m>{\mathbb Z}_n</m> por el Teorema<nbsp /><xref ref="theorem-isomorph-3" />.</p>
+
+	<p>Primero, dos grupos isomorfos.</p>
+
+	<sage>
+	<input>
+	m = 12
+	n = 7
+	gcd(m, n)
+	</input>
+	<output>
+	1
+	</output>
+	</sage>
+
+	<sage>
+	<input>
+	G = CyclicPermutationGroup(m)
+	H = CyclicPermutationGroup(n)
+	dp = direct_product_permgroups([G, H])
+	K = CyclicPermutationGroup(m*n)
+	K.is_isomorphic(dp)
+	</input>
+	<output>
+	True
+	</output>
+	</sage>
+
+	<p>Ahora, dos grupos no isomorfos.</p>
+
+	<sage>
+	<input>
+	m = 15
+	n = 21
+	gcd(m, n)
+	</input>
+	<output>
+	3
+	</output>
+	</sage>
+
+	<sage>
+	<input>
+	G = CyclicPermutationGroup(m)
+	H = CyclicPermutationGroup(n)
+	dp = direct_product_permgroups([G, H])
+	K = CyclicPermutationGroup(m*n)
+	K.is_isomorphic(dp)
+	</input>
+	<output>
+	False
+	</output>
+	</sage>
+
+	<p>Note como el simple cálculo de un máximo común divisor predice el cálculo extremadamente complicado de determinar si dos grupos son isomorfos.  Esta es una buena ilustración del poder de las matemáticas, que reemplaza un problema difícil (isomorfía de grupos) por un problema simple (factorización y divisibilidad de enteros).  Construyamos un producto directo de grupos cíclicos más, pero con tres grupos, con órdenes que sean relativamente primos de a dos.</p>
+
+	<p>Si intenta lo siguiente con parámetros mayores puede que obtenga un error (<c>database_gap</c>).</p>
+
+	<sage>
+	<input>
+	m = 6
+	n = 5
+	r = 7
+	G = CyclicPermutationGroup(m)
+	H = CyclicPermutationGroup(n)
+	L = CyclicPermutationGroup(r)
+	dp = direct_product_permgroups([G, H, L])
+	K = CyclicPermutationGroup(m*n*r)
+	K.is_isomorphic(dp)
+	</input>
+	<output>
+	True
+	</output>
+	</sage>
+	</subsection>
+
+	<subsection>
+		<title>Clasificando Grupos Finitos</title>
+
+	<p>Una vez que concebimos grupos isomorfos como el <q>mismo</q>, o <q>fundamentalmente iguales,</q> o <q>estructuralmente idénticos,</q> es natural preguntarnos cuántos grupos finitos <q>realmente diferentes</q> existen.  El Corolario<nbsp /><xref ref="theorem-isomorph-4" /> nos entrega una respuesta parcial: para cada número primo hay exactamente un grupo finito, con <m>{\mathbb Z}_p</m> como una manifestación concreta.</p>
+
+	<p>Embarquémosnos en la búsqueda de todos los grupos de orden menor a <m>16</m> en los grupos de permutación de Sage.  Para órdenes primos <m>1,2,3,5,7,11</m> y <m>13</m> sabemos que existe solo un grupo para cada uno, y podemos obtenerlos todos:</p>
+
+	<sage>
+	<input>
+	[CyclicPermutationGroup(p) for p in [1, 2, 3, 5, 7, 11, 13]]
+	</input>
+	<output>
+	[Cyclic group of order 1 as a permutation group,
+	 Cyclic group of order 2 as a permutation group,
+	 Cyclic group of order 3 as a permutation group,
+	 Cyclic group of order 5 as a permutation group,
+	 Cyclic group of order 7 as a permutation group,
+	 Cyclic group of order 11 as a permutation group,
+	 Cyclic group of order 13 as a permutation group]
+	</output>
+	</sage>
+
+	<p>Así nuestro primer caso desconocido es el orden <m>4</m>.  Sage conoce al menos tres grupos así, y podemos usar Sage para verificar si cualquier par de ellos es isomorfo.  Note que como <q>ser isomorfo a</q> es una relación de equivalencia y por lo tanto una relación transitiva, las dos verificaciones que siguen son suficientes.</p>
+
+	<sage>
+	<input>
+	G = CyclicPermutationGroup(4)
+	H = KleinFourGroup()
+	T1 = CyclicPermutationGroup(2)
+	T2 = CyclicPermutationGroup(2)
+	K = direct_product_permgroups([T1, T2])
+	G.is_isomorphic(H)
+	</input>
+	<output>
+	False
+	</output>
+	</sage>
+
+	<sage>
+	<input>
+	H.is_isomorphic(K)
+	</input>
+	<output>
+	True
+	</output>
+	</sage>
+
+	<p>Tenemos así al menos dos grupos diferentes: <m>{\mathbb Z}_4</m> y <m>{\mathbb Z}_2\times{\mathbb Z}_2</m>, el último también conocido como 4-grupo de Klein.  Sage no será capaz de decirnos si tenemos una lista <em>completa</em> <mdash /> eso siempre requerirá resultados teóricos como el Teorema<nbsp /><xref ref="theorem-isomorph-5" />.  Pronto tendremos un resultado más general que resuelva el caso de orden <m>4</m>, pero por ahora, un análisis cuidadoso (a mano) de las posibilidades para la tabla de Cayley de un grupo de orden <m>4</m> debiera llevarle a las dos posibilidades de arriba como las únicas posibilidades.  Intente deducir como se debiera ver la tabla de Cayley de un grupo de orden <m>4</m>, dado que ya sabre sobre el elemento identidad, los inversos y la ley de cancelación.</p>
+
+	<p>Hemos visto al menos dos grupos de orden <m>6</m> (el siguiente en la lista de nuestros órdenes no primos).  Uno es abeliano y el otro no los es, de manera que no necesitamos que Sage lo diga para saber que son estructuralmente diferentes.  Pero hagámoslo de todas formas.</p>
+
+	<sage>
+	<input>
+	G = CyclicPermutationGroup(6)
+	H = SymmetricGroup(3)
+	G.is_isomorphic(H)
+	</input>
+	<output>
+	False
+	</output>
+	</sage>
+
+	<p>¿Es todo?  Existe <m>{\mathbb Z}_3\times{\mathbb Z}_2</m>, pero ese es simplemente <m>{\mathbb Z}_6</m> pues <m>2</m> y <m>3</m> son relativamente primos.  El grupo dihedral, <m>D_3</m>, es simplemente <m>S_3</m>, el grupo simétrico en <m>3</m> símbolos.</p>
+
+	<sage>
+	<input>
+	G = DihedralGroup(3)
+	H = SymmetricGroup(3)
+	G.is_isomorphic(H)
+	</input>
+	<output>
+	True
+	</output>
+	</sage>
+
+	<p>El Ejercicio<nbsp /><xref ref="exercise-classify-2p" /> de esta sección clasifica todos los grupos de orden <m>2p</m>, donde <m>p</m> es un primo impar.  Un tal grupo puede ser un grupo cíclico o un grupo dihedral.  Así los dos grupos de arriba, <m>{\mathbb Z}_6</m> y <m>D_3</m>, son realmente todos los grupos de orden<m>6</m>.</p>
+
+	<p>Por este resultado general, además del orden <m>6</m>, también conocemos las listas completas de grupos de órdenes <m>10</m> y <m>14</m>.  Continuará.</p>
+
+</subsection>
+
+<subsection>
+	<title>Productos Directos Internos</title>
+
+	<p>Un producto directo interno es una proposición sobre subgrupos de un solo grupo, junto con un teorema que los relaciona con un producto directo externo.  Trabajaremos con un ejemplo acá que ilustrará la naturaleza de un producto directo interno.</p>
+
+	<p>Dado un entero <m>n</m>, el conjunto de los enteros positivos menores a <m>n</m>, y relativamente primos con <m>n</m> forma un grupo con la operación de multiplicación mód <m>n</m>.  Trabajaremos en el conjunto <c>Integers(n)</c> donde podemos sumar <em>y</em> multiplicar, pero nos restringiremos a usar solamente la multiplicación.</p>
+
+	<p>Primero construiremos el grupo en sí.  Notemos cómo debemos convertir <c>x</c> en un entero (un elemento de <c>ZZ</c>) de manera que el cálculo del máximo común divisor se realice correctamente.</p>
+
+	<sage>
+	<input>
+	Z36 = Integers(36)
+	U = [x for x in Z36 if gcd(ZZ(x), 36) == 1]
+	U
+	</input>
+	<output>
+	[1, 5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35]
+	</output>
+	</sage>
+
+	<p>Tenemos así un grupo de orden <m>12</m>.  Intentaremos encontrar un subgrupo de orden  <m>6</m> y un subgrupo de orden <m>2</m> para formar el producto directo interno, y restringiremos nuestra búsqueda a los subgrupos cíclicos de orden <m>6</m>.  Sage tiene un método que nos entrega el orden de cada uno de estos elementos, en relación a la multiplicación, así es que examinemos eso a continuación.</p>
+
+	<sage>
+	<input>
+	[x.multiplicative_order() for x in U]
+	</input>
+	<output>
+	[1, 6, 6, 6, 3, 2, 2, 6, 3, 6, 6, 2]
+	</output>
+	</sage>
+
+	<p>Tenemos muchas opciones para generadores de un subgrupo cíclico de orden <m>6</m> y para un subgrupo cíclico de orden <m>2</m>.  Por supuesto, algunas de los posibles generadores de un subgrupo de orden <m>6</m> generarán el mismo subgrupo.  ¿Puede descubrir, simplemente contando, cuántos subgrupos de orden <m>6</m> hay?  Escogeremos el primer elemento de orden <m>6</m>, y el último elemento de orden <m>2</m>, sin razón particular.  Después de hacer esto una vez, le invitamos a intentar otras opciones para entender por qué algunas nos llevan a un producto directo interno y otras no.  Note que elegimos los elementos de la lista <c>U</c> de manera de estar seguros que son elementos de <c>Z36</c> y se comportarán correctamente al ser multiplicados.</p>
+
+	<sage>
+	<input>
+	a = U[1]
+	A = [a^i for i in srange(6)]
+	A
+	</input>
+	<output>
+	[1, 5, 25, 17, 13, 29]
+	</output>
+	</sage>
+
+	<sage>
+	<input>
+	b = U[11]
+	B = [b^i for i in srange(2)]
+	B
+	</input>
+	<output>
+	[1, 35]
+	</output>
+	</sage>
+
+	<p>Así <c>A</c> y <c>B</c> son dos subgrupos cíclicos.  Note que su intersección es el elemento identidad, uno de nuestros requisitos para un producto directo interno.  Tenemos así un buen comienzo.</p>
+
+	<sage>
+	<input>[x for x in A if x in B]</input>
+	<output>[1]</output>
+	</sage>
+
+	<p><c>Z36</c> es un grupo abeliano, así la condición de que todos los productos conmuten, se cumplirá, pero ilustraremos los comandos Sage que verificarán esto en una situación no abeliana.</p>
+
+	<sage>
+	<input>
+	all([x*y == y*x for x in A for y in B])
+	</input>
+	<output>
+	True
+	</output>
+	</sage>
+
+	<p>Finalmente, necesitamos verificar que formando los productos de elementos de <c>A</c> y <c>B</c> obtenemos todo el grupo.  Ordenar la lista resultante nos facilitará la verificación visual, y es necesario si queremos que Sage haga la verificación.</p>
+
+	<sage>
+	<input>
+	T = sorted([x*y for x in A for y in B])
+	T
+	</input>
+	<output>
+	[1, 5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35]
+	</output>
+	</sage>
+
+	<sage>
+	<input>
+	T == U
+	</input>
+	<output>
+	True
+	</output>
+	</sage>
+
+	<p>Eso es.  Resumimos ahora toda esta información en la proposición que <q><c>U</c> es el producto interno directo de  <c>A</c> y <c>B</c>.</q>  Por el Teorema<nbsp /><xref ref="theorem-isomorph-directproducts" />, vemos que <c>U</c> es isomorfo al producto de un grupo cíclico de orden <m>6</m> y un grupo cíclico de orden <m>2</m>.  Así es que en un sentido muy real, <c>U</c> no es más ni menos complicado que <m>{\mathbb Z}_6\times{\mathbb Z}_2</m>, que a su vez es isomorfo a  <m>{\mathbb Z}_3\times{\mathbb Z}_2\times{\mathbb Z}_2</m>.  Entendemos así completamente la <q>estructura</q> de <c>U</c>.  Por ejemplo, podemos ver que <c>U</c> no es cíclico, pues cuando se escribe como producto de grupos cíclicos, los órdenes no son relativamente primos.  La expresión final de <c>U</c> sugiere que se pueden encontrar tres subgrupos cíclicos de <c>U</c>, con órdenes <m>3</m>, <m>2</m> y <m>2</m>, de manera que <c>U</c> es un producto directo interno de tres subgrupos.</p>
+
+	</subsection>
+</section>
+
+
+
+
+
+
+

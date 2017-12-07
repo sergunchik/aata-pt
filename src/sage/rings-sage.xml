@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="rings-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Los anillos son muy importantes en el estudio del álgebra abstracta, y de igual forma, son muy importantes en el diseño y el uso de Sage.  Este capítulo contiene mucho material, y hay muchos comandos correspondientes en Sage.</p>
+	</introduction>
+
+	<subsection>
+		<title>Creando Anillos</title>
+
+		<p>Acá hay una lista de varios anillos, dominio y cuerpos que se pueden construir de forma sencilla.<ol>
+			<li><p><c>Integers()</c>, <c>ZZ</c>: el dominio integral de los números enteros positivos y negativos, <m>{\mathbb Z}</m>.</p></li>
+
+			<li><p><c>Integers(n)</c>: los enteros mód <m>n</m>, <m>{\mathbb Z_n}</m>.  Un cuerpop cuando <m>n</m> es primo, pero solo un anillo cuando <m>n</m> es compuesto.</p></li>
+
+			<li><p><c>QQ</c>: el cuerpo de los números racionales, <m>{\mathbb Q}</m>.</p></li>
+
+			<li><p><c>RR</c>, <c>CC</c>: el cuerpos de los números reales y el cuerpo de los números complejos, <m>{\mathbb R}</m>, <m>{\mathbb C}</m>.  Es imposible crear <em>todo</em> número real en un computador, así es que técnicamenteso estos conjuntos no se comportan como cuerpos, sino solo ofrecen una buena imitación del objeto real.  Decimos que son anillos <term>inexactos</term> para enfatizar este punto.</p></li>
+
+			<li><p><c>QuadraticField(n)</c>:  el cuerpo obtenido de adjuntar una solución de la ecuación <m>x^2-n=0</m> a los números racionales.  La notación en el texto es <m>{\mathbb Q}[\sqrt{n}]</m>.  Una forma equivalente funcionalmente de construirlos es con la sintaxis <c>QQ[sqrt(n)]</c>.  Notemos que <c>n</c> puede ser negativo.</p></li>
+
+			<li><p><c>CyclotomicField(n)</c>: el cuerpo formado de adjuntar las soluciones de la ecuación polinomial <m>x^n-1=0</m> a los números racionales.</p></li>
+
+			<li><p><c>QQbar</c>: el cuerpo formado de adjuntar soluciones de <em>toda</em> ecuación polinomial con coeficientes enteros al cuerpo de los números racionales.  Este se conoce como el cuerpo de los números algebraicos, y se denota como <m>\overline{{\mathbb Q}}</m>.</p></li>
+
+			<li><p><c>FiniteField(p)</c>: para un primo <m>p</m>, es el cuerpo <m>{\mathbb Z_p}</m>.</p></li>
+		</ol></p>
+
+		<p>Cuando se muestra una descripción de algunos de los anillos anteriores, se puede ver la introducción de nuevos símbolos.  Considere el siguiente ejemplo:</p>
+
+		<sage>
+		<input>
+		F = QuadraticField(7)
+		F
+		</input>
+		<output>
+		Number Field in a with defining polynomial x^2 - 7
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		root = F.gen(0)
+		root^2
+		</input>
+		<output>
+		7
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		root
+		</input>
+		<output>
+		a
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		(2*root)^3
+		</input>
+		<output>
+		56*a
+		</output>
+		</sage>
+
+		<p>Acá <c>Number Field</c> describe un objecto generalmente formado combinando los racionales con otro número (en este caso <m>\sqrt{7}</m>).  <q>a</q> es un nunevo símbolo que se comporta como una raíz del polinomio <m>x^2-7</m>.  No especificamos cuál raíz, <m>\sqrt{7}</m> o <m>-\sqrt{7}</m>, y en la medida que comprendamos mejor la teoría, veremos que esta distinción no importa realmente.</p>
+
+		<p>Podemos obtener esta raíz como un generador del cuerpo de números, y luego manipularla.  Elevando <c>root</c> al cuadrado, nos da 7.  Notemos que <c>root</c> se muestra como <c>a</c>.  Notemos, además, que los cálculos que involucran a <c>root</c> se comportan como si fuera <em>cualquier</em> raíz de <m>x^2-7</m>, y los resultados se muestran usando <c>a</c>.</p>
+
+		<p>Esto puede ser un poco confuso, ingresar los cálculos usando <c>root</c> y obtener respuestas en términos de <c>a</c>.  Afortunadamente, hay una mejor forma.  Considere el siguiente ejemplo:</p>
+
+		<sage>
+		<input>
+		F.&lt;b&gt; = QuadraticField(7)
+		F
+		</input>
+		<output>
+		Number Field in b with defining polynomial x^2 - 7
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		b^2
+		</input>
+		<output>
+		7
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		(2*b)^3
+		</input>
+		<output>
+		56*b
+		</output>
+		</sage>
+
+		<p>Con la sintaxis <c>F.&lt;b></c> podemos crear el cuerpo <c>F</c> especificando al mismo tiempo un generador <c>b</c> con un nombre de nuestra elección.  Luego los cálculos podrán usar <c>b</c> tanto en la entrada como en la salida como una raíz de <m>x^2-7</m>.</p>
+
+		<p>Acá hay tres nuevos anillos que se crean mejor con esta nueva sintaxis.<ol>
+			<li><p><c>F.&lt;a> = FiniteField(p^n)</c>: Más adelante tendremos un teorema que diga que los cuerpos finitos existen solo de orden igual a una potencia de un primo.  Si la potencia es mayor a 1, entonces necesitamos un generador, en este caso dado como <c>a</c>.</p></li>
+
+			<li><p><c>P.&lt;x>=R[]</c>: el anillo de todos los polinomios en la variable <c>x</c>, con coeficientes en el anillo <c>R</c>.  Notemos que <c>R</c> puede ser <em>cualquier</em> anillo, de manera que esta es una construcción muy general que usa un anillo para formar otro.  Vea el ejemplo abajo.</p></li>
+
+			<li><p><c>Q.&lt;r,s,t> = QuaternionAlgebra(n, m)</c>: los racionales combinados con indeterminadas <c>r</c>, <c>s</c> y <c>t</c> tales que <m>r^2=n</m>, <m>s^2=m</m> y <m>t = rs = -sr</m>.  Esta es na generalización de los cuaterniones descritos en este capítulo, pero sobre lo racionales en lugar de los reales, de manera que es un anillo exacto.  Notemos que este es uno de los pocos anillos no-conmutativos en Sage.  Los cuaterniones <q>usuales</q> se construyen como <c>Q.&lt;I,J,K> = QuaternionAlgebra(-1, -1)</c>.  (Notemo que usar <c>I</c> en esta construcción no es la mejor idea, pues estaríamos redefiniendo el símbolo <c>I</c> usado para el número complejo i.)</p></li>
+		</ol></p>
+
+		<p>La sintaxis que especifica los nombres de los generadores puede también ser usada para muchos de los anillos de más arriba, como se ha demostrado para los cuerpos cuadráticos y se demuestra más abajo para los cuerpos ciclotómicos.</p>
+
+		<sage doctest="random">
+		<input>
+		C.&lt;t> = CyclotomicField(8)
+		C.random_element()
+		</input>
+		<output>
+		-2/11*t^2 + t - 1
+		</output>
+		</sage>
+
+	</subsection>
+
+	<subsection>
+		<title>Propiedades de los Anillos</title>
+
+		<p>Los ejemplos abajo muestran como preguntar por ciertas propiedades de los anillos.  Asegúrese de ejecutar la primera celda, pues allí se definen los distintos anillos involucrados en los ejemplos posteriores.</p>
+
+		<sage>
+		<input>
+		Z7 = Integers(7)
+		Z9 = Integers(9)
+		Q = QuadraticField(-11)
+		F.&lt;a> = FiniteField(3^2)
+		P.&lt;x> = Z7[]
+		S.&lt;f,g,h> = QuaternionAlgebra(-7, 3)
+		</input>
+		<output>
+		</output>
+		</sage>
+
+		<p>Exacto versus inexacto.</p>
+
+		<sage>
+		<input>
+		QQ.is_exact()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		RR.is_exact()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>Finito versus infinito.</p>
+
+		<sage>
+		<input>
+		Z7.is_finite()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Z7.is_finite()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>¿Dominio integral?</p>
+
+		<sage>
+		<input>
+		Z7.is_integral_domain()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Z9.is_integral_domain()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>¿Cuerpo?</p>
+
+		<sage>
+		<input>
+		Z9.is_field()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		F.is_field()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.is_field()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>¿Conmutativo?</p>
+
+		<sage>
+		<input>
+		Q.is_commutative()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		S.is_commutative()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>Característica.</p>
+
+		<sage>
+		<input>
+		Z7.characteristic()
+		</input>
+		<output>
+		7
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Z9.characteristic()
+		</input>
+		<output>
+		9
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.characteristic()
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		F.characteristic()
+		</input>
+		<output>
+		3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		P.characteristic()
+		</input>
+		<output>
+		7
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		S.characteristic()
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<p>Neutros aditivo y multiplicativo se <em>muestran</em> como uno esperaría, pero notemos que si bien se puedan <em>mostrar</em> idénticos, podrían ser <em>diferentes</em> debido al anillo en el que están.</p>
+
+		<sage>
+		<input>
+		b = Z9.zero(); b
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		b.parent()
+		</input>
+		<output>
+		Ring of integers modulo 9
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		c = Q.zero(); c
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		c.parent()
+		</input>
+		<output>
+		Number Field in a with defining polynomial x^2 + 11
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		b == c
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		d = Z9.one(); d
+		</input>
+		<output>
+		1
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		d.parent()
+		</input>
+		<output>
+		Ring of integers modulo 9
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		e = Q.one(); e
+		</input>
+		<output>
+		1
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		e.parent()
+		</input>
+		<output>
+		Number Field in a with defining polynomial x^2 + 11
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		d == e
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>Existe cierta implementación de subanillos.  Por ejemplo, <c>Q</c> y <c>S</c> son extensiones de los racionales, mientras <c>F</c> es totalmente distinto de los racionales.</p>
+
+		<sage>
+		<input>
+		QQ.is_subring(Q)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		QQ.is_subring(S)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		QQ.is_subring(F)
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>No todo elemento de un anillo tiene inverso multiplicativo.  Puede ser una buena práctica verificar si un elemento es una unidad antes de intentar calcular su inverso.</p>
+
+		<sage>
+		<input>
+		three = Z9(3)
+		three.is_unit()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		three*three
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		four = Z9(4)
+		four.is_unit()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		g = four^-1; g
+		</input>
+		<output>
+		7
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		four*g
+		</input>
+		<output>
+		1
+		</output>
+		</sage>
+
+	</subsection>
+
+	<subsection>
+		<title>Estructuras Cociente</title>
+
+		<p>Ideales corresponden a los subgrupos normales en el caso de anillos y nos permiten contruir <q>cocientes</q> <mdash /> básicamente anillos nuevos definidos sobre clases de equivalencia de elementos del anillo original.  La implementación de ideales en Sage es dispar.  Cuando pueden ser creados, no siempre es mucho lo que se puede hacer con ellos.  Pero funcionan bien en algunos casos muy importantes.</p>
+
+		<p>El anillo de los enteros, <m>{\mathbb Z}</m>, tiene ideales que son simplemente los múltiplos de un solo entero.  Los podemos crear con el método <c>.ideal()</c> o escribiendo un múltiplo escalar de <c>ZZ</c>.  Luego el cociente es isomorfo a un anillo que entendemos bien.  (Note que <c>I</c> es un mal nombre para un ideal si queremos trabajar con números complejos más adelante.)</p>
+
+		<sage>
+		<input>
+		I1 = ZZ.ideal(4)
+		I2 = 4*ZZ
+		I3 = (-4)*ZZ
+		I1 == I2
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		I2 == I3
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q = ZZ.quotient(I1); Q
+		</input>
+		<output>
+		Ring of integers modulo 4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q == Integers(4)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Usualmente seremos más cuidadosos con la última instrucción.  El cociente es un conjunto de clases de equivalencia, cada una infinita, ciertamente no es un solo entero.  Pero el cociente es <em>isomorfo</em> a <m>{\mathbb Z}_4</m>, de manera que Sage simplemente hace esa identificación.</p>
+
+		<sage>
+		<input>
+		Z7 = Integers(7)
+		P.&lt;y> = Z7[]
+		M = P.ideal(y^2+4)
+		Q = P.quotient(M)
+		Q
+		</input>
+		<output>
+		Univariate Quotient Polynomial Ring in ybar over
+		Ring of integers modulo 7 with modulus y^2 + 4
+		</output>
+		</sage>
+
+		<sage doctest="random">
+		<input>
+		Q.random_element()
+		</input>
+		<output>
+		2*ybar + 6
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.order()
+		</input>
+		<output>
+		49
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.is_field()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Notemos que la construcción del anillo cociente a creado un nuevo generador, convirtiendo <c>y</c> (<m>y</m>) en <c>ybar</c> (<m>\overline{y}</m>).  Podemos modificar este comportamiento con la sintaxis mostrada abajo.</p>
+
+		<sage>
+		<input>
+		Q.&lt;t&gt; = P.quotient(M); Q
+		</input>
+		<output>
+		Univariate Quotient Polynomial Ring in t over
+		Ring of integers modulo 7 with modulus y^2 + 4
+		</output>
+		</sage>
+
+		<sage doctest="random">
+		<input>
+		Q.random_element()
+		</input>
+		<output>
+		4*t + 6
+		</output>
+		</sage>
+
+		<p>Así del cociente de una anillo infinito por un ideal (que también es un anillo), creamos un cuerpo, que es finito.  Entender esta construcción será un tópico importante en los próximos capítulos.  Para ver lo notable que es, considere lo que pasa con un pequeño cambio.</p>
+
+		<sage>
+		<input>
+		Z7 = Integers(7)
+		P.&lt;y&gt; = Z7[]
+		M = P.ideal(y^2+3)
+		Q.&lt;t&gt; = P.quotient(M)
+		Q
+		</input>
+		<output>
+		Univariate Quotient Polynomial Ring in t over
+		Ring of integers modulo 7 with modulus y^2 + 3
+		</output>
+		</sage>
+
+		<sage doctest="random">
+		<input>
+		Q.random_element()
+		</input>
+		<output>
+		3*t + 1
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.order()
+		</input>
+		<output>
+		49
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.is_field()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>Hay unos pocos métodos disponibles que nos darán propiedades de los ideales.  En particular, podemos preguntar si un ideal en un anillo de polinomios es primo o maximal.  Examine los resultados de arriba y de abajo en el contexto del Teorema<nbsp /><xref ref="theorem-maximal-ideal-field" />.</p>
+
+		<sage>
+		<input>
+		Z7 = Integers(7)
+		P.&lt;y&gt; = Z7[]
+		M = P.ideal(y^2+4)
+		N = P.ideal(y^2+3)
+		M.is_maximal()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		N.is_maximal()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>El hecho de que <c>M</c> sea un ideal primo es una verificación del Corolario<nbsp /><xref ref="corollary-maximal-ideal" />.</p>
+
+		<sage>
+		<input>
+		M.is_prime()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		N.is_prime()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+	</subsection>
+
+	<subsection>
+		<title>Homomorfismo de Anillos</title>
+
+		<p>Cuando Sage recibe la entrada <c>3 + 4/3</c>, ¿cómo sabe que se supone que 3 es un número entero? Y depués al sumarlo con un racional, ¿cómo sabe que lo que queremos es la suma de racionales, 3/1 + 4/3?  Esto es muy fácil para una persona como usted o como yo, pero extremadamente complejo para un programa, y usted se podrá imaginar que se vuelve cada vez más difícil con los muchos posible anillos, subanillos, matrices, etc en Sage.  Una parte de la respuesta es que Sage usa homomorfismos de anillos para <q>traducir</q> objectos (números) entre anillos.</p>
+
+		<p>Daremos un ejemplo abajo, pero no insistiremos mucho con el tema.  Si tiene curiosidad, leer la documentación de Sage y experimentar un poco pueden ser ejercicios interesantes.</p>
+
+		<sage>
+		<input>
+		H = Hom(ZZ, QQ)
+		phi = H([1])
+		phi
+		</input>
+		<output>
+		Ring morphism:
+		  From: Integer Ring
+		  To:   Rational Field
+		  Defn: 1 |--&gt; 1
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		phi.parent()
+		</input>
+		<output>
+		Set of Homomorphisms from Integer Ring to Rational Field
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		a = 3; a
+		</input>
+		<output>
+		3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		a.parent()
+		</input>
+		<output>
+		Integer Ring
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		b = phi(3); b
+		</input>
+		<output>
+		3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		b.parent()
+		</input>
+		<output>
+		Rational Field
+		</output>
+		</sage>
+
+		<p>Así <c>phi</c> es un homomorfismo (<q>morfismo</q>) que convierte números enteros (el dominio es <c>ZZ</c>) en racionales (el codominio es <c>QQ</c>), cuyo parent es un conjunto de homomorfismos que Sage denomina <q>homset.</q>  Si bien tanto <c>a</c> como <c>b</c> se muestran como <c>3</c>, de forma indistinguible a la vista, los parents de <c>a</c> y <c>b</c> son diferentes.</p>
+
+	</subsection>
+</section>
+
+
+

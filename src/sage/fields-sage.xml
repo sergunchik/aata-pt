@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="fields-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>En Sage, y otros lugares, una extensión de los racionales se llama <q>cuerpo de números.</q>  Los cuerpos de números están entre la características más consolidadas de Sage.</p>
+	</introduction>
+
+	<subsection>
+		<title>Cuerpos de números</title>
+
+		<p>Hay varias formas de crear un cuerpo de números.  Estamos familiarizados con la sintaxis donde adjuntamos un número irracional que podamos describir con combinaciones de raíces y operaciones aritméticas.</p>
+
+		<sage>
+		<input>
+		M.&lt;a&gt; = QQ[sqrt(2)+sqrt(3)]; M
+		</input>
+		<output>
+		Number Field in a with defining polynomial x^4 - 10*x^2 + 1
+		</output>
+		</sage>
+
+		<p>Podemos también especificar el elemento que deseamos adjuntar como una raíz de un polinomio irreducible.  Una posibilidad es construir primero el anillo de polinomios de manera que el polinomio tenga la ubicación de sus coeficientes determinada de forma explícita.</p>
+
+		<sage>
+		<input>
+		F.&lt;y&gt; = QQ[]
+		p = y^3 - 1/4*y^2 - 1/16*y + 1/4
+		p.is_irreducible()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		N.&lt;b&gt; = NumberField(p, 'b'); N
+		</input>
+		<output>
+		Number Field in b with
+		defining polynomial y^3 - 1/4*y^2 - 1/16*y + 1/4
+		</output>
+		</sage>
+
+		<p>En lugar de construir todo el anillo de polinomios, podemos simplemente introducir una variable como el generador de un anillo de polinomios y luego crear los polinomios a partir de esta variable.  Esto nos libera de ponerle un nombre al anillo de polinomios.  Note que en este ejemplo ambas instancias de <c>z</c> son necesarias.</p>
+
+		<sage>
+		<input>
+		z = polygen(QQ, 'z')
+		q = z^3 - 1/4*z^2 - 1/16*z + 1/4
+		q.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in z over Rational Field
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		P.&lt;c&gt; = NumberField(q, 'c'); P
+		</input>
+		<output>
+		Number Field in c with
+		defining polynomial z^3 - 1/4*z^2 - 1/16*z + 1/4
+		</output>
+		</sage>
+
+		<p>Podemos recuperar el polinomio usado para definir un cuerpo de números, incluso si fue construido con la especificación de un elemento irracional.  En este caso, el polinomio corresponde al polinomio minimal del elemento.</p>
+
+		<sage>
+		<input>
+		M.polynomial()
+		</input>
+		<output>
+		x^4 - 10*x^2 + 1
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		N.polynomial()
+		</input>
+		<output>
+		y^3 - 1/4*y^2 - 1/16*y + 1/4
+		</output>
+		</sage>
+
+		<p>Para cualquier elemento de un cuerpo de números, Sage es capaz de calcular su polinomio minimal.</p>
+
+		<sage>
+		<input>
+		elemento = -b^2 + 1/3*b + 4
+		elemento.parent()
+		</input>
+		<output>
+		Number Field in b with
+		defining polynomial y^3 - 1/4*y^2 - 1/16*y + 1/4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		r = elemento.minpoly('t'); r
+		</input>
+		<output>
+		t^3 - 571/48*t^2 + 108389/2304*t - 13345/216
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		r.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in t over Rational Field
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		r.subs(t=elemento)
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<p>Reemplazar el <c>elemento</c> en su presunto polinomio minimal y obtener 0 no es evidencia suficiente para demostrar que es realmente el polinomio <em>minimal</em>, pero al menos es tranquilizador.</p>
+	</subsection>
+
+	<subsection>
+		<title>Cuerpos de Números Absolutos y Relativos</title>
+
+		<p>En Sage podemos adjuntar varios elementos de forma simultánea y podemos crear torres anidadas de cuerpos de números.  Sage usa el término <q>absoluto</q> para referirse a un cuerpo de números como una extensión de los racionales, y el término <q>relativo</q> para referirse a un cuerpo de números construido, o visto, como una extensión de otro cuerpo de números (no trivial).</p>
+
+		<sage>
+		<input>
+		A.&lt;a,b&gt; = QQ[sqrt(2), sqrt(3)]
+		A
+		</input>
+		<output>
+		Number Field in sqrt2 with defining polynomial x^2 - 2 over
+		its base field
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		B = A.base_field(); B
+		</input>
+		<output>
+		Number Field in sqrt3 with defining polynomial x^2 - 3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		A.is_relative()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		B.is_relative()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>El cuerpo de números <c>A</c> fue construido como lo que escribiríamos <m>{\mathbb Q}\subset{\mathbb Q}[\sqrt{3}]\subset{\mathbb Q}[\sqrt{3},\sqrt{2}]</m>.  Notemos la ligera diferencia en el orden de los elementos adjuntados, y notemos como los cuerpos de números utilizan nombres internos algo más sofisticados (<c>sqrt2</c>, <c>sqrt3</c>) para los nuevos elementos.</p>
+
+		<p>Podemos <q>aplanar</q> un cuerpo relativo para verlo como un cuerpo absoluto, lo que podría haber sido nuestra intención desde el comienzo.  Aquí crearemos un nuevo cuerpo de números a partir de <c>A</c> que lo hace un cuerpo de números absoluto.</p>
+
+		<sage>
+		<input>
+		C.&lt;c&gt; = A.absolute_field()
+		C
+		</input>
+		<output>
+		Number Field in c with defining polynomial x^4 - 10*x^2 + 1
+		</output>
+		</sage>
+
+		<p>Una vez que construimos un cuerpo de números absoluto de esta manera, podemos recuperar isomorfismos hacia y desde el cuerpo absoluto.  Recordemos que nuestra torre fue construida por generadores <c>a</c> y <c>b</c>, mientras la torre aplanada es generada por <c>c</c>.  El método <c>.structure()</c> entrega dos funciones, con el cuerpo absoluto como dominio y codominio (en este orden).</p>
+
+		<sage>
+		<input>
+		fromC, toC = C.structure()
+		fromC(c)
+		</input>
+		<output>
+		sqrt2 - sqrt3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		toC(a)
+		</input>
+		<output>
+		1/2*c^3 - 9/2*c
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		toC(b)
+		</input>
+		<output>
+		1/2*c^3 - 11/2*c
+		</output>
+		</sage>
+
+		<p>Esto nos dice que el generador, <c>c</c>, es igual a <m>\sqrt{2}-\sqrt{3}</m>, y que, tanto <m>\sqrt{2}</m> como <m>\sqrt{3}</m> pueden ser expresadas como funciones polinomiales de <c>c</c>.  Con estas conexiones, le sugerimos desarrollar a mano las dos expresiones finales en <c>c</c>, y de esa manera apreciar mejor el trabajo que Sage hace al determinarlas por nosotros.  Este cálculo es un ejemplo de la conclusión del Teorema<nbsp /><xref ref="theorem-primitive-element" /> que viene a continuación.</p>
+
+		<p>Muchos de los métodos para cuerpos de números tienen tanto una versión absoluta como una relativa, y según lo que queramos hacer, será más cómodo trabajar en la torre o en la versión plana, de manera que los isomorfismos entre ambas serán de gran valor para traducir tanto las preguntas como las respuestas.</p>
+
+		<p>Como espacio vectorial sobre <m>{\mathbb Q}</m>, o sobre otro cuerpo de números, los cuerpos de números son extensiones finitas y tienen una dimensión, llamada grado.  Estos grados son fáciles de obtener en Sage, aunque en el caso de cuerpos relativos deberemos ser más precisos sobre cuál es el grado buscado.</p>
+
+		<sage>
+		<input>
+		B.degree()
+		</input>
+		<output>
+		2
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		A.absolute_degree()
+		</input>
+		<output>
+		4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		A.relative_degree()
+		</input>
+		<output>
+		2
+		</output>
+			</sage>
+		</subsection>
+
+		<subsection>
+		<title>Cuerpos de descomposición</title>
+
+		<p>Acá hay un ejemplo concreto de cómo usar Sage para construir el cuerpo de descomposición de un polinomio.  Consideremos <m>p(x)=x^4+x^2-1</m>.  Primero construiremos un cuerpo de números con una raíz, para luego factorizar el polinomio sobre este nuevo cuerpo.</p>
+
+		<sage>
+		<input>
+		x = polygen(QQ, 'x')
+		p = x^4 + x^2 - 1
+		p.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in x over Rational Field
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		p.is_irreducible()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		M.&lt;a&gt; = NumberField(p, 'a')
+		y = polygen(M, 'y')
+		p = p.subs(x = y)
+		p
+		</input>
+		<output>
+		y^4 + y^2 - 1
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		p.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in y over Number Field in a with
+		defining polynomial x^4 + x^2 - 1
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		p.factor()
+		</input>
+		<output>
+		(y - a) * (y + a) * (y^2 + a^2 + 1)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		a^2 + 1 in QQ
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>Así nuestro polinomio se factoriza parcialmente en dos factores lineales y uno cuadrático.  Pero notemos que el factor cuadrático tiene un coeficiente irracional, <m>a^2+1</m>, de manera que el factor cuadrático pertenece estrictamente al anillo de polinomios sobre <c>M</c> y no sobre <c>QQ</c>.</p>
+
+		<p>Construiremos una extensión que contenga una raíz del factor cuadrático, lamado <c>q</c> acá.  Entonces, en lugar de usar la función <c>polygen()</c>, construiremos todo un anillo de polinomios  <c>R</c> sobre <c>N</c> con la variable <c>z</c>.  La razón para hacer esto es que podemos ilustrar como <q>subir</q> el polinomio <c>p</c> con la sintaxis <c>R(p)</c> para pasar de tener coeficientes en <c>M</c> a tenerlos en <c>N</c>.</p>
+
+		<sage>
+		<input>
+		q = y^2 + a^2 + 1
+		N.&lt;b> = NumberField(q, 'b')
+		R.&lt;z> = N[]
+		s = R(p)
+		s
+		</input>
+		<output>
+		z^4 + z^2 - 1
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		s.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in z over Number Field in b with
+		defining polynomial y^2 + a^2 + 1 over its base field
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		s.factor()
+		</input>
+		<output>
+		(z + b) * (z + a) * (z - a) * (z - b)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		a in N, b in N
+		</input>
+		<output>
+		(True, True)
+		</output>
+		</sage>
+
+		<p>Así tenemos un cuerpo, <c>N</c>, en el que nuestro polinomio se factoriza con todos sus factores lineales.  Podemos obtener otra factorización convirtiendo <c>N</c> en un cuerpo absoluto y factorizando ahí.  Necesitaremos recrear el polinomio sobre <c>N</c>, pues una sustitución llevaría elementos del anillo equivocado.</p>
+
+		<sage>
+		<input>
+		P.&lt;c&gt; = N.absolute_field()
+		w = polygen(P, 'w')
+		p = w^4 + w^2- 1
+		p.factor()
+		</input>
+		<output>
+		(w - 7/18966*c^7 + 110/9483*c^5 +  923/9483*c^3 +  3001/6322*c) *
+		(w - 7/37932*c^7 +  55/9483*c^5 + 923/18966*c^3 - 3321/12644*c) *
+		(w + 7/37932*c^7 -  55/9483*c^5 - 923/18966*c^3 + 3321/12644*c) *
+		(w + 7/18966*c^7 - 110/9483*c^5 -  923/9483*c^3 -  3001/6322*c)
+		</output>
+		</sage>
+
+		<p>Esta es una alternativa interesante, en tanto que las raíces del polinomio son expresiones polinomiales en términos de un solo generador <c>c</c>.  Como las raíces involucran potencias séptimas de <c>c</c>, podemos sospechar (pero no estar seguros) que el polinomio minimal de <c>c</c> tiene grado <m>8</m> y que <c>P</c> es una extensión de grado <m>8</m> de los racionales. De hecho <c>P</c> (o <c>N</c>) es un cuerpo de descomposición para <m>p(x)=x^4+x^2-1</m>.  Sus raíces no son realmente tan horribles como parecen <mdash /> devolvámoslas al cuerpo relativo.</p>
+
+		<p>Primero queremos reescribir un factor (el primero) en la forma <m>(w-r)</m> para identificar la raíz con los signos correctos.</p>
+
+		<sage type="display">
+		<input>
+		(w -  7/18966*c^7 + 110/9483*c^5 + 923/9483*c^3 + 3001/6322*c) =
+		(w - (7/18966*c^7 - 110/9483*c^5 - 923/9483*c^3 - 3001/6322*c))
+		</input>
+		</sage>
+
+		<p>Con los isomorfismos de conversión, podemos reconocer las raíces por lo que son.</p>
+
+		<sage>
+		<input>
+		fromP, toP = P.structure()
+		fromP(7/18966*c^7 - 110/9483*c^5 - 923/9483*c^3 - 3001/6322*c)
+		</input>
+		<output>
+		-b
+		</output>
+		</sage>
+
+		<p>Así la expresión complicada en términos de <c>c</c> es simplemente el opuesto de la raíz adjuntada en el segundo paso de la construcción de la torre de cuerpos de números.  Sería un buen ejercicio ver lo que le pasa a las otras tres raíces (teniendo cuidado de escribir correctamente los signos para cada raíz). </p>
+
+		<p>Esta es una buena oportunidad para ilustrar el Teorema<nbsp /><xref ref="theorem-tower-indices" />.</p>
+
+		<sage>
+		<input>
+		M.degree()
+		</input>
+		<output>
+		4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		N.relative_degree()
+		</input>
+		<output>
+		2
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		P.degree()
+		</input>
+		<output>
+		8
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		M.degree()*N.relative_degree() == P.degree()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+	</subsection>
+
+	<subsection>
+		<title>Números Algebraicos</title>
+
+		<p>El Corolario<nbsp /><xref ref="corollary-algebraic-numbers-field" /> dice que el conjunto de <em>todos</em> los números algebraicos forma un cuerpo.  Este cuerpo está implementado en Sage como <c>QQbar</c>.  Esto permite encontrar raíces de polinomios como números exactos que se muestran como aproximaciones.</p>
+
+		<sage>
+		<input>
+		x = polygen(QQ, 'x')
+		p = x^4 + x^2 - 1
+		r = p.roots(ring=QQbar); r
+		</input>
+		<output>
+		[(-0.7861513777574233?,  1), (0.7861513777574233?,  1),
+		 (-1.272019649514069?*I, 1), (1.272019649514069?*I, 1)]
+		</output>
+		</sage>
+
+		<p>Así hemos pedido las raíces de un polinomio con coeficientes racionales, especificando que queremos cualquier raíz que pudiera estar fuera de los racionales y dentro del cuerpo de los algebraicos.  Como el cuerpo de los números algebraicos contiene todas estas raíces, obtenemos las cuatro raíces del polinomio de grado cuatro.  Estas raíces están calculadas de manera de estar en un intervalo y el signo de interrogación indica que los dígitos anteriores son correctos.  (Los enteros que siguen a cada una de las raíces, indican la multiplicidad con que ocurre esa raíz.  Use la opción <c>multiplicities=False</c> para que no aparezcan.)  Veamos tras bambalinas como Sage se las arregla con el cuerpo de números algebraicos.</p>
+
+		<sage>
+		<input>
+		r1 = r[0][0]; r1
+		</input>
+		<output>
+		-0.7861513777574233?
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		r1.as_number_field_element()
+		</input>
+		<output>
+		(Number Field in a with defining polynomial y^4 + y^2 - 1, a, Ring morphism:
+		    From: Number Field in a with defining polynomial y^4 + y^2 - 1
+		    To:   Algebraic Real Field
+		    Defn: a |--> -0.7861513777574233?)
+		</output>
+		</sage>
+
+		<p>Tres cosas están asociadas con esta primera raíz.  En primer lugar un cuerpo de números, con generador <c>a</c> y un polinomio similar pero no idéntico al polinomio del cual estamos buscando las raíces.  En segundo lugar hay una expresión en el generador <c>a</c>, que representa la raíz específica.  En este caso, la expresión es simple, pero podría ser más complicada en otros ejemplos.  Finalmente, hay un homomorfismo del cuerpo de números al <q>Algebraic Real Field</q>, <c>AA</c>, que es el subcuerpo de <c>QQbar</c> que contiene solamente números reales, que asocia al generador <c>a</c> con el número <c>-0.7861513777574233?</c>.  Verifiquemos, de dos formas diferentes, que la raíz dada realmente es una raíz.</p>
+
+		<sage>
+		<input>
+		r1^4 + r1^2 - 1
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		N, rexact, homomorphism = r1.as_number_field_element()
+		(rexact)^4 + rexact^2 - 1
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<p>Ahora que tenemos suficiente teoría para entender el cuerpo de los números algebraicos, y una forma natural de representarlos de forma exacta, podemos considerar las operaciones en el cuerpo.   Si tomamos dos números algebraicos y los sumamos, obtenemos otro número algebraico (Corolario<nbsp /><xref ref="corollary-algebraic-numbers-field" />).  ¿Cuál es entonces el polinomio minimal resultante?  ¿Cómo se obtiene en Sage?  Podríamos leer el código fuente si estamos interesados en la respuesta.</p>
+	</subsection>
+
+	<subsection>
+		<title>Construcciones geométricas</title>
+
+		<p>Sage puede hacer muchas cosas, pero aún no es capaz de trazar rectas con regla y compás.  Sin embargo, podemos rápidamente determinar que trisectar un ángulo de <m>60</m> grados es imposible.  Adjuntamos el  coseno de un ángulo de <m>20</m> grados (en radianes) a los racionales, determinamos el grado de la exensión, y verificamos que no es una potencia entera de <m>2</m>.  Todo en una línea. Bien!</p>
+
+		<sage>
+		<input>
+		log(QQ[cos(pi/9)].degree(), 2) in ZZ
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+	</subsection>
+
+</section>

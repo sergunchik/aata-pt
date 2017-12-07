@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<chapter xml:id="actions" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>Acciones de Grupo</title>
+
+	<introduction>
+		<p>Las acciones de grupo generalizan la multiplicación en el grupo. Si <m>G</m> es un grupo y <m>X</m> es un conjunto arbitrario, entonces una acción de grupo de un elemento <m>g \in G</m> en un elemento <m>x \in X</m> es un producto, <m>gx</m>,  que está en <m>X</m>.  Muchos problemas en álgebra se pueden enfrentar mejor con acciones de grupo. Por ejemplo, las demostraciones de los teoremas de Sylow y del Teorema de Conteo de Burnside se entiende de mejor forma si son formuladas en términos de acciones de grupo.</p>
+	</introduction>
+
+	<section xml:id="section-groups-acting-on-sets">
+		<title>Grupos Actuando en Conjuntos</title>
+
+		<p>Sea <m>X</m> un conjunto y sea <m>G</m> un grupo.  Una  <term>acción (izquierda)</term><idx><h>Acción de grupo</h></idx> de <m>G</m> en <m>X</m> es una función <m>G \times X \rightarrow X</m> dada por <m>(g,x) \mapsto gx</m>, donde
+			<ol>
+
+				<li><p><m>ex = x</m> para todo <m>x \in X</m>;</p></li>
+
+				<li><p><m>(g_1 g_2)x = g_1(g_2 x)</m> para todo <m>x \in X</m> y todo <m>g_1, g_2 \in G</m>.</p></li>
+ 
+			</ol>
+		Con estas condiciones <m>X</m> se denomina <term><m>G</m>-conjunto</term><idx><h><m>G</m>-conjunto</h></idx>.  Notemos que no pedimos que <m>X</m> esté relacionado con <m>G</m> de ninguna forma.  Es verdad que cualquier grupo <m>G</m> actúa en cualquier <m>X</m> con la acción trivial <m>(g,x) \mapsto x</m>; pero, las acciones de grupo resultan más interesantes si el conjunto <m>X</m> tiene alguna relación con <m>G</m>.</p>
+
+		<example xml:id="example-actions-gl2">
+			<p>Sean <m>G = GL_2( {\mathbb R} )</m> y <m>X = {\mathbb R}^2</m>. Entonces <m>G</m> actúa en <m>X</m> por multiplicación a la izquierda.  Si <m>v \in {\mathbb R}^2</m> e <m>I</m> es la matriz identidad, entonces <m>Iv = v</m>.  Si <m>A</m> y <m>B</m> son matrices invertibles de <m>2 \times 2</m>, entonces <m>(AB)v = A(Bv)</m> pues la multiplicación de matrices es asociativa.</p>
+		</example>
+
+		<example xml:id="example-actions-d4">
+			<p>Sea <m>G = D_4</m> el grupo de simentría de un cuadrado.  Si <m>X = \{ 1, 2, 3, 4 \}</m> es el conjunto de vértices del cuadrado, entonces podemos considerar <m>D_4</m> como el conjunto de las siguientes permutaciones: 
+				<me>\{ (1), (13), (24), (1432), (1234), (12)(34), (14)(23), (13)(24) \}.</me>
+			Los elementos de <m>D_4</m> actúan en <m>X</m> como funciones.  La permutación <m>(13)(24)</m> actúa en el vértice 1 enviándolo al vértice 3, en el vértice 2 enviándolo al vértice 4, y así sucesivamente.  Es fácil ver que se satisfacen los axiomas de acción de grupo.</p>
+		</example>
+
+		<p>En general, si <m>X</m> es cualquier conjunto y <m>G</m> es un subgrupo de <m>S_X</m>, el grupo de todas las permutaciones actuando en <m>X</m>, entonces <m>X</m> es un <m>G</m>-conjunto con la acción de grupo
+		<me>(\sigma, x) \mapsto \sigma(x)</me>
+		para <m>\sigma \in G</m> y <m>x \in X</m>.</p>
+ 
+		<example xml:id="example-actions-left-mult">
+			<p>Si tomamos <m>X = G</m>, entonces cualquier grupo <m>G</m> actúa en sí mismo por medio de su representación regular izquierda; es decir, <m>(g,x) \mapsto \lambda_g(x) = gx</m>,  donde  <m>\lambda_g</m> es multiplicación a la izquierda:
+				<md>
+					<mrow>e \cdot x = \lambda_e x = ex = x</mrow>
+					<mrow>(gh) \cdot x = \lambda_{gh}x = \lambda_g \lambda_h x = \lambda_g(hx) = g \cdot ( h \cdot x).</mrow>
+				</md>
+			Si <m>H</m> es un subgrupo de <m>G</m>, entonces <m>G</m> es un <m>H</m>-conjunto bajo multiplicación izquierda por elementos de <m>H</m>.</p>
+		</example>
+ 
+		<example xml:id="example-actions-conjugation">
+			<p>Sea <m>G</m> un grupo y supongamos que <m>X=G</m>. Si <m>H</m> es un subgrupo de <m>G</m>, entonces <m>G</m> es un <m>H</m>-conjunto bajo <term>conjugación</term><idx><h>Conjugación</h></idx>; es decir, podemos definir una acción de <m>H</m> en <m>G</m>, 
+				<me>H \times G \rightarrow G,</me>
+			via
+				<me>(h,g) \mapsto hgh^{-1}</me>
+			para <m>h \in H</m> y <m>g \in G</m>.  Claramente, se satisface el primer axioma para una acción de grupo.  Observando que 
+				<md>
+					<mrow>(h_1 h_2, g) &amp; = h_1 h_2 g (h_1 h_2 )^{-1}</mrow>
+					<mrow>&amp; = h_1( h_2 g h_2^{-1}) h_1^{-1}</mrow>
+					<mrow> &amp; =  (h_1, (h_2, g) ),</mrow>
+				</md>
+			vemos que la segunda condición también se satisface.</p>
+		</example>
+ 
+		<example xml:id="example-actions-left-cosets">
+			<p>Sea <m>H</m> un subgrupo de <m>G</m> y <m>{\mathcal L}_H</m> el conjunto de clases laterales izquierdas de <m>H</m>.  El conjunto <m>{\mathcal L}_H</m> es un <m>G</m>-conjunto bajo la acción
+				<me>(g, xH) \mapsto gxH.</me>
+			Nuevamente, es fácil ver que se satisface el primer axioma. Como <m>(g g')xH = g( g'x H)</m>, el segundo axioma también es válido.</p>
+		</example>
+ 
+		<p>Si <m>G</m> actúa en un conjunto <m>X</m> y <m>x, y \in X</m>, entonces <m>x</m> se dice <term><m>G</m>-equivalente</term><idx><h><m>G</m>-equivalente</h></idx> a <m>y</m> si existe <m>g \in G</m> tal que <m>gx =y</m>. Escribimos <m>x \sim_G y</m> o <m>x \sim y</m> si dos elementos son <m>G</m>-equivalentes.</p>
+
+		<proposition>
+			<statement>
+				<p>Sea <m>X</m> un <m>G</m>-conjunto. Entonces la <m>G</m>-equivalencia es una relación de equivalencia en <m>X</m>.</p>
+			</statement>
+			<proof>
+				<p>La relación <m>\sim</m> es refleja pues <m>ex = x</m>. Supongamos que <m>x \sim y</m> para <m>x, y \in X</m>. Entonces existe <m>g</m> tal que <m>gx = y</m>. En ese caso <m>g^{-1}y=x</m>; por lo que <m>y \sim x</m>. Para mostrar que la relación es transitiva, supongamos que <m>x \sim y</m> e <m>y \sim z</m>. Entonces existen elementos <m>g</m> y <m>h</m> del grupo tale que <m>gx = y</m> y <m>hy= z</m>. Así <m>z = hy = (hg)x</m>, y  <m>x</m> es equivalente a <m>z</m>.</p>
+			</proof>
+		</proposition>
+ 
+		<p>Si <m>X</m> es un <m>G</m>-conjunto, entonces cualquier parte de la partición de <m>X</m> asociada a la <m>G</m>-equivalencia se denomina <term>órbita</term><idx><h>Órbita</h></idx> de <m>X</m> bajo <m>G</m>.  A la órbita que contiene un elemento <m>x</m> de <m>X</m> la denotaremos como <m>{\mathcal O}_x</m>.  <notation><usage>{\mathcal O}_x</usage><description>órbita de <m>x</m></description></notation></p>
+
+		<example xml:id="example-actions-permute">
+			<p>Sea <m>G</m> el grupo de permutaciones definido por
+				<me>G =\{(1), (1 2 3), (1 3 2), (4 5), (1 2 3)(4 5), (1 3 2)(4 5) \}</me>
+			y <m>X = \{ 1, 2, 3, 4, 5\}</m>. Entonces <m>X</m> es un <m>G</m>-conjunto. Las órbitas son <m>{\mathcal O}_1 = {\mathcal O}_2 = {\mathcal O}_3 =\{1, 2, 3\}</m> y <m>{\mathcal O}_4 = {\mathcal O}_5 = \{4, 5\}</m>. </p>
+		</example>
+ 
+		<p>Ahora supongamos que <m>G</m> es un grupo actuando en un conjunto <m>X</m> y sea <m>g</m> un elemento de <m>G</m>. El <term>conjunto de puntos fijos</term><idx><h>Conjunto de puntos fijos</h></idx> de <m>g</m> en <m>X</m>, denotado por <m>X_g</m>, es el conjunto de todos los <m>x \in X</m> tales que <m>gx = x</m>.  <notation><usage>X_g</usage><description>conjunto de puntos fijos de <m>g</m></description></notation> Podemos también estudiar los elementos <m>g</m> del grupo que fijan un <m>x \in X</m> dado. Este conjunto es más que un subconjunto de <m>G</m>, es un subgrupo. Este subgrupo se llama el <term>subgrupo estabilizador</term><idx><h>Subgrupo</h><h>estabilizador</h></idx> o <term>subgrupo de isotropía</term><idx><h>Subgrupo</h><h>de isotropía</h></idx> de <m>x</m>. Denotaremos el subgrupo estabilizador de <m>x</m> por <m>G_x</m>. <notation><usage>G_x</usage><description>subgrupo de isotropía de <m>x</m></description></notation></p>
+ 
+		<remark>
+			<p>Es importante recordar que <m>X_g \subset X</m> y <m>G_x \subset G</m>.</p>
+		</remark>  
+ 
+		<example xml:id="example-actions-stabilizer">
+			<p>Sea <m>X = \{1, 2, 3, 4, 5, 6\}</m> y supongamos que <m>G</m> es el grupo de permutaciones dado por las permutaciones
+				<me>\{ (1), (1 2)(3 4 5 6), (3 5)(4 6), (1 2)( 3 6 5 4) \}.</me>
+			Entonces los conjuntos de puntos fijos de <m>X</m> bajo la acción de <m>G</m> son
+				<md>
+					<mrow>X_{(1)}  =  X,</mrow>
+					<mrow>X_{(3 5)(4 6)}  =  \{1,2\},</mrow>
+					<mrow>X_{(1 2)(3 4 5 6)}  = X_{(1 2)(3 6 5 4)}  =  \emptyset,</mrow>
+				</md>
+			y los subgrupos estabilizadores son
+				<md>
+					<mrow>G_1 =  G_2  =  \{(1), (3 5)(4 6) \},</mrow>
+					<mrow>G_3  = G_4  = G_5  = G_6 =  \{(1)\}.</mrow>
+				</md>
+			Es fácil ver que <m>G_x</m> es un subgrupo de <m>G</m> para cada <m>x \in X</m>.</p>
+		</example>
+ 
+		<proposition>
+			<statement>
+				<p>Sea <m>G</m> un grupo actuando en un conjunto <m>X</m> y sea <m>x \in X</m>. El estabilizador de <m>x</m>, <m>G_x</m>, es un subgrupo de <m>G</m>.</p>
+			</statement>
+			<proof>
+				<p>Claramente,  <m>e \in G_x</m> pues la identidad deja fijo cada elemento en el conjunto <m>X</m>. Sean <m>g, h \in G_x</m>. Entonces <m>gx = x</m> y <m>hx = x</m>. Entonces <m>(gh)x = g(hx) = gx = x</m>; luego, el producto de dos elementos en <m>G_x</m> también está en <m>G_x</m>. Finalmente, si <m>g \in G_x</m>, entonces <m>x = ex = (g^{-1}g)x = (g^{-1})gx = g^{-1} x</m>. Así <m>g^{-1}</m> está en <m>G_x</m>.</p>
+			</proof>
+		</proposition>
+ 
+		<p>El número de elementos en el conjunto de puntos fijos de un elemento <m>g \in G</m> lo denotaremos por <m>|X_g|</m> y el número de elementos en la órbita de <m>x \in X</m> lo denotaremos por <m>|{\mathcal O}_x|</m>. Los siguientes teoremas establecen la relación entre las órbitas de un elemento <m>x \in X</m> y las clases laterales izquierdas de <m>G_x</m> en <m>G</m>.</p>
+
+<!-- typo corrected.  Suggested by L. Franklin. -->
+<!-- TWJ - 12/19/2011 -->
+ 
+		<theorem xml:id="theorem-orbit">
+			<statement>
+				<p>Sea <m>G</m> un grupo finito y sea <m>X</m> un <m>G</m>-conjunto finito. Si <m>x \in X</m>, entonces <m>|{\mathcal O}_x| = [G:G_x]</m>.</p>
+			</statement>
+			<proof>
+				<p>Sabemos que <m>|G|/|G_x|</m> es el número de clases laterales izquierdas de <m>G_x</m> en <m>G</m> por el Teorema de Lagrange (Teorema<nbsp /><xref ref="theorem-lagrange" />). Definiremos una función biyetiva <m>\phi</m> de la órbita <m>{\mathcal O}_x</m> de <m>x</m> al conjunto de clases laterales izquierdas <m>{\mathcal L}_{G_x}</m> de <m>G_x</m> en <m>G</m>. Sea <m>y \in {\mathcal O}_x</m>. Entonces existe <m>g</m> en <m>G</m> tal que <m>g x = y</m>. Definamos <m>\phi</m> de forma que <m>\phi( y ) = g G_x</m>.  Para mostrar que <m>\phi</m> es 1-1, supongamos que <m>\phi(y_1) = \phi(y_2)</m>. Entonces
+					<me>\phi(y_1) = g_1 G_x = g_2 G_x = \phi(y_2),</me>
+				donde <m>g_1 x = y_1</m> y <m>g_2 x = y_2</m>.  Como <m>g_1 G_x = g_2 G_x</m>, existe <m>g \in G_x</m> tal que <m>g_2 = g_1 g</m>, 
+					<me>y_2 = g_2 x = g_1 g x = g_1 x = y_1;</me>
+				por lo tanto, la función <m>\phi</m> es 1-1. Finalmente, debemos mostrar que <m>\phi</m> es epiyectiva. Sea <m>g G_x</m> una clase lateral izquierda. Si <m>g x = y</m>, entonces <m>\phi(y) = g G_x</m>.</p>
+			</proof>
+		</theorem>
+ 
+	</section>
+	
+	<section xml:id="section-class-equation">
+		<title>La Ecuación de Clase</title>
+ 
+		<p>Sea <m>X</m> un <m>G</m>-conjunto finito y <m>X_G</m><!--NOTATION TABLE\label{noteXG}--> el conjunto de puntos fijos en <m>X</m>; es decir, 
+			<me>X_G = \{ x \in X : gx = x \text{ para todo } g \in G \}.</me>
+		Como las óribitas de la acción particionan a <m>X</m>,
+			<me>|X| = |X_G| + \sum_{i = k}^n |{\mathcal O}_{x_i}|,</me>
+		donde <m>x_k, \ldots, x_n</m> son representantes de las distintas órbitas no triviales de <m>X</m> (aquellas órbitas que contienen más de un elemento).</p> 
+ 
+		<p>Ahora consideremos el caso especial en el que <m>G</m> actúa en sí mismo por conjugación, <m>(g,x) \mapsto gxg^{-1}</m>. El <term>centro</term><idx><h>Grupo</h><h>centro del</h></idx> de <m>G</m>, 
+			<me>Z(G) = \{x : xg = gx \text{ para todo } g \in G \},</me>
+		es el conjunto de puntos que quedan fijos por conjugación. La órbitas de la acción se llaman <term>clases de conjugación</term><idx><h>Clases de conjugación</h></idx> de <m>G</m>. Si <m>x_1, \ldots, x_k</m> son representantes de cada una de las clases de conjugación no-triviales de <m>G</m> y <m>|{\mathcal O}_{x_1}| = n_1, \ldots, |{\mathcal O}_{x_k}| = n_k</m>, entonces
+			<me>|G| = |Z(G)| + n_1 + \cdots + n_k.</me>
+		Cada uno de los subgrupos estabilizadores de uno de los <m>x_i</m>, <m>C(x_i) = \{ g \in G: g x_i = x_i g \}</m>, se llama <term>subgrupo centralizador</term><idx><h>Subgrupo</h><h>centralizador</h></idx> de <m>x_i</m>. Por el Teorema<nbsp /><xref ref="theorem-orbit" />, obtenemos la <term>ecuación de clase</term><idx><h>Ecuación de clase</h></idx>: 
+			<me>|G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)].</me>
+		Una de las consecuencias de la ecuación de clase es que el orden de cada clase de conjugación divide al orden de <m>G</m>.</p>
+
+<!-- Reference repaired. TWJ 12/19/2011 -->
+<!-- Typo corrected. Suggested by A. Vance. TWJ 11/13/2011 -->
+
+		<example xml:id="example-actions-conjugacy-class-s3">
+			<p>Es fácil verificar que las clases de conjugación en <m>S_3</m> son las siguientes: 
+				<me>\{ (1) \},  \quad \{ (123), (132) \}, \quad \{(12), (13), (23) \}.</me>
+			La ecuación de clase es <m>6 = 1+2+3</m>.</p>
+		</example>
+ 
+		<example xml:id="example-actions-conjugacy-class-d4">
+			<p>El centro de <m>D_4</m> es <m>\{ (1), (13)(24) \}</m>, y las clases de conjugación
+				<me>\{ (13), (24) \}, \quad \{ (1432), (1234) \}, \quad \{ (12)(34), (14)(23) \}.</me>
+			Por lo tanto, la ecuación de clase para <m>D_4</m> es <m>8 = 2 + 2 + 2 + 2</m>.</p>
+		</example>
+
+<!-- %Example corrected.  There are 5 classes. TWJ 9/7/2010 -->
+<!-- %Example clarified.  Suggested by B. Whetter.  TWJ 11/17/2012 -->
+ 
+		<example xml:id="example-actions-conjugacy-class-sn">
+			<p>Para <m>S_n</m> toma algo de esfuerzo encontrar las clases de conjugación.  Empezamos con los ciclos.  Supongamos que <m>\sigma = ( a_1, \ldots, a_k)</m> es un ciclo y sea <m>\tau \in S_n</m>. Por el Teorema<nbsp /><xref ref="theorem-cycle-length-theorem" />,
+				<me>\tau \sigma \tau^{-1} = ( \tau( a_1), \ldots, \tau(a_k)).</me>
+			En consecuencia, cualquiera dos ciclos del mismo largo son conjugados. Ahora, sea <m>\sigma = \sigma_1 \sigma_2 \cdots \sigma_r</m> una descomposición en ciclos, donde el largo de cada ciclo <m>\sigma_i</m> es <m>r_i</m>. Entonces <m>\sigma</m> es conjugado a cualquier otro <m>\tau \in S_n</m> cuya descomposición en ciclos tiene los mismos largos.</p>
+ 
+ 			<p>El número de clases de conjugación en <m>S_n</m> es igual al número de formas en que <m>n</m> puede ser particionado como suma de enteros positivos. En el caso de <m>S_3</m> por ejemplo, podemos particionar el entero 3 en las siguientes tres sumas: 
+				<md>
+					<mrow>3 &amp; =  1 + 1 + 1</mrow>
+					<mrow>3 &amp; =  1 + 2</mrow>
+					<mrow>3 &amp; =  3;</mrow>
+				</md>
+			Por lo tanto, existen tres clases de conjugación. El problema de determinar el número de tales particiones para un entero dado <m>n</m> es lo que se conoce como <term>NP-completo</term>.  Esto en la práctica quiere decir que el problema no se puede resolver para valores grandes de <m>n</m> pues los cálculos tomarían demasiado tiempo incluso para un computador enorme.</p>
+		</example>
+ 
+ 		<theorem xml:id="theorem-pn">
+			<statement>
+				<p>Sea <m>G</m> un grupo de orden <m>p^n</m> donde <m>p</m> es primo. Entonces <m>G</m> tiene centro no-trivial.</p>
+			</statement>
+			<proof>
+				<p>Aplicamos la ecuación de clase
+					<me>|G| = |Z(G)|  + n_1 + \cdots + n_k.</me>
+				Como cada <m>n_i \gt 1</m> y <m>n_i \mid |G|</m>, concluimos que <m>p</m> divide a cada <m>n_i</m>. Además, <m>p \mid |G|</m>; luego, <m>p</m> divide a <m>|Z(G)|</m>. Como la identidad siempre está en el centro de <m>G</m>, <m>|Z(G)| \geq 1</m>. Por lo tanto, <m>|Z(G)|  \geq p</m>, y existe algún <m>g \in Z(G)</m> tal que <m>g \neq 1</m>.</p>
+			</proof>
+		</theorem>
+
+<!-- Typo fixed.  Suggested by A. Vance.  TWJ 11/17/2012 -->
+
+		<corollary xml:id="corollary-p2abelian">
+			<statement>
+				<p>Sea <m>G</m> un grupo de orden <m>p^2</m> donde <m>p</m> es primo. Entonces <m>G</m> es abeliano.</p>
+			</statement>
+			<proof>
+				<p>Por el Teorema<nbsp /><xref ref="theorem-pn" />, <m>|Z(G)| = p</m> o <m>p^2</m>.  Si <m>|Z(G)| = p^2</m>, estamos listos.  Supongamos que <m>|Z(G)| = p</m>. Entonces <m>Z(G)</m> y <m>G / Z(G)</m> ambos tienen orden <m>p</m> y por ende son ambos cíclicos.  Eligiendo un generador <m>aZ(G)</m> para <m>G / Z(G)</m>, podemos escribir cualquier elemento <m>gZ(G)</m> en el cociente como <m>a^m Z(G)</m> para algún entero <m>m</m>; luego, <m>g = a^m x</m> para algún <m>x</m> en el centro de <m>G</m>.  Similarmente, si <m>hZ(G) \in G / Z(G)</m>, entonces existe <m>y</m> en <m>Z(G)</m> tal que <m>h = a^n y</m> para algún entero <m>n</m>.  Como <m>x</m> e <m>y</m> están en el centro de <m>G</m>, conmutan con todos los elementos de <m>G</m>; por lo tanto, 
+					<me>gh  =  a^m x a^n y =  a^{m+n} x y = a^n y a^m x = hg,</me>
+				y <m>G</m> es abeliano.</p>
+			</proof>
+		</corollary>
+ 
+	</section>
+
+	<section xml:id="section-burnsides-counting-theorem">
+		<title>Teorema de Conteo de Burnside</title>
+ 
+ 		<introduction>
+
+			<p>Supongamos que deseamos pintar los vértices de un cuadrado con dos colores diferentes, digamos blanco y negro.  Podríamos sospechar que habría <m>2^4=16</m> coloreados diferentes. Pero, algunos de estos son equivalentes.  Si pintamos el primer vértice negro y los demás vértices blancos, es lo mismo que pintar el segundo vértice negro y los demás blancos pues podemos obtener el segundo coloreado simplemente rotando el cuadrado <m>90^\circ</m> (Figura<nbsp /><xref ref="figure-actions-coloring" />).</p>
+
+			<figure xml:id="figure-actions-coloring">
+				<caption>Coloreados equivalentes del cuadrado</caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 6/28/2010 -->
+				<image width="60%" xml:id="actions-colorings-square">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=0.85]
+
+						\draw (0,0) rectangle (2,2);
+						\node at (-0.2,0) [below] {$N$};
+						\node at (2.2,0) [below] {$B$};
+						\node at (-0.2,2) [above] {$B$};
+						\node at (2.2,2) [above] {$B$};
+
+						\draw (3.5,0) rectangle (5.5,2);
+						\node at (3.3,0) [below] {$B$};
+						\node at (5.7,0) [below] {$N$};
+						\node at (3.3,2) [above] {$B$};
+						\node at (5.7,2) [above] {$B$};
+
+						\draw (0,3.5) rectangle (2,5.5);
+						\node at (-0.2,3.5) [below] {$B$};
+						\node at (2.2,3.5) [below] {$B$};
+						\node at (-0.2,5.5) [above] {$N$};
+						\node at (2.2,5.5) [above] {$B$};
+
+						\draw (3.5,3.5) rectangle (5.5,5.5);
+						\node at (3.3,3.5) [below] {$B$};
+						\node at (5.7,3.5) [below] {$B$};
+						\node at (3.3,5.5) [above] {$B$};
+						\node at (5.7,5.5) [above] {$N$};
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+ 
+			<p>El Teorema de Conteo de Burnside ofrece un método de calcular el número de maneras distinguibles en que algo puede ser realizado. Además de sus aplicaciones geométricas, el teorema tiene interesantes aplicaciones en teoría de conmutación (switching theory) y en química. La demostración del Teorema de Conteo de Burnside depende del siguiente lema.</p>
+ 
+			<lemma xml:id="lemma-gset">
+				<statement>
+					<p>Sea <m>X</m> un <m>G</m>-conjunto y supongamos que <m>x \sim y</m>. Entonces <m>G_x</m> es isomorfo a <m>G_y</m>.  En particular, <m>|G_x| = |G_y|</m>.</p>
+				</statement>
+				<proof>
+					<p>Supongamos que la acción de <m>G</m> en <m>X</m> está dada por <m>(g,x) \mapsto g \cdot x</m>. Como <m>x \sim y</m>, existe <m>g \in G</m> tal que <m>g \cdot x=y</m>. Sea <m>a \in G_x</m>. Como 
+						<me>gag^{-1} \cdot y = ga \cdot g^{-1}y = ga \cdot x = g \cdot x = y,</me>
+					podemos definir una función <m>\phi: G_x \rightarrow G_y</m> por <m>\phi(a) = gag^{-1}</m>. La función <m>\phi</m> es un homomorfismo pues 
+						<me>\phi(ab) = gabg^{-1} = gag^{-1} gbg^{-1} = \phi(a) \phi(b).</me>
+					Supongamos que <m>\phi(a) = \phi(b)</m>. Entonces <m>gag^{-1}= gbg^{-1}</m> y <m>a=b</m>; es decir, la función es inyectiva.  Para mostrar que <m>\phi</m> es epiyectiva, sea <m>b</m> en <m>G_y</m>; entonces <m>g^{-1}bg</m> está en <m>G_x</m> pues
+						<me>g^{-1}bg \cdot x = g^{-1}b \cdot gx = g^{-1}b \cdot y = g^{-1} \cdot y = x; </me>
+					y <m>\phi(g^{-1}bg ) = b</m>.</p>
+				</proof>
+			</lemma>
+
+ <!-- % Notation error pointed out by S. Engle corrected. -->
+ <!-- % TWJ 11/20/2011 -->
+
+			<theorem>
+				<title>Burnside</title>
+				<idx><h>Teorema de Conteo de Burnside</h></idx>
+				<statement>
+				<p>Sea <m>G</m> un grupo finito que actuando en un conjunto <m>X</m> y sea <m>k</m> el número de órbitas de <m>X</m>. Entonces
+					<me>k = \frac{1}{|G|} \sum_{g \in G} |X_g|.</me></p>
+				</statement>
+				<proof>
+					<p>Consideramos todos los puntos fijos de <m>x</m> para cada elemento <m>g \in G</m>; es decir, consideramos todos los <m>g</m> y todos los <m>x</m> tales que <m>gx =x</m>. En términos de conjuntos de puntos fijos, el número de todos los <m>g</m> que fijan a <m>x</m> es 
+						<me>\sum_{g \in G} |X_g|.</me>
+					Pero, en términos de subgrupos estabilizadores, este número es
+						<me>\sum_{x \in X} |G_x|;</me>
+					luego, <m>\sum_{g \in G} |X_g| = \sum_{x \in X} |G_x|</m>. Por el Lema<nbsp /><xref ref="lemma-gset" />, 
+						<me>\sum_{y \in {\mathcal O}_x} |G_y|  =  | {\mathcal O}_x| \cdot |G_x|.</me>
+					Por el Teorema<nbsp /><xref ref="theorem-orbit" /> y el Teorema de Lagrange, esta expresión es igual a <m>|G|</m>. Sumando en las  <m>k</m> órbitas distintas, concluimos que
+						<me>\sum_{g \in G} |X_g| = \sum_{x \in X} |G_x| = k \cdot |G|.</me></p>
+				</proof>
+			</theorem>
+ 
+ 			<example xml:id="example-actions-burnside">
+				<p>Sea <m>X = \{1, 2, 3, 4, 5 \}</m> y supongamos que <m>G</m> es el grupo de permutaciones <m>G= \{(1), (1 3), (1 3)(2 5), (2 5) \}</m>. Las órbitas en <m>X</m> son <m>\{1, 3\}</m>, <m>\{2, 5\}</m>, y <m>\{4\}</m>. Los conjuntos de puntos fijos son
+					<md>
+						<mrow>X_{(1)} &amp; =  X</mrow>
+						<mrow>X_{(1 3)} &amp; =  \{2, 4, 5 \}</mrow>
+						<mrow>X_{(1 3)(2 5)} &amp; =  \{4\}</mrow>
+						<mrow>X_{(2 5)} &amp; =  \{1, 3, 4 \}.</mrow>
+					</md>
+				El Teorema de Burnside dice que
+					<me>k = \frac{1}{|G|} \sum_{g \in G} |X_g| = \frac{1}{4}(5 + 3 + 1 + 3) = 3.</me></p>
+			</example>
+
+		</introduction>
+
+		<subsection xml:id="actions-subsection-geometric-example">
+			<title>Un Ejemplo Geométrico</title>
+ 
+			<p>Antes de aplicar el Teorema de Burnside a problemas de teoría de conmutación, examinemos el número de maneras en que se pueden colorear los vértices de un cuadrado utilizando dos colores, blanco y negro. Notemos que a veces obtendremos coloreados equivalentes simplemente aplicando un movimiento rígido al cuadrado. Por ejemplo, como mencionamos antes, si pintamos un vértice negro y los restantes blancos, no importa cuál es el vértice negro pues una rotación nos dará una forma equivalente de pintarlos.</p>
+ 
+			<p>El grupo de simetría de un cuadrado, <m>D_4</m>, está dado por las siguientes permutaciones: 
+				<md>
+					<mrow>&amp;(1)    &amp; &amp;(13)     &amp; &amp; (24)     &amp; &amp; (1432)</mrow>
+					<mrow>&amp;(1234) &amp; &amp;(12)(34) &amp; &amp; (14)(23) &amp; &amp; (13)(24)</mrow>
+				</md>
+			El grupo <m>G</m> actúa en el conjunto de vértices <m>\{ 1, 2, 3, 4\}</m> en la forma usual. Podemos describir los diferentes coloreados como funciones de <m>X</m> en <m>Y = \{ N, B \}</m> donde <m>N</m> y <m>B</m> representan los colores negro y blango, respectivamente. Cada función <m>f : X \rightarrow Y</m> describe una forma de colorear las esquinas del cuadrado. Cada <m>\sigma \in D_4</m> induce una permutación <m>\widetilde{ \sigma }</m> de los posibles coloreados dada por <m>\widetilde{\sigma}(f) = f \circ \sigma</m> for <m>f : X \rightarrow Y</m>. Por ejemplo, supongamos que <m>f</m> está definida por
+				<md>
+					<mrow>f(1) &amp; =  N</mrow>
+					<mrow>f(2) &amp; =  B</mrow>
+					<mrow>f(3) &amp; =  B</mrow>
+					<mrow>f(4) &amp; =  B</mrow>
+				</md>
+			y <m>\sigma = (1 2)(3 4)</m>. Entonces <m>\widetilde{\sigma}(f) = f \circ \sigma</m> envía el vértice 2 en <m>N</m> y los restantes vértices en <m>B</m>. El conjunto de tales <m>\widetilde{\sigma}</m> es un grupo de permutaciones <m>\widetilde{G}</m> en el conjunto de los posibles coloreados. Digamos que <m>\widetilde{X}</m>   denota el conjunto de todos los posibles coloreados; es decir, <m>\widetilde{X}</m> es el conjunto de todas las posibles funciones de <m>X</m> en <m>Y</m>.  Ahora debemos calcular el número de clases de equivalencia respecto a <m>\widetilde{G}</m>. 
+				<ol>
+ 
+					<li><p><m>\widetilde{X}_{(1)} = \widetilde{X}</m> pues la identidad fija todos los posibles coloreados. <m>|\widetilde{X}| = 2^4 =~16</m>.</p></li>
+ 
+					<li><p><m>\widetilde{X}_{(1 2 3 4)}</m> consiste de todas las <m>f \in \widetilde{X}</m> tales que <m>f</m> no cambia al aplicarle la permutación <m>(1 2 3 4)</m>. En este caso <m>f(1) = f(2) = f(3) = f(4)</m>, de manera que todos los valores de <m>f</m> deben ser iguales; es decir, ya sea <m>f(x)= N</m> o <m>f(x)= B</m> para todos los vértices <m>x</m> del cuadrado. Así <m>|\widetilde{X}_{(1 2 3 4)}| = 2</m>.</p></li>
+
+					<li><p><m>|\widetilde{X}_{(1 4 3 2)}| = 2</m>.</p></li>
+
+					<li><p>For <m>\widetilde{X}_{(1 3)(2 4)}</m>, <m>f(1) = f(3)</m> and <m>f(2) = f(4)</m>. Luego, <m>|\widetilde{X}_{(13)(24)}| = 2^2 = 4</m>.</p></li>
+ 
+					<li><p><m>|\widetilde{X}_{(1 2)(3 4)}| = 4</m>.</p></li>
+
+					<li><p> <m>|\widetilde{X}_{(1 4)(2 3)}| = 4</m>.</p></li>
+ 
+					<li><p>Para <m>\widetilde{X}_{(1  3 )}</m>, <m>f(1) = f(3)</m> y las demás esquinas pueden ser de cualquier color; luego, <m>|\widetilde{X}_{(1 3)}| = 2^3 = 8</m>.</p></li>
+ 
+ 					<li><p> <m>|\widetilde{X}_{(2 4)}| = 8</m>.</p></li>
+ 				</ol>
+			Por el Teorema de Burnside, podemos conluir que hay exactamente 
+				<me>\frac{1}{8} ( 2^4 + 2^1 + 2^2 + 2^1  + 2^2 + 2^2 +2^3 + 2^3) = 6</me>
+			maneras de colorear los vértices del cuadrado.</p>
+ 
+			<proposition xml:id="proposition-action-function">
+				<statement>
+					<p>Sea <m>G</m> un grupo de permutaciones de <m>X</m> y <m>\widetilde{X}</m> el conjunto de funciones de <m>X</m> en <m>Y</m>. Entonces existe un grupo de permutaciones <m>\widetilde{G}</m> actuando en <m>\widetilde{X}</m>, donde <m>\widetilde{\sigma}  \in \widetilde{G}</m> está definido por <m>\widetilde{\sigma}(f) = f \circ \sigma</m> para <m>\sigma \in G</m> y <m>f \in \widetilde{X}</m>. Más aún, si <m>n</m> es el número de ciclos en la descomposición cíclica de <m>\sigma</m>, entonces <m>|\widetilde{X}_{\sigma}| = |Y|^n</m>.</p>
+				</statement>
+				<proof>
+					<p>Sea <m>\sigma \in G</m> y <m>f \in  \widetilde{X}</m>. Claramente, <m>f \circ \sigma</m> también está en <m>\widetilde{X}</m>. Supongamos que <m>g</m> es otra función de <m>X</m> en <m>Y</m> tal que <m>\widetilde{\sigma}(f) = \widetilde{\sigma}(g)</m>. Entonces para cada <m>x \in X</m>,
+						<me>f( \sigma(x )) = \widetilde{\sigma}(f)(x) = \widetilde{\sigma}(g)(x) = g( \sigma(x )).</me>
+					Como <m>\sigma</m> es una permutación de <m>X</m>, todo elemento <m>x'</m> en <m>X</m> es la imagen de algún <m>x</m> en <m>X</m> por <m>\sigma</m>; luego, <m>f</m> y <m>g</m> coinciden en los elementos de <m>X</m>. Por lo tanto, <m>f=g</m> y <m>\widetilde{\sigma}</m> es inyectiva.  La función <m>\sigma \mapsto \widetilde{\sigma}</m> es epiyectiva, pues los dos conjuntos son del mismo tamaño (finito).</p>
+
+					<p>Supongamos que <m>\sigma</m> es una permutación de <m>X</m> con descomposición cíclica <m>\sigma = \sigma_1 \sigma_2 \cdots \sigma_n</m>. Cualquier <m>f</m> en <m>{\widetilde{X}}_{\sigma}</m> debe tener el mismo valor en cada ciclo de <m>\sigma</m>. Como hay <m>n</m> ciclos e <m>|Y|</m> valores posibles para cada ciclo, <m>|{\widetilde{X}}_{\sigma}| = |Y|^n</m>.</p>
+				</proof>
+			</proposition>
+ 
+ 			<example xml:id="example-actions-burnside-x7">
+				<p>Sea <m>X = \{1, 2, \ldots, 7\}</m> y supongamos que <m>Y = \{ A, B, C \}</m>. Si <m>g</m> es la permutación de <m>X</m> dada por <m>(1 3)(2 4 5) = (1 3)(2 4 5)(6)(7)</m>, entonces <m>n = 4</m>. Cualquier <m>f \in \widetilde{X}_g</m> debe tener el mismo valor para cada ciclo en <m>g</m>. Existen <m>|Y|=3</m> elecciones para cada valor, así <m>|\widetilde{X}_g|  = 3^4 = 81</m>.</p>
+			</example>
+ 
+ <!-- Label problem fixed.  Suggested by L. Franklin.  TWJ 12/8/2011 -->
+
+			<example xml:id="example-actions-color-square">
+				<p>Supongamos que queremos colorear los vértices de un cuadrado usando cuatro colores diferentes. Por la Proposición<nbsp /><xref ref="proposition-action-function" />, podemos decidir inmediatamente que existen
+					<me>\frac{1}{8} (4^4 + 4^1 + 4^2 + 4^1 + 4^2 + 4^ 2 + 4^3 + 4^3) = 55</me>
+				maneras posibles.</p>
+			</example>
+ 
+		</subsection>
+
+		<subsection xml:id="actions-subsection-switching-functions">
+			<title>Funciones de Conmutación</title>
+ 
+			<p>En la teoría de conmutación, estamos interesados en el diseño de circuitos electrónicos con entradas y salidas binarias. El más simple de tales circuitos es una función de conmutación que tiene <m>n</m> entradas y una sola salida (Figura<nbsp /><xref ref="figure-switching-n-variables" />). Circuitos electrónicos grandes con frecuencia se pueden construir combinando módulos más pequeños de este tipo. El problema inherente acá es que incluso para un circuito simple existe un gran número de funciones de conmutación.  Con solo cuatro entradas y una salida, podemos construir 65,536 funciones de conmutación diferentes. Pero, muchas veces podemos transformar una función de conmutación en otra simplemente permutando las entradas del circuito (Figura<nbsp /><xref ref="figure-switching-two-variables" />).</p>
+ 
+			<figure xml:id="figure-switching-n-variables">
+				<caption>Una función de conmutación de <m>n</m> variables</caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 6/28/2010 -->
+				<image width="80%" xml:id="actions-switching-function">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1.25]
+
+						\draw (1,0) rectangle (2.7,2);
+						\node at (1.85,1)  {$f$};
+						\draw [->] (2.7,1) -- (3.2,1) node [right] {$f(x_1, x_2, \ldots, x_n)$};
+						\draw [->] (0.5,0.4) node [left] {$x_n$} -- (1,0.4);
+						\draw [->] (0.5,1.2) node [left] {$x_2$} -- (1,1.2);
+						\draw [->] (0.5,1.6) node [left] {$x_1$} -- (1,1.6);
+						\node at (0.5,0.85)  [left] {$\vdots$};
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+			
+			<p>Definimos una <term>función de conmutación</term><idx><h>Conmutación</h><h>función de</h></idx><idx><h>Función de conmutación</h></idx> o <term>función Booleana</term><idx><h>Función Booleana</h></idx><idx><h>Booleana</h><h>función</h></idx> de <m>n</m> variables como una función de <m>{\mathbb Z}_2^n</m> en <m>{\mathbb Z}_2</m>. Como cualquier función de conmutación puede tomar dos valores para cada <m>n</m>-tupla binaria y hay <m>2^n</m>  <m>n</m>-tuplas binarias, existen <m>2^{2^n}</m> funciones de conmutación para <m>n</m> variables. En general, permitir las permutaciones de las entradas, reduce dramáticamente el número de módulos de diferente tipo requeridos para construir un circuito grande.</p>
+
+			<figure xml:id="figure-switching-two-variables">
+				<caption>Una función de conmutación de dos variables</caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 6/28/2010 -->
+				<image xml:id="actions-switching-two-variables">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=0.8]
+
+						\draw (1,0) rectangle (3,2);
+						\node at (2,1)  {$f$};
+						\draw [->] (3,1) -- (3.5,1) node [right] {$f(a,b)$};
+						\draw [->] (0.5,1.5) node [left] {$a$} -- (1,1.5);
+						\draw [->] (0.5,0.5) node [left] {$b$} -- (1,0.5);
+
+						\draw (7,0) rectangle (9,2);
+						\node at (8,1)  {$f$};
+						\draw [->] (9,1) -- (9.5,1) node [right] {$f(b,a) = g(a,b)$};
+						\draw [->] (6.3,1.5) node [left] {$a$} -- (6.5,1.5) -- (7,0.5);
+						\draw [->] (6.3,0.5) node [left] {$b$} -- (6.5,0.5) -- (7,1.5);
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+ 
+			<p>Las posibles funciones de conmutación con dos variables de entrada <m>a</m> y <m>b</m> se listan en la Tabla<nbsp /><xref ref="table-switching-2-variables" />. Dos funciones de conmutación <m>f</m> y <m>g</m> son equivalentes si <m>g</m> puede ser obtenida a partir de <m>f</m> por una permutación de las variables de entrada. Por ejemplo, <m>g(a, b, c) = f(b, c, a)</m>. En este caso <m>g \sim f</m> via la permutación <m>(acb)</m>. En el caso de funciones de permutación de dos variables, la permutación <m>(ab)</m> reduce las 16 posibles funciones de permutación a 12 funciones no-equivalentes pues
+				<md>
+					<mrow>f_2 &amp; \sim  f_4</mrow>
+					<mrow>f_3 &amp; \sim  f_5</mrow>
+					<mrow>f_{10} &amp; \sim f_{12}</mrow>
+					<mrow>f_{11} &amp; \sim f_{13}.</mrow>
+				</md></p>
+ 
+ 			<table xml:id="table-switching-2-variables">
+				<caption>Funciones de conmutación en dos variables</caption>
+   				<tabular halign="center" top="medium" left="medium">
+   					<col />
+                    <col right="medium"/>
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col right="medium"/>
+      				<row>
+       					<cell colspan="2">Entradas</cell><cell colspan="8">Salidas</cell>
+       				</row>
+					<row bottom="medium">
+						<cell></cell><cell></cell><cell><m>f_0</m></cell><cell><m>f_1</m></cell><cell><m>f_2</m></cell><cell><m>f_3</m></cell><cell><m>f_4</m></cell><cell><m>f_5</m></cell><cell><m>f_6</m></cell><cell><m>f_7</m></cell>
+					</row>				
+   					<row>
+   						<cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell></row>
+   					<row>
+   						<cell>0</cell><cell>1</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>1</cell><cell>1</cell><cell>1</cell></row>
+   					<row>
+   						<cell>1</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>1</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>1</cell></row>
+   					<row  bottom="medium">
+   						<cell>1</cell><cell>1</cell><cell>0</cell><cell>1</cell><cell>0</cell><cell>1</cell><cell>0</cell><cell>1</cell><cell>0</cell><cell>1</cell></row>
+       				<row>
+       					<cell colspan="2">Entradas</cell><cell colspan="8">Salidas</cell>
+       				</row>
+					<row bottom="medium">
+						<cell></cell><cell></cell><cell><m>f_8</m></cell><cell><m>f_9</m></cell><cell><m>f_{10}</m></cell><cell><m>f_{11}</m></cell><cell><m>f_{12}</m></cell><cell><m>f_{13}</m></cell><cell><m>f_{14}</m></cell><cell><m>f_{15}</m></cell></row>
+   					<row>
+   						<cell>0</cell><cell>0</cell><cell>1</cell><cell>1</cell><cell>1</cell><cell>1</cell><cell>1</cell><cell>1</cell><cell>1</cell><cell>1</cell></row>
+  					<row>
+  						<cell>0</cell><cell>1</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>1</cell><cell>1</cell><cell>1</cell></row>
+   					<row>
+   						<cell>1</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>1</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>1</cell></row>
+   					<row bottom="medium">
+   						<cell>1</cell><cell>1</cell><cell>0</cell><cell>1</cell><cell>0</cell><cell>1</cell><cell>0</cell><cell>1</cell><cell>0</cell><cell>1</cell></row>
+				</tabular>
+			</table>
+
+ 
+			<p>Para tres variables de entrada hay <m>2^{2^3} = 256</m> funciones de conmutación posibles; en el caso de cuatro variables hay <m>2^{2^4} =\text{65,536}</m>. El número de clases de equivalencia es demasiado grande para que sea razonable calcularlo directamente. Es necesario emplear el Teorema de Burnside.</p>
+ 
+			<p>Considere la función de conmutación con tres entradas posibles, <m>a</m>, <m>b</m>, y <m>c</m>. Como mencionamos, dos funciones de conmutación <m>f</m> y <m>g</m> son equivalentes si una permutación de las variables de entrada de <m>f</m> da <m>g</m>. Es importante notar que una permutación de las funciones de conmutación no es simplemente una permutación de los valores de entrada <m>\{a, b, c\}</m>. Una función de conmutación es un conjunto de valores de salida para las entradas <m>a</m>, <m>b</m>, y <m>c</m>, así, cuando consideramos funciones de conmutación equivalentes, estamos permutando <m>2^3</m> salidas posibles, no solo tres valores de entrada. Por ejemplo, cada tripleta binaria <m>(a, b, c)</m> tiene asociada una salida específica. La permutación <m>(acb)</m> cambia la salida como sigue: 
+				<md>
+					<mrow>(0, 0, 0) &amp; \mapsto  (0, 0, 0)</mrow>
+					<mrow>(0, 0, 1) &amp; \mapsto  (0, 1, 0)</mrow>
+					<mrow>(0, 1, 0) &amp; \mapsto  (1, 0, 0)</mrow>
+					<mrow>&amp; \vdots </mrow>
+					<mrow> (1, 1, 0) &amp; \mapsto  (1, 0, 1)</mrow>
+					<mrow>(1, 1, 1) &amp; \mapsto  (1, 1, 1).</mrow>
+				</md></p>
+
+			<p>Sea <m>X</m> el conjunto de valores de salida para una función de conmutación en <m>n</m> variables. Entonces <m>|X|=2^n</m>. Podemos enumerar estos valores como sigue: 
+				<md>
+					<mrow>(0, \ldots, 0, 1) &amp; \mapsto  0</mrow>
+					<mrow>(0, \ldots, 1, 0) &amp; \mapsto  1</mrow>
+					<mrow>(0, \ldots, 1, 1) &amp; \mapsto  2</mrow>
+					<mrow>&amp; \vdots </mrow>
+					<mrow>(1, \ldots, 1, 1) &amp; \mapsto  2^n-1.</mrow>
+				</md>
+			Ahora consideremos un circuito con cuatro variables de entrada y una sola salida. Supongamos que podemos permutar los cables de cualquier circuito de acuerdo al siguiente grupo de permutaciones: 
+				<md>
+					<mrow>(a)    \quad (ac)     \quad (bd)     \quad (adcb)</mrow>
+					<mrow>(abcd) \quad (ab)(cd) \quad (ad)(bc) \quad (ac)(bd).</mrow>
+				</md>
+			Las permutaciones de las cuatro variables de entrada posible inducen las permutaciones de los valores de salida en la Tabla<nbsp /><xref ref="table-switching-permutation" />.</p>
+
+ 			<p>Lugo, existen
+				<me> \frac{1}{8} (2^{16} + 2 \cdot 2^{12} + 2 \cdot 2^6 + 3 \cdot 2^{10}) = 9616</me>
+			funciones de conmutación posibles de cuatro variables bajo este grupo de permutaciones. Este número será incluso menor si consideramos el grupo completo de simetrías en cuatro símbolos.</p>
+
+			<table xml:id="table-switching-permutation">
+				<caption>Permutaciones de funciones de conmutación en cuatro variables</caption>
+   				<tabular halign="left" top="medium">
+       				<row>
+       					<cell>Permutación</cell><cell></cell><cell> Número</cell>
+       				</row>
+					<row bottom="medium">
+						<cell>en el grupo </cell><cell> Permutación de función de conmutación</cell><cell>de Ciclos</cell>
+					</row>
+   					<row>
+   						<cell><m>(a)</m></cell><cell><m>(0)</m></cell><cell>16</cell>
+   					</row>
+					<row>
+						<cell><m>(a c)</m></cell><cell><m>(2,8)(3,9)(6,12)(7,13)</m></cell><cell>12</cell>
+					</row>
+					<row>
+						<cell><m>(b d)</m> </cell><cell><m>(1,4)(3,6)(9,12)(11,14)</m></cell><cell>12</cell>
+					</row>
+					<row>
+						<cell><m>(a d c b)</m></cell><cell> <m>(1,2,4,8)(3,6.12,9)(5,10)(7,14,13,11)</m></cell><cell>6</cell>
+					</row>
+					<row>
+						<cell><m>(a b c d)</m> </cell><cell><m>(1,8,4,2)(3,9,12,6)(5,10)(7,11,13,14)</m></cell><cell>6</cell>
+					</row>
+					<row>
+						<cell><m>(a b)(c d)</m></cell><cell><m>(1,2)(4,8)(5,10)(6,9)(7,11)(13,14)</m></cell><cell>10</cell>
+					</row>
+					<row>
+						<cell><m>(a d)(b c)</m></cell><cell><m>(1,8)(2,4)(3,12)(5,10)(7,14)(11,13)</m></cell><cell>10</cell>
+					</row>
+					<row bottom="medium">
+						<cell><m>(a c)(b d)</m></cell><cell><m>(1,4)(2,8)(3,12)(6,9)(7,13)(11,14)</m></cell><cell>10</cell>
+					</row>
+   				</tabular>
+			</table>
+
+		<xi:include href="./sage/actions-info.xml" />
+
+		</subsection>
+		
+		<subsection xml:id="actions-subsection-historical-note">
+			<title>Nota Histórica</title>
+
+			<p>William Burnside<idx><h>Burnside, William</h></idx> nació en Londres en 1852. Estudió en la Universidad de Cambridge desde 1871 hasta 1875 y ganó el Smith's Prize en su último año. Después de graduarse dió clases en Cambridge.  Se convirtió en miebro de la Royal Society en 1893. Burnside escribió aproximadamente 150 artículos en matemáticas aplicadas, geometría diferencial y probabilidades, pero sus contribuciones más famosas fueron en teoría de grupos.  Varias de las conjeturas de Burnside han estimulado la investigación hasta hoy. Una conjetura fue que todo grupo de orden impar es soluble; es decir, para un grupo <m>G</m> de orden impar, existe una sucesión de subgrupos 
+				<me>G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset H_0 = \{ e \}</me>
+			tales que <m>H_i</m> es normal en <m>H_{i+1}</m> y <m>H_{i+1} / H_i</m> es abeliano. Esta conjetura fue finalmente demostrada por W. Feit<idx><h>Feit, W.</h></idx> y J. Thompson<idx><h>Thompson, J.</h></idx> en 1963. El libro <booktitle>The Theory of Groups of Finite Order</booktitle> de Burnside, publicado en 1897, fue uno de los primeros libros en dar un tratamiento moderno a los grupos en lugar de verlos solo como grupos de permutaciones. La segunda edición, publicada en 1911, es todavía un clásico.</p>
+		</subsection>
+	</section>
+
+	<xi:include href="./exercises/actions.xml" />
+
+	<exercises xml:id="actions-exercises-programming">
+		<title>Ejercicio de Programación</title>
+		
+		<exercise>
+			<statement>
+				<p>Escriba un programa para calcular el número de clases de conjugación en <m>S_n</m>. ¿Cuál es el mayor valor de <m>n</m> para el que funciona su programa?</p>
+			</statement>
+		</exercise>
+		
+	</exercises>
+
+	<references xml:id="actions-references">
+		<title>Referencias y Lecturas Recomendadas</title> <!-- %TWJ 6/28/2010 - References checked. -->
+
+		<biblio type="raw"> <!-- was [1] -->
+		De Bruijin, N. G. <q>Pólya's Theory of Counting,</q> in <title>Applied Combinatorial Mathematics</title>, Beckenbach, E. F., ed. Wiley, New York, 1964.</biblio>
+ 
+
+		<biblio type="raw"> <!-- was [2] -->
+		Eidswick, J. A. <q>Cubelike Puzzles<mdash />What Are They and How Do You Solve Them?</q> <title>American Mathematical Monthly</title> <volume>93</volume>(1986), 157<ndash />76.</biblio>
+ 
+		<biblio type="raw"> <!-- was [3] -->
+		Harary, F., Palmer, E. M., and Robinson, R. W. <q>Pólya's Contributions to Chemical Enumeration,</q> in <title>Chemical Applications of Graph Theory</title>, Balaban, A. T., ed. Academic Press, London, 1976.</biblio>
+
+		<biblio type="raw"> <!-- was [4] -->
+		Gårding, L. and Tambour, T. <title>Algebra for Computer Science</title>. Springer-Verlag, New York, 1988.</biblio>
+ 		<!-- %TWJ 6/28/2010 - This is out of print -->
+
+		<biblio type="raw"> <!-- was [5] -->
+		Laufer, H. B. <title>Discrete Mathematics and Applied Modern Algebra</title>. PWS-Kent, Boston, 1984.</biblio>
+ <!-- %TWJ 6/28/2010 - This is out of print -->
+
+		<biblio type="raw"> <!-- was [6] --> Pólya, G. and Read, R. C. <title>Combinatorial Enumeration of Groups, Graphs, and Chemical Compounds</title>. Springer-Verlag, New York, 1985.</biblio>
+ <!-- %TWJ 6/28/2010 - This is out of print -->
+ 
+		<biblio type="raw"> <!-- was [7] -->
+		Shapiro, L. W. <q>Finite Groups Acting on Sets with Applications,</q> <title>Mathematics Magazine</title>, May<ndash />June 1973, 136<ndash />47.</biblio>
+ 
+	</references>
+ 
+	<xi:include href="./sage/actions-sage.xml" />
+	<xi:include href="./sage/actions-sage-exercises.xml" />
+
+</chapter>
+ 

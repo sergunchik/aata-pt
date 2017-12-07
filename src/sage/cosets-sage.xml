@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="cosets-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Sage puede crear todos las clases laterales de un subgrupo, y todos los subgrupos de un grupo. Aunque estos métodos pueden ser algo lentos, hay muchas veces en que son mejores que experimentar con papel y lápiz, y pueden ser de gran ayuda para entender la estructura de los grupos finitos.</p>
+	</introduction>
+
+	<subsection>
+		<title>Clases Laterales</title>
+
+		<p>Sage creará todas las clases laterales derechas (o izquierdas) de un subgrupo.  Escritas matemáticamente, las clases laterales son conjuntos, y el orden de los elementos dentro es irrelevante.  En Sage, las listas son más naturales, y acá es una ventaja.</p>
+
+		<p>Sage crea las clases laterales de un subgrupo como lista de listas.  Cada lista interna es una clase lateral particular.  La primera clase lateral siempre es el subgrupo mismo, y el primer elemento de esta clase es la identidad.  Cada una de las otrar clases se puede entender construída para tener su representante como primer elemento, y si usamos este elemento como representante, los elementos de la clase están en el mismo orden en que serían creados multiplicando este representante por los elementos de la primera clase (el subgrupo).</p>
+
+		<p>El parámetro opcional <c>side</c> puede ser  <c>'right'</c> o <c>'left'</c>, y si no está explicitado, entonces por defecto se entregarán las clases laterales derechas.  Las opciones se refieren a qué lado del producto está el representante.  Note que ahora los resultados de Sage estarán <q>al revés</q> comparados con el texto.  Acá hay un Ejemplo<nbsp /><xref ref="example-cosets-s3-cosets" /> reanudado, pero en un orden ligeramente diferente.</p>
+
+		<sage>
+			<input>
+			G = SymmetricGroup(3)
+			a = G("(1,2)")
+			H = G.subgroup([a])
+			rc = G.cosets(H, side='right'); rc
+			</input>
+			<output>[[(), (1,2)], [(2,3), (1,3,2)], [(1,2,3), (1,3)]]</output>
+		</sage>
+
+		<sage>
+			<input>lc = G.cosets(H, side='left'); lc</input>
+			<output>[[(), (1,2)], [(2,3), (1,2,3)], [(1,3,2), (1,3)]]</output>
+		</sage>
+
+		<p>Si miramos cuidadosamente, podemos ver la diferencia entre las clases laterales derechas y las izquierdas.  Compare estas clases laterales con las del texto y note que derecha e izquierda están intercambiadas.  No debiera ser un problema <mdash /> solo téngalo presente.</p>
+
+		<sage>
+			<input>
+			G = SymmetricGroup(3)
+			b = G("(1,2,3)")
+			H = G.subgroup([b])
+			rc = G.cosets(H, side='right'); rc
+			</input>
+			<output>[[(), (1,2,3), (1,3,2)], [(2,3), (1,3), (1,2)]]</output>
+		</sage>
+
+		<sage>
+			<input>lc = G.cosets(H, side='left'); lc</input>
+			<output>[[(), (1,2,3), (1,3,2)], [(2,3), (1,2), (1,3)]]</output>
+		</sage>
+
+		<p>Si analizamos la lista compuesta, podemos ver que las clases laterales derechas y las izquierdas son las mismas.  Veamos lo que piensa Sage:</p>
+
+		<sage>
+			<input>rc == lc</input>
+			<output>False</output>
+		</sage>
+
+		<p>Matemáticamente, necesitamos conjuntos, pero Sage está trabajando con listas ordenadas, y el orden importa.  Sin embargo, si sabemos que nuestras listas no contienen duplicados (el método <c>.cosets()</c> nunca producirá duplicados) entonces podemos ordenar las listas y la verificación de igualdad tendrá el resultado esperado.  Los elementos de un grupo de permutaciones tienen un orden definido para ellos <mdash /> no es tan importante <em>cuál</em> es ese orden, solo que <em>algún</em> orden está definido.  La función <c>sorted()</c> tomará cualquier lista devolviendo una versión ordenada.  Así para cada lista de clases laterales, ordenaremos las clases individuales y luego ordenaremos la lista de clases ordenadas.  Esta es una maniobra típica, aunque un poco complicada para las listas anidadas.</p>
+
+		<sage>
+			<input>
+			rc_sorted = sorted([sorted(coset) for coset in rc])
+			rc_sorted
+			</input>
+			<output>[[(), (1,2,3), (1,3,2)], [(2,3), (1,2), (1,3)]]</output>
+		</sage>
+
+		<sage>
+			<input>
+			lc_sorted = sorted([sorted(coset) for coset in lc])
+			lc_sorted
+			</input>
+			<output>[[(), (1,2,3), (1,3,2)], [(2,3), (1,2), (1,3)]]</output>
+		</sage>
+
+		<sage>
+			<input>rc_sorted == lc_sorted</input>
+			<output>True</output>
+		</sage>
+
+		<p>La lista de todas las clases laterales puede ser bastante larga (contendrá todos los elementos del grupo) y puede tomar varios segundos en ser completada, incluso para grupos pequeños.  Existen formas más sofisticadas, y más rápidas, de estudiar clases laterales (como simplemente usar sus representantes), pero para entender estas técnicas es necesario tener más teoría.</p>
+
+		<sage type="practice"/>
+	</subsection>
+
+	<subsection>
+		<title>Subgrupos</title>
+
+		<p>Sage puede calcular todos los subgrupos de un grupo.  Esto puede producir una respuesta aún más larga que el método de clases laterales y puede ser mucho más lento, dependiendo de la estructura del grupo.  La lista está ordenada según el tamaño de los subgrupos, con los más pequeños primero.  Como una demostración, calcularemos primero una lista de todos los subgrupos de un grupo pequeño, y luego extraeremos uno de estos subgrupos de la lista para estudio posterior.</p>
+
+		<sage>
+			<input>
+			G = SymmetricGroup(3)
+			sg = G.subgroups(); sg
+			</input>
+			<output>
+			[Subgroup of (Symmetric group of order 3! as a permutation group) generated by [()],
+			 Subgroup of (Symmetric group of order 3! as a permutation group) generated by [(2,3)],
+			 Subgroup of (Symmetric group of order 3! as a permutation group) generated by [(1,2)],
+			 Subgroup of (Symmetric group of order 3! as a permutation group) generated by [(1,3)],
+			 Subgroup of (Symmetric group of order 3! as a permutation group) generated by [(1,2,3)],
+			 Subgroup of (Symmetric group of order 3! as a permutation group) generated by [(2,3), (1,2,3)]]
+			</output>
+		</sage>
+
+		<sage>
+			<input>H = sg[4]; H</input>
+			<output>Subgroup of (Symmetric group of order 3! as a permutation group) generated by [(1,2,3)]</output>
+		</sage>
+
+		<sage>
+			<input>H.order()</input>
+			<output>3</output>
+		</sage>
+
+		<sage>
+			<input>H.list()</input>
+			<output>[(), (1,2,3), (1,3,2)]</output>
+		</sage>
+
+		<sage>
+			<input>H.is_cyclic()</input>
+			<output>True</output>
+		</sage>
+
+		<!-- RAB 2014/08/18 ref is to a proposition, not a Corollary? -->
+		<p>La salida del método <c>.subgroups()</c> suele ser grande, y podemos estar interesados en las propiedades de ciertos subgrupos específicos (como en el ejemplo anterior) o preguntas más amplias como la <q>estructura de subgrupos</q> del grupo.  Acá extendemos el Corolario<nbsp /><xref ref="proposition-cosets-theorem-10" />.  Note que el hecho de que Sage <em>calcule</em> un subgrupo de orden  6 en <m>A_4</m>, no es un sustituto válido de una  <em>demostración</em> como la dada para el corolario.  Pero el resultado computacional nos anima para buscar la demostración teórica con mayor confianza.</p>
+
+		<sage>
+			<input>
+			G = AlternatingGroup(4)
+			sg = G.subgroups()
+			[H.order() for H in sg]
+			</input>
+			<output>[1, 2, 2, 2, 3, 3, 3, 3, 4, 12]</output>
+		</sage>
+
+		<p>Así que no vemos un subgrupo de orden 6 en la lista de subgrupos de <m>A_4</m>.  Note como el Teorema de Lagrange (Teorema<nbsp /><xref ref="theorem-lagrange" />) está en evidencia <mdash /> todos los subgrupos tienen órdenes que dividen a <m>12</m>, el orden de <m>A_4</m>.</p>
+
+		<sage>
+			<input>
+			G = SymmetricGroup(4)
+			sg = G.subgroups()
+			[H.order() for H in sg]
+			</input>
+			<output>
+			[1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4,
+			 6, 6, 6, 6, 8, 8, 8, 12, 24]
+			</output>
+		</sage>
+
+		<p>Nuevamente, aprecie el Teorema de Lagrange en acción.  Pero aún más interesante, <m>S_4</m> tiene un subgrupo de orden 6.  Cuatro de ello, para ser precisos.  Estos cuatro subgrupos de orden 6 son similares entre ellos, ¿puede describirlos de forma simple (<em>antes</em> de escarbar en la lista <c>sg</c> para obtener más información)?  Si quiere saber cuántos subgrupos tiene <m>S_4</m>, podría simplemente contar el número de subgrupos en la lista <c>sg</c>.  La función <c>len()</c> hace esto para <em>cualquier</em> lista y es usualmente una forma sencilla de contar cosas.</p>
+
+		<sage>
+		<input>len(sg)</input>
+		<output>30</output>
+		</sage>
+
+		<sage type="practice"/>
+
+	</subsection>
+
+	<subsection>
+		<title>Subgrupos de Grupos Cíclicos</title>
+
+		<p>Ahora que estamos más familiarizados con los grupos de permutaciones, y conocemos el método <c>.subgroups()</c>, podemos revisitar una idea del Capítulo<nbsp /><xref ref="cyclic" />.  Los subgrupos de un grupo cíclico siempre son cíclicos, pero ¿cuántos hay y qué órdenes tienen?</p>
+
+		<sage>
+			<input>
+			G = CyclicPermutationGroup(20)
+			[H.order() for H in G.subgroups()]
+			</input>
+			<output>[1, 2, 4, 5, 10, 20]</output>
+		</sage>
+
+		<sage>
+			<input>
+			G = CyclicPermutationGroup(19)
+			[H.order() for H in G.subgroups()]
+			</input>
+			<output>[1, 19]</output>
+		</sage>
+
+		<p>Podríamos hacer esto todo el día, pero ahora que tiene Sage a su disposición, varíe el orden de <c>G</c> cambiando el valor de <c>n</c> y estudie varios de estos resultados.  Quizás podría intentar un grupo cíclico de orden 24 y comparar con el grupo simétrico <m>S_4</m> (arriba) que también tiene orden 24. ¿Se le ocurre alguna conjetura?</p>
+
+		<sage>
+			<input>
+			n = 8
+			G = CyclicPermutationGroup(n)
+			[H.order() for H in G.subgroups()]
+			</input>
+			<output>[1, 2, 4, 8]</output>
+		</sage>
+
+		<sage type="practice"/>
+
+	</subsection>
+
+	<subsection>
+		<title>Función Phi de Euler</title>
+
+		<p>Para sumar a nuestras funciones de teoría de números del Capítulo<nbsp /><xref ref="integers" />, notemos que Sage pone a nuestra disposición la función <m>\phi</m> de Euler como <c>euler_phi()</c>.</p>
+
+		<sage>
+			<input>euler_phi(345)</input>
+			<output>176</output>
+		</sage>
+
+		<p>Acá viene un experimento interesante que puede ejecutar múltiples veces.</p>
+
+		<sage doctest="random">
+			<input>
+			m = random_prime(10000)
+			n = random_prime(10000)
+			m, n, euler_phi(m*n) == euler_phi(m)*euler_phi(n)
+			</input>
+			<output>(5881, 1277, True)</output>
+		</sage>
+
+		<p>¿Alguna otra conjetura? ¿Puede generalizar este resultado?</p>
+
+		<sage type="practice"/>
+
+	</subsection>
+
+</section>

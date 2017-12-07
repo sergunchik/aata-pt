@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<chapter xml:id="isomorph" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Isomorfismos</title>
+
+	<introduction>
+		<p>Muchos grupos pueden parecer diferentes a primera vista, pero pueden reconocerse como iguales después de un cambio de nombre de sus elementos.  Por ejemplo, <m>{\mathbb Z}_4</m> y el subgrupo del grupo de la circunferencia <m>{\mathbb T}</m> generado por <m>i</m> pueden ser reconocidos como el mismo grupo demostrando que existe una correspondencia entre sus elementos y entre las operaciones de grupo de ambos. En tal caso diremos que los grupos son isomorfos.</p>
+	</introduction>
+
+	<section xml:id="section-isomorph-definitions">
+		<title>Definición y Ejemplos</title>
+
+		<introduction>
+
+			<p>Dos grupos <m>(G, \cdot)</m> y <m>(H, \circ)</m> son <term>isomorfos</term><idx><h>Grupos</h><h>isomorfos</h></idx> si existe una función biyectiva  <m>\phi : G \rightarrow H</m> que preserve la operación de grupo;  es decir, 
+				<me>\phi( a \cdot b) = \phi( a) \circ \phi( b)</me>
+			para todo <m>a</m> y <m>b</m> en <m>G</m>. Si <m>G</m> es isomorfo con <m>H</m>, escribimos <m>G \cong H</m>. <notation><usage>G \cong H</usage><description><m>G</m> es isomorfo a un grupo <m>H</m></description></notation> La función <m>\phi</m> se llama un <term>isomorfismo</term><idx><h>Grupos</h><h>isomorfismo de</h></idx><idx><h>Isomorfismo</h><h>de grupos</h></idx>.</p>
+
+			
+
+			<example xml:id="example-isomorph-z4">
+				<p>Para demostrar que <m>{\mathbb Z}_4 \cong \langle i \rangle</m>, defina una función <m>\phi: {\mathbb Z}_4 \rightarrow \langle i \rangle</m> como <m>\phi(n) = i^n</m>.  Debemos mostrar que <m>\phi</m> es biyectiva y que preserva la operación de grupo.  La función <m>\phi</m> es biyectiva pues
+					<md>
+						<mrow>\phi(0) &amp; = 1</mrow>
+						<mrow>\phi(1) &amp; = i</mrow>
+						<mrow>\phi(2) &amp; = -1</mrow>
+						<mrow>\phi(3) &amp; = -i.</mrow>
+					</md>
+				Como
+					<me>\phi(m + n) = i^{m+n} = i^m i^n = \phi(m) \phi( n),</me>
+				se preserva la operación de grupo.</p>
+			</example>
+
+			<example xml:id="example-isomorph-real">
+				<p>Podemos definir un isomorfismo <m>\phi</m> del grupo aditivo de los números reales <m>( {\mathbb R}, + )</m> al grupo multiplicativo de los números reales positivos <m>( {\mathbb R^+}, \cdot )</m>  mediante la función exponencial; es decir,
+					<me>\phi( x + y) = e^{x + y} = e^x e^y = \phi( x ) \phi( y).</me>
+				Por supuesto, debemos aún demostrar que <m>\phi</m> es una biyección; esto puede ser hecho usando cálculo diferencial.</p>
+			</example>
+
+			<example xml:id="example-isomorph-rational">
+				<p>Los enteros son isomorfos al subgrupo de <m>{\mathbb Q}^\ast</m> que consiste de los elementos de la forma <m>2^n</m>.  Defina una función <m>\phi: {\mathbb Z} \rightarrow {\mathbb Q}^\ast</m> como <m>\phi( n ) = 2^n</m>. Entonces
+					<me>\phi( m + n ) = 2^{m + n} = 2^m 2^n = \phi( m ) \phi( n ).</me>
+				Por definición la función <m>\phi</m> es sobreyectiva en el subconjunto <m>\{2^n :n \in {\mathbb Z} \}</m> de  <m>{\mathbb Q}^\ast</m>. Para mostrar que la función es inyectiva, supongamos que <m>\phi(m) = \phi(n)</m>.  Entonces <m>2^m = 2^n</m> y <m>2^{m-n} = 1</m>.  Concluimos que <m>m = n</m>.</p>
+			</example>
+
+			<example xml:id="example-isomorph-units">
+				<p>Los grupos <m>{\mathbb Z}_8</m> y <m>{\mathbb Z}_{12}</m>  no pueden ser isomorfos pues tienen diferentes órdenes; Sin embargo <m>U(8) \cong U(12)</m>.  Sabemos que 
+					<md>
+					<mrow>U(8) &amp; = \{1, 3, 5, 7 \}</mrow>
+					<mrow>U(12) &amp; = \{1, 5, 7, 11 \}.</mrow>
+					</md>
+				Un isomorfismo <m>\phi : U(8) \rightarrow U(12)</m> está dado por 
+					<md>
+					<mrow>1 &amp; \mapsto  1</mrow>
+					<mrow>3 &amp; \mapsto  5</mrow>
+					<mrow>5 &amp; \mapsto  7</mrow>
+					<mrow>7 &amp; \mapsto  11.</mrow>
+					</md>
+				La función <m>\phi</m> no es el único isomorfismo posible entre estos dos grupos.  Podríamos definir otro isomorfismo  <m>\psi</m> como <m>\psi(1) = 1</m>, <m>\psi(3) = 11</m>, <m>\psi(5) = 5</m>, <m>\psi(7) = 7</m>. De hecho, estos dos grupos son isomorfos a <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> (Vea el Ejemplo<nbsp /><xref ref="example-groups-z2xz2" /> en el Capítulo<nbsp /><xref ref="groups" />).</p>
+			</example>
+
+			<example xml:id="example-isomorph-not-isomorph">
+				<p>Si bien <m>S_3</m> y <m>{\mathbb Z}_6</m> poseen el mismo número de elementos, podríamos sospechar que no son isomorfos, pues <m>{\mathbb Z}_6</m> es abeliano y  <m>S_3</m> es no abeliano.  Para demostrar que esto es así, supongamos que <m>\phi : {\mathbb Z}_6 \rightarrow  S_3</m> es un isomorfismo.  Sean <m>a , b \in S_3</m> dos elementos tales que <m>ab \neq ba</m>.  Como <m>\phi</m> es un isomorfismo, existen elementos <m>m</m> y <m>n</m> en <m>{\mathbb Z}_6</m> tales que 
+					<me>\phi( m )  = a \quad \text{and} \quad \phi( n )  = b.</me>
+				Pero,
+					<me>ab = \phi(m ) \phi(n) = \phi(m + n) = \phi(n + m) = \phi(n ) \phi(m) = ba,</me>
+				lo que contradice el hecho de que <m>a</m> y <m>b</m> no conmutan.</p>
+			</example>
+
+			<theorem xml:id="theorem-isomorph-1">
+				<statement>
+					<p>Sea <m>\phi : G \rightarrow H</m> un isomorfismo de grupos.  Entonces se cumplen las siguientes proposiciones.<ol>
+
+						<li><p><m>\phi^{-1} : H \rightarrow G</m> es un isomorfismo.</p></li>
+
+						<li><p><m>|G| = |H|</m>.</p></li>
+
+						<li><p>Si <m>G</m> es abeliano, entonces <m>H</m> es abeliano.</p></li>
+
+						<li><p>Si <m>G</m> es cíclico, entonces <m>H</m> es cíclico.</p></li>
+
+						<li><p>Si <m>G</m> tiene un subgrupo de orden <m>n</m>, entonces <m>H</m> tiene un subgrupo de orden <m>n</m>.</p></li>
+
+					</ol></p>
+				</statement>
+				<proof>
+					<p>Las afirmaciones (1) y (2) son consecuencia de que <m>\phi</m> sea una biyección.  Demostraremos (3) y dejaremos el resto del teorema para ser demostrado en los ejercicios.</p>
+	 
+					<p>(3) Supongamos que <m>h_1</m> y <m>h_2</m> son elementos de <m>H</m>.  Como <m>\phi</m> es sobreyectiva, existen elementos <m>g_1, g_2 \in G</m> tales que <m>\phi(g_1) = h_1</m> y <m>\phi(g_2) = h_2</m>.  Por lo tanto, 
+						<me>h_1 h_2 = \phi(g_1) \phi(g_2) =  \phi(g_1 g_2) = \phi(g_2 g_1) = \phi(g_2) \phi(g_1) = h_2 h_1.</me></p>
+				</proof>
+			</theorem>
+
+			<p>Estamos ahora en condiciones de caracterizar todos los grupos cíclicos.</p>
+
+			<theorem xml:id="theorem-isomorph-2">
+				<statement>
+					<p>Todo grupo cíclico de orden infinito es isomorfo a <m>{\mathbb Z}</m>.</p>
+				</statement>
+				<proof>
+					<p>Sea <m>G</m> un grupo cíclico de orden infinito y supongamos que <m>a</m> es un generador de <m>G</m>.  Definamos la función <m>\phi : {\mathbb Z} \rightarrow  G</m> como <m>\phi : n \mapsto a^n</m>. Entonces 
+						<me>\phi( m+n ) = a^{m+n} = a^m a^n = \phi( m ) \phi( n ).</me>
+					Para mostrar que <m>\phi</m> es inyectiva, supongamos que <m>m</m> y <m>n</m> son dos elementos en <m>{\mathbb Z}</m>, con <m>m \neq n</m>.  Podemos suponer que <m>m \gt n</m>.  Debemos mostrar que <m>a^m \neq a^n</m>. Supongamos lo contrario; es decir, <m>a^m = a^n</m>. En ese caso <m>a^{m - n} = e</m>, con <m>m - n \gt 0</m>, lo que contradice el hecho de que <m>a</m> tiene orden infinito.  Nuestra función es sobreyectiva pues todo elemento en <m>G</m> puede ser escrito como <m>a^n</m> para algún entero <m>n</m> y <m>\phi(n) = a^n</m>.</p>
+				</proof>
+			</theorem>
+
+			<theorem xml:id="theorem-isomorph-3">
+				<statement>
+					<p>Si <m>G</m> es un grupo cíclico de orden <m>n</m>, entonces <m>G</m> es isomorfo a <m>{\mathbb Z}_n</m>.</p>
+				</statement>
+				<proof>
+					<p>Sea <m>G</m> un grupo cíclico de orden <m>n</m> generado por <m>a</m> y defina una función <m>\phi : {\mathbb Z}_n \rightarrow  G</m> como <m>\phi : k \mapsto a^k</m>, donde <m>0 \leq k \lt n</m>. La demostración de que <m>\phi</m> es un isomorfismo es uno de los ejercicios al final del capítulo. </p>
+				</proof>
+			</theorem>
+
+			<!-- RAB: 2014/08/18 Should ref be "corollary-isomorph-4"?   -->
+			<!-- If so, search for refs (or see them fail with xsltproc) -->
+			<corollary xml:id="theorem-isomorph-4">
+				<statement>
+					<p>Si <m>G</m> es un grupo de orden <m>p</m>, donde <m>p</m> es un número primo, entonces  <m>G</m> es isomorfo a <m>{\mathbb Z}_p</m>.</p>
+				</statement>
+				<proof>
+					<p>La demostración es un resultado directo del Corolario<nbsp /><xref ref="corollary-cosets-theorem-7" />.</p>
+				</proof>
+			</corollary>
+	 
+			<p>El principal objetivo en la teoría de grupos es el de clasificar todos los grupos; sin embargo, tiene sentido considerar que dos grupos isomorfos son en realidad el mismo grupo.  Enunciamos este resultado en el siguiente teorema, cuya demostración dejamos coom ejercicio.</p> 
+
+			<theorem xml:id="theorem-isomorph-5">
+				<statement>
+					<p>El isomorfismo de grupos define una relación de equivalencia en la clase de todos los grupos.</p>
+				</statement>
+			</theorem>
+	 
+			<p>Luego, podemos modificar nuestro objetivo de clasificar todos los grupos al de clasificar todos los grupos <term>salvo isomorfismo</term>; es decir, consideraremos que dos grupos son el mismo si son isomorfos.</p>
+
+		</introduction>
+
+		<subsection xml:id="isomorph-subsection-cayleys-theorem">
+			<title>Teorema de Cayley</title>
+
+			<p>Cayley demostró que si <m>G</m> es un grupo, entonces es isomorfo a un grupo de permutaciones de algún conjunto; luego, todo grupo es un grupo de permutaciones.  El Teorema de Cayley es lo que llamamos un teorema de representaciones.  El objetivo de la teoría de representaciones es encontrar un isomorfismo de algún grupo <m>G</m> que queramos estudiar a un grupo sobre el que tengamos bastante información, tal como un grupo de permutaciones o de matrices.</p>
+
+			<example xml:id="example-isomorph-cayley">
+				<p>Considere el grupo <m>{\mathbb Z}_3</m>.  La tabla de Cayley para <m>{\mathbb Z}_3</m> es como sigue.</p> 
+
+			<sidebyside width="100%"> <!-- math table -->
+				<p><me>\begin{array}{c|ccc}
+					<![CDATA[+ & 0 & 1 & 2 \\ \hline
+					0       & 0 & 1 & 2 \\
+					1       & 1 & 2 & 0 \\
+					2       & 2 & 0 & 1 ]]>
+					\end{array}</me></p>
+			</sidebyside>
+
+			<p>La tabla de sumas para <m>{\mathbb Z}_3</m> sugiere que es igual al grupo de permutaciones <m>G = \{ (0), (0 1 2), (0 2 1) \}</m>.  El isomorfismo acá es  
+				<md>
+					<mrow>0 &amp; \mapsto
+					\begin{pmatrix}<![CDATA[
+					0 & 1 & 2 \\ 0 & 1 & 2
+					]]>\end{pmatrix}
+					= (0)</mrow>
+					<mrow>1 &amp; \mapsto
+					\begin{pmatrix}<![CDATA[
+					0 & 1 & 2 \\ 1 & 2 & 0
+					]]>\end{pmatrix}
+					= (0 1 2)</mrow>
+					<mrow>2 &amp; \mapsto
+					\begin{pmatrix}<![CDATA[
+					0 & 1 & 2 \\ 2 & 0 & 1
+					]]>\end{pmatrix}
+					= (0 2 1).</mrow>
+				</md></p>
+			</example>
+
+			<theorem xml:id="theorem-cayleys">
+				<title>Cayley</title>
+				<idx><h>Teorema de Cayley</h></idx>
+				<statement>
+					<p>Todo grupo es isomorfo a un grupo de permutaciones.</p>
+				</statement>
+				<proof>
+					<p>Sea <m>G</m> un grupo.  Debemos encontrar un grupo de permutaciones <m>\overline{G}</m> que sea isomorfo a <m>G</m>. Para cualquier <m>g \in G</m>, definamos una función <m>\lambda_g : G \rightarrow G</m> como <m>\lambda_g(a) = ga</m>.  Afirmamos que <m>\lambda_g</m> es una permutación de <m>G</m>.  Para demostrar que <m>\lambda_g</m> es 1-1, supongamos que <m>\lambda_g(a) = \lambda_g(b)</m>.  Entonces  
+						<me>ga =\lambda_g(a) = \lambda_g(b) = gb.</me>
+					Luego, <m>a = b</m>.  Para demostrar que <m>\lambda_g</m> es sobre, debemos demostrar que para cada <m>a \in G</m>, existe <m>b</m> tal que <m>\lambda_g (b) = a</m>.  Sea <m>b = g^{-1} a</m>.</p>
+
+					<p>Estamos preparados para definir nuestro grupo <m>\overline{G}</m>. Sea
+						<me>\overline{G} = \{ \lambda_g : g \in G \}.</me>
+					Debemos mostrar que <m>\overline{G}</m> es un grupo con la operación de composición de funciones y encontrar un isomorfismo entre <m>G</m> y <m>\overline{G}</m>.  Tenemos la clausura bajo composición de funciones pues  
+						<me>(\lambda_g \circ \lambda_h )(a) = \lambda_g(ha) = gha = \lambda_{gh} (a).</me>
+					Además,
+						<me>\lambda_e (a) = ea = a</me>
+					y
+						<me>(\lambda_{g^{-1}} \circ \lambda_g) (a) = \lambda_{g^{-1}} (ga) = g^{-1} g a = a = \lambda_e (a).</me></p>
+
+					<p>Podemos definir un isomorfismo de <m>G</m> en <m>\overline{G}</m> como <m>\phi : g \mapsto \lambda_g</m>. La operación de grupo se preserva pues
+						<me>\phi(gh) = \lambda_{gh} = \lambda_g \lambda_h = \phi(g) \phi(h).</me>
+					Es 1-1, pues si <m>\phi(g)(a) = \phi(h)(a)</m>, entonces
+						<me>ga = \lambda_g a = \lambda_h a=  ha.</me>
+					Luego, <m>g = h</m>.  Que  <m>\phi</m> sea sobre sigue del hecho de que <m>\phi( g ) = \lambda_g</m> para cualquier <m>\lambda_g \in \overline{G}</m>.</p>
+				</proof>
+			</theorem>
+
+			<p>El isomorfismo <m>g \mapsto \lambda_g</m> se conoce como la <term>representación regular izquierda</term><idx><h>Representación regular izquierda</h></idx> de <m>G</m>.</p> 
+
+		</subsection>
+
+		<subsection xml:id="isomorph-subsection-historical-note">
+			<title>Nota histórica</title>
+			
+			<p>Arthur Cayley<idx><h>Cayley, Arthur</h></idx> nació en Inglaterra en 1821, pero pasó la primera parte de su vida en Rusia, donde su padre era comerciante.  Cayley se educó en Cambridge, donde ganó el primer Premio Smith en matemáticas.  Ejerció como abogado la mayor parte de su vida adulta, y escribió varios trabajos antes de entrar a la profesión legal a los 25 años de edad.  Durante su práctica como abogado siguió sus investigaciones matemáticas, escribiendo más de 300 publicaciones en esta etapa de su vida.  Estas incluyeron parte de sus obras más importantes.  En 1863 dejó la abogacía para convertirse en profesor en  Cambridge.  Cayley escribió más de 900 trabajos en áreas como teoría de grupos, geometría y álgebra lineal. Sus conocimentos legales eran muy apreciados en Cambridge; participó en la redacción de muchos de los estatutos de la universidad.  Cayley fue también uno de los responsables de la admisión de mujeres a Cambridge.</p>
+		</subsection>
+
+	</section> 
+
+	<section xml:id="section-direct-products">
+		<title>Productos Directos</title>
+
+		<introduction>
+
+			<p>Dados dos grupos <m>G</m> y <m>H</m>, se puede construir un nuevo grupo a partir del producto Cartesiano de <m>G</m> y <m>H</m>, <m>G \times H</m>. Recíprocamente, dado un grupo grande, a veces es posible descomponer el grupo; es decir, un grupo a veces es isomorfo al producto directo de dos grupos menores.  En lugar de estudiar el grupo grande <m>G</m>, es usualmente más fácil estudiar los grupos componentes de <m>G</m>.</p>
+
+		</introduction>
+ 
+		<subsection xml:id="isomorph-subsection-external-products">
+			<title>Producto Directo Externo</title>
+
+			<p>Si <m>(G,\cdot)</m> y <m>(H, \circ)</m> son grupos, entonces podemos transformar el producto cartesiano de <m>G</m> y <m>H</m> en un nuevo grupo. Como conjunto, el grupo no es más que el conjunto de pares ordenados <m>(g, h) \in G \times H</m> con <m>g \in G</m> y <m>h \in H</m>. Podemos definir una operación binaria en <m>G \times H</m> como 
+				<me>(g_1, h_1)(g_2, h_2) = (g_1 \cdot g_2, h_1 \circ h_2);</me>
+			es decir, simplemente multiplicamos los elementos en la primera coordenada usando el producto en <m>G</m> y los elementos en la segunda coordenada usando el producto de <m>H</m>.  Hemos especificado las operaciones particulares <m>\cdot</m> y <m>\circ</m> en cada grupo para mayor claridad; usualmente escribiremos simplemente <m>(g_1, h_1)(g_2, h_2) = (g_1  g_2, h_1 h_2)</m>.</p> 
+
+			<proposition xml:id="theorem-isomorph-7">
+				<statement>
+					<p>Sean <m>G</m> y <m>H</m> grupos. El conjunto <m>G \times H</m> es un grupo con la operación  <m>(g_1, h_1)(g_2, h_2) = (g_1  g_2, h_1 h_2)</m> donde <m>g_1, g_2 \in G</m> y <m>h_1, h_2 \in H</m>.</p>
+				</statement>
+				<proof>
+				<p>Claramente la operación binaria definida arriba es cerrada. Si <m>e_G</m> y <m>e_H</m> son las identidades de los grupos <m>G</m> y <m>H</m> respectivamente, entonces <m>(e_G, e_H)</m> es la identidad de <m>G \times H</m>.  El inverso de <m>(g, h) \in G \times H</m> es <m>(g^{-1}, h^{-1})</m>.  El hecho de que la operación sea asociativa es consecuencia directa de la asociatividad de <m>G</m> y <m>H</m>.</p>
+				</proof>
+			</proposition>
+
+			<example xml:id="example-isomorph-r2-product">
+				<p>Sea <m>{\mathbb R}</m> el grupo de los números reales con la operación de adición.  El producto cartesiano de <m>{\mathbb R}</m> con sí mismo, <m>{\mathbb R} \times {\mathbb R} = {\mathbb R}^2</m>, también es un grupo, en el que la operación es simplemente la suma por coordenadas; es decir, <m>(a, b) + (c, d) = (a + c, b + d)</m>.  La identidad <m>(0,0)</m> y el inverso de <m>(a, b)</m> es <m>(-a, -b)</m>.</p>
+			</example>
+
+			<example xml:id="example-isomorph-z2xz2">
+				<p>Considere
+					<me>{\mathbb Z}_2 \times {\mathbb Z}_2 = \{ (0, 0), (0, 1), (1, 0),(1, 1) \}.</me>
+				Si bien <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> y <m>{\mathbb Z}_4</m> ambos contienen cuatro elementos, no son isomorfos. Cada elemento <m>(a,b)</m> en <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> tiene orden 2 o 1, pues <m>(a,b) + (a,b) = (0,0)</m>; pero, <m>{\mathbb Z}_4</m> es cíclico.</p>
+			</example>
+
+			<p>El grupo <m>G \times H</m> se llama <term>producto directo externo</term><idx><h>Producto directo externo</h></idx> de  <m>G</m> y <m>H</m>. Note que no hay nada especial en el hecho de haber usado solo dos grupos para formar un grupo nuevo. El producto  directo
+				<me>\prod_{i = 1}^n G_i = G_1 \times G_2 \times \cdots \times G_n</me>
+			de los grupos <m>G_1, G_2, \ldots, G_n</m> se define de exactamente la misma forma. Si <m>G = G_1 = G_2 = \cdots = G_n</m>, escribiremos <m>G^n</m> en lugar de <m>G_1 \times G_2 \times \cdots \times G_n</m>.</p>
+ 
+			<example xml:id="example-isomorph-z2n">
+				<p>El grupo <m>{\mathbb Z}_2^n</m>, considerado como conjunto, es simplemente el conjunto de todas las <m>n</m>-tuplas binarias. La operación del grupo es el <q>o exclusivo</q> de dos <m>n</m>-tuplas binarias. Por ejemplo, 
+					<me>(01011101) + (01001011) = (00010110).</me>
+				Este grupo es importante en la teoría de códigos, en criptografía y en muchas áreas de computación.</p>
+			</example>
+
+			<theorem xml:id="theorem-isomorph-lcm">
+				<statement>
+					<p>Sea <m>(g, h) \in G \times H</m>. Si <m>g</m> y <m>h</m> tienen órdenes finitos <m>r</m> y <m>s</m> respectivamente, entonces el orden de <m>(g, h)</m> en <m>G \times H</m> es el mínimo común múltiplo de <m>r</m> y <m>s</m>. </p>
+				</statement>
+				<proof>
+					<p>Supongamos que <m>m</m> es el mínimo común múltiplo de <m>r</m> y <m>s</m> y sea <m>n = |(g,h)|</m>. Entonces 
+						<md>
+							<mrow>(g,h)^m  = (g^m, h^m) = (e_G,e_H)</mrow>
+							<mrow>(g^n, h^n)  = (g, h)^n = (e_G,e_H).</mrow>
+						</md>
+					Luego, <m>n</m> divide a <m>m</m>, y <m>n \leq m</m>.  Sin embargo, por la segunda ecuación, tanto <m>r</m> como <m>s</m> dividen a <m>n</m>; por lo tanto, <m>n</m> es un múltiplo común de <m>r</m> y <m>s</m>. Como <m>m</m> es el <em>mínimo común múltiplo</em> de <m>r</m> y <m>s</m>, <m>m \leq n</m>.  Por lo tanto, <m>m</m> debe ser igual a <m>n</m>.</p>
+				</proof>
+			</theorem>
+
+			<corollary>
+				<statement>
+					<p>Sea <m>(g_1, \ldots, g_n) \in \prod G_i</m>. Si <m>g_i</m> tiene orden finito <m>r_i</m> en <m>G_i</m>, entonces el orden de <m>(g_1, \ldots, g_n)</m> en <m>\prod G_i</m> es el mínimo común múltiplo de <m>r_1, \ldots, r_n</m>.</p>
+				</statement>
+			</corollary>
+ 
+			<example xml:id="example-isomorph-z12xz60">
+				<p>Sea <m>(8, 56) \in {\mathbb Z}_{12} \times  {\mathbb Z}_{60}</m>. Como <m>\gcd(8,12) = 4</m>, el orden de  8 es <m>12/4 = 3</m> en <m>{\mathbb Z}_{12}</m>. Similarmente, el orden de <m>56</m> en <m>{\mathbb Z}_{60}</m> es <m>15</m>. El mínimo común múltiplo de 3 y 15 es 15; luego, <m>(8, 56)</m> tiene orden 15 en <m>{\mathbb Z}_{12} \times  {\mathbb Z}_{60}</m>.</p>
+			</example>
+
+			<example xml:id="example-isomorph-z2xz3">
+				<p>El grupo <m>{\mathbb Z}_2 \times {\mathbb Z}_3</m> consiste de los pares
+					<md>
+					<mrow>&amp; (0,0), &amp; &amp; (0, 1), &amp; &amp; (0, 2), &amp; &amp; (1,0), &amp; &amp; (1, 1), &amp; &amp; (1, 2).</mrow>
+					</md>
+				En este caso, a diferencia del caso de <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> y <m>{\mathbb Z}_4</m>, es verdad que <m>{\mathbb Z}_2 \times {\mathbb Z}_3 \cong {\mathbb Z}_6</m>. Solo debemos mostrar que <m>{\mathbb Z}_2 \times {\mathbb Z}_3</m> es cíclico.  Es fácil ver que <m>(1,1)</m> es un generador para <m>{\mathbb Z}_2  \times {\mathbb Z}_3</m>.</p>
+			</example>
+
+			<p>El siguiente teorema nos dice exactamente cuándo el producto directo de dos grupos cíclicos es cíclico.</p>
+ 
+			<theorem xml:id="theorem-z-pq">
+				<statement>
+					<p>El grupo <m>{\mathbb Z}_m \times {\mathbb Z}_n</m> es isomorfo a <m>{\mathbb Z}_{mn}</m> si y solo si <m>\gcd(m,n)=1</m>.</p>
+				</statement>
+				<proof>
+					<p>Primero mostraremos que si <m>{\mathbb Z}_m \times {\mathbb Z}_n \cong {\mathbb Z}_{mn}</m>, entonces <m>\gcd(m, n) = 1</m>. Demostraremos el contrapositivo; es decir, mostraremos que si <m>\gcd(m, n) = d \gt 1</m>, entonces <m>{\mathbb Z}_m \times {\mathbb Z}_n</m> no puede ser cíclico. Note que <m>mn/d</m> es divisible tanto por <m>m</m> como por <m>n</m>; luego, cualquier elemento <m>(a,b) \in {\mathbb Z}_m \times {\mathbb Z}_n</m>,  
+						<me>\underbrace{(a,b) + (a,b)+ \cdots + (a,b)}_{mn/d \; \text{times}} = (0, 0).</me>
+					Por lo tanto, ningún <m>(a, b)</m> puede generar todo <m>{\mathbb Z}_m \times {\mathbb Z}_n</m>.</p>
+ 
+					<p>El recíproco es consecuencia directa del Teorema<nbsp /><xref ref="theorem-isomorph-lcm" /> pues <m>\lcm(m,n) = mn</m> si y solo si <m>\gcd(m,n)=1</m>.</p>
+				</proof>
+			</theorem>
+
+			<corollary xml:id="corollary-relatively-prime">
+				<statement>
+					<p>Sean <m>n_1, \ldots, n_k</m> enteros positivos. Entonces <me>\prod_{i=1}^k {\mathbb Z}_{n_i} \cong {\mathbb Z}_{n_1 \cdots n_k}</me> si y solo si <m>\gcd( n_i, n_j) =1</m> para todo <m>i \neq j</m>.</p>
+				</statement>
+			</corollary>
+
+			<corollary>
+				<statement>
+					<p>Si
+						<me>m = p_1^{e_1} \cdots  p_k^{e_k},</me>
+					donde los <m>p_i</m> son primos distintos, entonces
+						<me>{\mathbb Z}_m \cong {\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb Z}_{p_k^{e_k}}.</me></p>
+				</statement>
+				<proof>
+					<p>Como el máximo común divisor de <m>p_i^{e_i}</m> y <m>p_j^{e_j}</m> es 1 para <m>i \neq j</m>, la demostración se sigue del Corolario<nbsp /><xref ref="corollary-relatively-prime" />.</p>
+				</proof>
+			</corollary>
+
+<!-- This reference needs to be fixed - TWJ 6/2/2010 -->
+
+			<p>En el Capítulo<nbsp /><xref ref="struct" />, demostraremos que todos los grupos abelianos finitos son isomorfos a productos directos de la forma
+				<me>{\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb Z}_{p_k^{e_k}}</me>
+			donde <m>p_1, \ldots, p_k</m> son primos (no necesariamente distintos).</p>
+
+		</subsection>
+
+		<subsection xml:id="isomorph-subsection-internal-products">
+			<title>Producto Directo Interno</title>
+
+			<p>El producto directo externo de dos grupos construye un grupo grande a partir de los dos grupos menores.   Quisiéramos ser capaces de revertir el proceso y descomponer convenientemente un grupo grande en sus componentes como producto directo; es decir, quisiéramos poder decir cuándo un grupo es isomorfo al producto directo de dos de sus subgrupos.</p>
+ 
+			<p>Sea <m>G</m> un grupo con subgrupos <m>H</m> y <m>K</m> que satisfagan las siguientes condiciones.
+				<ul>
+ 
+					<li><p><m>G = HK = \{ hk : h \in H, k \in K  \}</m>;</p></li>
+ 
+					<li><p><m>H \cap K = \{ e \}</m>;</p></li>
+ 
+					<li><p><m>hk = kh</m> para todo <m>k \in K</m> y <m>h \in H</m>.</p></li>
+ 
+				</ul>
+			Entonces <m>G</m> es el <term>producto directo interno </term><idx><h>Producto directo interno de grupos</h></idx> de <m>H</m> y <m>K</m>.</p>
+ 
+			<example xml:id="example-isomorph-u8">
+				<p>El grupo <m>U(8)</m> es el producto directo interno de 
+					<me>H  = \{1, 3 \} \quad \text{y} \quad K  = \{1, 5 \}.</me></p>
+			</example>
+
+			<example xml:id="example-isomorph-d6-product">
+				<p>El grupo dihedral <m>D_6</m> es un producto directo interno de sus dos subgrupos 
+					<me>H  = \{\identity, r^3  \} \quad \text{and} \quad K  = \{\identity, r^2, r^4, s, r^2s, r^4 s   \}.</me>
+				Se puede mostrar fácilmente que <m>K \cong S_3</m>; por lo tanto, <m>D_6 \cong {\mathbb Z}_2 \times S_3</m>.</p>
+			</example>
+ 
+			<example xml:id="example-isomorph-s3-not-a-product">
+				<p>No todo grupo puede ser escrito como el producto directo interno de dos subgrupos propios.  Si el grupo  <m>S_3</m> fuese un producto directo interno de subgrupos propios <m>H</m> y <m>K</m>, entonces uno de ellos, digamos <m>H</m>, tendría que tener orden 3. En ese caso <m>H</m> es el subgrupo <m>\{ (1), (123), (132) \}</m>. El subgrupo <m>K</m> tiene que tener orden 2 pero sin importar cuál subgrupo escojamos como <m>K</m>, la condición de que <m>hk = kh</m> nunca se cumplirá para <m>h \in H</m> y <m>k \in K</m>.</p>
+			</example>
+
+			<theorem xml:id="theorem-isomorph-directproducts">
+				<statement>
+					<p>Sea <m>G</m> el producto directo interno de dos subgrupos <m>H</m> y <m>K</m>. Entonces <m>G</m> es isomorfo a <m>H \times K</m>.</p>
+				</statement>
+				<proof>
+					<p>Como <m>G</m> es un producto directo  interno, podemos escribir cualquier elemento <m>g \in G</m> como <m>g =hk</m> para ciertos <m>h \in H</m> y <m>k \in K</m>. Definamos una función  <m>\phi : G \rightarrow H \times K</m> como <m>\phi(g) = (h,k)</m>.</p>
+ 
+					<p>El primer problema que debemos enfrentar es mostrar que <m>\phi</m> es una función bien definida; es decir, debemos mostrar que  <m>h</m> y <m>k</m> están únicamente determinados por <m>g</m>. Supongamos que <m>g =  hk=h'k'</m>. Entonces <m>h^{-1} h'= k (k')^{-1}</m> está tanto en <m>H</m> como en <m>K</m>, así es que debe ser la identidad. Por lo tanto, <m>h = h'</m> y <m>k = k'</m>, lo que demuestra que <m>\phi</m> está, en efecto, bien definida.</p>
+ 
+					<p>Para demostrar que <m>\phi</m> preserva la operación de grupo, sean <m>g_1 = h_1 k_1</m> y <m>g_2 = h_2 k_2</m> y  observemos que  
+						<md>
+							<mrow>\phi( g_1 g_2 ) &amp; = \phi( h_1 k_1 h_2 k_2 )</mrow>
+							<mrow>&amp; = \phi(h_1  h_2 k_1 k_2)</mrow>
+							<mrow>&amp; = (h_1  h_2, k_1 k_2)</mrow>
+							<mrow>&amp; = (h_1, k_1)( h_2, k_2)</mrow>
+							<mrow>&amp; = \phi( g_1 ) \phi(  g_2 ).</mrow>
+						</md>
+					Dejaremos la demostración de que <m>\phi</m> es una biyección como ejercicio.</p>
+				</proof>
+				<proof>
+					<p>Definamos una función <m>\psi:  H \times K \rightarrow G</m> como <m>\psi(h,k)=hk</m>.  La operación de grupo se preserva pues
+					<me>\psi(h_1h_2,k_1k_2)=h_1h_2k_1k_2=h_1k_1h_2k_2=\psi(h_1,k_1)\psi(h_2,k_2)</me></p>
+					<p>Para verificar que <m>\psi</m> es 1-1, supongamos que <m>hk=h'k'</m>. Entonces <m>h^{-1} h'= k (k')^{-1}</m> está tanto en <m>H</m> como en <m>K</m>, así es que debe ser la identidad. Por lo tanto, <m>h = h'</m> y <m>k = k'</m>, lo que demuestra que <m>\psi</m> es 1-1.</p>
+					<p>La sobreyectividad es consecuencia inmediata de la definición del producto directo interno.</p>
+				</proof>
+			</theorem>
+			
+			<example xml:id="example-isomorph-z6-product">
+				<p>El grupo <m>{\mathbb Z}_6</m> es un producto directo interno isomorfo a <m>\{ 0, 2, 4\} \times \{ 0, 3 \}</m>.</p>
+			</example>
+
+			<p>Podemos extender la definición de producto directo interno de <m>G</m> a una colección de subgrupos <m>H_1, H_2, \ldots, H_n</m> de <m>G</m>, condicionándolos a que 
+				<ul>
+ 
+					<li><p><m>G = H_1 H_2 \cdots H_n = \{ h_1 h_2 \cdots h_n : h_i \in H_i \}</m>;</p></li>
+ 
+					<li><p><m>H_i \cap \langle \cup_{j \neq i} H_j \rangle = \{ e \}</m>;</p></li>
+ 
+					<li><p><m>h_i h_j = h_j h_i</m> para todo <m>h_i \in H_i</m> y <m>h_j \in H_j</m>.</p></li>
+ 
+				</ul>
+			Dejaremos la demostración del siguiente teorema como ejercicio.</p>
+ 
+			<theorem>
+				<statement>
+					<p>Sea <m>G</m> el producto interno de los subgrupos <m>H_i</m>, donde <m>i = 1, 2, \ldots, n</m>. Entonces <m>G</m> es isomorfo a <m>\prod_i H_i</m>.</p>
+				</statement>
+			</theorem>
+
+			<xi:include href="./sage/isomorph-info.xml" />
+
+		</subsection>
+	</section>
+
+	<xi:include href="./exercises/isomorph.xml" />
+	<xi:include href="./sage/isomorph-sage.xml" />
+	<xi:include href="./sage/isomorph-sage-exercises.xml" />
+
+</chapter>
+
+
+
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+
+	<p>Los Cuerpos Finitos son importantes en diversas disciplinas aplicadas, tales como criptografía y teoría de códigos (vea la introducción a estos tópicos en otros capítulos).  Sage tiene una excelente implementación de los cuerpos finitos que permite una variedad de cálculos con éstos.</p>
+</paragraphs>

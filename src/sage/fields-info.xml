@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+
+	<p>Las extensiones del cuerpo de los números racionales son objetos centrales en el estudio de teoría de números, de manera que con los orígenes de Sage en esta disciplina, no es ninguna sorpresa que los cuerpos y las extensiones de los racionales estén extensamente implementados.  Sage también contiene una implementación del cuerpo de todos los números algebraicos, con representaciones exactas.</p>
+</paragraphs>

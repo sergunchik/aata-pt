@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+
+
+<chapter xml:id="finite" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Cuerpos Finitos</title>
+
+	<introduction>
+		<p>Los cuerpos finitos aparecen en muchas aplicaciones del álgebra, incluyendo teoría de códigos y criptografía.  Ya conocemos un cuerpo finito, <m>{\mathbb Z}_p</m>, donde <m>p</m> es primo.  En este capítulo mostraremos que existe un único cuerpo finito de orden <m>p^n</m> para cada primo <m>p</m> y para cada entero positivo <m>n</m>.  Los cuerpos finitos también son llamados cuerpos de Galois en honor a Évariste Galois, quién fue  uno de los primero matemáticos en investigarlos.</p>
+	</introduction>
+
+	<section xml:id="section-finite-field">
+		<title>Estructura de Cuerpos Finitos</title>
+
+		<p>Recuerde que un cuerpo <m>F</m> tiene <term>característica</term> <m>p</m> si <m>p</m> es el menor entero positivo tal que para cada elemento no nulo <m>\alpha</m> en <m>F</m>, tenemos <m>p \alpha = 0</m>.  Si no hay tal entero, entonces <m>F</m> tiene característica 0.  Del Teorema<nbsp /><xref ref="theorem-integral-domain-characteristic" /> sabemos que <m>p</m> debe ser primo.  Supongamos que <m>F</m> es un cuerpo finito con <m>n</m> elementos. Entonces <m>n \alpha = 0</m> para todo <m>\alpha</m> en <m>F</m>.  En consecuencia, la característica de <m>F</m> debe ser <m>p</m>, con <m>p</m> un primo que divide a <m>n</m>.  Esta discusión se resume en la siguiente proposición.</p>
+
+		<proposition>
+			<statement>
+				<p>Si <m>F</m> es un cuerpo finito, entonces la característica de <m>F</m> es <m>p</m>, con <m>p</m>  primo.</p>
+			</statement>
+		</proposition>
+
+		<p>En todo este capítulo supondremos que <m>p</m> es un primo a menos que indiquemos lo contrario.</p>
+
+		<proposition>
+			<statement>
+				<p>Si <m>F</m> es un cuerpo finito de característica <m>p</m>, entonces el orden de <m>F</m> es <m>p^n</m> para algún <m>n \in {\mathbb N}</m>.</p>
+			</statement>
+			<proof>
+				<p>Sea <m>\phi : {\mathbb Z} \rightarrow F</m> el homomorfismo de anillos definido por <m>\phi(n) = n \cdot 1</m>.  Como la  característica de <m>F</m> es <m>p</m>, el núcleo de <m>\phi</m> debe ser <m>p {\mathbb Z}</m> y la imagen de <m>\phi</m> debe ser un subcuerpo de <m>F</m> isomorfo a <m>{\mathbb Z}_p</m>.  Denotaremos este subcuerpo por <m>K</m>.  Como <m>F</m> es un  cuerpo finito, debe ser una extensión finita de <m>K</m> y, por lo tanto, una extensión algebraica de <m>K</m>. Supongamos que <m>[F : K] = n</m> es la dimensión de <m>F</m>, donde <m>F</m> es un <m>K</m> espacio vectorial.  Deben existir elementos <m>\alpha_1, \ldots, \alpha_n \in F</m> tales que cualquier elemento <m>\alpha</m> en <m>F</m> pueda ser escrito de una única manera en la forma   
+					<me>\alpha = a_1 \alpha_1 + \cdots + a_n \alpha_n,</me>
+				donde los <m>a_i</m> están en <m>K</m>.  Como hay <m>p</m> elementos en <m>K</m>, hay <m>p^n</m> combincaciones lineales posibles de los <m>\alpha_i</m>.  Por lo tanto, el orden de <m>F</m> debe ser <m>p^n</m>.</p>
+			</proof>
+		</proposition>
+
+		<lemma xml:id="lemma-freshmans-dream">
+			<title>El sueño del Pibe</title>
+			<idx><h>Freshman's Dream</h></idx>
+			<statement>
+				<p>Sea <m>p</m> un primo y sea <m>D</m> un dominio integral de característica <m>p</m>.  Entonces
+					<me>a^{p^n} + b^{p^n} = (a + b)^{p^n}</me>
+				para todo entero positivo <m>n</m>.</p>
+			</statement>
+			<proof>
+				<p>Procederemos por inducción en <m>n</m>.  Podemos usar la fórmula del binomio (vea el Capítulo<nbsp /><xref ref="integers" />, Ejemplo<nbsp /><xref ref="example-integers-binomial-theorem" />) para verificar el caso <m>n = 1</m>; es decir,
+					<me>(a + b)^p = \sum_{k = 0}^{p} \binom{p}{k} a^k b^{p - k}.</me>
+				Si <m>0 \lt k \lt p</m>, entonces
+					<me>\binom{p}{k} = \frac{p!}{k!(p - k)!}</me>
+				debe ser divisible por <m>p</m>, pues <m>p</m> no puede dividir a <m>k!(p - k)!</m>.  Note que <m>D</m> es un dominio integral de característica <m>p</m>, así es que todos los términos de la suma, salvo el primero y el último son cero.  Por lo tanto, <m>(a + b)^p = a^p + b^p</m>.</p>  
+
+				<p>Ahora supongamos que el resultado se cumple para todo <m>k</m>, con <m>1 \leq k \leq n</m>.  Por la hipótesis de inducción,
+					<me>(a + b)^{p^{n + 1}} = ((a + b)^p)^{p^{n}} = (a^p + b^p)^{p^{n}} = (a^p)^{p^{n}} + (b^p)^{p^{n}} = a^{p^{n + 1}} + b^{p^{n + 1}}.</me>
+				Por lo tanto, el lema es verdadero para <m>n + 1</m> y la demostración está completa.</p>
+			</proof>
+		</lemma>
+
+		<p>Sea <m>F</m> un cuerpo.  Un polinomio <m>f(x) \in F[x]</m> de grado <m>n</m> es <term>separable</term><idx><h>Polynomio separable</h></idx> si tiene <m>n</m> raíces distintas en el cuerpo de descomposición de <m>f(x)</m>; es decir, <m>f(x)</m> es separable cuando se factoriza en factores lineales distintos sobre el cuerpo de descomposición de <m>f</m>.  Una extensión <m>E</m> de <m>F</m> es una <term>extensión separable</term><idx><h>Separable</h><h>extensión</h></idx> de <m>F</m> si todo elemento en <m>E</m> es la raíz de un polinomio separable en <m>F[x]</m>.</p>
+
+<!-- Corrected typo.  Suggested by C. Wall. - TWJ 5/15/2012 -->
+
+		<example>
+			<p>El polinomio <m>x^2 - 2</m> es separable sobre <m>{\mathbb Q}</m> pues se factoriza como <m>(x - \sqrt{2}\, )(x + \sqrt{2}\, )</m>. De hecho, <m>{\mathbb Q}(\sqrt{2}\, )</m> es una extensión separable de <m>{\mathbb Q}</m>.  Sea <m>\alpha =  a + b \sqrt{2}</m> un elemento cualquiera en <m>{\mathbb Q}(\sqrt{2}\, )</m>. Si <m>b = 0</m>, entonces <m>\alpha</m> es una raíz de <m>x - a</m>.  Si <m>b \neq 0</m>, entonces <m>\alpha</m> es la raíz del polinomio separable  
+				<me>x^2 - 2 a x + a^2 - 2 b^2 = (x - (a + b \sqrt{2}\, ))(x - (a - b \sqrt{2}\, )).</me></p>
+		</example>
+
+<!-- Notation error corrected.  Suggested by C. Wall.  TWJ 5/15/2012 -->
+ 
+		<p>Afortunadamente, tenemos una forma fácil para determinar la separabilidad de cualquier polinomio.  Sea
+			<me>f(x) = a_0 + a_1 x + \cdots + a_n x^n</me>
+		un polinomio en  <m>F[x]</m>. Se define la <term>derivada</term><idx><h>Derivada</h></idx> de <m>f(x)</m> como 
+			<me>f'(x) = a_1  + 2 a_2 x + \cdots + n a_n x^{n - 1}.</me></p>
+
+		<lemma xml:id="lemma-separable-derivative">
+			<statement>
+				<p>Sea <m>F</m> un cuerpo y <m>f(x) \in F[x]</m>.  Entonces <m>f(x)</m> es separable si y solo si <m>f(x)</m> y <m>f'(x)</m> son relativamente primos.</p>
+			</statement>
+			<proof>
+				<p>Sea <m>f(x)</m> separable.  Entonces <m>f(x)</m> se factoriza sobre algún cuerpo de extensión de <m>F</m> como <m>f(x) = (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n)</m>, con <m>\alpha_i \neq \alpha_j</m> para <m>i \neq j</m>. Tomando la derivada de <m>f(x)</m>, vemos que
+					<md>
+						<mrow>f'(x) &amp; =  (x - \alpha_2) \cdots (x - \alpha_n)</mrow>
+						<mrow>&amp;  +  (x - \alpha_1) (x - \alpha_3) \cdots (x - \alpha_n)</mrow>
+						<mrow>&amp;  + \cdots + (x - \alpha_1) \cdots (x - \alpha_{n - 1}).</mrow>
+					</md>
+				Luego, <m>f(x)</m> y <m>f'(x)</m> no pueden tener ningún factor común.</p>
+
+				<p>Para demostrar el recíproco, mostraremos que se cumple la afirmación contrapositiva.  Supongamos que <m>f(x) = (x - \alpha)^k g(x)</m>, con <m>k \gt 1</m>.  Derivando, tenemos
+					<me>f'(x) = k ( x - \alpha)^{k-1} g(x) + (x- \alpha)^k g'(x).</me>
+				Por lo tanto, <m>f(x)</m> y <m>f'(x)</m> tienen un factor común.</p>
+			</proof>
+		</lemma>
+
+		<theorem xml:id="theorem-finite-splitting-field">
+			<statement>
+				<p>Para cada primo <m>p</m> y para cada entero positivo <m>n</m>, existe un cuerpo finito <m>F</m> con <m>p^n</m> elementos. Más aún, cualquier cuerpo de orden <m>p^n</m> es isomorfo al cuerpo de descomposición de <m>x^{p^n} -x</m> sobre  <m>{\mathbb Z}_p</m>.</p>
+			</statement>
+<!-- % TWJ 11/20/2011 -->
+<!-- % Reference to Lemma 22.4 corrected in proof.  Suggested by A. Johnston. -->
+
+			<proof>
+				<p>Sea <m>f(x) = x^{p^n} - x</m> y sea <m>F</m> el cuerpo de descomposición de <m>f(x)</m>.  Por el Lema<nbsp /><xref ref="lemma-separable-derivative" />, <m>f(x)</m> tiene <m>p^n</m> ceros distintos en <m>F</m>, pues <m>f'(x) = p^n x^{p^n - 1} - 1 = -1</m> es relativamente primo con <m>f(x)</m>.  Afirmamos que las raíces de <m>f(x)</m> forman un subcuerpo de <m>F</m>.  Ciertamente 0 y 1 son ceros de <m>f(x)</m>.  Si <m>\alpha</m> y <m>\beta</m> son ceros de <m>f(x)</m>, entonces <m>\alpha + \beta</m> y <m>\alpha \beta</m> también son ceros de <m>f(x)</m>, pues <m>\alpha^{p^n} + \beta^{p^n} =  (\alpha + \beta)^{p^n}</m> y <m>\alpha^{p^n} \beta^{p^n} = (\alpha \beta)^{p^n}</m>. También debemos mostrar que el inverso aditivo y el inverso multiplicativo de cada raíz de <m>f(x)</m> son raíces de <m>f(x)</m>.  Para cualquier cero <m>\alpha</m> de <m>f(x)</m>, sabemos que <m>-\alpha</m> también es cero de <m>f(x)</m>, pues
+					<me>f(-\alpha) = (-\alpha)^{p^n} - (-\alpha) = -\alpha^{p^n} + \alpha = -(\alpha^{p^n} - \alpha) = 0,</me>
+				suponiendo que <m>p</m> is impar.  Si <m>p = 2</m>, entonces 
+					<me>f(-\alpha) =  (-\alpha)^{2^n} - (-\alpha) = \alpha + \alpha = 0.</me>
+				Si <m>\alpha \neq 0</m>, entonces <m>(\alpha^{-1})^{p^n} = (\alpha^{p^n})^{-1} = \alpha^{-1}</m>. Como los ceros de <m>f(x)</m> forman un subcuerpo de <m>F</m> y <m>f(x)</m> se descompone en este subcuerpo, el subcuerpo debe ser todo <m>F</m>.</p>
+
+				<p>Sea <m>E</m> cualquier otro cuerpo de orden <m>p^n</m>.  Para mostrar que <m>E</m> es isomorfo a <m>F</m>, debemos mostrar que todo elemento en <m>E</m> es una raíz de <m>f(x)</m>.  Claramente 0 y 1 son raíces de <m>f(x)</m>.  Sea <m>\alpha</m> un elemento no nulo de <m>E</m>.  El orden del grupo multiplicativo de elementos no nulos de <m>E</m> es <m>p^n-1</m>; luego, <m>\alpha^{p^n-1} =1</m> y <m>\alpha^{p^n} -\alpha = 0</m>.  Como <m>E</m> contiene <m>p^n</m> elementos, <m>E</m> debe ser un cuerpo de descomposición de <m>f(x)</m>; pero, por el Corolario<nbsp /><xref ref="corollary-poly-splitting-field" />, el cuerpo de descomposición de cualquier polinomio es único salvo isomorfía.</p>
+			</proof>
+		</theorem>
+
+		<p>El único cuerpo con <m>p^n</m> elementos se llama <term>cuerpo de Galois </term><idx><h>Cuerpo de Galois</h></idx><idx><h>Galois</h><h>cuerpo de</h></idx> de orden <m>p^n</m>. Denotaremos este cuerpo por <m>\gf(p^n)</m>. <notation><usage>\gf(p^n)</usage><description>Cuerpo de Galois de orden <m>p^n</m></description></notation></p>
+
+		<theorem xml:id="theorem-finite-subfields">
+			<statement>
+				<p>Todo subcuerpo del cuerpo de Galois <m>\gf(p^n)</m> tiene <m>p^m</m> elementos, con <m>m</m> un divisor de <m>n</m>.  Recíprocamente, si <m>m \mid n</m> para <m>m \gt 0</m>, entonces  existe un único subcuerpo de <m>\gf(p^n)</m> isomorfo a <m>\gf(p^m)</m>.</p>
+			</statement>
+			<proof>
+				<p>Sea <m>F</m> un subcuerpo de <m>E = \gf(p^n)</m>.  Entonces <m>F</m> debe ser una extensión de <m>K</m> que contiene  <m>p^m</m> elementos, donde <m>K</m> es isomorfo a <m>{\mathbb Z}_p</m>.   Entonces <m>m \mid n</m>, pues <m>[E:K] = [E:F][F:K]</m>.</p>
+
+				<p>Para demostrar el recíproco, supongamos que <m>m \mid n</m> para algún <m>m \gt 0</m>.  Entonces <m>p^m -1</m> divide a <m>p^n -1</m>. En consecuencia, <m>x^{p^m -1} - 1</m> divide a <m>x^{p^n -1} -1</m>. Por lo tanto, <m>x^{p^m} - x</m> debe dividir a <m>x^{p^n} - x</m>, y todo cero de <m>x^{p^m} - x</m> también es un cero de <m>x^{p^n} - x</m>. Luego, <m>\gf(p^n)</m> contiene, como subcuerpo, un cuerpo de descomposición de <m>x^{p^m} - x</m>, que debe ser isomorfo a <m>\gf(p^m)</m>.</p>
+			</proof>
+		</theorem>
+
+<!--  2010/05/18 R Beezer, added space before Figure citation -->
+		<example xml:id="example-finite-gf-p24">
+			<p>El reticulado de subcuerpos de <m>\gf(p^{24})</m> está dado en la Figura<nbsp /><xref ref="figure-field-lattice" />.</p>
+		</example>
+
+		<figure xml:id="figure-field-lattice">
+			<caption>Subcuerpos de <m>\gf(p^{24})</m></caption>
+
+			<!-- Replaced figure with tikz figure - TWJ 8/20/2010 -->
+			<image  width="50%" xml:id="finite-subfield-lattice">
+				<latex-image-code><![CDATA[
+					\begin{tikzpicture}[scale=0.7]
+
+					\draw  (1.7,2.4) -- (0.7,3);
+					\draw  (-1.7,2.4) -- (-0.7,3);
+					\draw  (1.7,-2.4) -- (0.7,-3);
+					\draw  (-1.7,-2.4) -- (-0.7,-3);
+
+					\draw (3,1.5) -- (3,0.5);
+					\draw (-3,1.5) -- (-3,0.5);
+					\draw (3,-1.5) -- (3,-0.5);
+					\draw (-3,-1.5) -- (-3,-0.5);
+
+					\draw (-1.7,0.2) -- (1.7,1.8);
+					\draw (-1.7,-1.8) -- (1.7,-0.2);
+
+					\node at (0, 3.5) {$\gf(p^{24})$};
+
+					\node at (3, 2) {$\gf(p^{12})$};
+					\node at (3, 0) {$\gf(p^{6})$};
+					\node at (3, -2) {$\gf(p^{3})$};
+
+					\node at (-3, 2) {$\gf(p^{8})$};
+					\node at (-3, 0) {$\gf(p^{4})$};
+					\node at (-3, -2) {$\gf(p^{2})$};
+
+					\node at (0, -3.5) {$\gf(p)$};
+
+					\end{tikzpicture}]]>
+				</latex-image-code>
+			</image>
+		</figure>
+
+		<p>Con cada cuerpo <m>F</m> tenemos un grupo multiplicativo de elementos no nulos de <m>F</m> que denotaremos por <m>F^*</m>. <notation><usage>F^*</usage><description>grupo multiplicativo de un cuerpo <m>F</m></description></notation> El grupo multiplicativo de un cuerpo finito cualquiera es cíclico.  Este resultado se sigue del resultado más general que demostraremos en el próximo teorema.</p> 
+
+		<theorem xml:id="theorem-mult-group-finite-field">
+			<statement>
+				<p>Si <m>G</m> es un subgrupo finito de <m>F^\ast</m>, el grupo multiplicativo de elementos no nulos de un cuerpo <m>F</m>, entonces <m>G</m> es cíclico.</p>
+			</statement>
+			<proof>
+				<p>Sea <m>G</m> un subgrupo finito de <m>F^\ast</m> de orden <m>n</m>.  Por el Teorema Fundamental de Grupos Abelianos (Teorema<nbsp /><xref ref="theorem-finite-abelian-groups" />),  
+					<me>G \cong {\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb Z}_{p_k^{e_k}},</me>
+				donde <m>n = p_1^{e_1} \cdots p_k^{e_k}</m> y los  <m>p_1, \ldots, p_k</m> son primos (no necesariamente distintos). Sea <m>m</m> el mínimo común múltiplo de <m>p_1^{e_1}, \ldots, p_k^{e_k}</m>.  Entonces <m>G</m> contiene un elemento de orden <m>m</m>.  Como todo <m>\alpha</m> en <m>G</m> satisface <m>x^r - 1</m> para algún <m>r</m> que divide a <m>m</m>, <m>\alpha</m> debe también ser raíz de <m>x^m - 1</m>.  Como <m>x^m -1</m> tiene a lo más <m>m</m> raíces en <m>F</m>, <m>n \leq m</m>.  Por otra parte, sabemos que <m>m \leq |G|</m>; por lo tanto, <m>m = n</m>. Luego, <m>G</m> contiene un elemento de orden <m>n</m> y tiene que ser cíclico.</p>
+			</proof>
+		</theorem>
+
+<!-- Rewrote the first part of the proof.  Suggested by R. Beezer. -->
+<!-- TWJ - 24/4/2013 -->
+
+		<corollary xml:id="corollary-cyclic-group-finite-field">
+			<statement>
+				<p>El grupo multiplicativo de todos los elementos no nulos de un cuerpo finito es cíclico.</p>
+			</statement>
+		</corollary>
+
+		<corollary xml:id="corollary-finite-extension-finite-field">
+			<statement>
+				<p>Toda extensión finita <m>E</m> de un cuerpo finito <m>F</m> es una extensión simple de <m>F</m>.</p>
+			</statement>
+			<proof>
+				<p>Sea <m>\alpha</m> un generador del grupo cíclico <m>E^{\ast}</m> de elementos distintos de cero de <m>E</m>. Entonces <m>E = F( \alpha )</m>.</p>
+			</proof>
+		</corollary>
+
+		<example xml:id="example-finite-gf-2-4">
+			<p>El cuerpo finito <m>\gf(2^4)</m> es isomorfo al cuerpo <m>{\mathbb Z}_2/ \langle 1 + x + x^4 \rangle</m>. Por lo tanto, los elementos de <m>\gf(2^4)</m> se puede tomar como
+				<me>\{ a_0 + a_1 \alpha + a_2 \alpha^2 + a_3 \alpha^3 : a_i \in {\mathbb Z}_2 \text{ and } 1 + \alpha + \alpha^4 = 0 \}.</me>
+			Recordando que <m>1 + \alpha +\alpha^4 = 0</m>, sumamos y multiplicamos elementos de  <m>\gf(2^4)</m> exactamente como sumamos y multiplicamos polinomios.  El grupo multiplicativo de <m>\gf(2^4)</m> es isomorfo a <m>{\mathbb  Z}_{15}</m> con generador <m>\alpha</m>: 
+				<md>
+					<mrow>&amp; \alpha^1 = \alpha &amp; &amp; \alpha^6 = \alpha^2 + \alpha^3 &amp; &amp; \alpha^{11} = \alpha + \alpha^2 + \alpha^3 &amp;</mrow>
+					<mrow>&amp; \alpha^2 = \alpha^2 &amp; &amp; \alpha^7 = 1 + \alpha + \alpha^3 &amp; &amp; \alpha^{12} = 1 + \alpha + \alpha^2 + \alpha^3 &amp;</mrow>
+					<mrow>&amp; \alpha^3 = \alpha^3 &amp; &amp; \alpha^8 = 1 + \alpha^2 &amp; &amp; \alpha^{13} = 1 + \alpha^2 + \alpha^3 &amp;</mrow>
+					<mrow>&amp; \alpha^4 = 1 + \alpha &amp; &amp; \alpha^9 = \alpha + \alpha^3 &amp; &amp; \alpha^{14} = 1 + \alpha^3 &amp;</mrow>
+					<mrow>&amp;\alpha^5 = \alpha + \alpha^2 &amp; &amp; \alpha^{10} = 1 + \alpha + \alpha^2 &amp; &amp; \alpha^{15} = 1. &amp;</mrow>
+				</md></p>
+		</example>
+
+	</section>
+
+	<section xml:id="section-poly-codes">
+		<title>Códigos Polinomiales</title>
+
+<!-- TWJ 2012/11/21 -->
+<!-- Chapter reference updated.  Suggested by J. Buller. -->
+
+		<introduction>
+
+			<p>Sabiendo sobre anillos de polinomios y cuerpos finitos, es posible derivar códigos más sofisticados que los del Capítulo<nbsp /><xref ref="algcodes" />.  En primer lugar recordemos que un código de bloques <m>(n, k)</m> consiste de una función codificadora inyectiva <m>E:{\mathbb Z}^{k}_{2} \rightarrow {\mathbb Z}^{n}_{2}</m> y una función decodificadora <m>D:{\mathbb Z}^{n}_{2} \rightarrow {\mathbb Z}^{k}_{2}</m>.  El código es corrector de errores si <m>D</m> es sobreyectivo.  Un código es lineal si es el espacio nulo de una matriz <m>H \in {\mathbb M}_{k \times n}({\mathbb Z}_2)</m>. </p>
+
+			<p>Estamos interesados en una clase de códigos conocidos como códigos cíclicos<idx><h>Código</h><h>cíclico</h></idx>.  Sea <m>\phi : {\mathbb Z}_2^k \rightarrow {\mathbb  Z}_2^n</m> un código de bloques <m>(n,k)</m> binario.  Entonces <m>\phi</m> es un <term>código cíclico</term> si para cada palabra <m>(a_1, a_2, \ldots, a_n )</m> en el código, la palabra formada por desplazamiento cíclico, la <m>n</m>-tupla <m>(a_n, a_1, a_2, \ldots, a_{n - 1} )</m> también está en el código.  Los códigos cíclicos son fáciles de implementar en un computador usando registro de shift [2, 3].</p>
+
+			<example xml:id="example-finite-6-3-linear-code">
+				<p>Considere los código lineales <m>(6,3)</m>generados por las dos matrices
+					<me>G_1 
+					= 
+					\begin{pmatrix}<![CDATA[
+					1 & 0 & 0 \\
+					0 & 1 & 0 \\
+					0 & 0 & 1 \\
+					1 & 0 & 0 \\
+					0 & 1 & 0 \\
+					0 & 0 & 1 
+					]]>\end{pmatrix}
+					\quad
+					\text{y}
+					\quad
+					G_2 = 
+					\begin{pmatrix}<![CDATA[
+					1 & 0 & 0 \\
+					1 & 1 & 0 \\
+					1 & 1 & 1 \\
+					1 & 1 & 1 \\
+					0 & 1 & 1 \\
+					0 & 0 & 1
+					]]>\end{pmatrix}.</me>
+				Los mensajes del primero se codifican como sigue:
+					<me>\begin{array}{rclccrcl}
+					(000) &amp; \mapsto &amp; (000000) &amp; &amp; &amp; (100) &amp; \mapsto &amp; (100100) \\
+					(001) &amp; \mapsto &amp; (001001) &amp; &amp; &amp; (101) &amp; \mapsto &amp; (101101) \\
+					(010) &amp; \mapsto &amp; (010010) &amp; &amp; &amp; (110) &amp; \mapsto &amp; (110110) \\
+					(011) &amp; \mapsto &amp; (011011) &amp; &amp; &amp; (111) &amp; \mapsto &amp; (111111).
+					\end{array}</me>
+				Es fácil ver que las palabras del código forman un código cíclico.  En el segundo, las 3-tuplas se codifican de la siguiente manera:
+					<me>\begin{array}{rclccrcl}
+					(000) &amp; \mapsto &amp; (000000) &amp; &amp; &amp; (100) &amp; \mapsto &amp; (111100) \\
+					(001) &amp; \mapsto &amp; (001111) &amp; &amp; &amp; (101) &amp; \mapsto &amp; (110011) \\
+					(010) &amp; \mapsto &amp; (011110) &amp; &amp; &amp; (110) &amp; \mapsto &amp; (100010) \\
+					(011) &amp; \mapsto &amp; (010001) &amp; &amp; &amp; (111) &amp; \mapsto &amp; (101101).
+					\end{array}</me>
+				Este código no es cíclico, pues <m>(101101)</m> es una palabra del código pero  <m>(011011)</m> no lo es.</p>
+			</example>
+
+		</introduction>
+
+		<subsection xml:id="finite-subsection-poly-codes">
+			<title>Códigos Polinomiales</title>
+
+			<p>Nos gustaría encontrar un método fácil para obtener códigos cíclicos lineales.  Para lograr esto, podemos usar lo que sabemos de cuerpos finitos y anillos de polinomios sobre <m>{\mathbb Z}_2</m>.  Cualquier <m>n</m>-tupla binaria se puede interpretar como un polinomio en <m>{\mathbb Z}_2[x]</m>.  Dicho de otra forma, la  <m>n</m>-tupla <m>(a_0, a_1, \ldots, a_{n - 1} )</m> corresponde al polinomio
+				<me>f(x) = a_0 +  a_1 x +  \cdots + a_{n-1} x^{n - 1},</me>
+			donde el grado de  <m>f(x)</m> es a lo más <m>n - 1</m>.   Por ejemplo, el polinomio correspondiente a la 5-tupla <m>(10011)</m> es
+				<me>1 + 0 x + 0 x^2 + 1 x^3 + 1 x^4 = 1 + x^3 + x^4.</me>
+			Recíprocamente, dado cualquier polinomio <m>f(x) \in {\mathbb Z}_2[x]</m> con <m>\deg f(x) \lt n</m> le podemos asociar una <m>n</m>-tupla binaria. El polinomio <m>x + x^2 + x^4</m> corresponde a la 5-tupla <m>(01101)</m>.</p>
+
+			<p>Fijemos un polinomio no constante <m>g(x)</m> en <m>{\mathbb Z}_2[x]</m> de grado <m>n - k</m>. Podemos definir un <m>(n,k)</m>-código <m>C</m> de la siguiente manera.  Si <m>(a_0, \ldots, a_{k - 1})</m> es una <m>k</m>-tupla a codificar, entonces <m>f(x) = a_0 + a_1 x +  \cdots + a_{k - 1} x^{k - 1}</m> es el correspondiente polinomio en <m>{\mathbb Z}_2[x]</m>.  Para codificar <m>f(x)</m>, lo multiplicamos por <m>g(x)</m>.  Las palabras en <m>C</m> son todos aquellos polinomios en <m>{\mathbb Z}_2[x]</m> de grado menor a <m>n</m> que son divisibles por <m>g(x)</m>.  Los Códigos obtenidos de esta manera se llaman <term>códigos polinomiales</term><idx><h>Código</h><h>polinomial</h></idx><idx><h>Polinomial</h><h>código</h></idx>.</p> 
+
+
+			<example xml:id="example-finite-generator-63-code">
+<!-- Changed minimal polynomial from  (1 + x^3)x^3 &amp; = x^2 + x^5 to (1 + x^3)x^2 &amp; = x^2 + x^5.  Discovered by Jon Buller - TWJ 3/25/2011 -->
+				<p>Si <m>g(x)= 1 + x^3</m>, podemos definir un <m>(6,3)</m>-código <m>C</m> como sigue.  Para codificar una 3-tupla <m>( a_0, a_1, a_2 )</m>, multiplicamos el correspondiente polinomio <m>f(x) = a_0 + a_1 x + a_2 x^2</m> por <m>1 + x^3</m>.  Estamos definiendo una función <m>\phi : {\mathbb Z}_2^3 \rightarrow {\mathbb Z}_2^6</m> como <m>\phi  : f(x) \mapsto g(x) f(x)</m>.  Es fácil verificar que esta función es un homomorfismo de grupos.  De hecho, si consideramos <m>{\mathbb Z}_2^n</m> como un espacio vectorial sobre <m>{\mathbb Z}_2</m>, <m>\phi</m> es una transformación lineal de espacios vectoriales (vea el Ejercicio<nbsp /><xref ref="exercise-vect-linear-transformation" />, Capítulo<nbsp /><xref ref="vect" />).  Calculemos el núcleo de <m>\phi</m>.  Observe que <m>\phi ( a_0, a_1, a_2 ) = (000000)</m> exactamente cuando 
+					<md>
+						<mrow>0 + 0x + 0x^2 + 0x^3 + 0x^4 + 0 x^5 &amp; = (1 + x^3) ( a_0 + a_1 x + a_2 x^2 )</mrow>
+						<mrow> &amp; = a_0 + a_1 x + a_2 x^2 + a_0 x^3 + a_1 x^4 + a_2 x^5.</mrow>
+					</md>
+				Como los polinomios sobre un cuerpo forman un dominio integral, <m>a_0 + a_1 x + a_2 x^2</m> debe ser el polinomio cero. Por lo tanto, <m>\ker \phi = \{ (000) \}</m> y <m>\phi</m> es 1-1.</p>
+ 
+				<p>Para calcular una matriz generadora para <m>C</m>, solo debemos examinar cómo se codifican los polinomios <m>1</m>, <m>x</m>, y <m>x^2</m>:
+					<md>
+						<mrow>(1 + x^3) \cdot 1 &amp; = 1 + x^3</mrow>
+						<mrow>(1 + x^3)x &amp; = x + x^4</mrow>
+						<mrow>(1 + x^3)x^2 &amp; = x^2 + x^5. </mrow>
+					</md>
+				Obtenemos el código correspondiente a la matriz generadora <m>G_1</m> en el Ejemplo<nbsp /><xref ref="example-finite-6-3-linear-code" />.  la matriz de verificación de paridad para este código es
+					<me>H
+					= 
+					\begin{pmatrix}<![CDATA[
+					1 & 0 & 0 & 1 & 0 & 0 \\
+					0 & 1 & 0 & 0 & 1 & 0 \\
+					0 & 0 & 1 & 0 & 0 & 1 
+					]]>\end{pmatrix}.</me>
+				Como el menor peso de cualquier palabra no nula del código es 2, este código es capaz de detectar cualquier error único.</p>
+			</example>
+
+			<p>Los anillos de Polinomios tienen una estructura muy rica; por lo tanto, nuestro objetivo inmediato es establecer una relación entre los códigos polinomiales y la teoría de anillos. Recuerde que <m>x^n - 1 = (x - 1)( x^{n-1} + \cdots + x + 1)</m>.  El anillo cociente
+				<me>R_n = {\mathbb Z}_2[x]/ \langle x^n - 1 \rangle</me>
+			puede ser considerado como el anillo de polinomios de la forma 
+				<me>f(t) = a_0 + a_1 t + \cdots + a_{n-1} t^{n-1}</me>
+			que satisfacen la condición <m>t^n = 1</m>.  Es un ejercicio sencillo mostrar que <m>{\mathbb Z}_2^n</m> y <m>R_n</m> son isomorfos como espacios vectoriales.  Frecuentemente interpretaremos los elementos en <m>{\mathbb Z}_2^n</m> con elementos en <m>{\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.  De esta forma podemos interpretar un código lineal como un subconjunto de <m>{\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.</p>
+
+			<p>La estructura adicional de anillo en los códigos polinomiales es muy poderosa para describir códigos cíclicos. Un shift cíclico de una <m>n</m>-tupla puede ser descrito por una multiplicación polinomial.  Si <m>f(t) = a_0 + a_1 t + \cdots + a_{n-1} t^{n-1}</m> es un código polinomial en <m>R_n</m>, entonces
+				<me>tf(t) = a_{n-1} + a_0 t + \cdots + a_{n-2} t^{n-1}</me>
+			es la palabra desplazada cíclicamente obtenida de multiplicar <m>f(t)</m> por <m>t</m>.  El siguiente teorema entrega una hermosa clasificación de los códigos cíclicos en términos de los ideales de <m>R_n</m>.</p>
+
+			<theorem xml:id="theorem-cyclic-code">
+				<statement>
+					<p>Un código lineal <m>C</m> en <m>{\mathbb Z}_2^n</m> es cíclico si y solo si es un ideal en <m>R_n = {\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.</p>
+				</statement>
+				<proof>
+					<p>Sea <m>C</m> un código cíclico lineal y supongamos que <m>f(t)</m> está en <m>C</m>.  Entonces <m>t f(t)</m> también está en <m>C</m>. Así, <m>t^k f(t)</m> está en  <m>C</m> para todo <m>k \in {\mathbb N}</m>.  Como <m>C</m> es un código lineal, cualquier combinación lineal de las palabras <m>f(t), tf(t), t^2f(t), \ldots, t^{n-1}f(t)</m> también es una palabra del código; por lo tanto, para cada polinomio therefore <m>p(t)</m>, <m>p(t)f(t)</m> está en <m>C</m>.  Luego, <m>C</m> es un ideal.</p>
+
+					<p>Recíprocamente, sea <m>C</m> un ideal en  <m>{\mathbb Z}_2[x]/\langle x^n + 1\rangle</m>. Supongamos que <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1} t^{n - 1}</m> es una palabra en <m>C</m>.  Entonces <m>t f(t)</m> es una palabra en <m>C</m>; es decir, <m>(a_1, \ldots, a_{n-1}, a_0)</m> está en <m>C</m>.</p>
+				</proof>
+			</theorem>
+ 
+			<todo>Revisar esta demostración</todo>
+
+			<p>El Teorema<nbsp /><xref ref="theorem-cyclic-code" /> nos dice que conocer los ideales de <m>R_n</m> es equivalente a conocer los códigos cíclicos en <m>{\mathbb Z}_2^n</m>.  Afortunadamente es fácil describir los ideales en <m>R_n</m>.  El homomorfismo natural <m>\phi : {\mathbb Z}_2[x] \rightarrow R_n</m> definido por <m>\phi[f(x)] = f(t)</m> es un homomorfismo epiyectivo.  El núcleo de <m>\phi</m> es el ideal generado por <m>x^n - 1</m>.  Por el Teorema<nbsp /><xref ref="theorem-correspondence-rings" />, todo ideal <m>C</m> en <m>R_n</m> es de la forma <m>\phi(I)</m>, donde <m>I</m> es un ideal en <m>{\mathbb Z}_2[x]</m> que contiene al ideal <m>\langle x^n - 1 \rangle</m>.  Por el Teorema<nbsp /><xref ref="theorem-poly-principal-ideal" />, sabemos que todo ideal en <m>{\mathbb Z}_2[x]</m> es un ideal principal, pues <m>{\mathbb Z}_2</m> es un cuerpo. Por lo tanto, <m>I = \langle g(x) \rangle</m> para algún polinomio mónico en <m>{\mathbb Z}_2[x]</m>. Como <m>\langle x^n - 1 \rangle</m> está contenido en <m>I</m>, se debe tener que <m>g(x)</m> divide a <m>x^n - 1</m>. Así, todo ideal <m>C</m> en <m>R_n</m> es de la forma 
+				<me>C = \langle g(t) \rangle = \{ f(t)g(t) : f(t) \in R_n \text{ y } g(x) \mid (x^n - 1) \text{ en } {\mathbb Z}_2[x] \}.</me>
+			El polinomio único de grado mínimo que genera <m>C</m> se llama <term>polinomio generador minimal</term><idx><h>Polinomio generador minimal</h></idx><idx><h>Generador minimal</h><h>polinomio</h></idx> de <m>C</m>.</p>
+
+
+			<example xml:id="example-finite-factor-x7-1">
+				<p>Si factorizamos <m>x^7 - 1</m> en sus componentes irreducibles, tenemos
+					<me>x^7 - 1 = (1 + x)(1 + x + x^3)(1+ x^2 + x^3).</me>
+				Vemos que <m>g(t) = (1 + t + t^3)</m> genera un ideal <m>C</m> en <m>R_7</m>.  Este es un código de bloque <m>(7, 4)</m>.  Como en el Ejemplo<nbsp /><xref ref="example-finite-generator-63-code" />, es fácil calcular una matriz generadora examinando qué le hace <m>g(t)</m> a los polinomios 1, <m>t</m>, <m>t^2</m>, y <m>t^3</m>.  Una matriz generadora para <m>C</m> es 
+					<me>G =
+					\begin{pmatrix}<![CDATA[
+					1 & 0 & 0 & 0 \\
+					1 & 1 & 0 & 0 \\
+					0 & 1 & 1 & 0 \\
+					1 & 0 & 1 & 1 \\
+					0 & 1 & 0 & 1 \\
+					0 & 0 & 1 & 0 \\
+					0 & 0 & 0 & 1
+					]]>\end{pmatrix}.</me></p>
+			</example>
+ 
+			<p>En general, podemos determinar una matriz generadora para un código <m>(n, k)</m> <m>C</m> por la forma en que se codifican los elementos <m>t^k</m>. Sea <m>x^n - 1 = g(x) h(x)</m> en <m>{\mathbb Z}_2[x]</m>. Si <m>g(x) = g_0 + g_1 x + \cdots + g_{n-k} x^{n-k}</m> and <m>h(x) = h_0 + h_1 x +  \cdots + h_k x^k</m>, entonces la matriz de <m>n \times k</m>
+				<me>G = 
+				\begin{pmatrix}<![CDATA[
+				g_0 & 0   & \cdots & 0 \\
+				g_1 & g_0 & \cdots & 0 \\
+				\vdots & \vdots &\ddots & \vdots \\
+				g_{n-k}   & g_{n-k-1} & \cdots & g_0 \\
+				0   & g_{n-k} & \cdots & g_{1} \\
+				\vdots & \vdots & \ddots & \vdots \\
+				0   & 0 & \cdots & g_{n-k}
+				]]>\end{pmatrix}</me>
+			es una matriz generadora para el código <m>C</m> con generador polinomial <m>g(t)</m>.  La matriz de verificación de paridad para <m>C</m> es la matriz de <m>(n-k) \times n</m> 
+				<me>H =
+				\begin{pmatrix}<![CDATA[
+				0   & \cdots & 0   & 0      & h_k    & \cdots & h_0 \\
+				0   & \cdots & 0 & h_k & \cdots & h_0    & 0 \\
+				\cdots  & \cdots & \cdots  & \cdots &  \cdots &  \cdots & \cdots \\
+				h_k & \cdots & h_0 & 0      & 0      & \cdots & 0 
+				]]>\end{pmatrix}.</me>
+			Dejaremos los detalles de la demostreción de la siguiente proposición como un ejercicio.</p>
+
+			<proposition>
+				<statement>
+					<p>Sea <m>C = \langle g(t) \rangle</m> un código cíclico en <m>R_n</m> ay supongamos que <m>x^n - 1 = g(x) h(x)</m>.  Entonces <m>G</m> y <m>H</m> son matriz generadora y verificadora para <m>C</m>, respectivamente.  Más aún, <m>HG = 0</m>.</p>
+				</statement>
+			</proposition>
+
+			<example xml:id="example-finite-parity-check-x7-1">
+				<p>En el Ejemplo<nbsp /><xref ref="example-finite-factor-x7-1" />,
+					<me>x^7 - 1 = g(x) h(x) = (1 + x + x^3)(1 + x + x^2 + x^4).</me>
+				Por lo tanto, una matriz verificadora para este código es
+					<me>H =
+					\begin{pmatrix}<![CDATA[
+					0 & 0 & 1 & 0 & 1 & 1 & 1 \\
+					0 & 1 & 0 & 1 & 1 & 1 & 0 \\
+					1 & 0 & 1 & 1 & 1 & 0 & 0
+					]]>\end{pmatrix}.</me></p>
+			</example>
+
+			<p>Para determinanr las capacidades de detección y corrección de errores de un código cíclico, necesitamos saber algo sobre determinantes.  Si <m>\alpha_1, \ldots, \alpha_n</m> son elementos en un cuerpo <m>F</m>, entonces la matriz de <m>n \times n</m>
+				<me>\begin{pmatrix}<![CDATA[
+				1          & 1          & \cdots & 1 \\
+				\alpha_1   & \alpha_2   & \cdots & \alpha_n \\
+				\alpha_1^2 & \alpha_2^2 & \cdots & \alpha_n^2 \\
+				\vdots     & \vdots     & \ddots & \vdots \\
+				\alpha_1^{n-1} & \alpha_2^{n-1} & \cdots & \alpha_n^{n-1} 
+				]]>\end{pmatrix}</me>
+			se llama <term>matriz de Vandermonde</term><idx><h>Matriz de Vandermonde</h></idx><idx><h>Vandermonde, matriz de</h></idx>. El determinante de esta matriz se llama <term>determinante de Vandermonde</term><idx><h>Determinante de Vandermonde</h></idx><idx><h>Vandermonde, determinante de </h></idx>.  Necesitaremos el siguiente lema en nuestro estudio de los códigos cíclicos.</p>
+
+			<lemma xml:id="lemma-vandermode-det">
+				<statement>
+					<p>Sean <m>\alpha_1, \ldots, \alpha_n</m> elementos en un cuerpo <m>F</m> con <m>n \geq 2</m>.  Entonces
+						<me>\det
+						\begin{pmatrix}<![CDATA[
+						1              & 1              & \cdots & 1 \\
+						\alpha_1       & \alpha_2       & \cdots & \alpha_n \\
+						\alpha_1^2     & \alpha_2^2     & \cdots & \alpha_n^2 \\
+						\vdots         & \vdots         & \ddots & \vdots \\
+						\alpha_1^{n-1} & \alpha_2^{n-1} & \cdots & \alpha_n^{n-1} 
+						]]>\end{pmatrix}
+						= \prod_{1 \leq j \lt i \leq n} (\alpha_i - \alpha_j).</me>
+					En particular, si los <m>\alpha_i</m> son distintos, entonces el determinante es distinto de cero.</p>
+				</statement>
+				<proof>
+					<p>Procederemos por inducción en <m>n</m>. Si <m>n = 2</m>, entonces el determinante es <m>\alpha_2 - \alpha_1</m>.  Supongamos demostrado el resultado para <m>n  - 1</m> y consideremos el polinomio <m>p(x)</m> definido por
+						<me>p(x) = \det
+						\begin{pmatrix}<![CDATA[
+						1              & 1              & \cdots & 1              & 1 \\
+						\alpha_1       & \alpha_2       & \cdots & \alpha_{n-1}   & x \\
+						\alpha_1^2     & \alpha_2^2     & \cdots & \alpha_{n-1}^2 & x^2 \\
+						\vdots         & \vdots         & \ddots & \vdots         & \vdots \\
+						\alpha_1^{n-1} & \alpha_2^{n-1} & \cdots & \alpha_{n-1}^{n-1} & x^{n-1}
+						]]>\end{pmatrix}.</me>
+					Expandiendo este determinante por cofactores en la última columna, vemos que <m>p(x)</m> es un polinomio de grado a lo más <m>n-1</m>.  Además, las raíces de <m>p(x)</m> son <m>\alpha_1, \ldots, \alpha_{n-1}</m>, pues la sustitución de cualquiera de esos elementos en la última columna producirá una columna idéntica a otra columna de la matriz.  Recuerde que el determinante de una matriz es cero si esta tiene dos columnas idénticas. Por lo tanto,     
+						<me>p(x) = (x - \alpha_1)(x - \alpha_2) \cdots (x - \alpha_{n-1}) \beta,</me>
+					donde
+						<me>\beta = (-1)^{n + n} \det
+						\begin{pmatrix}<![CDATA[
+						1              & 1              & \cdots & 1 \\
+						\alpha_1       & \alpha_2       & \cdots & \alpha_{n-1} \\
+						\alpha_1^2     & \alpha_2^2     & \cdots & \alpha_{n-1}^2 \\
+						\vdots         & \vdots         & \ddots & \vdots \\
+						\alpha_1^{n-2} & \alpha_2^{n-2} & \cdots & \alpha_{n-1}^{n-2} 
+						]]>\end{pmatrix}.</me>
+					Por nuestra hipótesis de inducción,
+						<me>\beta = (-1)^{n+n} \prod_{1 \leq j \lt i \leq n-1} (\alpha_i - \alpha_j).</me>
+					Si evaluamos en <m>x = \alpha_n</m>, el resultados es una consecuencia inmediata.</p>
+				</proof>
+			</lemma>
+
+			<p>El siguiente teorema nos entrega una estimación de las capacidades de detección y corrección de errores para un polinomio generador en particular.</p>
+
+			<theorem xml:id="theorem-min-dist-cyclic-code">
+				<statement>
+					<p>Sea <m>C = \langle g(t) \rangle</m> un código cíclico en <m>R_n</m> y supongamos que <m>\omega</m> es una raíz <m>n</m>-ésima primitiva de la unidad sobre <m>{\mathbb Z}_2</m>.  Si <m>s</m> potencias consecutivas de <m>\omega</m> son raíces de <m>g(x)</m>, entonces la distacia mínima de <m>C</m> es al menos <m>s + 1</m>.</p>
+				</statement>
+				<proof>
+					<p>Supongamos que  
+						<me>g( \omega^r) = g(\omega^{r + 1}) = \cdots = g( \omega^{r + s - 1}) = 0.</me>
+					Sea <m>f(x)</m> algún polinomio en <m>C</m> con <m>s</m> o menos coeficientes distintos de cero.  Podemos suponer que 
+						<me>f(x) = a_{i_0} x^{i_0} + a_{i_1} x^{i_1} + \cdots + a_{i_{s - 1}} x^{i_{s - 1}}</me>
+					es algún polinomio en <m>C</m>. Es suficiente con demostrar que todos los <m>a_i</m> tienen que ser cero.  Como 
+						<me>g( \omega^r) = g(\omega^{r + 1}) = \cdots = g( \omega^{r + s - 1}) = 0</me>
+					y <m>g(x)</m> divide a <m>f(x)</m>,
+						<me>f( \omega^r) = f(\omega^{r + 1}) = \cdots = f( \omega^{r + s - 1}) = 0.</me>
+					Equivalentemente, tenemos el siguiente sistema de ecuaciones:
+						<md>
+							<mrow>a_{i_0} (\omega^r)^{i_0} + a_{i_1} (\omega^r)^{i_1} + \cdots + a_{i_{s - 1}} (\omega^r)^{i_{s - 1}} &amp; = 0</mrow>
+							<mrow> a_{i_0} (\omega^{r + 1})^{i_0} + a_{i_1} (\omega^{r + 1})^{i_2} + \cdots + a_{i_{s-1}} (\omega^{r+1})^{i_{s-1}} &amp; = 0</mrow><mrow>&amp; \vdots </mrow>
+							<mrow>a_{i_0} (\omega^{r + s - 1})^{i_0} + a_{i_1} (\omega^{r + s - 1})^{i_1} + \cdots + a_{i_{s - 1}} (\omega^{r + s - 1})^{i_{s - 1}} &amp; = 0.</mrow>
+						</md>
+					Por lo tanto, <m>(a_{i_0}, a_{i_1}, \ldots, a_{i_{s - 1}})</m> es una solución del sistema de ecuaciones lineales homogéneo
+						<md>
+							<mrow>(\omega^{i_0})^r x_0 + (\omega^{i_1})^r x_1 + \cdots + (\omega^{i_{s - 1}})^r x_{n - 1} &amp; = 0</mrow>
+							<mrow>(\omega^{i_0})^{r + 1} x_0 + (\omega^{i_1})^{r + 1} x_1 + \cdots + (\omega^{i_{s - 1}})^{r + 1} x_{n - 1} &amp; = 0</mrow>
+							<mrow>&amp; \vdots </mrow>
+							<mrow>(\omega^{i_0})^{r + s - 1} x_0 + (\omega^{i_1})^{r + s - 1} x_1 + \cdots + (\omega^{i_{s - 1}})^{r + s - 1} x_{n - 1} &amp; = 0.</mrow>
+						</md>
+					Pero este sistema tiene solución única, pues el determinante de la matriz
+						<me>\begin{pmatrix}<![CDATA[
+						(\omega^{i_0})^r & (\omega^{i_1})^r & \cdots & (\omega^{i_{s-1}})^r \\
+						(\omega^{i_0})^{r+1} & (\omega^{i_1})^{r+1} & \cdots &
+						(\omega^{i_{s-1}})^{r+1} \\
+						\vdots & \vdots         & \ddots & \vdots \\
+						(\omega^{i_0})^{r+s-1} & (\omega^{i_1})^{r+s-1} & \cdots &
+						(\omega^{i_{s-1}})^{r+s-1} 
+						]]>\end{pmatrix}</me>
+					no es cero por el Lema<nbsp /><xref ref="lemma-vandermode-det" /> y las propiedades básicas de los determinantes (Ejercicio). Por lo tanto, esta solución es <m>a_{i_0} = a_{i_1} = \cdots = a_{i_{s - 1}} = 0</m>.</p>
+				</proof>
+			</theorem>
+
+		</subsection>
+
+		<subsection xml:id="finite-subsection-bch-codes">
+			<title>Códigos <acro>BCH</acro></title>
+ 
+			<p>Entre los códigos más importantes, descubiertos independientemente por A. Hocquenghem en 1959 y por R. C. Bose y D. V. Ray-Chaudhuri en 1960, están los códigos <acro>BCH</acro>. Los sistemas de comunicación Europeo y Trasantlántico, ambos usan códigos <acro>BCH</acro>.  Las palabras a codificar son de largo 231, y se usa un polinomio de grado 24 para generar el código.  Como <m>231 + 24 = 255 = 2^8-1</m>, tenemos un código de bloque <m>(255, 231)</m>. Este código <acro>BCH</acro> es capaz de detectar seis errores y tiene una razón de falla de 1 en 16 millones. Una ventaja de los códigos <acro>BCH</acro> es que existen algoritmos eficientes de corrección de errores para ellos.</p>
+
+			<p>La idea detrás de los códigos <acro>BCH</acro> es elegir un polinomio generador de grado minimal que tenga la mayor capacidad de detección y corrección de errores. Sea <m>d = 2r + 1</m> para algún <m>r \geq 0</m>.  Supongamos que <m>\omega</m> es una raíz <m>n</m>-ésima primitiva de la unidad sobre <m>{\mathbb Z}_2</m>, y sea <m>m_i(x)</m> el polinomio minimal sobre <m>{\mathbb Z}_2</m> de <m>\omega^i</m>. Si  
+				<me>g(x) = \lcm[ m_1(x), m_{2}(x), \ldots, m_{2r}(x)],</me>
+			entonces el código cíclico <m>\langle g(t) \rangle</m> en <m>R_n</m> se denomina código <term><acro>BCH</acro> de largo</term><idx><h>Código</h><h><acro>BCH</acro></h></idx> <m>n</m> y <term>distancia</term> <m>d</m>. Por el Teorema<nbsp /><xref ref="theorem-min-dist-cyclic-code" />, la distancia mínima de <m>C</m> es al menos <m>d</m>.</p>
+
+			<theorem>
+				<statement>
+					<p>Sea <m>C = \langle g(t) \rangle</m> un código cíclico en <m>R_n</m>. Entonces las siguientes proposiciones son equivalentes.
+						<ol>
+
+							<li><p>El código <m>C</m> es un código <acro>BCH</acro> cuya distancia mínima es al menos <m>d</m>.</p></li>
+
+							<li><p>Un polinomio <m>f(t)</m> está en <m>C</m> si y solo si <m>f( \omega^i) = 0</m> para <m>1 \leq i \lt d</m>.</p></li>
+
+							<li><p>La matriz 
+								<me>H =
+								\begin{pmatrix}<![CDATA[
+								1      & \omega      & \omega^2    & \cdots & \omega^{n-1}\\
+								1      & \omega^2    & \omega^{4}  & \cdots & \omega^{(n-1)(2)} \\
+								1      & \omega^3    & \omega^{6}  & \cdots & \omega^{(n-1)(3)} \\
+								\vdots & \vdots      & \vdots      & \ddots & \vdots \\
+								1      & \omega^{2r} & \omega^{4r} & \cdots & \omega^{(n-1)(2r)} 
+								]]>\end{pmatrix}</me>
+							es una matriz verificadora para <m>C</m>.</p></li>
+
+						</ol></p>
+				</statement>
+				<proof>
+					<p>(1) <m>\Rightarrow</m> (2). Si <m>f(t)</m> está en <m>C</m>, entonces <m>g(x) \mid f(x)</m> en <m>{\mathbb Z}_2[x]</m>. Luego, para <m>i = 1, \ldots, 2r</m>, <m>f( \omega^i) = 0</m> pues <m>g( \omega^i ) = 0</m>. Recíprocamente, supongamos que <m>f( \omega^i) = 0</m> for <m>1 \leq i \leq d</m>. Entonces <m>f(x)</m> es divisible por cada <m>m_i(x)</m>, pues <m>m_i(x)</m> es el polinomio minimal de <m>\omega^i</m>. Por lo tanto, <m>g(x) \mid f(x)</m> porla definición de <m>g(x)</m>. Así, <m>f(x)</m> es una palabra del código.</p>
+
+					<p>(2) <m>\Rightarrow</m> (3). Sea <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1}v t^{n - 1}</m> be in <m>R_n</m>. La correspondiente <m>n</m>-tupla en <m>{\mathbb Z}_2^n</m> es <m>{\mathbf x} = (a_0 a_1 \cdots a_{n - 1})^{\rm t}</m>. By (2),
+						<me>H {\mathbf x} =
+						\begin{pmatrix}<![CDATA[
+						a_0 + a_1 \omega + \cdots + a_{n-1} \omega^{n-1} \\
+						a_0 + a_1 \omega^2 + \cdots + a_{n-1} (\omega^2)^{n-1} \\
+						\vdots \\
+						a_0 + a_1 \omega^{2r} + \cdots + a_{n-1} (\omega^{2r})^{n-1}
+						]]>\end{pmatrix}
+						=
+						\begin{pmatrix}<![CDATA[
+						f(\omega) \\
+						f(\omega^2) \\
+						\vdots \\
+						f(\omega^{2r})
+						]]>\end{pmatrix}
+						= 0</me>
+					precisamente cuando <m>f(t)</m> está en <m>C</m>. Luego, <m>H</m> es una matriz verificadora para <m>C</m>.</p>
+
+					<p>(3) <m>\Rightarrow</m> (1). Por (3), un polinomio <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1} t^{n - 1}</m> está en <m>C</m> exactamente cuando <m>f(\omega^i) = 0</m> for <m>i = 1, \ldots, 2r</m>. El menor tal polinomio es <m>g(t) = \lcm[ m_1(t),\ldots, m_{2r}(t)]</m>.  Por lo tanto, <m>C = \langle g(t) \rangle</m>.</p>
+				</proof>
+			</theorem>
+
+			<example xml:id="example-finite-x15-1">
+				<p>Es fácil verificar que <m>x^{15} - 1 \in {\mathbb Z}_2[x]</m> se factoriza como
+					<me>x^{15} - 1 = (x + 1)(x^2 + x + 1)(x^4 + x + 1)(x^4 + x^3 + 1)(x^4 + x^3 + x^2 + x + 1),</me>
+				donde cada uno de estos factores es irreducible. Sea <m>\omega</m> una raíz de <m>1 + x + x^4</m>. Le cuerpo de Galois <m>\gf(2^4)</m> es
+					<me>\{ a_0 + a_1 \omega + a_2 \omega^2 + a_3 \omega^3 : a_i \in {\mathbb Z}_2 \text{ and } 1 + \omega + \omega^4 = 0 \}.</me>
+				Por el Ejemplo<nbsp /><xref ref="example-finite-gf-p24" />, <m>\omega</m> es una raíz 15 primitiva de la unidad. El polinomio minimal de  <m>\omega</m> es <m>m_1(x) = 1 + x + x^4</m>. Es fácil ver que <m>\omega^2</m> y <m>\omega^4</m> también son raíces de <m>m_1(x)</m>. El polinomio minimal de <m>\omega^3</m> es <m>m_2(x) = 1 + x + x^2 + x^3 + x^4</m>. Por lo tanto, 
+					<me>g(x) = m_1(x) m_2(x) = 1 + x^4 + x^6 + x^7 + x^8</me>
+				tiene raíces <m>\omega</m>, <m>\omega^2</m>, <m>\omega^3</m>, <m>\omega^4</m>.  Como tanto <m>m_1(x)</m> como <m>m_2(x)</m> dividen a <m>x^{15} - 1</m>, el código <acro>BCH</acro> es un código <m>(15, 7)</m>. Si <m>x^{15} -1 = g(x)h(x)</m>, entonces <m>h(x) = 1 + x^4 + x^6 + x^7</m>; por lo tanto, una matriz verificadora para este código es
+					<me>\left( 	<!-- This matrix is too large for pmatrix - TWJ 8/19/2010 -->
+					\begin{array}{ccccccccccccccc}
+					0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+					0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+					0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+					0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+					0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+					0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+					0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+					1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+					\end{array}
+					\right).</me></p>
+			</example>
+
+			<xi:include href="./sage/finite-info.xml" />
+
+		</subsection>
+	</section>
+
+<xi:include href="./exercises/finite.xml" />
+
+	<exercises xml:id="finite-exercises-bch-codes">
+		<title>Ejercicios Adicionales: Corrección de Errores para Códigos <acro>BCH</acro></title>
+
+		<introduction>
+			<p>Los códigos <acro>BCH</acro> tienen algoritmos de corrección de errores muy atractivos. Sea <m>C</m> un código <acro>BCH</acro> en <m>R_n</m>, y supongamos que se transmite un polinomio <m>c(t) = c_0 + c_1 t + \cdots + c_{n-1} t^{n-1}</m> del código. Sea <m>w(t) = w_0 + w_1 t + \cdots w_{n-1} t^{n-1}</m> el polinomio en <m>R_n</m> que es recibido.  Si han ocurrido errores en los bits <m>a_1, \ldots, a_k</m>, entonces <m>w(t) = c(t) + e(t)</m>, donde <m>e(t) = t^{a_1} + t^{a_2} + \cdots + t^{a_k}</m> es el <term>polinomio de error</term><idx><h>Polinomio</h><h>de error</h></idx>. El decodificador debe determinar los enteros <m>a_i</m> y luego recuperar <m>c(t)</m> a partir de <m>w(t)</m> cambiando el valor de los bit <m>a_i</m>. A partir de <m>w(t)</m> podemos calcular <m>w( \omega^i ) = s_i</m> para <m>i = 1, \ldots, 2r</m>, donde <m>\omega</m> es una raíz <m>n</m>-ésima primitiva de la unidad sobre <m>{\mathbb Z}_2</m>. Decimos que el <term>síndrome</term><idx><h>Síndrome de un código</h></idx> de <m>w(t)</m> es <m>s_1, \ldots, s_{2r}</m>.</p>
+		</introduction>
+
+		<exercise>
+			<statement>
+				<p>Muestre que <m>w(t)</m> es un código polinomial si y solo si <m>s_i = 0</m> para todo <m>i</m>.</p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>Muestre que 
+					<me>s_i = w( \omega^i) = e( \omega^i) = \omega^{i a_1} + \omega^{i a_2} + \cdots + \omega^{i a_k}</me>
+				para <m>i = 1, \ldots, 2r</m>. El <term>polinomio localizador de errores</term><idx><h>Polinomio</h><h>localizador de errores</h></idx> se define como
+					<me>s(x) = (x + \omega^{a_1})(x + \omega^{a_2}) \cdots  (x + \omega^{a_k}).</me></p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>Recuerde el código de bloque <acro>BCH</acro> <m>(15,7)</m> en el Ejemplo<nbsp /><xref ref="example-finite-parity-check-x7-1" />.  Por el Teorema<nbsp /><xref ref="theorem-min-distance" />, este código es capaz de corregir dos errores. Supongamos que estos errores ocurren en los bits <m>a_1</m> y <m>a_2</m>. El polinomio localizador de errores es <m>s(x) = (x + \omega^{a_1})(x + \omega^{a_2})</m>. Muestre que
+					<me>s(x) = x^2 + s_1 x + \left( s_1^2 + \frac{s_3}{s_1} \right).</me></p>
+			</statement>
+		</exercise>
+
+		<exercise>
+			<statement>
+				<p>Sea <m>w(t) = 1 + t^2 +t^4 + t^5 + t^7 + t^{12} + t^{13}</m>. Determine el polinomio originalmente transmitido.</p>
+			</statement>
+		</exercise>
+
+	</exercises>
+
+	<references xml:id="finite-references">
+		<title>Referencias y Lecturas Recomendadas</title>
+
+		<biblio type="raw"> <!-- was [1] -->
+<!-- Reference updated 5/4/2010 - TWJ -->
+		Childs, L. <title>A Concrete Introduction to Higher Algebra</title>. 2nd ed. Springer-Verlag, New York, 1995.</biblio>
+
+		<biblio type="raw"> <!-- was [2] -->
+<!-- No longer in print 8/20/2010 - TWJ -->
+		Gåding, L. and Tambour, T. <title>Algebra for Computer Science</title>. Springer-Verlag, New York, 1988.</biblio>
+
+		<biblio type="raw"> <!-- was [3] -->
+<!-- Reference updated 8/20/2010 - TWJ -->
+		Lidl, R. and Pilz, G. <title>Applied Abstract Algebra</title>. 2nd ed. Springer, New York, 1998. An excellent presentation of finite fields and their applications.</biblio>
+
+		<biblio type="raw"> <!-- was [4] -->
+<!-- No longer in print 8/20/2010 - TWJ -->
+		Mackiw, G. <title>Applications of Abstract Algebra</title>. Wiley, New York, 1985.</biblio>
+
+		<biblio type="raw"> <!-- was [5] -->
+		Roman, S. <title>Coding and Information Theory</title>. Springer-Verlag, New York, 1992.</biblio>
+
+		<biblio type="raw"> <!-- was [6] -->
+<!-- Reference updated - TWJ 8/20/2010 -->
+		van Lint, J. H. <title>Introduction to Coding Theory</title>. Springer, New York, 1999.</biblio>
+
+	</references>
+
+	<xi:include href="./sage/finite-sage.xml" />
+	<xi:include href="./sage/finite-sage-exercises.xml" />
+
+</chapter>
+

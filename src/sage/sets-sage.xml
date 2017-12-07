@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="sets-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Sage es un sistema poderoso para estudiar y explorar diversas áreas de las matemáticas.  En este libro, se estudia una variedad de estructuras algebraicas, tales como grupos, anillos y cuerpos.  Sage tiene excelentes implementaciones de muchas propiedades de estos objetos como veremos en lo capítulos que vienen.  Pero acá y ahora, en este capítulo inicial, nos concentraremos en unas pocas cosas generales para sacarle el mayor provecho posible a Sage.</p>
+
+		<p>Usted puede usar Sage de varias formas diferentes.  Lo puede usar como un programa de línea de comando si está instalado en su computador, o a través de una aplicación web como SageMathCloud.  Este texto supondrá que lo está leyendo como una hoja de cálculo dentro de un Notebook Sage (una interfaz de navegador web), o que esta es una sección del libro completo presentado como páginas web, y usted está usando el Servidor de Sage Cell Server via esas páginas.  Después de los primero capítulos las explicaciones debiesen ser igualmente válidas sin importar cómo esté ejecutando los comandos Sage.</p>
+
+	</introduction>
+
+	<subsection>
+		<title>Ejecutando Comandos Sage</title>
+
+		<p>Su principal interacción será escribir comandos Sage dentro de una <em>celda de cálculo</em>.  Si está leyendo esto dentro de un Notebook Sage o en la versión web del libro, entonces encontrará una celda de cálculo justo debajo de este párrafo.  Pinche una vez dentro de la celda y si está en un Notebook Sage, obtendrá un borde más dintintivo alrededor, y un cursor parpadeante en el interior, además de un enlace <q>evaluate</q> debajo. </p>
+
+		<sage />
+
+		<p> Escriba <c>2+2</c> y pinche en el enlace de evaluación.  ¿Apareció un <c>4</c> debajo de la celda?  Si es así, ha tenido éxito en enviar un comando a Sage para su evaluación y ha recibido la respuesta (correcta).</p>
+
+		<p>Acá hay otra celda de cálculo.  Intente evaluar el comando <c>factorial(300)</c>.</p>
+
+		<sage />
+
+		<p>Hmmmmm.  ¡Ese es un entero grande!  El resultado debiese tener 615 dígitos en total.  Puede que deba usar la barra de navegación para verlo completo o que aparezca cortado y con diagonales al final de cada línea (éstas indican la continuación en la línea siguiente).</p>
+
+		<p>Para hacer nuevas celdas de cálculo en el Notebook Sage (solo ahí), pase con el mouse justo arriba de otra celda de cálculo o justo debajo de una celda de salida.  Cuando vea una delgada barra azul, pinche y se abrirá una nueva celda lista para ser usada.  Note que  su hoja de trabajo recordará todas las operaciones que realice, en el orden en que las realice, sin importar dónde estén las celdas por lo que es mejor mantener el orden y agregar celdas abajo.</p>
+
+		<p>Intente situar el cursor justo debajo del enorme número que obtuvo para <m>300!</m>  Pinche en la barra azul (no funciona en la versión web del libro) y haga otro cálculo en la nueva celda de cálculo.</p>
+
+		<p>Cada celda de cálculo solo mostrará la salida del último comando en la celda.  Intente predecir la salida de la siguiente celda antes de ejecutarla.</p>
+
+		<!-- Doctest framework *will* create output from "b", contrary to notebook behavior -->
+		<!-- So doctest will fail, and doctest="not tested" does not help the situation -->
+		<sage>
+			<input>
+			a = 10
+			b = 6
+			b = b - 10
+			a = a + 20
+			a
+			</input>
+			<output>30</output>
+		</sage>
+
+		<p>La siguiente celda de cálculo no producirá nada visible pues el único comando no produce salida.  Pero tendrá un efecto, como puede apreciar cuando ejecute la celda siguiente.  Note como se usa el valor de <c>b</c> de arriba.  Ejecute esta celda <em>una vez</em>.  Exactamente una vez.  Aunque <em>parezca</em> no hacer nada. Si la ejecuta dos veces, no nos hacemos responsables de lo que pueda suceder.</p>
+
+		<sage>
+			<input>b = b + 50</input>
+		</sage>
+
+		<p>Ahora ejecute esta celda, la que sí producirá una salida.</p>
+
+		<sage>
+			<input>b + 20</input>
+			<output>66</output>
+		</sage>
+
+		<p>Así <c>b</c> comenzó su existencia como <c>6</c>.  A continuación le restamos <m>10</m>.  En una celda posterior le sumamos <c>50</c>.  Esto suponiendo que ejecutó la celda <em>exactamente</em> una vez!  En la última celda creamos <c>b+20</c> (pero no guardamos el resultado) y es ese valor (<m>66</m>) el que se mostró, mientras <c>b</c> aún vale <m>46</m>.</p>
+
+		<p>Puede combinar varios comandos en una línea separándolos por punto y coma (;). Esto se puede usar para obtener múltiples salidas de una solo celda. La sintaxis para construir una matriz debiera ser bastante clara cuando vea el resultado, pero si no lo es, no se preocupe, por ahora no es importante.</p>
+
+		<sage>
+			<input>A = matrix([[3, 1], [5,2]]); A</input>
+			<output>
+			[3 1]
+			[5 2]
+			</output>
+		</sage>
+
+		<sage>
+			<input>print(A); print; print(A.inverse())</input>
+			<output><![CDATA[
+			[3 1]
+			[5 2]
+			<BLANKLINE>
+			[ 2 -1]
+			[-5  3]]]>
+			</output>
+		</sage>
+		</subsection>
+		<subsection>
+		<title>Ayuda Inmediata</title>
+
+		<p>Algunos comandos en Sage son <q>funciones,</q> un ejemplo es <c>factorial()</c> ariba.  Otros comandos son <q>métodos</q> de un objeto y son características del objeto, un ejemplo <c>.inverse()</c> como un método de una matriz.  Una vez que sabe como crear un objeto (como una matriz), entonces es fácil ver todos los métodos disponibles.  Escriba el nombre del objeto seguido de un punto y presione la tecla TAB.  Esto lamentablemente no parece funcionar en la versión web del libro.  </p>
+
+<!--
+		Si tiene <c>A</c> definida de arriba, entonces la celda de abajo está lista para la prueba, pinche en ella y presione TAB (¡no <q>evaluate</q>!).  Debiese obtener una larga lista de los métodos posibles.</p>
+
+		<sage doctest="not tested">
+			<input>A.</input>
+		</sage>
+-->
+		<p>Para obtener ayuda en cómo usar un método con un objeto, escriba su nombre después del punto (sin paéntesis) seguido de un signo de interrogación y presione TAB (o evalúe la celda).  (Presione la tecla de escape <q>ESC</q> para sacar la lista, o presione en el texto para un método.)</p>
+
+		<sage doctest="not tested">
+			<input>A.inverse?</input>
+		</sage>
+
+		<p>Con un segundo signo de interrogación es posible ver las instrucciones programadas en Sage que hacen que el método funcione:</p>
+
+		<sage doctest="not tested">
+		<input>A.inverse??</input>
+		</sage>
+
+		<p>Vale la pena ver lo que hace Sage cuando hay un error.  Seguramente le tocará ver un buen número de estos, e inicialmente pueden resultar bastante intimidantes.  Pero con el tiempo, los podrá entender y usar efectivamente, además de ojalá verlos con menos frecuencia.  Ejecute la celda de abajo, pide el inverso de una matriz que no es invertible.</p>
+
+		<sage>
+			<input>
+			B = matrix([[2, 20], [5, 50]])
+			B.inverse()
+			</input>
+			<output>
+			Traceback (most recent call last):
+			...
+			ZeroDivisionError: Matrix is singular
+			</output>
+		</sage>
+
+		<p>Si está en una celda de un Notebook Sage, verá una versión abreviada del error.  Pinchar a la izquierda de éste aumenta el detalle desplegado y pinchando nuevamente desaparece por completo.  Finalmente pinchando una tercera vez se vuelve al mensaje abreviado.  Lea la parte final del error primero, esa puede ser la mejor explicación.  Acá el error <c>ZeroDivisionError</c> no es 100<percent /> apropiado, pero se acerca.  La matriz no es invertible o equivalentemente su determinante es cero por lo que en algún punto Sage intentó dividir por cero.  El resto del mensaje comienza con la parte de su código que dio origen al error, seguida de los comandos y funciones intermedias ejecutadas hasta el punto preciso donde se produjo el problema.  A veces esta información le dará algunas pistas, otras veces será completamente indescifrable.  No se deje asustar si parece misterioso, pero recuerde que conviene leer la última línea primero, después volver atrás y leer las primeras líneas para buscar algo que se parezca a lo que escribió usted.</p>
+
+	</subsection>
+
+	<subsection>
+		<title>Comentando su Trabajo</title>
+
+		<p>Es fácil comentar el trabajo cuando está usando un Notebook Sage. (Lo siguiente solo es válido en ese contexto.  Puede abrir un Notebook Sage y experimentar allí.)  Es posible obtener un pequeño procesador de texto en otra celda entre las celdas de cálculo.  Una forma de hacer que aparezca es pinchar en a barra azul mencionada antes, pero presionando simultáneamente la tecla SHIFT.  Experimente con tipos de letra, colores, listas, etc y luego presione <q>Save changes</q> para guardar y salir.  Pinche doble en su texto si necesita volver a editarlo.</p>
+
+		<p>Apra el procesador de texto nuevamente para escribir algo.  Escriba lo siguiente <em>exactamente,</em><cd>
+			<cline>Teorema de Pitágoras: $c^2=a^2+b^2$</cline>
+		</cd>y guarde los cambios.  Los símbolos entre los signos pesos se interpretan de acuerdo al lenguaje conocido como <tex /> o <latex /><mdash /> puede navegar internet para aprender sobre esta útil herramienta. (Al menos entre matemáticos y físicos es muy popular.)</p>
+		<sage />
+
+		</subsection>
+		<subsection>
+		<title>Listas</title>
+
+		<p>Gran parte de nuestra interacción con conjuntos será por medio de listas Sage.  Estas no son realmente conjuntos <mdash /> permiten duplicados, y el orden de los elementos es relevante.  Pero se parecen a los conjuntos, y son muy poderosas de manera que las usaremos a menudo.  Empezaremos con una lista inventada para practicar, las cremillas significan que los elementos son de texto, sin significado especial.  Ejecute estas celdas en la medida que avanzamos.</p>
+
+		<sage>
+			<input>
+			zoo = ['snake', 'parrot', 'elephant', 'baboon', 'beetle']
+			zoo
+			</input>
+			<output>
+			['snake', 'parrot', 'elephant', 'baboon', 'beetle']
+			</output>
+		</sage>
+
+		<p>Los corchetes definen los límites de la lista, comas separan sus elementos, y le podemos asignar un nombre a la lista.  Para trabajar con un elemento de la lista, usamos el nombre y un par de corchetes conteniendo un índice.  Note que las listas usan índices que <em>comienzan a enumerar desde cero</em>.  Esto parece extraño al principio, pero se acostumbrará.</p>
+
+		<sage>
+			<input>zoo[2]</input>
+			<output>'elephant'</output>
+		</sage>
+
+		<p>Podemos agregar un nuevo animal al zoológico, se sitúa al final.</p>
+
+		<sage>
+			<input>zoo.append('ostrich'); zoo</input>
+			<output>['snake', 'parrot', 'elephant', 'baboon', 'beetle', 'ostrich']</output>
+		</sage>
+
+		<p>Podemos sacar a un criatura.</p>
+
+		<sage>
+			<input>
+			zoo.remove('parrot')
+			zoo
+			</input>
+			<output>['snake', 'elephant', 'baboon', 'beetle', 'ostrich']</output>
+		</sage>
+
+		<p>Podemos extraer una sublista.  Acá comenzamos con el elemento 1 (elephant) y continuamos hasta, <em>pero sin incluirlo</em>, el elemento 3 (beetle).  Nuevamente un poco extraño, pero parecerá natural a la larga.  Por ahora, note que estamos extrayendo dos elementos de la lista, exactamente <m>3-1=2</m> elementos.</p>
+
+		<sage>
+			<input>
+			mammals = zoo[1:3]
+			mammals
+			</input>
+			<output>['elephant', 'baboon']</output>
+		</sage>
+
+		<p>Querremos saber si dos listas son iguales, o si los conjuntos que representan lo son.  Para lograrlo tendremos que ordenar las listas primero.  La función <c>sorted</c> crea una nueva lista ordenada, sin alterar la lista original.  Guardamos la nueva lista con otro nombre.</p>
+
+		<sage>
+			<input>
+			newzoo = sorted(zoo)
+			newzoo
+			</input>
+			<output>['baboon', 'beetle', 'elephant', 'ostrich', 'snake']</output>
+		</sage>
+
+		<sage>
+			<input>
+			zoo.sort()
+			zoo
+			</input>
+			<output>['baboon', 'beetle', 'elephant', 'ostrich', 'snake']</output>
+		</sage>
+
+		<p>Note que si ejecuta esta última celda su zoológico habrá cambiado y algunos comandos no necesariamente se ejecutarán de la misma forma.  Si quiere experimentar, vuelva a la creación original del zoo y ejecute las celdas nuevamente con un zoo renovado.</p>
+
+		<p>Una construcción llamada <term>list comprehension</term> (no he encontrado una buena traducción) es muy poderosa, especialmente dado que imita casi exactamente la notación que usamos para describir conjuntos.  Supongamos que queremos formar los plurales de los nombres de las criaturas en nuestro  zoo.  Construimos una nueva lista, basada en todos los elementos de nuestra lista anterior.</p>
+
+		<sage>
+			<input>
+			plurality_zoo = [animal+'s' for animal in zoo]
+			plurality_zoo
+			</input>
+			<output>['baboons', 'beetles', 'elephants', 'ostrichs', 'snakes']</output>
+		</sage>
+
+		<p>Casi como dice: agregamos una <q>s</q> al nombre de cada animal, para cada animal en el zoo, y los ponemos en una nueva lista.  Perfecto.  (Excepto que el plural de <q>ostrich</q> está mal.)</p>
+
+		</subsection>
+		<subsection>
+		<title>Listas de Enteros</title>
+
+		<p>Un tipo final de lista, con números esta vez.  La función <c>srange()</c> creará una lista de enteros.  (La <q>s</q> en el nombre se refiere a <q>Sage</q> y producirá enteros óptimos para Sage.  Muchas de las dificultades iniciales con Sage y teoría de grupos pueden ser aliviadas con solo usar este comando para crear listas de enteros.)  En su formal más simple, <c>srange(12)</c> creará una lista de 12 enteros, <em>empezando de cero</em> y llegando hasta 11.  ¿Suena familiar?</p>
+
+		<sage>
+			<input>dozen = srange(12); dozen</input>
+			<output>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]</output>
+		</sage>
+
+		<p>A continuación dos formas adicionales que entenderá estudiando los ejemplos.</p>
+
+		<sage>
+			<input>teens = srange(13, 20); teens</input>
+			<output>[13, 14, 15, 16, 17, 18, 19]</output>
+		</sage>
+
+		<sage>
+			<input>decades = srange(1900, 2000, 10); decades</input>
+			<output>[1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990]</output>
+		</sage>
+	</subsection>
+
+	<subsection>
+		<title>Guardando y Compartiendo su Trabajo</title>
+
+		<p>Hay un botón <q>Save</q> en la esquina superior derecha del Notebook Sage.  Pinchar en él guardará su trabajo de manera que pueda recuperarlo desde el notebook Sage en una ocasión futura, sin embargo deberá volver a ejecutar todas las celdas cuando reabra su hoja de trabajo.</p>
+
+		<p>También hay un menú que se despliega donde dice <q>File</q>, a la izquierda, justo arriba de la primera celda de cálculo
+		(no lo confunda con el menú de su navegador).  Verá una opción acá etiquetada <q>Save worksheet to a file...</q>  Cuando haga esto, creará una copia de su hoja de trabajo en el formato <c>sws</c> (abreviación de <q>Sage WorkSheet</q>).  Puede enviar este archivo por email, o publicarlo en una página web, para que otros usuarios lo vean y lo suban usando el enlace <q>Upload</q> en su propio notebook incorporando una copia de su hoja de trabajo en el notebook de ellos.</p>
+
+		<p>Hay otras formas de compartir hojas de trabajo con las que puede experimentar, pero esto le da una manera de compartir con cualquier persona.</p>
+
+		<p>Hemos visto bastantes cosas en esta sección, así es que vuelva más adelante a repasar y descubrir detalles que no haya notado.  Hay muchas otras características del Notebok Sage que no hemos cubierto acá.</p>
+	</subsection>
+
+</section>

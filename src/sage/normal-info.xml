@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+	<p>Sage puede determinar fácilmente si un subgrupo es normal o no. Si lo es, puede crear el grupo cociente.  Pero la construcción entrega un nuevo grupo de permutaciones, ismomorfo al grupo cociente, de manera que su utilidad es limitada.</p>
+</paragraphs>

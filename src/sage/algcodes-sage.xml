@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="algcodes-sage">
+	<title>Sage</title>
+	
+	<introduction>
+		<p>Sage contiene una colección importante de códigos lineales y una variedad de métodos que pueden ser usados para investigarlos.</p>
+	</introduction>
+
+	<subsection>
+		<title>Construyendo Códigos Lineales</title>
+
+		<p>El objeto <c>codes</c> puede ser usado para obtener una lista concisa de los códigos implementados disponibles.  Escriba <c>codes.</c> y presione <c>Tab</c>.  La mayor parte de las interfaces a Sage le entregarán una lista.  Puede usar el signo de interrogación al final del nombre de un método para aprender más sobre los distintos parámetros.</p>
+
+		<sage doctest="not tested">
+			<input>codes.</input>
+		</sage>
+
+		<p>Usaremos el código binario de Hamming <m>(7,4)</m> clásico como ilustración.  <q>Binario</q> quiere decir que tenemos vectores con solo ceros y unos, <m>7</m> es el largo y significa que los vectores tienen  <m>7</m> coordenadas, y <m>4</m> es la dimensión, lo que significa que este código contiene <m>2^4=16</m> vectores.   La documentación supone que sabemos unas pocas cosas de más adelante en el texto.  Usamos <c>GF(2)</c> para especificar que el código es binario <mdash /> esto tendrá más sentido después de haber estudiado cuerpos finitos.  Un segundo parámetro es <c>r</c> y podemos ver de las fórmulas en la documentación que poniendo <c>r=3</c> nos dará largo <m>7</m>.</p>
+
+		<sage>
+			<input>H = codes.HammingCode(GF(2), 3); H</input>
+			<output>[7, 4] Hamming Code over GF(2)</output>
+		</sage>
+	</subsection>
+
+	<subsection>
+		<title>Propiedades de los Códigos Lineales</title>
+
+		<p>Podemos ahora examinar el código que acabamos de construir.  Primero su dimensión.</p>
+
+		<sage>
+			<input>H.dimension()</input>
+			<output>4</output>
+		</sage>
+
+		<p>El código es suficientemente pequeño como para listar todas sus palabras.</p>
+
+		<sage>
+			<input>H.list()</input>
+			<output>
+			[(0, 0, 0, 0, 0, 0, 0), (1, 0, 0, 0, 0, 1, 1), (0, 1, 0, 0, 1, 0, 1),
+			 (1, 1, 0, 0, 1, 1, 0), (0, 0, 1, 0, 1, 1, 0), (1, 0, 1, 0, 1, 0, 1),
+			 (0, 1, 1, 0, 0, 1, 1), (1, 1, 1, 0, 0, 0, 0), (0, 0, 0, 1, 1, 1, 1),
+			 (1, 0, 0, 1, 1, 0, 0), (0, 1, 0, 1, 0, 1, 0), (1, 1, 0, 1, 0, 0, 1),
+			 (0, 0, 1, 1, 0, 0, 1), (1, 0, 1, 1, 0, 1, 0), (0, 1, 1, 1, 1, 0, 0),
+			 (1, 1, 1, 1, 1, 1, 1)]
+			</output>
+		</sage>
+
+		<p>La distancia mínima es posiblemente una de sus propiedades más importantes.  Los códigos de Hamming siempre tienen distancia mínima <m>d=3</m>, de manera que siempre son correctores de un error.</p>
+
+		<sage>
+			<input>H.minimum_distance()</input>
+			<output>3</output>
+		</sage>
+
+		<p>Sabemos que la matriz verificadora y la matriz generadora son útiles para la construcción, descripción y análisis de los códigos lineales.  Los nombres de los métodos en Sage son un poco crípticos.  Sage tienen rutinas para analizar matrices con elementos de diferentes cuerpos, de manera que haremos buena parte del análisis de estas matrices dentro de Sage.</p>
+
+		<sage>
+			<input>C = H.parity_check_matrix(); C</input>
+			<output>
+			[1 0 1 0 1 0 1]
+			[0 1 1 0 0 1 1]
+			[0 0 0 1 1 1 1]
+			</output>
+		</sage>
+
+		<p>La matriz generadora del texto tienen <em>columnas</em> que son palabras del código, y combinaciones lineales de las columnas (el espacio de columnas de la matriz) son palabras del código.  En Sage la matriz generadora tiene <em>filas</em> que son palabras del código y el espacio de filas de la matriz es el código.  Tenemos acá otro punto en que debemos traducir mentalmente entre una elección hecha en el texto y un elección hecha por los desarrolladores de Sage.</p>
+
+		<sage>
+			<input>G = H.generator_matrix(); G</input>
+			<output>
+			[1 0 0 0 0 1 1]
+			[0 1 0 0 1 0 1]
+			[0 0 1 0 1 1 0]
+			[0 0 0 1 1 1 1]
+			</output>
+		</sage>
+
+		<p>A continuación una verificación parcial de que estas dos matrices son correctas, ejercitando el Lema<nbsp /><xref ref="lemma-parity-check" />.  Note que necesitamos transponer la matriz generadora por las razones expuestas antes.</p>
+
+		<sage>
+			<input>C*G.transpose() == zero_matrix(3, 4)</input>
+			<output>True</output>
+		</sage>
+
+		<p>Notemos que la matriz verificadora puede no ser canónica y que la matriz generadora puede no ser estándar.  Sage puede producir una matriz generadora que tenga un conjunto de columnas que formen la matriz identidad, pero no se garantiza que estas columnas sean las primeras.  (Columnas, no filas.)  Tal matriz se dice <term>sistemática</term>, y el método Sage es <c>.systematic_generator_matrix()</c>.</p>
+
+		<sage>
+			<input>H.systematic_generator_matrix()</input>
+			<output>
+			[1 0 0 0 0 1 1]
+			[0 1 0 0 1 0 1]
+			[0 0 1 0 1 1 0]
+			[0 0 0 1 1 1 1]
+			</output>
+		</sage>
+
+	</subsection>
+
+	<subsection>
+		<title>Decodificando un Código Lineal</title>
+
+		<p>Podemos decodificar mensajes recibidos originados por un código lineal.  Supongamos que recibimos el vector binario de largo <m>7</m><c>r</c>.</p>
+
+		<sage>
+			<input>r = vector(GF(2), [1, 1, 1, 1, 0, 0, 1]); r</input>
+			<output>(1, 1, 1, 1, 0, 0, 1)</output>
+		</sage>
+
+		<p>Podemos reconocer que uno o más errores han ocurrido, pues <c>r</c> no pertenece al código, dado que el siguiente cálculo no resulta en el vector cero.</p>
+
+		<sage>
+			<input>C*r</input>
+			<output>(1, 1, 0)</output>
+		</sage>
+
+		<p>Un código lineal tiene un método <c>.decode</c>.  Usted puede elegir entre distintos algoritmos, pero los códigos de Hamming tienen su algoritmo particular.  El algoritmo por defecto es el del uso de síndromes.</p>
+
+		<sage>
+			<input>H.decode_to_code(r)</input>
+			<output>(1, 1, 0, 1, 0, 0, 1)</output>
+		</sage>
+
+		<p>Si estamos dispuesto a suponer que solo ha ocurrido un eror (lo que podemos, si la probabilidad de error en una entrada particular del vector es muy baja), entonces vemos que ocurrió un error en la tercera posición.</p>
+
+		<p>Recuerde que podría ser que ocurra más de un error.  Por ejemplo, supongamos que el mensaje es el mismo de antes y ocurren errores en la tercera, quinta y sexta posiciones.</p>
+
+		<sage>
+			<input>
+			message = vector(GF(2), [1, 1, 0, 1, 0, 0, 1])
+			errors = vector(GF(2), [0, 0, 1, 0, 1, 1, 0])
+			received = message + errors
+			received
+			</input>
+			<output>(1, 1, 1, 1, 1, 1, 1)</output>
+		</sage>
+
+		<p>Entonces parece querecibimos una palabra del código, por lo que suponemos que no hubo errores en absoluto, y decodificamos incorrectamente.</p>
+
+		<sage>
+			<input>H.decode_to_code(received) == message</input>
+			<output>False</output>
+		</sage>
+
+		<sage>
+			<input>H.decode_to_code(received) == received</input>
+			<output>True</output>
+		</sage>
+	</subsection>
+
+</section>

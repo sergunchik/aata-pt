@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+
+	<p>Sage puede crear homomorfismos entre grupos, los que pueden ser usados directamente como funciones, y cuya imagen y núcleo pueden ser consultados.  Hay así gran potencial para explorar las muchas relaciones fundamentales entre grupos, subgrupos normales, grupos cociente y propiedades de homomorfismos.</p>
+</paragraphs>

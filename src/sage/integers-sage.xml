@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory y Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="integers-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Muchas de las propiedades de los objetos algebraicos que estudiaremos se pueden determinar a partir de propiedades de los enteros asociados.  Sage tiene muchas y poderosas funciones para trabajar con enteros.</p>
+	</introduction>
+
+	<subsection>
+		<title>Algoritmo de División</title>
+
+		<p>La instrucción <c>a % b</c> entregará el resto de la división de <m>a</m> entre <m>b</m>.  En otras palabras, el resultado es el entero  <m>r</m> (único) tal que (1) <m>0\leq r\lt b</m>, y (2) <m>a=bq+r</m> para algún entero <m>q</m> (el cociente), como está garantizado por el Algoritmo de la División (Teorema<nbsp /><xref ref="theorem-integers-division_algorithm" />).  Entonces <m>(a-r)/b</m> será igual a <m>q</m>.  Por ejemplo,</p>
+
+		<sage>
+			<input>
+			r = 14 % 3
+			r
+			</input>
+			<output>2</output>
+		</sage>
+
+		<sage>
+			<input>
+			q = (14 - r)/3
+			q
+			</input>
+			<output>4</output>
+		</sage>
+
+		<p>También es posible obtener el cociente y el resto de forma simultánea con el método <c>.quo_rem()</c> (cociente y resto).</p>
+
+		<sage>
+			<input>
+			a = 14
+			b = 3
+			a.quo_rem(b)
+			</input>
+			<output>(4, 2)</output>
+		</sage>
+
+		<p>Un resto cero indica divisibilidad.  Así <c>(a % b) == 0</c> resulta <c>True</c> (verdadero) si <m>b</m> divide a <m>a</m>, y de otro modo resultará <c>False</c> (falso).</p>
+
+		<sage>
+			<input>(20 % 5) == 0</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>(17 % 4) == 0</input>
+			<output>False</output>
+		</sage>
+
+		<p>El método <c>.divides()</c> es otra opción.</p>
+
+		<sage>
+			<input>
+			c = 5
+			c.divides(20)
+			</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>
+			d = 4
+			d.divides(17)
+			</input>
+			<output>False</output>
+		</sage>
+	</subsection>
+
+	<subsection>
+		<title>Máximo Común Divisor</title>
+
+		<p>El máximo común divisor de <m>a</m> y <m>b</m> se obtiene con el comando <c>gcd(a, b)</c>, donde por ahora, <m>a</m> y <m>b</m> son enteros.  Más tarde, <m>a</m> y <m>b</m> podrán ser otros objetos con una noción de divisibilidad y <q>tamaño,</q> tales como los polinomios.  Por ejemplo,</p>
+
+		<sage>
+			<input>gcd(2776, 2452)</input>
+			<output>4</output>
+		</sage>
+
+		<p>Podemos usar el comando <c>gcd</c> para determinar si un par de enteros son relativamente primos.</p>
+
+		<sage>
+			<input>
+			a = 31049
+			b = 2105
+			gcd(a, b) == 1
+			</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>
+			a = 3563
+			b = 2947
+			gcd(a, b) == 1
+			</input>
+			<output>False</output>
+		</sage>
+
+		<p>El comando <c>xgcd(a,b)</c> (<q>eXtended GCD</q>) entrega un trío donde el primer elemento es el máximo común divisor de <m>a</m> y <m>b</m> (como con el comando <c>gcd(a,b)</c>), y los siguientes dos elementos son valores de <m>r</m> y <m>s</m> tales que <m>ra+sb=\gcd(a,b)</m>.</p>
+
+		<sage>
+			<input>xgcd(633,331)</input>
+			<output>(1, -137, 262)</output>
+		</sage>
+
+		<p>Partes del trío pueden ser extraídas usando <c>[ ]</c> (<q>indexando</q>) para acceder a los elementos del trío, empezando con el primero como índice <c>0</c>.  Por ejemplo, Lo siguiente siempre debiese resultar en <c>True</c>, aunque usted cambie los valores de <c>a</c> y <c>b</c>.  Intente cambiando los valores de <c>a</c> y <c>b</c> abajo, para ver que el resultado siempre es <c>True</c>.</p>
+
+		<sage>
+			<input>
+			a = 633
+			b = 331
+			extended = xgcd(a, b)
+			g = extended[0]
+			r = extended[1]
+			s = extended[2]
+			g == r*a + s*b
+			</input>
+			<output>True</output>
+		</sage>
+
+		<p>Estudiar este bloque de código le permitirá descubrir formas de beneficiarse de las respuestas entregadas por Sage.  Note que <c>=</c> es la forma de <em>asignar</em> un valor a una variable, mientras que en la última línea, <c>==</c> es la forma de comparar si dos objetos son <em>iguales</em>.</p>
+
+		</subsection>
+		<subsection>
+		<title>Primos y Factorización</title>
+
+		<p>El método <c>.is_prime()</c> determinará si un entero es primo o no.</p>
+
+		<sage>
+			<input>
+			a = 117371
+			a.is_prime()
+			</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>
+			b = 14547073
+			b.is_prime()
+			</input>
+			<output>False</output>
+		</sage>
+
+		<sage>
+			<input>b == 1597 * 9109</input>
+			<output>True</output>
+		</sage>
+
+		<p>El comando <c>random_prime(a, proof=True)</c> generará un número primo aleatorio entre <m>2</m> y <m>a</m>. Experimente ejecutando las celdas siguientes varias veces.  (Reemplazando <c>proof=True</c> por <c>proof=False</c> acelerará la búsqueda, pero existirá una pequeñísima probabilidad de que el resultado no sea primo.)</p>
+
+		<sage doctest="random">
+			<input>
+			a = random_prime(10^21, proof=True)
+			a
+			</input>
+			<output>424729101793542195193</output>
+		</sage>
+
+		<sage>
+			<input>a.is_prime()</input>
+			<output>True</output>
+		</sage>
+
+		<p>El comando <c>prime_range(a, b)</c> entrega una lista ordenada de todos los primos entre <m>a</m> y <m>b-1</m>, incluyendo posiblemente los extremos.  Por ejemplo,</p>
+
+		<sage>
+			<input>prime_range(503, 550)</input>
+			<output>[503, 509, 521, 523, 541, 547]</output>
+		</sage>
+
+		<p>Los comandos <c>next_prime(a)</c> y <c>previous_prime(a)</c> son otras formas de obtener un primo de un tamaño deseado.  Experimente en la celda siguiente (si la hay).  (El símbolo  <c>#</c>, se usa para indicar un <q>comentario</q>, que no será evaluado por Sage.  Puede borrar esta línea o empezar en la línea siguiente.)</p>
+
+		<sage type="practice"/>
+
+		<p>Además de verificar si un entero es primo, o generar números primos, Sage también puede descomponer un número entero en sus factores primos, como se decribe en el Teorema Fundamental de la Aritmética (Teorema<nbsp /><xref ref="theorem-fund-theorem-arithmetic" />).</p>
+
+		<sage>
+			<input>
+			a = 2600
+			a.factor()
+			</input>
+			<output>2^3 * 5^2 * 13</output>
+		</sage>
+
+		<p>Así <m>2600 = 2^3\times 5^2\times 13</m> y esta es la única forma de escribir <m>2600</m> como producto de números primos (aparte de reordenar los primos en el producto).</p>
+
+		<p>Si bien Sage muestra la factorización de una forma que entendemos fácilmente, internamente la guarda como una lista de pares de enteros, consistiendo cada par de una base (un primo) y un exponente (entero positivo).  Analice detalladamente los siguientes comandos, pues es un buen ejemplo para entender los resultados de Sage en forma de listas.</p>
+
+		<sage>
+			<input>
+			a = 2600
+			factored = a.factor()
+			first_term = factored[0]
+			first_term
+			</input>
+			<output>(2, 3)</output>
+		</sage>
+
+		<sage>
+			<input>
+			second_term = factored[1]
+			second_term
+			</input>
+			<output>(5, 2)</output>
+		</sage>
+
+		<sage>
+			<input>
+			third_term = factored[2]
+			third_term
+			</input>
+			<output>(13, 1)</output>
+		</sage>
+
+		<sage>
+			<input>
+			first_prime = first_term[0]
+			first_prime
+			</input>
+			<output>2</output>
+		</sage>
+
+		<sage>
+			<input>
+			first_exponent = first_term[1]
+			first_exponent
+			</input>
+			<output>3</output>
+		</sage>
+
+		<p>La siguiente celda revela la estructura interna de la factorización pidiendo la lista como tal. y mostramos como puede determinar el número de términos en la factorización usando el comando <c>len()</c> (largo).</p>
+
+		<sage>
+			<input>list(factored)</input>
+			<output>[(2, 3), (5, 2), (13, 1)]</output>
+		</sage>
+
+		<sage>
+			<input>len(factored)</input>
+			<output>3</output>
+		</sage>
+
+		<p>¿Puede extraer de <c>a</c> los siguientes dos primos y sus exponentes?</p>
+
+		<sage type="practice"/>
+	</subsection>
+
+</section>
+
+
+
+
+
+
+
+

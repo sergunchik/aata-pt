@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="permute-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Una buena parte de de la implementación de teoría de grupos en Sage está basada en rutinas de <acro>GAP</acro> (Groups, Algorithms, and Programming) en <url href="http://www.gap-system.org/">www.gap-system.org</url>, que está incluido en cada copia de Sage.  Este es un paquete de código abierto maduro, que existe desde 1986.</p>
+
+		<p>Como hemos visto, los grupos pueden ser descritos de muchas maneras diferentes, tales como conjuntos de matrices, conjuntos de números complejos, o conjuntos de símbolos sujetos a ciertas relaciones.  Una manera muy concreta de repersentar grupos es via permutaciones (funciones biyectivas de los enteros del <m>1</m> al <m>n</m>), usando la composición de funciones como la operación en el grupo.  Sage tiene muchas rutinas diseñadas para trabajar con grupos de este tipo y son también una buena forma para que las personas que quieran aprender teoría de grupos ganen experiencia con las ideas básicas de la teoría de grupos.  Por estas dos razones, nos concentraremos en este tipo de grupos.</p>
+	</introduction>
+
+	<subsection>
+		<title>Grupos de Permutaciones y sus Elementos</title>
+
+		<p>La forma más fácil de trabajar con elementos de grupos de permutación en Sage es escribirlos con notación cíclica.  Como estos son productos de ciclos disjuntos (que conmutan), no necesitamos preocuparnos por el orden en que aparecen los ciclos.  Si escribimos <c>(1,3)(2,4)</c> probablemente entenderemos que se trata de una permutación (el contenido de este capítulo!) y sabemos que podría ser un elemento de <m>S_4</m>, o quizás de un grupo simétrico en más de 4 símbolos.  Sage no puede comenzar tan fácilmente y necesita un poco de contexto, así es que coercionamos una cadena de caracteres escritos con notación de ciclos a pertenecer a un grupo simétrico para producir elementos del grupo.  A continuación algunos ejemplos y cálculos de muestra.  Recuerde que Sage y el texto difieren en el orden usado para componer dos permutaciones en un producto.</p>
+
+		<sage>
+			<input>
+			G = SymmetricGroup(5)
+			sigma = G("(1,3)(2,5,4)")
+			sigma*sigma
+			</input>
+			<output>(2,4,5)</output>
+		</sage>
+
+		<sage>
+			<input>
+			rho = G("(2,4)(1,5)")
+			rho^3
+			</input>
+			<output>(1,5)(2,4)</output>
+		</sage>
+
+		<p>Si los próximos tres ejemplos parecen confusos, o <q>al revés</q>, entonces sería un buen momento para revisar la discusión respecto al orden de la composición de permutaciones en Sage hecha en la subsección<nbsp /><xref ref="subsection-groups-of-symmetries" text="title" />.</p>
+
+		<sage>
+			<input>sigma*rho</input>
+			<output>(1,3,5,2)</output>
+		</sage>
+
+		<sage>
+			<input>rho*sigma</input>
+			<output>(1,4,5,3)</output>
+		</sage>
+
+		<sage>
+			<input>rho^-1*sigma*rho</input>
+			<output>(1,2,4)(3,5)</output>
+		</sage>
+
+		<p>Hay formas alternativas de crear elementos de un grupo de permutaciones, que pueden ser útiles en alguna situación particular, pero que no son de uso muy frecuente.</p>
+
+		<sage>
+			<input>
+			sigma1 = G("(1,3)(2,5,4)")
+			sigma1
+			</input>
+			<output>(1,3)(2,5,4)</output>
+		</sage>
+
+		<sage>
+			<input>
+			sigma2 = G([(1,3),(2,5,4)])
+			sigma2
+			</input>
+			<output>(1,3)(2,5,4)</output>
+		</sage>
+
+		<sage>
+			<input>
+			sigma3 = G([3,5,1,2,4])
+			sigma3
+			</input>
+			<output>(1,3)(2,5,4)</output>
+		</sage>
+
+		<sage>
+			<input>sigma1 == sigma2</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>sigma2 == sigma3</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>sigma2.cycle_tuples()</input>
+			<output>[(1, 3), (2, 5, 4)]</output>
+		</sage>
+
+		<sage>
+			<input>[sigma3(x) for x in G.domain()]</input>
+			<output>[3, 5, 1, 2, 4]</output>
+		</sage>
+
+		<p>La segunda versión de <m>\sigma</m> es una lista de <q>tuplas</q>, que requiere muchas comas y estas deben ser incluidas a su vez en una lista.  (Una tupla de largo uno debe ser escrita como <c>(4,)</c> para distinguirla del uso de paréntesis para agrupar, como en <c>5*(4)</c>.)  La tercera versión usa la <q>fila inferior</q> de la notación más engorrosa de dos filas introducida al comienzo del capítulo <mdash /> es una lista ordenada de las <em>imágenes</em> de la permutación cuando es considerada como una función.</p>
+
+		<p>Vemos que sin importar las tres formas diferentes de ingreso, todas las versiones de <m>\sigma</m> se muestran de la misma manera, y más aún son iguales entre sí.  (Esta es una sutil diferencia entre <mdash /> lo que un objeto <em>es</em> en Sage versus como un objeto se <em>muestra</em>.)</p>
+
+		<p>Podemos ser aún más cuidadosos sobre la naturaleza de nuestros elementos.  Note que una vez que Sage comienza, puede promover el producto <m>\tau\sigma</m> al grupo mayor de permutaciones.  Podemos <q>promover</q> elementos a grupos mayores de permutaciones, pero sería un error tratar de forzar un elemento en un grupo simétrico demasiado pequeño.</p>
+
+		<sage>
+			<input>
+			H = SymmetricGroup(4)
+			sigma = H("(1,2,3,4)")
+			G = SymmetricGroup(6)
+			tau = G("(1,2,3,4,5,6)")
+			rho = tau * sigma
+			rho
+			</input>
+			<output>(1,3)(2,4,5,6)</output>
+		</sage>
+
+		<sage>
+			<input>sigma.parent()</input>
+			<output>Symmetric group of order 4! as a permutation group</output>
+		</sage>
+
+		<sage>
+			<input>tau.parent()</input>
+			<output>Symmetric group of order 6! as a permutation group</output>
+		</sage>
+
+		<sage>
+			<input>rho.parent()</input>
+			<output>Symmetric group of order 6! as a permutation group</output>
+		</sage>
+
+		<sage>
+			<input>tau.parent() == rho.parent()</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>
+			sigmaG = G(sigma)
+			sigmaG.parent()
+			</input>
+			<output>Symmetric group of order 6! as a permutation group</output>
+		</sage>
+
+		<p>Es un error intentar coercionar una permutación con demasiados símbolos a un grupo de permutaciones que use menos símbolos.</p>
+
+		<sage>
+			<input>tauH = H(tau)</input>
+			<output>
+			Traceback (most recent call last):
+			...
+			ValueError: Invalid permutation vector: (1,2,3,4,5,6)
+			</output>
+		</sage>
+
+		<p>Mejor que trabajar simplemente con elementos del grupo simétrico, podemos crear diversos grupos de permutaciones en Sage.  A continuación una muestra para comenzar:</p>
+
+		<table xml:id="table-sage-permutation-groups">
+			<caption>Algunos grupos de permutaciones en Sage</caption>
+		    <tabular halign="left" top="medium">
+	    		<row bottom="medium">
+	    			<cell>Comando Sage</cell>
+	    			<cell>Descripción</cell>
+	    		</row>
+				<row>
+					<cell><c>SymmetricGroup(n)</c> </cell>
+					<cell>Grupo simétrico en <m>n</m> símbolos, <m>n!</m> elementos</cell>
+				</row>
+				<row>
+					<cell><c>DihedralGroup(n)</c></cell>
+					<cell>Simetrías de un <m>n</m>-ágono, <m>2n</m> elementos.</cell>
+				</row>
+				<row>
+					<cell><c>CyclicPermutationGroup(n)</c></cell>
+					<cell>Rotaciones de un <m>n</m>-ágono, <m>n</m> elementos</cell>
+				</row>
+				<row>
+					<cell><c>AlternatingGroup(n)</c></cell>
+					<cell>Grupo alternante en <m>n</m> símbolos, <m>n!/2</m> elementos</cell>
+				</row>
+				<row bottom="medium">
+					<cell><c>KleinFourGroup()</c></cell>
+					<cell>Un grupo no cíclico de orden 4</cell>
+				</row> 
+		    </tabular>
+		</table>
+
+		<sage type="practice" />
+
+		<p>Usted también puede localizar grupos de permutaciones en Sage usando el catálogo de <c>grupos</c>.  En la próxima celda ponga el cursor después del punto final y presione la tecla de tabular (TAB).  Obtendrá una lista de métodos que puede usar para crear grupos de permutaciones.  Como siempre, ponga un signo de interrogación después de un método y presione la tecla de tabular para obtener documentación en línea del método.  (esto funciona en una celda de Sage normal pero no parece funcionar en el "libro")</p>
+
+		<sage doctest="not tested">
+			<input>groups.permutation.</input>
+		</sage>
+
+	</subsection>
+
+	<subsection>
+		<title>Propiedades de Permutaciones (Elementos)</title>
+
+		<p>A veces es más fácil tomar un elemento de una lista de elementos en un grupo de permutaciones, así ya está asociado a un "parent" y no hay necesidad de hacer ninguna coerción.  En lo que sigue, <c>rotate</c> y <c>flip</c> son automáticamente elementos de <c>G</c> por la forma en que fueron obtenidos.</p>
+
+		<sage>
+			<input>
+			D = DihedralGroup(5)
+			elements = D.list(); elements
+			</input>
+			<output>
+			[(), (1,5)(2,4), (1,2,3,4,5), (1,4)(2,3), (1,3,5,2,4), (2,5)(3,4),
+			 (1,3)(4,5), (1,5,4,3,2), (1,4,2,5,3), (1,2)(3,5)]
+			</output>
+		</sage>
+
+		<sage>
+			<input>
+			rotate = elements[2]
+			flip = elements[3]
+			flip*rotate == rotate* flip
+			</input>
+			<output>False</output>
+		</sage>
+
+		<p>Vemos con esta última prueba que el grupo de simetrías de un pentágono es no abeliano.  Pero hay una manera más fácil.</p>
+
+		<sage>
+			<input>
+			D = DihedralGroup(5)
+			D.is_abelian()
+			</input>
+			<output>False</output>
+		</sage>
+
+		<p>Existen muchos métodos, tanto para los grupos de permutaciones como para sus elementos.  Use la celda vacía de más abajo para crear un grupo de permutaciones (el que quiera) y un elemento de un grupo de permutaciones (cualquiera).  A continuación usa la tab-completion para ver todos los métodos disponibles para un elemento, o para un grupo (nombre, punto, tecla-tab).  Algunos nombres los puede reconocer, otros los aprenderemos en los capítulos siguientes, algunos son herramientas muy especializadas de investigación que podría usar para desarrollar su tesis de doctorado en  teoría de grupos.  Para cualquiera de estos métodos, recuerde que puede escribir el nombre, seguido de un signo de interrogación, para ver la documentación y ejemplos.  <em>Experimente y explore</em> <mdash /> es realmente difícil hechar a perder algo. </p>
+
+		<sage type="practice" />
+
+		<p>Acá hay algunos ejemplos de varios métodos disponibles.</p>
+
+		<sage>
+			<input>
+			A4 = AlternatingGroup(4)
+			A4.order()
+			</input>
+			<output>12</output>
+		</sage>
+
+		<sage>
+			<input>A4.is_finite()</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>A4.is_abelian()</input>
+			<output>False</output>
+		</sage>
+
+		<sage>
+			<input>A4.is_cyclic()</input>
+			<output>False</output>
+		</sage>
+
+		<sage>
+			<input>
+			sigma = A4("(1,2,4)")
+			sigma^-1
+			</input>
+			<output>(1,4,2)</output>
+		</sage>
+
+		<sage>
+			<input>sigma.order()</input>
+			<output>3</output>
+		</sage>
+
+		<p>Un método útil al estudiar el grupo alternante es el <c>.sign()</c> implementado para elementos de un grupo de permutaciones.  Retorna <c>1</c> si la permutación es par y <c>-1</c> si es impar.</p>
+
+		<sage>
+			<input>
+			G = SymmetricGroup(3)
+			sigma = G("(1,2)")
+			tau = G("(1,3)")
+			rho = sigma*tau
+			sigma.sign()
+			</input>
+			<output>-1</output>
+		</sage>
+
+		<sage>
+			<input>rho.sign()</input>
+			<output>1</output>
+		</sage>
+
+		<p>Podemos crear subgrupos entregándole al grupo una lista de <q>generadores.</q>  Estos elementos se usan para <q>generar</q> un subgrupo <mdash /> imagine multiplicar estos elementos (y sus inversos) una y otra vez, creando nuevos elementos que también deben estar en el subgrupo y que también participan de nuevos productos, hasta que no aparezcan nuevos elementos.  Esta definición termina con un enunciado terriblemente impreciso, pero debiera se suficiente por ahora.  Una mejor definición es que el subgrupo generado por los elementos es el menor subgrupo que contiene todos los generadores <mdash /> lo que está bien si conocemos todos los subgrupos de antemano.</p>
+
+		<p>Con un único generador, los productos repetidos son simplemente las potencias del generador.  El grupo generado en este caso es cíclico.  Con dos (o más) generadores, especialmente en un grupo no abeliano, la situación puede ser mucho, mucho más complicada.  Empecemos con un generador.  Pero no olvide ponerlo en una lista de todas formas.</p>
+
+		<sage>
+			<input>
+			A4 = AlternatingGroup(4)
+			sigma = A4("(1,2,4)")
+			sg = A4.subgroup([sigma])
+			sg
+			</input>
+			<output>
+			Subgroup of (Alternating group of order 4!/2 as a permutation group) 
+			generated by [(1,2,4)]
+			</output>
+		</sage>
+
+		<sage>
+			<input>sg.order()</input>
+			<output>3</output>
+		</sage>
+
+		<sage>
+			<input>sg.list()</input>
+			<output>[(), (1,2,4), (1,4,2)]</output>
+		</sage>
+
+		<sage>
+			<input>sg.is_abelian()</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>sg.is_cyclic()</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>sg.is_subgroup(A4)</input>
+			<output>True</output>
+		</sage>
+
+		<p>Podemos ahora rehacer el ejemplo del principio del capítulo.  Traducimos los elementos a notación cíclica, construimos el subgrupo formado a partir de dos generadores (el subgrupo no es cíclico), y como el subgrupo es abeliano, no es necesario que veamos la tabla de Cayley de Sage como una reflexión diagonal de la tabla obtenida en el ejemplo<nbsp /><xref ref="example-permute-s5" />.</p>
+
+		<sage>
+			<input>
+			G = SymmetricGroup(5)
+			sigma = G("(4,5)")
+			tau = G("(1,3)")
+			H = G.subgroup([sigma, tau])
+			H.list()
+			</input>
+			<output>[(), (1,3), (4,5), (1,3)(4,5)]</output>
+		</sage>
+
+		<sage>
+			<input>
+			text_names = ['id', 'sigma', 'tau', 'mu']
+			H.cayley_table(names=text_names)
+			</input>
+			<output>
+			    *     id sigma   tau    mu
+			     +------------------------
+			   id|    id sigma   tau    mu
+			sigma| sigma    id    mu   tau
+			  tau|   tau    mu    id sigma
+			   mu|    mu   tau sigma    id
+			</output>
+		</sage>
+
+		<sage type="practice" />
+
+	</subsection>
+
+	<subsection xml:id="subsection-motion-group-cube">
+		<title>Grupo de Movimientos de un Cubo</title>
+
+		<p>Podríamos imitar el ejemplo en el texto y crear elementos de <m>S_4</m> como permutaciones de las diagonales.  Una construcción más obvia, pero menos esclarecedora, es considerar las  8 esquinas del cubo como los elementos a permutar.  Entonces algunas simetrías obvias del cubo provienen de pasar un eje por los centros de dos caras opuestas, con cuartos de vueltas y medias vueltas en torno a estos ejes. Con tres ejes y cuatro rotaciones por eje, obtenemos 12 simetrías, excepto que hemos contado la identidad tres veces.</p>
+
+		<p>Etiquete las cuatro esquinas superiores del <m>1</m> al <m>4</m>, poniendo el <m>1</m> en la esquina delantera-izquierda, y continuando en sentido horario visto desde arriba.  Use del <m>5</m> al <m>8</m> para las esquinas inferiores, de manera que  <m>5</m> quede directamente bajo el <m>1</m>, <m>6</m> bajo <m>2</m>, etc.  Usaremos cuartos de vuelta, en sentido horario, en torno a cada eje, mirando desde arriba, el frente y el lado derecho respectivamente.</p>
+
+		<sage>
+			<input>
+			G = SymmetricGroup(8)
+			above = G("(1,2,3,4)(5,6,7,8)")
+			front = G("(1,4,8,5)(2,3,7,6)")
+			right = G("(1,2,6,5)(3,7,8,4)")
+			cube = G.subgroup([above, front, right])
+			cube.order()
+			</input>
+			<output>24</output>
+		</sage>
+
+		<sage>
+			<input>cube.list()</input>
+			<output>
+            [(), (1,2,3,4)(5,6,7,8), (1,2,6,5)(3,7,8,4),
+             (1,4,8,5)(2,3,7,6), (1,6,8)(2,7,4), (2,4,5)(3,8,6),
+             (1,3,8)(2,7,5), (1,6)(2,5)(3,8)(4,7), (1,3,6)(4,7,5),
+             (1,3)(2,4)(5,7)(6,8), (1,8)(2,7)(3,6)(4,5), (1,7)(2,3)(4,6)(5,8),
+             (1,4)(2,8)(3,5)(6,7), (1,5,6,2)(3,4,8,7), (1,5,8,4)(2,6,7,3),
+             (1,7)(2,6)(3,5)(4,8), (1,7)(2,8)(3,4)(5,6), (1,4,3,2)(5,8,7,6),
+             (1,5)(2,8)(3,7)(4,6), (1,2)(3,5)(4,6)(7,8), (1,8,6)(2,4,7),
+             (2,5,4)(3,6,8), (1,6,3)(4,5,7), (1,8,3)(2,5,7)]
+            </output>
+		</sage>
+
+		<p>Como sabemos por la discusión en el texto que el grupo de simetrías tiene <m>24</m> elementos, vemos que estos tres generadores son suficientes para crear todas las simetrías.  Esto sugiere varias preguntas que se pueden encontrar en el Ejercicio<nbsp /><xref ref="exercise-cube-symmetry" />.</p>
+
+		<sage type="practice" />
+
+	</subsection>
+</section>

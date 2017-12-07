@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="boolean-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Sage tiene implementaciones de conjuntos parcialmente ordenados (<q>posets</q>) y de reticulados, proveyendo representaciones gráficas para ambos.</p>
+	</introduction>
+
+	<subsection>
+		<title>Creando Conjuntos Parcialmente Ordenados</title>
+
+		<p>El Ejemplo<nbsp /><xref ref="example-boolean-poset-divisors-24" /> en el  texto, es un buen ejemplo para repetirlo como demostración de comandos Sage.  Primero definimos los elementos del conjunto <m>X</m>.</p>
+
+		<sage>
+		<input>
+		X = (24).divisors()
+		X
+		</input>
+		<output>
+		[1, 2, 3, 4, 6, 8, 12, 24]
+		</output>
+		</sage>
+
+		<p>Una posibilidad para crear la relación es especificando <em>cada</em> instancia donde un elemento es comparable con otro.  Para ello construimos una lista de pares, donde cada par contiene elementos comparables, con el menor primero.  Este es el conjunto de relaciones.</p>
+
+		<sage>
+		<input>
+		R = [(a,b) for a in X for b in X if a.divides(b)]; R
+		</input>
+		<output>
+		[(1, 1), (1, 2), (1, 3), (1, 4), (1, 6), (1, 8), (1, 12), (1, 24),
+		 (2, 2), (2, 4), (2, 6), (2, 8), (2, 12), (2, 24), (3, 3), (3, 6),
+		 (3, 12), (3, 24), (4, 4), (4, 8), (4, 12), (4, 24), (6, 6),
+		 (6, 12), (6, 24), (8, 8), (8, 24), (12, 12), (12, 24), (24, 24)]
+		</output>
+		</sage>
+
+		<p>Construimos el conjunto parcialmente ordenado entregándole al constructor <c>Poset</c> una lista con todos los elementos y las relaciones.  Luego podemos obtener una visualización del conjunto parcialmente ordenado.  Notemos que el método plot solo muestra las <q>relaciones de cobertura</q> <mdash /> un conjunto minimal de comparaciones que por transitividad permiten recuperar todas las relaciones.</p>
+
+		<sage doctest="not tested">
+		<input>
+		D = Poset([X, R])
+		D.plot()
+		</input>
+		<output>
+		</output>
+		</sage>
+
+		<p>Otra posibilidad para crear un <c>conjunto parcialmente ordenado</c> es dejar que el constructor de conjuntos parcialmente ordenados recorra todos los pares de elementos, y lo único que le debemos entregar al constructor es una forma de comprobar si dos elementos son comparables.  Nuestra función de comparación debe requerir dos elementos y devolver <c>True</c> o <c>False</c>.  Una función <q>lambda</q> es una forma de construir una tal función rápidamente.  Esta puede ser una idea nueva para usted, pero el dominio de las funciones lambda puede ser muy conveniente.  Notemos que <q>lambda</q> es una palabra erservada precisamente para este propósito (así, por ejemplo, <c>lambda</c> es una elección prohibida para el valor propio de una matriz).  Hay otras maneras de definir funciones en Sage, pero una función lambda es lo más rápido cuando la función es simple.</p>
+
+		<sage>
+		<input>
+		divisible = lambda x, y: x.divides(y)
+		L = Poset([X, divisible])
+		L == D
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage doctest="not tested">
+		<input>
+		L.plot()
+		</input>
+		</sage>
+
+		<p>Sage ya tiene una colección de conjuntos parcialmente ordenados.  Algunos se construyen directamente, mientras otros pertenecen a familias parametrizadas.  Use completación con TAB en <c>Posets.</c> para ver la lista completa.  Acá hay algunos ejemplo.</p>
+
+	
+		<sage doctest="not tested">
+		<input>
+		Q = Posets.PentagonPoset()
+		Q.plot()
+		</input>
+		<output>
+		</output>
+		</sage>
+
+		<p>Ahora una familia parametrizada.  Este es un ejemplo clásico donde los elementos son subconjuntos de un conjunto de <m>n</m> elementos y la relación es <q>subconjunto de.</q></p>
+
+		<sage doctest="not tested">
+		<input>
+		S = Posets.BooleanLattice(4)
+		S.plot()
+		</input>
+		</sage>
+
+		<p>Y conjuntos parcialmente ordenados aleatorios.  Estos pueden ser útiles para experimentos o comprobciones, pero es poco probable que aparezcan con propiedades especiales que pueden ser importantes.  Puede intentar el siguiente comando varias veces, variando el segundo argumento  que es una cota superior para la probabilidad de que dos elementos cualquiera sean comparables. Recuerde que plot solo muestra las relaciones de cobertura.  Mientras más elementos comparables haya, más <q>estirado verticalmente</q> será el gráfico.</p>
+
+		<sage doctest="not tested">
+		<input>
+		T = Posets.RandomPoset(20,0.05)
+		T.plot()
+		</input>
+		</sage>
+	</subsection>
+
+	<subsection>
+		<title>Propiedades de un conjunto parcialmente ordenado</title>
+
+		<p>Una vez que tenemos un conjunto parcialmente ordenado, ¿qué podemos hacer con él?  Volvamos a nuestro primer ejemplo, <c>D</c>.  Por supuesto podemos determinar si un elemento es menor a otro, que es la estructura fundamental de un conjunto parcialmente ordenado.</p>
+
+		<sage>
+		<input>
+		D.is_lequal(4, 8)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		D.is_lequal(4, 4)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		D.is_less_than(4, 8)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		D.is_less_than(4, 4)
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		D.is_lequal(6, 8)
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		D.is_lequal(8, 6)
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>Notemos que <c>6</c> y <c>8</c> no son comparables en este conjunto parcialmente ordenado  (es un orden <em>parcial</em>).  Los métodos <c>.is_gequal()</c>  y <c>.is_greater_than()</c> funcionan de forma similar, pero devuelven <c>True</c>  si el primer eleemento es mayor (o igual).</p>
+
+		<sage>
+		<input>
+		D.is_gequal(8, 4)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		D.is_greater_than(4, 8)
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>Podemo encontrar elementos maximales o minimales de un conjunto parcialmente ordenado.  Este es un conjunto parcialmente ordenado aleatorio construido con una probabilidad de 10<percent />, pero copiado acá para ser repetible.</p>
+
+		<sage doctest="not tested">
+		<input>
+		X = range(20)
+		C = [[18, 7],  [9, 11], [9, 10], [11, 8], [6, 10],
+		     [10, 2],   [0, 2],  [2, 1],  [1, 8], [8, 12],
+		     [8, 3],  [3, 15], [15, 7], [7, 16],  [7, 4],
+		     [16, 17], [16, 13], [4, 19], [4, 14], [14, 5]]
+		P = Poset([X, C])
+		P.plot()
+		</input>
+		</sage>
+
+		<sage>
+		<input>
+		P.minimal_elements()
+		</input>
+		<output>
+		[18, 9, 6, 0]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		P.maximal_elements()
+		</input>
+		<output>
+		[5, 19, 13, 17, 12]
+		</output>
+		</sage>
+
+		<p>Los elementos de un conjunto parcialmente ordenado pueden ser particionados en conjuntos de nivel.  En las gráficas de los conjuntos parcialmente ordenados, los elementos del mismo nivel se muestran a la misma altura.  Cada leverl se obtiene removiendo todos los elementos de los niveles anteriores y escogiendo los elementos minimales del resultado.</p>
+
+		<sage>
+		<input>
+		P.level_sets()
+		</input>
+		<output>
+        [[18, 9, 6, 0], [11, 10], [2], [1], [8], [3, 12],
+         [15], [7], [16, 4], [13, 17, 14, 19], [5]]
+		</output>
+		</sage>
+
+		<p>Si hacemos que dos elementos de  <c>R</c> sean comparables cuando antes no lo eran, eso constituye una extensión de <c>R</c>.  Consideremos todas las posibles extensiones de un conjunto parcialmente ordenado <mdash /> podemos construir un conjunto parcialmente ordenado a partir de tas ellas, donde la relación es la de inclusión conjuntista.  Una extensión lineal es un elemento maximal en este conjunto parcialmente ordenado de conjuntos parcialmente ordenados.  Informalmente, estamos agregando tantas relaciones como sea posible, de manera consistente con el conjunto parcialmente ordenado original y tal que el resultado es un orden total.  En otras palabra, hay un orden de los elementos que es consistente con el orden en el conjunto parcialmente ordenado.  Podemos construir una cosa así, pero la salida no es  más que una lista de elementos en el orden lineal.  Un informático se inclinaría por llamar a esto un <q> ordenamiento topológico.</q></p>
+
+		<sage>
+		<input>
+		linear = P.linear_extension(); linear
+		</input>
+		<output>
+        [18, 9, 11, 6, 10, 0, 2, 1, 8, 3, 15, 
+         7, 4, 14, 5, 19, 16, 13, 17, 12]
+		</output>
+		</sage>
+
+		<p>Podemos construir subposets a partir de un subconjunto de los elementos con el orden inducido para producir un conjunto parcialmente ordenado nuevo.  Acá tomamos aproximadamente la <q>mitad inferior</q> del conjunto parcialmente ordenado aleatorio <c>P</c>  induciendo el orden en ĺa unión de algunos de los conjuntos de nivel.</p>
+
+		<sage doctest="not tested">
+		<input>
+		level = P.level_sets()
+		bottomhalf = sum([level[i] for i in range(5)], [])
+		B = P.subposet(bottomhalf)
+		B.plot()
+		</input>
+		</sage>
+
+		<p>El dual de un conjunto parcialmente ordenado mantiene todos sus elementos e invierte sus comparaciones.</p>
+
+		<sage doctest="not tested">
+		<input>
+		Pdual = P.dual()
+		Pdual.plot()
+		</input>
+		</sage>
+
+		<p>El dual del conjunto parcialmente ordenado de divisibilidad del Ejemplo<nbsp /><xref ref="example-boolean-poset-divisors-24" /> es como cambiar la relación por <q>es múltiplo de.</q></p>
+
+		<sage doctest="not tested">
+		<input>
+		Ddual = D.dual()
+		Ddual.plot()
+		</input>
+		</sage>
+	</subsection>
+
+	<subsection>
+		<title>Reticulados</title>
+
+		<p>Cada reticulado es conjunto parcialmente ordenado, de manera que todos los comandos de arriba funcionan igualmente bien para un reticulado.  Pero, ¿cómo se construye un reticulado? Fácil <mdash /> primero creamos un conjunto parcialmente ordenado y luego lo pasamos al constructor <c>LatticePoset()</c>.  Pero nos daremos cuenta que simplemente por darle un conjunto parcialmente ordenado a este constructor, no significa que lo que salga sea un reticulado.  Solo si el conjunto parcialmente ordenado <em>ya es</em> un reticulado el resultado será un reticulado para Sage y obtendremos el error <c>ValueError</c> si el cambio de estatus es imposible.  Finalmente, notemos que algunos de los conjuntos parcialmente ordenados que construye Sage ya son reconocidos como reticulados, tal como el prototípico <c>BooleanLattice</c>.</p>
+
+		<sage>
+		<input>
+		P = Posets.AntichainPoset(8)
+		P.is_lattice()
+		</input>
+		<output>False</output>
+		</sage>
+
+		<sage>
+		<input>
+		LatticePoset(P)
+		</input>
+		<output>
+		Traceback (most recent call last):
+		...
+		ValueError: not a meet-semilattice: no bottom element
+		</output>
+		</sage>
+
+		<p>Una composición entera de <m>n</m> es una lista de enteros positivos que suman <m>n</m>.  Una composición <m>C_1</m> cubre a una composición <m>C_2</m> si <m>C_2</m> se puede formar a partir de <m>C_1</m> sumando partes consecutivas.  Por ejemplo, <m>C_1 = [2, 1, 2] \succeq [3, 2] = C_2</m>.  Con esta relación, el conjunto de todas las composiciones enteras de un entero fijo <m>n</m> en un conjunto parcialmente ordenado que también es un reticulado.</p>
+
+		<sage doctest="not tested">
+		<input>
+		CP = Posets.IntegerCompositions(5)
+		C = LatticePoset(CP)
+		C.plot()
+		</input>
+		</sage>
+
+		<p>El ínfimo (meet) y el supremo (join) son operaciones fundamentales en un reticulado.</p>
+
+		<!-- % RAB 2012/08/11, Sage 5.2 -->
+		<!-- % Seems we cannot create lattice elements reliably via __call__ , try again later? -->
+        <!-- RAB 2015/05/20, 6.7 -->
+        <!-- Should try to fix this coercion -->
+
+		<sage>
+		<input>
+        par = C.an_element().parent()
+        a = par([1, 1, 1, 2])
+        b = par([2, 1, 1, 1])
+        a, b
+		</input>
+		<output>
+		([1, 1, 1, 2], [2, 1, 1, 1])
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		C.meet(a, b)
+		</input>
+		<output>
+		[2, 1, 2]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+        c = par([1, 4])
+        d = par([2, 3])
+        c, d
+		</input>
+		<output>
+		([1, 4], [2, 3])
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		C.join(c, d)
+		</input>
+		<output>
+		[1, 1, 3]
+		</output>
+		</sage>
+
+		<p>Una vez que un conjunto parcialmente ordenado adquiere el estatus de reticulado, disponemos de comandos adicionales, o cambian las características de sus resultados.</p>
+
+		<p>Un ejemplo de lo primero es el método <c>.is_distributive()</c>.</p>
+
+		<sage>
+		<input>
+		C.is_distributive()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Un ejemplo de lo segundo es el método <c>.top()</c>.  Lo que en el texto se llama elemento máximo y elemento mínimo, Sage los llama top y bottom.  Para un conjunto parcialmente ordenado, <c>.top()</c> y <c>.bottom()</c> pueden entregar un elemento o no (devolviendo <c>None</c>), pero para un reticulado se garantiza la obtención de exactamente un elemento.</p>
+
+		<sage>
+		<input>
+		C.top()
+		</input>
+		<output>
+		[1, 1, 1, 1, 1]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		C.bottom()
+		</input>
+		<output>
+		[5]
+		</output>
+		</sage>
+
+        <p>Notemos que los valores retornados son todos elementos del reticulado, es este caso listas ordenadas de enteros que suman <m>5</m>.</p>
+
+        <p>Los complementos tienen sentido en un reticulado.  El resultado del método <c>.complements()</c> es un diccionario que tiene elementos del reticulado como índices (keys).  Decimos que el diccionario está <q>indexado</q> por los elementos del reticulado.  El resultado es una lista de complementos del elemento.  A esto lo llamamos el <q>valor</q> del par índice-valor.  (Puede que conozca los diccionarios como <q>arreglos asociativos</q>, pero en realidad no son más que funciones sofisticadas.)</p>
+
+        <sage>
+        <input>
+        comp = C.complements()
+        comp[par([1, 1, 1, 2])]
+        </input>
+        <output>
+        [[4, 1]]
+        </output>
+        </sage>
+
+        <p>El reticulado de composiciones enteras es un reticulado complementado, como podemos observar por el hecho de que cada elemento tiene un complemento único, evidenciado por las listas de largo <m>1</m> en los valores del diccionario.  O podemos preguntarle a Sage por medio de <c>.is_complemented()</c>.  Los diccionarios no tienen un orden inherente, de manera que es posible obtener una salida distinta cada vez que se inspeccione el diccionario.</p>
+
+        <sage doctest="not tested">
+        <input>
+        comp
+        </input>
+        <output>
+        {[1, 1, 1, 1, 1]: [[5]],
+         [1, 1, 1, 2]: [[4, 1]],
+         [1, 1, 2, 1]: [[3, 2]],
+         [1, 1, 3]: [[3, 1, 1]],
+         [1, 2, 1, 1]: [[2, 3]],
+         [1, 2, 2]: [[2, 2, 1]],
+         [1, 3, 1]: [[2, 1, 2]],
+         [1, 4]: [[2, 1, 1, 1]],
+         [2, 1, 1, 1]: [[1, 4]],
+         [2, 1, 2]: [[1, 3, 1]],
+         [2, 2, 1]: [[1, 2, 2]],
+         [2, 3]: [[1, 2, 1, 1]],
+         [3, 1, 1]: [[1, 1, 3]],
+         [3, 2]: [[1, 1, 2, 1]],
+         [4, 1]: [[1, 1, 1, 2]],
+         [5]: [[1, 1, 1, 1, 1]]}
+        </output>
+        </sage>
+
+        <sage>
+        <input>
+        [len(e[1]) for e in comp.items()]
+        </input>
+        <output>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</output>
+        </sage>
+
+        <sage>
+        <input>
+        C.is_complemented()
+        </input>
+        <output>True</output>
+        </sage>
+
+		<p>Hay muchos más comandos para conjuntos parcialmente ordenados y erticulados.  Construya algunos y use completación con TAB para explorar las posibilidades.  Hay mucho más de lo que podemos cubrir en un solo capítulo, pero ya tenemos las herramientas básicas para estudiar conjuntos parcialmente ordenados y reticulados en Sage.</p>
+	</subsection>
+
+</section>
+

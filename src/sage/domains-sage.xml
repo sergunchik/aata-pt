@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="domains-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Ya hemos visto algunos dominios de integridad y de factorización única en los dos capítulos precedentes.  Ademá de lo que ya ehmos visto, Sage se puede usar para algunos de los tópicos de este capítulo, pero la implementación es limitada.  Algunas funciones se pueden usar con algunos anillos y no con otros, mientras otras funciones aún no son parte de Sage.  Daremos algunos ejemplos, pero esto está lejos de ser exhaustivo.</p>
+	</introduction>
+
+
+	<subsection>
+		<title>Cuerpo de Fracciones</title>
+
+		<p>Sage muchas veces es capaz de construir un cuerpo de fracciones, o de identificar un cierto cuerpo como un cuerpo de fracciones.  Por ejemplo, el anillo de enteros y el cuerpo de los números racionales, están ambos implementados en Sage, y los enteros <q>saben</q> que los racionales forman su cuerpo de fracciones.</p>
+
+		<sage>
+		<input>
+		Q = ZZ.fraction_field(); Q
+		</input>
+		<output>
+		Rational Field
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q == QQ
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>En los otros casos Sage construye un cuerpo de fracciones, en el espíritu del Lema<nbsp /><xref ref="lemma-field-of-fractions" />.  Luego es posible hacer cálculos básicos en el cuerpo construido.</p>
+
+		<sage>
+		<input>
+		R.&lt;x&gt; = ZZ[]
+		P = R.fraction_field();P
+		</input>
+		<output>
+		Fraction Field of Univariate Polynomial Ring in x over Integer Ring
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		f = P((x^2+3)/(7*x+4))
+		g = P((4*x^2)/(3*x^2-5*x+4))
+		h = P((-2*x^3+4*x^2+3)/(x^2+1))
+		((f+g)/h).numerator()
+		</input>
+		<output>
+		3*x^6 + 23*x^5 + 32*x^4 + 8*x^3 + 41*x^2 - 15*x + 12
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		((f+g)/h).denominator()
+		</input>
+		<output>
+		-42*x^6 + 130*x^5 - 108*x^4 + 63*x^3 - 5*x^2 + 24*x + 48
+		</output>
+		</sage>
+
+	</subsection>
+
+	<subsection>
+		<title>Subcuerpos Primos</title>
+
+		<p>El Corolario<nbsp /><xref ref="corollary-char-p-zp" /> dice que todo cuerpo de característica <m>p</m> tiene un subcuerpo isomorfo a <m>{\mathbb Z}_p</m>.  Para un cuerpo finito, la naturaleza exacta de este subcuerpo no es una sorpresa, y Sage nos permite extraerlo fácilmente.</p>
+
+		<sage>
+		<input>
+		F.&lt;c&gt; = FiniteField(3^5)
+		F.characteristic()
+		</input>
+		<output>
+		3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		G = F.prime_subfield(); G
+		</input>
+		<output>
+		Finite Field of size 3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		G.list()
+		</input>
+		<output>
+		[0, 1, 2]
+		</output>
+		</sage>
+
+		<p>Más en general, los cuerpos mencionados en las conclusiones del Corolario<nbsp /><xref ref="corollary-char-zero-rationals" /> y del Corolario<nbsp /><xref ref="corollary-char-p-zp" /> se conocen como el <q>subcuerpo primo</q> del anillo que los contiene.  Acá un ejemplo en el caso de característica cero.</p>
+
+		<sage>
+		<input>
+		K.&lt;y&gt;=QuadraticField(-7); K
+		</input>
+		<output>
+		Number Field in y with defining polynomial x^2 + 7
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		K.prime_subfield()
+		</input>
+		<output>
+		Rational Field
+		</output>
+		</sage>
+
+		<p>A grosso modo, todo cuerpo de característica cero contiene una copia de los números racionales (el cuerpo de fracciones de los enteros), lo que puede explicar el extenso soporte en Sage de los anillos y cuerpos que extienden a los enteros y los racionales.</p>
+
+	</subsection>
+
+	<subsection>
+		<title>Dominios Integrales</title>
+
+		<p>Sage puede determinar si alguns anillos son dominios integrales y podemos comprobar productos en ellos.  Pero, nociones de unidades, elementos irreducibles o primos no están implementadas en general (fuera de lo que vimos para polinomios en el capítulo anterior).  Peor aún, la construcción que sigue crea un anillo dentro de un cuerpo mayor y por ello algunas de las funciones (como <c>.is_unit()</c>) se heredan y dan resultados engañosos.  Esto debido a que la construcción de abajo crea un anillo conocido como un <q>orde en un cuerpo de números.</q></p>
+
+		<sage>
+		<input>
+		K.&lt;x&gt; = ZZ[sqrt(-3)]; K
+		</input>
+		<output>
+		Order in Number Field in a with defining polynomial x^2 + 3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		K.is_integral_domain()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		K.basis()
+		</input>
+		<output>
+		[1, a]
+		</output>
+		</sage>
+
+		<sage>
+		<input>x</input>
+		<output>a</output>
+		</sage>
+
+		<sage>
+		<input>
+		(1+x)*(1-x) == 2*2
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Lo siguiente es un poco engañoso, pues <m>4</m>, como elemento de <m>{\mathbb Z}[\sqrt{3}i]</m> no tiene inverso multiplicativo, pero aparentemente podemo calcular uno.  (Nota de AB: ¿por qué les molesta acá y no en <m>{\mathbb Z}</m>?)</p>
+
+		<sage>
+		<input>
+		four = K(4)
+		four.is_unit()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		four^-1
+		</input>
+		<output>
+		1/4
+		</output>
+		</sage>
+
+	</subsection>
+
+	<subsection>
+		<title>Ideales Principales</title>
+
+		<p>Cuando un anillo es un dominio de ideales principales, como los enteros, o polynomios sobre un cuerpo, Sage funciona bien.  Más allá de eso la cosa se debilita.</p>
+
+		<sage>
+		<input>
+		T.&lt;x&gt;=ZZ[]
+		T.is_integral_domain()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		J = T.ideal(5, x); J
+		</input>
+		<output>
+		Ideal (5, x) of Univariate Polynomial Ring in x over Integer Ring
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q = T.quotient(J); Q
+		</input>
+		<output>
+		Quotient of Univariate Polynomial Ring in x over
+		Integer Ring by the ideal (5, x)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		J.is_principal()
+		</input>
+		<output>
+		Traceback (most recent call last):
+		...
+		NotImplementedError
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.is_field()
+		</input>
+		<output>
+		Traceback (most recent call last):
+		...
+		NotImplementedError
+		</output>
+		</sage>
+
+	</subsection>
+</section>
+
+
+
+

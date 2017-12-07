@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="normal-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Sage tiene varias funciones convenientes que nos permitirán investigar rápidamente si un subgrupo es normal, y de ser así, la naturaleza del grupo cociente resultante.  Pero para una comprensión inicial, también podemos trabajr directamente con las clases laterales.  Ensuciémosnos las manos primero, después aprenderemos sobre la forma fácil.</p>
+	</introduction>
+
+	<subsection>
+		<title>Multiplicando Clases Laterales</title>
+
+		<p>La definición de grupo cociente requiere de un subgrupo normal, y entonces  <em>definimos</em> una forma de <q>multiplicar</q> dos clases laterales del subgrupo para obtener otra clase lateral.  Es importante darse cuenta que podemos interpretas la definición de subgrupos normal como la condición  <em>exacta</em> que necesitamos para que nuestro nuevo producto nos resulte.  Haremos dos ejemplos <mdash /> primero con un subgrupo normal, luego con un subgrupo que no lo es.</p>
+
+		<p>Considere el grupo dihedral <m>D_{8}</m> que es el grupo de simetrías de un octógono.  Si tomamos el elemento que corresponde a un cuarto de vuelta, podemos usarlo para generar un subgrupo de orden 4.  Este será un subgrupo normal (confíe por ahora respecto a esto).  Primero, construya las clases laterales derechas (note que no se produce una respuesta):</p>
+
+		<sage>
+		<input>
+		G = DihedralGroup(8)
+		quarter_turn = G('(1,3,5,7)(2,4,6,8)')
+		S = G.subgroup([quarter_turn])
+		C = G.cosets(S)
+		</input>
+		</sage>
+
+		<p>Así <c>C</c> es una lista de listas, donde cada elemento del grupo <c>G</c> exactamente una vez en alguna parte.  Podría pedirle a Sage que le muestre <c>C</c> si lo desea, pero acá trataremos de evitarlo.  Queremos multiplicar dos clases (listas).  ¿Cómo hacemos esto?  Tomemos <em>cualquier</em> elemento de la primera lista, y <em>cualquier</em> elemento de la segunda lista y multipliquémoslos (lo que sabemos hacer pues son elementos de <c>G</c>).  Ahora tenemos un elemento de <c>G</c>.  ¿Qué hacemos con este elemento, si lo que realmente queremos obtener como resultado del producto de dos clases es otra clase?  Simple <mdash /> averigüamos a qué clase pertenece el producto.  Veamos que pasa.  Multiplicaremos la clase <m>1</m> con la clase <m>3</m> (hay <m>4</m> clases por el Teorema de Lagrange).  Estudie cuidadosamente las siguientes líneas de código para ver si puede entender qué es lo que está haciendo, y <em>después</em> lea la explicación que sigue.</p>
+
+		<sage>
+		<input>
+		p = C[1][0]*C[3][0]
+		[i for i in srange(len(C)) if p in C[i]]
+		</input>
+		<output>
+		[2]
+		</output>
+		</sage>
+
+		<p>¿Qué hemos logrado?  En la primera línea creamos <c>p</c> como el producto de dos elementos del grupo, uno de la clase <m>1</m> y uno de la clase <m>3</m> (<c>C[1]</c>, <c>C[3]</c>).  Como podemos elegir <em>cualquier</em> elemento de cada clase, elegimos el primer elemento de cada una (<c>C[ ][0]</c>).  Después recorremos la lista completa de clases, seleccionando solo aquellas clases que contengan <c>p</c>.  Como <c>p</c> solo estará en una clase, esperamos obtener una lista con un solo elemento.  En este caso, nuestra lista contiene solo el <c>2</c>.  Decimos entonces que el producto de la clase <m>1</m> con la clase <m>3</m> es la clase <m>2</m>.</p>
+
+		<p>La idea acá es que este resultado (clase <m>1</m> por clase <m>3</m> es clase <m>2</m>) debiera ser siempre el mismo, <em>sin importar qué elementos escojamos de cada clase para formar el producto </em> <c>p</c>.  Hagámoslo nuevamente, pero ahora no elegiremos el primer elemento de cada clase, sino el tercero de la clase <m>1</m> y el segundo de la clase  <m>3</m> (recuerde, contamos desde cero!).</p>
+
+		<sage>
+		<input>
+		p = C[1][2]*C[3][1]
+		[i for i in srange(len(C)) if p in C[i]]
+		</input>
+		<output>
+		[2]
+		</output>
+		</sage>
+
+		<p>Bien. Tenemos el mismo resultado.  Si aún nos cree que <c>S</c> es un subgrupo normal de <c>G</c>, entonces este es el resultado que predice la teoría.  Haga una copia de la celda de arriba y pruebe otras elecciones de representantes para cada clase.  Pruebe también el  producto de otras clases, con diversos representantes.</p>
+
+		<sage type='practice' />
+
+		<p>Ahora es un buen momento para introducir una forma de extender Sage agrgándo nuevas funciones.  Diseñaremos una función de multiplicación de clases laterales.  Lea cuidadosamente lo que sigue y después vea la explicación que sigue.</p>
+
+		<sage>
+		<input>
+		def coset_product(i, j, C):
+		   p = C[i][0]*C[j][0]
+		   c = [k for k in srange(len(C)) if p in C[k]]
+		   return c[0]
+		</input>
+		</sage>
+
+		<p>La primera línea crea una nueva función en Sage llamada <c>coset_product</c>.  Esto se logra con la palabra <c>def</c>, y note los dos puntos al final de la linea.  Los parámetros para la función son los números de las clases que queremos multiplicar y la lista completa de clases laterales.  Las dos líneas del medio debiesen vers familiares.  Sabemos que <c>c</c> es una lista con un elemento, de manera que <c>c[0]</c> extraerá ese número de clase, y <c>return</c> es lo que determina que esta es la respuesta producida por la función.  Note que la indentación debe ser exactamente como se muestra.  Podríamos haber escrito todos estos cálculos en un sola línea, sin definir una nueva función, pero eso empieza a ser engorroso.  Es necesario ejecutar el bloque de código de arriba para  <em>definir</em> realmente la función, y no habrá salida si tiene éxito.  Ahora podemos usar nuestra nueva función para repetir el trabajo de arriba:</p>
+
+		<sage>
+		<input>
+		coset_product(1, 3, C)
+		</input>
+		<output>
+		2
+		</output>
+		</sage>
+
+		<p>Ahora conoce lo básico sobre cómo agregar funcionalidad a Sage y hacer mucho más de lo que está diseñado para hacer.  Con algo de práctico, incluso podría sugerir y contribuir nuevas funciones a Sage, pues es un proyecto de fuente abierta.  Bien.</p>
+
+		<p>Ahora examinemos una situación en que el subgrupo no es normal.  Veremos que nuestra definición de ptoducto de clases es insuficiente en este caso.  Además nos daremos cuenta que nuestra nueva función <c>coset_product</c> también es inútil pues presupone que las clases laterales proviene de un subgrupo normal.</p>
+
+		<p>Considere el grupo alternante <m>A_4</m> que podemos interpretar como el grupo de simetrías de un tetrahedro.  Para un subgrupo, escoja un elemento que fija un vértice y rota la cara opuesta <mdash /> esto generará un subgrupo cíclico de orden 3, y por el Teorema de Lagrange obtendremos cuatro clases laterales.  Las calcularemos acá.  (Nuevamente, no se pide ningna salida.)</p>
+
+		<sage>
+		<input>
+		G = AlternatingGroup(4)
+		face_turn = G("(1,2,3)")
+		S = G.subgroup([face_turn])
+		C = G.cosets(S)
+		</input>
+		</sage>
+
+		<p>Nuevamente, consideremos el producto de la clase <m>1</m> con la clase <m>3</m>:</p>
+
+		<sage>
+		<input>
+		p = C[1][0]*C[3][0]
+		[i for i in srange(len(C)) if p in C[i]]
+		</input>
+		<output>
+		[0]
+		</output>
+		</sage>
+
+		<p>Nuevamente, pero ahora para la clase <m>3</m>, escoja el segunso elemento de la clase para obtener el producto <c>p</c>:</p>
+
+		<sage>
+		<input>
+		p = C[1][0]*C[3][1]
+		[i for i in srange(len(C)) if p in C[i]]
+		</input>
+		<output>
+		[2]
+		</output>
+		</sage>
+
+		<p>¿Entonces, el producto de la clase  <m>1</m> y la clase <m>3</m> es igual a la clase  <m>0</m> o a la clase <m>2</m>?  No lo podemos determinar!  Así es que no hay <em>ninguna forma</em> de construir un grupo cociente para este subgrupo.  Usted puede esperimentar más con este subgrupo, pero en algún sentido, no tenemos nada más que hacer con este ejemplo <mdash /> no queda nada que decir.</p>
+	</subsection>
+
+	<subsection>
+		<title>Métodos de Sage para Subgrupos Normales</title>
+
+		<p>Puede fácilmente preguntarle a Sage si un subgrupo es normal o no.  Esto se considera una propiedad del subgrupo, pero le debe decir a Sage cuál es el  <q>supergrupo</q>, pues la respuesta puede cambiar según cuál sea.  (Por ejemplo <c>H.is_normal(H)</c> siempre resulta <c>True</c>.)  Acá están nuestros dos ejemplos de arriba.</p>
+
+		<sage>
+		<input>
+		G = DihedralGroup(8)
+		quarter_turn = G('(1,3,5,7)(2,4,6,8)')
+		S = G.subgroup([quarter_turn])
+		S.is_normal(G)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		G = AlternatingGroup(4)
+		face_turn = G("(1,2,3)")
+		S = G.subgroup([face_turn])
+		S.is_normal(G)
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<p>El texto demuestra en la Sección<nbsp /><xref ref="section-simplicity-of-an" /> que <m>A_5</m> es simple, <ie /> <m>A_5</m> no tiene subgrupos normales.  Podríamos construir cada subgrupo de <m>A_5</m> y preguntar si es normal en <m>A_5</m> usando el método <c>.is_normal()</c>.  Pero Sage ya tiene esto cubierto para nosotros.</p>
+
+		<sage>
+		<input>
+		G = AlternatingGroup(5)
+		G.is_simple()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Cuando tenemos un subgrupo normal, podemos también construir el grupo cociente.</p>
+
+		<sage>
+		<input>
+		G = DihedralGroup(8)
+		quarter_turn = G('(1,3,5,7)(2,4,6,8)')
+		S = G.subgroup([quarter_turn])
+		Q = G.quotient(S)
+		Q
+		</input>
+		<output>
+		Permutation Group with generators [(1,2)(3,4), (1,3)(2,4)]
+		</output>
+		</sage>
+
+		<p>Esto es útil, pero un poco desconcertante.  Tenemos el grupo cociente, pero cualquier noción de clases laterales se perdió, pues <c>Q</c> es entregado como un nuevo grupo de permutaciones en un conjunto diferente de símbolos.  No podemos presuponer que los número usados para el nuevo grupo de permutaciones <c>Q</c> tengan similitud alguna con las clases que obtenemos del método <c>.cosets()</c>.  Pero podemos ver que el grupo cociente se describe como un grupo generado por dos elementos de orden dos.  Podríamos pedir el orden del grupo, o usar el Teorema de Lagrange para saber que el orden es 4.  Podemos decir ahora que hay solo dos grupos de orden 4, el grupo cíclico de order 4 y un grupo no cíclico de orden 4 que conocemos como el 4-grupo de Klein o como <m>{\mathbb Z}_2\times{\mathbb Z}_2</m>.  Este grupo cociente se ve como el grupo no cíclcio pues el grupo cíclio tiene solo un elemento de orden 2.  Veamos que nos dice Sage.</p>
+
+		<sage>
+		<input>
+		Q.is_isomorphic(KleinFourGroup())
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Si, esos es.</p>
+
+		<p>Finalmente, Sage nos puede hacer una lista de todos los subgrupos normales de un grupo.  La lista de los grupos en sí, como hemos visto antes, puede ser una cantidad de información apabullante.  A continuación simplemente listaremos los órdenes de lso subgrupos normales producidos.</p>
+
+		<sage>
+		<input>
+		G = DihedralGroup(8)
+		N = G.normal_subgroups()
+		[H.order() for H in N]
+		</input>
+		<output>
+		[1, 2, 4, 8, 8, 8, 16]
+		</output>
+		</sage>
+
+		<p>En particular, vemos que nuestro subgrupo de <q>cuarto de vuelta</q> es el <em>único</em> subgrupo normal de orden <m>4</m> en este grupo.</p>
+	</subsection>
+
+</section>

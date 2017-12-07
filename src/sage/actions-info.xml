@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+
+	<p>Sage tiene muchos comandos en relación a la conjugación, que es una acción de grupo.  También tiene comandos para órbitas y estabilizadores de grupos de permutaciones.  En el suplemento, ilustramos el grupo de automorfismos de un grafo (combinatorio) como otro ejemplo de una acción de grupo en el conjunto de vértices del grafo.</p>
+</paragraphs>

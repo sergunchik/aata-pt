@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+
+<chapter xml:id="cosets" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>Clases Laterales y Teorema de Lagrange</title>
+
+	<introduction>
+		<p>El Teorema de Lagrange, uno de los resultados más importantes en la teoría de grupos finitos, dice que el orden de un subgrupo debe dividir el orden del grupo completo.  Este teorema entrega una poderosa herramienta para analizar los grupos finitos; da una idea de exactamente que subgrupos podemos esperar encontrar en un grupo finito.  Esencial para la comprensión del Teorema de Lagrange es la noción de clase lateral.</p>
+	</introduction>
+
+	<section xml:id="section-cosets">
+		<title>Clases Laterales</title>
+
+		<p>Sea <m>G</m> un grupo y <m>H</m> un subgrupo de <m>G</m>.  Defina una <term>clase lateral izquierda</term><idx><h>Izquierda</h><h>clase lateral</h></idx> de <m>H</m> con <term>representante</term><idx><h>Representante</h><h>de clase lateral</h></idx> <m>g \in G</m> como el conjunto
+			<me>gH = \{ gh : h \in H \}.</me>
+		Las <term>clases laterales derechas</term><idx><h>Derechas</h><h>clases laterales</h></idx> pueden ser definidas similiarmente como
+			<me>Hg = \{ hg : h \in H \}.</me>
+		Si las clases laterales izquierda y derecha coinciden o si es claro del contexto a qué tipo de clases laterales nos estamos refiriendo, diremos <em>clase lateral</em> sin especificar izquierda o derecha.</p>
+
+		<example xml:id="example-cosets-z6-cosets">
+			<p>Sea <m>H</m> el subgrupo de <m>{\mathbb Z}_6</m> que consiste de los elementos 0 y 3.  Las clases laterales son 
+				<md>
+					<mrow>0 + H = 3 + H = \{ 0, 3 \}</mrow>
+					<mrow>1 + H = 4 + H = \{ 1, 4 \}</mrow>
+					<mrow>2 + H = 5 + H = \{ 2, 5 \}.</mrow>
+				</md>
+			Las clases laterales de subgrupos de <m>{\mathbb Z}</m> y <m>{\mathbb Z}_n</m> siempre las escribiremos con la notación aditiva que hemos usado acá.  En un grupo conmutativo, las clases laterales izquierdas y derechas son siempre idénticas.</p>
+		</example>
+
+		<example xml:id="example-cosets-s3-cosets">
+			<p>Sea <m>H</m> el subgrupo de <m>S_3</m> definido por las permutaciones <m>\{(1), (123), (132) \}</m>.  Las clases laterales izquierdas de <m>H</m> son 
+				<md>
+					<mrow>(1)H = (1 2 3)H =  (132)H = \{(1), (1 23), (132) \}</mrow>
+					<mrow>(1 2)H = (1 3)H = (2 3)H =  \{ (1 2), (1 3), (2 3)  \}.</mrow>
+				</md>
+			Las clases laterales derechas de <m>H</m> son exactamente las mismas que las clases laterales izquierdas:
+				<md>
+					<mrow>H(1) = H(1 2 3) =  H(132) = \{(1), (1 23), (132) \}</mrow>
+					<mrow>H(1 2) = H(1 3) = H(2 3) =  \{ (1 2), (1 3), (2 3)  \}.</mrow>
+				</md></p>
+
+			<p>No siempre es el caso que una clase lateral derecha sea igual a una clase lateral izquierda.  Sea <m>K</m> el subgrupo de  <m>S_3</m> definido por las permutaciones <m>\{(1), (1 2)\}</m>.  Entonces las clases laterales izquierdas de <m>K</m> son
+				<md>
+					<mrow>(1)K = (1 2)K = \{(1), (1 2)\}</mrow>
+					<mrow>(1 3)K = (1 2 3)K = \{(1 3), (1 2 3)\}</mrow>
+				<mrow>(2 3)K = (1 3 2)K = \{(2 3), (1 3 2)\};</mrow>
+				</md>
+			pero, las clases laterales derechas de <m>K</m> son
+				<md>
+					<mrow>K(1) = K(1 2) = \{(1), (1 2)\}</mrow>
+					<mrow>K(1 3) = K(1 3 2) = \{(1 3), (1 3 2)\}</mrow>
+					<mrow>K(2 3) = K(1 2 3) = \{(2 3), (1 2 3)\}.</mrow>
+				</md></p>
+		</example>
+
+		<p>El siguiente lema es bastante útil al tratar con clases laterales.  (Dejamos su demostración como ejercicio.)</p>
+
+		<lemma xml:id="lemma-cosets-theorem-1">
+			<statement>
+				<p>Sea <m>H</m> un subgrupo de un grupo <m>G</m> y supongamos que <m>g_1, g_2 \in G</m>.  Las siguientes condiciones son equivalentes.
+				<ol>
+
+					<li><p><m>g_1 H = g_2 H</m>;</p></li>
+
+					<li><p><m>H g_1^{-1}  = H g_2^{-1}</m>;</p></li>
+
+					<li><p><m>g_1 H \subset g_2 H</m>;</p></li>
+
+					<li><p><m>g_2 \in g_1 H</m>;</p></li>
+
+					<li><p><m>g_1^{-1} g_2 \in H</m>.</p></li>
+
+				</ol></p>
+			</statement>
+		</lemma>
+
+		<p>En todos los ejemplos que hemos visto, las clases laterales de un subgrupo <m>H</m> particionan el grupo mayor <m>G</m>.  El siguiente teorema dice que esto siempre será el caso.</p>
+
+		<theorem xml:id="theorem-cosets-theorem-2">
+			<statement>
+				<p>Sea <m>H</m> un subgrupo de un grupo  <m>G</m>.  Entonces las clases laterales izquierdas de <m>H</m> en <m>G</m> particionan <m>G</m>.  Es decir, el grupo <m>G</m> es la unión disjunta de las clases laterales izquierdas de  <m>H</m> en <m>G</m>.</p>
+			</statement>
+			<proof>
+				<p>Sean <m>g_1 H</m> y <m>g_2 H</m> dos clases laterales de <m>H</m> en <m>G</m>.  Debemos mostrar que ya sea <m>g_1 H \cap g_2 H = \emptyset</m> o <m>g_1 H = g_2 H</m>.  Supongamos que <m>g_1 H \cap g_2 H \neq \emptyset</m> y <m>a \in g_1 H \cap g_2 H</m>.  Entonces por la definición de clase lateral izquierda, <m>a = g_1 h_1 = g_2 h_2</m> para ciertos elementos <m>h_1</m> y <m>h_2</m> en <m>H</m>.  Luego, <m>g_1 = g_2 h_2 h_1^{-1}</m> y <m>g_1 \in g_2 H</m>.  Por el Lema<nbsp /><xref ref="lemma-cosets-theorem-1" />, <m>g_1 H = g_2 H</m>. </p>
+			</proof>
+		</theorem>
+
+		<remark>
+			<p>No hay nada especial en este teorema respecto a clases laterales izquierdas.  Las clases laterales derechas también particionan <m>G</m>; la demostración de este hecho es exactamente la misma que para clases laterales izquierdas excepto que todas las multiplicaciones se deben hacer al lado opuesto de <m>H</m>.</p>
+		</remark>
+ 
+		<p>Sea <m>G</m> un grupo y <m>H</m> un subgrupo de <m>G</m>.  Se define el índice <term>índice</term><idx><h>Índice de un subgrupo</h></idx><idx><h>Subgrupo</h><h>índice de</h></idx> de <m>H</m> en <m>G</m> como el número de clases laterales izquierdas de <m>H</m> en <m>G</m>.  Denotaremos este índice por  <m>[G:H]</m>. <notation><usage>[G:H]</usage><description>índice de un subgrupo <m>H</m> en un grupo <m>G</m></description></notation></p>
+
+		<example xml:id="example-cosets-z6-index">
+			<p>Sea <m>G= {\mathbb Z}_6</m> y sea <m>H = \{ 0, 3 \}</m>. Entonces <m>[G:H] = 3</m>.</p>
+		</example>
+
+		<example xml:id="example-cosets-s3-index">
+			<p>Supongamos que <m>G= S_3</m>, <m>H = \{ (1),(123), (132) \}</m>, y <m>K= \{ (1), (12) \}</m>.  Entonces <m>[G:H] = 2</m> y <m>[G:K] = 3</m>.</p>
+		</example>
+
+		<theorem xml:id="theorem-cosets-theorem-3">
+			<statement>
+				<p>Sea <m>H</m> un subgrupo de un grupo <m>G</m>.  El número de clases laterales izquierdas de <m>H</m> en <m>G</m> es el mismo que el número de clases laterales derechas de  <m>H</m> en <m>G</m>.</p>
+			</statement>
+			<proof>
+				<p>Sean <m>{\mathcal L}_H</m> y  <m>{\mathcal R}_H</m> los conjuntos de clases laterales izquierdas y derechas respectivamente de <m>H</m> en <m>G</m>.  <notation><usage>\mathcal L_H</usage><description>el conjunto de clases laterales izquierdas de un subgrupo <m>H</m> en un grupo <m>G</m></description></notation><notation><usage>\mathcal R_H</usage><description>el conjunto de clases laterales derechas de un subgrupo <m>H</m> en un grupo <m>G</m></description></notation> Si podemos definir una función biyectiva <m>\phi :  {\mathcal L}_H \rightarrow {\mathcal R}_H</m>, entonces habremos demostrado el teorema.  Si <m>gH \in {\mathcal L}_H</m>, sea <m>\phi( gH ) = Hg^{-1}</m>.  Por el Lema<nbsp /><xref ref="lemma-cosets-theorem-1" />, la función <m>\phi</m> está bien definida; es decir, si <m>g_1 H = g_2 H</m>, entonces <m>H g_1^{-1} = H g_2^{-1}</m>.  Para demostrar que  <m>\phi</m> es 1-1, supongamos que  
+					<me>H g_1^{-1} = \phi( g_1 H ) = \phi( g_2 H ) = H g_2^{-1}.</me>
+				Nuevamente por el Lema<nbsp /><xref ref="lemma-cosets-theorem-1" />, <m>g_1 H = g_2 H</m>.  La función <m>\phi</m> es sobre pues <m>\phi(g^{-1} H ) = H g</m>.</p>
+			</proof>
+		</theorem>
+
+ 	</section>
+
+	<section xml:id="section-lagranges-theorem">
+		<title>Teorema de Lagrange</title>
+
+		<proposition xml:id="cosets_theorem_4">
+			<statement>
+				<p>Sea <m>H</m> un subgrupo de <m>G</m> con <m>g \in G</m> y definamos una función <m>\phi:H \rightarrow gH</m> como <m>\phi(h) = gh</m>.  La función <m>\phi</m> es biyectiva; luego el número de elementos en <m>H</m> es el mismo que el número de elementos en <m>gH</m>.</p>
+			</statement>
+			<proof>
+				<p>Primero demostraremos que <m>\phi</m> es 1-1.  Supongamos que <m>\phi(h_1)  = \phi(h_2)</m> para ciertos elementos <m>h_1, h_2 \in H</m>.  Debemos mostrar que <m>h_1 =  h_2</m>, pero <m>\phi(h_1) = gh_1</m> y <m>\phi(h_2) = gh_2</m>.  Así <m>gh_1 = gh_2</m>,  y por cancelación a la izquierda <m>h_1= h_2</m>.  Mostrar que  <m>\phi</m> es sobreyectiva es fácil.  Por  definición, todo elemento de <m>gH</m> es de la forma <m>gh</m> para cierto  <m>h \in H</m> y <m>\phi(h) = gh</m>.</p>
+			</proof>
+		</proposition>
+ 
+		<theorem xml:id="theorem-lagrange">
+			<title>Lagrange</title>
+			<idx><h>Teorema de Lagrange</h></idx>
+			<statement>
+				<p>Sea <m>G</m> un grupo finito y sea <m>H</m> un subgrupo de <m>G</m>.  Entonces <m>|G|/|H| = [G : H]</m> es el número de clases laterales izquierdas diferentes de <m>H</m> en <m>G</m>.  En particular, el número de elementos en <m>H</m> debe dividir al número de elementos en <m>G</m>.</p>
+			</statement>
+			<proof>
+				<p>El grupo <m>G</m> está particionado en <m>[G : H]</m> clases lateralez izquierdas diferentes.  Cada clase lateral izquierda tiene <m>|H|</m> elementos; por lo tanto, <m>|G| = [G : H] |H|</m>.</p>
+			</proof>
+		</theorem>
+
+		<corollary xml:id="corollary-cosets-theorem-6">
+			<statement>
+				<p>Supongamos que <m>G</m> es un grupo finito y que <m>g \in G</m>.  Entonces el orden de <m>g</m>  divide al número de elementos en <m>G</m>.</p>
+			</statement>
+		</corollary>
+
+		<corollary xml:id="corollary-cosets-theorem-7">
+			<statement>
+				<p>Sea <m>|G| = p</m> con <m>p</m> primo.  Entonces <m>G</m> es cíclico y cualquier <m>g \in G</m> tal que <m>g \neq e</m> es un generador.</p>
+			</statement>
+			<proof>
+				<p>Sea <m>g</m> un elemento de <m>G</m> tal que <m>g \neq e</m>.  Por el Corolario<nbsp /><xref ref="corollary-cosets-theorem-6" />, el orden de <m>g</m> divide el orden del grupo. Como <m>|\langle g \rangle| \gt 1</m>, debe ser <m>p</m>.  Luego, <m>g</m> genera <m>G</m>.</p>
+			</proof>
+		</corollary>
+
+		<p>El Corolario<nbsp /><xref ref="corollary-cosets-theorem-7" /> sugiere que los grupos de orden primo <m>p</m> se ven de alguna manera como <m>{\mathbb Z}_p</m>.</p>
+
+		<corollary xml:id="corollary-cosets-theorem-8">
+			<statement>
+				<p>Sean <m>H</m> y <m>K</m> sbgrupos de un grupo finito <m>G</m> tales que  <m>G \supset H \supset K</m>.  Entonces 
+					<me>[G:K] = [G:H][H:K].</me></p>
+			</statement>
+			<proof>
+				<p>Notemos que
+					<me>[G:K] = \frac{|G|}{|K|} = \frac{|G|}{|H|} \cdot \frac{|H|}{|K|} = [G:H][H:K].</me></p>
+			</proof>
+		</corollary>
+
+		<remark>
+			<title>El recíproco del Teorema de Lagrange es falso</title>
+			
+			<p>El grupo  <m>A_4</m> tiene orden 12; sin embargo, se puede demostrar que no tiene ningún subgrupo de orden 6.  De acuerdo al Teorema de Lagrange, los subgrupos de un grupo de orden 12 pueden tener orden 1, 2, 3, 4, o  6.  Pero no hay garantía de que existan subgrupos de todos los posibles órdenes.  Para demostrar que <m>A_4</m> no tiene un subgrupo de orden 6, supondremos que sí tiene un tal subgrupo <m>H</m> y buscaremos una contradicción.  Como <m>A_4</m> contiene ocho 3-ciclos, sabemos que <m>H</m> debe contener un 3-ciclo.  Veremos que si <m>H</m> contiene un 3-ciclo, entonces debe contener más de 6 elementos.</p>
+		</remark>
+
+<!-- % TWJ, 2011/11/20 -->
+<!-- % Fixed the proof that <m>A_4</m> contains no subgroup of order 6.  This mistake was -->
+<!-- % pointed out by Z. Teitler. -->
+
+
+		<proposition xml:id="proposition-cosets-theorem-10">
+			<statement>
+				<p>El grupo <m>A_4</m> no tiene subgrupo de orden 6.</p>
+			</statement>
+			<proof>
+				<p>Como <m>[A_4 : H] = 2</m>, hay solo dos clases laterales de <m>H</m> en <m>A_4</m>.  En tanto una de las clases laterales es el mismo <m>H</m>, clases laterales derechas e izquierdas deben coincidir; por lo tanto, <m>gH = Hg</m> o <m>g H g^{-1} = H</m> para todo <m>g \in A_4</m>. Como existen ocho 3-ciclos en <m>A_4</m>, al menos uno de los 3-ciclos debe estar en <m>H</m>.  Sin perder generalidad, supongamos que <m>(123)</m> está en <m>H</m>.  Entonces <m>(123)^{-1} = (132)</m> también debe estar en <m>H</m>.  Como <m>g h g^{-1} \in H</m> para todo <m>g \in A_4</m> y todo <m>h \in H</m> y
+					<md>
+						<mrow>(124)(123)(124)^{-1} &amp; = (124)(123)(142)  = (243)</mrow>
+						<mrow>(243)(123)(243)^{-1} &amp; = (243)(123)(234)  = (142)</mrow>
+					</md>
+				concluimos que <m>H</m> debe tener al menos los siete elementos
+					<me>(1), (123), (132), (243), (243)^{-1} = (234), (142), (142)^{-1} = (124).</me>
+				Por lo tanto, <m>A_4</m> no tiene subgrupo de orden 6.</p>
+			</proof>
+		</proposition>
+
+		<p>De hecho, podemos decir más cuándo dos ciclos tienen el mismo largo.</p>
+
+		<theorem xml:id="theorem-cycle-length-theorem">
+			<statement>
+				<p>Dos ciclos <m>\tau</m> y <m>\mu</m> en <m>S_n</m> tienen el mismo largo si y solo si existe <m>\sigma \in S_n</m> tal que <m>\mu = \sigma \tau \sigma^{-1}</m>.</p>
+			</statement>
+			<proof>
+				<p>Supongamos que 
+					<md>
+						<mrow>\tau &amp; = (a_1, a_2, \ldots, a_k )</mrow>
+						<mrow>\mu  &amp; = (b_1, b_2, \ldots, b_k ).</mrow>
+					</md>
+				Defina <m>\sigma</m> como la permutación
+					<md>
+						<mrow>\sigma( a_1 ) &amp; = b_1</mrow>
+						<mrow>\sigma( a_2 ) &amp; = b_2</mrow>
+						<mrow>&amp; \vdots  </mrow>
+						<mrow>\sigma( a_k ) &amp; = b_k.</mrow>
+					</md>
+				Entonces <m>\mu = \sigma \tau \sigma^{-1}</m>.</p>
+
+				<p>Recíprocamente, supongamos que <m>\tau = (a_1, a_2, \ldots, a_k )</m> es un <m>k</m>-cycle y <m>\sigma \in S_n</m>. Si <m>\sigma( a_i ) = b</m> y <m>\sigma( a_{(i \bmod k) + 1 )} = b'</m>, entonces <m>\mu( b) = b'</m>.  Luego, 
+					<me>\mu = ( \sigma(a_1), \sigma(a_2), \ldots, \sigma(a_k) ).</me>
+				Como <m>\sigma</m> es una biyección, <m>\mu</m> es un ciclo del mismo largo que <m>\tau</m>.</p>
+			</proof>
+		</theorem>
+
+	</section>
+
+	<section xml:id="section-fermat-euler">
+		<title>Teoremas de Fermat y Euler</title>
+
+		<introduction>
+
+			<p>La <term>función</term> <m>\phi</m> de <term>Euler</term><idx><h>Función <m>\phi</m> de Euler</h></idx> es la función <m>\phi : {\mathbb N } \rightarrow {\mathbb N}</m> definida por <m>\phi(n) = 1</m> para <m>n=1</m>, y, para <m>n \gt 1</m>,  <m>\phi(n)</m> es el número de enteros positivos <m>m</m> con <m>1 \leq m \lt n</m> y <m>\gcd(m,n) = 1</m>.</p>
+
+			<p>De la Proposición<nbsp /><xref ref="proposition-zn-equiv-classes" />, sabemos que el orden de <m>U(n)</m>, el grupo de unidades en <m>{\mathbb Z}_n</m>, es <m>\phi(n)</m>. Por ejemplo, <m>|U(12)| = \phi(12)  = 4</m> como los números que son relativamente primos con 12 son 1, 5, 7, y 11. Para cualquier primo <m>p</m>, <m>\phi(p) = p-1</m>.  Enunciamos estos resultados en el siguiente teorema.</p>
+
+			<theorem xml:id="theorem-cosets-theorem-11">
+				<statement>
+					<p>Sea <m>U(n)</m> el grupo de unidades en <m>{\mathbb Z}_n</m>.  Entonces <m>|U(n)| = \phi(n)</m>.</p>
+				</statement>
+			</theorem>
+
+			<p>El siguiente teorema de Leonhard Euler es un resultado importante en teoría de números.</p> 
+
+			<theorem xml:id="theorem-eulers_theorem">
+				<title>Teorema de Euler</title>
+				<statement>
+					<p>Sean <m>a</m> y <m>n</m> enteros tales que <m>n \gt 0</m> y <m>\gcd(a, n) = 1</m>.  Entonces <m>a^{\phi(n)} \equiv 1 \pmod{n}</m>.</p>
+				</statement>
+				<proof>
+					<p>Por el Teorema<nbsp /><xref ref="theorem-cosets-theorem-11" /> el orden de <m>U(n)</m> es <m>\phi(n)</m>.  Así, <m>a^{\phi(n)} = 1</m> para todo <m>a \in U(n)</m>; y <m>a^{\phi(n)} - 1</m> es divisible por <m>n</m>.  Por lo tanto, <m>a^{\phi(n)} \equiv 1 \pmod{n}</m>.</p>
+				</proof>
+			</theorem>
+
+			<p>Si consideramos el caso especial del Teorema de Euler en el que <m>n = p</m> es primo y recordamos que <m>\phi(p) = p - 1</m>, obtenemos el siguiente resultado de Pierre de Fermat<idx><h>Fermat, Pierre de</h></idx>.</p>
+	 
+			<theorem xml:id="theorem-cosets-theorem-13">
+				<title>Pequeño Teorema de Fermat</title>
+				<idx><h>Pequeño Teorema de Fermat</h></idx>
+				<statement>
+					<p>Sea <m>p</m> un primo cualquiera y supongamos que <m>p \notdivide a</m>.  Entonces 
+						<me>a^{p-1} \equiv 1 \pmod{ p }.</me>
+					Más aún, para cualquier entero <m>b</m>, <m>b^p \equiv b \pmod{ p}</m>.</p>
+				</statement>			
+			</theorem>
+
+			<xi:include href="./sage/cosets-info.xml" />
+
+		</introduction>
+		
+		<subsection xml:id="cosets-subsection-historical-note">
+			<title>Nota Histórica</title>
+				<p>Joseph-Louis Lagrange<idx><h>Lagrange, Joseph-Louis</h></idx> (1736<ndash />1813), nacido en Torino, Italia, tenía origen franco-italiano. Su talento por las matemáticas se hizo evidente desde muy temprana edad. Leonhard Euler<idx><h>Euler, Leonhard</h></idx> reconoció sus habilidades cuando Lagrange, que tenía solo 19 años, le comunicó a Euler un trabajo que había realizado en el cálculo de variaciones. Ese año fue nombrado profesor de la Real Escuela de Artillería en Torino.  A los 23 llegó a la Academia de Berlin. Federico el Grande había escrito a Lagrange proclamando que el <q>mejor rey de Europa</q> debía tener al <q>mejor matemático en Europa</q> en su corte. Durante 20 años Lagrange ocupó la posición dejada por su mentor, Euler. Sus trabajos incluyen contribuciones a la teoría de números, teoría de grupos, física y mecánica, el cálculo de variaciones, la teoría de ecuaciones y las ecuaciones diferenciales. Junto con Laplace y Lavoisier, Lagrange fue una de las personas responsables de crear el sistema métrico. Lagrange tuvo una gran influencia en el desarrollo de las matemáticas, dejando mucho a las próximas generaciones en cuanto a ejemplos y nuevos problemas a resolver.</p>
+		</subsection> 
+
+	</section>
+
+	<xi:include href="./exercises/cosets.xml" />
+	<xi:include href="./sage/cosets-sage.xml" />
+	<xi:include href="./sage/cosets-sage-exercises.xml" />
+
+</chapter>
+
+
