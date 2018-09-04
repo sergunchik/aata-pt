@@ -100,7 +100,7 @@
 			<p>Describa todos los homomorfismos de <m>{\mathbb Z}_{24}</m> a <m>{\mathbb Z}_{18}</m>. </p>
 		</statement>
 		<hint>
-			<p>Para cualquier homomorfismo <m>\phi : {\mathbb Z}_{24} \rightarrow {\mathbb Z}_{18}</m>, el núcleo de <m>\phi</m> es un subgrupo de <m>{\mathbb Z}_{24}</m> y la imagen de <m>\phi</m> es un subgrupo de <m>{\mathbb Z}_{18}</m>. Ahora usea el hecho de que la imagen de un generador es un generador.</p>
+			<p>Para cualquier homomorfismo <m>\phi : {\mathbb Z}_{24} \rightarrow {\mathbb Z}_{18}</m>, el núcleo de <m>\phi</m> es un subgrupo de <m>{\mathbb Z}_{24}</m> y la imagen de <m>\phi</m> es un subgrupo de <m>{\mathbb Z}_{18}</m>. Ahora use el hecho de que la imagen de un generador es un generador.</p>
 		</hint>
 		
 		</exercise>

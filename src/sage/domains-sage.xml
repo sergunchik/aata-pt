@@ -11,7 +11,7 @@
 	<title>Sage</title>
 
 	<introduction>
-		<p>Ya hemos visto algunos dominios de integridad y de factorización única en los dos capítulos precedentes.  Ademá de lo que ya ehmos visto, Sage se puede usar para algunos de los tópicos de este capítulo, pero la implementación es limitada.  Algunas funciones se pueden usar con algunos anillos y no con otros, mientras otras funciones aún no son parte de Sage.  Daremos algunos ejemplos, pero esto está lejos de ser exhaustivo.</p>
+		<p>Ya hemos visto algunos dominios de integridad y de factorización única en los dos capítulos precedentes.  Además de lo que ya hemos visto, Sage se puede usar para algunos de los tópicos de este capítulo, pero la implementación es limitada.  Algunas funciones se pueden usar con algunos anillos y no con otros, mientras otras funciones aún no son parte de Sage.  Daremos algunos ejemplos, pero esto está lejos de ser exhaustivo.</p>
 	</introduction>
 
 
@@ -133,7 +133,7 @@
 	<subsection>
 		<title>Dominios Integrales</title>
 
-		<p>Sage puede determinar si alguns anillos son dominios integrales y podemos comprobar productos en ellos.  Pero, nociones de unidades, elementos irreducibles o primos no están implementadas en general (fuera de lo que vimos para polinomios en el capítulo anterior).  Peor aún, la construcción que sigue crea un anillo dentro de un cuerpo mayor y por ello algunas de las funciones (como <c>.is_unit()</c>) se heredan y dan resultados engañosos.  Esto debido a que la construcción de abajo crea un anillo conocido como un <q>orde en un cuerpo de números.</q></p>
+		<p>Sage puede determinar si algunos anillos son dominios integrales y podemos comprobar productos en ellos.  Pero, nociones de unidades, elementos irreducibles o primos no están implementadas en general (fuera de lo que vimos para polinomios en el capítulo anterior).  Peor aún, la construcción que sigue crea un anillo dentro de un cuerpo mayor y por ello algunas de las funciones (como <c>.is_unit()</c>) se heredan y dan resultados engañosos.  Esto debido a que la construcción de abajo crea un anillo conocido como un <q>orden en un cuerpo de números.</q></p>
 
 		<sage>
 		<input>
@@ -176,7 +176,7 @@
 		</output>
 		</sage>
 
-		<p>Lo siguiente es un poco engañoso, pues <m>4</m>, como elemento de <m>{\mathbb Z}[\sqrt{3}i]</m> no tiene inverso multiplicativo, pero aparentemente podemo calcular uno.  (Nota de AB: ¿por qué les molesta acá y no en <m>{\mathbb Z}</m>?)</p>
+		<p>Lo siguiente es un poco engañoso, pues <m>4</m>, como elemento de <m>{\mathbb Z}[\sqrt{3}i]</m> no tiene inverso multiplicativo, pero aparentemente podemos calcular uno.  (Nota de AB: ¿por qué les molesta acá y no en <m>{\mathbb Z}</m>?)</p>
 
 		<sage>
 		<input>
@@ -202,7 +202,7 @@
 	<subsection>
 		<title>Ideales Principales</title>
 
-		<p>Cuando un anillo es un dominio de ideales principales, como los enteros, o polynomios sobre un cuerpo, Sage funciona bien.  Más allá de eso la cosa se debilita.</p>
+		<p>Cuando un anillo es un dominio de ideales principales, como los enteros, o polinomios sobre un cuerpo, Sage funciona bien.  Más allá de eso la cosa se debilita.</p>
 
 		<sage>
 		<input>

@@ -60,7 +60,7 @@
 		<example xml:id="example-actions-conjugation">
 			<p>Sea <m>G</m> un grupo y supongamos que <m>X=G</m>. Si <m>H</m> es un subgrupo de <m>G</m>, entonces <m>G</m> es un <m>H</m>-conjunto bajo <term>conjugación</term><idx><h>Conjugación</h></idx>; es decir, podemos definir una acción de <m>H</m> en <m>G</m>, 
 				<me>H \times G \rightarrow G,</me>
-			via
+			vía
 				<me>(h,g) \mapsto hgh^{-1}</me>
 			para <m>h \in H</m> y <m>g \in G</m>.  Claramente, se satisface el primer axioma para una acción de grupo.  Observando que 
 				<md>
@@ -330,7 +330,7 @@
 					<mrow>&amp;(1)    &amp; &amp;(13)     &amp; &amp; (24)     &amp; &amp; (1432)</mrow>
 					<mrow>&amp;(1234) &amp; &amp;(12)(34) &amp; &amp; (14)(23) &amp; &amp; (13)(24)</mrow>
 				</md>
-			El grupo <m>G</m> actúa en el conjunto de vértices <m>\{ 1, 2, 3, 4\}</m> en la forma usual. Podemos describir los diferentes coloreados como funciones de <m>X</m> en <m>Y = \{ N, B \}</m> donde <m>N</m> y <m>B</m> representan los colores negro y blango, respectivamente. Cada función <m>f : X \rightarrow Y</m> describe una forma de colorear las esquinas del cuadrado. Cada <m>\sigma \in D_4</m> induce una permutación <m>\widetilde{ \sigma }</m> de los posibles coloreados dada por <m>\widetilde{\sigma}(f) = f \circ \sigma</m> for <m>f : X \rightarrow Y</m>. Por ejemplo, supongamos que <m>f</m> está definida por
+			El grupo <m>G</m> actúa en el conjunto de vértices <m>\{ 1, 2, 3, 4\}</m> en la forma usual. Podemos describir los diferentes coloreados como funciones de <m>X</m> en <m>Y = \{ N, B \}</m> donde <m>N</m> y <m>B</m> representan los colores negro y blanco, respectivamente. Cada función <m>f : X \rightarrow Y</m> describe una forma de colorear las esquinas del cuadrado. Cada <m>\sigma \in D_4</m> induce una permutación <m>\widetilde{ \sigma }</m> de los posibles coloreados dada por <m>\widetilde{\sigma}(f) = f \circ \sigma</m> for <m>f : X \rightarrow Y</m>. Por ejemplo, supongamos que <m>f</m> está definida por
 				<md>
 					<mrow>f(1) &amp; =  N</mrow>
 					<mrow>f(2) &amp; =  B</mrow>
@@ -346,7 +346,7 @@
 
 					<li><p><m>|\widetilde{X}_{(1 4 3 2)}| = 2</m>.</p></li>
 
-					<li><p>For <m>\widetilde{X}_{(1 3)(2 4)}</m>, <m>f(1) = f(3)</m> and <m>f(2) = f(4)</m>. Luego, <m>|\widetilde{X}_{(13)(24)}| = 2^2 = 4</m>.</p></li>
+					<li><p>Para <m>\widetilde{X}_{(1 3)(2 4)}</m>, <m>f(1) = f(3)</m> y <m>f(2) = f(4)</m>. Luego, <m>|\widetilde{X}_{(13)(24)}| = 2^2 = 4</m>.</p></li>
  
 					<li><p><m>|\widetilde{X}_{(1 2)(3 4)}| = 4</m>.</p></li>
 
@@ -356,7 +356,7 @@
  
  					<li><p> <m>|\widetilde{X}_{(2 4)}| = 8</m>.</p></li>
  				</ol>
-			Por el Teorema de Burnside, podemos conluir que hay exactamente 
+			Por el Teorema de Burnside, podemos concluir que hay exactamente 
 				<me>\frac{1}{8} ( 2^4 + 2^1 + 2^2 + 2^1  + 2^2 + 2^2 +2^3 + 2^3) = 6</me>
 			maneras de colorear los vértices del cuadrado.</p>
  
@@ -440,7 +440,7 @@
 				</image>
 			</figure>
  
-			<p>Las posibles funciones de conmutación con dos variables de entrada <m>a</m> y <m>b</m> se listan en la Tabla<nbsp /><xref ref="table-switching-2-variables" />. Dos funciones de conmutación <m>f</m> y <m>g</m> son equivalentes si <m>g</m> puede ser obtenida a partir de <m>f</m> por una permutación de las variables de entrada. Por ejemplo, <m>g(a, b, c) = f(b, c, a)</m>. En este caso <m>g \sim f</m> via la permutación <m>(acb)</m>. En el caso de funciones de permutación de dos variables, la permutación <m>(ab)</m> reduce las 16 posibles funciones de permutación a 12 funciones no-equivalentes pues
+			<p>Las posibles funciones de conmutación con dos variables de entrada <m>a</m> y <m>b</m> se listan en la Tabla<nbsp /><xref ref="table-switching-2-variables" />. Dos funciones de conmutación <m>f</m> y <m>g</m> son equivalentes si <m>g</m> puede ser obtenida a partir de <m>f</m> por una permutación de las variables de entrada. Por ejemplo, <m>g(a, b, c) = f(b, c, a)</m>. En este caso <m>g \sim f</m> vía la permutación <m>(acb)</m>. En el caso de funciones de permutación de dos variables, la permutación <m>(ab)</m> reduce las 16 posibles funciones de permutación a 12 funciones no-equivalentes pues
 				<md>
 					<mrow>f_2 &amp; \sim  f_4</mrow>
 					<mrow>f_3 &amp; \sim  f_5</mrow>

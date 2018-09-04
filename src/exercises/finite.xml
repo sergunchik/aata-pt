@@ -236,7 +236,7 @@
 
 	<exercise number="21" xml:id="exercise-frobenius-map">
 		<statement>
-			<p>Demuestre que la <term>función de Frobenius</term> <m>\Phi : \gf(p^n) \rightarrow \gf(p^n)</m> given by <m>\Phi : \alpha \mapsto \alpha^p</m> es un automorfismo de orden <m>n</m>.</p>
+			<p>Demuestre que la <term>función de Frobenius</term> <m>\Phi : \gf(p^n) \rightarrow \gf(p^n)</m> dada por <m>\Phi : \alpha \mapsto \alpha^p</m> es un automorfismo de orden <m>n</m>.</p>
 		</statement>
 		
 	</exercise>

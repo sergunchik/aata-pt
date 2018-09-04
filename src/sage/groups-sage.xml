@@ -191,7 +191,7 @@
 			<output>True</output>
 		</sage>
 
-		<p>Ahora que entendemos que Sage calcula los productos al revés, podemos obtener la tabla de multiplicación para este grupo.  El comportamiento por defecto es usar letras para referirse a los elementos de un grupo, <c>a, b, c, \dots{}</c> en el mismo orden que les daría el comando <c>.list()</c> al listar los elementos del grupo.  Pero también es posible mostrar explícitamente los elementos en la tabla (con notación cíclica en este caso),  puede darle los nombres que desee a los elementos.  Usaremos <c>u</c> como abreviación de  <m>\mu</m> y <c>r</c> para <m>\rho</m>.</p>
+		<p>Ahora que entendemos que Sage calcula los productos al revés, podemos obtener la tabla de multiplicación para este grupo.  El comportamiento por defecto es usar letras para referirse a los elementos de un grupo, <m>a, b, c, \dots{}</m> en el mismo orden que les daría el comando <c>.list()</c> al listar los elementos del grupo.  Pero también es posible mostrar explícitamente los elementos en la tabla (con notación cíclica en este caso),  puede darle los nombres que desee a los elementos.  Usaremos <c>u</c> como abreviación de  <m>\mu</m> y <c>r</c> para <m>\rho</m>.</p>
 
         <sage>
             <input>triangle.cayley_table()</input>

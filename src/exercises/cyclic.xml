@@ -49,9 +49,9 @@
 				 
 				<li><p><m>-i \in {\mathbb C}^\ast</m></p></li>
 
-				<li><p>72 in <m>{\mathbb Z}_{240}</m></p></li>
+				<li><p>72 en <m>{\mathbb Z}_{240}</m></p></li>
 				 
-				<li><p>312 in <m>{\mathbb Z}_{471}</m></p></li>
+				<li><p>312 en <m>{\mathbb Z}_{471}</m></p></li>
 			
 			</ol></p>
 		</statement>
@@ -276,7 +276,7 @@
 				0 &amp; 1 \\
 				-1 &amp; 0
 				\end{pmatrix}
-				\qquad \text{and} \qquad
+				\qquad \text{y} \qquad
 				B =
 				\begin{pmatrix}
 				0 &amp; -1 \\

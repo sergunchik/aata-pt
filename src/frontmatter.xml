@@ -64,6 +64,12 @@
 
 	<acknowledgement>
 
+		<p>La versión en español de este libro es posible gracias a la generosidad de Thomas W. Judson y Robert A. Beezer, quienes 
+			han liberado los derechos  para permitir su modificación y publicación gratuita.</p>
+		<p>Lo que me motivó a emprender esta tarea fue la necesidad de contar con un libro para recomendar a mis estudiantes de Estructuras Algebraicas que dicté el segundo Semestre de 2017 en la Facultad de Ciencias de la Universidad de Chile.  Un requisito importante era que no tuvieran que pagar por el acceso, pero tampoco quería fomentar la violación de los derechos de autor.  Comencé recomendando este libro en inglés, pero rápidamente noté que la dificultad adicional del idioma sería demasiado grande y decidí traducir algunos capítulos a medida que avanzaba el semestre.  La ingenuidad y falta de experiencia me impulsaron a proponerme traducir todo el libro,  subestimando el tiempo y esfuerzo que me llevaría completar la misión.  Aunque sin duda que aún quedan muchos errores por corregir, el resultado valió el esfuerzo y espero que le pueda servir a otras personas.</p>
+
+		<p>Naturalmente, los colaboradores del libro original también merecen agradecimientos en esta obra derivada, por lo que a continuación están los créditos escritos por el profesor Judson.</p>
+
 		<p>I would like to acknowledge the following reviewers for their helpful comments and suggestions.<ul>
 			<li><p>David Anderson, University of Tennessee, Knoxville</p></li>
 			<li><p>Robert Beezer, University of Puget Sound</p></li>

@@ -18,20 +18,20 @@
 	<title>Dominios Integrales</title>
 
 	<introduction>
-		<p>Uno de los anillos más importantes que estudiamos es el de los enteros.  Fue nuestro primer ejemplo de una estructura algebraica: el primer anillo de polinomio que examinamos fue <m>{\mathbb Z}[x]</m>.  También sabemos que los enteros están contenidos naturalmente en el cuerpo de los números racionales, <m>{\mathbb Q}</m>.  El anillo de los enteros es el modelo para todos los dominios integrales (también se llaman dominios enteros).  En este capítulo estudiaremos dominios integrales en general, contestando preguntas sobre su estructura de ideales, anillos de polinomios sobre dominios integrales y si es posible incrustar un dominio integral en un cuerpo.</p>
+		<p>Uno de los anillos más importantes que estudiamos es el de los enteros.  Fue nuestro primer ejemplo de una estructura algebraica: el primer anillo de polinomios que examinamos fue <m>{\mathbb Z}[x]</m>.  También sabemos que los enteros están contenidos naturalmente en el cuerpo de los números racionales, <m>{\mathbb Q}</m>.  El anillo de los enteros es el modelo para todos los dominios integrales (también se llaman dominios enteros).  En este capítulo estudiaremos dominios integrales en general, contestando preguntas sobre su estructura de ideales, anillos de polinomios sobre dominios integrales y si es posible incrustar un dominio integral en un cuerpo.</p>
 	</introduction>
  
 	<section xml:id="section-field-of-fractions">
 		<title>Cuerpos de Fracciones</title>
 
-		<p>Todo cuerpo es un dominio integral; pero, existen muchos dominios integrales que no son cuerpos.  Por ejemplo, los enteros <m>{\mathbb Z}</m> forman un dominio integral pero no un cuerpo.  Una pregunta que surge naturalmente es como asociar un dominio integral con un cuerpo.  Existe una forma natural de construir los racionales <m>{\mathbb Q}</m> a partir de los enteros: los racionales pueden ser representados como cocientes de dos enteros.  Los números racionales por cierto forman un cuerpo.  De hecho, se puede demostrar que los racionales forman el cuerpo más pequeño que contiene a los enteros.  Dado un dominio integral <m>D</m>, nuestra pregunta ahora es cómo construir un menor cuerpo <m>F</m> que contenga a <m>D</m>.  Haremos esto de la misma forma en que construimos los racionales a partir de los enteros.</p>
+		<p>Todo cuerpo es un dominio integral; pero existen muchos dominios integrales que no son cuerpos.  Por ejemplo, los enteros <m>{\mathbb Z}</m> forman un dominio integral pero no un cuerpo.  Una pregunta que surge naturalmente es como asociar un dominio integral con un cuerpo.  Existe una forma natural de construir los racionales <m>{\mathbb Q}</m> a partir de los enteros: los racionales pueden ser representados como cocientes de dos enteros.  Los números racionales por cierto forman un cuerpo.  De hecho, se puede demostrar que los racionales forman el cuerpo más pequeño que contiene a los enteros.  Dado un dominio integral <m>D</m>, nuestra pregunta ahora es cómo construir un menor cuerpo <m>F</m> que contenga a <m>D</m>.  Haremos esto de la misma forma en que construimos los racionales a partir de los enteros.</p>
 
 		<p>Un elemento <m>p/q \in {\mathbb Q}</m> es el cociente de dos enteros <m>p</m> y <m>q</m>; sin embargo, diferentes pares de enteros pueden representar el mismo número racional.  Por ejemplo, <m>1/2 = 2/4 = 3/6</m>. Sabemos que 
 			<me>\frac{a}{b} = \frac{c}{d}</me>
 		si y solo si <m>ad = bc</m>. Una manera más formal de considerar este problema es examinando las fracciones en términos de relaciones de equivalencia.  Podemos pensar los elementos en <m>{\mathbb Q}</m> como pares ordenados en <m>{\mathbb Z} \times {\mathbb Z}</m>.  Un cociente <m>p/q</m> puede ser escrito como <m>(p, q)</m>.  Por ejemplo, <m>(3, 7)</m> representaría la fracción <m>3/7</m>.  Pero, surgen problemas si consideramos todos los pares posibles en <m>{\mathbb Z} \times {\mathbb Z}</m>.  No existe la fracción <m>5/0</m> que corresponda al par <m>(5,0)</m>.  Además, los pares <m>(3,6)</m> y <m>(2,4)</m> ambos representan la fracción <m>1/2</m>.  El primer problema lo resolvemos de forma sencilla si exigimos que la segunda coordenada sea dstinta de cero.  El segundo problema se resuelve considerando dos pares <m>(a, b)</m> y <m>(c, d)</m> como equivalentes si y solo si <m>ad = bc</m>.</p>
 
 		<p>Si usamos la idea de pares ordenados en lugar de fracciones, entonces podemos estudiar dominios integrales en general.  Sea <m>D</m> un dominio integral cualquiera y sea 
-			<me>S = \{ (a, b) : a, b \in D \text{ and } b \neq 0 \}.</me>
+			<me>S = \{ (a, b) : a, b \in D \text{ y } b \neq 0 \}.</me>
 		Definimos una relación en <m>S</m> por <m>(a, b) \sim (c, d)</m> si y solo si <m>ad=bc</m>.</p>
 
 		<lemma>
@@ -105,20 +105,20 @@
 
 		<theorem xml:id="theorem-field-of-quotients">
 			<statement>
-				<p>Sea <m>D</m> un dominio integral.  Entonces <m>D</m> puede ser incrustado en un cuerpo de fracciones <m>F_D</m>, donde cualquier elemento en <m>F_D</m> se puede expresar como el cociente de dos elementos en <m>D</m>.  Además, el cuerpo de fracciones <m>F_D</m> es único en el sentido de que si <m>E</m> es cualquier cuerpo que contiene <m>D</m>, entonces existe una función <m>\psi : F_D \rightarrow E</m> que da lugar a un somorfismo con un subcuerpo de <m>E</m> tal que <m>\psi(a) = a</m> para todos los elementos <m>a \in D</m>, donde identificamos <m>a</m> cn su imagen en <m>F_D</m>.</p>
+				<p>Sea <m>D</m> un dominio integral.  Entonces <m>D</m> puede ser incrustado en un cuerpo de fracciones <m>F_D</m>, donde cualquier elemento en <m>F_D</m> se puede expresar como el cociente de dos elementos en <m>D</m>.  Además, el cuerpo de fracciones <m>F_D</m> es único en el sentido de que si <m>E</m> es cualquier cuerpo que contiene <m>D</m>, entonces existe una función <m>\psi : F_D \rightarrow E</m> que da lugar a un isomorfismo con un subcuerpo de <m>E</m> tal que <m>\psi(a) = a</m> para todos los elementos <m>a \in D</m>, donde identificamos <m>a</m> con su imagen en <m>F_D</m>.</p>
 			</statement>
 			<proof>
 				<p>Primero demostraremos que <m>D</m> puede ser incrustado en el cuerpo <m>F_D</m>.  Definamos una función <m>\phi : D \rightarrow F_D</m> como <m>\phi(a)  = [a, 1]</m>.  Entonces para <m>a</m> y <m>b</m> en <m>D</m>,
 					<me>\phi( a + b ) = [a+b, 1] = [a, 1] + [b, 1] = \phi(a ) + \phi(b)</me>
 				y
 					<me>\phi( a b ) = [a b, 1] = [a, 1]  [b, 1] = \phi(a ) \phi(b);</me>
-				es decir, <m>\phi</m> es un homomorfismo.  Para mostrar que <m>\phi</m> es 1-1, supongamos que <m>\phi(a) = \phi( b)</m>.  Entonces <m>[a, 1] = [b, 1]</m>, y <m>a = a1 = 1b = b</m>. Finalmente, cualquier elemento de <m>F_D</m> puede ser expresadocomo el cociente de dos elementos en <m>D</m>, pues   
+				es decir, <m>\phi</m> es un homomorfismo.  Para mostrar que <m>\phi</m> es 1-1, supongamos que <m>\phi(a) = \phi( b)</m>.  Entonces <m>[a, 1] = [b, 1]</m>, y <m>a = a1 = 1b = b</m>. Finalmente, cualquier elemento de <m>F_D</m> puede ser expresado como el cociente de dos elementos en <m>D</m>, pues   
 					<me>\phi(a) [\phi(b)]^{-1} = [a, 1] [b, 1]^{-1} = [a, 1] \cdot [1, b] = [a, b].</me></p>
 
 <!-- Typo corrected.  Suggested by Nathan Lander. -->
 <!-- TWJ 2/13/2012 -->
 
-				<p>Ahora sea <m>E</m> un cuerpo que contenga a <m>D</m> y definamos na función <m>\psi :F_D \rightarrow E</m> por <m>\psi([a, b]) = a b^{-1}</m>.  Para mostrar que <m>\psi</m> está bien-definida, sean <m>[a_1, b_1] = [a_2, b_2]</m>. Entonces <m>a_1 b_2 = b_1 a_2</m>. Por lo tanto, <m>a_1 b_1^{-1} = a_2 b_2^{-1}</m> y <m>\psi( [a_1, b_1]) = \psi( [a_2, b_2])</m>.</p>
+				<p>Ahora sea <m>E</m> un cuerpo que contenga a <m>D</m> y definamos una función <m>\psi :F_D \rightarrow E</m> por <m>\psi([a, b]) = a b^{-1}</m>.  Para mostrar que <m>\psi</m> está bien-definida, sean <m>[a_1, b_1] = [a_2, b_2]</m>. Entonces <m>a_1 b_2 = b_1 a_2</m>. Por lo tanto, <m>a_1 b_1^{-1} = a_2 b_2^{-1}</m> y <m>\psi( [a_1, b_1]) = \psi( [a_2, b_2])</m>.</p>
 
 				<p>Si <m>[a, b ]</m> y <m>[c, d]</m> están en <m>F_D</m>, entonces
 					<md
@@ -169,7 +169,7 @@
 	 
 			<p>Sea <m>R</m> un anillo conmutativo con identidad, y sean <m>a</m> y <m>b</m> elementos en <m>R</m>.  Decimos que <m>a</m> <term>divide a </term> <m>b</m>, y escribimos <m>a \mid b</m>, si existe un elemento <m>c \in R</m> tal que <m>b = ac</m>.  Una <term>unidad</term><idx><h>Unidad</h></idx> en <m>R</m> es un elemento que tiene inverso multiplicativo.  Dos elementos <m>a</m> y <m>b</m> en <m>R</m> se dicen <term>asociados</term><idx><h>Asociado</h><h>elemento</h></idx><idx><h>Elementos asociados</h></idx> si existe una unidad <m>u</m> en <m>R</m> tal que <m>a = ub</m>.</p> 
 	 
-			<p>Sea <m>D</m> un dominio integral.  Un elemento distinto de cero <m>p \in D</m> que no sea una unidad se dice <term>irreducible</term><idx><h>Irreducible</h><h>elemento</h></idx><idx><h>Elemento irreducible</h></idx> si cada vez que <m>p = ab</m>, ya sea <m>a</m> o <m>b</m> es una unidad. Ademá, <m>p</m> es <term>primo</term><idx><h>Elemento primo</h></idx><idx><h>Primo</h><h>elemento</h></idx> si cada vez que <m>p \mid ab</m> ya sea <m>p \mid a</m> o <m>p \mid b</m>.</p>
+			<p>Sea <m>D</m> un dominio integral.  Un elemento distinto de cero <m>p \in D</m> que no sea una unidad se dice <term>irreducible</term><idx><h>Irreducible</h><h>elemento</h></idx><idx><h>Elemento irreducible</h></idx> si cada vez que <m>p = ab</m>, ya sea <m>a</m> o <m>b</m> es una unidad. Además, <m>p</m> es <term>primo</term><idx><h>Elemento primo</h></idx><idx><h>Primo</h><h>elemento</h></idx> si cada vez que <m>p \mid ab</m> ya sea <m>p \mid a</m> o <m>p \mid b</m>.</p>
 
 
 			<example xml:id="example-domains-q-xy">
@@ -179,7 +179,7 @@
 	<!-- We are assuming that R is an integral domain and contains 1.  TWJ 8/9/2012 -->
 
 	 
-			<p>El Teorema Fundamental de la Aritméticas establece que cada entero <m>n \gt 1</m> puede ser factorizado como pruducto de números primos <m>p_1 \cdots p_k</m>, donde los <m>p_i</m> no son cecesariamente distintos. También sabemos que tal factorización es única salvo el orden en que aparecen los <m>p_i</m>. Podemos fácilmente extender este resultado a todos los enteros. La pregunta surge sobre si tales factorizaciones son posibles en otros anillos.  Generalizando esta definición, diremos que un dominio integral <m>D</m> es un <term>dominio de factorización única</term>,<idx><h>Dominio de factorización única (<acro>DFU</acro>)</h></idx><idx><h>Factorización única</h><h>Dominio de</h></idx> o <term><acro>DFU</acro></term>, si <m>D</m> satisface los siguientes criterios.  
+			<p>El Teorema Fundamental de la Aritmética establece que cada entero <m>n \gt 1</m> puede ser factorizado como producto de números primos <m>p_1 \cdots p_k</m>, donde los <m>p_i</m> no son necesariamente distintos. También sabemos que tal factorización es única salvo el orden en que aparecen los <m>p_i</m>. Podemos fácilmente extender este resultado a todos los enteros. La pregunta surge sobre si tales factorizaciones son posibles en otros anillos.  Generalizando esta definición, diremos que un dominio integral <m>D</m> es un <term>dominio de factorización única</term>,<idx><h>Dominio de factorización única (<acro>DFU</acro>)</h></idx><idx><h>Factorización única</h><h>Dominio de</h></idx> o <term><acro>DFU</acro></term>, si <m>D</m> satisface los siguientes criterios.  
 				<ol>
 
 					<li><p>Sea <m>a \in D</m> tal que <m>a \neq 0</m> y <m>a</m> no es una unidad. Entonces <m>a</m> puede ser escrito como producto de elementos irreducibles en <m>D</m>.</p></li> 
@@ -238,7 +238,7 @@
 				<proof>
 					<p>Supongamos que <m>\langle p \rangle</m> es un ideal maximal.  Si algún elemento <m>a</m> en <m>D</m> divide a <m>p</m>, entonces <m>\langle p \rangle \subset \langle a \rangle</m>.  Como <m>\langle p \rangle</m> es maximal, ya sea <m>D = \langle a \rangle</m> o <m>\langle p \rangle = \langle a \rangle</m>.  En otras palabras, ya sea <m>a</m> y <m>p</m> son asociados o <m>a</m> es una unidad.  Por lo tanto, <m>p</m> es irreducible.</p>
 
-					<p>Recíprocamente, sea <m>p</m> irreducible. Si <m>\langle a \rangle</m> es un ideal en <m>D</m> tal que <m>\langle p \rangle \subset \langle a \rangle \subset D</m>, entonces <m>a \mid p</m>. Como <m>p</m> es irreducible, ya sea <m>a</m> es una unidad o <m>a</m> y <m>p</m> son asociados. Por lo tanto, ya sea <m>D = \langle a \rangle</m> o <m>\langle p \rangle = \langle a \rangle</m>.  Concluioms que <m>\langle p \rangle</m> es un ideal maximal.</p>
+					<p>Recíprocamente, sea <m>p</m> irreducible. Si <m>\langle a \rangle</m> es un ideal en <m>D</m> tal que <m>\langle p \rangle \subset \langle a \rangle \subset D</m>, entonces <m>a \mid p</m>. Como <m>p</m> es irreducible, ya sea <m>a</m> es una unidad o <m>a</m> y <m>p</m> son asociados. Por lo tanto, ya sea <m>D = \langle a \rangle</m> o <m>\langle p \rangle = \langle a \rangle</m>.  Concluimos que <m>\langle p \rangle</m> es un ideal maximal.</p>
 				</proof>
 			</theorem>
 
@@ -308,7 +308,7 @@
 			</corollary>
 
 			<example xml:id="example-domains-zx-ufd">
-				<p>Todo <acro>DIP</acro> es un <acro>DFU</acro>, pero no todo <acro>DFU</acro> es un <acro>DIP</acro>. En el Corolario<nbsp /><xref ref="corollary-integer-poly-ufd" />, demostraremos que <m>{\mathbb Z}[x]</m> es un <acro>DFU</acro>.  Pero, <m>{\mathbb Z}[x]</m> no es un <acro>DIP</acro>.  Sea <m>I = \{ 5 f(x) + x g(x) : f(x), g(x)  \in {\mathbb Z}[x] \}</m>.  Podemos mostrar fácilmente que <m>I</m> es un ideal de <m>{\mathbb Z}[x]</m>.  Supongamos que <m>I = \langle p(x) \rangle</m>.  Como <m>5 \in I</m>,  <m>5 = f(x) p(x)</m>.  En este caso <m>p(x) = p</m> debe ser una constante.  Como <m>x  \in I</m>, <m>x = p g(x)</m>; luego, <m>p = \pm 1</m>. Pero, de esto conluimos que <m>\langle p(x) \rangle = {\mathbb Z}[x]</m>. Pero esto diría que 3 está en <m>I</m>. Por lo tanto, podemos escribir <m>3 = 5 f(x) + x g(x)</m> para ciertos <m>f(x)</m> y <m>g(x)</m> en <m>{\mathbb Z}[x]</m>.  Examinando el términio constante de este polinomio, vemos que <m>3 = 5 f(x)</m>, lo que es imposible.</p>
+				<p>Todo <acro>DIP</acro> es un <acro>DFU</acro>, pero no todo <acro>DFU</acro> es un <acro>DIP</acro>. En el Corolario<nbsp /><xref ref="corollary-integer-poly-ufd" />, demostraremos que <m>{\mathbb Z}[x]</m> es un <acro>DFU</acro>.  Pero, <m>{\mathbb Z}[x]</m> no es un <acro>DIP</acro>.  Sea <m>I = \{ 5 f(x) + x g(x) : f(x), g(x)  \in {\mathbb Z}[x] \}</m>.  Podemos mostrar fácilmente que <m>I</m> es un ideal de <m>{\mathbb Z}[x]</m>.  Supongamos que <m>I = \langle p(x) \rangle</m>.  Como <m>5 \in I</m>,  <m>5 = f(x) p(x)</m>.  En este caso <m>p(x) = p</m> debe ser una constante.  Como <m>x  \in I</m>, <m>x = p g(x)</m>; luego, <m>p = \pm 1</m>. Pero, de esto concluimos que <m>\langle p(x) \rangle = {\mathbb Z}[x]</m>. Pero esto diría que 3 está en <m>I</m>. Por lo tanto, podemos escribir <m>3 = 5 f(x) + x g(x)</m> para ciertos <m>f(x)</m> y <m>g(x)</m> en <m>{\mathbb Z}[x]</m>.  Examinando el término constante de este polinomio, vemos que <m>3 = 5 f(x)</m>, lo que es imposible.</p>
 			</example>
 
 		</subsection>
@@ -338,7 +338,7 @@
 
 
 			<example xml:id="example-domains-gaussian-valuation">
-				<p>Reclos enteros Gaussianos en el Ejemplo<nbsp /><xref ref="example-rings-gaussian-integers" /> del Capítulo<nbsp /><xref ref="rings" /> están definidos como
+				<p>Los enteros Gaussianos en el Ejemplo<nbsp /><xref ref="example-rings-gaussian-integers" /> del Capítulo<nbsp /><xref ref="rings" /> están definidos como
 					<me>{\mathbb Z}[i] = \{  a + b i : a, b \in {\mathbb Z} \}.</me>
 				Usualmente medimos el tamaño de un número complejo <m>a + bi</m> por su valor absoluto, <m>|a + bi| = \sqrt{ a^2 + b^2}</m>; pero, <m>\sqrt{a^2 + b^2}</m> podría no ser un entero. Como valuación elegiremos <m>\nu(a + bi) = a^2 + b^2</m> para asegurarnos de tener un entero.</p>
 
@@ -371,7 +371,7 @@
 					<p>Todo dominio Euclideano es un dominio de ideales principales.</p>
 				</statement>
 				<proof>
-					<p>Sea <m>D</m> un dominio Euclideano y sea <m>\nu</m> una valuación Euclideana en <m>D</m>. Supongamos que <m>I</m> es un ideal no trivial en <m>D</m> y escojamos un elemento <m>b \in I</m> distinto de cero tal que <m>\nu(b)</m> es minimal entre todos los <m>a \in I</m> distintos de cero. Para cualquier <m>a \in I</m> distinto de cero, como <m>D</m> es un dominio Euclideano, existen elementos <m>q</m> y <m>r</m> en <m>D</m> tales que <m>a = bq +r</m> y ya sea <m>r=0</m> o <m>\nu(r) \lt \nu(b)</m>. Pero <m>r = a - bq</m> está en <m>I</m> pues <m>I</m> es un ideal; por lo tanto, <m>r = 0</m> por la minimalidad de <m>b</m>. Concluioms que <m>a = bq</m> y que <m>I = \langle b \rangle</m>.</p>
+					<p>Sea <m>D</m> un dominio Euclideano y sea <m>\nu</m> una valuación Euclideana en <m>D</m>. Supongamos que <m>I</m> es un ideal no trivial en <m>D</m> y escojamos un elemento <m>b \in I</m> distinto de cero tal que <m>\nu(b)</m> es minimal entre todos los <m>a \in I</m> distintos de cero. Para cualquier <m>a \in I</m> distinto de cero, como <m>D</m> es un dominio Euclideano, existen elementos <m>q</m> y <m>r</m> en <m>D</m> tales que <m>a = bq +r</m> y ya sea <m>r=0</m> o <m>\nu(r) \lt \nu(b)</m>. Pero <m>r = a - bq</m> está en <m>I</m> pues <m>I</m> es un ideal; por lo tanto, <m>r = 0</m> por la minimalidad de <m>b</m>. Concluimos que <m>a = bq</m> y que <m>I = \langle b \rangle</m>.</p>
 				</proof>
 			</theorem>
  
@@ -434,7 +434,7 @@
 
 			<corollary xml:id="corollary-irreducible-poly">
 				<statement>
-					<p>Sea <m>D</m> un <acro>DFU</acro> y <m>F</m> su cuerpo de fracciones.  Un polinomio primitiv <m>p(x)</m> en <m>D[x]</m> es irreducible en <m>F[x]</m> si y solo si es irreducible en <m>D[x]</m>.</p>
+					<p>Sea <m>D</m> un <acro>DFU</acro> y <m>F</m> su cuerpo de fracciones.  Un polinomio primitivo <m>p(x)</m> en <m>D[x]</m> es irreducible en <m>F[x]</m> si y solo si es irreducible en <m>D[x]</m>.</p>
 				</statement>
 			</corollary>
 
@@ -451,7 +451,7 @@
 				<proof>
 					<p>Sea <m>p(x)</m> un polinomio distinto de cero en <m>D[x]</m>.  Si <m>p(x)</m> es un polinomio constante, entonces tiene una factorización única pues <m>D</m> es un <acro>DFU</acro>. Ahora supongamos que <m>p(x)</m> es un polinomio de grado positivo en <m>D[x]</m>. Sea <m>F</m> el cuerpo de fracciones de <m>D</m>, y sea <m>p(x) = f_1(x) f_2(x) \cdots f_n(x)</m> una factorización de <m>p(x)</m>, donde cada <m>f_i(x)</m> es irreducible. Escojamos <m>a_i \in D</m> tales que <m>a_i f_i(x)</m> esté en <m>D[x]</m>. Existen <m>b_1, \ldots, b_n \in D</m> tales que <m>a_i f_i(x) = b_i g_i(x)</m>, donde <m>g_i(x)</m> es un polinomio primitivo en <m>D[x]</m>. Por el Corolario<nbsp /><xref ref="corollary-irreducible-poly" />, cada <m>g_i(x)</m> es irreducible en <m>D[x]</m>. Así, podemos escribir
 						<me>a_1 \cdots a_n p(x) = b_1 \cdots b_n g_1(x) \cdots g_n(x).</me>
-					Sea <m>b = b_1 \cdots b_n</m>. Como <m>g_1(x) \cdots g_n(x)</m> es primitive, <m>a_1 \cdots a_n</m> divide a <m>b</m>. Por lo tanto, <m>p(x) = a g_1(x) \cdots g_n(x)</m>, donde <m>a \in D</m>. Como <m>D</m> es un <acro>DFU</acro>, podemos factorizar <m>a</m> como <m>u c_1 \cdots c_k</m>, donde <m>u</m> es una unidad y cada uno de los <m>c_i</m> es irreducible en <m>D</m>.</p>
+					Sea <m>b = b_1 \cdots b_n</m>. Como <m>g_1(x) \cdots g_n(x)</m> es primitivo, <m>a_1 \cdots a_n</m> divide a <m>b</m>. Por lo tanto, <m>p(x) = a g_1(x) \cdots g_n(x)</m>, donde <m>a \in D</m>. Como <m>D</m> es un <acro>DFU</acro>, podemos factorizar <m>a</m> como <m>u c_1 \cdots c_k</m>, donde <m>u</m> es una unidad y cada uno de los <m>c_i</m> es irreducible en <m>D</m>.</p>
 
 					<p>Ahora mostraremos la unicidad de esta factorización. Sean
 						<me>p(x) = a_1 \cdots a_m f_1(x) \cdots f_n(x) = b_1 \cdots b_r g_1(x) \cdots g_s(x)</me>
@@ -480,7 +480,7 @@
 			</corollary> 
 
 			<remark>
-				<p>Es importante destacar que todo dominio Euclideano es un <acro>DIP</acro> y que todo <acro>DIP</acro> es un <acro>DFU</acro>. Sinembargo, como hemos demostrado con ejemplos, los recíprocos de cada una de estas aseveraciones son falsos.  Existen dominios de ideales principales que no son dominios Euclideanos, y existen dominios de factorización única que no son dominios de ideales principales (<m>{\mathbb Z}[x]</m>). </p>
+				<p>Es importante destacar que todo dominio Euclideano es un <acro>DIP</acro> y que todo <acro>DIP</acro> es un <acro>DFU</acro>. Sin embargo, como hemos demostrado con ejemplos, los recíprocos de cada una de estas aseveraciones son falsos.  Existen dominios de ideales principales que no son dominios Euclideanos, y existen dominios de factorización única que no son dominios de ideales principales (<m>{\mathbb Z}[x]</m>). </p>
 			</remark>
 
 			<xi:include href="./sage/domains-info.xml" />
@@ -496,9 +496,9 @@
 
 			<p>A continuación Gauss se dedicó a la teoría de números; en 1801, publicó su famoso libro de teoría de números, <em>Disquisitiones Arithmeticae</em>.  Durante toda su vida estuvo interesado por esta rama de las matemáticas.  Alguna vez escribió que, <q>la Matemática es la reina de las Ciencias, y la teoría de números es la reina de las matemáticas.</q></p>
 
-			<p>En 1807, Gauss fue nombrado director del Observatorio en la Universidad de Göttingen, cargo que mantuvo hasta su muerte.  En este cargo tuvo que estudiar aplicaciones de las matemáticas a las ciencias.  Realizó contribuciones a campos como astronomía, mecánica, óptica, geodesia y magnetismo.  Junto a Wilhelm Weber, fue coinventor del primer telégrafo eléctrico prácticoalgunos años anes de que una versión mejor fuera inventada por Samuel F. B. Morse.</p>
+			<p>En 1807, Gauss fue nombrado director del Observatorio en la Universidad de Göttingen, cargo que mantuvo hasta su muerte.  En este cargo tuvo que estudiar aplicaciones de las matemáticas a las ciencias.  Realizó contribuciones a campos como astronomía, mecánica, óptica, geodesia y magnetismo.  Junto a Wilhelm Weber, fue coinventor del primer telégrafo eléctrico práctico algunos años antes de que una versión mejor fuera inventada por Samuel F. B. Morse.</p>
 
-			<p>Gauss fue claramente el matemático más prominente de comienzos del siglo XIX. Su estatus lo sometió naturalmente a un intenso escrutinio.  La personalidad fría y distante de Gauss lo llevó muchas veces a ignorar el trabajo de su contemporáneos, creándole muchos enemigos.  No le gustaba mucho hacer clases, y jóvenes que buscaban su apoyo, eran rechazados con frecuencia.  Sin embargo, tuvo muchos discípulos sobresalientes, incluyendo a Eisenstein, Riemann, Kummer, Dirichlet, y Dedekind. Gauss también apoyó decididamente a Sophie Germain (1776<ndash />1831), que tuvo que sobrepasar los muchos obstáculos que existían en su tiempo en el camino de una mujer para convertirse en una prestigiosa matemática.  Gauss murió a los 78 años en Göttingen el 23 de February 23 de 1855.</p>
+			<p>Gauss fue claramente el matemático más prominente de comienzos del siglo XIX. Su estatus lo sometió naturalmente a un intenso escrutinio.  La personalidad fría y distante de Gauss lo llevó muchas veces a ignorar el trabajo de su contemporáneos, creándole muchos enemigos.  No le gustaba mucho hacer clases, y jóvenes que buscaban su apoyo, eran rechazados con frecuencia.  Sin embargo, tuvo muchos discípulos sobresalientes, incluyendo a Eisenstein, Riemann, Kummer, Dirichlet, y Dedekind. Gauss también apoyó decididamente a Sophie Germain (1776<ndash />1831), que tuvo que sobrepasar los muchos obstáculos que existían en su tiempo en el camino de una mujer para convertirse en una prestigiosa matemática.  Gauss murió a los 78 años en Göttingen el 23 de Febrero 23 de 1855.</p>
 
 		</subsection>
 

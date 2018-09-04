@@ -60,7 +60,7 @@
 
 		<sage type='practice' />
 
-		<p>Ahora es un buen momento para introducir una forma de extender Sage agrgándo nuevas funciones.  Diseñaremos una función de multiplicación de clases laterales.  Lea cuidadosamente lo que sigue y después vea la explicación que sigue.</p>
+		<p>Ahora es un buen momento para introducir una forma de extender Sage agregándole nuevas funciones.  Diseñaremos una función de multiplicación de clases laterales.  Lea cuidadosamente lo que sigue y después vea la explicación que sigue.</p>
 
 		<sage>
 		<input>
@@ -84,9 +84,9 @@
 
 		<p>Ahora conoce lo básico sobre cómo agregar funcionalidad a Sage y hacer mucho más de lo que está diseñado para hacer.  Con algo de práctico, incluso podría sugerir y contribuir nuevas funciones a Sage, pues es un proyecto de fuente abierta.  Bien.</p>
 
-		<p>Ahora examinemos una situación en que el subgrupo no es normal.  Veremos que nuestra definición de ptoducto de clases es insuficiente en este caso.  Además nos daremos cuenta que nuestra nueva función <c>coset_product</c> también es inútil pues presupone que las clases laterales proviene de un subgrupo normal.</p>
+		<p>Ahora examinemos una situación en que el subgrupo no es normal.  Veremos que nuestra definición de producto de clases es insuficiente en este caso.  Además nos daremos cuenta que nuestra nueva función <c>coset_product</c> también es inútil pues presupone que las clases laterales proviene de un subgrupo normal.</p>
 
-		<p>Considere el grupo alternante <m>A_4</m> que podemos interpretar como el grupo de simetrías de un tetrahedro.  Para un subgrupo, escoja un elemento que fija un vértice y rota la cara opuesta <mdash /> esto generará un subgrupo cíclico de orden 3, y por el Teorema de Lagrange obtendremos cuatro clases laterales.  Las calcularemos acá.  (Nuevamente, no se pide ningna salida.)</p>
+		<p>Considere el grupo alternante <m>A_4</m> que podemos interpretar como el grupo de simetrías de un tetraedro.  Para un subgrupo, escoja un elemento que fija un vértice y rota la cara opuesta <mdash /> esto generará un subgrupo cíclico de orden 3, y por el Teorema de Lagrange obtendremos cuatro clases laterales.  Las calcularemos acá.  (Nuevamente, no se pide ningna salida.)</p>
 
 		<sage>
 		<input>
@@ -109,7 +109,7 @@
 		</output>
 		</sage>
 
-		<p>Nuevamente, pero ahora para la clase <m>3</m>, escoja el segunso elemento de la clase para obtener el producto <c>p</c>:</p>
+		<p>Nuevamente, pero ahora para la clase <m>3</m>, escoja el segundo elemento de la clase para obtener el producto <c>p</c>:</p>
 
 		<sage>
 		<input>
@@ -121,7 +121,7 @@
 		</output>
 		</sage>
 
-		<p>¿Entonces, el producto de la clase  <m>1</m> y la clase <m>3</m> es igual a la clase  <m>0</m> o a la clase <m>2</m>?  No lo podemos determinar!  Así es que no hay <em>ninguna forma</em> de construir un grupo cociente para este subgrupo.  Usted puede esperimentar más con este subgrupo, pero en algún sentido, no tenemos nada más que hacer con este ejemplo <mdash /> no queda nada que decir.</p>
+		<p>¿Entonces, el producto de la clase  <m>1</m> y la clase <m>3</m> es igual a la clase  <m>0</m> o a la clase <m>2</m>?  ¡No lo podemos determinar!  Así es que no hay <em>ninguna forma</em> de construir un grupo cociente para este subgrupo.  Usted puede esperimentar más con este subgrupo, pero en algún sentido, no tenemos nada más que hacer con este ejemplo <mdash /> no queda nada que decir.</p>
 	</subsection>
 
 	<subsection>
@@ -180,7 +180,7 @@
 		</output>
 		</sage>
 
-		<p>Esto es útil, pero un poco desconcertante.  Tenemos el grupo cociente, pero cualquier noción de clases laterales se perdió, pues <c>Q</c> es entregado como un nuevo grupo de permutaciones en un conjunto diferente de símbolos.  No podemos presuponer que los número usados para el nuevo grupo de permutaciones <c>Q</c> tengan similitud alguna con las clases que obtenemos del método <c>.cosets()</c>.  Pero podemos ver que el grupo cociente se describe como un grupo generado por dos elementos de orden dos.  Podríamos pedir el orden del grupo, o usar el Teorema de Lagrange para saber que el orden es 4.  Podemos decir ahora que hay solo dos grupos de orden 4, el grupo cíclico de order 4 y un grupo no cíclico de orden 4 que conocemos como el 4-grupo de Klein o como <m>{\mathbb Z}_2\times{\mathbb Z}_2</m>.  Este grupo cociente se ve como el grupo no cíclcio pues el grupo cíclio tiene solo un elemento de orden 2.  Veamos que nos dice Sage.</p>
+		<p>Esto es útil, pero un poco desconcertante.  Tenemos el grupo cociente, pero cualquier noción de clases laterales se perdió, pues <c>Q</c> es entregado como un nuevo grupo de permutaciones en un conjunto diferente de símbolos.  No podemos presuponer que los número usados para el nuevo grupo de permutaciones <c>Q</c> tengan similitud alguna con las clases que obtenemos del método <c>.cosets()</c>.  Pero podemos ver que el grupo cociente se describe como un grupo generado por dos elementos de orden dos.  Podríamos pedir el orden del grupo, o usar el Teorema de Lagrange para saber que el orden es 4.  Podemos decir ahora que hay solo dos grupos de orden 4, el grupo cíclico de order 4 y un grupo no cíclico de orden 4 que conocemos como el 4-grupo de Klein o como <m>{\mathbb Z}_2\times{\mathbb Z}_2</m>.  Este grupo cociente se ve como el grupo no cíclico pues el grupo cíclico tiene solo un elemento de orden 2.  Veamos que nos dice Sage.</p>
 
 		<sage>
 		<input>
@@ -191,9 +191,9 @@
 		</output>
 		</sage>
 
-		<p>Si, esos es.</p>
+		<p>Si, eso es.</p>
 
-		<p>Finalmente, Sage nos puede hacer una lista de todos los subgrupos normales de un grupo.  La lista de los grupos en sí, como hemos visto antes, puede ser una cantidad de información apabullante.  A continuación simplemente listaremos los órdenes de lso subgrupos normales producidos.</p>
+		<p>Finalmente, Sage nos puede hacer una lista de todos los subgrupos normales de un grupo.  La lista de los grupos en sí, como hemos visto antes, puede ser una cantidad de información apabullante.  A continuación simplemente listaremos los órdenes de los subgrupos normales producidos.</p>
 
 		<sage>
 		<input>

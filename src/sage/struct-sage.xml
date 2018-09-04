@@ -26,7 +26,7 @@
 
         <p>Para <m>n=8</m> existen <m>3</m> grupos abelianos, y los dos grupos no-abelianos son el grupo dihedral (simetrías de un cuadrado) y el grupo de los cuaterniones.</p>
 
-        <p>Para <m>n=12</m> existen <m>2</m> grupos abelianos, y <m>3</m> no-abelianos.  Conocemos dos de los grupos no-abelianos, el grupo dihedral y en grupo alternante en <m>4</m> símbolos (que también es el grupo de simetrías de un tetrahedro).  El tercer grupo no-abeliano es un ejemplo de un grupo <q>dicíclico</q>, que es una familia infinita de grupos, cada uno de orden divisible por <m>4</m>.  El grupo dicíclico de orden <m>12</m> también puede ser construido como un <q>producto semidirecto</q> de dos grupos cíclicos  <mdash /> esta es una construcción que vale la pena conocer a medida que prosiga sus estudios de teoría de grupos.  El grupo dicíclico de orden <m>8</m> es el grupo de los cuaterniones y más en general, los grupos dicíclicos de orden <m>2^k</m>, <m>k>2</m> se conocen como <q>grupos de cuaterniones generalizados.</q></p>
+        <p>Para <m>n=12</m> existen <m>2</m> grupos abelianos, y <m>3</m> no-abelianos.  Conocemos dos de los grupos no-abelianos, el grupo dihedral y en grupo alternante en <m>4</m> símbolos (que también es el grupo de simetrías de un tetraedro).  El tercer grupo no-abeliano es un ejemplo de un grupo <q>dicíclico</q>, que es una familia infinita de grupos, cada uno de orden divisible por <m>4</m>.  El grupo dicíclico de orden <m>12</m> también puede ser construido como un <q>producto semidirecto</q> de dos grupos cíclicos  <mdash /> esta es una construcción que vale la pena conocer a medida que prosiga sus estudios de teoría de grupos.  El grupo dicíclico de orden <m>8</m> es el grupo de los cuaterniones y más en general, los grupos dicíclicos de orden <m>2^k</m>, <m>k>2</m> se conocen como <q>grupos de cuaterniones generalizados.</q></p>
 
         <p>Los siguientes ejemplos le mostrarán como construir algunos de estos grupos, mientras ejercita algunos de los comandos y nos permite a la vez estar más seguros que la siguiente tabla es correcta.</p>
 
@@ -112,7 +112,7 @@
                 <row><cell>  </cell><cell><c>G=direct_product_permgroups([C2,C6])</c>   </cell><cell>Abeliano, no-cíclico</cell></row><!--single-->
                 <row><cell>12</cell><cell><c>DihedralGroup(6)</c>                       </cell><cell>No-abeliano</cell></row><!--single-->
                 <row><cell>12</cell><cell><c>AlternatingGroup(4)</c>                    </cell><cell>No-abeliano</cell></row><!--none-->
-                <row><cell>  </cell><cell>                                              </cell><cell>Simetrías del tetrahedro</cell></row><!--single-->
+                <row><cell>  </cell><cell>                                              </cell><cell>Simetrías del tetraedro</cell></row><!--single-->
                 <row><cell>12</cell><cell><c>DiCyclicGroup(3)</c>                       </cell><cell>No-abeliano</cell></row><!--none-->
                 <row><cell>  </cell><cell>                                              </cell><cell>Producto semidirecto <m>Z_3\rtimes Z_4</m></cell></row><!--double-->
                 <row><cell>13</cell><cell><c>CyclicPermutationGroup(13)</c>             </cell><cell>Orden primo </cell></row><!--double-->

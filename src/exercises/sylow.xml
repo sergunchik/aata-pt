@@ -18,14 +18,14 @@
 			<p>¿Cuáles son los órdenes de todos los <m>p</m>-subgrupos de Sylow de <m>G</m> si <m>G</m> es un grupo de orden 18, 24, 54, 72, y 80?</p>
 		</statement>
 		<hint>
-			<p>Si <m>|G| = 18 = 2 \cdot 3^2</m>, entonces el orden de on 2-subgrupo de Sylow es 2, y el orden de on 3-subgrupo de Sylow es 9.</p>
+			<p>Si <m>|G| = 18 = 2 \cdot 3^2</m>, entonces el orden de un 2-subgrupo de Sylow es 2, y el orden de on 3-subgrupo de Sylow es 9.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="2">
 		<statement>
-			<p>Encuente todos los 3-subgrupos de Sylos de <m>S_4</m> y muestre que son todos conjugados.</p>
+			<p>Encuente todos los 3-subgrupos de Sylow de <m>S_4</m> y muestre que son todos conjugados.</p>
 		</statement>
 		<hint>
 			<p>Los cuatro 3-subgrupos de Sylow de <m>S_4</m> son <m>P_1 = \{ (1), (123), (132) \}</m>, <m>P_2 = \{ (1), (124), (142) \}</m>, <m>P_3 = \{ (1), (134), (143) \}</m>, <m>P_4 = \{ (1), (234), (243) \}</m>.</p>

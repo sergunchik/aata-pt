@@ -20,11 +20,11 @@
 		<p>Acá hay una lista de varios anillos, dominio y cuerpos que se pueden construir de forma sencilla.<ol>
 			<li><p><c>Integers()</c>, <c>ZZ</c>: el dominio integral de los números enteros positivos y negativos, <m>{\mathbb Z}</m>.</p></li>
 
-			<li><p><c>Integers(n)</c>: los enteros mód <m>n</m>, <m>{\mathbb Z_n}</m>.  Un cuerpop cuando <m>n</m> es primo, pero solo un anillo cuando <m>n</m> es compuesto.</p></li>
+			<li><p><c>Integers(n)</c>: los enteros mód <m>n</m>, <m>{\mathbb Z_n}</m>.  Un cuerpo cuando <m>n</m> es primo, pero solo un anillo cuando <m>n</m> es compuesto.</p></li>
 
 			<li><p><c>QQ</c>: el cuerpo de los números racionales, <m>{\mathbb Q}</m>.</p></li>
 
-			<li><p><c>RR</c>, <c>CC</c>: el cuerpos de los números reales y el cuerpo de los números complejos, <m>{\mathbb R}</m>, <m>{\mathbb C}</m>.  Es imposible crear <em>todo</em> número real en un computador, así es que técnicamenteso estos conjuntos no se comportan como cuerpos, sino solo ofrecen una buena imitación del objeto real.  Decimos que son anillos <term>inexactos</term> para enfatizar este punto.</p></li>
+			<li><p><c>RR</c>, <c>CC</c>: el cuerpos de los números reales y el cuerpo de los números complejos, <m>{\mathbb R}</m>, <m>{\mathbb C}</m>.  Es imposible crear <em>todo</em> número real en un computador, así es que técnicamente estos conjuntos no se comportan como cuerpos, sino solo ofrecen una buena imitación del objeto real.  Decimos que son anillos <term>inexactos</term> para enfatizar este punto.</p></li>
 
 			<li><p><c>QuadraticField(n)</c>:  el cuerpo obtenido de adjuntar una solución de la ecuación <m>x^2-n=0</m> a los números racionales.  La notación en el texto es <m>{\mathbb Q}[\sqrt{n}]</m>.  Una forma equivalente funcionalmente de construirlos es con la sintaxis <c>QQ[sqrt(n)]</c>.  Notemos que <c>n</c> puede ser negativo.</p></li>
 
@@ -116,7 +116,7 @@
 
 			<li><p><c>P.&lt;x>=R[]</c>: el anillo de todos los polinomios en la variable <c>x</c>, con coeficientes en el anillo <c>R</c>.  Notemos que <c>R</c> puede ser <em>cualquier</em> anillo, de manera que esta es una construcción muy general que usa un anillo para formar otro.  Vea el ejemplo abajo.</p></li>
 
-			<li><p><c>Q.&lt;r,s,t> = QuaternionAlgebra(n, m)</c>: los racionales combinados con indeterminadas <c>r</c>, <c>s</c> y <c>t</c> tales que <m>r^2=n</m>, <m>s^2=m</m> y <m>t = rs = -sr</m>.  Esta es na generalización de los cuaterniones descritos en este capítulo, pero sobre lo racionales en lugar de los reales, de manera que es un anillo exacto.  Notemos que este es uno de los pocos anillos no-conmutativos en Sage.  Los cuaterniones <q>usuales</q> se construyen como <c>Q.&lt;I,J,K> = QuaternionAlgebra(-1, -1)</c>.  (Notemo que usar <c>I</c> en esta construcción no es la mejor idea, pues estaríamos redefiniendo el símbolo <c>I</c> usado para el número complejo i.)</p></li>
+			<li><p><c>Q.&lt;r,s,t> = QuaternionAlgebra(n, m)</c>: los racionales combinados con indeterminadas <c>r</c>, <c>s</c> y <c>t</c> tales que <m>r^2=n</m>, <m>s^2=m</m> y <m>t = rs = -sr</m>.  Esta es una generalización de los cuaterniones descritos en este capítulo, pero sobre lo racionales en lugar de los reales, de manera que es un anillo exacto.  Notemos que este es uno de los pocos anillos no-conmutativos en Sage.  Los cuaterniones <q>usuales</q> se construyen como <c>Q.&lt;I,J,K> = QuaternionAlgebra(-1, -1)</c>.  (Notemo que usar <c>I</c> en esta construcción no es la mejor idea, pues estaríamos redefiniendo el símbolo <c>I</c> usado para el número complejo i.)</p></li>
 		</ol></p>
 
 		<p>La sintaxis que especifica los nombres de los generadores puede también ser usada para muchos de los anillos de más arriba, como se ha demostrado para los cuerpos cuadráticos y se demuestra más abajo para los cuerpos ciclotómicos.</p>
@@ -184,7 +184,7 @@
 
 		<sage>
 		<input>
-		Z7.is_finite()
+		ZZ.is_finite()
 		</input>
 		<output>
 		True

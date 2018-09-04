@@ -85,7 +85,7 @@
 
     <exercise number="5">
         <statement>
-            <p>(Avanzado) Para la pregunta anterior, construya on isomorfismo <em>explícito</em> entre las dos álgebras Booleanas.  Esto es una biyección (construída con el comando <c>def</c>) que convierta composiciones en conjuntos (oo si lo prefiere, conjuntos en composiciones) y que respete las operaciones de ínfimo y supremo (meet y join).  Puede poner a prueba e ilustrar su función por su interacción con elementos específicos evaluados en las operaciones de ínfimo y supremo, como está descrito en la definición de isomorfismo de álgebras Boleanas.</p>
+            <p>(Avanzado) Para la pregunta anterior, construya un isomorfismo <em>explícito</em> entre las dos álgebras Booleanas.  Esto es una biyección (construída con el comando <c>def</c>) que convierta composiciones en conjuntos (o si lo prefiere, conjuntos en composiciones) y que respete las operaciones de ínfimo y supremo (meet y join).  Puede poner a prueba e ilustrar su función por su interacción con elementos específicos evaluados en las operaciones de ínfimo y supremo, como está descrito en la definición de isomorfismo de álgebras Boleanas.</p>
         </statement>
 
         

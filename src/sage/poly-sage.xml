@@ -13,7 +13,7 @@
 	<introduction>
 
 		<p>Sage es particularmente bueno para construir, analizar y manipular anillos de polinomios. Hemos visto algo de esto en el capítulo
-		 anterior.  Comencemos creando tres anillo de polinomios y comprobemos algunas de sus propiedades básicas.  Existen difierentes formas de construir anillos de polinomios, pero la sintaxis usada acá es la más directa.</p>
+		 anterior.  Comencemos creando tres anillos de polinomios y comprobemos algunas de sus propiedades básicas.  Existen difierentes formas de construir anillos de polinomios, pero la sintaxis usada acá es la más directa.</p>
 
 	</introduction>
 
@@ -314,7 +314,7 @@
 		</output>
 		</sage>
 
-		<p>Para verificar estas factorizaciones, debemos calcular en el cuerpo finito, <c>F</c>, por lo que necesitamos saber como se comporta el símbolo <c>a</c> behaves.  Este símbolo corresponde a una raíz de un polinomio de grado 2 sobre los enteros mód 5, que podemos obtener con el método <c>.modulus()</c>.</p>
+		<p>Para verificar estas factorizaciones, debemos calcular en el cuerpo finito, <c>F</c>, por lo que necesitamos saber como se comporta el símbolo <c>a</c>.  Este símbolo corresponde a una raíz de un polinomio de grado 2 sobre los enteros mód 5, que podemos obtener con el método <c>.modulus()</c>.</p>
 
 		<sage>
 		<input>
@@ -345,7 +345,7 @@
 		</output>
 		</sage>
 
-		<p>Pero, <c>q</c> se factoriza en dos polinomios de grado 2, de manera que ninguna búsque de raíces nos permitirá descubrir estos factores.</p>
+		<p>Pero, <c>q</c> se factoriza en dos polinomios de grado 2, de manera que ninguna búsqueda de raíces nos permitirá descubrir estos factores.</p>
 
 		<p>Por el criterio de Eisenstein, podemos crear polinomios irreducibles, como en el Ejemplo<nbsp /><xref ref="example-poly-eisenstein" />.</p>
 
@@ -360,7 +360,7 @@
 		</output>
 		</sage>
 
-		<p>Sobre el cuerpo <m>{\mathbb Z}_p</m>, los polinomios de Conway son elecciones canónicas para un polinomio de grado <m>n</m>irreducible sobre <m>{\mathbb Z}_p</m>.  Vea los ejercicios para aprender más sobre estos polinomios.</p>
+		<p>Sobre el cuerpo <m>{\mathbb Z}_p</m>, los polinomios de Conway son elecciones canónicas para un polinomio de grado <m>n</m> irreducible sobre <m>{\mathbb Z}_p</m>.  Vea los ejercicios para aprender más sobre estos polinomios.</p>
 
 	</subsection>
 
@@ -392,7 +392,7 @@
 		</output>
 		</sage>
 
-		<p>El Teorema<nbsp /><xref ref="theorem-max-ideal-poly" /> es el hecho clave que nos permite construir cuerpos finitos fácilmente.  Acá hay una construcción de un cuero finito de orden <m>7^5=16\,807</m>.  Todo lo que necesitamos es un polinomio de grado <m>5</m> que sea irreducible sobre <m>{\mathbb Z}_7</m>.</p>
+		<p>El Teorema<nbsp /><xref ref="theorem-max-ideal-poly" /> es el hecho clave que nos permite construir cuerpos finitos fácilmente.  Acá hay una construcción de un cuerpo finito de orden <m>7^5=16\,807</m>.  Todo lo que necesitamos es un polinomio de grado <m>5</m> que sea irreducible sobre <m>{\mathbb Z}_7</m>.</p>
 
 		<sage>
 		<input>

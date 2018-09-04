@@ -29,7 +29,7 @@
 		<subsection xml:id="matrix-subsection-linear-algebra">
 			<title>Algunos Resultados de Álgebra Lineal</title>
 
-			<p>Antes de estudiar grupos de matrices, debemos ercordar algunos resultados básicos de álgebra lineal.  Una de las ideas fundamentales de álgebra lineal es la de una transformación lineal. Una <term>transformación lineal</term><idx><h>Transformación lineal</h><h>definición de</h></idx> o <term>función lineal</term><idx><h>Función lineal</h></idx> <m>T : {\mathbb R}^n \rightarrow {\mathbb R}^m</m> es una función que respeta (o preserva) la suma de vectores y la multiplicación por escalares; es decir, para vectores <m>{\mathbf x}</m> e <m>{\mathbf y}</m> en <m>{\mathbb R}^n</m> y un escalar <m>\alpha \in {\mathbb R}</m>, 
+			<p>Antes de estudiar grupos de matrices, debemos recordar algunos resultados básicos de álgebra lineal.  Una de las ideas fundamentales de álgebra lineal es la de una transformación lineal. Una <term>transformación lineal</term><idx><h>Transformación lineal</h><h>definición de</h></idx> o <term>función lineal</term><idx><h>Función lineal</h></idx> <m>T : {\mathbb R}^n \rightarrow {\mathbb R}^m</m> es una función que respeta (o preserva) la suma de vectores y la multiplicación por escalares; es decir, para vectores <m>{\mathbf x}</m> e <m>{\mathbf y}</m> en <m>{\mathbb R}^n</m> y un escalar <m>\alpha \in {\mathbb R}</m>, 
 				<md>
 				<mrow>T({\mathbf x}+{\mathbf y}) &amp; = T({\mathbf x}) + T({\mathbf y})</mrow>
 				<mrow>T(\alpha {\mathbf y}) &amp; = \alpha T({\mathbf y}).</mrow>
@@ -47,7 +47,7 @@
 				<me>A({\mathbf x} + {\mathbf y} ) 
 				 = 
 				A {\mathbf x }+ A {\mathbf y} 
-				\qquad \text{and} \qquad
+				\qquad \text{y} \qquad
 				\alpha A {\mathbf x} 
 				 = 
 				A ( \alpha {\mathbf x}),</me>
@@ -142,7 +142,7 @@
 		<subsection xml:id="matrix-subsection-general-linear-group">
 			<title>El Grupo Lineal General y el Grupo Lineal Especial</title>
  
-			<p>El conjunto de todas las matrices invertibles de <m>n \times n</m> forma un grupo llamado <term>grupo lineal general</term><idx><h>Grupo</h><h>lineal general</h></idx>.  Denotaremos este grupo por<m>GL_n({\mathbb R})</m>.  El grupo lineal general tiene varios subgrupos importantes. La propiedad multiplicativa del determinante implica que el conjunto de las matrices cuyo determinante es uno es un subgrupo del grupo lineal general.  Dicho de otra forma, supongamos que <m>\det(A) =1</m> y que <m>\det(B) = 1</m>. Entonces <m>\det(AB) = \det(A) \det (B) = 1</m> y <m>\det(A^{-1}) = 1 / \det A = 1</m>. Este subgrupo se llama <term>grupo lineal especial</term><idx><h>Grupo</h><h>lineal especial</h></idx> y se denota por <m>SL_n({\mathbb R})</m>.</p>
+			<p>El conjunto de todas las matrices invertibles de <m>n \times n</m> forma un grupo llamado <term>grupo lineal general</term><idx><h>Grupo</h><h>lineal general</h></idx>.  Denotaremos este grupo por <m>GL_n({\mathbb R})</m>.  El grupo lineal general tiene varios subgrupos importantes. La propiedad multiplicativa del determinante implica que el conjunto de las matrices cuyo determinante es uno es un subgrupo del grupo lineal general.  Dicho de otra forma, supongamos que <m>\det(A) =1</m> y que <m>\det(B) = 1</m>. Entonces <m>\det(AB) = \det(A) \det (B) = 1</m> y <m>\det(A^{-1}) = 1 / \det A = 1</m>. Este subgrupo se llama <term>grupo lineal especial</term><idx><h>Grupo</h><h>lineal especial</h></idx> y se denota por <m>SL_n({\mathbb R})</m>.</p>
  
 
 			<example xml:id="example-determinant">
@@ -230,7 +230,7 @@
 					]]>\end{pmatrix}.</me></p>
 			</example>
 
-			<p>Hay una forma más geométrica de ver el grupo <m>O(n)</m>. Las matrices ortogonales son exactamente aquellas que preservan lad longitudes de los vectores. Podemos definir la longitud de un vector usando el <term>producto interno Euclideano</term>,<idx><h>Producto interno Euclideano</h></idx> o <term>producto punto</term>, de dos vectores. El producto interno Euclideano de dos vectores <m>{\mathbf x}=(x_1, \ldots, x_n)^{\rm t}</m> y <m>{\mathbf y}=(y_1, \ldots, y_n)^{\rm t}</m> es
+			<p>Hay una forma más geométrica de ver el grupo <m>O(n)</m>. Las matrices ortogonales son exactamente aquellas que preservan las longitudes de los vectores. Podemos definir la longitud de un vector usando el <term>producto interno Euclideano</term>,<idx><h>Producto interno Euclideano</h></idx> o <term>producto punto</term>, de dos vectores. El producto interno Euclideano de dos vectores <m>{\mathbf x}=(x_1, \ldots, x_n)^{\rm t}</m> y <m>{\mathbf y}=(y_1, \ldots, y_n)^{\rm t}</m> es
 				<me>\langle  {\mathbf x}, {\mathbf y} \rangle
 				=
 				{\mathbf x}^{\rm t}  {\mathbf y}
@@ -389,7 +389,7 @@
 			<!-- Clarified what it means to be a reflection - TWJ 12/8/2011 -->
 
 			<example xml:id="example-o2">
-				<p>Examinemos el grupo ortogonal en<m>{\mathbb R}^2</m> en mayor detalle.  Un elemento <m>T \in O(2)</m> está determinado por su acción en <m>{\mathbf e}_1 = (1, 0)^{\rm t}</m> y <m>{\mathbf e}_2 = (0, 1)^{\rm t}</m>. Si <m>T({\mathbf e}_1) = (a,b)^{\rm t}</m>, entonces <m>a^2 + b^2 = 1</m> y <m>T({\mathbf e}_2) = (-b, a)^{\rm t}</m>. Luego, <m>T</m> puede ser representada por 
+				<p>Examinemos el grupo ortogonal en <m>{\mathbb R}^2</m> en mayor detalle.  Un elemento <m>T \in O(2)</m> está determinado por su acción en <m>{\mathbf e}_1 = (1, 0)^{\rm t}</m> y <m>{\mathbf e}_2 = (0, 1)^{\rm t}</m>. Si <m>T({\mathbf e}_1) = (a,b)^{\rm t}</m>, entonces <m>a^2 + b^2 = 1</m> y <m>T({\mathbf e}_2) = (-b, a)^{\rm t}</m>. Luego, <m>T</m> puede ser representada por 
 					<me>A
 					=
 					\begin{pmatrix}<![CDATA[
@@ -485,7 +485,7 @@
 
 			<lemma>
 				<statement>
-					<p>Una isometría<m>f</m> que fija el origen en <m>{\mathbb R}^2</m> es una transformación lineal.  En particular, <m>f</m> está dada por un elemento en <m>O(2)</m>.</p>
+					<p>Una isometría <m>f</m> que fija el origen en <m>{\mathbb R}^2</m> es una transformación lineal.  En particular, <m>f</m> está dada por un elemento en <m>O(2)</m>.</p>
 				</statement>
 				<proof>
 					<p>Sea <m>f</m> una isometría en <m>{\mathbb R}^2</m> que fija el origen. Mostraremos primero que <m>f</m> preserva el producto interno. Como <m>f(0) = 0</m>, <m>\| f({\mathbf x})\| = \| {\mathbf x} \|</m>; por lo tanto,
@@ -533,7 +533,7 @@
 						<me>\mathbf z = \frac{1}{n} \sum_{i=1}^n \mathbf x_i.</me>
 					Si bien el punto <m>\mathbf z</m> no necesariamente está en el conjunto <m>X</m>, queda fijo por todos los elementos del grupo de simetría. Sin pérdida de generalidad, podemos suponer que <m>\mathbf z</m> es el origen.</p>
 
-					<p>Un grupo de simetría finito <m>G</m> en <m>{\mathbb R}^2</m> que fija el origen debe ser un subgrupo finito de <m>O(2)</m>, pues las traslaciones y tralaciones deslizantes tienen orden infinito. NO ENTIENDO  Por el Ejemplo<nbsp /><xref ref="example-o2" />, los elementos en <m>O(2)</m> son ya sea rotaciones de la forma
+					<p>Un grupo de simetría finito <m>G</m> en <m>{\mathbb R}^2</m> que fija el origen debe ser un subgrupo finito de <m>O(2)</m>, pues las traslaciones y traslaciones deslizantes tienen orden infinito.  Por el Ejemplo<nbsp /><xref ref="example-o2" />, los elementos en <m>O(2)</m> son ya sea rotaciones de la forma
 						<me>R_{\theta}
 						=
 						\begin{pmatrix}<![CDATA[
@@ -667,7 +667,7 @@
 				\alpha_1 & \alpha_2 \\
 				\beta_1 & \beta_2
 				]]>\end{pmatrix}.</me>
-			Si queremos expresar <m>{\mathbf x}_1</m> y <m>{\mathbf x}_2</m> en términs de <m>{\mathbf y}_1</m> e <m>{\mathbf y}_2</m>, solo debemos calcular <m>U^{-1}</m>; es decir, 
+			Si queremos expresar <m>{\mathbf x}_1</m> y <m>{\mathbf x}_2</m> en términos de <m>{\mathbf y}_1</m> e <m>{\mathbf y}_2</m>, solo debemos calcular <m>U^{-1}</m>; es decir, 
 				<me>U^{-1}
 				\begin{pmatrix}<![CDATA[
 				{\mathbf y}_1 \\ {\mathbf y}_2
@@ -724,17 +724,17 @@
 
 			<theorem>
 				<statement>
-					<p>Todo grupo d etraslación en <m>{\mathbb R}^2</m> es isomorfo a <m>{\mathbb Z} \times {\mathbb Z}</m>.</p>
+					<p>Todo grupo de traslación en <m>{\mathbb R}^2</m> es isomorfo a <m>{\mathbb Z} \times {\mathbb Z}</m>.</p>
 				</statement>
 			</theorem>
 
-			<p>El grupo puntual de <m>G</m> es <m>G_0 = \{A : (A,b) \in G \text{ for some } b \}</m>. En particular, <m>G_0</m> es un subgrupo de <m>O(2)</m>. Supongamos que <m>{\mathbf x}</m> es un vector en un reticulado <m>L</m> con grupo espacial <m>G</m>, grupo de traslación <m>H</m>, y grupo puntual <m>G_0</m>. Para cualquier elemento <m>(A, {\mathbf y})</m> en <m>G</m>,   
+			<p>El grupo puntual de <m>G</m> es <m>G_0 = \{A : (A,b) \in G \text{ para algún } b \}</m>. En particular, <m>G_0</m> es un subgrupo de <m>O(2)</m>. Supongamos que <m>{\mathbf x}</m> es un vector en un reticulado <m>L</m> con grupo espacial <m>G</m>, grupo de traslación <m>H</m>, y grupo puntual <m>G_0</m>. Para cualquier elemento <m>(A, {\mathbf y})</m> en <m>G</m>,   
 				<md>
 					<mrow>(A, {\mathbf y}) (I, {\mathbf x}) (A, {\mathbf y})^{-1} &amp; = (A,A {\mathbf x} + {\mathbf y}) (A^{-1},-A^{-1} {\mathbf y})</mrow>
 					<mrow>&amp; = (A A^{-1},-A A^{-1} {\mathbf y} + A {\mathbf x} + {\mathbf y})</mrow>
 					<mrow>&amp; = (I, A {\mathbf x});</mrow>
 				</md>
-			luego, <m>(I, A {\mathbf x})</m> está en el grupo de traslación de <m>G</m>. Más específicamente, <m>A {\mathbf x}</m> deve estar en el reticulado <m>L</m>. IEs importante notar que <m>G_0</m> no es usualmente un subgrupo del grupo espacial <m>G</m>; pero, si <m>T</m> es el grupo de traslación de <m>G</m>, entonces <m>G/T \cong G_0</m>. La demostración del siguiente teorema se puede encontrar en [2], [5], o [6].</p>
+			luego, <m>(I, A {\mathbf x})</m> está en el grupo de traslación de <m>G</m>. Más específicamente, <m>A {\mathbf x}</m> debe estar en el reticulado <m>L</m>. Es importante notar que <m>G_0</m> no es usualmente un subgrupo del grupo espacial <m>G</m>; pero, si <m>T</m> es el grupo de traslación de <m>G</m>, entonces <m>G/T \cong G_0</m>. La demostración del siguiente teorema se puede encontrar en [2], [5], o [6].</p>
  
 			<theorem>
 				<statement>
@@ -745,7 +745,7 @@
 			<p>Para contestar la pregunta de cómo los grupos puntuales y los grupos de trslación pueden ser combinados, debemos mirar los distintos tipos de reticulados. Los reticulados pueden ser clasificados por la estructura de una celda del reticulado. Las posibles formas de celda son paralelógramo, rectangular, cuadrada, rómbica y hexagonal (Figura<nbsp /><xref ref="figure-lattice-types" />). Los grupos cristalográficos planos pueden ahora ser clasificados de acuerdo a los tipos de reflexiones que ocurren en cada grupo: estas son reflexiones ordinarias, reflexiones deslizantes, ambas o ninguna.</p>
 
 			<figure xml:id="figure-lattice-types">
-				<caption>Types of lattices in  <m>\mathbb R^2</m></caption>
+				<caption>Tipos de reticulados en <m>\mathbb R^2</m></caption>
 
 				<!-- Replaced figure with tikz figure - TWJ 6/14/2010 -->
 				<image xml:id="matrix-lattices-r2">
@@ -812,7 +812,7 @@
 			</figure>
 
 			<table xml:id="table-wallpaper">
-				<caption>The 17 wallpaper groups</caption>
+				<caption>Los 17 grupos cristalográficos</caption>
 			   <tabular halign="center" top="medium">
 		            <row>
 		            	<cell>Notación y </cell><cell></cell><cell></cell><cell>Reflexiones o</cell>
@@ -911,7 +911,7 @@
  
 		<subsection xml:id="matrix-subsection-historical-note">
 			<title>Nota Histórica</title>
-				<p>Los grupos de simetría han intrigado a matemáticos por mucho tiempo. Leonardo da Vinci fue probablemente la primera persona en conocer todos los grupos puntuales.  En el Congreso Internacional de Matemáticos en 1900, David Hilbert<idx><h>Hilbert, David</h></idx> dio una ahora famosa charla indicando los 23 problemas apra guiar las matemáticas en el siglo XX.  El problema 18 de Hilbertpreguntaba si los grupos critalograficos en dimensión <m>n</m> serían siempre un número finito.  En 1910, L. Bieberbach<idx><h>Bieberbach, L.</h></idx> demostró que los grupos cristalográficos son un número finito en cada dimensión.  Descubrir cuñantos de estos grupos existen en cada dimensión es harina de otro costal. En <m>{\mathbb R}^3</m> hay 230 grupos espaciales diferentes; en <m>{\mathbb R}^4</m> hay 4783. Nadie ha sido capaz de calcular el número de grupos espaciales para <m>{\mathbb R}^5</m> y más allá. Es interesante notar que los grupos cristalográficos fueron encontrados matemáticamente para <m>{\mathbb R}^3</m> antes de que los 230 diferentes tipos de cristales hubieran sido descubiertos en la naturaleza.</p>
+				<p>Los grupos de simetría han intrigado a matemáticos por mucho tiempo. Leonardo da Vinci fue probablemente la primera persona en conocer todos los grupos puntuales.  En el Congreso Internacional de Matemáticos en 1900, David Hilbert<idx><h>Hilbert, David</h></idx> dio una ahora famosa charla indicando los 23 problemas para guiar las matemáticas en el siglo XX.  El problema 18 de Hilbert preguntaba si los grupos critalograficos en dimensión <m>n</m> serían siempre un número finito.  En 1910, L. Bieberbach<idx><h>Bieberbach, L.</h></idx> demostró que los grupos cristalográficos son un número finito en cada dimensión.  Descubrir cuántos de estos grupos existen en cada dimensión es harina de otro costal. En <m>{\mathbb R}^3</m> hay 230 grupos espaciales diferentes; en <m>{\mathbb R}^4</m> hay 4783. Nadie ha sido capaz de calcular el número de grupos espaciales para <m>{\mathbb R}^5</m> y más allá. Es interesante notar que los grupos cristalográficos fueron encontrados matemáticamente para <m>{\mathbb R}^3</m> antes de que los 230 diferentes tipos de cristales hubieran sido descubiertos en la naturaleza.</p>
 		</subsection>
 	</section>
 

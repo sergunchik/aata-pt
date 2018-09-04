@@ -59,7 +59,7 @@
 			</md>
 		Entonces la suma de <m>p(x)</m> y <m>q(x)</m> es
 			<me>p(x) + q(x) = c_0 + c_1 x + \cdots + c_k x^k,</me>
-		donde <m>c_i = a_i + b_i</m> for each <m>i</m>.  Definimos el producto de <m>p(x)</m> y <m>q(x)</m> como
+		donde <m>c_i = a_i + b_i</m> para cada <m>i</m>.  Definimos el producto de <m>p(x)</m> y <m>q(x)</m> como
 			<me>p(x) q(x) = c_0 + c_1 x + \cdots + c_{m + n} x^{m + n},</me>
 		donde
 			<me>c_i = \sum_{k = 0}^i a_k b_{i - k} = a_0  b_i + a_1 b_{i -1} + \cdots + a_{i -1} b _1 + a_i b_0</me>
@@ -79,7 +79,7 @@
 
 		<example xml:id="example-poly-integral-domains">
 			<p>Sean
-				<me>p(x) = 3 + 3 x^3 \qquad \text{and} \qquad q(x) = 4 + 4 x^2 + 4 x^4</me>
+				<me>p(x) = 3 + 3 x^3 \qquad \text{y} \qquad q(x) = 4 + 4 x^2 + 4 x^4</me>
 			polinomios en <m>{\mathbb Z}_{12}[x]</m>. La suma de <m>p(x)</m> y <m>q(x)</m> es <m>7 + 4 x^2 + 3 x^3 + 4 x^4</m>.  El producto de los dos polinomios es el polinomio cero.  Este ejemplo nos muestra que no podemos esperar que  <m>R[x]</m> sea un dominio integral si <m>R</m> no es un dominio integral.</p>
 		</example>
  
@@ -133,7 +133,7 @@
 <!-- Changed p and q to p(x) and q(x).  Suggested by  P. Diethelm. -->
 <!-- TWJ 24/4/2013 -->
 
-		<p>También queremos considerar polynomios en dos o más variables, tales cómo <m>x^2 - 3 x y + 2 y^3</m>.  Sea <m>R</m> un anillo y supongamos que tenemos dos variables <m>x</m> e <m>y</m>.  Ciertamente podemos formar el anillo <m>(R[x])[y]</m>.  Es directo, aunque quizás tedioso, demostrar que <m>(R[x])[y] \cong R([y])[x]</m>.  Identificaremos estos dos anillos por medio de este isomorfismo y simplemente escribiremos <m>R[x,y]</m>.  El anillo <m>R[x, y]</m> se llama <term>anillo de polinomios en dos variables <m>x</m> e <m>y</m> con coeficientes en </term> <m>R</m>.  Podemos definir similarmente el <term>anillo de polinomios en</term><idx><h>Polinomio en<m>n</m> variables</h></idx> <m>n</m> <term>variables con coeficientes en</term> <m>R</m>.  Denotaremos este anillo por <m>R[x_1, x_2, \ldots, x_n]</m>. <notation><usage>R[x_1, x_2, \ldots, x_n]</usage><description>anillo de polinomios en <m>n</m> variables</description></notation></p>
+		<p>También queremos considerar polinomios en dos o más variables, tales como <m>x^2 - 3 x y + 2 y^3</m>.  Sea <m>R</m> un anillo y supongamos que tenemos dos variables <m>x</m> e <m>y</m>.  Ciertamente podemos formar el anillo <m>(R[x])[y]</m>.  Es directo, aunque quizás tedioso, demostrar que <m>(R[x])[y] \cong R([y])[x]</m>.  Identificaremos estos dos anillos por medio de este isomorfismo y simplemente escribiremos <m>R[x,y]</m>.  El anillo <m>R[x, y]</m> se llama <term>anillo de polinomios en dos variables <m>x</m> e <m>y</m> con coeficientes en </term> <m>R</m>.  Podemos definir similarmente el <term>anillo de polinomios en</term><idx><h>Polinomio en<m>n</m> variables</h></idx> <m>n</m> <term>variables con coeficientes en</term> <m>R</m>.  Denotaremos este anillo por <m>R[x_1, x_2, \ldots, x_n]</m>. <notation><usage>R[x_1, x_2, \ldots, x_n]</usage><description>anillo de polinomios en <m>n</m> variables</description></notation></p>
 
 		<theorem xml:id="theorem-poly-3">
 			<statement>
@@ -340,7 +340,7 @@
 				<p>Sea <m>F</m> un cuerpo. Un polinomio <m>p(x)</m> distinto de cero y de grado <m>n</m> en <m>F[x]</m> puede tener a lo sumo <m>n</m> ceros distintos en <m>F</m>.</p>
 			</statement>
 			<proof>
-				<p>Procederemos por inducción sobre el grado de <m>p(x)</m>. Si <m>\deg p(x) = 0</m>, entonces <m>p(x)</m> es un polinomio constante y no tiene ceros.  Si <m>\deg p(x) = 1</m>, entonces <m>p(x) = ax +b</m> para ciertos <m>a</m> y <m>b</m> en <m>F</m>. Si <m>\alpha_1</m> y <m>\alpha_2</m> so ceros de <m>p(x)</m>, entonces <m>a\alpha_1 + b = a\alpha_2 +b</m> y <m>\alpha_1 = \alpha_2</m>.</p>
+				<p>Procederemos por inducción sobre el grado de <m>p(x)</m>. Si <m>\deg p(x) = 0</m>, entonces <m>p(x)</m> es un polinomio constante y no tiene ceros.  Si <m>\deg p(x) = 1</m>, entonces <m>p(x) = ax +b</m> para ciertos <m>a</m> y <m>b</m> en <m>F</m>. Si <m>\alpha_1</m> y <m>\alpha_2</m> son ceros de <m>p(x)</m>, entonces <m>a\alpha_1 + b = a\alpha_2 +b</m> y <m>\alpha_1 = \alpha_2</m>.</p>
  
 				<p>Ahora supongamos que <m>\deg p(x) \gt 1</m>. Si <m>p(x)</m> no tiene ceros en <m>F</m>, estamos listos.  Por otra parte, si <m>\alpha</m> es un cero de <m>p(x)</m>, entonces <m>p(x) = (x - \alpha ) q(x)</m> para cierto <m>q(x) \in F[x]</m> por el Corolario<nbsp /><xref ref="corollary-poly-factor" />. El grado de <m>q(x)</m> es <m>n-1</m> por la Proposición<nbsp /><xref ref="proposition-poly-integral-domain" />. Sea <m>\beta</m> algún otro cero de <m>p(x)</m> distinto de <m>\alpha</m>. Entonces <m>p(\beta) = (\beta - \alpha) q(\beta) = 0</m>. Como <m>\alpha \neq \beta</m> y <m>F</m> es un cuerpo, <m>q(\beta ) = 0</m>. Por la hipótesis de inducción, <m>q(x)</m> puede tener a lo sumo <m>n -1</m> ceros distintos en <m>F</m>. Por lo tanto, <m>p(x)</m> tiene a lo sumo <m>n</m> ceros distintos en <m>F</m>.</p>
 			</proof>
@@ -422,9 +422,9 @@
 						<me>p(x) = \frac{1}{c_0 \cdots c_n} (d_0 + d_1 x + \cdots + d_n x^n),</me>
 					donde <m>d_0, \ldots, d_n</m> son enteros. Sea <m>d</m> el máximo común divisor de <m>d_0, \ldots, d_n</m>.  Entonces
 						<me>p(x) = \frac{d}{c_0 \cdots c_n} (a_0 + a_1 x + \cdots + a_n x^n),</me>
-					donde <m>d_i = d a_i</m> y los <m>a_i</m> son relativamente primos. Reduciendo <m>d /(c_0 \cdots c_n)</m> to its lowest terms, podemos escribir
+					donde <m>d_i = d a_i</m> y los <m>a_i</m> son relativamente primos. Simplificando <m>d /(c_0 \cdots c_n)</m>, podemos escribir
 						<me>p(x) = \frac{r}{s}(a_0 + a_1 x + \cdots + a_n x^n),</me>
-					donde <m>\gcd(r,s) = 1</m>.</p>
+					con <m>\gcd(r,s) = 1</m>.</p>
 				</proof>
 			</lemma>
 	 
@@ -461,7 +461,7 @@
 			</corollary>
 	 
 			<example xml:id="example-poly-factor">
-				<p>Sea <m>p(x) = x^4 - 2 x^3 + x + 1</m>. Demostraremos que <m>p(x)</m> es irreducible sobre <m>{\mathbb Q}[x]</m>.  Supongamos que <m>p(x)</m> es reducible. Entonces ya sea <m>p(x)</m> tiene un factor lineal, digamos <m>p(x) = (x - \alpha) q(x)</m>, donde <m>q(x)</m> es un polinomio d egrado tres, o  <m>p(x)</m> tiene dos factores cuadráticos.</p>
+				<p>Sea <m>p(x) = x^4 - 2 x^3 + x + 1</m>. Demostraremos que <m>p(x)</m> es irreducible sobre <m>{\mathbb Q}[x]</m>.  Supongamos que <m>p(x)</m> es reducible. Entonces ya sea <m>p(x)</m> tiene un factor lineal, digamos <m>p(x) = (x - \alpha) q(x)</m>, donde <m>q(x)</m> es un polinomio de grado tres, o  <m>p(x)</m> tiene dos factores cuadráticos.</p>
 
 				<p>Si <m>p(x)</m> tiene un factor lineal en <m>{\mathbb Q}[x]</m>, entonces tiene un cero en <m>{\mathbb Z}</m>.  Por el Corolario<nbsp /><xref ref="corollary-rational-roots-theorem" />, cualquier cero debe dividir a 1 y por lo tanto debe ser <m>\pm 1</m>; pero, <m>p(1) = 1</m> y <m>p(-1)= 3</m>. Así hemos descartado la posibilidad de que <m>p(x)</m> tenga un factor lineal.</p>
 	 
@@ -490,12 +490,12 @@
 				<statement>
 					<p>Sea <m>p</m> un número primo y supongamos que
 						<me>f(x) = a_n x^n + \cdots + a_0 \in {\mathbb Z}[x].</me>
-					Si <m>p \mid a_i</m> for <m>i = 0, 1, \ldots, n-1</m>, pero <m>p \notdivide a_n</m> y <m>p^2 \notdivide a_0</m>, entonces <m>f(x)</m> es irreducible sobre <m>{\mathbb Q}</m>.</p>
+					Si <m>p \mid a_i</m> para <m>i = 0, 1, \ldots, n-1</m>, pero <m>p \notdivide a_n</m> y <m>p^2 \notdivide a_0</m>, entonces <m>f(x)</m> es irreducible sobre <m>{\mathbb Q}</m>.</p>
 				</statement>
 				<proof>
 					<p>Por el Lema de Gauss, solo necesitamos demostrar que <m>f(x)</m> no se factoriza como producto de polinomios de grado menor en  <m>{\mathbb Z}[x]</m>. Supongamos que
 						<me>f(x) = (b_rx^r + \cdots + b_0)(c_s x^s + \cdots + c_0 )</me>
-					es una factorización en <m>{\mathbb Z}[x]</m>, con <m>b_r</m> y <m>c_s</m> ndistinto de cero y <m>r, s \lt n</m>. Como <m>p^2</m> no divide a <m>a_0 = b_0 c_0</m>, ya sea <m>b_0</m> o <m>c_0</m> no es divisible por <m>p</m>. Supongamos que <m>p \notdivide b_0</m> y <m>p \mid c_0</m>. Como <m>p \notdivide a_n</m> y <m>a_n = b_r c_s</m>, ni <m>b_r</m> ni <m>c_s</m> es divisible por <m>p</m>. Sea <m>m</m> el menor valor de <m>k</m> tal que <m>p \notdivide c_k</m>. Entonces 
+					es una factorización en <m>{\mathbb Z}[x]</m>, con <m>b_r</m> y <m>c_s</m> distintos de cero y <m>r, s \lt n</m>. Como <m>p^2</m> no divide a <m>a_0 = b_0 c_0</m>, ya sea <m>b_0</m> o <m>c_0</m> no es divisible por <m>p</m>. Supongamos que <m>p \notdivide b_0</m> y <m>p \mid c_0</m>. Como <m>p \notdivide a_n</m> y <m>a_n = b_r c_s</m>, ni <m>b_r</m> ni <m>c_s</m> es divisible por <m>p</m>. Sea <m>m</m> el menor valor de <m>k</m> tal que <m>p \notdivide c_k</m>. Entonces 
 						<me>a_m = b_0 c_m + b_1 c_{m - 1} + \cdots + b_m c_0</me>
 					no es divisible por <m>p</m>, como cada término del lado derecho de la ecuación es divisible por <m>p</m> excepto <m>b_0 c_m</m>. Por lo tanto, <m>m = n</m> pues <m>a_i</m> es divisible por <m>p</m> para <m>m \lt n</m>.  Luego, <m>f(x)</m> no puede ser factorizado como producto de polinomios de grado menor y por lo tanto es irreducible.</p>
 				</proof>
@@ -532,7 +532,7 @@
 				<proof>
 					<p>Sea <m>I</m> un ideal de <m>F[x]</m>.  Si <m>I</m> es el ideal cero, no hay nada que demostrar. Supongamos que <m>I</m> es un ideal no trivial en <m>F[x]</m>, y sea <m>p(x) \in I</m> un elemento distinto de cero de grado minimal. Si <m>\deg p(x)= 0</m>, entonces <m>p(x)</m> es una constante no nula y 1 está en <m>I</m>. Como 1 genera todo <m>F[x]</m>, <m>\langle 1 \rangle = I = F[x]</m> y <m>I</m> es un ideal principal.</p>
 	 
-					<p>Ahora supongamos que <m>\deg p(x) \geq 1</m> y sea <m>f(x)</m> cualquier elemento en <m>I</m>.  Por el algoritmo de división existen <m>q(x)</m> y <m>r(x)</m> en <m>F[x]</m> tales que <m>f(x) = p(x) q(x) + r(x)</m> y <m>\deg r(x) \lt \deg  p(x)</m>. Como <m>f(x), p(x) \in I</m> e<m>I</m> es un ideal, <m>r(x) = f(x) - p(x) q(x)</m> también está en <m>I</m>. Pero, como escogimos <m>p(x)</m> de grado minimal, <m>r(x)</m> debe ser el polinomio cero. Como podemos escribir cualquier elemento <m>f(x)</m> en <m>I</m> como <m>p(x) q(x)</m> para algún <m>q(x) \in F[x]</m>, tenemos que <m>I = \langle p(x) \rangle</m>.</p>
+					<p>Ahora supongamos que <m>\deg p(x) \geq 1</m> y sea <m>f(x)</m> cualquier elemento en <m>I</m>.  Por el algoritmo de división existen <m>q(x)</m> y <m>r(x)</m> en <m>F[x]</m> tales que <m>f(x) = p(x) q(x) + r(x)</m> y <m>\deg r(x) \lt \deg  p(x)</m>. Como <m>f(x), p(x) \in I</m> e <m>I</m> es un ideal, <m>r(x) = f(x) - p(x) q(x)</m> también está en <m>I</m>. Pero, como escogimos <m>p(x)</m> de grado minimal, <m>r(x)</m> debe ser el polinomio cero. Como podemos escribir cualquier elemento <m>f(x)</m> en <m>I</m> como <m>p(x) q(x)</m> para algún <m>q(x) \in F[x]</m>, tenemos que <m>I = \langle p(x) \rangle</m>.</p>
 				</proof>
 			</theorem>
 
@@ -542,7 +542,7 @@
 	 
 			<theorem xml:id="theorem-max-ideal-poly">
 				<statement>
-					<p>Let <m>F</m> be a field and suppose that <m>p(x) \in F[x]</m>. Then the ideal generated by <m>p(x)</m> is maximal if and only if <m>p(x)</m> is irreducible.</p>
+					<p>Sea <m>F</m> un cuerpo y supongamos que <m>p(x) \in F[x]</m>. Entonces el ideal generado por <m>p(x)</m> es maximal si y solo si <m>p(x)</m> es irreducible.</p>
 				</statement>
 				<proof>
 					<p>Supongamos que <m>p(x)</m> genera un ideal maximal de <m>F[x]</m>. Entonces <m>\langle p(x) \rangle</m> es también un ideal primo de <m>F[x]</m>. Como un ideal maximal debe estar propiamente contenido en <m>F[x]</m>, <m>p(x)</m> no puede ser un polinoio constante. Supongamos que  <m>p(x)</m> se factoriza en dos polinomios de grado menor, digamos <m>p(x) = f(x) g(x)</m>. Como <m>\langle p(x) \rangle</m> es un ideal primo uno de estos factores, digamos <m>f(x)</m>, está en <m>\langle p(x) \rangle</m> y por lo tanto es un múltiplo de <m>p(x)</m>. Pero esto implicaría que <m>\langle p(x) \rangle \subset \langle f(x) \rangle</m>, lo que es imposible pues <m>\langle p(x) \rangle</m> es maximal.</p>
@@ -559,7 +559,7 @@
 		<subsection xml:id="poly-subsection-historical-note">
 			<title>Nota Histórica</title>
 
-			<p>A lo largo de la historia, resolver ecuaciones polinomiales ha sido un problema desafiante.  Los Babilonios sabían cómo resolver la ecuación <m>ax^2 + bx + c = 0</m>.  Omar Khayyam (1048<ndash />1131) ideó métodos para resolver ecuaciones cúbicasmediante el uso de cnonstrucciones geométricas y secciones cónicas.  La solución algebraica de la ecuación cúbica general <m>ax^3 + bx^2 + cx + d = 0</m> no fue descubierta hasta el siglo XVI.  Un matemático italiano, Luca Pacioli (ca. 1445<ndash />1509), escribió  en <booktitle>Summa de Arithmetica</booktitle> que la solución a la cúbica era imposible.  Esto fue tomado como un desafío por el resto de la comunidad matemática.</p>
+			<p>A lo largo de la historia, resolver ecuaciones polinomiales ha sido un problema desafiante.  Los Babilonios sabían cómo resolver la ecuación <m>ax^2 + bx + c = 0</m>.  Omar Khayyam (1048<ndash />1131) ideó métodos para resolver ecuaciones cúbicasmediante el uso de construcciones geométricas y secciones cónicas.  La solución algebraica de la ecuación cúbica general <m>ax^3 + bx^2 + cx + d = 0</m> no fue descubierta hasta el siglo XVI.  Un matemático italiano, Luca Pacioli (ca. 1445<ndash />1509), escribió  en <booktitle>Summa de Arithmetica</booktitle> que la solución a la cúbica era imposible.  Esto fue tomado como un desafío por el resto de la comunidad matemática.</p>
 
 <!-- % 2010/11/1 T Judson Spelling corrected Luca Pacioli (Thanks to Roberto Derenzi) -->
 
@@ -567,13 +567,13 @@
 				<me>ax^3 + cx + d = 0.</me>
 			Mantuvo en absoluto secreto esta solución.  Esto puede parecer sorprendente hoy en día, cuando los matemáticos suelen estar muy interesados en publicar sus resultados, pero en durante el Renacimiento Italiano el secretismo era costumbre. Los cargos académicos no eran fáciles de mantener y dependían de ganar competencias públicas.  Estos desafíos podían ser declarados en cualquier momento.  En consecuencia cualquier nuevo descubrimiento de importancia era un arma valiosa en una competencia de ese tipo. Si un oponente presentaba una lista de problemas a resolver, del Ferro podía a su vez presentar una lista de cúbicas reducidas.  Mantuvo el secreto de su descubrimiento durante toda su vida, comunicándoselo en el lecho de muerte a su estudiante Antonio Fior<idx><h>Fior, Antonio</h></idx> (ca. 1506<ndash />?).</p> 
 
-			<p>Si bien Fior no era igual a su tutor, de inmediato lanzó un desafío a Niccolo Fontana (1499<ndash />1557).  Fontana era conocido como Tartaglia<idx><h>Tartaglia</h></idx> (el Tartamudo).  Cuando joven había recibido un golpe de espada por parte de un soldado francés durante un ataque a su aldea. Sobrevivió la feroz herida, pero mantuvo el defecto de la dicción por el resto de su vida.  Tartaglia envió a Fior una lista de 30 problemas matemáticos variados; Fior respondió enviando a Tartaglia una lista de 30 cúbicas reducidas.  Tartaglia ya sea podría resolver todos los problemas de la lista o fallar absolutamente.  Luego de un gran esfuerzo Tartaglia finalmente tovo éxito en resolver la cúbica reducida y venció a Fior, quien pasó al olvido.</p>
+			<p>Si bien Fior no era igual a su tutor, de inmediato lanzó un desafío a Niccolo Fontana (1499<ndash />1557).  Fontana era conocido como Tartaglia<idx><h>Tartaglia</h></idx> (el Tartamudo).  Cuando joven había recibido un golpe de espada por parte de un soldado francés durante un ataque a su aldea. Sobrevivió la feroz herida, pero mantuvo el defecto de la dicción por el resto de su vida.  Tartaglia envió a Fior una lista de 30 problemas matemáticos variados; Fior respondió enviando a Tartaglia una lista de 30 cúbicas reducidas.  Tartaglia ya sea podría resolver todos los problemas de la lista o fallar absolutamente.  Luego de un gran esfuerzo Tartaglia finalmente tuvo éxito en resolver la cúbica reducida y venció a Fior, quien pasó al olvido.</p>
 
 			<p>En este momento otro matemático, Gerolamo Cardano<idx><h>Cardano, Gerolamo</h></idx> (1501<ndash />1576), entra en el relato.  Cardano le escribió a Tartaglia, rogándole que le diera la solución de la cúbica reducida.  Tartaglia se rehusó a varias de sus súplicas, pero finalmente reveló la solución a Cardano después que este último jurara que no publicaría el secreto ni se lo transmitiría a nadie más. Usando lo que había aprendido de Tartaglia, Cardano finalmente resolvió la ecuación cúbica general 
 				<me>a x^3 + bx^2 +cx +d = 0.</me>
 			Cardano compartió el secreto con su pupilo, Ludovico Ferrari<idx><h>Ferrari, Ludovico</h></idx> (1522<ndash />1565), quien resolvió la ecuación general de cuarto grado, 
 				<me>a x^4 + b x^3 + cx^2 + d x + e = 0.</me>
-			En 1543, Cardano y Ferrari esxaminaronlos trabajos de del Ferro y descubrieron que él también había resuelto  la cúbica reducida.  Cardano sintió que esto le absolvía de su compromiso con Tartaglia, de manera que publicó las soluciones en <booktitle>Ars Magna</booktitle> (1545), dándole crédito a del Ferro por resolver el caso especial de la cúbica.  Esto resultó en una amarga disputa entre Cardano y Tartaglia, quien publicó la historia del juramento un año después.</p>
+			En 1543, Cardano y Ferrari examinaron los trabajos de del Ferro y descubrieron que él también había resuelto  la cúbica reducida.  Cardano sintió que esto le absolvía de su compromiso con Tartaglia, de manera que publicó las soluciones en <booktitle>Ars Magna</booktitle> (1545), dándole crédito a del Ferro por resolver el caso especial de la cúbica.  Esto resultó en una amarga disputa entre Cardano y Tartaglia, quien publicó la historia del juramento un año después.</p>
 
 		</subsection>
 
@@ -616,7 +616,7 @@
 			<statement>
 				<p>Haga la sustitución
 					<me>y = z - \frac{p}{3 z}</me>
-				para <m>y</m> en la ecuación <m>y^3 + py + q = 0</m> ay obtenga dos soluciones <m>A</m> y <m>B</m> para <m>z^3</m>.</p>
+				para <m>y</m> en la ecuación <m>y^3 + py + q = 0</m> y obtenga dos soluciones <m>A</m> y <m>B</m> para <m>z^3</m>.</p>
 			</statement>
 		</exercise>
 
@@ -676,7 +676,7 @@
 					<me>x^4 + ax^3 + bx^2 + cx + d = 0</me>
 				se reduce a
 					<me>y^4 + py^2 + qy + r = 0</me>
-				busando la sustitución <m>x = y - a/4</m>.</p>
+				haciendo la sustitución <m>x = y - a/4</m>.</p>
 			</statement>
 		</exercise>
 

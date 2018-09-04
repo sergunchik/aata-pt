@@ -13,7 +13,7 @@
 	<introduction>
 		<p>Sage es un sistema poderoso para estudiar y explorar diversas áreas de las matemáticas.  En este libro, se estudia una variedad de estructuras algebraicas, tales como grupos, anillos y cuerpos.  Sage tiene excelentes implementaciones de muchas propiedades de estos objetos como veremos en lo capítulos que vienen.  Pero acá y ahora, en este capítulo inicial, nos concentraremos en unas pocas cosas generales para sacarle el mayor provecho posible a Sage.</p>
 
-		<p>Usted puede usar Sage de varias formas diferentes.  Lo puede usar como un programa de línea de comando si está instalado en su computador, o a través de una aplicación web como SageMathCloud.  Este texto supondrá que lo está leyendo como una hoja de cálculo dentro de un Notebook Sage (una interfaz de navegador web), o que esta es una sección del libro completo presentado como páginas web, y usted está usando el Servidor de Sage Cell Server via esas páginas.  Después de los primero capítulos las explicaciones debiesen ser igualmente válidas sin importar cómo esté ejecutando los comandos Sage.</p>
+		<p>Usted puede usar Sage de varias formas diferentes.  Lo puede usar como un programa de línea de comando si está instalado en su computador, o a través de una aplicación web como SageMathCloud.  Este texto supondrá que lo está leyendo como una hoja de cálculo dentro de un Notebook Sage (una interfaz de navegador web), o que esta es una sección del libro completo presentado como páginas web, y usted está usando el Servidor de Sage Cell Server vía esas páginas.  Después de los primero capítulos las explicaciones debiesen ser igualmente válidas sin importar cómo esté ejecutando los comandos Sage.</p>
 
 	</introduction>
 

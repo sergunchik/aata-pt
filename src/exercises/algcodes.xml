@@ -38,7 +38,7 @@
 				<me>(0110) \quad (1001) \quad (1010) \quad (1100)</me></p>
 		</statement>
 		<hint>
-			<p>No puede ser un código de gruops pues <m>(0000) \notin C</m>.</p>
+			<p>No puede ser un código de grupos pues <m>(0000) \notin C</m>.</p>
 		</hint>
 		
 	</exercise>
@@ -195,7 +195,7 @@
 			si es posible.</p>
 		</statement>
 		<hint>
-			<p>Multiples errores ocurren en una de las palabras recibidas.</p>
+			<p>Múltiples errores ocurren en una de las palabras recibidas.</p>
 		</hint>
 		
 	</exercise>
@@ -296,7 +296,7 @@
 
 	<exercise number="14">
 		<statement>
-			<p>Sea <m>C</m> el código de grupo en <m>{\mathbb Z}_2^3</m> definido por las palabras <m>(000)</m> and <m>(111)</m>. Calcule las clases laterales de <m>H</m> en <m>{\mathbb Z}_2^3</m>. ¿Por qué no es necesario especificar si se trata de clases laterales derechas o izquierdas? Entregue el error singular de transmisión, si lo hay, que corresponda con cada clase lateral.</p>
+			<p>Sea <m>C</m> el código de grupo en <m>{\mathbb Z}_2^3</m> definido por las palabras <m>(000)</m> y <m>(111)</m>. Calcule las clases laterales de <m>H</m> en <m>{\mathbb Z}_2^3</m>. ¿Por qué no es necesario especificar si se trata de clases laterales derechas o izquierdas? Entregue el error singular de transmisión, si lo hay, que corresponda con cada clase lateral.</p>
 		</statement>
 		
 	</exercise>

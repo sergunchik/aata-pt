@@ -119,7 +119,7 @@
 			</proof>
 		</proposition>
  
-		<p>Sea <m>\phi : G \rightarrow H</m> un homomorfismo de grupos y supongamos que <m>e</m> es la identidad de <m>H</m>. Por la Proposición<nbsp /><xref ref="proposition-homorphism-subgroup" />, <m>\phi^{-1} ( \{ e \} )</m> es un subgrupo de <m>G</m>. Este subgrupo se llama <term>núcleo</term><idx><h>Núcleo</h><h>de un homomorfismo de grupos</h></idx><idx><h>Homomorfismode grupos</h><h>núcleo de un</h></idx> de <m>\phi</m> y se denotará por <m>\ker \phi</m>. <notation><usage>\ker \phi</usage><description>núcleo de <m>\phi</m></description></notation> De hecho, este subgrupo es un subgrupo normal de <m>G</m> pues el subgrupo trivial es normal en <m>H</m>.  Enunciamos este resultado en el siguiente teorema, que dice que a cada homomorfismo de grupos podemos asociar de forma natural un subgrupo normal.</p> 
+		<p>Sea <m>\phi : G \rightarrow H</m> un homomorfismo de grupos y supongamos que <m>e</m> es la identidad de <m>H</m>. Por la Proposición<nbsp /><xref ref="proposition-homorphism-subgroup" />, <m>\phi^{-1} ( \{ e \} )</m> es un subgrupo de <m>G</m>. Este subgrupo se llama <term>núcleo</term><idx><h>Núcleo</h><h>de un homomorfismo de grupos</h></idx><idx><h>Homomorfismo de grupos</h><h>núcleo de un</h></idx> de <m>\phi</m> y se denotará por <m>\ker \phi</m>. <notation><usage>\ker \phi</usage><description>núcleo de <m>\phi</m></description></notation> De hecho, este subgrupo es un subgrupo normal de <m>G</m> pues el subgrupo trivial es normal en <m>H</m>.  Enunciamos este resultado en el siguiente teorema, que dice que a cada homomorfismo de grupos podemos asociar de forma natural un subgrupo normal.</p> 
  
 		<theorem>
 			<statement>
@@ -136,7 +136,7 @@
 		</example>
  
 		<example xml:id="example-homomorph-z7">
-			<p>Supongamos que queremos determiar todos los posibles homomorfismos <m>\phi</m> de <m>{\mathbb Z}_7</m> a  <m>{\mathbb Z}_{12}</m>. Como el núcleo de <m>\phi</m> debe ser un subgrupo de <m>{\mathbb Z}_7</m>, solo hay dos núcleos posibles, <m>\{ 0 \}</m> y todo <m>{\mathbb Z}_7</m>.  La imagen de un subgrupo de <m>{\mathbb Z}_7</m> debe ser un subgrupo de <m>{\mathbb Z}_{12}</m>. Luego, no hay homomorfismos inyectivos; de lo contrario, <m>{\mathbb Z}_{12}</m> tendría un subgrupo de orden 7, lo que es imposible. Por lo tanto, el único homomorfismo posible de <m>{\mathbb Z}_7</m> a  <m>{\mathbb Z}_{12}</m> es el que envía todos los elementos cero.</p>
+			<p>Supongamos que queremos determinar todos los posibles homomorfismos <m>\phi</m> de <m>{\mathbb Z}_7</m> a  <m>{\mathbb Z}_{12}</m>. Como el núcleo de <m>\phi</m> debe ser un subgrupo de <m>{\mathbb Z}_7</m>, solo hay dos núcleos posibles, <m>\{ 0 \}</m> y todo <m>{\mathbb Z}_7</m>.  La imagen de un subgrupo de <m>{\mathbb Z}_7</m> debe ser un subgrupo de <m>{\mathbb Z}_{12}</m>. Luego, no hay homomorfismos inyectivos; de lo contrario, <m>{\mathbb Z}_{12}</m> tendría un subgrupo de orden 7, lo que es imposible. Por lo tanto, el único homomorfismo posible de <m>{\mathbb Z}_7</m> a  <m>{\mathbb Z}_{12}</m> es el que envía todos los elementos cero.</p>
 		</example>
  
 		<example xml:id="example-homomorph-gn">
@@ -214,7 +214,7 @@
 					<me>H / H \cap N \cong HN /N.</me></p>
 			</statement>
 			<proof>
-				<p>Demostraremos primero que <m>HN = \{ hn : h \in H, n \in N \}</m> es un subgrupo de <m>G</m>.  Supongamos que  <m>h_1 n_1, h_2 n_2 \in HN</m>. Como <m>N</m> is normal, <m>(h_2)^{-1} n_1 h_2 \in N</m>. Así 
+				<p>Demostraremos primero que <m>HN = \{ hn : h \in H, n \in N \}</m> es un subgrupo de <m>G</m>.  Supongamos que  <m>h_1 n_1, h_2 n_2 \in HN</m>. Como <m>N</m> es normal, <m>(h_2)^{-1} n_1 h_2 \in N</m>. Así 
 					<me>(h_1 n_1)(h_2 n_2) = h_1 h_2 ( (h_2)^{-1} n_1 h_2 )n_2</me>
 				está en <m>HN</m>. El inverso de <m>hn \in HN</m> está en <m>HN</m> pues
 					<me>( hn )^{-1} = n^{-1 } h^{-1} = h^{-1} (h n^{-1} h^{-1} ).</me></p>

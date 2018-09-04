@@ -432,7 +432,7 @@
 					</md>
 				El conjunto de las 5-tuplas binarias que satisfacen estas ecuaciones es
 				<me>(00000) \qquad (11110) \qquad (10101) \qquad (01011).</me>
-				Es fácil determiar que este código es un código de grupo.</p>
+				Es fácil determinar que este código es un código de grupo.</p>
 			</example>
 	 
 			<theorem>
@@ -777,13 +777,13 @@
 					0 & 1 & 0 & 1 & 0 \\
 					1 & 0 & 0 & 0 & 1
 					]]>\end{pmatrix}</me>
-				y las 5-tuplas <m>{\mathbf x} = (11011)^{\rm t}</m> and <m>{\mathbf y} = (01011)^{\rm t}</m>, podemos calcular
+				y las 5-tuplas <m>{\mathbf x} = (11011)^{\rm t}</m> y <m>{\mathbf y} = (01011)^{\rm t}</m>, podemos calcular
 					<me>H{\mathbf x} =
 					\begin{pmatrix}<![CDATA[
 					0 \\ 0 \\ 0 
 					]]>\end{pmatrix}
 					\qquad
-					\text{and}
+					\text{y}
 					\qquad
 					H{\mathbf y} =
 					\begin{pmatrix}<![CDATA[

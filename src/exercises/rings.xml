@@ -15,7 +15,7 @@
 
 	<exercise number="1">
 		<statement>
-			<p>¿Cuáles de los siguientes conjuntos son anillos con las operaciones usuales de adición y multiplicación?  Si el conjunto es un anillos, ¿es además un cuerpo?
+			<p>¿Cuáles de los siguientes conjuntos son anillos con las operaciones usuales de adición y multiplicación?  Si el conjunto es un anillo, ¿es además un cuerpo?
 				<ol>
 				 
 					<li><p><m>7 {\mathbb Z}</m></p></li>
@@ -65,9 +65,9 @@
 					 
 					<li><p><m>{\mathbb Z}_{7}</m></p></li>
 					 
-					<li><p><m>{\mathbb M}_2( {\mathbb Z} )</m>, las martices de <m>2 \times 2</m> con coeficientes en <m>{\mathbb Z}</m></p></li>
+					<li><p><m>{\mathbb M}_2( {\mathbb Z} )</m>, las matrices de <m>2 \times 2</m> con coeficientes en <m>{\mathbb Z}</m></p></li>
 					 
-					<li><p><m>{\mathbb M}_2( {\mathbb Z}_2 )</m>, las martices de <m>2 \times 2</m> con coeficientes en <m>{\mathbb Z}_2</m></p></li>
+					<li><p><m>{\mathbb M}_2( {\mathbb Z}_2 )</m>, las matrices de <m>2 \times 2</m> con coeficientes en <m>{\mathbb Z}_2</m></p></li>
 
 				</ol></p>
 		</statement>
@@ -112,9 +112,9 @@
 					 
 					<li><p><m>{\mathbb Z}_{25}</m></p></li>
 					 
-					<li><p><m>{\mathbb M}_2( {\mathbb R} )</m>, las martices de <m>2 \times 2</m> con coeficientes en <m>{\mathbb R}</m></p></li>
+					<li><p><m>{\mathbb M}_2( {\mathbb R} )</m>, las matrices de <m>2 \times 2</m> con coeficientes en <m>{\mathbb R}</m></p></li>
 					 
-					<li><p><m>{\mathbb M}_2( {\mathbb Z} )</m>, las martices de <m>2 \times 2</m> con coeficientes en <m>{\mathbb Z}</m></p></li>
+					<li><p><m>{\mathbb M}_2( {\mathbb Z} )</m>, las matrices de <m>2 \times 2</m> con coeficientes en <m>{\mathbb Z}</m></p></li>
 					 
 					<li><p><m>{\mathbb Q}</m></p></li>
 				 
@@ -131,9 +131,9 @@
 			<p>Para cada uno de los siguientes anillos <m>R</m> con ideal <m>I</m>, escriba una tabla de adición y una tabla de multiciplicación para <m>R/I</m>. 
 				<ol>
 				 
-					<li><p><m>R = {\mathbb Z}</m> and <m>I = 6 {\mathbb Z}</m></p></li>
+					<li><p><m>R = {\mathbb Z}</m> e <m>I = 6 {\mathbb Z}</m></p></li>
 					 
-					<li><p><m>R = {\mathbb Z}_{12}</m> and <m>I = \{ 0, 3, 6, 9 \}</m></p></li>
+					<li><p><m>R = {\mathbb Z}_{12}</m> e <m>I = \{ 0, 3, 6, 9 \}</m></p></li>
 		 
 				</ol></p>
 		</statement>
@@ -432,7 +432,7 @@
 
 	<exercise number="31">
 		<statement>
-			<p>Si no requerimos que la identidad de un anillo sea distinta de 0, no obtenemos una estructura matemática mut interesante. Sea <m>R</m> un anillo tal que <m>1 = 0</m>. Demuestre que <m>R = \{ 0 \}</m>.</p>
+			<p>Si no requerimos que la identidad de un anillo sea distinta de 0, no obtenemos una estructura matemática muy interesante. Sea <m>R</m> un anillo tal que <m>1 = 0</m>. Demuestre que <m>R = \{ 0 \}</m>.</p>
 		</statement>
 		
 	</exercise>
@@ -447,7 +447,7 @@
 	<exercise number="33">
 		<statement>
 			<p>Sea <m>R</m> un anillo. Defina el <term>centro</term> de <m>R</m> como 
-				<me>Z(R) = \{ a \in R : ar = ra \text{ for all } r \in R \}.</me>
+				<me>Z(R) = \{ a \in R : ar = ra \text{ para todo } r \in R \}.</me>
 			Demuestre que <m>Z(R)</m> es un subanillo conmutativo de <m>R</m>.</p>
 		</statement>
 		
@@ -456,7 +456,7 @@
 	<exercise number="34">
 		<statement>
 			<p>Sea <m>p</m> un primo. Demuestre que
-				<me>{\mathbb Z}_{(p)} = \{ a / b :  a, b \in {\mathbb Z} \text{ and } \gcd( b,p) =  1  \} </me>
+				<me>{\mathbb Z}_{(p)} = \{ a / b :  a, b \in {\mathbb Z} \text{ y } \gcd( b,p) =  1  \} </me>
 			es un anillo.  El anillo <m>{\mathbb Z}_{(p)}</m> se denomina <term>anillo de enteros localizado en</term> <m>p</m>. <notation><usage>\mathbb Z_{(p)}</usage><description>anillo de enteros localizado en <m>p</m></description></notation></p>
 		</statement>
 		<hint>
@@ -536,7 +536,7 @@
 	<exercise number="40">
 		<title>El Teorema Chino de los Restos para Anillos</title>
 		<statement>
-			<p>Sea <m>R</m> un anillo y sean <m>I</m> y <m>J</m> ideals en <m>R</m> tales que <m>I+J = R</m>. 
+			<p>Sea <m>R</m> un anillo y sean <m>I</m> y <m>J</m> ideales en <m>R</m> tales que <m>I+J = R</m>. 
 				<ol>
 				 
 					<li><p>Muestre que para cualquiera <m>r</m> y <m>s</m> en <m>R</m>, el sistema de ecuaciones

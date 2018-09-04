@@ -138,7 +138,7 @@
 				<p>Sea <m>G</m> un grupo finito y sea <m>H</m> un subgrupo de <m>G</m>.  Entonces <m>|G|/|H| = [G : H]</m> es el número de clases laterales izquierdas diferentes de <m>H</m> en <m>G</m>.  En particular, el número de elementos en <m>H</m> debe dividir al número de elementos en <m>G</m>.</p>
 			</statement>
 			<proof>
-				<p>El grupo <m>G</m> está particionado en <m>[G : H]</m> clases lateralez izquierdas diferentes.  Cada clase lateral izquierda tiene <m>|H|</m> elementos; por lo tanto, <m>|G| = [G : H] |H|</m>.</p>
+				<p>El grupo <m>G</m> está particionado en <m>[G : H]</m> clases laterales izquierdas diferentes.  Cada clase lateral izquierda tiene <m>|H|</m> elementos; por lo tanto, <m>|G| = [G : H] |H|</m>.</p>
 			</proof>
 		</theorem>
 
@@ -161,7 +161,7 @@
 
 		<corollary xml:id="corollary-cosets-theorem-8">
 			<statement>
-				<p>Sean <m>H</m> y <m>K</m> sbgrupos de un grupo finito <m>G</m> tales que  <m>G \supset H \supset K</m>.  Entonces 
+				<p>Sean <m>H</m> y <m>K</m> subgrupos de un grupo finito <m>G</m> tales que  <m>G \supset H \supset K</m>.  Entonces 
 					<me>[G:K] = [G:H][H:K].</me></p>
 			</statement>
 			<proof>
@@ -218,7 +218,7 @@
 					</md>
 				Entonces <m>\mu = \sigma \tau \sigma^{-1}</m>.</p>
 
-				<p>Recíprocamente, supongamos que <m>\tau = (a_1, a_2, \ldots, a_k )</m> es un <m>k</m>-cycle y <m>\sigma \in S_n</m>. Si <m>\sigma( a_i ) = b</m> y <m>\sigma( a_{(i \bmod k) + 1 )} = b'</m>, entonces <m>\mu( b) = b'</m>.  Luego, 
+				<p>Recíprocamente, supongamos que <m>\tau = (a_1, a_2, \ldots, a_k )</m> es un <m>k</m>-ciclo y <m>\sigma \in S_n</m>. Si <m>\sigma( a_i ) = b</m> y <m>\sigma( a_{(i \bmod k) + 1 )} = b'</m>, entonces <m>\mu( b) = b'</m>.  Luego, 
 					<me>\mu = ( \sigma(a_1), \sigma(a_2), \ldots, \sigma(a_k) ).</me>
 				Como <m>\sigma</m> es una biyección, <m>\mu</m> es un ciclo del mismo largo que <m>\tau</m>.</p>
 			</proof>
@@ -271,7 +271,7 @@
 		
 		<subsection xml:id="cosets-subsection-historical-note">
 			<title>Nota Histórica</title>
-				<p>Joseph-Louis Lagrange<idx><h>Lagrange, Joseph-Louis</h></idx> (1736<ndash />1813), nacido en Torino, Italia, tenía origen franco-italiano. Su talento por las matemáticas se hizo evidente desde muy temprana edad. Leonhard Euler<idx><h>Euler, Leonhard</h></idx> reconoció sus habilidades cuando Lagrange, que tenía solo 19 años, le comunicó a Euler un trabajo que había realizado en el cálculo de variaciones. Ese año fue nombrado profesor de la Real Escuela de Artillería en Torino.  A los 23 llegó a la Academia de Berlin. Federico el Grande había escrito a Lagrange proclamando que el <q>mejor rey de Europa</q> debía tener al <q>mejor matemático en Europa</q> en su corte. Durante 20 años Lagrange ocupó la posición dejada por su mentor, Euler. Sus trabajos incluyen contribuciones a la teoría de números, teoría de grupos, física y mecánica, el cálculo de variaciones, la teoría de ecuaciones y las ecuaciones diferenciales. Junto con Laplace y Lavoisier, Lagrange fue una de las personas responsables de crear el sistema métrico. Lagrange tuvo una gran influencia en el desarrollo de las matemáticas, dejando mucho a las próximas generaciones en cuanto a ejemplos y nuevos problemas a resolver.</p>
+				<p>Joseph-Louis Lagrange<idx><h>Lagrange, Joseph-Louis</h></idx> (1736<ndash />1813), nacido en Torino, Italia, tenía origen franco-italiano. Su talento por las matemáticas se hizo evidente desde muy temprana edad. Leonhard Euler<idx><h>Euler, Leonhard</h></idx> reconoció sus habilidades cuando Lagrange, que tenía solo 19 años, le comunicó a Euler un trabajo que había realizado en el cálculo de variaciones. Ese año fue nombrado profesor de la Real Escuela de Artillería en Torino.  A los 23 llegó a la Academia de Berlín. Federico el Grande había escrito a Lagrange proclamando que el <q>mejor rey de Europa</q> debía tener al <q>mejor matemático en Europa</q> en su corte. Durante 20 años Lagrange ocupó la posición dejada por su mentor, Euler. Sus trabajos incluyen contribuciones a la teoría de números, teoría de grupos, física y mecánica, el cálculo de variaciones, la teoría de ecuaciones y las ecuaciones diferenciales. Junto con Laplace y Lavoisier, Lagrange fue una de las personas responsables de crear el sistema métrico. Lagrange tuvo una gran influencia en el desarrollo de las matemáticas, dejando mucho a las próximas generaciones en cuanto a ejemplos y nuevos problemas a resolver.</p>
 		</subsection> 
 
 	</section>

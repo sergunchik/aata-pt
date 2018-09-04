@@ -18,15 +18,15 @@
 			<p>Para cada uno de los siguientes grupos <m>G</m>, determine si es que <m>H</m> es un subgrupo normal de <m>G</m>. Si <m>H</m> es un subgrupo normal, escriba una tabla de Cayley para el grupo cociente <m>G/H</m>.
 				<ol>
  
-					<li><p><m>G = S_4</m> and <m>H = A_4</m></p></li>
+					<li><p><m>G = S_4</m> y <m>H = A_4</m></p></li>
 
-					<li><p><m>G = A_5</m> and <m>H = \{ (1), (123), (132) \}</m></p></li>
+					<li><p><m>G = A_5</m> y <m>H = \{ (1), (123), (132) \}</m></p></li>
 					 
-					<li><p><m>G = S_4</m> and <m>H = D_4</m></p></li>
+					<li><p><m>G = S_4</m> y <m>H = D_4</m></p></li>
 					 
-					<li><p><m>G = Q_8</m> and <m>H = \{ 1, -1, I, -I \}</m></p></li>
+					<li><p><m>G = Q_8</m> y <m>H = \{ 1, -1, I, -I \}</m></p></li>
 					 
-					<li><p><m>G = {\mathbb Z}</m> and <m>H = 5 {\mathbb Z}</m></p></li>
+					<li><p><m>G = {\mathbb Z}</m> y <m>H = 5 {\mathbb Z}</m></p></li>
 					 
 				</ol></p>
 		</statement>
@@ -51,7 +51,7 @@
 
 	<exercise number="3">
 		<statement>
-			<p>Encuentre todos los subgrupos de the quaternion group, <m>Q_8</m>. ¿Cuáles subgrupos son normales? ¿Cuáles son todos los grupos cociente de <m>Q_8</m> salvo isomorfismo?</p>
+			<p>Encuentre todos los subgrupos del grupo de cuaterniones, <m>Q_8</m>. ¿Cuáles subgrupos son normales? ¿Cuáles son todos los grupos cociente de <m>Q_8</m> salvo isomorfismo?</p>
 		</statement>
 		
 	</exercise>

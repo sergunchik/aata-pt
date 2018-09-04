@@ -54,7 +54,7 @@
 		</output>
 		</sage>
 
-		<p>Otra posibilidad para crear un <c>conjunto parcialmente ordenado</c> es dejar que el constructor de conjuntos parcialmente ordenados recorra todos los pares de elementos, y lo único que le debemos entregar al constructor es una forma de comprobar si dos elementos son comparables.  Nuestra función de comparación debe requerir dos elementos y devolver <c>True</c> o <c>False</c>.  Una función <q>lambda</q> es una forma de construir una tal función rápidamente.  Esta puede ser una idea nueva para usted, pero el dominio de las funciones lambda puede ser muy conveniente.  Notemos que <q>lambda</q> es una palabra erservada precisamente para este propósito (así, por ejemplo, <c>lambda</c> es una elección prohibida para el valor propio de una matriz).  Hay otras maneras de definir funciones en Sage, pero una función lambda es lo más rápido cuando la función es simple.</p>
+		<p>Otra posibilidad para crear un <c>conjunto parcialmente ordenado</c> es dejar que el constructor de conjuntos parcialmente ordenados recorra todos los pares de elementos, y lo único que le debemos entregar al constructor es una forma de comprobar si dos elementos son comparables.  Nuestra función de comparación debe requerir dos elementos y devolver <c>True</c> o <c>False</c>.  Una función <q>lambda</q> es una forma de construir una tal función rápidamente.  Esta puede ser una idea nueva para usted, pero el dominio de las funciones lambda puede ser muy conveniente.  Notemos que <q>lambda</q> es una palabra reservada precisamente para este propósito (así, por ejemplo, <c>lambda</c> es una elección prohibida para el valor propio de una matriz).  Hay otras maneras de definir funciones en Sage, pero una función lambda es lo más rápido cuando la función es simple.</p>
 
 		<sage>
 		<input>
@@ -163,7 +163,7 @@
 		</output>
 		</sage>
 
-		<p>Notemos que <c>6</c> y <c>8</c> no son comparables en este conjunto parcialmente ordenado  (es un orden <em>parcial</em>).  Los métodos <c>.is_gequal()</c>  y <c>.is_greater_than()</c> funcionan de forma similar, pero devuelven <c>True</c>  si el primer eleemento es mayor (o igual).</p>
+		<p>Notemos que <c>6</c> y <c>8</c> no son comparables en este conjunto parcialmente ordenado  (es un orden <em>parcial</em>).  Los métodos <c>.is_gequal()</c>  y <c>.is_greater_than()</c> funcionan de forma similar, pero devuelven <c>True</c>  si el primer elemento es mayor (o igual).</p>
 
 		<sage>
 		<input>
@@ -215,7 +215,7 @@
 		</output>
 		</sage>
 
-		<p>Los elementos de un conjunto parcialmente ordenado pueden ser particionados en conjuntos de nivel.  En las gráficas de los conjuntos parcialmente ordenados, los elementos del mismo nivel se muestran a la misma altura.  Cada leverl se obtiene removiendo todos los elementos de los niveles anteriores y escogiendo los elementos minimales del resultado.</p>
+		<p>Los elementos de un conjunto parcialmente ordenado pueden ser particionados en conjuntos de nivel.  En las gráficas de los conjuntos parcialmente ordenados, los elementos del mismo nivel se muestran a la misma altura.  Cada nivel se obtiene removiendo todos los elementos de los niveles anteriores y escogiendo los elementos minimales del resultado.</p>
 
 		<sage>
 		<input>
@@ -227,7 +227,7 @@
 		</output>
 		</sage>
 
-		<p>Si hacemos que dos elementos de  <c>R</c> sean comparables cuando antes no lo eran, eso constituye una extensión de <c>R</c>.  Consideremos todas las posibles extensiones de un conjunto parcialmente ordenado <mdash /> podemos construir un conjunto parcialmente ordenado a partir de tas ellas, donde la relación es la de inclusión conjuntista.  Una extensión lineal es un elemento maximal en este conjunto parcialmente ordenado de conjuntos parcialmente ordenados.  Informalmente, estamos agregando tantas relaciones como sea posible, de manera consistente con el conjunto parcialmente ordenado original y tal que el resultado es un orden total.  En otras palabra, hay un orden de los elementos que es consistente con el orden en el conjunto parcialmente ordenado.  Podemos construir una cosa así, pero la salida no es  más que una lista de elementos en el orden lineal.  Un informático se inclinaría por llamar a esto un <q> ordenamiento topológico.</q></p>
+		<p>Si hacemos que dos elementos de  <c>R</c> sean comparables cuando antes no lo eran, eso constituye una extensión de <c>R</c>.  Consideremos todas las posibles extensiones de un conjunto parcialmente ordenado <mdash /> podemos construir un conjunto parcialmente ordenado a partir de ellas, donde la relación es la de inclusión conjuntista.  Una extensión lineal es un elemento maximal en este conjunto parcialmente ordenado de conjuntos parcialmente ordenados.  Informalmente, estamos agregando tantas relaciones como sea posible, de manera consistente con el conjunto parcialmente ordenado original y tal que el resultado es un orden total.  En otras palabra, hay un orden de los elementos que es consistente con el orden en el conjunto parcialmente ordenado.  Podemos construir una cosa así, pero la salida no es  más que una lista de elementos en el orden lineal.  Un informático se inclinaría por llamar a esto un <q> ordenamiento topológico.</q></p>
 
 		<sage>
 		<input>
@@ -239,7 +239,7 @@
 		</output>
 		</sage>
 
-		<p>Podemos construir subposets a partir de un subconjunto de los elementos con el orden inducido para producir un conjunto parcialmente ordenado nuevo.  Acá tomamos aproximadamente la <q>mitad inferior</q> del conjunto parcialmente ordenado aleatorio <c>P</c>  induciendo el orden en ĺa unión de algunos de los conjuntos de nivel.</p>
+		<p>Podemos construir subposets a partir de un subconjunto de los elementos con el orden inducido para producir un conjunto parcialmente ordenado nuevo.  Acá tomamos aproximadamente la <q>mitad inferior</q> del conjunto parcialmente ordenado aleatorio <c>P</c>  induciendo el orden en la unión de algunos de los conjuntos de nivel.</p>
 
 		<sage doctest="not tested">
 		<input>

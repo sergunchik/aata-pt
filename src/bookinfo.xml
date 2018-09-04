@@ -28,6 +28,7 @@
 \renewcommand{\gcd}{\operatorname{mcd}}
 \renewcommand{\lcm}{\operatorname{mcm}}
 \renewcommand{\deg}{\operatorname{gr}}
+\renewcommand{\chr}{\operatorname{car}}
     </macros>
 
     <!-- For historical reasons, all cross-references have -->

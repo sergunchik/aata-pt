@@ -492,7 +492,7 @@
 
 	<exercise number="47">
 		<statement>
-			<p>Demuestre o refute: Si <m>H</m> y <m>K</m> son subgrupos de un grupo <m>G</m>, entonces <m>H K = \{hk : h \in H \text{ and } k \in K \}</m> es un subgrupo de <m>G</m>. ¿Qué pasa si <m>G</m> es abeliano?</p>
+			<p>Demuestre o refute: Si <m>H</m> y <m>K</m> son subgrupos de un grupo <m>G</m>, entonces <m>H K = \{hk : h \in H \text{ y } k \in K \}</m> es un subgrupo de <m>G</m>. ¿Qué pasa si <m>G</m> es abeliano?</p>
 		</statement>
 		
 	</exercise>

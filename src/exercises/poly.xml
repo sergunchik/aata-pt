@@ -50,13 +50,13 @@
 				<p>Use el algoritmo de división para encontrar <m>q(x)</m> y <m>r(x)</m> tales que <m>a(x) = q(x) b(x) + r(x)</m> con <m>\deg r(x) \lt \deg b(x)</m> para cada uno de los siguientes pares de polinomios.  
 				<ol>
 				 
-					<li><p><m>a(x) = 5 x^3 + 6x^2 -  3 x + 4</m> and <m>b(x) = x - 2</m> in <m>{\mathbb Z}_7[x]</m></p></li>
+					<li><p><m>a(x) = 5 x^3 + 6x^2 -  3 x + 4</m> y <m>b(x) = x - 2</m> in <m>{\mathbb Z}_7[x]</m></p></li>
 					 
-					<li><p><m>a(x) = 6 x^4 - 2 x^3 +  x^2 - 3 x + 1</m> and <m>b(x) = x^2 + x - 2</m> in <m>{\mathbb Z}_7[x]</m></p></li>
+					<li><p><m>a(x) = 6 x^4 - 2 x^3 +  x^2 - 3 x + 1</m> y <m>b(x) = x^2 + x - 2</m> in <m>{\mathbb Z}_7[x]</m></p></li>
 					 
-					<li><p><m>a(x) = 4 x^5 - x^3 + x^2 + 4</m> and <m>b(x) = x^3 - 2</m> in <m>{\mathbb Z}_5[x]</m> </p></li>
+					<li><p><m>a(x) = 4 x^5 - x^3 + x^2 + 4</m> y <m>b(x) = x^3 - 2</m> in <m>{\mathbb Z}_5[x]</m> </p></li>
 					 
-					<li><p><m>a(x) = x^5 + x^3 -x^2 - x</m> and <m>b(x) = x^3 + x</m> in <m>{\mathbb Z}_2[x]</m></p></li>
+					<li><p><m>a(x) = x^5 + x^3 -x^2 - x</m> y <m>b(x) = x^3 + x</m> in <m>{\mathbb Z}_2[x]</m></p></li>
 				 
 				</ol></p>
 		</statement>
@@ -145,7 +145,7 @@
 
 	<exercise number="9">
 		<statement>
-			<p>Encuentre todos los polinomios irreducibles de grado 2 y 3 en<m>{\mathbb Z}_2[x]</m>. </p>
+			<p>Encuentre todos los polinomios irreducibles de grado 2 y 3 en <m>{\mathbb Z}_2[x]</m>. </p>
 		</statement>
 		
 	</exercise>

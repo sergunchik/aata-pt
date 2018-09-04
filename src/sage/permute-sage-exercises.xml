@@ -54,7 +54,7 @@
 
 	<exercise number="3">
 		<statement>
-			<p>Construya el grupo de simetrías del tetrahedro (también es el grupo alternante en 4 símbolos, <m>A_4</m>) con el comando <c>A=AlternatingGroup(4)</c>.  Usando herramientas tales como órdenes de elementos, y generadores de subgrupos, vea si puede encontrar <em>todos</em> los subgrupos de <m>A_4</m> (cada uno exactamente una vez).  Haga esto sin usar el método <c>.subgroups()</c> para justificar que su respuesta es correcta (aunque puede ser una forma conveniente de verificar su resultado).</p>
+			<p>Construya el grupo de simetrías del tetraedro (también es el grupo alternante en 4 símbolos, <m>A_4</m>) con el comando <c>A=AlternatingGroup(4)</c>.  Usando herramientas tales como órdenes de elementos, y generadores de subgrupos, vea si puede encontrar <em>todos</em> los subgrupos de <m>A_4</m> (cada uno exactamente una vez).  Haga esto sin usar el método <c>.subgroups()</c> para justificar que su respuesta es correcta (aunque puede ser una forma conveniente de verificar su resultado).</p>
 
 			<p>Escriba un resumen ordenado de su respuesta<mdash/>no simplemente una lista larga escupida por Sage.  La idea es usar Sage como una herramienta, en la medida en que sea necesario, pero básicamente su respuesta debe ser un párrafo conciso y/o una tabla. Esta es la única parte de esta tarea sin instrucciones precisas y claras, así es que dedique el tiempo suficiente a esta parte para que le quede bien.  Ayuda: ningún subgrupo de  <m>A_4</m> requiere más de dos generadores.</p>
 		</statement>
@@ -82,7 +82,7 @@
 
 	<exercise number="5">
 		<statement>
-			<p>Guarde su trabajo, y vea si puede lograr que Sage se caiga construyendo el subgrupo de <m>S_{10}</m> generado por los elementos <c>b</c> and <c>d</c> de orden <m>2</m> y <m>30</m> de antes.  <em>No entregue</em> la lista de elementos de <c>N</c> como parte de su trabajo.</p>
+			<p>Guarde su trabajo, y vea si puede lograr que Sage se caiga construyendo el subgrupo de <m>S_{10}</m> generado por los elementos <c>b</c> y <c>d</c> de orden <m>2</m> y <m>30</m> de antes.  <em>No entregue</em> la lista de elementos de <c>N</c> como parte de su trabajo.</p>
 
 			<sage type="display">
 				<input>

@@ -45,7 +45,7 @@
         <statement>
             <p>Este problema investiga la <q>separabilidad</q> de <m>{\mathbb Q}(\sqrt{3},\sqrt{7})</m>.  Usted puede crear este cuerpo de números rápidamente con el constructor <c>NumberFieldTower</c>, junto con los polinomios <m>x^2-3</m> y <m>x^2-7</m>.  Aplane la torre con el método <c>.absolute_field()</c> y use el método <c>.structure()</c> para recuperar los isomorfismos entre la torre y la versión plana del cuerpo.  Nombre a la torre como <c>N</c> y use  <c>a</c> y <c>b</c> como generadores.  Nombre la versión plana como <c>L</c> con <c>c</c> como generador.</p>
 
-            <p>Cree un elemento no trivial (<q>aleatorio</q>) de <c>L</c> usando tantas potencias de <c>c</c> como sea posible (verifique el grado de <c>L</c> para ver cuántas potencias linealmente independientes existen).  Solicite a Sage el polinomio minimal de su elemento aleatorio, asegurando así que el elemento es una raíz.  Construya ese polinomio minimal como polinomio sobre <c>N</c>, la torre de cuerpos, y encuentre su factorización.  Esta factorización debiese tener solo factores lineales.  Cada raíz debiese ser una expresión en <c>a</c> y <c>b</c>.  Convierta cada aríz en una expresión con notación matemática que involucre <m>\sqrt{3}</m> y <m>\sqrt{7}</m>.  Use una de las funciones para verificar que una de las raíces corresponde al elemento aleatorio original.</p>
+            <p>Cree un elemento no trivial (<q>aleatorio</q>) de <c>L</c> usando tantas potencias de <c>c</c> como sea posible (verifique el grado de <c>L</c> para ver cuántas potencias linealmente independientes existen).  Solicite a Sage el polinomio minimal de su elemento aleatorio, asegurando así que el elemento es una raíz.  Construya ese polinomio minimal como polinomio sobre <c>N</c>, la torre de cuerpos, y encuentre su factorización.  Esta factorización debiese tener solo factores lineales.  Cada raíz debiese ser una expresión en <c>a</c> y <c>b</c>.  Convierta cada raíz en una expresión con notación matemática que involucre <m>\sqrt{3}</m> y <m>\sqrt{7}</m>.  Use una de las funciones para verificar que una de las raíces corresponde al elemento aleatorio original.</p>
 
             <p>Cree unos pocos elementos aleatorios más, y encuentre una factorización (en <c>N</c> o en <c>L</c>).  Para que un cuerpo sea separable, todo elemento del cuerpo debe ser una raíz de <em>algún</em> polinomio separable.  El polinomio minimal es un buen polinomio para probar.  (¿Por qué?)  Basado en esta evidencia, ¿parece que <m>{\mathbb Q}(\sqrt{3},\sqrt{7})</m> fuera una extensión separable?</p>
         </statement>
@@ -60,7 +60,7 @@
             <ol>
                 <li><p>Trabaje el Ejercicio<nbsp/><xref ref="exercise-frobenius-map"/> para mejorar su comprensión de como y por qué la función de Frobenius es un automorfismo de cuerpos.  (Lo que viene será más sencillo si hace esto primero.)</p></li>
 
-                <li><p>Para algunos cuerpos finito pequeños, pero no triviales identifique el automorfismo de Frobenius dentro del grupo de automorfismos.  Pequeños podría significar <m>p=2,3,5,7</m> y <m>3\leq n\leq 10</m>, con <m>n</m> primo versus compuesto.</p></li>
+                <li><p>Para algunos cuerpos finitos pequeños, pero no triviales identifique el automorfismo de Frobenius dentro del grupo de automorfismos.  Pequeños podría significar <m>p=2,3,5,7</m> y <m>3\leq n\leq 10</m>, con <m>n</m> primo versus compuesto.</p></li>
 
                 <li><p>Una vez que haya identificado la función de Frobenius, describa los demás automorfismos.  En otras palabras, con un poco de investigación, debiese ser posible dar una descripción de los automorfismos que le permita predecir correctamente el grupo completo de automorfismos de un cuerpo finito que no haya explorado aún.  (Ayuda: el grupo de automorfismos del grupo es un grupo.  ¿Qué pasa si <q>hace la operación</q> de la función de Frobenius consigo misma?  ¿Qué es exactamente esta operación?  Intente usar la notación multiplicativa de Sage con los elementos del grupode automorfismos.)</p></li>
 
@@ -87,7 +87,7 @@
 
                 <li><p>Examine el tamaño de los dos conjunto y el tamaño de su intersección (<c>.intersection()</c>).  Pruebe con diferentes elementos <m>a</m>, quizás usando un bucle para probar <em>todos</em> los valores posibles. Note que <m>p=2</m> se comportará de forma bastante diferente.</p></li>
 
-                <li><p>Supongamos que tiene un elemento de la intersección.  (Puede obtener uno con el método <c>.an_element()</c>.)  ¿Cómo lelleva esto a la suma de cuadrados propuesta en el ejercicio?</p></li>
+                <li><p>Supongamos que tiene un elemento de la intersección.  (Puede obtener uno con el método <c>.an_element()</c>.)  ¿Cómo lleva esto a la suma de cuadrados propuesta en el ejercicio?</p></li>
 
                 <li><p>¿Puede escribir una función en Python que reciba un cuerpo finito cuyo orden sea una potencia de un primo impar y luego liste cada elemento como suma de cuadrados?</p></li>
             </ol>

@@ -53,7 +53,7 @@
 
 					<li><p>Muestre que la operación de multiplicación está bien-definida en el cuerpo de fracciones, <m>F_D</m>.</p></li>
 		 
-					<li><p>Verifique las propiedades aociativa y conmutativa en <m>F_D</m>.</p></li>
+					<li><p>Verifique las propiedades asociativa y conmutativa en <m>F_D</m>.</p></li>
 
 				</ol></p>
 		</statement>
@@ -106,7 +106,7 @@
 
 	<exercise number="8">
 		<statement>
-			<p>Sea <m>p</m> un número primoy denote el cuerpo de fracciones de <m>{\mathbb Z}_p[x]</m> por <m>{\mathbb Z}_p(x)</m>. Demuestre que <m>{\mathbb Z}_p(x)</m> es un cuerpo infinito de característica  <m>p</m>.</p>
+			<p>Sea <m>p</m> un número primo y denote el cuerpo de fracciones de <m>{\mathbb Z}_p[x]</m> por <m>{\mathbb Z}_p(x)</m>. Demuestre que <m>{\mathbb Z}_p(x)</m> es un cuerpo infinito de característica  <m>p</m>.</p>
 		</statement>
 		
 	</exercise>
@@ -225,7 +225,7 @@
 
 	<exercise number="18">
 		<statement>
-			<p>Un ideal <m>I</m> en un anillo conmutativo <m>R</m> es <term>finitamente generado</term> si existen elementos <m>a_1, \ldots, a_n</m> en <m>I</m> such that every element <m>r \in I</m> puede escribirse como <m>a_1 r_1 + \cdots + a_n r_n</m> para ciertos <m>r_1, \ldots, r_n</m> en <m>R</m>. Demuestre que <m>R</m> satisface la condición de cadenas ascendentes si y solo sitodo ideal de <m>R</m> es finitamente generado.</p>
+			<p>Un ideal <m>I</m> en un anillo conmutativo <m>R</m> es <term>finitamente generado</term> si existen elementos <m>a_1, \ldots, a_n</m> en <m>I</m> de manera que cada elemento <m>r \in I</m> pueda escribirse como <m>a_1 r_1 + \cdots + a_n r_n</m> para ciertos <m>r_1, \ldots, r_n</m> en <m>R</m>. Demuestre que <m>R</m> satisface la condición de cadenas ascendentes si y solo si todo ideal de <m>R</m> es finitamente generado.</p>
 		</statement>
 		
 	</exercise>

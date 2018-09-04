@@ -250,7 +250,7 @@
 		</output>
 		</sage>
 
-		<p>Cada fila de esta salida es una lista de raíces, pero permutadas, y así corresponde a una permutación de cuatro objetos (las raíces).  Por ejemplo, la segunda fila muestra que el segundo automorfismo intercambia <c>a</c> con <c>-a</c>, y <c>b</c> con <c>-b</c>.  (Note que la primera fila es el resultado del automorfismo identidad, de manera que podemos comparar mentalmente la primera fila con cualquier otra para imaginar la forma de <q>dos filas</q> de una permutación.)  Podemos numerar las raíces, del 1 al 4, y crear cada permutacióncomo un elemento de <m>S_4</m>.  Es más de lo que se requiere, pero podemos construir el grupo de permutaciones dejando que <em>todos</em> estos elementos generen un grupo.</p>
+		<p>Cada fila de esta salida es una lista de raíces, pero permutadas, y así corresponde a una permutación de cuatro objetos (las raíces).  Por ejemplo, la segunda fila muestra que el segundo automorfismo intercambia <c>a</c> con <c>-a</c>, y <c>b</c> con <c>-b</c>.  (Note que la primera fila es el resultado del automorfismo identidad, de manera que podemos comparar mentalmente la primera fila con cualquier otra para imaginar la forma de <q>dos filas</q> de una permutación.)  Podemos numerar las raíces, del 1 al 4, y crear cada permutación como un elemento de <m>S_4</m>.  Es más de lo que se requiere, pero podemos construir el grupo de permutaciones dejando que <em>todos</em> estos elementos generen un grupo.</p>
 
 		<sage>
 		<input>
@@ -519,7 +519,7 @@
 		</output>
 		</sage>
 
-		<p>El primer elemento indica que los racionales quedan fijos (lo sabíamos).  Escalando el segundo elemento nos da <c>b - a</c> como elemento fijo.  Escalando el tercer y cuarto elementos fijos, reconocemos que puedens ser obtenidos a partir de potencias de  <c>b - a</c>.</p>
+		<p>El primer elemento indica que los racionales quedan fijos (lo sabíamos).  Escalando el segundo elemento nos da <c>b - a</c> como elemento fijo.  Escalando el tercer y cuarto elementos fijos, reconocemos que pueden ser obtenidos a partir de potencias de  <c>b - a</c>.</p>
 
 		<sage>
 		<input>
@@ -557,7 +557,7 @@
 
 		<p>El método <c>.subfield()</c> entrega un par.  El primer  ítem es un nuevo cuerpo de números, isomorfo a un subcuerpo de  <c>L</c>.  El segundo ítem es una función inyectiva desde el nuevo cuerpo de números a  <c>L</c>.  En este caso, la imagen del elemento primitivo <c>c0</c> es el elemento que hemos especificado como generador del subcuerpo.  El elemento primitivo del nuevo cuerpo satisface el polinomio  <m>x^4+8</m> <mdash /> puede verificar que  <m>(1-i)\sqrt[4]{2}</m> es de hecho una raíz del polinomio <m>x^4 + 8</m>.</p>
 
-		<p>Existen cuatro subgrupos de orden  <m>2</m>, hemos encontrado cuerpos fijos para dos de ellos.  Los otros tres son similares, y sería un buen ejercicio obtenerlos.  Nuestro grupo de automorfismos tiene tres subgrupos de orden  4, y al menos uno de cada tipo posible (cíclico versus no cíclico).  Cuerpos fijos de subgrupos de mayor tamaño requieren encontrar elementos del cuerpo que queden fijos por todos los automorfismos en el subgrupo.  (Convenientemente ignoramos el automorfismo identidad arriba.)  Esto va a requerir myores cálculos, pero restringirá las posibilidades (cuerpos menores) al punto de que será más fácil determinar un elemento primitivo para cada uno de los cuerpos.</p>
+		<p>Existen cuatro subgrupos de orden  <m>2</m>, hemos encontrado cuerpos fijos para dos de ellos.  Los otros tres son similares, y sería un buen ejercicio obtenerlos.  Nuestro grupo de automorfismos tiene tres subgrupos de orden  4, y al menos uno de cada tipo posible (cíclico versus no cíclico).  Cuerpos fijos de subgrupos de mayor tamaño requieren encontrar elementos del cuerpo que queden fijos por todos los automorfismos en el subgrupo.  (Convenientemente ignoramos el automorfismo identidad arriba.)  Esto va a requerir mayores cálculos, pero restringirá las posibilidades (cuerpos menores) al punto de que será más fácil determinar un elemento primitivo para cada uno de los cuerpos.</p>
 
 		<p>El séptimo subgrupo es generado por dos elementos de orden  <m>2</m> y se compone completamente de elementos de orden <m>2</m> (exceptuando la identidad), así que es isomorfo a  <m>{\mathbb Z}_2\times{\mathbb Z}_2</m>.  Las permutaciones corresponden a los automorfismos número  0, 1, 3, y 6.  Para determinar el elemento fijo por  <em>los cuatro</em> automorfismos, construiremos el núcleo de cada uno y a medida que avanzamos, formamos la <em>intersección</em> de los cuatro núcleos.  Usaremos un bucle sobre los cuatro automorfismos.</p>
 
@@ -643,7 +643,7 @@
 		</output>
 		</sage>
 
-		<p>Hay un subgrupo más de orden <m>4</m>, cuyo análisi dejaremos como ejercicio.  Hay además dos subgrupos triviales (la identidad y el grupo completo) que no son muy interesantes ni sorprendentes.</p>
+		<p>Hay un subgrupo más de orden <m>4</m>, cuyo análisis dejaremos como ejercicio.  Hay además dos subgrupos triviales (la identidad y el grupo completo) que no son muy interesantes ni sorprendentes.</p>
 
 		<p>Si lo de arriba le parece mucho trabajo, puede siempre dejar que Sage lo haga todo con el método <c>.subfields()</c>.</p>
 

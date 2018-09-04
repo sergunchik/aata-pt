@@ -21,7 +21,7 @@
 
     <exercise number="2">
         <statement>
-            <p>Defina <c>R</c> como el anillo de los números enteros, <m>{\mathbb Z}</m>, ejecutando <c>R = ZZ</c> o <c>R = Integers()</c>.  Un comando como <c>R.ideal(4)</c> creará el ideal principal <m>\langle 4\rangle</m>.  El mismo comando puede recibir mñas de un generador, por ejemplo, <c>R.ideal(3, 5)</c> creará el ideal <m>\{a\cdot 3+ b\cdot 5\mid a,b\in{\mathbb Z}\}</m>.  Cree varios ideales de <m>{\mathbb Z}</m> con dos generadores y pídale a Sage que los muestre al crearlos.  Explique lo que observa y escriba comandos que le permitan comprobar su observación para miles de ejemplos diferentes.</p>
+            <p>Defina <c>R</c> como el anillo de los números enteros, <m>{\mathbb Z}</m>, ejecutando <c>R = ZZ</c> o <c>R = Integers()</c>.  Un comando como <c>R.ideal(4)</c> creará el ideal principal <m>\langle 4\rangle</m>.  El mismo comando puede recibir más de un generador, por ejemplo, <c>R.ideal(3, 5)</c> creará el ideal <m>\{a\cdot 3+ b\cdot 5\mid a,b\in{\mathbb Z}\}</m>.  Cree varios ideales de <m>{\mathbb Z}</m> con dos generadores y pídale a Sage que los muestre al crearlos.  Explique lo que observa y escriba comandos que le permitan comprobar su observación para miles de ejemplos diferentes.</p>
         </statement>
         
     </exercise>

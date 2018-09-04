@@ -30,7 +30,7 @@
 
 			<p>Usaremos lo que hemos aprendido sobre acciones de grupo para demostrar los Teoremas de Sylow.  Recordemos por un momento los que significa que <m>G</m> actúe en sí mismo por conjugación y cómo las clases de conjugación se distribuyen en el grupo de acuerdo a la ecuación de clase, discutida en el Capítulo<nbsp /><xref ref="actions" />. Un grupo  <m>G</m> actúa en sí mismo por conjugación de manera que <m>(g,x) \mapsto gxg^{-1}</m>. Sean <m>x_1, \ldots, x_k</m> representantes de cada una de las distintas clases de conjugación de <m>G</m> que contienen más de un elemento. Entonces la ecuación de clase se escribe como
 				<me>|G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)],</me>
-			donde <m>Z(G) = \{g \in G : gx = xg \text{ for all } x \in G\}</m> es el centro de <m>G</m> y <m>C(x_i) = \{ g \in G : g x_i = x_i g \}</m> es el subgrupo centralizador de <m>x_i</m>.</p>
+			donde <m>Z(G) = \{g \in G : gx = xg \text{ para todo } x \in G\}</m> es el centro de <m>G</m> y <m>C(x_i) = \{ g \in G : g x_i = x_i g \}</m> es el subgrupo centralizador de <m>x_i</m>.</p>
 	 
 			<p>Comenzaremos nuestra investigación de los Teoremas de Sylow examinando los subgrupos de orden <m>p</m>, donde <m>p</m> es un primo.  Un grupo <m>G</m> es un <term><m>p</m>-grupo</term><idx><h>Grupo!<m>p</m>-grupo</h></idx> si todo elemento en <m>G</m> tiene orden potencia de  <m>p</m>, donde <m>p</m> en un número primo. Un subgrupo de un grupo <m>G</m> es un <term><m>p</m>-subgrupo</term><idx><h>Subgrupo!<m>p</m>-subgrupo</h></idx> si es un <m>p</m>-grupo.</p>
 
@@ -77,7 +77,7 @@
 				</proof>
 			</theorem>
 	 
-			<p>Un <term><m>p</m>-subgrupo de Sylow</term><idx><h>Subgrupo</h><h><m>p</m>-subgrupo de Sylow</h></idx> <idx><h>Sylow</h><h><m>p</m>-subgrupo de</h></idx> <m>P</m> de un grupo <m>G</m> es un <m>p</m>-subgrupo maximal de <m>G</m>. Para demostrar los otros dos Teoremas de Sylow, debemos considerar subgrupos conjugados en lugar de elementos conjugados en un grupo. Dado un grupo <m>G</m>, sea <m>{\mathcal S}</m>la colección de todos los subgrupos de <m>G</m>. Para cualquier subgrupo <m>H</m>, <m>{\mathcal S}</m> es un <m>H</m>-conjunto, donde <m>H</m> actúa en <m>{\mathcal S}</m> por conjugación. Es decir, tenemos una acción
+			<p>Un <term><m>p</m>-subgrupo de Sylow</term><idx><h>Subgrupo</h><h><m>p</m>-subgrupo de Sylow</h></idx> <idx><h>Sylow</h><h><m>p</m>-subgrupo de</h></idx> <m>P</m> de un grupo <m>G</m> es un <m>p</m>-subgrupo maximal de <m>G</m>. Para demostrar los otros dos Teoremas de Sylow, debemos considerar subgrupos conjugados en lugar de elementos conjugados en un grupo. Dado un grupo <m>G</m>, sea <m>{\mathcal S}</m> la colección de todos los subgrupos de <m>G</m>. Para cualquier subgrupo <m>H</m>, <m>{\mathcal S}</m> es un <m>H</m>-conjunto, donde <m>H</m> actúa en <m>{\mathcal S}</m> por conjugación. Es decir, tenemos una acción
 				<me>H \times  {\mathcal S}  \rightarrow  {\mathcal S}</me>
 			definida por
 				<me>h \cdot K \mapsto hKh^{-1}</me>
@@ -102,7 +102,7 @@
 				<statement>
 					<p>Sean <m>H</m> y <m>K</m> subgrupos de <m>G</m>. El número de <m>H</m>-conjugados diferentes de <m>K</m> es <m>[H:N(K) \cap H]</m>.</p>
 				</statement>
-				<proof><p>Definimos una biyección entre las clases de conjugación de <m>N(K) \cap H</m> por <m>h^{-1}Kh \mapsto (N(K) \cap H)h</m>. Para mostrar que esta función es una biyección, sean <m>h_1, h_2 \in H</m> y supongamos que <m>(N(K) \cap H)h_1 = (N(K) \cap H)h_2</m>. Entonces <m>h_2 h_1^{-1} \in N(K)</m>. Por lo tanto, <m>K = h_2 h_1^{-1} K h_1 h_2^{-1}</m> or <m>h_1^{-1} K h_1 = h_2^{-1} K h_2</m>, y la función es inyectiva.  Es fácil ver que es sobreyectiva; por lo tanto tenemos una biyección entre los <m>H</m>-conjugados de <m>K</m> y las clases laterales derechas de <m>N(K) \cap H</m> en <m>H</m>.</p>
+				<proof><p>Definimos una biyección entre las clases de conjugación de <m>N(K) \cap H</m> por <m>h^{-1}Kh \mapsto (N(K) \cap H)h</m>. Para mostrar que esta función es una biyección, sean <m>h_1, h_2 \in H</m> y supongamos que <m>(N(K) \cap H)h_1 = (N(K) \cap H)h_2</m>. Entonces <m>h_2 h_1^{-1} \in N(K)</m>. Por lo tanto, <m>K = h_2 h_1^{-1} K h_1 h_2^{-1}</m> o <m>h_1^{-1} K h_1 = h_2^{-1} K h_2</m>, y la función es inyectiva.  Es fácil ver que es sobreyectiva; por lo tanto tenemos una biyección entre los <m>H</m>-conjugados de <m>K</m> y las clases laterales derechas de <m>N(K) \cap H</m> en <m>H</m>.</p>
 			</proof>
 			</lemma>
 	 
@@ -133,7 +133,7 @@
 					por conjugación. De la demostración del Segundo Teorema de Sylow, el único <m>P</m>-conjugado de <m>P</m> es él mismo y el orden de las otras <m>P</m>-clases de conjugación es una potencia de <m>p</m>. Cada <m>P</m>-clase de conjuugación contribuye con una potencia positiva de <m>p</m> al valor de <m>|{\mathcal S}|</m> excepto la clase de <m>\{ P \}</m>. Como <m>|{\mathcal S}|</m> es la suma de potencias positivas de <m>p</m> y 1, tenemos <m>|{\mathcal S}| \equiv 1 \pmod{p}</m>.</p>
 	 
 					<p>Ahora consideremos la acción de <m>G</m> en <m>{\mathcal S}</m> por conjugación.  Como todos los <m>p</m>-subgrupos de Sylow son conjugados, solo puede haber una órbita bajo esta acción. Para <m>P \in {\mathcal S}</m>, 
-						<me>|{\mathcal S}| = |\text{orbit of }P| = [G : N(P)]</me>
+						<me>|{\mathcal S}| = |\text{órbita de }P| = [G : N(P)]</me>
 					por el Lema<nbsp /><xref ref="lemma-distinct-conjugates" />.  Pero <m>[G : N(P)]</m> es un divisor de <m>|G|</m>; luego, el número de <m>p</m>-subgrupos de Sylow de un grupo finito divide al orden del grupo.</p>
 				</proof>
 			</theorem>
@@ -186,7 +186,7 @@
 				</statement>
 			</theorem>
 	 
-			<p>El subgrupo <m>G'</m> de <m>G</m> se llama <term>subgrupo conmutador</term><idx><h>Conmutador</h><h>subgrupo</h></idx> de <m>G</m>. Dejamos la demostración de este teorema como un ejercicio (Exercicio<nbsp /><xref ref="exercise-normal-commutator" /> en el Capítulo<nbsp /><xref ref="normal" />).</p>
+			<p>El subgrupo <m>G'</m> de <m>G</m> se llama <term>subgrupo conmutador</term><idx><h>Conmutador</h><h>subgrupo</h></idx> de <m>G</m>. Dejamos la demostración de este teorema como un ejercicio (Ejercicio<nbsp /><xref ref="exercise-normal-commutator" /> en el Capítulo<nbsp /><xref ref="normal" />).</p>
 	 
 			<example xml:id="example-sylow-group-1645-subgroups">
 				<p>Mostraremos ahora que todo grupo de orden <m>5 \cdot 7 \cdot 47 = 1645</m> es abeliano, y cíclico or el Corolario<nbsp /><xref ref="theorem-z-pq" />. Por el Tercer Teorema de Sylow, <m>G</m> tiene solo un subgrupo <m>H_1</m> de orden <m>47</m>.  Así <m>G/H_1</m> tiene orden 35 y debe ser abeliano por el Teorema<nbsp /><xref ref="theorem-pq-cyclic" />. Luego, el subgrupo conmutador de <m>G</m> está contenido en <m>H</m> lo que nos dice que <m>|G'|</m> puede ser 1 o 47. Si <m>|G'|=1</m>, estamos listos. Supongamos que <m>|G'|=47</m>. El Tercer Teorema de Sylow nos dice que <m>G</m> tiene solo un subgrupo de orden 5 y un subgrupo de orden 7.  Es decir, existen subgrupos normales <m>H_2</m>  y <m>H_3</m> en <m>G</m>, con <m>|H_2| = 5</m> y <m>|H_3| = 7</m>. En cualquiera de los casos el grupo cociente es abeliano; luego, <m>G'</m> debe ser un subgrupo de  <m>H_i</m>, <m>i= 1, 2</m>. Por lo tanto, el orden de <m>G'</m> es 1, 5, o 7. Pero, ya habíamos determinado que <m>|G'| =1</m> o 47. Así el subgrupo conmutador de <m>G</m> es trivial, y en consecuencia <m>G</m> es abeliano.</p>
@@ -224,7 +224,7 @@
 				<proof>
 					<p>Recordemos que
 						<me>HK = \{ hk : h \in H, k \in K \}.</me>
-					Ciertamente, <m>|HK| \leq |H| \cdot |K|</m> pues algún elemento en <m>HK</m> podría ser escrito como el producto de diferentes elementos en <m>H</m> y <m>K</m>. Es muuy posible que <m>h_1 k_1 = h_2 k_2</m> para <m>h_1, h_2 \in H</m> y <m>k_1, k_2 \in K</m>.  Si este es el caso, sea
+					Ciertamente, <m>|HK| \leq |H| \cdot |K|</m> pues algún elemento en <m>HK</m> podría ser escrito como el producto de diferentes elementos en <m>H</m> y <m>K</m>. Es muy posible que <m>h_1 k_1 = h_2 k_2</m> para <m>h_1, h_2 \in H</m> y <m>k_1, k_2 \in K</m>.  Si este es el caso, sea
 						<me>a = (h_1)^{-1} h_2 = k_1 (k_2)^{-1}.</me>
 					Notemos que <m>a \in H \cap K</m>, pues <m>(h_1)^{-1} h_2</m> está en <m>H</m> y <m>k_2 (k_1)^{-1}</m> está en <m>K</m>; así, 
 						<md>

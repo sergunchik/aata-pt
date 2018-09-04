@@ -15,7 +15,7 @@
 
     <exercise number="1">
         <statement>
-            <p>Consideremos el polinomio <m>x^3-3x+4</m>.  Calcule la máxima factorización de este polinomio sobre cada uno de los siguientes cuerpos:  (a) el cuerpo finito <m>{\mathbb Z}_5</m>, (b) el cuerpo finito de orden 125, (c) <m>\mathbb Q</m>, (d) <m>\mathbb R</m> y (e) <m>\mathbb C</m>.  Para hacer esto, construya el anillo de polinomio apropiado, construya el polinomio en este anillo y use el método <c>.factor()</c>.</p>
+            <p>Consideremos el polinomio <m>x^3-3x+4</m>.  Calcule la máxima factorización de este polinomio sobre cada uno de los siguientes cuerpos:  (a) el cuerpo finito <m>{\mathbb Z}_5</m>, (b) el cuerpo finito de orden 125, (c) <m>\mathbb Q</m>, (d) <m>\mathbb R</m> y (e) <m>\mathbb C</m>.  Para hacer esto, construya el anillo de polinomios apropiado, construya el polinomio en este anillo y use el método <c>.factor()</c>.</p>
         </statement>
         
     </exercise>
@@ -23,7 +23,7 @@
     <exercise number="2">
         <statement>
 
-            <p><q>Los polinomios de Conway</q> son polinomios irreducibles sobre <m>{\mathbb Z}_p</m> que Sage (y otros programas) usa para construir ideales maximales en anillos de polinomio, y por ende anillos cociente que son cuerpos. A grosso modo, son  elecciones <p>canónicas</p> para cada grado y para cada primo.  El comando <c>conway_polynomial(p, n)</c> entrega un polinomio irreducible de grado <m>n</m> sobre <m>{\mathbb Z}_p</m>.</p>
+            <p><q>Los polinomios de Conway</q> son polinomios irreducibles sobre <m>{\mathbb Z}_p</m> que Sage (y otros programas) usa para construir ideales maximales en anillos de polinomio, y por ende anillos cociente que son cuerpos. A grosso modo, son  elecciones <p>canónicas</p>, para cada grado y para cada primo.  El comando <c>conway_polynomial(p, n)</c> entrega un polinomio irreducible de grado <m>n</m> sobre <m>{\mathbb Z}_p</m>.</p>
 
             <p>Ejecute el comando <c>conway_polynomial(5, 4)</c> para obtener un polinomio presuntamente irreducible de grado 4 sobre <m>{\mathbb Z}_5</m>:  <m>p = x^{4} + 4x^{2} + 4x + 2</m>.  Construya el anillo de polinomios apropiado (<ie/>, en la indeterminada <m>x</m>) y verifique que <c>p</c> realmente es un elemento de ese anillo de polinomios.</p>
 

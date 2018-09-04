@@ -19,7 +19,7 @@
 
         <p>La principal forma de crear un homomorfismo es especificando las imágenes para el conjunto de generadores del dominio.  Considere grupos cíclicos de órdenes <m>12</m> y <m>20</m>:<md>
           <mrow>G &amp;= \{a^i\vert a^{12}=e\} &amp; H &amp;= \{x^i\vert x^{20}=e\}</mrow>
-        </md> y defina un homomorfismo simplemente especificando la imagen para un generador de <m>G</m>, y extendiendo la función al resto del grupo via la propiedad de preservación de la operación de un homomorfismo. <md>
+        </md> y defina un homomorfismo simplemente especificando la imagen para un generador de <m>G</m>, y extendiendo la función al resto del grupo vía la propiedad de preservación de la operación de un homomorfismo. <md>
           <mrow>\phi: G\rightarrow H, &amp;\quad\phi(a)=x^5</mrow>
           <mrow>\Rightarrow           &amp;\quad\phi(a^i) = \phi(a)^i = (x^5)^i = x ^{5i}</mrow>
         </md>  El constructor <c>PermutationGroupMorphism</c> requiere los dos grupos, luego una lista de imágenes para cada generador (¡en orden!), y entonces creará el homomorfismo.  Note que podemos usar el resultado como una función.  En el ejemplo abajo, primero verificamos que <c>C12</c> tiene un único generador (ninguna novedad), el cuál enviamos a un elemento particular de orden  <m>4</m> en el codominio.  Sage entonces construye el único homomorfismo consistente con este requisito.</p>

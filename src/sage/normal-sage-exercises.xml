@@ -43,7 +43,7 @@
 
     <exercise number="5">
         <statement>
-            <p>Repita la demostración de la subsección anterior de que para las simetrías de un tetrahedro, un subgrupo cíclico de orden <m>3</m> resulta en una multiplicación mal definida de clases laterales.  Arriba, por defecto el método <c>.cosets()</c> entrega las clases laterales derechas <mdash/> pero en este problema, trabaje con las clases izquierdas.  Debe escoger dos clases para multiplicarlas, y comprobar que elecciones diferentes de representantes llevan a resultados diferentes para el producto de las clases.</p>
+            <p>Repita la demostración de la subsección anterior de que para las simetrías de un tetraedro, un subgrupo cíclico de orden <m>3</m> resulta en una multiplicación mal definida de clases laterales.  Arriba, por defecto el método <c>.cosets()</c> entrega las clases laterales derechas <mdash/> pero en este problema, trabaje con las clases izquierdas.  Debe escoger dos clases para multiplicarlas, y comprobar que elecciones diferentes de representantes llevan a resultados diferentes para el producto de las clases.</p>
         </statement>
         
     </exercise>

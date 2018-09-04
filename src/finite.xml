@@ -210,7 +210,7 @@
 
 		<example xml:id="example-finite-gf-2-4">
 			<p>El cuerpo finito <m>\gf(2^4)</m> es isomorfo al cuerpo <m>{\mathbb Z}_2/ \langle 1 + x + x^4 \rangle</m>. Por lo tanto, los elementos de <m>\gf(2^4)</m> se puede tomar como
-				<me>\{ a_0 + a_1 \alpha + a_2 \alpha^2 + a_3 \alpha^3 : a_i \in {\mathbb Z}_2 \text{ and } 1 + \alpha + \alpha^4 = 0 \}.</me>
+				<me>\{ a_0 + a_1 \alpha + a_2 \alpha^2 + a_3 \alpha^3 : a_i \in {\mathbb Z}_2 \text{ y } 1 + \alpha + \alpha^4 = 0 \}.</me>
 			Recordando que <m>1 + \alpha +\alpha^4 = 0</m>, sumamos y multiplicamos elementos de  <m>\gf(2^4)</m> exactamente como sumamos y multiplicamos polinomios.  El grupo multiplicativo de <m>\gf(2^4)</m> es isomorfo a <m>{\mathbb  Z}_{15}</m> con generador <m>\alpha</m>: 
 				<md>
 					<mrow>&amp; \alpha^1 = \alpha &amp; &amp; \alpha^6 = \alpha^2 + \alpha^3 &amp; &amp; \alpha^{11} = \alpha + \alpha^2 + \alpha^3 &amp;</mrow>
@@ -320,7 +320,7 @@
 				<me>R_n = {\mathbb Z}_2[x]/ \langle x^n - 1 \rangle</me>
 			puede ser considerado como el anillo de polinomios de la forma 
 				<me>f(t) = a_0 + a_1 t + \cdots + a_{n-1} t^{n-1}</me>
-			que satisfacen la condición <m>t^n = 1</m>.  Es un ejercicio sencillo mostrar que <m>{\mathbb Z}_2^n</m> y <m>R_n</m> son isomorfos como espacios vectoriales.  Frecuentemente interpretaremos los elementos en <m>{\mathbb Z}_2^n</m> con elementos en <m>{\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.  De esta forma podemos interpretar un código lineal como un subconjunto de <m>{\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.</p>
+			que satisfacen la condición <m>t^n = 1</m>.  Es un ejercicio sencillo mostrar que <m>{\mathbb Z}_2^n</m> y <m>R_n</m> son isomorfos como espacios vectoriales.  Frecuentemente interpretaremos los elementos en <m>{\mathbb Z}_2^n</m> con elementos en <m>{\mathbb Z_2}[x] / \langle x^n - 1 \rangle</m>.  De esta forma podemos interpretar un código lineal como un subconjunto de <m>{\mathbb Z_2}[x] / \langle x^n - 1 \rangle</m>.</p>
 
 			<p>La estructura adicional de anillo en los códigos polinomiales es muy poderosa para describir códigos cíclicos. Un shift cíclico de una <m>n</m>-tupla puede ser descrito por una multiplicación polinomial.  Si <m>f(t) = a_0 + a_1 t + \cdots + a_{n-1} t^{n-1}</m> es un código polinomial en <m>R_n</m>, entonces
 				<me>tf(t) = a_{n-1} + a_0 t + \cdots + a_{n-2} t^{n-1}</me>
@@ -328,10 +328,10 @@
 
 			<theorem xml:id="theorem-cyclic-code">
 				<statement>
-					<p>Un código lineal <m>C</m> en <m>{\mathbb Z}_2^n</m> es cíclico si y solo si es un ideal en <m>R_n = {\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.</p>
+					<p>Un código lineal <m>C</m> en <m>{\mathbb Z}_2^n</m> es cíclico si y solo si es un ideal en <m>R_n = {\mathbb Z_2}[x] / \langle x^n - 1 \rangle</m>.</p>
 				</statement>
 				<proof>
-					<p>Sea <m>C</m> un código cíclico lineal y supongamos que <m>f(t)</m> está en <m>C</m>.  Entonces <m>t f(t)</m> también está en <m>C</m>. Así, <m>t^k f(t)</m> está en  <m>C</m> para todo <m>k \in {\mathbb N}</m>.  Como <m>C</m> es un código lineal, cualquier combinación lineal de las palabras <m>f(t), tf(t), t^2f(t), \ldots, t^{n-1}f(t)</m> también es una palabra del código; por lo tanto, para cada polinomio therefore <m>p(t)</m>, <m>p(t)f(t)</m> está en <m>C</m>.  Luego, <m>C</m> es un ideal.</p>
+					<p>Sea <m>C</m> un código cíclico lineal y supongamos que <m>f(t)</m> está en <m>C</m>.  Entonces <m>t f(t)</m> también está en <m>C</m>. Así, <m>t^k f(t)</m> está en  <m>C</m> para todo <m>k \in {\mathbb N}</m>.  Como <m>C</m> es un código lineal, cualquier combinación lineal de las palabras <m>f(t), tf(t), t^2f(t), \ldots, t^{n-1}f(t)</m> también es una palabra del código; por lo tanto, para cada polinomio <m>p(t)</m>, <m>p(t)f(t)</m> está en <m>C</m>.  Luego, <m>C</m> es un ideal.</p>
 
 					<p>Recíprocamente, sea <m>C</m> un ideal en  <m>{\mathbb Z}_2[x]/\langle x^n + 1\rangle</m>. Supongamos que <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1} t^{n - 1}</m> es una palabra en <m>C</m>.  Entonces <m>t f(t)</m> es una palabra en <m>C</m>; es decir, <m>(a_1, \ldots, a_{n-1}, a_0)</m> está en <m>C</m>.</p>
 				</proof>
@@ -360,7 +360,7 @@
 					]]>\end{pmatrix}.</me></p>
 			</example>
  
-			<p>En general, podemos determinar una matriz generadora para un código <m>(n, k)</m> <m>C</m> por la forma en que se codifican los elementos <m>t^k</m>. Sea <m>x^n - 1 = g(x) h(x)</m> en <m>{\mathbb Z}_2[x]</m>. Si <m>g(x) = g_0 + g_1 x + \cdots + g_{n-k} x^{n-k}</m> and <m>h(x) = h_0 + h_1 x +  \cdots + h_k x^k</m>, entonces la matriz de <m>n \times k</m>
+			<p>En general, podemos determinar una matriz generadora para un código <m>(n, k)</m> <m>C</m> por la forma en que se codifican los elementos <m>t^k</m>. Sea <m>x^n - 1 = g(x) h(x)</m> en <m>{\mathbb Z}_2[x]</m>. Si <m>g(x) = g_0 + g_1 x + \cdots + g_{n-k} x^{n-k}</m> y <m>h(x) = h_0 + h_1 x +  \cdots + h_k x^k</m>, entonces la matriz de <m>n \times k</m>
 				<me>G = 
 				\begin{pmatrix}<![CDATA[
 				g_0 & 0   & \cdots & 0 \\
@@ -383,7 +383,7 @@
 
 			<proposition>
 				<statement>
-					<p>Sea <m>C = \langle g(t) \rangle</m> un código cíclico en <m>R_n</m> ay supongamos que <m>x^n - 1 = g(x) h(x)</m>.  Entonces <m>G</m> y <m>H</m> son matriz generadora y verificadora para <m>C</m>, respectivamente.  Más aún, <m>HG = 0</m>.</p>
+					<p>Sea <m>C = \langle g(t) \rangle</m> un código cíclico en <m>R_n</m> y supongamos que <m>x^n - 1 = g(x) h(x)</m>.  Entonces <m>G</m> y <m>H</m> son matriz generadora y verificadora para <m>C</m>, respectivamente.  Más aún, <m>HG = 0</m>.</p>
 				</statement>
 			</proposition>
 
@@ -525,9 +525,9 @@
 						</ol></p>
 				</statement>
 				<proof>
-					<p>(1) <m>\Rightarrow</m> (2). Si <m>f(t)</m> está en <m>C</m>, entonces <m>g(x) \mid f(x)</m> en <m>{\mathbb Z}_2[x]</m>. Luego, para <m>i = 1, \ldots, 2r</m>, <m>f( \omega^i) = 0</m> pues <m>g( \omega^i ) = 0</m>. Recíprocamente, supongamos que <m>f( \omega^i) = 0</m> for <m>1 \leq i \leq d</m>. Entonces <m>f(x)</m> es divisible por cada <m>m_i(x)</m>, pues <m>m_i(x)</m> es el polinomio minimal de <m>\omega^i</m>. Por lo tanto, <m>g(x) \mid f(x)</m> porla definición de <m>g(x)</m>. Así, <m>f(x)</m> es una palabra del código.</p>
+					<p>(1) <m>\Rightarrow</m> (2). Si <m>f(t)</m> está en <m>C</m>, entonces <m>g(x) \mid f(x)</m> en <m>{\mathbb Z}_2[x]</m>. Luego, para <m>i = 1, \ldots, 2r</m>, <m>f( \omega^i) = 0</m> pues <m>g( \omega^i ) = 0</m>. Recíprocamente, supongamos que <m>f( \omega^i) = 0</m> for <m>1 \leq i \leq d</m>. Entonces <m>f(x)</m> es divisible por cada <m>m_i(x)</m>, pues <m>m_i(x)</m> es el polinomio minimal de <m>\omega^i</m>. Por lo tanto, <m>g(x) \mid f(x)</m> por la definición de <m>g(x)</m>. Así, <m>f(x)</m> es una palabra del código.</p>
 
-					<p>(2) <m>\Rightarrow</m> (3). Sea <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1}v t^{n - 1}</m> be in <m>R_n</m>. La correspondiente <m>n</m>-tupla en <m>{\mathbb Z}_2^n</m> es <m>{\mathbf x} = (a_0 a_1 \cdots a_{n - 1})^{\rm t}</m>. By (2),
+					<p>(2) <m>\Rightarrow</m> (3). Sea <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1}v t^{n - 1}</m> en <m>R_n</m>. La correspondiente <m>n</m>-tupla en <m>{\mathbb Z}_2^n</m> es <m>{\mathbf x} = (a_0 a_1 \cdots a_{n - 1})^{\rm t}</m>. Por (2),
 						<me>H {\mathbf x} =
 						\begin{pmatrix}<![CDATA[
 						a_0 + a_1 \omega + \cdots + a_{n-1} \omega^{n-1} \\
@@ -552,8 +552,8 @@
 			<example xml:id="example-finite-x15-1">
 				<p>Es fácil verificar que <m>x^{15} - 1 \in {\mathbb Z}_2[x]</m> se factoriza como
 					<me>x^{15} - 1 = (x + 1)(x^2 + x + 1)(x^4 + x + 1)(x^4 + x^3 + 1)(x^4 + x^3 + x^2 + x + 1),</me>
-				donde cada uno de estos factores es irreducible. Sea <m>\omega</m> una raíz de <m>1 + x + x^4</m>. Le cuerpo de Galois <m>\gf(2^4)</m> es
-					<me>\{ a_0 + a_1 \omega + a_2 \omega^2 + a_3 \omega^3 : a_i \in {\mathbb Z}_2 \text{ and } 1 + \omega + \omega^4 = 0 \}.</me>
+				donde cada uno de estos factores es irreducible. Sea <m>\omega</m> una raíz de <m>1 + x + x^4</m>. El cuerpo de Galois <m>\gf(2^4)</m> es
+					<me>\{ a_0 + a_1 \omega + a_2 \omega^2 + a_3 \omega^3 : a_i \in {\mathbb Z}_2 \text{ y } 1 + \omega + \omega^4 = 0 \}.</me>
 				Por el Ejemplo<nbsp /><xref ref="example-finite-gf-p24" />, <m>\omega</m> es una raíz 15 primitiva de la unidad. El polinomio minimal de  <m>\omega</m> es <m>m_1(x) = 1 + x + x^4</m>. Es fácil ver que <m>\omega^2</m> y <m>\omega^4</m> también son raíces de <m>m_1(x)</m>. El polinomio minimal de <m>\omega^3</m> es <m>m_2(x) = 1 + x + x^2 + x^3 + x^4</m>. Por lo tanto, 
 					<me>g(x) = m_1(x) m_2(x) = 1 + x^4 + x^6 + x^7 + x^8</me>
 				tiene raíces <m>\omega</m>, <m>\omega^2</m>, <m>\omega^3</m>, <m>\omega^4</m>.  Como tanto <m>m_1(x)</m> como <m>m_2(x)</m> dividen a <m>x^{15} - 1</m>, el código <acro>BCH</acro> es un código <m>(15, 7)</m>. Si <m>x^{15} -1 = g(x)h(x)</m>, entonces <m>h(x) = 1 + x^4 + x^6 + x^7</m>; por lo tanto, una matriz verificadora para este código es

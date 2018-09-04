@@ -17,7 +17,7 @@
 	<subsection>
 		<title>Espacios Vectoriales</title>
 
-		<p>La forma más simple de crear u espacio vectorial es comenzando con un cuerpo y usando un exponente para indicar el número de coordenadas de los vectores en el espacio.</p>
+		<p>La forma más simple de crear un espacio vectorial es comenzando con un cuerpo y usando un exponente para indicar el número de coordenadas de los vectores en el espacio.</p>
 
 		<sage>
 		<input>
@@ -239,7 +239,7 @@
 
 		<p>Sage implementa demasiados espacios vectoriales abstractos de forma directa, tales como <m>P_n</m>, el espacio vectorial de polinomios de grado menor o igual a <m>n</m>.  Esto se debe en parte al hecho que un espacio vectorial de dimensión finita sobre un cuerpo <m>F</m> es isomorfo al espacio vectorial <m>F^n</m>.  Por esto Sage captura toda la funcionalidad de los espacios vectoriales de dimensión finita, y le deja al usuario realizar la conversión de acuerdo al isomorfismo (lo que puede ser trivial con la elección de una base obvia).</p>
 
-		<p>Pero hay instancias en que anillos se comportan naturalmente como espacios vectoriales y podemos aprovechar esta estructura adicional.  Veremos mucho más sobre esto en los capítulos sobre cuerpos y teoría de Galois.  Como un ejemplo, los cuerpos finitos tienen un generador (uno) y las primeras potencias del generador forman una base.  Considere crear n espacio vectorial a partir de los elementos de un cuerpo finito de orden <m>7^6=117\,649</m>.  Como elementos de un cuerpo dabemos que se pueden sumar, de manera que <em>definiremos</em> esta como la suma en nuestro espacio vectorial.  Para cualquier entero mód 7, podemos multiplicar un elemento del cuerpo por el entero, así es que <em>definimos</em> este como nuestro producto por escalares.  Más adelante, estaremos seguros que estas definiciones nos llevan a un espacio vectorial, pero créanos por ahora.  Acá algunas operaciones en nuestro espacio vectorial nuevo.</p>
+		<p>Pero hay instancias en que anillos se comportan naturalmente como espacios vectoriales y podemos aprovechar esta estructura adicional.  Veremos mucho más sobre esto en los capítulos sobre cuerpos y teoría de Galois.  Como un ejemplo, los cuerpos finitos tienen un generador y las primeras potencias del generador forman una base.  Considere crear un espacio vectorial a partir de los elementos de un cuerpo finito de orden <m>7^6=117\,649</m>.  Como elementos de un cuerpo sabemos que se pueden sumar, de manera que <em>definiremos</em> esta como la suma en nuestro espacio vectorial.  Para cualquier entero mód 7, podemos multiplicar un elemento del cuerpo por el entero, así es que <em>definimos</em> este como nuestro producto por escalares.  Más adelante, estaremos seguros que estas definiciones nos llevan a un espacio vectorial, pero créanos por ahora.  Acá algunas operaciones en nuestro espacio vectorial nuevo.</p>
 
 		<sage>
 		<input>
@@ -311,7 +311,7 @@
 		</output>
 		</sage>
 
-		<p>Así, el cuerpo finito (como espacio vectoril) es isomorfo al espacio vectorial <m>({\mathbb Z}_7)^6</m>.  Notemos que este no es un isomorfismo de anillos o de cuerpos ya que no se hace cargo completamente de la multiplicación de elementos, aunque ésta es posible en el cuerpo.</p>
+		<p>Así, el cuerpo finito (como espacio vectorial) es isomorfo al espacio vectorial <m>({\mathbb Z}_7)^6</m>.  Notemos que este no es un isomorfismo de anillos o de cuerpos ya que no se hace cargo completamente de la multiplicación de elementos, aunque ésta es posible en el cuerpo.</p>
 
 		<p>Segundo, los elementos del cuerpo pueden ser convertidos fácilmente en elementos del espacio vectorial.</p>
 

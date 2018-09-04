@@ -13,7 +13,7 @@
 	<introduction>
 		<p>Una buena parte de de la implementación de teoría de grupos en Sage está basada en rutinas de <acro>GAP</acro> (Groups, Algorithms, and Programming) en <url href="http://www.gap-system.org/">www.gap-system.org</url>, que está incluido en cada copia de Sage.  Este es un paquete de código abierto maduro, que existe desde 1986.</p>
 
-		<p>Como hemos visto, los grupos pueden ser descritos de muchas maneras diferentes, tales como conjuntos de matrices, conjuntos de números complejos, o conjuntos de símbolos sujetos a ciertas relaciones.  Una manera muy concreta de repersentar grupos es via permutaciones (funciones biyectivas de los enteros del <m>1</m> al <m>n</m>), usando la composición de funciones como la operación en el grupo.  Sage tiene muchas rutinas diseñadas para trabajar con grupos de este tipo y son también una buena forma para que las personas que quieran aprender teoría de grupos ganen experiencia con las ideas básicas de la teoría de grupos.  Por estas dos razones, nos concentraremos en este tipo de grupos.</p>
+		<p>Como hemos visto, los grupos pueden ser descritos de muchas maneras diferentes, tales como conjuntos de matrices, conjuntos de números complejos, o conjuntos de símbolos sujetos a ciertas relaciones.  Una manera muy concreta de repersentar grupos es vía permutaciones (funciones biyectivas de los enteros del <m>1</m> al <m>n</m>), usando la composición de funciones como la operación en el grupo.  Sage tiene muchas rutinas diseñadas para trabajar con grupos de este tipo y son también una buena forma para que las personas que quieran aprender teoría de grupos ganen experiencia con las ideas básicas de la teoría de grupos.  Por estas dos razones, nos concentraremos en este tipo de grupos.</p>
 	</introduction>
 
 	<subsection>
@@ -235,7 +235,7 @@
 			<output>False</output>
 		</sage>
 
-		<p>Existen muchos métodos, tanto para los grupos de permutaciones como para sus elementos.  Use la celda vacía de más abajo para crear un grupo de permutaciones (el que quiera) y un elemento de un grupo de permutaciones (cualquiera).  A continuación usa la tab-completion para ver todos los métodos disponibles para un elemento, o para un grupo (nombre, punto, tecla-tab).  Algunos nombres los puede reconocer, otros los aprenderemos en los capítulos siguientes, algunos son herramientas muy especializadas de investigación que podría usar para desarrollar su tesis de doctorado en  teoría de grupos.  Para cualquiera de estos métodos, recuerde que puede escribir el nombre, seguido de un signo de interrogación, para ver la documentación y ejemplos.  <em>Experimente y explore</em> <mdash /> es realmente difícil hechar a perder algo. </p>
+		<p>Existen muchos métodos, tanto para los grupos de permutaciones como para sus elementos.  Use la celda vacía de más abajo para crear un grupo de permutaciones (el que quiera) y un elemento de un grupo de permutaciones (cualquiera).  A continuación usa la tab-completion para ver todos los métodos disponibles para un elemento, o para un grupo (nombre, punto, tecla-tab).  Algunos nombres los puede reconocer, otros los aprenderemos en los capítulos siguientes, algunos son herramientas muy especializadas de investigación que podría usar para desarrollar su tesis de doctorado en  teoría de grupos.  Para cualquiera de estos métodos, recuerde que puede escribir el nombre, seguido de un signo de interrogación, para ver la documentación y ejemplos.  <em>Experimente y explore</em> <mdash /> es realmente difícil hechar a perder algo. </p> 
 
 		<sage type="practice" />
 

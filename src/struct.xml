@@ -18,7 +18,7 @@
 	<title>La Estructura de Grupos</title>
 
 	<introduction>
-		<p>Un objetivo de la teoría de grupos es el de clasificar todos los grupos módulo ismorfismo; es decir, dado un grupo particular, queremos ser capaces de identificarlo con un grupo conocido por medio de un isomorfismo. Por ejemplo, ya demostramos que cualquier grupo cíclico finito de orden <m>n</m> es isomorfo a <m>{\mathbb Z}_n</m>; luego, <q>conocemos</q> todos los grupos cíclicos finitos. Probablemente no es razonable suponer que jamás vayamos a conocer todos los grupos; sin embargo, podemos clasificar ciertos tipos de grupos o distinguir entre grupos en casos especiales.</p> 
+		<p>Un objetivo de la teoría de grupos es el de clasificar todos los grupos módulo isomorfismo; es decir, dado un grupo particular, queremos ser capaces de identificarlo con un grupo conocido por medio de un isomorfismo. Por ejemplo, ya demostramos que cualquier grupo cíclico finito de orden <m>n</m> es isomorfo a <m>{\mathbb Z}_n</m>; luego, <q>conocemos</q> todos los grupos cíclicos finitos. Probablemente no es razonable suponer que jamás vayamos a conocer todos los grupos; sin embargo, podemos clasificar ciertos tipos de grupos o distinguir entre grupos en casos especiales.</p> 
 
 		<p>En este capítulo caracterizaremos todos los grupos abelianos finitos. También investigaremos grupos con sucesiones de subgrupos.  Si un grupo contiene una sucesión de subgrupos, digamos
 			<me>G = H_n \supset H_{n - 1} \supset \cdots \supset H_1 \supset H_0 = \{ e \},</me>
@@ -114,15 +114,15 @@
 						<mrow>a &amp; = a^{sp + tr}</mrow>
 						<mrow>&amp; = a^{sp} a^{tr}</mrow>
 						<mrow>&amp; = (a^p)^s (a^r)^t</mrow>
-						<mrow>&amp; = (a^p)^s 1</mrow>
+						<mrow>&amp; = (a^p)^s e</mrow>
 						<mrow>&amp; = (a^p)^s.</mrow>
 					</md>
-				Como <m>a^p \in H</m>, tenemos <m>a= (a^p)^s \in H</m>, lo que es una contradicción.  Por lo tanto, <m>a^r \neq 1</m> es un elemento de orden <m>p</m> in <m>G</m>.</p>
+				Como <m>a^p \in H</m>, tenemos <m>a= (a^p)^s \in H</m>, lo que es una contradicción.  Por lo tanto, <m>a^r \neq 1</m> es un elemento de orden <m>p</m> en <m>G</m>.</p>
 			</proof>
 
 		</lemma>
 
-		<p>El Lema<nbsp /><xref ref="lemma-cauchy-finite-abelian" /> es un caso particular del Teorema de Cauchy (Teorema<nbsp /><xref ref="theorem-cauchy" />, que dice que si <m>G</m> es un grupo finito y <m>p</m> es un primoque divide el orden de <m>G</m>, entonces <m>G</m> contiene un subgrupo de orden <m>p</m>.  Demostraremos el Teorema de Cauchy en el Capítulo<nbsp /><xref ref="sylow" />.</p>
+		<p>El Lema<nbsp /><xref ref="lemma-cauchy-finite-abelian" /> es un caso particular del Teorema de Cauchy (Teorema<nbsp /><xref ref="theorem-cauchy" />, que dice que si <m>G</m> es un grupo finito y <m>p</m> es un primo que divide el orden de <m>G</m>, entonces <m>G</m> contiene un subgrupo de orden <m>p</m>.  Demostraremos el Teorema de Cauchy en el Capítulo<nbsp /><xref ref="sylow" />.</p>
 
 		<lemma xml:id="lemma-p-group-order">
 			<statement>
@@ -276,7 +276,7 @@
 <!-- changed n to k in the example.  Suggested by P. Diethelm. -->
 <!-- TWJ 4/24/2013 -->
  
-		<p>Si bien una serie de composición no es necesariamente única como en el caso de <m>{\mathbb Z}_{60}</m>, resulta que dos series de composición cualquiera están relacionadas. Los cocientes de las dos series de composición para <m>{\mathbb Z}_{60}</m> son <m>{\mathbb Z}_2</m>,  <m>{\mathbb Z}_2</m>,  <m>{\mathbb Z}_3</m>, y  <m>{\mathbb Z}_5</m>; es decir, las dos series de composición son isomorfasEl Teorema de Jordan-Hölder dice que esto siempre se cumple.</p>
+		<p>Si bien una serie de composición no es necesariamente única como en el caso de <m>{\mathbb Z}_{60}</m>, resulta que dos series de composición cualquiera están relacionadas. Los cocientes de las dos series de composición para <m>{\mathbb Z}_{60}</m> son <m>{\mathbb Z}_2</m>,  <m>{\mathbb Z}_2</m>,  <m>{\mathbb Z}_3</m>, y  <m>{\mathbb Z}_5</m>; es decir, las dos series de composición son isomorfas. El Teorema de Jordan-Hölder dice que esto siempre se cumple.</p>
  
 		<theorem>
 			<title>Jordan-Hölder</title>

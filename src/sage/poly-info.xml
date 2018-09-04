@@ -9,5 +9,5 @@
 <paragraphs>
 	<title>Sage</title>
 
-	<p>Los anillos de polinomios son muy importantes para el álgebra computacionasl, y Sage permite calcular de manera fácil con polinomios, tanto sobre anillos como sobre cuerpor.  Y es trivial verificar si un polinomio es irreducible.</p>
+	<p>Los anillos de polinomios son muy importantes para el álgebra computacional, y Sage permite calcular de manera fácil con polinomios, tanto sobre anillos como sobre cuerpos.  Y es trivial verificar si un polinomio es irreducible.</p>
 </paragraphs>

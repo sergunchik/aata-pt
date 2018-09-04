@@ -57,14 +57,14 @@
 			Si <m>f(x)</m> es un polinomio en <m>F[x]</m> y <m>E</m> es el cuerpo de descomposición de <m>f(x)</m> sobre <m>F</m>, entonces definimos el grupo de Galois de <m>f(x)</m> como <m>G(E/F)</m>. <notation><usage>G(E/F)</usage><description>Grupo de Galois de <m>E</m> sobre <m>F</m></description></notation></p>
 
 			<example xml:id="example-galois-complex-conj">
-				<p>La conjugación compleja, definida como <m>\sigma : a + bi \mapsto a - bi</m>, es un automorfism de los números complejos.  Como 
+				<p>La conjugación compleja, definida como <m>\sigma : a + bi \mapsto a - bi</m>, es un automorfismo de los números complejos.  Como 
 					<me>\sigma(a) = \sigma(a + 0i) = a - 0i = a,</me>
 				el automorfismo definido por conjugación compleja está en <m>G( {\mathbb C} / {\mathbb R} )</m>.</p></example>
 
 			<example xml:id="example-galois-q-sqrt5">
 				<p>Considere los cuerpos <m>{\mathbb Q} \subset {\mathbb Q}(\sqrt{5}\, ) \subset {\mathbb Q}( \sqrt{3}, \sqrt{5}\, )</m>.  Entonces para <m>a, b \in {\mathbb Q}( \sqrt{5}\, )</m>,
 					<me>\sigma( a + b \sqrt{3}\, ) = a - b \sqrt{3}</me>
-				es un automorfismode <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> que deja <m>{\mathbb Q}( \sqrt{5}\, )</m> fijo.  Similarmente,
+				es un automorfismo de <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> que deja <m>{\mathbb Q}( \sqrt{5}\, )</m> fijo.  Similarmente,
 					<me>\tau( a + b \sqrt{5}\, ) = a - b \sqrt{5}</me>
 				es un automorfismo de <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> que deja <m>{\mathbb Q}( \sqrt{3}\, )</m> fijo. El automorfismo <m>\mu = \sigma \tau</m> mueve tanto <m>\sqrt{3}</m> como <m>\sqrt{5}</m>.  Pronto estará claro que <m>\{ \identity, \sigma, \tau, \mu  \}</m> es el grupo de Galois <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> sobre <m>{\mathbb Q}</m>. La próxima tabla muestra que este grupo es isomorfo a <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>.
 					<me>\begin{array}{c|cccc}
@@ -112,8 +112,8 @@
 						<me>|G(E/F)| = [E:F].</me></p>
 				</statement>
 				<proof>
-					<p>Procederemos por inducción en el grado de <m>f(x)</m>. Si el grado de <m>f(x)</m> es 0 o 1, entonces <m>E = F</m> y no hay nada que mostrar . Supongamos que el resultado se cumple para todos los polinomios de grado <m>k</m> con <m>0 \leq k \lt n</m>.  Supongamos que el grado de <m>f(x)</m> is <m>n</m>.  Sea <m>p(x)</m> un factor irreducible de <m>f(x)</m> de grado <m>r</m>. Como todas las raíces de <m>p(x)</m> están en <m>E</m>, podemos escoger una de esas raíces, digamos <m>\alpha</m>, de manera que <m>F \subset F( \alpha ) \subset E</m>. Entonces
-						<me>[E: F(\alpha)] = n/r \quad \text{and} \quad [F(\alpha): F] = r.</me>
+					<p>Procederemos por inducción en el grado de <m>f(x)</m>. Si el grado de <m>f(x)</m> es 0 o 1, entonces <m>E = F</m> y no hay nada que mostrar . Supongamos que el resultado se cumple para todos los polinomios de grado <m>k</m> con <m>0 \leq k \lt n</m>.  Supongamos que el grado de <m>f(x)</m> es <m>n</m>.  Sea <m>p(x)</m> un factor irreducible de <m>f(x)</m> de grado <m>r</m>. Como todas las raíces de <m>p(x)</m> están en <m>E</m>, podemos escoger una de esas raíces, digamos <m>\alpha</m>, de manera que <m>F \subset F( \alpha ) \subset E</m>. Entonces
+						<me>[E: F(\alpha)] = n/r \quad \text{y} \quad [F(\alpha): F] = r.</me>
 					Si <m>\beta</m> es cualquier otra raíz de <m>p(x)</m>, entonces <m>F \subset F( \beta ) \subset E</m>. Por el Lema<nbsp /><xref ref="lemma-field-isomorphism" />, existe un único isomorfismo <m>\sigma: F( \alpha ) \rightarrow F( \beta )</m> para cada <m>\beta</m> que fija todos los elementos de <m>F</m>.  Como <m>E</m> es un cuerpo de descomposición de <m>p(x)</m>, hay exactamente <m>r</m> tales isomorfismos. Para cada uno de estos automorfismos, podemos usar la hipótesis de inducción en <m>[E: F(\alpha)] = n/r \lt n</m> para concluir que 
 						<me>|G(E/F(\alpha))| = [E:F(\alpha)].</me>
 					Por lo tanto, existen
@@ -142,7 +142,7 @@
 			</corollary>
 
 			<example xml:id="example-galois-group-sqrt3-5">
-				<p>Podemos ahora confirmar que el gruo de Galoi de <m>{\mathbb Q}( \sqrt{3}, \sqrt{5}\, )</m> sobre <m>{\mathbb Q}</m> en el Ejemplo<nbsp /><xref ref="example-galois-q-sqrt5" /> es isomorfo a <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>.  Por cierto, el grupo <m>H = \{ \identity, \sigma, \tau, \mu \}</m> es un subgrupo de <m>G({\mathbb Q}( \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})</m>; pero,  <m>H</m> debe ser todo <m>G({\mathbb Q}( \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})</m>, pues
+				<p>Podemos ahora confirmar que el grupo de Galois de <m>{\mathbb Q}( \sqrt{3}, \sqrt{5}\, )</m> sobre <m>{\mathbb Q}</m> en el Ejemplo<nbsp /><xref ref="example-galois-q-sqrt5" /> es isomorfo a <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>.  Por cierto, el grupo <m>H = \{ \identity, \sigma, \tau, \mu \}</m> es un subgrupo de <m>G({\mathbb Q}( \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})</m>; pero,  <m>H</m> debe ser todo <m>G({\mathbb Q}( \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})</m>, pues
 					<me>|H| = [{\mathbb Q}( \sqrt{3}, \sqrt{5}\, ):{\mathbb Q}] = |G({\mathbb Q}( \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})| = 4.</me></p>
 			</example>
 	 
@@ -151,7 +151,7 @@
 					<me>f(x) = x^4 + x^3 + x^2 + x + 1</me>
 				sobre <m>{\mathbb Q}</m>. Sabemos que <m>f(x)</m> es irreducible por el Ejercicio<nbsp /><xref ref="exercise-poly-cyclotomic-polynomials" /> en el Capítulo<nbsp /><xref ref="poly" />.  Más aún, como <m>(x -1)f(x) = x^5 -1</m> podemos usar el Teorema de DeMoivre para determinar que las raíces de <m>f(x)</m> son <m>\omega^i</m>,  donde  <m>i = 1, \ldots, 4</m> y 
 					<me>\omega = \cos(2 \pi / 5 ) + i \sin(2 \pi / 5 ).</me>
-				Luego, el cuerpo de descomposición de <m>f(x)</m> debe ser <m>{\mathbb Q}(\omega)</m>.  Podemos definir automorfismos <m>\sigma_i</m> de <m>{\mathbb Q}(\omega )</m> como <m>\sigma_i( \omega ) = \omega^i</m> para <m>i = 1, \ldots, 4</m>.  Es fácil verificar que estos son realmente automorfismos diferetnes en <m>G( {\mathbb Q}( \omega) / {\mathbb Q} )</m>.  Como 
+				Luego, el cuerpo de descomposición de <m>f(x)</m> debe ser <m>{\mathbb Q}(\omega)</m>.  Podemos definir automorfismos <m>\sigma_i</m> de <m>{\mathbb Q}(\omega )</m> como <m>\sigma_i( \omega ) = \omega^i</m> para <m>i = 1, \ldots, 4</m>.  Es fácil verificar que estos son realmente automorfismos diferentes en <m>G( {\mathbb Q}( \omega) / {\mathbb Q} )</m>.  Como 
 					<me>[{\mathbb Q}( \omega) : {\mathbb Q}] = | G( {\mathbb Q}( \omega) / {\mathbb Q})| = 4,</me>
 				los <m>\sigma_i</m> deben ser todo <m>G( {\mathbb Q}( \omega) / {\mathbb Q} )</m>. Por lo tanto, <m>G({\mathbb Q}( \omega) / {\mathbb Q})\cong {\mathbb Z}_4</m> pues <m>\omega</m> es un generador para el grupo de Galois.</p>
 			</example>
@@ -270,18 +270,18 @@
 					El problema es que algunos de los <m>a_i</m> podrían estar en <m>E</m> pero no en <m>F</m>. Debemos mostrar que esto es imposible.</p>
 
 	 
-					<p>Supongamos que al menos uno de los <m>a_i</m> está en <m>E</m> pero no en <m>F</m>. Reordenendo los <m>\alpha_i</m> podemos suponer que <m>a_1</m> es distinto de cero. Como cualquier múltiplo de una solución también es una solución, podemos suponer además que <m>a_1 = 1</m>. De todas las posibles soluciones que satisfacen esta descripción, elegimos la que tenga el menor número de términos distintos de cero. Nuevamente, reordenando  <m>\alpha_2, \ldots, \alpha_{n + 1}</m> si fuera necesario, podemos suponer que <m>a_2</m> está en <m>E</m> pero no en <m>F</m>. Como <m>F</m> es el subcuerpo de <m>E</m> cuyos elementos quedan fijos por <m>G</m>, existe <m>\sigma_i</m> en <m>G</m> tal que <m>\sigma_i( a_2 ) \neq a_2</m>. Aplicando <m>\sigma_i</m> a cada ecuación en el sistema, obtenemos el mismo sistema homogéneo, pues <m>G</m> es un grupo. Por lo tanto, <m>x_1 = \sigma_i(a_1) = 1</m>, <m>x_2 = \sigma_i(a_2)</m>, <m>\ldots</m>, <m>x_{n + 1} = \sigma_i(a_{n+1} )</m> también es solución del sistema original. Sabemos que una combinación lineal de dos soluciones de un sistema homogéneo es nuevamente una solución; concluimos que   
+					<p>Supongamos que al menos uno de los <m>a_i</m> está en <m>E</m> pero no en <m>F</m>. Reordenando los <m>\alpha_i</m> podemos suponer que <m>a_1</m> es distinto de cero. Como cualquier múltiplo de una solución también es una solución, podemos suponer además que <m>a_1 = 1</m>. De todas las posibles soluciones que satisfacen esta descripción, elegimos la que tenga el menor número de términos distintos de cero. Nuevamente, reordenando  <m>\alpha_2, \ldots, \alpha_{n + 1}</m> si fuera necesario, podemos suponer que <m>a_2</m> está en <m>E</m> pero no en <m>F</m>. Como <m>F</m> es el subcuerpo de <m>E</m> cuyos elementos quedan fijos por <m>G</m>, existe <m>\sigma_i</m> en <m>G</m> tal que <m>\sigma_i( a_2 ) \neq a_2</m>. Aplicando <m>\sigma_i</m> a cada ecuación en el sistema, obtenemos el mismo sistema homogéneo, pues <m>G</m> es un grupo. Por lo tanto, <m>x_1 = \sigma_i(a_1) = 1</m>, <m>x_2 = \sigma_i(a_2)</m>, <m>\ldots</m>, <m>x_{n + 1} = \sigma_i(a_{n+1} )</m> también es solución del sistema original. Sabemos que una combinación lineal de dos soluciones de un sistema homogéneo es nuevamente una solución; concluimos que   
 						<md>
 							<mrow>x_1 &amp; = 1 -1 = 0</mrow>
 							<mrow>x_2 &amp; = a_2 - \sigma_i(a_2)</mrow>
 							<mrow>&amp; \vdots &amp;</mrow>
 							<mrow>x_{n + 1} &amp; = a_{n + 1} - \sigma_i(a_{n + 1})</mrow>
 						</md>
-					debe ser otra solución del sistema. Esta es una solución no trivial pues <m>\sigma_i( a_2 ) \neq a_2</m>, y tiene menos términos distintos de cero que nuestra solución original. Esto es una contradicción, pues elnúmero de términos distintos de cero de nuestra solución original se había supuesto minimal. Podemos concluir que <m>a_1, \ldots, a_{n + 1} \in F</m>.</p>
+					debe ser otra solución del sistema. Esta es una solución no trivial pues <m>\sigma_i( a_2 ) \neq a_2</m>, y tiene menos términos distintos de cero que nuestra solución original. Esto es una contradicción, pues el número de términos distintos de cero de nuestra solución original se había supuesto minimal. Podemos concluir que <m>a_1, \ldots, a_{n + 1} \in F</m>.</p>
 				</proof>
 			</lemma>
 	 
-			<p>Sea <m>E</m> una extensión algebraica de <m>F</m>. Si todo polinomio irreducible en <m>F[x]</m> con una raíz en <m>E</m> tiene todas sus raíces en <m>E</m>, entonces <m>E</m> se llama <term>extensión normal</term><idx><h>Normal</h><h>extensión</h></idx><idx><h>Extensión normal</h></idx> de <m>F</m>; es decir, todo polinomio irreducible en<m>F[x]</m> que contiene una raíz en <m>E</m> es el producto de factores lineales en <m>E[x]</m>.</p> 
+			<p>Sea <m>E</m> una extensión algebraica de <m>F</m>. Si todo polinomio irreducible en <m>F[x]</m> con una raíz en <m>E</m> tiene todas sus raíces en <m>E</m>, entonces <m>E</m> se llama <term>extensión normal</term><idx><h>Normal</h><h>extensión</h></idx><idx><h>Extensión normal</h></idx> de <m>F</m>; es decir, todo polinomio irreducible en <m>F[x]</m> que contiene una raíz en <m>E</m> es el producto de factores lineales en <m>E[x]</m>.</p> 
 			<theorem>
 				<statement>
 					<p>Sea <m>E</m> una extensión de cuerpos de <m>F</m>. Entonces las siguientes proposiciones son equivalentes.
@@ -315,7 +315,7 @@
 				</proof>
 			</corollary>
 	 
-			<p>Antes de determiar la correspondencia exacta entre extensiones de cuerpos y automorfismos de cuerpos, volvamos a un ejemplo familiar.</p>
+			<p>Antes de determinar la correspondencia exacta entre extensiones de cuerpos y automorfismos de cuerpos, volvamos a un ejemplo familiar.</p>
 
 			<example xml:id="example-galois-field-lattice">
 				<p>En el Ejemplo<nbsp /><xref ref="example-galois-q-sqrt5" /> examinamos los automorfismos de <m>{\mathbb Q}( \sqrt{3}, \sqrt{5}\, )</m> que fijan <m>{\mathbb Q}</m>. La Figura<nbsp /><xref ref="figure-galois-1" />  compara el reticulado de extensiones de cuerpos de <m>{\mathbb Q}</m> con el reticulado de subgrupos de <m>G( {\mathbb Q}( \sqrt{3}, \sqrt{5}\, ) /{\mathbb Q})</m>. El Teorema Fundamental de la Teoría de Galois nos dice cuál es la relación entre estos dos reticulados.</p>
@@ -539,9 +539,9 @@
 		</introduction>
 
 		<subsection xml:id="galois-subsection-historical-note">
-			<title>Historical Note</title>
+			<title>Nota Histórica</title>
  
-			<p>Las fórmulas para las soluciones generales de las ecuaciones cúbicas y cuárticas fueron descubiertas en el siglo XVI. Los intentos de encontrar fórmulas similares para la ecuación quínticas desafiaron a algunos de los mejores matemáticos de la historia.  En 1798, P. Ruffini<idx><h>Ruffini, P.</h></idx> envió una publicación afirmando que tal solución no era posible; pero su trabajoono fue bien recibido. En 1826, Niels Henrik Abel<idx><h>Abel, Niels Henrik</h></idx> (1802<ndash />1829) finalmente ofreció la primera demostración correcta de que las ecuaciones quínticas no siempre se pueden resolver por radicales.</p>
+			<p>Las fórmulas para las soluciones generales de las ecuaciones cúbicas y cuárticas fueron descubiertas en el siglo XVI. Los intentos de encontrar fórmulas similares para la ecuación quínticas desafiaron a algunos de los mejores matemáticos de la historia.  En 1798, P. Ruffini<idx><h>Ruffini, P.</h></idx> envió una publicación afirmando que tal solución no era posible; pero su trabajo no fue bien recibido. En 1826, Niels Henrik Abel<idx><h>Abel, Niels Henrik</h></idx> (1802<ndash />1829) finalmente ofreció la primera demostración correcta de que las ecuaciones quínticas no siempre se pueden resolver por radicales.</p>
  
 			<p>El trabajo de Abel fue una inspiración para Évariste Galois<idx><h>Galois, Évariste</h></idx>. Nacido en 1811, Galois comenzó a mostrar talento matemático extraordinario a los 14 años. Postuló a la École Polytechnique en varias ocasiones; pero tuvo gran dificultad en cumplir con los requisitos formales de admisión, y los examinadores no reconocieron su genialidad matemática. Finalmente fue admitido a la École Normale en 1829.</p>  
 
@@ -585,12 +585,12 @@
 					<p>Sea <m>F</m> un cuerpo de característica cero y <m>E</m> el cuerpo de descomposición de <m>x^n - a</m> sobre <m>F</m> con <m>a \in F</m>. Entonces <m>G(E/F)</m> es un grupo soluble.</p>
 				</statement>
 				<proof>
-					<p>Las raíces de <m>x^n - a</m> son <m>\sqrt[n]{a}, \omega	\sqrt[n]{a}, \ldots, \omega^{n-1} \sqrt[n]{a}</m>, con <m>\omega</m> una raíz <m>n</m>-ésima primitiva de la unidad.  Supongamos que <m>F</m> contiene todas las raíces <m>n</m>-ésimas de la unidad.  Si <m>\zeta</m> es una de las raíces de <m>x^n - a</m>, entonces las diferentes raíces de <m>x^n - a</m> son <m>\zeta, \omega \zeta, \ldots, \omega^{n - 1} \zeta</m>, y <m>E = F(\zeta)</m>. Como <m>G(E/F)</m> permuta las raíces de <m>x^n - a</m>, los elemento en <m>G(E/F)</m> deben estar determinados por su acción en estas raíces. Sean <m>\sigma</m>  y <m>\tau</m> en <m>G(E/F)</m> y supongamos que <m>\sigma( \zeta ) = \omega^i  \zeta</m> y <m>\tau( \zeta ) = \omega^j \zeta</m>. If <m>F</m> contains the roots of unity, entonces 
+					<p>Las raíces de <m>x^n - a</m> son <m>\sqrt[n]{a}, \omega	\sqrt[n]{a}, \ldots, \omega^{n-1} \sqrt[n]{a}</m>, con <m>\omega</m> una raíz <m>n</m>-ésima primitiva de la unidad.  Supongamos que <m>F</m> contiene todas las raíces <m>n</m>-ésimas de la unidad.  Si <m>\zeta</m> es una de las raíces de <m>x^n - a</m>, entonces las diferentes raíces de <m>x^n - a</m> son <m>\zeta, \omega \zeta, \ldots, \omega^{n - 1} \zeta</m>, y <m>E = F(\zeta)</m>. Como <m>G(E/F)</m> permuta las raíces de <m>x^n - a</m>, los elemento en <m>G(E/F)</m> deben estar determinados por su acción en estas raíces. Sean <m>\sigma</m>  y <m>\tau</m> en <m>G(E/F)</m> y supongamos que <m>\sigma( \zeta ) = \omega^i  \zeta</m> y <m>\tau( \zeta ) = \omega^j \zeta</m>. Si <m>F</m> contiene las raíces de la unidad, entonces 
 						<me>\sigma \tau( \zeta ) = \sigma( \omega^j \zeta) = \omega^j \sigma( \zeta ) = \omega^{i+j} \zeta = \omega^i \tau( \zeta ) = \tau( \omega^i \zeta ) = \tau \sigma( \zeta ).</me>
 					Por lo tanto, <m>\sigma \tau = \tau \sigma</m> y <m>G(E/F)</m> es abeliano, en particular es soluble.</p>
 
  
-					<p>Ahora supongamos que <m>F</m> no contiene raíces <m>n</m>-ésimass primitivas de la unidad. Sea <m>\omega</m> un generador del grupo cíclico de las raíces <m>n</m>-ésimas de la unidad.  Sea <m>\alpha</m> un cero de <m>x^n - a</m>. Como <m>\alpha</m> y <m>\omega \alpha</m> están ambos en el cuerpo de descomposición de <m>x^n - a</m>, <m>\omega = (\omega \alpha)/ \alpha</m> también está en <m>E</m>. Sea <m>K = F( \omega)</m>. Entonces <m>F \subset K \subset E</m>. Since <m>K</m> es el cuerpo de descomposición de <m>x^n - 1</m>, <m>K</m> es una etensión normal de <m>F</m>.  Por lo tanto, cualquier automorfismo <m>\sigma</m> en <m>G(F( \omega)/ F)</m> está determinado por <m>\sigma( \omega)</m>.  Se debe tener que <m>\sigma( \omega ) = \omega^i</m> para algún entero <m>i</m> pues todos los ceros de <m>x^n - 1</m> son potencias de <m>\omega</m>. Si <m>\tau( \omega ) = \omega^j</m> está en <m>G(F(\omega)/F)</m>, entonces
+					<p>Ahora supongamos que <m>F</m> no contiene raíces <m>n</m>-ésimass primitivas de la unidad. Sea <m>\omega</m> un generador del grupo cíclico de las raíces <m>n</m>-ésimas de la unidad.  Sea <m>\alpha</m> un cero de <m>x^n - a</m>. Como <m>\alpha</m> y <m>\omega \alpha</m> están ambos en el cuerpo de descomposición de <m>x^n - a</m>, <m>\omega = (\omega \alpha)/ \alpha</m> también está en <m>E</m>. Sea <m>K = F( \omega)</m>. Entonces <m>F \subset K \subset E</m>. Como <m>K</m> es el cuerpo de descomposición de <m>x^n - 1</m>, <m>K</m> es una extensión normal de <m>F</m>.  Por lo tanto, cualquier automorfismo <m>\sigma</m> en <m>G(F( \omega)/ F)</m> está determinado por <m>\sigma( \omega)</m>.  Se debe tener que <m>\sigma( \omega ) = \omega^i</m> para algún entero <m>i</m> pues todos los ceros de <m>x^n - 1</m> son potencias de <m>\omega</m>. Si <m>\tau( \omega ) = \omega^j</m> está en <m>G(F(\omega)/F)</m>, entonces
 						<me>\sigma \tau( \omega ) = \sigma( \omega^j ) = [ \sigma( \omega )]^j = \omega^{ij} = [\tau( \omega ) ]^i = \tau( \omega^i )  = \tau \sigma( \omega ).</me>
 					Por lo tanto, <m>G(F( \omega ) / F)</m> es abeliano.  Por el Teorema Fundamental de la Teoría de Galois, la serie
 						<me>\{ \identity \} \subset G(E/ F(\omega)) \subset G(E/F)</me>
@@ -627,7 +627,7 @@
 					<p>Sea <m>f(x)</m> un polinomio en <m>F[x]</m>, con <m>\chr F = 0</m>. Si <m>f(x)</m> es soluble por radicales, entonces el grupo de Galois de <m>f(x)</m> sobre <m>F</m> es soluble.</p>
 				</statement>
 				<proof>
-					<p>Como <m>f(x)</m> es soluv¡ble por radicales existe una extensión <m>E</m> de <m>F</m> por radicales <m>F = F_0 \subset F_1 \subset \cdots \subset F_n = E</m>. Por el Lema<nbsp /><xref ref="lemma-radical-extension" />, podemos suponer que <m>E</m> es un cuerpo de descomposición de <m>f(x)</m> y   <m>F_i</m> es normal sobre <m>F_{i - 1}</m>. Por el Teorema Fundamental de la Teoría de Galois, <m>G(E/F_i)</m> es un subgrupo normal de <m>G(E/F_{i - 1})</m>.  Por lo tanto, tenemos una serie subnormal de subgrupos de <m>G(E/F)</m>:  
+					<p>Como <m>f(x)</m> es soluble por radicales existe una extensión <m>E</m> de <m>F</m> por radicales <m>F = F_0 \subset F_1 \subset \cdots \subset F_n = E</m>. Por el Lema<nbsp /><xref ref="lemma-radical-extension" />, podemos suponer que <m>E</m> es un cuerpo de descomposición de <m>f(x)</m> y   <m>F_i</m> es normal sobre <m>F_{i - 1}</m>. Por el Teorema Fundamental de la Teoría de Galois, <m>G(E/F_i)</m> es un subgrupo normal de <m>G(E/F_{i - 1})</m>.  Por lo tanto, tenemos una serie subnormal de subgrupos de <m>G(E/F)</m>:  
 						<me>\{ \identity \} \subset G(E/F_{n - 1}) \subset \cdots \subset G(E/F_1) \subset G(E/F).</me>
 					Nuevamente por el Teorema Fundamental de la Teoría de Galois, sabemos que
 						<me>G(E/F_{i - 1})/G(E/F_i) \cong G(F_i/F_{i - 1}).</me>
@@ -651,7 +651,7 @@
 					<p>Si <m>p</m> es primo, entonces cualquier subgrupo de <m>S_p</m> que contenga una transposición y un ciclo de largo <m>p</m> es todo <m>S_p</m>.</p>
 				</statement>
 				<proof>
-					<p>Sea <m>G</m> un subgrupo de <m>S_p</m> que contenga una transposición <m>\sigma</m> y <m>\tau</m> un ciclo de largo <m>p</m>.  Podemos suponer que <m>\sigma = (1 2)</m>.  El orden de  <m>\tau</m> es <m>p</m> y <m>\tau^n</m> es un ciclo de largo <m>p</m> para <m>1 \leq n \lt p</m>.  Por lo tanto, podemos suponer que <m>\mu = \tau^n = (1 2 i_3 \ldots i_p)</m> para algún <m>n</m>, donde <m>1 \leq n \lt p</m> (vea el Ejercicio<nbsp /><xref ref="exercise-permute-order-product-cycles" /> en el Capítulo<nbsp /><xref ref="permute" />). Observando que <m>(1 2)(12 i_3\ldots i_p) = (2 i_3\ldots i_p)</m> y <m>(2i_3 \ldots i_p)^k(12)(2i_3 \ldots i_p)^{-k} = (1i_k)</m>, podemos obtener todas las transposiciones de la forma <m>(1n)</m> para <m>1 \leq n \lt p</m>. Pero, estas transposiciones generan todas las transpociciones en <m>S_p</m>, pues <m>(1j)(1 i)(1 j) = (i j)</m>.  Las transposiciones generan <m>S_p</m>.</p>
+					<p>Sea <m>G</m> un subgrupo de <m>S_p</m> que contenga una transposición <m>\sigma</m> y <m>\tau</m> un ciclo de largo <m>p</m>.  Podemos suponer que <m>\sigma = (1 2)</m>.  El orden de  <m>\tau</m> es <m>p</m> y <m>\tau^n</m> es un ciclo de largo <m>p</m> para <m>1 \leq n \lt p</m>.  Por lo tanto, podemos suponer que <m>\mu = \tau^n = (1 2 i_3 \ldots i_p)</m> para algún <m>n</m>, donde <m>1 \leq n \lt p</m> (vea el Ejercicio<nbsp /><xref ref="exercise-permute-order-product-cycles" /> en el Capítulo<nbsp /><xref ref="permute" />). Observando que <m>(1 2)(12 i_3\ldots i_p) = (2 i_3\ldots i_p)</m> y <m>(2i_3 \ldots i_p)^k(12)(2i_3 \ldots i_p)^{-k} = (1i_k)</m>, podemos obtener todas las transposiciones de la forma <m>(1n)</m> para <m>1 \leq n \lt p</m>. Pero, estas transposiciones generan todas las transposiciones en <m>S_p</m>, pues <m>(1j)(1 i)(1 j) = (i j)</m>.  Las transposiciones generan <m>S_p</m>.</p>
 				</proof>
 			</lemma>
  
@@ -696,7 +696,7 @@
 			<example xml:id="example-galois-x5">
 				<p>Mostraremos que <m>f(x) = x^5 - 6 x^3 - 27 x - 3 \in {\mathbb Q}[x]</m> no es soluble. Afirmamos que el grupo de Galois de <m>f(x)</m> sobre <m>{\mathbb Q}</m> es <m>S_5</m>. Por el Criterio de Eisenstein, <m>f(x)</m> es irreducible y, por lo tanto, es separable. La derivada de <m>f(x)</m> es <m>f'(x) = 5 x^4 - 18 x^2 - 27</m>; luego, poniendo <m>f'(x) = 0</m> y resolviendo, vemos que las únicas raíces reales de <m>f'(x)</m> son
 					<me>x = \pm \sqrt{ \frac{6 \sqrt{6} + 9 }{5} }.</me>
-				Por lo tanto, <m>f(x)</m> puede tener a lo sumo un máximo y un mínimo. Es fácil mostrar que <m>f(x)</m> cambia de signo entre <m>-3</m> y <m>-2</m>, entre <m>-2</m> y <m>0</m>, y una vez más entre <m>0</m> y <m>4</m> (Figura<nbsp /><xref ref="figure-galois-4" />). Por lo tanto, <m>f(x)</m> tiene precisamente tres raíces reales diferentes. Las restantes dos raíces de <m>f(x)</m> deben ser complejos conjugados. Sea <m>K</m> el cuerpo de descomposición de <m>f(x)</m>. Como <m>f(x)</m> tiene cincoraíces distintas en <m>K</m> y todo automorfismode <m>K</m> que fija a <m>{\mathbb Q}</m> está determinado por la forma en que permuta las raíces de <m>f(x)</m>, sabemos que <m>G(K/{\mathbb Q})</m> es un subgrupo de <m>S_5</m>. Como <m>f</m> es irreducible, hay un elemento en <m>\sigma \in G(K/{\mathbb Q})</m> tal que <m>\sigma(a) = b</m> para dos raíces <m>a</m> y <m>b</m> de <m>f(x)</m>. El automorfismo de <m>{\mathbb C}</m> que envía <m>a + bi \mapsto a - bi</m> dejas fijas las raíces reales e intercambia las raíces complejas; por ende, <m>G(K/{\mathbb Q} )</m> contiene una transposición. Si <m>\alpha</m> es una de las raíces reale de <m>f(x)</m>, entonces <m>[\mathbb Q(\alpha) : \mathbb Q] = 5</m> por el Ejercicio <nbsp /><xref ref="exercise-fields-degree-irred-poly" />.  Como <m>\mathbb Q(\alpha)</m> es un subcuerpo de <m>K</m>, debe ser que <m>[K : \mathbb Q]</m> es divisible por 5.  Como <m>[K : \mathbb Q] = |G(K/{\mathbb Q})|</m> y <m>G(K/{\mathbb Q}) \subset S_5</m>, sabemos que <m>G(K/{\mathbb Q})</m> contiene un ciclo de largo 5. Por el Lema<nbsp /><xref ref="lemma-sn-generating" />, <m>S_5</m> está generado por una transposición y un elemento de orden 5; por lo tanto, <m>G(K/{\mathbb Q} )</m> es todo <m>S_5</m>. Por el Teorema<nbsp /><xref ref="theorem-an-simple" />, <m>S_5</m> no es soluble. Por lo tanto, <m>f(x)</m> no se puede resolver por radicales.</p>
+				Por lo tanto, <m>f(x)</m> puede tener a lo sumo un máximo y un mínimo. Es fácil mostrar que <m>f(x)</m> cambia de signo entre <m>-3</m> y <m>-2</m>, entre <m>-2</m> y <m>0</m>, y una vez más entre <m>0</m> y <m>4</m> (Figura<nbsp /><xref ref="figure-galois-4" />). Por lo tanto, <m>f(x)</m> tiene precisamente tres raíces reales diferentes. Las restantes dos raíces de <m>f(x)</m> deben ser complejos conjugados. Sea <m>K</m> el cuerpo de descomposición de <m>f(x)</m>. Como <m>f(x)</m> tiene cinco raíces distintas en <m>K</m> y todo automorfismo de <m>K</m> que fija a <m>{\mathbb Q}</m> está determinado por la forma en que permuta las raíces de <m>f(x)</m>, sabemos que <m>G(K/{\mathbb Q})</m> es un subgrupo de <m>S_5</m>. Como <m>f</m> es irreducible, hay un elemento en <m>\sigma \in G(K/{\mathbb Q})</m> tal que <m>\sigma(a) = b</m> para dos raíces <m>a</m> y <m>b</m> de <m>f(x)</m>. El automorfismo de <m>{\mathbb C}</m> que envía <m>a + bi \mapsto a - bi</m> dejas fijas las raíces reales e intercambia las raíces complejas; por ende, <m>G(K/{\mathbb Q} )</m> contiene una transposición. Si <m>\alpha</m> es una de las raíces reales de <m>f(x)</m>, entonces <m>[\mathbb Q(\alpha) : \mathbb Q] = 5</m> por el Ejercicio <nbsp /><xref ref="exercise-fields-degree-irred-poly" />.  Como <m>\mathbb Q(\alpha)</m> es un subcuerpo de <m>K</m>, debe ser que <m>[K : \mathbb Q]</m> es divisible por 5.  Como <m>[K : \mathbb Q] = |G(K/{\mathbb Q})|</m> y <m>G(K/{\mathbb Q}) \subset S_5</m>, sabemos que <m>G(K/{\mathbb Q})</m> contiene un ciclo de largo 5. Por el Lema<nbsp /><xref ref="lemma-sn-generating" />, <m>S_5</m> está generado por una transposición y un elemento de orden 5; por lo tanto, <m>G(K/{\mathbb Q} )</m> es todo <m>S_5</m>. Por el Teorema<nbsp /><xref ref="theorem-an-simple" />, <m>S_5</m> no es soluble. Por lo tanto, <m>f(x)</m> no se puede resolver por radicales.</p>
 			</example>
 <!--  Changed <m>G(K/F )</m> to <m>G(K/{\mathbb Q} )</m>.  Suggested by Aleks Vlasev. - TWJ 8/10/2011 -->
 
@@ -711,7 +711,7 @@
 				<title>Teorema Fundamental del Álgebra</title>
 				<idx><h>Teorema Fundamental</h><h>del Álgebra</h></idx>
 				<statement>
-					<p>El cuerpo de los números complejos es algebraicamente cerrado; es decir, todo polinomio no constante en <m>{\mathbb C}[x]</m> tiene una raíz en<m>{\mathbb C}</m>.</p>
+					<p>El cuerpo de los números complejos es algebraicamente cerrado; es decir, todo polinomio no constante en <m>{\mathbb C}[x]</m> tiene una raíz en <m>{\mathbb C}</m>.</p>
 				</statement>
 <!--				<comment>
 					<p>For our proof we shall assume two facts from calculus.  We need the results that every polynomial of odd degree sobre <m>{\mathbb R}</m> has a real root y that every positive real number has a square root.</p>

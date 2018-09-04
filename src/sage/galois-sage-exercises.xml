@@ -33,13 +33,13 @@
 
 		<ol>
 
-			<li><p>Construya el cuerpo de descomposición de <m>p(x)</m> una raíz a la vez.  Cree una extensión, fatorice allí, descarte factores lineales, use los restantes factores irreducibles para extender una vez más.  Repita hasta que <m>p(x)</m> se factorice completamente.  Asegúrese de hacer una extensión final usando solo un factor lineal.  Esto es un poco tonto, y Sage parecerá ignorar el último generador (de manera que querrá determinar a qué equivale en términos de los generadores previos).  Las direcciones que siguen dependen de tomar este paso adicional.</p></li>
+			<li><p>Construya el cuerpo de descomposición de <m>p(x)</m> una raíz a la vez.  Cree una extensión, factorice allí, descarte factores lineales, use los restantes factores irreducibles para extender una vez más.  Repita hasta que <m>p(x)</m> se factorice completamente.  Asegúrese de hacer una extensión final usando solo un factor lineal.  Esto es un poco tonto, y Sage parecerá ignorar el último generador (de manera que querrá determinar a qué equivale en términos de los generadores previos).  Las direcciones que siguen dependen de tomar este paso adicional.</p></li>
 
 			<li><p>Factorice el polinomio original sobre la extensión final en la torre.  ¿Qué es aburrido de esta factorización en relación a otros ejemplos que hemos hecho?</p></li>
 
 			<li><p>Construya la torre completa como un cuerpo de números absoluto sobre <m>{\mathbb Q}</m>.  Del grado de esta extensión y del grado del polinomio original, infiera el grupo de Galois de este polinomio.</p></li>
 
-			<li><p>Usando las funciones que permiten taducir entre la torre y el cuerpo de números absoluto (obtenido del método <c>.structure()</c>), elija una de las raíces (cualquiera) y exprésela en términos del único generador del cuerpo absoluto.  Después invierta el procedimiento y exprese el generador del cuerpo absoluto en términos de las raíces en la torre.</p></li>
+			<li><p>Usando las funciones que permiten traducir entre la torre y el cuerpo de números absoluto (obtenido del método <c>.structure()</c>), elija una de las raíces (cualquiera) y exprésela en términos del único generador del cuerpo absoluto.  Después invierta el procedimiento y exprese el generador del cuerpo absoluto en términos de las raíces en la torre.</p></li>
 
 			<li><p>Calcule el grupo de automorfismos del cuerpo absoluto (sin mostrar el grupo en lo que entregue).  Tome las cuatro raíces (incluyendo la tonta del último paso de la construcción de la torre) y aplique cada automorfismo de cuerpos a las cuatro raíces (formando la permutaciones garantizadas de las raíces).  Comente sobre lo que observa.</p></li>
 
@@ -84,9 +84,9 @@
 
 <exercise number="7">
 	<statement>
-		<p>Volvamos al Ejemplo<nbsp/><xref ref="example-galois-x4-2"/>, y la lista completa de subcuerpo obtenible del método <c>.subfields()</c> aplicado a la torre aplanada. Como mencionamos, estos no son técnicamente subcuerpos, pero tienen incrustaciones a la torre.  Dados dos subcuerpos, sus respectivos elementos primitivos son incrustados en la torre, con una imagen que es combinación lineal de potencias del elemento primitivo para la torre.</p>
+		<p>Volvamos al Ejemplo<nbsp/><xref ref="example-galois-x4-2"/>, y la lista completa de subcuerpos obtenible del método <c>.subfields()</c> aplicado a la torre aplanada. Como mencionamos, estos no son técnicamente subcuerpos, pero tienen incrustaciones a la torre.  Dados dos subcuerpos, sus respectivos elementos primitivos son incrustados en la torre, con una imagen que es combinación lineal de potencias del elemento primitivo para la torre.</p>
 
-		<p>Si uno de lus subcuerpos está contenido en otro, entonces la imagen del elemento primitivo para el cuerpo menor debería ser combinación lneal de potencias (apropiadas) de la imagen del elemento primitivo para el cuepo mayor.  Este es un cálculo de álgebra lineal que debiese ser posible en la torre, relativo a la base de potencias de la torre completa.</p>
+		<p>Si uno de lus subcuerpos está contenido en otro, entonces la imagen del elemento primitivo para el cuerpo menor debería ser combinación lineal de potencias (apropiadas) de la imagen del elemento primitivo para el cuepo mayor.  Este es un cálculo de álgebra lineal que debiese ser posible en la torre, relativo a la base de potencias de la torre completa.</p>
 
 		<p>Escriba un procedimiento para determinar si dos subcuerpos están relacionados por inclusión, es decir si uno es subconjunto del otro.  Use este procedimiento para crear el reticulado de subcuerpos.  El objetivo final sería una imagen gráfica del reticulado, usando los procedimientos gráficos disponibles para reticulados, similar a la mitad superior de la Figura<nbsp/><xref ref="figure-galois-3"/>.  Este es un ejercicio <q>desafiante</q>, lo que quiere decir que  <q>es especulativo y no ha sido probado.</q></p>
 	</statement>

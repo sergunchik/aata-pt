@@ -35,7 +35,7 @@
 		<subsection xml:id="normal-subsection-normal-subgroups">
 			<title>Subgrupos Normales</title>
 
-			<p>Un subgrupo <m>H</m> de un grupo <m>G</m> es <term>normal</term><idx><h>Normal</h><h>subgrupo</h></idx><idx><h>Subgrupo normal</h></idx> en G se <m>gH = Hg</m> para todo <m>g \in G</m>. Es decir, un subgrupo normal de un grupo <m>G</m> es un subgrupo para el que las clases laterales derechas e izquierdas coinciden.</p>
+			<p>Un subgrupo <m>H</m> de un grupo <m>G</m> es <term>normal</term><idx><h>Normal</h><h>subgrupo</h></idx><idx><h>Subgrupo normal</h></idx> en G si <m>gH = Hg</m> para todo <m>g \in G</m>. Es decir, un subgrupo normal de un grupo <m>G</m> es un subgrupo para el que las clases laterales derechas e izquierdas coinciden.</p>
  
 
 			<example xml:id="example-normal-abelian">
@@ -44,7 +44,7 @@
  
 			<example xml:id="example-normal-s3">
 				<p>Sea <m>H</m> el subgrupo de <m>S_3</m> que consiste de los elementos <m>(1)</m> y <m>(12)</m>. Como 
-					<me>(123) H = \{ (123), (13) \} \quad \text{and} \quad H (123) = \{ (123), (23) \},</me>
+					<me>(123) H = \{ (123), (13) \} \quad \text{y} \quad H (123) = \{ (123), (23) \},</me>
 				<m>H</m> no puede ser un subgrupo normal de <m>S_3</m>.  Sin embargo, el subgrupo <m>N</m>, que consiste de las permutaciones <m>(1)</m>, <m>(123)</m>, y <m>(132)</m>, es normal pues las clases laterales de <m>N</m> son 
 					<md>
 						<mrow>N  =   \{ (1), (123), (132) \}</mrow>
@@ -165,14 +165,14 @@
 
 		<introduction>
  
-			<p>De especial interés resultan ser los grupos que no tienen subgrupos normales propios no triviales. Tales grupos se llaman <term>grupos simples</term><idx><h>Simple</h><h>grupo</h></idx><idx><h>Grupo simple</h></idx>.  Por supuesto, ya tenemos una clase completa de grupos simples, <m>{\mathbb Z}_p</m>, donde <m>p</m> es primo.  Estos grupos son trivialmente simples pues no tienen otro subgrupo propio que no sea solamente la identidad. Otros ejemplos de grupos simpple no son tan fáciles de encontrar. Podemos, sin embargo, mostar que el grupo alternante, <m>A_n</m>, es simple para <m>n \geq 5</m>. La demostración de este resultado requiere de varios lemas.</p>
+			<p>De especial interés resultan ser los grupos que no tienen subgrupos normales propios no triviales. Tales grupos se llaman <term>grupos simples</term><idx><h>Simple</h><h>grupo</h></idx><idx><h>Grupo simple</h></idx>.  Por supuesto, ya tenemos una clase completa de grupos simples, <m>{\mathbb Z}_p</m>, donde <m>p</m> es primo.  Estos grupos son trivialmente simples pues no tienen otro subgrupo propio que no sea solamente la identidad. Otros ejemplos de grupos simples no son tan fáciles de encontrar. Podemos, sin embargo, mostrar que el grupo alternante, <m>A_n</m>, es simple para <m>n \geq 5</m>. La demostración de este resultado requiere de varios lemas.</p>
 	 
 			<lemma xml:id="lemma-1-normal-3cycle">
 				<statement>
 					<p>El grupo alternante <m>A_n</m> es generado por <m>3</m>-ciclos para <m>n \geq 3</m>.</p>
 				</statement>
 				<proof>
-					<p>Para mostrar que los 3-ciclos generan <m>A_n</m>, solo necesitamos mostrar que cualquier par de transpociones puede ser escrito como el producto de 3-ciclos. Como <m>(a b) = (b a)</m>, todo par de transpociciones debe ser uno de los siguientes: 
+					<p>Para mostrar que los 3-ciclos generan <m>A_n</m>, solo necesitamos mostrar que cualquier par de transposiciones puede ser escrito como el producto de 3-ciclos. Como <m>(a b) = (b a)</m>, todo par de transposiciones debe ser uno de los siguientes: 
 						<md>
 							<mrow>(ab)(ab) &amp; = \identity</mrow>
 							<mrow>(ab)(cd) &amp; = (acb)(acd)</mrow>

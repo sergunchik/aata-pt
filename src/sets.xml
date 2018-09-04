@@ -240,7 +240,7 @@
 		</theorem>
  
 		<example xml:id="example-sets-other-relations">
-			<p>Otras relaciones entre conjunto son por ejemplo,
+			<p>Otras relaciones entre conjuntos son por ejemplo,
 				<me>( A \setminus B) \cap (B \setminus A) = \emptyset.</me>
 			Para ver que esta es verdadera, observe que
 				<md>
@@ -469,7 +469,7 @@
 					</ol></p>
 			</statement>
 			<proof>
-				<p>Demostraremos (1) y (3). La parte (2) se deja como ejercicio.  La Parte (4) es consecuencia directa de (2) y (3).</p> 
+				<p>Demostraremos (1) y (3). La parte (2) se deja como ejercicio.  La parte (4) es consecuencia directa de (2) y (3).</p> 
  
 				<p>(1) Debemos mostrar que
 					<me>h \circ (g \circ f) = (h \circ g) \circ f.</me>
@@ -600,7 +600,7 @@
 					1 & 2 \\
 					-1 & 1
 					]]>\end{pmatrix}
-					\quad \text{and} \quad
+					\quad \text{y} \quad
 					B =
 					\begin{pmatrix}<![CDATA[
 					-18 & 33 \\
@@ -625,7 +625,7 @@
 				la relación es transitiva.  Dos matrices equivalente de esta forma se dicen <term>similares</term><idx><h>Matrices</h><h>similares</h></idx>.</p>
 			</example>
 
-			<p>Una <term>partición</term><idx><h>Partición</h></idx> <m>{\mathcal P}</m> de un conjunto <m>X</m> es una colección de conjuntos no vacíos <m>X_1, X_2, \ldots</m> tales que <m>X_i \cap X_j = \emptyset</m> para <m>i  \neq j</m> y <m>\bigcup_k X_k = X</m>. Sea <m>\sim</m> una relación de equivalencia en un conjunto <m>X</m> y sea <m>x \in X</m>.  Entonces <m>[x] = \{ y \in X : y \sim x \}</m> se llama <term>clase de equivalencia</term><idx><h>Clase de equivalencia</h></idx> de <m>x</m>.  Veremos que una relación de equivalencia da lugar a una partición via clases de equivalencia.  Además, si tenemos una partición de un conjunto, entonces existe una relación de equivalencia subyacente, como demuestra el teorema siguiente.</p>  
+			<p>Una <term>partición</term><idx><h>Partición</h></idx> <m>{\mathcal P}</m> de un conjunto <m>X</m> es una colección de conjuntos no vacíos <m>X_1, X_2, \ldots</m> tales que <m>X_i \cap X_j = \emptyset</m> para <m>i  \neq j</m> y <m>\bigcup_k X_k = X</m>. Sea <m>\sim</m> una relación de equivalencia en un conjunto <m>X</m> y sea <m>x \in X</m>.  Entonces <m>[x] = \{ y \in X : y \sim x \}</m> se llama <term>clase de equivalencia</term><idx><h>Clase de equivalencia</h></idx> de <m>x</m>.  Veremos que una relación de equivalencia da lugar a una partición vía clases de equivalencia.  Además, si tenemos una partición de un conjunto, entonces existe una relación de equivalencia subyacente, como demuestra el teorema siguiente.</p>  
  
 			<theorem>
 				<statement>
@@ -659,13 +659,13 @@
 			</example>
  
 			<example xml:id="example-sets-congruent-integers">
-				<p>Sean <m>r</m> y <m>s</m> dos enteros y supongamos que <m>n \in {\mathbb N}</m>.  Diremos que <m>r</m> es <term>congruente</term><idx><h>Congruencia módulo <m>n</m></h></idx> a <m>s</m> <term>módulo</term> <m>n</m>, o <m>r</m> es congruente a <m>s</m> mód <m>n</m>, si <m>r - s</m> es divisible por <m>n</m>; es decir, <m>r - s = nk</m>  para algún <m>k \in {\mathbb Z}</m>.  En este caso escribimos <m>r \equiv s \pmod{n}</m>.  <notation><usage>a \equiv b \pmod{n}</usage><description><m>a</m> es congruente a <m>b</m> módulo <m>n</m></description></notation>  Por example, <m>41 \equiv 17 \pmod{ 8}</m> pues <m>41 - 17=24</m> es divisible por 8.  Afirmamos que congruencia módulo <m>n</m> es una relación de equivalencia en <m>{\mathbb Z}</m>.  Ciertamente cualquier entero <m>r</m> es equivalente a sí mismo pues <m>r - r = 0</m> es divisible por <m>n</m>.  Mostraremos ahora que la relación es simétrica.  Si <m>r \equiv s \pmod{ n}</m>, entonces <m>r - s = -(s -r)</m> es divisible por <m>n</m>. Así <m>s - r</m> es divisible por <m>n</m> y <m>s \equiv r \pmod{ n}</m>.  Ahora supongamos que <m>r \equiv s \pmod{ n}</m> y <m>s \equiv t \pmod{ n}</m>.  Entonces existen enteros <m>k</m> y <m>l</m> tales que <m>r -s = kn</m> y <m>s - t = ln</m>.  Para mostrar la transitividad, es necesario probar que <m>r - t</m> es divisible por <m>n</m>.  Pero,   
+				<p>Sean <m>r</m> y <m>s</m> dos enteros y supongamos que <m>n \in {\mathbb N}</m>.  Diremos que <m>r</m> es <term>congruente</term><idx><h>Congruencia módulo <m>n</m></h></idx> a <m>s</m> <term>módulo</term> <m>n</m>, o <m>r</m> es congruente a <m>s</m> mód <m>n</m>, si <m>r - s</m> es divisible por <m>n</m>; es decir, <m>r - s = nk</m>  para algún <m>k \in {\mathbb Z}</m>.  En este caso escribimos <m>r \equiv s \pmod{n}</m>.  <notation><usage>a \equiv b \pmod{n}</usage><description><m>a</m> es congruente a <m>b</m> módulo <m>n</m></description></notation>  Por ejemplo, <m>41 \equiv 17 \pmod{ 8}</m> pues <m>41 - 17=24</m> es divisible por 8.  Afirmamos que congruencia módulo <m>n</m> es una relación de equivalencia en <m>{\mathbb Z}</m>.  Ciertamente cualquier entero <m>r</m> es equivalente a sí mismo pues <m>r - r = 0</m> es divisible por <m>n</m>.  Mostraremos ahora que la relación es simétrica.  Si <m>r \equiv s \pmod{ n}</m>, entonces <m>r - s = -(s -r)</m> es divisible por <m>n</m>. Así <m>s - r</m> es divisible por <m>n</m> y <m>s \equiv r \pmod{ n}</m>.  Ahora supongamos que <m>r \equiv s \pmod{ n}</m> y <m>s \equiv t \pmod{ n}</m>.  Entonces existen enteros <m>k</m> y <m>l</m> tales que <m>r -s = kn</m> y <m>s - t = ln</m>.  Para mostrar la transitividad, es necesario probar que <m>r - t</m> es divisible por <m>n</m>.  Pero,   
 					<me>r - t = r - s + s - t = kn + ln = (k + l)n,</me>
 				y así <m>r - t</m> es divisible por <m>n</m>.</p>
 
 
  
-				<p>Si consideramos la relación de equivalencia estabecida por los enteros módulo 3, entonces 
+				<p>Si consideramos la relación de equivalencia establecida por los enteros módulo 3, entonces 
 					<md>
 						<mrow>{[0]} &amp; = \{ \ldots, -3, 0, 3, 6, \ldots \},</mrow>
 						<mrow>{[1]} &amp; = \{ \ldots, -2, 1, 4, 7, \ldots \},</mrow>

@@ -115,7 +115,7 @@
 
 	<exercise number="10">
 		<statement>
-			<p>Sea <m>V</m> un espacio vectorial sobre <m>F</m>. Demuestre que <m>-(\alpha v) = (-\alpha)v = \alpha(-v)</m> para todo <m>\alpha \in F</m> and all <m>v \in V</m>.</p>
+			<p>Sea <m>V</m> un espacio vectorial sobre <m>F</m>. Demuestre que <m>-(\alpha v) = (-\alpha)v = \alpha(-v)</m> para todo <m>\alpha \in F</m> y todo <m>v \in V</m>.</p>
 		</statement>
 		<hint>
 			<p>Como <m>0 =  \alpha 0 = \alpha(-v + v) = \alpha(-v) + \alpha v</m>, se concluye que <m>- \alpha v = \alpha(-v)</m>.</p>
@@ -203,7 +203,7 @@
 
 	<exercise number="16">
 		<statement>
-			<p>Sean <m>V</m> y <m>W</m> espacio vectoriales de dimensión finita <m>n</m> sobre un cuerpo <m>F</m>. Supongamos que  <m>T: V \rightarrow W</m> es un isomorfismo de espacios vectoriales. Si <m>\{ v_1, \ldots, v_n \}</m> es una pase de <m>V</m>, muestre que <m>\{ T(v_1), \ldots, T(v_n) \}</m> es una base de <m>W</m>. Concluya que cualquier espacio vetorial sobre <m>F</m> de dimensión <m>n</m> es isomorfo a <m>F^n</m>.</p>
+			<p>Sean <m>V</m> y <m>W</m> espacio vectoriales de dimensión finita <m>n</m> sobre un cuerpo <m>F</m>. Supongamos que  <m>T: V \rightarrow W</m> es un isomorfismo de espacios vectoriales. Si <m>\{ v_1, \ldots, v_n \}</m> es una pase de <m>V</m>, muestre que <m>\{ T(v_1), \ldots, T(v_n) \}</m> es una base de <m>W</m>. Concluya que cualquier espacio vectorial sobre <m>F</m> de dimensión <m>n</m> es isomorfo a <m>F^n</m>.</p>
 		</statement>
 		
 	</exercise>
@@ -236,7 +236,7 @@
 	</exercise>
 
 	<exercise number="18">
-		<title>Espacio Duales</title>
+		<title>Espacios Duales</title>
 		<statement>
 			<p>Sean <m>V</m> y <m>W</m> espacios vectoriales de dimensión finita sobre un cuerpo <m>F</m>. 
 				<ol>
@@ -248,7 +248,7 @@
 						</md>
 					donde <m>S, T \in \Hom(V, W)</m>, <m>\alpha \in F</m>, y <m>v \in V</m>.</p></li>
 			 
-					<li><p>Sea <m>V</m> un <m>F</m>-espacio vectorial. Se define el <term>espacio dual</term> de <m>V</m> como <m>V^* = \Hom(V, F)</m>. <notation><usage>V^*</usage><description>dual de un espacio vectorial <m>V</m></description></notation> Los elementos en el dual de un espacio <m>V</m> se llaman <term>funcionales lineales.</term>  Sea <m>v_1, \ldots, v_n</m> una base ordenada para <m>V</m>. Si <m>v = \alpha_1 v_1 + \cdots + \alpha_n v_n</m> es cualquier vector en <m>V</m>, definimos un funcional lineal <m>\phi_i : V \rightarrow F</m> como <m>\phi_i (v) = \alpha_i</m>. Muestre que los <m>\phi_i</m> forman una base de <m>V^*</m>. Esta base se denomina <term>base dual</term> de <m>v_1, \ldots, v_n</m> (o simplemente la base dual basis si el contexto deja claro el significado).</p></li>
+					<li><p>Sea <m>V</m> un <m>F</m>-espacio vectorial. Se define el <term>espacio dual</term> de <m>V</m> como <m>V^* = \Hom(V, F)</m>. <notation><usage>V^*</usage><description>dual de un espacio vectorial <m>V</m></description></notation> Los elementos en el dual de un espacio <m>V</m> se llaman <term>funcionales lineales.</term>  Sea <m>v_1, \ldots, v_n</m> una base ordenada para <m>V</m>. Si <m>v = \alpha_1 v_1 + \cdots + \alpha_n v_n</m> es cualquier vector en <m>V</m>, definimos un funcional lineal <m>\phi_i : V \rightarrow F</m> como <m>\phi_i (v) = \alpha_i</m>. Muestre que los <m>\phi_i</m> forman una base de <m>V^*</m>. Esta base se denomina <term>base dual</term> de <m>v_1, \ldots, v_n</m> (o simplemente la base dual si el contexto deja claro el significado).</p></li>
 			 
 					<li><p>Considere la base <m>\{ (3, 1), (2, -2) \}</m> de <m>{\mathbb R}^2</m>. ¿Cuál es la base dual de <m>({\mathbb R}^2)^*</m>?</p></li>
 

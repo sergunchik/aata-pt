@@ -87,7 +87,7 @@
 
 	<exercise number="3">
 		<statement>
-			<p>Verifique que el grupo de unidades  mód <m>n</m> tiene orden  <m>n-1</m> cuando  <m>n</m> es primo, nuevamente para todos los primos entre <m>100</m> and <m>1000</m>.  Como antes, su resultado debe ser simplemente  <c>True</c>, una única vez, indicando que la proposición respecto al orden es verdadera para todos los primos examinados.  Como antes, construya su solución paso a paso, y con conjuntos menores de primos en el comienzo.  Exprese su respuesta como una sola línea de código  Sage.</p>
+			<p>Verifique que el grupo de unidades  mód <m>n</m> tiene orden  <m>n-1</m> cuando  <m>n</m> es primo, nuevamente para todos los primos entre <m>100</m> y <m>1000</m>.  Como antes, su resultado debe ser simplemente  <c>True</c>, una única vez, indicando que la proposición respecto al orden es verdadera para todos los primos examinados.  Como antes, construya su solución paso a paso, y con conjuntos menores de primos en el comienzo.  Exprese su respuesta como una sola línea de código  Sage.</p>
 		</statement>
 		
 	</exercise>

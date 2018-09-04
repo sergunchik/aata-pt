@@ -11,9 +11,9 @@
 	<title>Sage</title>
 
 	<introduction>
-		<p>Los grupos se pueden presentar de diversas formas, tales como conjuntos de permutaciones, como conjuntos de matrics o como conjuntos de símbolos abstractos relacionados por ciertas reglas (<q>presentaciones</q>) y en muchas otras formas más.  Nos hemos concentrado en grupos de permutaciones por su tangibilidad, con elementos escritos como funciones, y por lo bien implementados que están en Sage.  Las acciones de grupo son de gran interés cuando el conjunto en el que se actúa es el grupo mismo, y la acción de grupos figura de forma prominente en las demostraciones de  los principales teoremas del próximo capítulo.  Pero, cada vez que tenemos una acción de un grupo en un conjunto, podemos pensar el grupo como un grupo de permutaciones en los elementos del conjunto.  Por esto los grupos de permutaciones forman un área de teoría de grupos de interés independiente, con sus propias definiciones y teoremas.</p>
+		<p>Los grupos se pueden presentar de diversas formas, tales como conjuntos de permutaciones, como conjuntos de matrices o como conjuntos de símbolos abstractos relacionados por ciertas reglas (<q>presentaciones</q>) y en muchas otras formas más.  Nos hemos concentrado en grupos de permutaciones por su tangibilidad, con elementos escritos como funciones, y por lo bien implementados que están en Sage.  Las acciones de grupo son de gran interés cuando el conjunto en el que se actúa es el grupo mismo, y la acción de grupos figura de forma prominente en las demostraciones de  los principales teoremas del próximo capítulo.  Pero, cada vez que tenemos una acción de un grupo en un conjunto, podemos pensar el grupo como un grupo de permutaciones en los elementos del conjunto.  Por esto los grupos de permutaciones forman un área de teoría de grupos de interés independiente, con sus propias definiciones y teoremas.</p>
 
-		<p>Describiremos los comandos de Sage's aplicables cuando un acción de grupo aparece naturalmente via conjugación, y luego pasaremos a la situación más general.</p>
+		<p>Describiremos los comandos de Sage aplicables cuando un acción de grupo aparece naturalmente vía conjugación, y luego pasaremos a la situación más general.</p>
 
 		<todo>Construct a general n beads, m colors enumeration example (any of this in Sage already?)</todo>
 

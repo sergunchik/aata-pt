@@ -68,7 +68,7 @@
 
 			<example xml:id="example-isomorph-not-isomorph">
 				<p>Si bien <m>S_3</m> y <m>{\mathbb Z}_6</m> poseen el mismo número de elementos, podríamos sospechar que no son isomorfos, pues <m>{\mathbb Z}_6</m> es abeliano y  <m>S_3</m> es no abeliano.  Para demostrar que esto es así, supongamos que <m>\phi : {\mathbb Z}_6 \rightarrow  S_3</m> es un isomorfismo.  Sean <m>a , b \in S_3</m> dos elementos tales que <m>ab \neq ba</m>.  Como <m>\phi</m> es un isomorfismo, existen elementos <m>m</m> y <m>n</m> en <m>{\mathbb Z}_6</m> tales que 
-					<me>\phi( m )  = a \quad \text{and} \quad \phi( n )  = b.</me>
+					<me>\phi( m )  = a \quad \text{y} \quad \phi( n )  = b.</me>
 				Pero,
 					<me>ab = \phi(m ) \phi(n) = \phi(m + n) = \phi(n + m) = \phi(n ) \phi(m) = ba,</me>
 				lo que contradice el hecho de que <m>a</m> y <m>b</m> no conmutan.</p>
@@ -305,7 +305,7 @@
 				</statement>
 				<proof>
 					<p>Primero mostraremos que si <m>{\mathbb Z}_m \times {\mathbb Z}_n \cong {\mathbb Z}_{mn}</m>, entonces <m>\gcd(m, n) = 1</m>. Demostraremos el contrapositivo; es decir, mostraremos que si <m>\gcd(m, n) = d \gt 1</m>, entonces <m>{\mathbb Z}_m \times {\mathbb Z}_n</m> no puede ser cíclico. Note que <m>mn/d</m> es divisible tanto por <m>m</m> como por <m>n</m>; luego, cualquier elemento <m>(a,b) \in {\mathbb Z}_m \times {\mathbb Z}_n</m>,  
-						<me>\underbrace{(a,b) + (a,b)+ \cdots + (a,b)}_{mn/d \; \text{times}} = (0, 0).</me>
+						<me>\underbrace{(a,b) + (a,b)+ \cdots + (a,b)}_{mn/d \; \text{veces}} = (0, 0).</me>
 					Por lo tanto, ningún <m>(a, b)</m> puede generar todo <m>{\mathbb Z}_m \times {\mathbb Z}_n</m>.</p>
  
 					<p>El recíproco es consecuencia directa del Teorema<nbsp /><xref ref="theorem-isomorph-lcm" /> pues <m>\lcm(m,n) = mn</m> si y solo si <m>\gcd(m,n)=1</m>.</p>
@@ -362,7 +362,7 @@
 
 			<example xml:id="example-isomorph-d6-product">
 				<p>El grupo dihedral <m>D_6</m> es un producto directo interno de sus dos subgrupos 
-					<me>H  = \{\identity, r^3  \} \quad \text{and} \quad K  = \{\identity, r^2, r^4, s, r^2s, r^4 s   \}.</me>
+					<me>H  = \{\identity, r^3  \} \quad \text{y} \quad K  = \{\identity, r^2, r^4, s, r^2s, r^4 s   \}.</me>
 				Se puede mostrar fácilmente que <m>K \cong S_3</m>; por lo tanto, <m>D_6 \cong {\mathbb Z}_2 \times S_3</m>.</p>
 			</example>
  

@@ -120,7 +120,7 @@
 	 
 					<li><p><m>\langle {\mathbf x}, {\mathbf x} \rangle \geq 0</m> con igualdad exactamente cuando <m>{\mathbf x} = 0</m>.</p></li>
 	 
-					<li><p>Si <m>\langle {\mathbf x}, {\mathbf y} \rangle = 0</m>  para todo <m>{\mathbf x}</m> en <m>{\mathbb R}^n</m>, then <m>{\mathbf y} = 0</m>.</p></li>
+					<li><p>Si <m>\langle {\mathbf x}, {\mathbf y} \rangle = 0</m>  para todo <m>{\mathbf x}</m> en <m>{\mathbb R}^n</m>, entonces <m>{\mathbf y} = 0</m>.</p></li>
 	 
 				</ol></p>
 		</statement>
@@ -187,7 +187,7 @@
 
 	<exercise number="11">
 		<statement>
-			<p>Muestre que cualquier isometría <m>f</m> en <m>{\mathbb R}^n</m> es una función inyectiva</p>
+			<p>Muestre que cualquier isometría <m>f</m> en <m>{\mathbb R}^n</m> es una función inyectiva.</p>
 		</statement>
 		
 	</exercise>

@@ -522,9 +522,9 @@
 			<p>Esta proposición nos dice que las <term>leyes de cancelación derecha e izquierda</term><idx><h>Ley de cancelación</h><h>para grupos</h></idx> se cumple para grupos.  Dejamos la demostración como ejercicio.</p>
 	 
 			<p>Podemos utilizar la notación exponencial en grupos de la forma en que estamos acostumbrados. Si <m>G</m> es un grupo y <m>g \in G</m>, definimos <m>g^0 = e</m>. Para <m>n \in {\mathbb N}</m>, definimos 
-			<me>g^n = \underbrace{g \cdot g \cdots g}_{n \; \text{times}} </me> 
+			<me>g^n = \underbrace{g \cdot g \cdots g}_{n \; \text{veces}} </me> 
 			y
-			<me>g^{-n} = \underbrace{g^{-1} \cdot g^{-1} \cdots g^{-1}}_{n \; \text{times}}.</me></p>
+			<me>g^{-n} = \underbrace{g^{-1} \cdot g^{-1} \cdots g^{-1}}_{n \; \text{veces}}.</me></p>
 	 
 			<theorem xml:id="theorem-exponent-laws">
 				<statement>
@@ -553,7 +553,7 @@
 
 			<p>Si bien la primera definición axiomática clara de grupo recién fue dada a finales del siglo XIX, los métodos de teoría de grupos ya habían sido usados anteriormente en el desarrollo de muchas áreas de las matemáticas, incluyendo la geometría y la teoría de ecuaciones algebraicas.</p>
 
-			<p>Joseph-Louis Lagrange<idx><h>Lagrange, Joseph-Louis</h></idx> usó teoría de grupos en una memoria de 1770<ndash />1771 para estudiar métodos de resolución de ecuaciones polinomiales.  Más tarde, Évariste Galois<idx><h>Galois, Évariste</h></idx> (1811<ndash />1832) desarrolló con éxito las matemáticas necesarias para determinar exactamente cuáles ecuaciones polinomiales podían ser resueltas en términos de los coeficientes del polinomio en cuestión. La herramienta principal que usó Galois' fue la teoría de grupos.</p>
+			<p>Joseph-Louis Lagrange<idx><h>Lagrange, Joseph-Louis</h></idx> usó teoría de grupos en una memoria de 1770<ndash />1771 para estudiar métodos de resolución de ecuaciones polinomiales.  Más tarde, Évariste Galois<idx><h>Galois, Évariste</h></idx> (1811<ndash />1832) desarrolló con éxito las matemáticas necesarias para determinar exactamente cuáles ecuaciones polinomiales podían ser resueltas en términos de los coeficientes del polinomio en cuestión. La herramienta principal que usó Galois fue la teoría de grupos.</p>
 
 			<p>El estudio de la geometría sufrió cambios revolucionarios en 1872 cuando Felix Klein<idx><h>Klein, Felix</h></idx> propuso que los espacios geométricos debían ser estudiados examinandos aquellas propiedades que son invariantes bajo una trasformación del espacio. Sophus Lie<idx><h>Lie, Sophus</h></idx>, coetáneo de Klein, usó teoría de grupos para estudiar las soluciones de ecuaciones diferenciales parciales.  Uno de los primeros libros en tratar la teoría de grupos en forma moderna es el de William Burnside<idx><h>Burnside, William</h></idx> <booktitle>The Theory of Groups of Finite Order</booktitle> [1], publicado originalmente en 1897.</p>
 		</subsection>
@@ -616,7 +616,7 @@
 			</example>
  
 			<example xml:id="example-groups-z2xz2">
-				<p>Una manera de saber si dos grupos son el mismo grupo, es examinando sus subgrupos.  Aparte del subgrupo trivial y del grupo mismo, el grupo <m>{\mathbb Z}_4</m> tiene exactamente un subgrupo adicional que consiste de los elementos 0 y 2. A partir del grupo <m>{\mathbb Z}_2</m>, podemos formar otro grupo de cuatro elementos como sigue.  Como conjunto, este grupo es <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>. Realizamos las operacioens coordenada a coordenada; es decir, <m>(a,b) + (c,d) = (a+c, b+d)</m>. El Cuadro<nbsp /><xref ref="table-z2xz2" /> es una tabla de sumas para <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>. Como hay tres subgrupos propios no triviales de  <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>, <m>H_1 = \{ (0,0), (0,1) \}</m>, <m>H_2 = \{ (0,0), (1,0) \}</m>, y <m>H_3 = \{ (0,0), (1,1) \}</m>, <m>{\mathbb Z}_4</m> y <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> deben ser grupos diferentes.</p>
+				<p>Una manera de saber si dos grupos son el mismo grupo, es examinando sus subgrupos.  Aparte del subgrupo trivial y del grupo mismo, el grupo <m>{\mathbb Z}_4</m> tiene exactamente un subgrupo adicional que consiste de los elementos 0 y 2. A partir del grupo <m>{\mathbb Z}_2</m>, podemos formar otro grupo de cuatro elementos como sigue.  Como conjunto, este grupo es <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>. Realizamos las operaciones coordenada a coordenada; es decir, <m>(a,b) + (c,d) = (a+c, b+d)</m>. El Cuadro<nbsp /><xref ref="table-z2xz2" /> es una tabla de sumas para <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>. Como hay tres subgrupos propios no triviales de  <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>, <m>H_1 = \{ (0,0), (0,1) \}</m>, <m>H_2 = \{ (0,0), (1,0) \}</m>, y <m>H_3 = \{ (0,0), (1,1) \}</m>, <m>{\mathbb Z}_4</m> y <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> deben ser grupos diferentes.</p>
 			</example>
 
 			<table xml:id="table-z2xz2"> <!-- math table -->

@@ -94,7 +94,7 @@
 	<subsection>
 		<title>Logaritmos en Cuerpos Finitos</title>
 
-		<p>Un comando útil que no hemos descrito es el método <c>.log()</c> para elementos de un cuerpo finito.  Como sabemos que el grupo multiplicativo de lementos distintos de cero es cíclico, podemos expresar cualquier elemento como una potencia del generador.  El método <c>.log()</c> devuelve esa potencia.</p>
+		<p>Un comando útil que no hemos descrito es el método <c>.log()</c> para elementos de un cuerpo finito.  Como sabemos que el grupo multiplicativo de elementos distintos de cero es cíclico, podemos expresar cualquier elemento como una potencia del generador.  El método <c>.log()</c> devuelve esa potencia.</p>
 
 		<p>Usualmente querremos usar el generador como la base de un cálculo de logaritmos en el cuerpo finito.  Pero también es posible usar otra base, en el entendimiento que si la base no es un generador del grupo, entonces el logaritmo podría no existir (<ie /> puede no haber una solución a la ecuación relevante).</p>
 

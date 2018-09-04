@@ -67,7 +67,7 @@
 		<example xml:id="example-integers-binomial-theorem">
 			<p>Demostraremos el teorema del binomio por inducción; es decir, 
 				<me>(a + b)^n = \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k},</me>
-			donde <m>a</m> and <m>b</m> son números reales, <m>n \in \mathbb{N}</m>, y
+			donde <m>a</m> y <m>b</m> son números reales, <m>n \in \mathbb{N}</m>, y
 				<me>\binom{n}{k} = \frac{n!}{k! (n - k)!}</me>
 			es el coeficiente binomial.  <notation><usage>n!</usage><description><m>n</m> factorial</description></notation><notation><usage>\binom{n}{k}</usage><description>coeficiente binomial <m>n!/(k!(n-k)!)</m></description></notation> Primero mostraremos que
 				<me>\binom{n + 1}{k} = \binom{n}{k} + \binom{n}{k - 1}.</me>
@@ -167,12 +167,12 @@
 	 
 					<p><em>Existencia de <m>q</m> y <m>r</m>.</em> Sea
 						<me>S = \{ a - bk : k \in {\mathbb Z} \text{ y } a - bk \geq 0 \}.</me>
-					Si <m>0 \in S</m>, entonces <m>b</m> divide a <m>a</m>, y podemos tomar <m>q = a/b</m> y <m>r = 0</m>.  Si <m>0 \notin S</m>, podemos usar el Principio del Buen-Orden.  Debemos primero mostrar que <m>S</m> es no vacío.  Si <m>a \gt 0</m>, entonces <m>a - b \cdot 0 \in S</m>. Si <m>a \lt 0</m>, entonces <m>a - b(2a) = a(1 - 2b) \in S</m>.  En cualquier caso <m>S \neq \emptyset</m>.  Po el Principio del Buen-Orden, <m>S</m> tiene un elemento mínimo, digamos <m>r = a - bq</m>. Por lo tanto, <m>a = bq + r</m>, <m>r \geq 0</m>. Mostremos ahora que <m>r \lt b</m>. Supongamos que <m>r \gt b</m>. Entonces   
+					Si <m>0 \in S</m>, entonces <m>b</m> divide a <m>a</m>, y podemos tomar <m>q = a/b</m> y <m>r = 0</m>.  Si <m>0 \notin S</m>, podemos usar el Principio del Buen-Orden.  Debemos primero mostrar que <m>S</m> es no vacío.  Si <m>a \gt 0</m>, entonces <m>a - b \cdot 0 \in S</m>. Si <m>a \lt 0</m>, entonces <m>a - b(2a) = a(1 - 2b) \in S</m>.  En cualquier caso <m>S \neq \emptyset</m>.  Por el Principio del Buen-Orden, <m>S</m> tiene un elemento mínimo, digamos <m>r = a - bq</m>. Por lo tanto, <m>a = bq + r</m>, <m>r \geq 0</m>. Mostremos ahora que <m>r \lt b</m>. Supongamos que <m>r \gt b</m>. Entonces   
 						<me>a - b(q + 1)= a - bq - b = r - b \gt 0.</me>
 					En este caso tendríamos <m>a - b(q + 1)</m> en el conjunto <m>S</m>. Pero entonces <m>a - b(q + 1) \lt a - bq</m>, lo que llevaría a una contradicción del hecho que  <m>r = a - bq</m> es el menor elemento de <m>S</m>. Así <m>r \leq b</m>.  Como <m>0 \notin S</m>, <m>r \neq b</m> y así <m>r \lt b</m>.</p>
 	 
 					<p><em>Unicidad de <m>q</m> y <m>r</m>.</em> Supongamos que existen enteros <m>r</m>, <m>r'</m>, <m>q</m>, y <m>q'</m> tales que
-						<me>a = bq + r, 0 \leq r \lt b \quad \text{and}\quad a = bq' + r', 0 \leq r' \lt b.</me>
+						<me>a = bq + r, 0 \leq r \lt b \quad \text{y}\quad a = bq' + r', 0 \leq r' \lt b.</me>
 					Entonces <m> bq + r =  bq' + r'</m>.  Supongamos que <m>r' \geq r</m>.  De la última ecuación tenemos <m>b(q - q') = r' - r</m>; por lo tanto, <m>b</m> debe dividir a <m>r' - r</m> y <m>0 \leq r'- r \leq r' \lt b</m>.  Estos es posible solo si <m>r' - r = 0</m>.  Luego, <m>r = r'</m> y  <m>q = q'</m>.</p>
 				</proof>
 			</theorem>
@@ -189,7 +189,7 @@
 				</statement>
 				<proof>
 					<p>Sea
-						<me>S = \{ am + bn : m, n \in {\mathbb Z} \text{ and } am + bn \gt 0 \}.</me>
+						<me>S = \{ am + bn : m, n \in {\mathbb Z} \text{ y } am + bn \gt 0 \}.</me>
 					Claramente, el conjunto <m>S</m> es no-vacío; luego, por el Principio del Buen-Orden <m>S</m> tiene un elemento mínimo, digamos <m>d = ar + bs</m>.  Afirmamos que <m>d = \gcd( a, b)</m>.  Escriba <m>a = dq + r'</m> con  <m>0 \leq r' \lt d</m>. Si <m>r' \gt 0</m>, entonces <!-- r changed to r' - TWJ 1/31/2011 -->
 						<md>
 							<mrow>r'&amp; = a - dq</mrow>
@@ -382,7 +382,7 @@
 theory.</p> -->
 
 		<biblio type="raw"> <!-- was [1] -->
-		Brookshear, J. G. <title>Theory of Computation: Formal Languages, Automata, and Complexity</title>.  Benjamin/Cummings, Redwood City, CA, 1989. Shows the relationships of the theoretical aspects of computer science to set theory and the integers.</biblio>
+		Brookshear, J. G. <title>Theory of Computation: Formal Languages, Automata, and Complexity</title>.  Benjamin/Cummings, Redwood City, CA, 1989. Muestra la relación entre computación teórica y teoría de conjuntos.</biblio>
 
  		<biblio type="raw"> <!-- was [2] -->
 		<!-- Updated - TWJ 5/4/2010 -->

@@ -22,7 +22,7 @@
 
 	<exercise number="2">
 		<statement>
-			<p>Dibuje el diagrama para el conjunto de enteros positivos que son divisores de 30. Es este conjunto parcialmente ordenado un álgebra Booleana?</p>
+			<p>Dibuje el diagrama para el conjunto de enteros positivos que son divisores de 30. ¿Es este conjunto parcialmente ordenado un álgebra Booleana?</p>
 		</statement>
 		<hint>
 			<sidebyside width="40%" margins="auto"> <!-- duplicate widths? -->
@@ -314,7 +314,7 @@
 			<p>Sea <m>R</m> un anillo y suponga que <m>X</m> es el conjunto de ideales de <m>R</m>.  Muestre que <m>X</m> es un conjunto parcialmente ordenado por inclusión, <m>\subset</m>. Defina el ínfimo de dos ideales <m>I</m> y <m>J</m> en <m>X</m> como <m>I \cap J</m> y el supremo de  <m>I</m> y <m>J</m> como <m>I + J</m>. Demuestre que el conjunto de los ideales de <m>R</m> forma un reticulado bajo estas operaciones.</p>
 		</statement>
 		<hint>
-			<p>Sean <m>I, J</m> ideales en <m>R</m>. Debemos mostrar que <m>I + J = \{ r + s : r \in I \text{ and } s \in J  \}</m> es el menor ideal en <m>R</m> que contiene tanto a <m>I</m> como <m>J</m>. Si <m>r_1, r_2 \in I</m> y <m>s_1, s_2 \in J</m>, entonces <m>(r_1 + s_1) + (r_2 + s_2) = (r_1 + r_2) +(s_1 + s_2)</m> is in <m>I + J</m>. Para <m>a \in R</m>, <m>a(r_1 + s_1) = ar_1 + as_1 \in I + J</m>; luego, <m>I + J</m> es un ideal en <m>R</m>.</p>
+			<p>Sean <m>I, J</m> ideales en <m>R</m>. Debemos mostrar que <m>I + J = \{ r + s : r \in I \text{ y } s \in J  \}</m> es el menor ideal en <m>R</m> que contiene tanto a <m>I</m> como <m>J</m>. Si <m>r_1, r_2 \in I</m> y <m>s_1, s_2 \in J</m>, entonces <m>(r_1 + s_1) + (r_2 + s_2) = (r_1 + r_2) +(s_1 + s_2)</m> está en <m>I + J</m>. Para <m>a \in R</m>, <m>a(r_1 + s_1) = ar_1 + as_1 \in I + J</m>; luego, <m>I + J</m> es un ideal en <m>R</m>.</p>
 		</hint>
 		
 	</exercise>
@@ -332,7 +332,7 @@
 					 
 					<li><p><m>I' = O</m> y <m>O' = I</m>.</p></li>
 					 
-					<li><p><m>(a \vee b)' = a' \wedge b'</m> and <m>(a \wedge b)' = a' \vee b'</m> (Leyes de De Morgan).</p></li>
+					<li><p><m>(a \vee b)' = a' \wedge b'</m> y <m>(a \wedge b)' = a' \vee b'</m> (Leyes de De Morgan).</p></li>
 				 
 				</ol></p>
 		</statement>
@@ -402,7 +402,7 @@
 
 	<exercise number="21">
 		<statement>
-			<p>Sea <m>B</m> un ágebra Booleana. Demuestre que <m>a = O</m> si y solo si <m>(a \wedge b') \vee ( a' \wedge b) = b</m> para todo <m>b \in B</m>.</p>
+			<p>Sea <m>B</m> un álgebra Booleana. Demuestre que <m>a = O</m> si y solo si <m>(a \wedge b') \vee ( a' \wedge b) = b</m> para todo <m>b \in B</m>.</p>
 		</statement>
 		
 	</exercise>

@@ -169,7 +169,7 @@
 
 	<exercise number="14">
 		<statement>
-			<p>Each of the faces of a regular tetrahedron can be painted either red or white.  Up to a rotation, how many different ways can the tetrahedron be painted?</p>
+			<p>Cada una de las caras de un tetraedro regular puede ser pintada roja o blanca.  Salvo rotaciones, ¿de cuántas formas diferentes puede ser pintado el tetraedro?</p>
 		</statement>
 		
 	</exercise>
@@ -237,7 +237,7 @@
 
 	<exercise number="18">
 		<statement>
-			<p>¿Cuántas clases de equivalencia de funciones de conmutación existen si las variables de entrada <m>x_1</m>, <m>x_2</m>, <m>x_3</m>, and <m>x_4</m> se pueden permutar usando cualquier elemento del subgrupo de <m>S_4</m> generado por la permutación <m>(x_1 x_2 x_3 x_4)</m>?</p>
+			<p>¿Cuántas clases de equivalencia de funciones de conmutación existen si las variables de entrada <m>x_1</m>, <m>x_2</m>, <m>x_3</m>, y <m>x_4</m> se pueden permutar usando cualquier elemento del subgrupo de <m>S_4</m> generado por la permutación <m>(x_1 x_2 x_3 x_4)</m>?</p>
 		</statement>
 		
 	</exercise>
@@ -286,7 +286,7 @@
 
 	<exercise number="24">
 		<statement>
-			<p>Sea <m>G</m> un grupo de orden <m>p^n</m> donde <m>p</m> es primo y <m>X</m> es un <m>G</m>-conjunto finito. Si <m>X_G = \{ x \in X : gx = x \text{ for all }g \in G \}</m> es el conjunto de los elementos en <m>X</m> fijos por la acción del grupo, entonces demuestre que <m>|X| \equiv |X_G| \pmod{ p}</m>.</p>
+			<p>Sea <m>G</m> un grupo de orden <m>p^n</m> donde <m>p</m> es primo y <m>X</m> es un <m>G</m>-conjunto finito. Si <m>X_G = \{ x \in X : gx = x \text{ para todo }g \in G \}</m> es el conjunto de los elementos en <m>X</m> fijos por la acción del grupo, entonces demuestre que <m>|X| \equiv |X_G| \pmod{ p}</m>.</p>
 		</statement>
 		
 	</exercise>

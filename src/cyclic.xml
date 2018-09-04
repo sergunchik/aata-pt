@@ -243,7 +243,7 @@
 				</image>
 			</figure>
 
-			<p>Existen varias formas de representar gráficamente a los números complejos. Podemos representar un número complejo <m>z = a +bi</m> como un par ordenado en el plano <m>xy</m> donde <m>a</m> es la coordenada <m>x</m> (o real) y <m>b</m> coordenada y <m>y</m> (o imaginaria). Esta se llama representación <term>rectangular</term> o <term>cartesiana</term> . Las representaciones cartesianas de <m>z_1 = 2 + 3i</m>, <m>z_2 = 1 - 2i</m>, y <m>z_3 = - 3 + 2i</m> se ilustran en la Figura<nbsp /><xref ref="figure-rectcoord" />.</p>
+			<p>Existen varias formas de representar gráficamente a los números complejos. Podemos representar un número complejo <m>z = a +bi</m> como un par ordenado en el plano <m>xy</m> donde <m>a</m> es la coordenada <m>x</m> (o real) y <m>b</m> es la coordenada <m>y</m> (o imaginaria). Esta se llama representación <term>rectangular</term> o <term>cartesiana</term> . Las representaciones cartesianas de <m>z_1 = 2 + 3i</m>, <m>z_2 = 1 - 2i</m>, y <m>z_3 = - 3 + 2i</m> se ilustran en la Figura<nbsp /><xref ref="figure-rectcoord" />.</p>
 
 			<figure xml:id="figure-polarcoord">
 				<caption>Coordenadas polares de un número complejo</caption>
@@ -283,7 +283,7 @@
 					<mrow>a &amp; = r \cos \theta</mrow>
 					<mrow>b &amp; = r \sin \theta.</mrow>
 				</md>
-			A veces abreviarems <m>r( \cos \theta + i \sin \theta)</m> as <m>r \cis \theta</m>.  <notation><usage>\cis \theta</usage><description><m>\cos \theta + i \sin \theta</m></description></notation> Para garantizar que la representación  de <m>z</m> esté bien definida, también pediremos que <m>0^{\circ} \leq \theta \lt 360^{\circ}</m>.  Si la medida está en radianes, entonces <m>0 \leq \theta \lt2 \pi</m>.</p>
+			A veces abreviaremos <m>r( \cos \theta + i \sin \theta)</m> como <m>r \cis \theta</m>.  <notation><usage>\cis \theta</usage><description><m>\cos \theta + i \sin \theta</m></description></notation> Para garantizar que la representación  de <m>z</m> esté bien definida, también pediremos que <m>0^{\circ} \leq \theta \lt 360^{\circ}</m>.  Si la medida está en radianes, entonces <m>0 \leq \theta \lt2 \pi</m>.</p>
 
 			<example xml:id="example-cyclic-polar">
 				<p>Supongamos que <m>z = 2 \cis  60^{\circ}</m>. Entonces
@@ -292,11 +292,11 @@
 					<me>b  =  2 \sin 60^{\circ}  =  \sqrt{3}.</me>
 				Luego, la representación cartesiana es <m>z = 1+\sqrt{3}\, i</m>.</p>
  
- 				<p>Recíprocamente, si no entregan la representación cartesiana de un número complejo, puede ser útil conocer su representación polar. Si <m>z = 3 \sqrt{2} - 3 \sqrt{2}\, i</m>, entonces 
+ 				<p>Recíprocamente, si nos entregan la representación cartesiana de un número complejo, puede ser útil conocer su representación polar. Si <m>z = 3 \sqrt{2} - 3 \sqrt{2}\, i</m>, entonces 
 					<me>r = \sqrt{a^2 + b^2} = \sqrt{36 } = 6</me>
 				y
 					<me>\theta = \arctan \left( \frac{b}{a} \right) = \arctan( - 1) = 315^{\circ},</me>
-				aí <m>3 \sqrt{2} - 3 \sqrt{2}\, i=6 \cis  315^{\circ}</m>.</p>
+				así <m>3 \sqrt{2} - 3 \sqrt{2}\, i=6 \cis  315^{\circ}</m>.</p>
 			</example>
  
 			<p>La representación polar de un número complejo facilita el cálculo de productos y potencias de números complejos.  La demostración de la siguiente proposición es directa y la dejamos como ejercicio.</p>
@@ -366,13 +366,13 @@
 					con <m>k = 0, 1, \ldots, n-1</m>. Más aún, la raíces <m>n</m>-ésimas de uno forman un subgrupo cíclico de <m>{\mathbb T}</m> de orden <m>n</m></p>
 				</statement>
 				<proof>
-					<p>Por el Teorema de DeMoivre's,
+					<p>Por el Teorema de DeMoivre,
 						<me>z^n = \cis \left( n \frac{2 k \pi}{n } \right) = \cis( 2 k \pi ) = 1.</me>
 					Las <m>z</m>'s son distintas entre sí pues los números <m>2 k \pi /n</m> son todos distintos y mayores o iguales a 0 pero menores que <m>2 \pi</m>. El hecho de que estas sean todas las raíces de la ecuación <m>z^n=1</m> es consecuencia del Corolario<nbsp /><xref ref="corollary-poly-zeros" />, que dice que un polinomio de grado  <m>n</m> puede tener a lo más <m>n</m> raíces.  Dejaremos al lector la demostración de que las raíces <m>n</m>-ésimas de uno forman un subgrupo cíclico de <m>{\mathbb T}</m>.</p>
 				</proof>
 			</theorem>
  
-			<p>Un generador para el grupo de las raíces <m>n</m>-ésimas de unno se llama <term>raíz <m>n</m>-ésima primitiva de la unidad</term><idx><h>Raíz <m>n</m>-ésima primitiva de la unidad</h></idx>.</p> 
+			<p>Un generador para el grupo de las raíces <m>n</m>-ésimas de uno se llama <term>raíz <m>n</m>-ésima primitiva de la unidad</term><idx><h>Raíz <m>n</m>-ésima primitiva de la unidad</h></idx>.</p> 
  
 			<example xml:id="example-roots_unity">
 				<p>Las raíces octavas de la unidad se pueden representar como ocho puntos equidistantes en el círculo unitario (Figura<nbsp /><xref ref="figure-rtsunity" />).  Las raíces octavas primitivas de la unidad son
@@ -480,7 +480,7 @@
 
 <!-- Reformatted example.  TWJ 2/5/2013 -->
  
-		<p> El método de los cuadrado repretido resultará ser una herramienta muy útil cuando exploremos la criptografía  <acro>RSA</acro> en el Capítulo<nbsp /><xref ref="crypt" />. Para codificar  y decodificar mensaje de forma razonable, será necesario poder calcular grandes potencia de enteros mód <m>n</m> de forma rápida.</p>
+		<p> El método de los cuadrado repretido resultará ser una herramienta muy útil cuando exploremos la criptografía  <acro>RSA</acro> en el Capítulo<nbsp /><xref ref="crypt" />. Para codificar  y decodificar mensaje de forma razonable, será necesario poder calcular grandes potencias de enteros mód <m>n</m> de forma rápida.</p>
 
 		<xi:include href="./sage/cyclic-info.xml" />
 

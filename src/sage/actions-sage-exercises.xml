@@ -15,7 +15,7 @@
 
 	<exercise number="1">
 		<statement>
-			<p>Construya el grafo de Higman-Sims con el comando <c>graphs.HigmanSimsGraph()</c>.  Luego construya el grupo de automorfismosy determine el orden del subgrupo normal interesante de este grupo.  Puede intentar mostrar el grafo, pero el dibujo probablemente no resulte muy informativo.</p>
+			<p>Construya el grafo de Higman-Sims con el comando <c>graphs.HigmanSimsGraph()</c>.  Luego construya el grupo de automorfismos y determine el orden del subgrupo normal interesante de este grupo.  Puede intentar mostrar el grafo, pero el dibujo probablemente no resulte muy informativo.</p>
 		</statement>
 		
 	</exercise>
@@ -62,7 +62,7 @@
 
 			<ol>
 				<li><p>Construya las órbitas de esta acción, y comente.</p></li>
-				<li><p>Construya un estabilizador de un vértices (que es un subgrupo del grupo completo de automorfismos) y ocnsidere la acción de <em>este</em> grupo en el conjunto de vértices.  Construya las órbitas de esta nueva acción, y comente cuidadosamente sobre sus observaciones, especialmente en términos de los vértices del grafo.</p></li>
+				<li><p>Construya un estabilizador de un vértices (que es un subgrupo del grupo completo de automorfismos) y considere la acción de <em>este</em> grupo en el conjunto de vértices.  Construya las órbitas de esta nueva acción, y comente cuidadosamente sobre sus observaciones, especialmente en términos de los vértices del grafo.</p></li>
 			</ol>
 		</statement>
 		

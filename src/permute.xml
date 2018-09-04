@@ -235,7 +235,7 @@
 				</statement>
 
 				<proof>
-					<p>Sea <m>\sigma = (a_1, a_2, \ldots, a_k )</m> and <m>\tau = (b_1, b_2, \ldots, b_l )</m>. Debemos mostrar que <m>\sigma \tau(x) = \tau \sigma(x)</m> para todo <m>x \in X</m>. Si <m>x</m> no está en <m>\{ a_1, a_2, \ldots, a_k \}</m> ni en <m>\{b_1, b_2, \ldots, b_l  \}</m>, entonces tanto <m>\sigma</m> como <m>\tau</m> fijan <m>x</m>. Es decir, <m>\sigma(x)=x</m> y <m>\tau(x)=x</m>. Luego, 
+					<p>Sea <m>\sigma = (a_1, a_2, \ldots, a_k )</m> y <m>\tau = (b_1, b_2, \ldots, b_l )</m>. Debemos mostrar que <m>\sigma \tau(x) = \tau \sigma(x)</m> para todo <m>x \in X</m>. Si <m>x</m> no está en <m>\{ a_1, a_2, \ldots, a_k \}</m> ni en <m>\{b_1, b_2, \ldots, b_l  \}</m>, entonces tanto <m>\sigma</m> como <m>\tau</m> fijan <m>x</m>. Es decir, <m>\sigma(x)=x</m> y <m>\tau(x)=x</m>. Luego, 
 					<me>\sigma \tau(x) = \sigma( \tau(x)) = \sigma(x) = x = \tau(x) = \tau( \sigma(x)) =  \tau \sigma(x).</me> 
 					<em>No debemos olvidar que estamos multiplicando las permutaciones de derecha a izquierda,.</em>  Ahora supongamos que <m>x \in \{ a_1, a_2, \ldots, a_k \}</m>. Entonces <m>\sigma( a_i ) = a_{(i \bmod k) + 1}</m>; es decir,
 						<md>
@@ -341,7 +341,7 @@
 						<me> \identity = \tau_1 \tau_2 \cdots \tau_{r - 3} \tau_{r - 2}.</me>
 					Por inducción <m>r - 2</m> es par; luego, <m>r</m> debe ser par.</p>
 				 
-					<p>En cada uno de los otros tres casos, podemos reemplazar <m>\tau_{r - 1} \tau_r</m> con el lado derecho de la ecuación correspondiente para obtener un nuevo producto de <m>r</m> transposiciones para la identidad. En este nuevo producto, la última aparición de <m>a</m> será en la penúltima transposición. Podemos continuar este proceso con <m>\tau_{r - 2} \tau_{r - 1}</m> para obtener ya sea un producto de <m>r - 2</m> transposiciones o un nuevo producto de <m>r</m> transposiciones donde la última apaarición de <m>a</m> es en <m>\tau_{r - 2}</m>. Si la identidad es el producto de <m>r - 2</m> transposiciones, entonces nuevamente estamos listos, por la hipótesis de inducción; de otro modo, repetiremosel procedimiento con <m>\tau_{r - 3} \tau_{r - 2}</m>.</p>
+					<p>En cada uno de los otros tres casos, podemos reemplazar <m>\tau_{r - 1} \tau_r</m> con el lado derecho de la ecuación correspondiente para obtener un nuevo producto de <m>r</m> transposiciones para la identidad. En este nuevo producto, la última aparición de <m>a</m> será en la penúltima transposición. Podemos continuar este proceso con <m>\tau_{r - 2} \tau_{r - 1}</m> para obtener ya sea un producto de <m>r - 2</m> transposiciones o un nuevo producto de <m>r</m> transposiciones donde la última aparición de <m>a</m> es en <m>\tau_{r - 2}</m>. Si la identidad es el producto de <m>r - 2</m> transposiciones, entonces nuevamente estamos listos, por la hipótesis de inducción; de otro modo, repetiremos el procedimiento con <m>\tau_{r - 3} \tau_{r - 2}</m>.</p>
 
 					<p>En algún momento, tendremos dos transposiciones adyacentes iguales, que se cancelarán o <m>a</m> solamente estará presente en la primera transposición. Pero este último caso no puede ocurrir, pues la identidad no fijaría <m>a</m> en esta situación. Por lo tanto, la identidad debe ser el producto de <m>r-2</m> transposiciones y, nuevamente por la hipótesis de inducción, estamos listos.</p>
 				</proof>
@@ -391,7 +391,7 @@
 				</statement>
 				
 				 <proof>
-				 	<p>Sea <m>A_n</m> el conjunto de permutaciones pares en <m>S_n</m> y <m>B_n</m> el conjunto de permutaciones impares.  Si ppodemos mostrar que existe una biyección entre estos conjuntos, habremos demostrado que contienen el mismo número de elementos. Fijemos una transposición <m>\sigma</m> en <m>S_n</m>.  Como <m>n \geq 2</m>, tal  <m>\sigma</m> existe.  Defina 
+				 	<p>Sea <m>A_n</m> el conjunto de permutaciones pares en <m>S_n</m> y <m>B_n</m> el conjunto de permutaciones impares.  Si podemos mostrar que existe una biyección entre estos conjuntos, habremos demostrado que contienen el mismo número de elementos. Fijemos una transposición <m>\sigma</m> en <m>S_n</m>.  Como <m>n \geq 2</m>, tal  <m>\sigma</m> existe.  Defina 
 				 		<me>\lambda_{\sigma} : A_n \rightarrow B_n</me>
 				 	como 
 				 		<me>\lambda_{\sigma} ( \tau ) = \sigma  \tau .</me>

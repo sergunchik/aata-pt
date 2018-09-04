@@ -44,7 +44,7 @@
     <exercise number="3">
         <statement>
 
-            <p>Construya un cuerpo finito <m>F</m> de orden <m>p^n</m> en la forma usual.  Luego construya el grupo (multiplicativo) de todas las matrices invertibles (nonsingulares) de <m>m\times m</m> sobre este cuerpo con el comando <c>G = GL(m, F)</c> (<q>el grupo lineal general</q>).  ¿Cuál es el orden de este grupo?  En otras palabras, encuentre una expresión general para el orden de este grupo.</p>
+            <p>Construya un cuerpo finito <m>F</m> de orden <m>p^n</m> en la forma usual.  Luego construya el grupo (multiplicativo) de todas las matrices invertibles (no singulares) de <m>m\times m</m> sobre este cuerpo con el comando <c>G = GL(m, F)</c> (<q>el grupo lineal general</q>).  ¿Cuál es el orden de este grupo?  En otras palabras, encuentre una expresión general para el orden de este grupo.</p>
 
             <p>Su respuesta debiese ser en función de <m>m</m>, <m>p</m> y <m>n</m>.  Explique su solución en detalle y verifique con ejemplos en Sage que su respuesta es correcta.</p>
 
@@ -82,10 +82,10 @@
     <exercise number="5">
         <statement>
 
-            <p>un cuerpo finito, <m>F</m>, de orden <m>5^3</m> es un espacio vectorial de dimensión 3 sobre <m>{\mathbb Z}_5</m>.  Supongamos que <m>a</m> es un generador de <m>F</m>.  Sea <m>M</m> cualquier matriz de <m>3\times 3</m> con coeficientes en <m>{\mathbb Z}_5</m> (cuidado acá, los elementos son del cuerpo de escalares, no del espacio vectorial).  Si convertimos un elemento <m>x\in F</m> en un vector (relativo a la base <m>\{1,a,a^2\}</m>), entonces podemos multiplicarlo por <m>M</m> (con <m>M</m> al lado izquierdo) para crear otro vector, que entonces podemos traducir en una combinación lineal de los elementos de la base, y por ende en otro elemento de <m>F</m>.  Esta función es un homomorfismo de espacios vectoriales, mejor conocido como una transformación lineal (implementeda con su representación matricial relativa a la base <m>\{1,a,a^2\}</m>.  Note que cada parte más abajo se vuelve menos general y más específica.</p>
+            <p>Un cuerpo finito, <m>F</m>, de orden <m>5^3</m> es un espacio vectorial de dimensión 3 sobre <m>{\mathbb Z}_5</m>.  Supongamos que <m>a</m> es un generador de <m>F</m>.  Sea <m>M</m> cualquier matriz de <m>3\times 3</m> con coeficientes en <m>{\mathbb Z}_5</m> (cuidado acá, los elementos son del cuerpo de escalares, no del espacio vectorial).  Si convertimos un elemento <m>x\in F</m> en un vector (relativo a la base <m>\{1,a,a^2\}</m>), entonces podemos multiplicarlo por <m>M</m> (con <m>M</m> al lado izquierdo) para crear otro vector, que entonces podemos traducir en una combinación lineal de los elementos de la base, y por ende en otro elemento de <m>F</m>.  Esta función es un homomorfismo de espacios vectoriales, mejor conocido como una transformación lineal (implementeda con su representación matricial relativa a la base <m>\{1,a,a^2\}</m>.  Note que cada parte más abajo se vuelve menos general y más específica.</p>
 
             <ol>
-                <li><p>Cree una matriz no-invertible <m>R</m> y dé ejemplos para mostrar que la función descrita por <m>R</m> es un homomorfismode espacios vectoriales de <m>F</m> en <m>F</m>.</p></li>
+                <li><p>Cree una matriz no-invertible <m>R</m> y dé ejemplos para mostrar que la función descrita por <m>R</m> es un homomorfismo de espacios vectoriales de <m>F</m> en <m>F</m>.</p></li>
 
                 <li><p>Cree una matriz invertible <m>M</m>.  La función ahora será un homomorfismo invertible.  Determine la función inversa y dé ejemplos para verificar sus propiedades.</p></li>
 

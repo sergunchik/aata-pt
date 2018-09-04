@@ -20,7 +20,7 @@
 	<title>Reticulados y Álgebras Booleanas</title>
 
 	<introduction>
-		<p>Los axiomas de un anillo dan estructura a las operaciones de adición y multiplicación en un conjunto. Pero, podemos construir estructuras algebraicas, conocidas como reticulados y álgebras Booleanas, que generalizan otro tipo de operaciones. Por ejemplo, las operaciones importantes en conjuntos son inclusión, unión e intersección. Los reticulados son generalizaciones de relaciones de orden en espacios algebraicos, tal como la inclusión en teoría de conjuntos y la desigualdad en los sistemas de números familiares <m>{\mathbb N}</m>, <m>{\mathbb Z}</m>, <m>{\mathbb Q}</m>, y <m>{\mathbb R}</m>.  Las álgebra Booleanas generalizan las opraciones de intersección y unión. Los reticulados y las álgebras Booleanas han encontrado aplicaciones en lógica, teoría de circuitos, y probabilidades.</p>
+		<p>Los axiomas de un anillo dan estructura a las operaciones de adición y multiplicación en un conjunto. Pero, podemos construir estructuras algebraicas, conocidas como reticulados y álgebras Booleanas, que generalizan otro tipo de operaciones. Por ejemplo, las operaciones importantes en conjuntos son inclusión, unión e intersección. Los reticulados son generalizaciones de relaciones de orden en espacios algebraicos, tal como la inclusión en teoría de conjuntos y la desigualdad en los sistemas de números familiares <m>{\mathbb N}</m>, <m>{\mathbb Z}</m>, <m>{\mathbb Q}</m>, y <m>{\mathbb R}</m>.  Las álgebras Booleanas generalizan las opraciones de intersección y unión. Los reticulados y las álgebras Booleanas han encontrado aplicaciones en lógica, teoría de circuitos, y probabilidades.</p>
 	</introduction>
 
 	<section xml:id="section-boolean-lattices">
@@ -102,7 +102,7 @@
 			</example>
 
 			<example xml:id="example-boolean-poset-divisors-24">
-				<p>Sea <m>X = \{ 1, 2, 3, 4, 6, 8, 12, 24 \}</m> el conjunto de los divisores de 24 con el orden parcial definido en el Ejemplo<nbsp /><xref ref="example-boolean-p-order-not-unique" />. La Figura<nbsp /><xref ref="figure-poset-divisors-24" /> muestra el orden parcial en<m>X</m>.</p>
+				<p>Sea <m>X = \{ 1, 2, 3, 4, 6, 8, 12, 24 \}</m> el conjunto de los divisores de 24 con el orden parcial definido en el Ejemplo<nbsp /><xref ref="example-boolean-p-order-not-unique" />. La Figura<nbsp /><xref ref="figure-poset-divisors-24" /> muestra el orden parcial en <m>X</m>.</p>
 			</example>
 
 			<figure xml:id="figure-poset-divisors-24">
@@ -169,7 +169,7 @@
 			</example>
 
 			<example xml:id="example-boolean-subgroup-lattice">
-				<p>Sea <m>G</m> un grupo y supongamos que <m>X</m> es el conjunto de subgrupos de <m>G</m>.  Entonces <m>X</m> es un conjunto parcialmente ordenado por inclusión conjuntista, <m>\subset</m>.  El conjunto de subgrupos de <m>G</m> también es un reticulado.  Si <m>H</m> y <m>K</m> so subgrupos de <m>G</m>, el ínfimo de <m>H</m> y <m>K</m> es <m>H \cap K</m>. El conjunto <m>H \cup K</m> puede no ser un subgrupo de <m>G</m>.  Dejamos como ejercicio demostrar que el supremo de <m>H</m> y <m>K</m> es el subgrupo generado por <m>H \cup K</m>.</p>
+				<p>Sea <m>G</m> un grupo y supongamos que <m>X</m> es el conjunto de subgrupos de <m>G</m>.  Entonces <m>X</m> es un conjunto parcialmente ordenado por inclusión conjuntista, <m>\subset</m>.  El conjunto de subgrupos de <m>G</m> también es un reticulado.  Si <m>H</m> y <m>K</m> son subgrupos de <m>G</m>, el ínfimo de <m>H</m> y <m>K</m> es <m>H \cap K</m>. El conjunto <m>H \cup K</m> puede no ser un subgrupo de <m>G</m>.  Dejamos como ejercicio demostrar que el supremo de <m>H</m> y <m>K</m> es el subgrupo generado por <m>H \cup K</m>.</p>
 			</example>
  
 			<p>En teoría de conjuntos tenemos ciertas condiciones de dualidad. Por ejemplo, por las leyes de De Morgan, todo enunciado sobre conjuntos que sea válido para <m>(A \cup B)'</m> también debe ser válido para <m>A' \cap B'</m>. También tenemos un principio de dualidad para reticulados.</p>
@@ -278,10 +278,10 @@
 
 			<theorem>
 				<statement>
-					<p>Un conjunto <m>B</m> es un álgebra Booleana si y solo si existen operaciones binarias<m>\vee</m> y <m>\wedge</m> en <m>B</m> que satisfacen los siguientes axiomas.
+					<p>Un conjunto <m>B</m> es un álgebra Booleana si y solo si existen operaciones binarias <m>\vee</m> y <m>\wedge</m> en <m>B</m> que satisfacen los siguientes axiomas.
 						<ol>
 
-							<li><p><m>a \vee b = b \vee a</m> y <m>a \wedge b = b \wedge a</m> for <m>a, b \in B</m>.</p></li>
+							<li><p><m>a \vee b = b \vee a</m> y <m>a \wedge b = b \wedge a</m> para <m>a, b \in B</m>.</p></li>
 	 
 							<li><p><m>a \vee ( b \vee c) = (a \vee b) \vee c</m> y <m>a \wedge ( b \wedge c) = (a \wedge b) \wedge c</m> para <m>a, b, c \in B</m>.</p></li>
 	 
@@ -315,7 +315,7 @@
 	 
 					<p>Para <m>a \in B</m>, <m>O \vee a = a</m>; luego, <m>O \preceq a</m> y <m>O</m> es el menor elemento en <m>B</m>. Para mostrar que <m>I</m> es el mayor elemento en <m>B</m>, mostraremos primero que <m>a \vee b = b</m> es equivalente a <m>a \wedge b = a</m>.  Como <m>a \vee I = a</m> para todo <m>a \in B</m>, usando las leyes de absorción podemos determinar que 
 						<me>a \vee I =(a \wedge I) \vee I = I \vee ( I \wedge a) = I</me>
-					y <m>a \preceq I</m> para todo <m>a</m> in <m>B</m>. Finalmente, como sabemos que <m>B</m> es complementado po (5), <m>B</m> es un álgebra Booleana.</p>
+					y <m>a \preceq I</m> para todo <m>a</m> in <m>B</m>. Finalmente, como sabemos que <m>B</m> es complementado por (5), <m>B</m> es un álgebra Booleana.</p>
 	 
 					<p>Recíprocamente, supongamos que <m>B</m> es un álgebra Booleana. Sean <m>I</m> y <m>O</m> el elemento mayor y el elemento menor en <m>B</m>, respectivamente.  Si definimos <m>a \vee b</m> y <m>a \wedge b</m> como el supremo y el ínfimo de <m>\{ a, b\}</m> respectivamente, entonces <m>B</m> satisface las condiciones (1)<ndash />(5).</p>
 				</proof>
@@ -330,7 +330,7 @@
 
 							<li><p><m>a \vee I = I</m> y <m>a \wedge O = O</m> para todo <m>a \in B</m>.</p></li>
 
-							<li><p>Si <m>a \vee b = a \vee c</m> y <m>a \wedge b = a \wedge c</m> for <m>a, b, c \in B</m>, entonces <m>b = c</m>.</p></li>
+							<li><p>Si <m>a \vee b = a \vee c</m> y <m>a \wedge b = a \wedge c</m> para <m>a, b, c \in B</m>, entonces <m>b = c</m>.</p></li>
 	 
 							<li><p>Si <m>a \vee b = I</m> y <m>a \wedge b = O</m>, entonces <m>b = a'</m>.</p></li>
 
@@ -459,7 +459,7 @@
  
 			<theorem xml:id="theorem-classification-boolean-algebra">
 				<statement>
-					<p>Sea <m>B</m> un ágebra Booleana finita.  Entonces existe un conjunto <m>X</m> tal que <m>B</m> es isomorfo a <m>{\mathcal P}(X)</m>.</p>
+					<p>Sea <m>B</m> un álgebra Booleana finita.  Entonces existe un conjunto <m>X</m> tal que <m>B</m> es isomorfo a <m>{\mathcal P}(X)</m>.</p>
 				</statement>
 				<proof>
 					<p>Mostraremos que <m>B</m> es isomorfo a <m>{\mathcal P}(X)</m>, donde <m>X</m> es el conjunto de átomos de <m>B</m>. Sea <m>a \in B</m>. Por el Lema<nbsp /><xref ref="lemma-atoms" />, podemos escribir <m>a</m> de forma única como <m>a = a_1 \vee \cdots \vee a_n</m> para <m>a_1, \ldots, a_n \in X</m>. Concluimos que es posible definir una función <m>\phi : B \rightarrow {\mathcal P}(X)</m> por  
@@ -679,9 +679,9 @@
  		<subsection xml:id="boolean-subsection-historical-note">
 			<title>Nota Histórica</title>
  
- 			<p>George Boole<idx><h>Boole, George</h></idx> (1815<ndash />1864) fue la primera persona en estudiar reticulados. En 1847, publicó <em>The Investigation of the Laws of Thought</em>, un libro en el que usó reticulados para formalizar la lógica y el cálculo de proposiciones. Boole pensaba que las matemáticas eran el estudio de forma más que de contenido; es decir, no estaba tan preocupado en qué estaba calculando sino en cómo lo estaba calculando.  El trabajo de Boole fue contiuado por su amigo Augustus De Morgan<idx><h>De Morgan, Augustus</h></idx> (1806<ndash />1871).  De Morgan observó  que el Principio de Dualidad se cumplía en la Teoría de Conjuntos, como se ilustra por las leyes de De Morgan. El pensaba, como Boole, que las matemáticas eran el estudio de símbolos y operaciones abstractas.</p>
+ 			<p>George Boole<idx><h>Boole, George</h></idx> (1815<ndash />1864) fue la primera persona en estudiar reticulados. En 1847, publicó <em>The Investigation of the Laws of Thought</em>, un libro en el que usó reticulados para formalizar la lógica y el cálculo de proposiciones. Boole pensaba que las matemáticas eran el estudio de forma más que de contenido; es decir, no estaba tan preocupado en qué estaba calculando sino en cómo lo estaba calculando.  El trabajo de Boole fue contiuado por su amigo Augustus De Morgan<idx><h>De Morgan, Augustus</h></idx> (1806<ndash />1871).  De Morgan observó  que el Principio de Dualidad se cumplía en la Teoría de Conjuntos, como se ilustra por las leyes de De Morgan. Pensaba, como Boole, que las matemáticas eran el estudio de símbolos y operaciones abstractas.</p>
  
-			<p>La teoría de conjuntos y la lógica fueron avanzados postriormente por matemáticos tales como Alfred North Whitehead<idx><h>Whitehead, Alfred North</h></idx> (1861<ndash />1947), Bertrand Russell<idx><h>Russell, Bertrand</h></idx> (1872<ndash />1970), y David Hilbert<idx><h>Hilbert, David</h></idx> (1862<ndash />1943). en <em>Principia Mathematica</em>, Whitehead y Russell intentaron mostrar la conexión entre matemáticas y lógica mediante la deducción del sistema de números naturales a partir de las reglas de la lógica formal. Si los números naturales podían ser determinados a partir de la lógica misma, entonces también podría serlo buena parte del resto de las matemáticas. Sus planes sufrieron un golpe mortal por parte de Kurt Gödel<idx><h>Gödel, Kurt</h></idx> (1906<ndash />1978), quien demostró que siempre existirán problemas <q>indecidibles</q> en cualquier sistema axiomático lo suficientemente rico; es decir, en cualquier sistema matemático de alguna importancia, siempre habrá enunciados que no puedan ser demostrados ni refutados.</p>
+			<p>La teoría de conjuntos y la lógica fueron avanzados postriormente por matemáticos tales como Alfred North Whitehead<idx><h>Whitehead, Alfred North</h></idx> (1861<ndash />1947), Bertrand Russell<idx><h>Russell, Bertrand</h></idx> (1872<ndash />1970), y David Hilbert<idx><h>Hilbert, David</h></idx> (1862<ndash />1943). En <em>Principia Mathematica</em>, Whitehead y Russell intentaron mostrar la conexión entre matemáticas y lógica mediante la deducción del sistema de números naturales a partir de las reglas de la lógica formal. Si los números naturales podían ser determinados a partir de la lógica misma, entonces también podría serlo buena parte del resto de las matemáticas. Sus planes sufrieron un golpe mortal por parte de Kurt Gödel<idx><h>Gödel, Kurt</h></idx> (1906<ndash />1978), quien demostró que siempre existirán problemas <q>indecidibles</q> en cualquier sistema axiomático lo suficientemente rico; es decir, en cualquier sistema matemático de alguna importancia, siempre habrá enunciados que no puedan ser demostrados ni refutados.</p>
  
  			<p>Como ocurre con frecuencia, esta investigación básica en matemáticas puras posteriormente se volvió indispensable en una amplia gama de aplicaciones. El álgebra Booleana y la lógica se volvieron esenciales en el diseño de circuitos integrados a gra escala que se encuentran en los chips de computadores hoy. Los sociólogos han usado reticulados y álgebras Booleanas para modelar jerarquías sociales; los biólogos las han usado para dscribir sistemas biológicos.</p>
  		</subsection>

@@ -22,7 +22,7 @@
 
     <exercise number="2">
         <statement>
-            <p>Los cuatro homomorfismos creados por la construcción del producto directo son cada uno un ejemplo de una construcció más general de homomorfismos que involucran los grupos  <m>G</m>, <m>H</m> y <m>G\times H</m>.  Usando los mismos grupos del ejemplo en la subsección anterior, vea si puede descubrir y describir estas construcciones  con definiciones exactas de los cuatro homomorfismos en general.</p>
+            <p>Los cuatro homomorfismos creados por la construcción del producto directo son cada uno un ejemplo de una construcción más general de homomorfismos que involucran los grupos  <m>G</m>, <m>H</m> y <m>G\times H</m>.  Usando los mismos grupos del ejemplo en la subsección anterior, vea si puede descubrir y describir estas construcciones  con definiciones exactas de los cuatro homomorfismos en general.</p>
 
             <p>Las herramientas para investigar homomorfismos de grupos en Sage son limitadas, se puede tomar cada generador del dominio y ver cuál es su imagen.  A continuación  un ejemplo de este tipo de cálculo que puede realizar repetidamente.  Investigaremos el segundo homomorfismo.  El dominio es el grupo dihedral, y calcularemos la imagen del primer generador.</p>
 

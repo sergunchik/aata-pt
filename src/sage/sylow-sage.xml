@@ -203,7 +203,7 @@
 		</output>
 		</sage>
 
-		<p>El normalizador de n subgrupo siempre contiene al subgrupo, de manera que el normalizador de <c>S2</c> este todo lo pequeño que puede ser.  Ya sabíamos que <c>S3</c> es normal en <c>G</c>, así es que no es sorprendente que su normalizador sea todo llo grande que puede ser <mdash /> todo elemento de <c>G</c> normaliza a <c>S3</c>.  Calculemos un normalizador más <q>interesante</q> en <m>D_{18}</m></p>
+		<p>El normalizador de un subgrupo siempre contiene al subgrupo, de manera que el normalizador de <c>S2</c> este todo lo pequeño que puede ser.  Ya sabíamos que <c>S3</c> es normal en <c>G</c>, así es que no es sorprendente que su normalizador sea todo lo grande que puede ser <mdash /> todo elemento de <c>G</c> normaliza a <c>S3</c>.  Calculemos un normalizador más <q>interesante</q> en <m>D_{18}</m></p>
 
 		<sage>
 		<input>
@@ -297,7 +297,7 @@
 		</output>
 		</sage>
 
-		<p>Acá viene un grupo bastante interesante, uno de los <m>26</m> grupos simles esporádicos, conocido como el grupo de Higman-Sims, <m>HS</m>.  Los generadores usados abajo vienen de su representación permutacional en 100 puntos en formato <acro>GAP</acro>, disponible en <url href="http://web.mat.bham.ac.uk/atlas/v2.0/spor/HS/">web.mat.bham.ac.uk/atlas/v2.0/spor/HS/</url>.  Dos generadores, uno de orden <m>2</m> y otro de orden <m>5</m> (como se puede ver fácilmente), generando <m>44\,352\,000</m> elementos, pero ningún subgrupo normal.  Impresionante.</p>
+		<p>Acá viene un grupo bastante interesante, uno de los <m>26</m> grupos simples esporádicos, conocido como el grupo de Higman-Sims, <m>HS</m>.  Los generadores usados abajo vienen de su representación permutacional en 100 puntos en formato <acro>GAP</acro>, disponible en <url href="http://web.mat.bham.ac.uk/atlas/v2.0/spor/HS/">web.mat.bham.ac.uk/atlas/v2.0/spor/HS/</url>.  Dos generadores, uno de orden <m>2</m> y otro de orden <m>5</m> (como se puede ver fácilmente), generando <m>44\,352\,000</m> elementos, pero ningún subgrupo normal.  Impresionante.</p>
 
 		<sage>
 		<input>
@@ -356,7 +356,7 @@
 		<output>'4.8.6'</output>
 		</sage>
 
-		<p>En Sage se puede interactuar con <acro>GAP</acro> de diferentes formas. La mñas directa es creando un grupo de permutaciones por medio del comando <c>gap()</c> de Sage.</p>
+		<p>En Sage se puede interactuar con <acro>GAP</acro> de diferentes formas. La más directa es creando un grupo de permutaciones por medio del comando <c>gap()</c> de Sage.</p>
 
 		<sage>
 		<input>
@@ -368,7 +368,7 @@
 		</output>
 		</sage>
 
-		<p>Ahora podemos usar casi cualquier comando <acro>GAP</acro> con <c>G</c>, via la convención de que la mayoría de los comandos en  <acro>GAP</acro> esperan recibir un grupo como su primer argumento, y en su lugar proveemos el grupo usando la sintaxis orientada al objeto <c>G.</c>.  Si consulta un manual de <acro>GAP</acro> verá que <c>Center</c> es un comando <acro>GAP</acro> que toma un grupo como su único argumento, y <c>Centralizer</c> es un comando <acro>GAP</acro> que requiere dos argumentos <mdash /> un grupo y luego un elemento del grupo.</p>
+		<p>Ahora podemos usar casi cualquier comando <acro>GAP</acro> con <c>G</c>, vía la convención de que la mayoría de los comandos en  <acro>GAP</acro> esperan recibir un grupo como su primer argumento, y en su lugar proveemos el grupo usando la sintaxis orientada al objeto <c>G.</c>.  Si consulta un manual de <acro>GAP</acro> verá que <c>Center</c> es un comando <acro>GAP</acro> que toma un grupo como su único argumento, y <c>Centralizer</c> es un comando <acro>GAP</acro> que requiere dos argumentos <mdash /> un grupo y luego un elemento del grupo.</p>
 
 		<sage>
 		<input>
@@ -388,7 +388,7 @@
 		</output>
 		</sage>
 
-		<p>Si usa la interfaz Notebook de Sage puede poner <c>%gap</c> en la primera línea de una celda y la celda completa se interpretará como si estuviera interactuando directamente cong <acro>GAP</acro>.  Esto significa que ahora puede (y debe) usar la sintaxis de <acro>GAP</acro>, que como puede ver arriba, es ligeramente diferente a la Sintaxis de Sage.  También se puede usar el menú en el comienzo de la página para seleccionar <c>gap</c> en lugar de <c>sage</c> y la hoja de trabajo completa será interpretada como <acro>GAP</acro>.  Acá un ejemplo simple, que debiera poder ejecutar en su hoja de trabajo actual.  Este ejemplo particular no correrá bien en una celda Sage en la versión web de esta sección.</p>
+		<p>Si usa la interfaz Notebook de Sage puede poner <c>%gap</c> en la primera línea de una celda y la celda completa se interpretará como si estuviera interactuando directamente con <acro>GAP</acro>.  Esto significa que ahora puede (y debe) usar la sintaxis de <acro>GAP</acro>, que como puede ver arriba, es ligeramente diferente a la sintaxis de Sage.  También se puede usar el menú en el comienzo de la página para seleccionar <c>gap</c> en lugar de <c>sage</c> y la hoja de trabajo completa será interpretada como <acro>GAP</acro>.  Acá un ejemplo simple, que debiera poder ejecutar en su hoja de trabajo actual.  Este ejemplo particular no correrá bien en una celda Sage en la versión web de esta sección.</p>
 
 		<sage type="display">
 		<input>
@@ -401,12 +401,12 @@
 		<p>Notemos que<ul>
 			<li><p>No es necesario encerrar las permutaciones individuales con tantas cremillas como haríamos en Sage.</p></li>
 
-			<li><p>La asignación es <c>:=</c> not <c>=</c>.  Si olvida los dos puntos, obtendrá un error del tipo <c>Variable: 'G' must have a value</c></p></li>
+			<li><p>La asignación es <c>:=</c> no <c>=</c>.  Si olvida los dos puntos, obtendrá un error del tipo <c>Variable: 'G' must have a value</c></p></li>
 
 			<li><p>Una línea <em>debe</em> terminar en punto y coma (;).  Si olvida el punto y coma al final la línea, las líneas se fusionarán como si fuera una sola.</p></li>
 		</ul></p>
 
-		<p>Puede obtener ayuda sobr los comandos en <acro>GAP</acro> como se muestra más abajo, pero pronto se dará cuenta que <acro>GAP</acro> supone que usted sabe más álgebra de lo que supone Sage.</p>
+		<p>Puede obtener ayuda acerca de los comandos en <acro>GAP</acro> como se muestra más abajo, pero pronto se dará cuenta que <acro>GAP</acro> supone que usted sabe más álgebra de lo que supone Sage.</p>
 
 		<sage doctest="not tested">
 		<input>

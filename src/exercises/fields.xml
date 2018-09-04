@@ -24,7 +24,7 @@
 
 					<li><p><m>\sqrt{3} + \sqrt{2}\, i</m></p></li>
 
-					<li><p><m>\cos \theta + i \sin \theta</m> for <m>\theta = 2 \pi /n</m> with <m>n \in {\mathbb N}</m></p></li>
+					<li><p><m>\cos \theta + i \sin \theta</m> para <m>\theta = 2 \pi /n</m> con <m>n \in {\mathbb N}</m></p></li>
 
 					<li><p><m>\sqrt{ \sqrt[3]{2} - i }</m></p></li>
 
@@ -168,7 +168,7 @@
 
 	<exercise number="13">
 		<statement>
-			<p>Demuestre que los cuerpos <m>{\mathbb Q}(\sqrt[4]{3}\, )</m> and <m>{\mathbb Q}(\sqrt[4]{3}\, i)</m> son isomorfos pero no iguales.</p>
+			<p>Demuestre que los cuerpos <m>{\mathbb Q}(\sqrt[4]{3}\, )</m> y <m>{\mathbb Q}(\sqrt[4]{3}\, i)</m> son isomorfos pero no iguales.</p>
 		</statement>
 		
 	</exercise>

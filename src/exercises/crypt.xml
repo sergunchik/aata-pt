@@ -44,7 +44,7 @@
 			<p>¿Cuál es la importancia de este mensaje en la historia de la criptografía?</p>
 		</statement>
 		<hint>
-			<p>Hint: <c>V = E</c>, <c>E = X</c> (also used for spaces and punctuation), <c>K = R</c>.</p>
+			<p>Ayuda: <c>V = E</c>, <c>E = X</c> (también usado para espacios y puntuación), <c>K = R</c>.</p>
 		</hint>
 		
 	</exercise>

@@ -33,9 +33,9 @@
 
  				<li><p><m>(a + b) + c = a + ( b + c)</m> for <m>a, b, c  \in R</m>.</p></li>
 
- 				<li><p>There is an element <m>0</m> in <m>R</m> such that <m>a + 0 = a</m> for all <m>a \in R</m>.</p></li>
+ 				<li><p>Existe un elemento <m>0</m> in <m>R</m> tal que <m>a + 0 = a</m> para todo <m>a \in R</m>.</p></li>
 
- 				<li><p>For every element <m>a \in R</m>, there exists an element <m>-a</m> in <m>R</m> such that <m>a + (-a) = 0</m>.</p></li>
+ 				<li><p>Para todo elemento <m>a \in R</m>, existe un elemento <m>-a</m> en <m>R</m> tal que <m>a + (-a) = 0</m>.</p></li>
 
  				<li><p><m>(ab)  c = a  ( b  c)</m> for <m>a, b, c  \in R</m>.</p></li>
 
@@ -45,7 +45,7 @@
 						<mrow>(a + b)c &amp; = ac + bc.</mrow>
 					</md></p></li>
 			</ol>
-		Esta última consición, el axioma de la distributividad, relaciona las operaciones binarias de adición y multiplicación. Note que los primeros cuatro axiomas simplemente requieren que un anillo sea un grupo abeliano con la operación de adición, de manera que podríamos haber definido un anillo como un grupo abeliano <m>(R, +)</m> junto con una operación secundariaque satisface los axiomas quinto y sexto dados arriba.</p> 
+		Esta última consición, el axioma de la distributividad, relaciona las operaciones binarias de adición y multiplicación. Note que los primeros cuatro axiomas simplemente requieren que un anillo sea un grupo abeliano con la operación de adición, de manera que podríamos haber definido un anillo como un grupo abeliano <m>(R, +)</m> junto con una operación secundaria que satisface los axiomas quinto y sexto dados arriba.</p> 
 
  
 		<p>Si existe un elemento  <m>1 \in R</m> tal que <m>1 \neq 0</m> y  <m>1a = a1 = a</m> para cada elemento <m>a \in R</m>, decimos que tal anillo <m>R</m> es un anillo con <term>unidad</term><idx><h>Anillo</h><h>con unidad</h></idx> o <term>identidad</term><idx><h>Anillo</h><h>con identidad</h></idx>. Un anillo <m>R</m> para el cual <m>ab = ba</m> para todo <m>a,  b</m> en <m>R</m> se llama <term>anillo conmutativo</term><idx><h>Conmutativo</h><h>anillo</h></idx><idx><h>Anillo conmutativo</h></idx>. un anillo conmutativo <m>R</m> con identidad se llama <term>dominio integral</term><idx><h>Dominio integral</h></idx> si, para <m>a, b  \in R</m> tales que <m>ab = 0</m>, se cumple <m>a = 0</m> o <m>b = 0</m>.  Un <term>anillo de división</term><idx><h>Anillo de división</h></idx><idx><h>División</h><h>anillo de</h></idx> es un anillo <m>R</m>, con identidad, en el que todo elemento distinto de cero en <m>R</m> es una <term>unidad</term><idx><h>Unidad</h></idx>; es decir, para cada <m>a \in R</m> con <m>a \neq 0</m>, existe un único elemento <m>a^{-1}</m> tal que <m>a^{-1} a = a a^{-1}  = 1</m>. Un anillo de división conmutativo se llama <term>cuerpo</term><idx><h>Cuerpo</h></idx>.  La relación entre anillos, dominios integrales, anillos de división y cuerpos se muestra en la Figura<nbsp /><xref ref="figure-ring-types" />.</p>
@@ -79,7 +79,7 @@
 		</figure>
  
 		<example xml:id="example-rings-integers">
-			<p>Como mencionamos antes, los enteros forman un anillo. De hecho, <m>{\mathbb Z}</m> es un dominio integral.  De hecho si <m>a b = 0</m> para dos enteros <m>a</m> y <m>b</m>, ya sea <m>a=0</m> o <m>b=0</m>. Sin embargo, <m>{\mathbb Z}</m> no e sun cuerpo. No hay un entero que sea el inverso multiplicativo de 2, pues <m>1/2</m> no es un entero.  Los únicos enteros con inverso multiplicativo son 1 y <m>-1</m>.</p>
+			<p>Como mencionamos antes, los enteros forman un anillo. De hecho, <m>{\mathbb Z}</m> es un dominio integral.  De hecho si <m>a b = 0</m> para dos enteros <m>a</m> y <m>b</m>, ya sea <m>a=0</m> o <m>b=0</m>. Sin embargo, <m>{\mathbb Z}</m> no es un cuerpo. No hay un entero que sea el inverso multiplicativo de 2, pues <m>1/2</m> no es un entero.  Los únicos enteros con inverso multiplicativo son 1 y <m>-1</m>.</p>
 		</example>
  
  		<example xml:id="example-rings-field">
@@ -87,13 +87,13 @@
  		</example>
  
  		<example xml:id="example-rings-zn">
- 			<p>Podemos definir el producto de dos elementos <m>a</m> y <m>b</m> en <m>{\mathbb Z}_n</m> como <m>ab \pmod{n}</m>. Por ejemplo, en <m>{\mathbb Z}_{12}</m>,  <m>5 \cdot 7 \equiv 11 \pmod{12}</m>.  Este producto convierte el grupo abeliano <m>{\mathbb Z}_n</m> en un anillo. De hecho <m>{\mathbb Z}_n</m> es un anillo conmutativo; sin embargo, puede que no se un dominio integral.  Si consideramos <m>3 \cdot 4 \equiv 0 \pmod{12}</m> en <m>{\mathbb Z}_{12}</m>, es fácil ver que el producto de dos elementos distintos de cero en el anillo puede ser igual a cero.</p>
+ 			<p>Podemos definir el producto de dos elementos <m>a</m> y <m>b</m> en <m>{\mathbb Z}_n</m> como <m>ab \pmod{n}</m>. Por ejemplo, en <m>{\mathbb Z}_{12}</m>,  <m>5 \cdot 7 \equiv 11 \pmod{12}</m>.  Este producto convierte el grupo abeliano <m>{\mathbb Z}_n</m> en un anillo. De hecho <m>{\mathbb Z}_n</m> es un anillo conmutativo; sin embargo, puede que no sea un dominio integral.  Si consideramos <m>3 \cdot 4 \equiv 0 \pmod{12}</m> en <m>{\mathbb Z}_{12}</m>, es fácil ver que el producto de dos elementos distintos de cero en el anillo puede ser igual a cero.</p>
  		</example>
 
  		<p>Un elemento distinto de cero <m>a</m> en un anillo <m>R</m> se dice <term>divisor de cero</term><idx><h>Divisor de Cero</h></idx> si existe un elemento <m>b</m> distinto de cero en <m>R</m> tal que <m>ab = 0</m>. En el ejemplo anterior,  3 y 4 son divisores de cero en <m>{\mathbb Z}_{12}</m>.</p>
  
  		<example xml:id="example-rings-functions">
-			<p>El conjunto de funciones reales continuos definidas en un intervalo <m>[a,b]</m> forman un anillo conmutativo. La suma y el producto de dos funciones se definen sumando y multiplicando respectvamente los valores de las funciones.  Si <m>f(x) = x^2</m> y <m>g(x) = \cos x</m>, entonces <m>(f+g)(x) = f(x) + g(x) = x^2 + \cos x</m> y <m>(fg)(x) = f(x) g(x) = x^2 \cos x</m>.</p>
+			<p>El conjunto de funciones reales continuas definidas en un intervalo <m>[a,b]</m> forman un anillo conmutativo. La suma y el producto de dos funciones se definen sumando y multiplicando respectvamente los valores de las funciones.  Si <m>f(x) = x^2</m> y <m>g(x) = \cos x</m>, entonces <m>(f+g)(x) = f(x) + g(x) = x^2 + \cos x</m> y <m>(fg)(x) = f(x) g(x) = x^2 \cos x</m>.</p>
 		</example>
  
  		<example xml:id="example-rings-matrix">
@@ -187,7 +187,7 @@
 			</proof>
 		</proposition>
  
-		<p>Así como tenemos subgrupos de grupos, tenemos una clase análoga de subestructuras para anillos. Un <term>subanillo</term><idx><h>Subanillo</h></idx> <m>S</m>  de un anillo <m>R</m> es nu subconjunto <m>S</m> de <m>R</m> tal que <m>S</m> también es un anillo con las operaciones heredadas de <m>R</m>.</p>
+		<p>Así como tenemos subgrupos de grupos, tenemos una clase análoga de subestructuras para anillos. Un <term>subanillo</term><idx><h>Subanillo</h></idx> <m>S</m>  de un anillo <m>R</m> es un subconjunto <m>S</m> de <m>R</m> tal que <m>S</m> también es un anillo con las operaciones heredadas de <m>R</m>.</p>
  
 		<example xml:id="example-rings-subring-chain">
 			<p>El anillo <m>n {\mathbb Z}</m> es un subanillo de <m>{\mathbb Z}</m>.  Note que si bien el anillo original pueda tener una identidad, no pedimos que su subanillo tenga una identidad. Tenemos la siguiente cadena de subanillos: 
@@ -226,7 +226,7 @@
 				a & b \\
 				0 & c
 				]]>\end{pmatrix}
-				\quad \text{and} \quad
+				\quad \text{y} \quad
 				B =
 				\begin{pmatrix}<![CDATA[
 				a' & b' \\
@@ -275,7 +275,7 @@
 				0 & 0
 				]]>\end{pmatrix}
 				\right\}</me>
-			con coeficiente en <m>{\mathbb Z}_2</m> forma un cuerpo.</p>
+			con coeficientes en <m>{\mathbb Z}_2</m> forma un cuerpo.</p>
 		</example>
  
 		<example xml:id="example-rings-q-sqrt2">
@@ -306,13 +306,13 @@
 			</statement>
  
 		<proof>
-			<p>Sea <m>D</m> un dominio integral finito y sea <m>D^\ast</m> el onjunto de los elementos distintos de cero en <m>D</m>.  Debemos mostrar que todo elemento en <m>D^*</m> tiene un inverso. Para cada <m>a \in D^\ast</m> podemos definir una función <m>\lambda_a : D^\ast \rightarrow D^\ast</m> como <m>\lambda_a(d) = ad</m>.  Esta función tiene sentid, pues si  <m>a \neq 0</m> y <m>d \neq 0</m>, entonces <m>ad \neq 0</m>.  La función <m>\lambda_a</m> es 1-1, pues para  <m>d_1, d_2 \in D^*</m>, 
+			<p>Sea <m>D</m> un dominio integral finito y sea <m>D^\ast</m> el conjunto de los elementos distintos de cero en <m>D</m>.  Debemos mostrar que todo elemento en <m>D^*</m> tiene un inverso. Para cada <m>a \in D^\ast</m> podemos definir una función <m>\lambda_a : D^\ast \rightarrow D^\ast</m> como <m>\lambda_a(d) = ad</m>.  Esta función tiene sentido, pues si  <m>a \neq 0</m> y <m>d \neq 0</m>, entonces <m>ad \neq 0</m>.  La función <m>\lambda_a</m> es 1-1, pues para  <m>d_1, d_2 \in D^*</m>, 
 				<me>ad_1 = \lambda_a(d_1) = \lambda_a(d_2) = ad_2</me>
 			implica <m>d_1 = d_2</m> por cancelación a la izquierda. Como <m>D^\ast</m> es un conjunto finito, la función <m>\lambda_a</m> también debe ser sobre; luego, para algún <m>d \in D^\ast</m>, <m>\lambda_a(d) = ad = 1</m>. Por lo tanto, <m>a</m> tiene inverso a la izquierda. Como <m>D</m> es conmutativo, <m>d</m> también es inverso a la derecha para <m>a</m>. Concluimos que <m>D</m> es un cuerpo.</p>
 		</proof> 
 		</theorem>
  
-		<p>Para cualquier entero no negativo <m>n</m> y cualquier elemento <m>r</m> en un anillo <m>R</m> escribimos <m>r + \cdots + r</m> (<m>n</m> times) como <m>nr</m>. Definimos la <term>característica</term><idx><h>Característica de un anillo</h></idx><idx><h>Anillo</h><h>característica de</h></idx> de un anillo <m>R</m> como el menor entero positivo <m>n</m> tal que <m>nr=0</m> para todo <m>r \in R</m>. Si no existe tal entero, entonces la característica de <m>R</m> se define como 0.  Denotaremos la característica de <m>R</m> por <m>\chr R</m>. <notation><usage>\chr R</usage><description>característica de un anillo <m>R</m></description></notation></p>
+		<p>Para cualquier entero no negativo <m>n</m> y cualquier elemento <m>r</m> en un anillo <m>R</m> escribimos <m>r + \cdots + r</m> (<m>n</m> veces) como <m>nr</m>. Definimos la <term>característica</term><idx><h>Característica de un anillo</h></idx><idx><h>Anillo</h><h>característica de</h></idx> de un anillo <m>R</m> como el menor entero positivo <m>n</m> tal que <m>nr=0</m> para todo <m>r \in R</m>. Si no existe tal entero, entonces la característica de <m>R</m> se define como 0.  Denotaremos la característica de <m>R</m> por <m>\chr R</m>. <notation><usage>\chr R</usage><description>característica de un anillo <m>R</m></description></notation></p>
  
 		<example xml:id="example-rings-zp-field">
 			<p>Para todo primo <m>p</m>, <m>{\mathbb Z}_p</m> es un cuerpo de característica <m>p</m>. Por la Proposición<nbsp /><xref ref="proposition-zn-equiv-classes" />, todo elemento distinto de cero en <m>{\mathbb Z}_p</m> tiene un inverso; luego, <m>{\mathbb Z}_p</m> es un cuerpo. Si <m>a</m> es un elemento distinto de cero en el cuerpo, entonces <m>pa =0</m>, pues el orden de cualquier elemento distinto de cero en el grupo abeliano <m>{\mathbb Z}_p</m> es <m>p</m>.</p>
@@ -356,7 +356,7 @@
 			<me>\ker \phi = \{ r \in R : \phi( r ) = 0 \}.</me></p>
  
  		<example xml:id="example-rings-homo">
-			<p>Para cualquier entero <m>n</m> podemos definir un homomorfismode anillos <m>\phi : {\mathbb Z} \rightarrow {\mathbb Z}_n</m> como <m>a \mapsto a \pmod{n}</m>. En efecto es un homomorfismo de anillos, pues 
+			<p>Para cualquier entero <m>n</m> podemos definir un homomorfismo de anillos <m>\phi : {\mathbb Z} \rightarrow {\mathbb Z}_n</m> como <m>a \mapsto a \pmod{n}</m>. En efecto es un homomorfismo de anillos, pues 
 				<md>
 					<mrow>\phi( a + b )  &amp; = (a + b) \pmod{n}</mrow>
 					<mrow>&amp; =  a \pmod{n} + b \pmod{n}</mrow>
@@ -372,7 +372,7 @@
 		</example>
 
 		<example xml:id="example-rings-continuous-function-homomorph">
-			<p>Sea <m>C[a, b]</m> el anillo de funciones reales continuas definidas en un intervalo <m>[a,b]</m> como en el Ejemplo<nbsp /><xref ref="example-rings-functions" />. Para un <m>\alpha \in [a, b]</m> fijo, podemos definir un homomorfismo de anillos <m>\phi_{\alpha} : C[a, b] \rightarrow {\mathbb R}</m> como <m>\phi_{\alpha} (f ) = f( \alpha)</m>. Este es un homomorfismode anillos pues 
+			<p>Sea <m>C[a, b]</m> el anillo de funciones reales continuas definidas en un intervalo <m>[a,b]</m> como en el Ejemplo<nbsp /><xref ref="example-rings-functions" />. Para un <m>\alpha \in [a, b]</m> fijo, podemos definir un homomorfismo de anillos <m>\phi_{\alpha} : C[a, b] \rightarrow {\mathbb R}</m> como <m>\phi_{\alpha} (f ) = f( \alpha)</m>. Este es un homomorfismo de anillos pues 
 				<md>
 					<mrow>\phi_{\alpha}( f + g )  = (f + g)( \alpha) = f(\alpha) + g(\alpha) = \phi_{\alpha}( f ) + \phi_{\alpha}(g )</mrow>
 					<mrow>\phi_{\alpha}( f  g )  = (f  g)( \alpha) = f(\alpha)  g(\alpha) = \phi_{\alpha}( f )  \phi_{\alpha}(g ).</mrow>
@@ -387,7 +387,7 @@
 				<p>Sea <m>\phi : R \rightarrow S</m> un homomorfismo de anillos.
 					<ol>
 
-						<li><p>Si <m>R</m> es un anillos conmutativo, entonces <m>\phi(R)</m> es un anillo conmutativo.</p></li>
+						<li><p>Si <m>R</m> es un anillo conmutativo, entonces <m>\phi(R)</m> es un anillo conmutativo.</p></li>
 
 						<li><p><m>\phi( 0 ) = 0</m>.</p></li>
 
@@ -417,10 +417,10 @@
 		<example xml:id="example-rings-principal-ideal">
 			<p>Si <m>a</m> es cualquier elemento en un anillo conmutativo <m>R</m> con identidad, entonces el conjunto    
 				<me>\langle a \rangle = \{ ar : r \in R \}</me>
-			es un ideal en <m>R</m>. De hecho, <m>\langle a \rangle</m> es no vacío pues tanto <m>0 = a0</m> como <m>a = a1</m> están en <m>\langle a \rangle</m>. La suma de dos elementos en <m>\langle a \rangle</m> está nuevamoente en <m>\langle a \rangle</m> pues <m>ar + ar' =  a(r + r')</m>. El inverso aditivo de <m>ar</m> es <m>-ar = a (-r) \in \langle a \rangle</m>.  Finalmente, si multiplicamos un elemento <m>ar \in \langle a \rangle</m> por un elemento arbitrario <m>s \in R</m>, tenemos <m>s(ar) = a(sr)</m>.  Por lo tanto, <m>\langle a \rangle</m> satisface la definición de un ideal.</p>
+			es un ideal en <m>R</m>. De hecho, <m>\langle a \rangle</m> es no vacío pues tanto <m>0 = a0</m> como <m>a = a1</m> están en <m>\langle a \rangle</m>. La suma de dos elementos en <m>\langle a \rangle</m> está nuevamente en <m>\langle a \rangle</m> pues <m>ar + ar' =  a(r + r')</m>. El inverso aditivo de <m>ar</m> es <m>-ar = a (-r) \in \langle a \rangle</m>.  Finalmente, si multiplicamos un elemento <m>ar \in \langle a \rangle</m> por un elemento arbitrario <m>s \in R</m>, tenemos <m>s(ar) = a(sr)</m>.  Por lo tanto, <m>\langle a \rangle</m> satisface la definición de un ideal.</p>
 		</example>
 
-		<p>Si <m>R</m> s un anillo conmutativo con identidad, entonces un ideal de la forma <m>\langle a \rangle  = \{ ar : r \in R \}</m> se llama <term>ideal principal</term><idx><h>Principal</h><h>ideal</h></idx><idx><h>Ideal principal</h></idx>.</p>
+		<p>Si <m>R</m> es un anillo conmutativo con identidad, entonces un ideal de la forma <m>\langle a \rangle  = \{ ar : r \in R \}</m> se llama <term>ideal principal</term><idx><h>Principal</h><h>ideal</h></idx><idx><h>Ideal principal</h></idx>.</p>
  
 		<theorem xml:id="theorem-z-ideals">
 			<statement>
@@ -472,7 +472,7 @@
  
  		<theorem>
  			<statement>
- 				<p>Sea <m>I</m> un ideal de <m>R</m>. La función <m>\phi : R \rightarrow R/I</m> definida po <m>\phi( r ) = r + I</m> es un homomorfismo de anillos de <m>R</m> sobre <m>R/I</m> con núcleo <m>I</m>.</p>
+ 				<p>Sea <m>I</m> un ideal de <m>R</m>. La función <m>\phi : R \rightarrow R/I</m> definida por <m>\phi( r ) = r + I</m> es un homomorfismo de anillos de <m>R</m> sobre <m>R/I</m> con núcleo <m>I</m>.</p>
 			</statement>
 			<proof>
 				<p>En efecto, <m>\phi : R \rightarrow R/I</m> es un homomorfismo epiyectivo de grupo abelianos. Falta demostrar que <m>\phi</m> funciona correctamente con la multiplicación en el anillo.  Sean <m>r</m> y <m>s</m> en <m>R</m>. Entonces
@@ -487,7 +487,7 @@
 			<title>Primer Teorema de Isomorfía</title>
 			<idx><h>Primer Teorema de Isomorfía</h><h>para anillos</h></idx>
 			<statement>
-				<p>Sea <m>\psi : R \rightarrow S</m> un homomorfismode anillos. Entonces <m>\ker \psi</m> es un ideal de <m>R</m>. Si <m>\phi : R \rightarrow R/\ker \psi</m> es el homomorfismo canónico, entonces existe un único isomorfismo <m>\eta: R/\ker \psi \rightarrow \psi(R)</m> tal que <m>\psi = \eta \phi</m>.</p>
+				<p>Sea <m>\psi : R \rightarrow S</m> un homomorfismo de anillos. Entonces <m>\ker \psi</m> es un ideal de <m>R</m>. Si <m>\phi : R \rightarrow R/\ker \psi</m> es el homomorfismo canónico, entonces existe un único isomorfismo <m>\eta: R/\ker \psi \rightarrow \psi(R)</m> tal que <m>\psi = \eta \phi</m>.</p>
 			</statement>
 			<proof>
 				<p>Sea <m>K = \ker \psi</m>. Por el Primer Teorema de Isomorfía para grupos, existe un homomorfismo de grupos bien definido  <m>\eta: R/K \rightarrow \psi(R)</m> definido por <m>\eta(r + K) = \psi(r)</m> para los grupos abelianos aditivos <m>R</m> y <m>R/K</m>.  Para mostrar que este es un homomorfismo de anillos, solo debemos mostrar que <m>\eta( (r + K)(s + K) ) = \eta(r + K) \eta( s + K)</m>; pero
@@ -525,7 +525,7 @@
 			<title>Teorema de Correspondencia</title>
 			<idx><h>Teorema de Correspondencia</h><h>para anillos</h></idx>
 			<statement>
-				<p>Sea <m>I</m> un idela de un anillo <m>R</m>. Entonces <m>S \mapsto S/I</m> es una correspondencia biunívoca entre el conjunto de subanillos de <m>S</m> que contienen a <m>I</m> y el conjunto de subanillos de <m>R/I</m>. Más aún, los ideales de <m>R</m> que contienen a <m>I</m> corresponden a ideales de <m>R/I</m>.</p>
+				<p>Sea <m>I</m> un ideal de un anillo <m>R</m>. Entonces <m>S \mapsto S/I</m> es una correspondencia biunívoca entre el conjunto de subanillos de <m>S</m> que contienen a <m>I</m> y el conjunto de subanillos de <m>R/I</m>. Más aún, los ideales de <m>R</m> que contienen a <m>I</m> corresponden a ideales de <m>R/I</m>.</p>
 			</statement>
 		</theorem>
 
@@ -538,14 +538,14 @@
 
 			<p>En esta sección particular estamos especialmente interesados en ciertos ideales de anillos conmutativos. Estos ideales nos entregan anillos cociente especiales. Más específicamente, queremos caracterizar aquellos ideales  <m>I</m> de un anillo conmutativo <m>R</m> tales que <m>R/I</m> es un dominio integral o un cuerpo.</p> 
 	 
-	 		<p>Un ideal propio <m>M</m> de un anillo <m>R</m> es un <term>ideal maximal</term><idx><h>Maximal</h><h>ideal</h></idx><idx><h>Ideal maximal</h></idx> de <m>R</m> se el ideal <m>M</m> no es subconjunto propio de ningún ideal de <m>R</m> excepto <m>R</m> msimo. Es decir, <m>M</m> es un ideal maximal si para cualquier ideal <m>I</m> que contenga propiamente a <m>M</m>, <m>I = R</m>. El siguiente teorema completamente caracteriza los ideales maximales para anillos conmutativos con identidad en términos de los anillos cociente respectivos.</p>
+	 		<p>Un ideal propio <m>M</m> de un anillo <m>R</m> es un <term>ideal maximal</term><idx><h>Maximal</h><h>ideal</h></idx><idx><h>Ideal maximal</h></idx> de <m>R</m> es el ideal <m>M</m> no es subconjunto propio de ningún ideal de <m>R</m> excepto <m>R</m> mismo. Es decir, <m>M</m> es un ideal maximal si para cualquier ideal <m>I</m> que contenga propiamente a <m>M</m>, <m>I = R</m>. El siguiente teorema caracteriza completamente los ideales maximales para anillos conmutativos con identidad en términos de los anillos cociente respectivos.</p>
 
 			<theorem xml:id="theorem-maximal-ideal-field">
 				<statement>
-					<p>Sea <m>R</m> un anillo conmutativo con identidad y sea <m>M</m> un ideal en <m>R</m>. Entonces <m>M</m> es un idela maximal de <m>R</m> si y solo si <m>R/M</m> es un cuerpo.</p>
+					<p>Sea <m>R</m> un anillo conmutativo con identidad y sea <m>M</m> un ideal en <m>R</m>. Entonces <m>M</m> es un ideal maximal de <m>R</m> si y solo si <m>R/M</m> es un cuerpo.</p>
 				</statement>
 				<proof>
-					<p>Sea <m>M</m> un ideal maximal en <m>R</m>. Como <m>R</m> es un anillo conmutativo, <m>R/M</m> también es un anillo conmutativo.  Claramente, <m>1 + M</m> actúa como identidad para <m>R/M</m>. Debemos mostrar también que cada elemento distinto de cero en <m>R/M</m> tiene un inverso.  Si <m>a + M</m> es un elemento distinto de cero en <m>R/M</m>, entonces  <m>a \notin M</m>. Definamos <m>I</m> como el conjunto  <m>\{ ra + m : r \in R \text{ and } m \in M \}</m>. Mostraremos que <m>I</m> es un ideal en <m>R</m>. El conjunto <m>I</m> es no vacío pues <m>0a+0=0</m> está en <m>I</m>. Si <m>r_1 a + m_1</m> y <m>r_2 a + m_2</m> son dos eleemntos en <m>I</m>, entonces 
+					<p>Sea <m>M</m> un ideal maximal en <m>R</m>. Como <m>R</m> es un anillo conmutativo, <m>R/M</m> también es un anillo conmutativo.  Claramente, <m>1 + M</m> actúa como identidad para <m>R/M</m>. Debemos mostrar también que cada elemento distinto de cero en <m>R/M</m> tiene un inverso.  Si <m>a + M</m> es un elemento distinto de cero en <m>R/M</m>, entonces  <m>a \notin M</m>. Definamos <m>I</m> como el conjunto  <m>\{ ra + m : r \in R \text{ y } m \in M \}</m>. Mostraremos que <m>I</m> es un ideal en <m>R</m>. El conjunto <m>I</m> es no vacío pues <m>0a+0=0</m> está en <m>I</m>. Si <m>r_1 a + m_1</m> y <m>r_2 a + m_2</m> son dos elementos en <m>I</m>, entonces 
 						<me>(r_1 a + m_1) - ( r_2 a + m_2) = (r_1 - r_2)a + (m_1 - m_2)</me>
 					está en <m>I</m>. Además, para cualquier <m>r \in R</m> se cumple que <m>rI \subset I</m>; luego, <m>I</m> es cerrado bajo multiplicación por elementos del anillo y cumple las condiciones necesarias para ser un ideal. Por lo tanto, por la Proposición<nbsp /><xref ref="prop-subring" /> y la definición de ideal, <m>I</m> es un ideal que contiene propiamente a  <m>M</m>. Como <m>M</m> es un ideal maximal, <m>I=R</m>; concluimos que, por la definición de <m>I</m> deben existir <m>m</m> en <m>M</m> y  <m>b</m> en <m>R</m> tales que <m>1=ab+m</m>. Por lo tanto, 
 						<me>1 + M = ab + M = ba + M = (a+M)(b+M).</me></p>
@@ -610,11 +610,11 @@
 		<subsection xml:id="rings-subsection-historical-note">
 			<title>Nota Histórica</title>
 
-			<p>Amalie Emmy Noether<idx><h>Noether, A. Emmy</h></idx>, uno de los matemáticos destacados del siglo XX, nación en Erlangen, Alemania en 1882. Era la hija de Max Noether<idx><h>Noether, Max</h></idx> (1844<ndash />1921), un distinguido matemático en la Universidad de Erlangen. Junto a Paul Gordon (1837<ndash />1912), el padre de Emmy Noether influyó fuertemente en su educación temprana. Entró a la Universidad de Erlangen a los 18 años de edad. Si bien mujeres ya habían sido admitidas a las universidades en Inglaterra, Francia e Italia por décadas, había gran resistencia a su presencia en la universidades alemanas. Noether era una de las dos únicas mujeres entre los 986 estudiantes de la universidad. Después de obtener su doctorado bajo la dirección de Gordon en 1907, continuó haciendo investigación en Erlangen, dictando cátedras ocasionales cuando su padre estaba enfermo.</p>
+			<p>Amalie Emmy Noether<idx><h>Noether, A. Emmy</h></idx>, matemática destacada del siglo XX, nació en Erlangen, Alemania en 1882. Era la hija de Max Noether<idx><h>Noether, Max</h></idx> (1844<ndash />1921), un distinguido matemático en la Universidad de Erlangen. Junto a Paul Gordon (1837<ndash />1912), el padre de Emmy Noether influyó fuertemente en su educación temprana. Entró a la Universidad de Erlangen a los 18 años de edad. Si bien mujeres ya habían sido admitidas a las universidades en Inglaterra, Francia e Italia por décadas, había gran resistencia a su presencia en la universidades alemanas. Noether era una de las dos únicas mujeres entre los 986 estudiantes de la universidad. Después de obtener su doctorado bajo la dirección de Gordon en 1907, continuó haciendo investigación en Erlangen, dictando cátedras ocasionales cuando su padre estaba enfermo.</p>
 
-			<p>Noether fue a estudiar a Göttingen en 1916. David Hilbert<idx><h>Hilbert, David</h></idx> y Felix Klein<idx><h>Klein, Felix</h></idx> intentaro sin éxito conseguirle un puesto en Göttingen. Algunos de los profesores objetaban la presencia de catedráticas profesoras, diciendo,  <q>¿qué pensarán nuestros soldados cuando vuelvan a la universidad y tengan que aprender bajo una mujer?</q>  Hilbert, exasperado po la pregunta, respondió, <q>Meine Herren, no veo que el sexo de un candidato sea un argumento contra su contratación como Privatdozent. Después de todo, el senado no es una casa de baños.</q>  Al final de la Primera Guerra Mundial, las actitudes cambiaron y las condiciones para las mujeres mejoraron significativamente.  Después que pasó su examen de  habilitación en 1919, le fue otorgado un título y le comenzaron a pagar una pequeña cantidad por sus clases.</p>
+			<p>Noether fue a estudiar a Göttingen en 1916. David Hilbert<idx><h>Hilbert, David</h></idx> y Felix Klein<idx><h>Klein, Felix</h></idx> intentaro sin éxito conseguirle un puesto en Göttingen. Algunos de los profesores objetaban la presencia de catedráticas profesoras, diciendo,  <q>¿qué pensarán nuestros soldados cuando vuelvan a la universidad y tengan que aprender bajo una mujer?</q>  Hilbert, exasperado por la pregunta, respondió, <q>Meine Herren, no veo que el sexo de un candidato sea un argumento contra su contratación como Privatdozent. Después de todo, el senado no es una casa de baños.</q>  Al final de la Primera Guerra Mundial, las actitudes cambiaron y las condiciones para las mujeres mejoraron significativamente.  Después que pasó su examen de  habilitación en 1919, le fue otorgado un título y le comenzaron a pagar una pequeña cantidad por sus clases.</p>
  
-			<p>En 1922, Noether fue contratada como Privatdozent en Göttingen. Durante los siguientes 11 años usó métodos axiomáticos para desarrollar una teoría abstracta de anillos e ideales. Si bien no era buena dando cátedra, Noether era una profesora inspiradora. Uno de sus muchos alumnos fue B. L. van der Waerden, autor del primer texto que trató de álgebra abstracta desde un punto de vista moderno. Algunos de los otros matemáticos influenciados por Noether o que trabajaron con ella fueron Alexandroff, Artin, Brauer, Courant, Hasse, Hopf, Pontryagin, von Neumann, y Weyl. Uno de los momentos cúlmines de su carrera fue una invitación a dar una conferencia en el Congrso Internacional de Matemáticos en Zurich en 1932. A pesar de todo el reconocimiento que recibió de sus colegas, las habilidades de Noether nunca fueron debidamente reconocidas durante su vida. Nunca fue promovida a profesora titular por la burocracia académica Prusiana.</p>
+			<p>En 1922, Noether fue contratada como Privatdozent en Göttingen. Durante los siguientes 11 años usó métodos axiomáticos para desarrollar una teoría abstracta de anillos e ideales. Si bien no era buena dando cátedra, Noether era una profesora inspiradora. Uno de sus muchos alumnos fue B. L. van der Waerden, autor del primer texto que trató de álgebra abstracta desde un punto de vista moderno. Algunos de los otros matemáticos influenciados por Noether o que trabajaron con ella fueron Alexandroff, Artin, Brauer, Courant, Hasse, Hopf, Pontryagin, von Neumann, y Weyl. Uno de los momentos cúlmines de su carrera fue una invitación a dar una conferencia en el Congreso Internacional de Matemáticos en Zurich en 1932. A pesar de todo el reconocimiento que recibió de sus colegas, las habilidades de Noether nunca fueron debidamente reconocidas durante su vida. Nunca fue promovida a profesora titular por la burocracia académica prusiana.</p>
  
 			<p>En 1933, a Noether, que era judía, le fue prohibida la participación de todas las actividades académicas en Alemania. Emigró a los Esstados Unidos, tomó una posición en el Bryn Mawr College, y se hizo miembro del Institute for Advanced Study en Princeton. Noether murió repentinamente el 14 de Abril de 1935. Después de su muerte fue eulogiada científicos tan notables como Albert Einstein.</p>
 
@@ -625,7 +625,7 @@
 	<section xml:id="section-software-application">
 		<title>Una Aplicación al Diseño de Software</title>
  
- 		<p>El Teorema Chino de los Restos es un resultado de teoría elemental de números sobre las soluciones simultáneas de sistemas de congruencias. El matemático chino Sun-tsï escribió sobre este teorema en el sigo primero D.C. Este teorema tiene interesantes consecuencias en el diseño de software para el uso de procesadores en paralelo.</p>
+ 		<p>El Teorema Chino de los Restos es un resultado de teoría elemental de números sobre las soluciones simultáneas de sistemas de congruencias. El matemático chino Sun-tsï escribió sobre este teorema en el siglo primero D.C. Este teorema tiene interesantes consecuencias en el diseño de software para el uso de procesadores en paralelo.</p>
  
 		<lemma xml:id="lemma-chinese-remainder">
 			<statement>
@@ -723,19 +723,19 @@
 					<mrow>x &amp; \equiv  19 \pmod{180}</mrow>
 					<mrow>x &amp; \equiv  5 \pmod{7}.</mrow>
 				</md>
-			Resolviendo este últimom sistema, encontramos que 19 es una solución para el sistema que es única módulo 1260.</p>
+			Resolviendo este último sistema, encontramos que 19 es una solución para el sistema que es única módulo 1260.</p>
 		</example>
  
-		<p>Una aplicación interesante del Teorema Chino de los Restos en el diseño de software computacional es que el teorema nos permite descomponer un cálculo que involucre enteros grandes en varios cálculos menos grandes. Un computador puede trabajar con enteros solamente hasta cierto tamaaños debido al tamaño de su procesador, que usualmente es un procesador de 32 o 64-bit. Por ejemplo, el mayor entero disponible en un computador con un procesador de 64-bit es 
+		<p>Una aplicación interesante del Teorema Chino de los Restos en el diseño de software computacional es que el teorema nos permite descomponer un cálculo que involucre enteros grandes en varios cálculos menos grandes. Un computador puede trabajar con enteros solamente hasta cierto tamaños debido al tamaño de su procesador, que usualmente es un procesador de 32 o 64-bit. Por ejemplo, el mayor entero disponible en un computador con un procesador de 64-bit es 
 			<me>2^{63} - 1 = \text{9,223,372,036,854,775,807}.</me>
-		Procesadores mayores como  128 o 256-bit han sido propuesto o están en desarrollo.  Incluso se habla de un procesador de  512-bit.  El mayor entero que un tal procesador ppodría almacenar sería <m>2^{511} - 1</m>, que es un número de 154 dígitos.  Sin embargo, necesitaríamos trabajar con números mucho más grandes para romper sofisticados métodos de encriptación.</p>
+		Procesadores mayores como  128 o 256-bit han sido propuesto o están en desarrollo.  Incluso se habla de un procesador de  512-bit.  El mayor entero que tal procesador podría almacenar sería <m>2^{511} - 1</m>, que es un número de 154 dígitos.  Sin embargo, necesitaríamos trabajar con números mucho más grandes para romper sofisticados métodos de encriptación.</p>
 
-		<p>Se requiere Software especial para cálculos con enteros mayores que no pueden ser sumados directamente por la máquina.  Usando el Teorema Chino de los Restos podemos descomponer sumas y multiplicaciones de enteros grandes en cálculos que el computador pueda hacer de forma directa. Esto es especialmente útil para el procesamiento paralelo.</p>
+		<p>Se requiere software especial para cálculos con enteros mayores que no pueden ser sumados directamente por la máquina.  Usando el Teorema Chino de los Restos podemos descomponer sumas y multiplicaciones de enteros grandes en cálculos que el computador pueda hacer de forma directa. Esto es especialmente útil para el procesamiento paralelo.</p>
  
 		<p>La mayor parte de los computadores tiene una única unidad central de proceso (CPU) que contiene un chip procesador que puede sumar solo dos números a la vez. Para sumar una lista de diez números, la CPU debe hacer nueve sumas sucesivamente. Sin embargo un computador de procesamiento paralelo tiene más de una CPU. Un computador con 10 CPUs, por ejemplo,  puede hacer 10 operaciones diferentes al mismo tiempo. Si podemos tomar un entero grande y descomponerlo en sus partes, enviando cada una de las partes a una CPU diferente, entonces haciendo sumas y multiplicaciones en paralelo, podemos trabajar con enteros con los que el computador no podría trabajar directamente.</p>
 
 		<example xml:id="example-rings-2134x1531">
-			<p>Supongamos que deseamos multiplicar 2134 por 1531. Usaremos los enteros 95, 97, 98, y 99 pues estos son relativamente primos. Descompponemos cada uno de los enteros en cuatro partes:
+			<p>Supongamos que deseamos multiplicar 2134 por 1531. Usaremos los enteros 95, 97, 98, y 99 pues estos son relativamente primos. Descomponemos cada uno de los enteros en cuatro partes:
 				<md>
 					<mrow>2134 &amp; \equiv  44 \pmod{95}</mrow>
 					<mrow>2134 &amp; \equiv  0 \pmod{97}</mrow>

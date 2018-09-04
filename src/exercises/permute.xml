@@ -134,7 +134,7 @@
 					 
 					<li><p><m>\{ \sigma \in S_4 : \sigma(2) = 2 \}</m></p></li>
 					 
-					<li><p><m>\{ \sigma \in S_4 : \sigma(1) = 3</m> and <m>\sigma(2) = 2 \}</m></p></li>
+					<li><p><m>\{ \sigma \in S_4 : \sigma(1) = 3</m> y <m>\sigma(2) = 2 \}</m></p></li>
  
 				</ol>
 			¿Es alguno de estos conjuntos un subgrupo de <m>S_4</m>?</p>
@@ -225,7 +225,7 @@
 
 	<exercise number="16">
 		<statement>
-			<p>Encuentre el grupo de movimientos rígidos de un tetrahedro.  Muestre que este es el mismo grupo que <m>A_4</m>.</p>
+			<p>Encuentre el grupo de movimientos rígidos de un tetraedro.  Muestre que este es el mismo grupo que <m>A_4</m>.</p>
 		</statement>
 		
 	</exercise>
