@@ -15,13 +15,13 @@
 <!--    to preserve numbering and cross-references! -->
 <!--    So it is never advisable to edit this file  -->
 
-<mathbook xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="es-ES">
+<mathbook xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="pt-BR">
     
     <xi:include href="./bookinfo.xml" /> <!-- ISBN, website, other metadata -->
     
     <book xml:id="aata">
-        <title>Algebra Abstracta</title>
-        <subtitle>Teoría y Aplicaciones</subtitle>
+        <title>Álgebra Abstrata</title>
+        <subtitle>Teoria e Aplicações</subtitle>
 
         <xi:include href="./frontmatter.xml" />                 <!-- Title Page, Preface, etc. -->
 
