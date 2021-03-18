@@ -18,7 +18,7 @@
 	<section xml:id="section-math-induction">
 		<title>Principio de Inducción</title>
 
-		<p>Supongamos que queremos demostrar que
+		<p>Suponhamos que queremos demostrar que
 			<me>1 + 2 + \cdots + n = \frac{n(n + 1)}{2}</me>
 		para cualquier número natural  <m>n</m>. Esta fórmula se puede verificar fácilmente para números pequeños tales como <m>n = 1</m>, 2, 3, o 4, pero es imposible de verificar para todos los número naturales uno por uno.  Para demostrar que la fórmula es verdadera en general, se requiere un método más genérico.</p>
 
