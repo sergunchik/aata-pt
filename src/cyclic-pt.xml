@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+
+<chapter xml:id="cyclic" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>Grupos Cíclicos</title>
+
+	<introduction>
+		<p>Os grupos <m>\mathbb Z</m> e <m>{\mathbb Z}_n</m>, que estão entre os grupos mais familiares e fáceis de compreender, são ambos exemplos de grupos cíclicos.  Neste capítulo estudaremos as propriedades de grupos cíclicos e subgrupos cíclicos, os que desempenham um papel chave na classificação dos grupos abelianos.</p>
+	</introduction>
+ 
+	<section xml:id="section-cyclic-subgroups">
+		<title>Subgrupos Cíclicos</title>
+
+		<introduction>
+
+			<p>Frequentemente, um subgrupo depende exclusivamente de um elemento de um grupo; ou seja, o conhecimento desse elemento em particular nos permitirá calcular qualquer elemento do subgrupo.</p>
+
+			<!-- RAB 2014/08/18 Maybe this id should have 3z, not z3? -->
+			<example xml:id="example-cyclic-z3">
+				<p>Suponha que nós escolhemos <m>3 \in {\mathbb Z}</m> e consideremos todos os múltiplos (positivos e negativos) de 3.  Como um todo, temos 
+					<me>3 {\mathbb Z} = \{ \ldots, -3, 0, 3, 6, \ldots \}.</me>
+				É fácil ver que <m>3 {\mathbb Z}</m> é um subgrupo dos inteiros. Este subgrupo é completamente determinado pelo elemento 3 pois podemos obter todos os outros elementos do grupo tomando os múltiplos de 3. Todo elemento no subgrupo é <q>gerado</q> por 3.</p>
+			</example>
+
+			<example xml:id="example-cyclic-2n">
+				<p>Se <m>H = \{ 2^n : n in {\mathbb Z} \}</m>, então <m>H</m> é um subgrupo do grupo multiplicativo dos números racionais não nulos, <m>{\mathbb Q}^*</m>. Se <m>a = 2^m</m> e <m>b = 2^n</m> estão em <m>H</m>, então <m>ab^{-1} = 2^m 2^{-n} = 2^{m-n}</m> também está em <m>H</m>.  Para a Proposta<nbsp /><xref ref="proposition-subgroup" />, <m>H</m> é um subgrupo de <m>{\mathbb Q}^*</m> determinada pelo elemento 2.</p>
+			</example>
+
+			<theorem xml:id="theorem-cyclic-subgroup">
+				<statement>
+					<p>Seja <m>G</m> um grupo e seja <m>a</m> um elemento em <m>G</m>.  Então o conjunto <notation><usage>\langle a \rangle</usage><description>grupo cíclico gerado por<m>a</m></description></notation>
+						<me>\langle a \rangle  = \{ a k : k in {\mathbb Z} \}</me>
+é um subgrupo de <m>G</m>.  Para além disso, <m>\langle a \rangle</m> é o menor subgrupo de <m>G</m> que contém a <m>a</m>.</p>
+				</statement>
+				<proof>
+					<p>A identidade está em <m>\langle a \rangle</m> pois<m>a^0 = e</m>. Se <m>g</m> e <m>h</m> são dois elementos qualquer em <m>\langle a \rangle</m>, então pela definição de <m>\langle a \rangle</m> podemos escrever <m>g = a^m</m> e <m>h = a^n</m> com <m>m</m> e <m>n</m> inteiros. Assim <m>gh = a^m a^n = a^{m+n}</m> está novamente em <m>\langle a \rangle</m>. Por fim, se<m>g = a^n</m> está em<m>\langle a \rangle</m>, então o inverso <m>g^{-1} = a^{-n}</m> também está em <m>\langle a \rangle</m>. Claramente, qualquer subgrupo <m>H</m> de <m>G</m> que contenha <m>a</m> deve conter todas as potências de <m>a</m> por encerramento; logo, <m>H</m> contém a <m>\langle a \rangle</m>. Por conseguinte, o <m>\langle a \rangle</m> é o menor subgrupo de <m>G</m> que contém a <m>a</m>.</p>
+				</proof>
+			</theorem>
+	 
+			<remark>
+				<p>Se usarmos a notação <q>+</q>, como no caso dos inteiros com a operação de soma, escrevemos <m>\langle a \rangle  = \{ na : n \in {\mathbb Z} \}</m>.</p>
+			</remark>
+
+			
+
+			<p>Para <m>a \in G</m>, ligámos para <m>\langle a \rangle</m> o <term>subgrupo cíclico</term><idx><h>Cíclico</h><h>subgrupo</h></idx> gerado por <m>a</m>. Se <m>G</m> contém algum elemento <m>a</m> tal que <m>G = \langle a \rangle</m>, então <m>G</m> é um <term>grupo cíclico</term><idx><h>Cíclico</h><h>grupo</h></idx>. Nesse caso, o <m>a</m> é um <term>gerador</term><idx><h>Gerador do subgrupo cíclico</h></idx> de <m>G</m>.  Se <m>a</m> é um elemento de um grupo <m>G</m>, definimos o <term>ordem</term><idx><h>Elemento</h><h>ordem do</h></idx> de <m>a</m> como o menor inteiro positivo <m>n</m> tal que <m>a n= e</m>, e escrevemos <m>|a| = n</m>. <notation><usage>|a|</usage><description>a ordem de um elemento <m>a</m></description></notation> Se não há tal inteiro <m>n</m>, dizemos que a ordem de <m>a</m> é infinito e nós escrevemos <m>|a| = \infty</m> para indicar a ordem de <m>a</m>.</p>
+	 
+			<example xml:id="example-cyclic-z6">
+				<p>Note que um grupo cíclico pode ter mais que um gerador. Tanto 1 como 5 geram <m>{\mathbb Z}_6</m>; portanto, <m>{\mathbb Z}_6</m>é um grupo cíclico. Nem todo elemento em um grupo cíclico é um gerador do grupo. A ordem de <m>2 \in {\mathbb Z}_6</m> é 3. O subgrupo cíclico gerado por 2 é <m>Langle 2 rangle  = \{ 0, 2, 4 \}</m>.</p>
+			</example>
+	 
+			<p>Os grupos <m>{\mathbb Z}</m> e <m>{\mathbb Z}_n</m> são grupos cíclicos. Os elementos 1 e <m>-1</m> são geradores para <m>{\mathbb Z}</m>.  Podemos sempre gerar <m>{\mathbb Z}_n</m> com 1 mas pode haver outros geradores de <m>{\mathbb Z}_n</m>como no caso de <m>{\mathbb Z}_6</m>.</p> 
+	 
+			<example xml:id="example-cyclic-u9">
+				<p>O grupo de unidades, <m>U(9)</m>, em <m>{\mathbb Z}_9</m>é um grupo cíclico.  Como um todo, o<m>U(9)</m> é <m>{ 1, 2, 4, 5, 7, 8  \}</m>. O elemento 2 é um gerador para <m>U(9)</m> pois 
+					<md>
+						<mrow>2 1 &amp; = 2 qquad 2 2 = 4</mrow>
+						<mrow>2 3 &amp; = 8 qquad 2 4 = 7</mrow>
+						<mrow>2 5 &amp; =  5 qquad 2 6 = 1.</mrow>
+					</md></p>
+			</example>
+	 
+			<example xml:id="example-cyclic-s3-not-cyclic">
+				<p>Nem todos os grupos são cíclicos.  Considere o grupo de simetrias de um triângulo equilátero <m>S_3</m>.  A tabela de multiplicação para este grupo é a Tabela<nbsp /><xref ref="table-s3" />. Os subgrupos de <m>S_3</m> são mostrados na Figura<nbsp /><xref ref="figure-subgrps-s3" />.  Note que cada subgrupo próprio é cíclico; No entanto, nenhum elemento por si só gera o grupo completo.</p>
+			</example>
+
+			<figure xml:id="figure-subgrps-s3">
+				<caption>Subgrupos de <m>S_3</m></caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 5/6/2010 -->
+				<image xml:id="cyclic-s3-subgroups">
+					<latex-image-code><![CDATA[
+begin{tikzpicture}[scale=1]
+
+draw  (0.0.3) -(2.6.1.2);
+draw  (2.0.3) -(2.8.1.2);
+draw  (4.0.3) -(3.2.1.2);
+draw  (6.0.3) -(3.4.1.2);
+
+draw  (0,-0.3) - (2.6,-1.2);
+draw  (2,-0.3) - (2.8,-1.2);
+draw  (4,-0.3) -(3.2,-1.2);
+draw  (6,-0.3) -(3.4,-1.2);
+
+node at (0, 0) {$ \{  \identity, \rho_1, \rho_2 \}$};
+node at (2, 0) {$ \{  \identity, \mu_1 \}$};
+node at (4, 0) {$ \{  \identity, \mu_2 \}$};
+node at (6, 0) {$ \{  \identity, \mu_3 \}$};
+node at (3, 1.5) {$S_3$};
+node at (3,-1.5) {$ \{ \identity \}$};
+end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+			<theorem xml:id="theorem-cyclic-abelian">
+				<statement>
+					<p>Todo grupo cíclico é abeliano.</p>
+				</statement>
+				<proof>
+					<p>Seja <m>G</m> um grupo cíclico e <m>a \in G</m> um gerador para <m>G</m>. Se <m>g</m> e <m>h</m> estão em <m>G</m>, então eles podem ser escritos como poderes de <m>a</m>, digamos <m>g = a^r</m> e <m>h = a^s</m>. Como
+						<me>g h = a^r a^s = a^{r+s} = a^{s+r} = a^s a^r = h g,</me>
+					<m>G</m> é abeliano.</p>
+				</proof>
+			</theorem>
+
+		</introduction>
+	 
+		<subsection xml:id="cyclic-subsection-cyclic-subgroups">
+			<title>Subgrupos de Grupos Cíclicos</title>
+ 
+			<p>Podemos fazer algumas perguntas interessantes sobre subgrupos cíclicos de um grupo e subgrupos de um grupo cíclico.  Se <m>G</m> é um grupo, que subgrupos de <m>G</m> são cíclicos? Se <m>G</m> é um grupo cíclico, que tipo de subgrupos tem <m>G</m>?</p>
+ 
+			<theorem xml:id="theorem-cyclic-subgroups">
+				<statement>
+					<p>Cada subgrupo de um grupo cíclico é cíclico.</p>
+				</statement>
+				<proof>
+					<p>As principais ferramentas utilizadas nesta demonstração são o algoritmo de divisão e o princípio da boa ordem. Seja <m>G</m> um grupo cíclico gerado por <m>a</m> e suponhamos que <m>H</m> é um subgrupo de <m>G</m>. Se <m>H = \{ e \}</m>, então <m>H</m>é cíclico trivialmente. Suponha que <m>H</m> contém algum outro elemento <m>g</m> distinto da identidade. Então <m>g</m> pode ser escrito como <m>a n</m> para algum inteiro <m>n</m>. Como <m>H</m> é um subgrupo, <m>g {- 1} = a {- n}</m> também deve estar em <m>H</m>.  Como <m>n</m> ou <m>- n</m> é positivo, podemos supor que <m>H</m> contém potências positivas de <m>a</m> e que <m>n \gt 0</m>. Seja <m>m</m> o menor número natural tal que <m>a^m \in H</m>. Tal <m>m</m> existe pelo princípio da boa ordem.</p>
+ 
+					<p>Afirmamos que <m>h = a m</m> é um gerador para <m>H</m>.  Devemos demonstrar que tudo <m>h' \in H</m> pode ser escrito como um poder de <m>h</m>. Como <m>h' \in H</m> e <m>H</m> é um subgrupo de <m>G</m>, <m>h' = a k</m> para algum inteiro <m>k</m>. Usando o algoritmo de divisão, podemos encontrar <m>q</m> e <m>r</m> tais que <m>k = mq +r</m> com <m>0 \leq r \lt m</m>; logo,
+						<me>a k = a {mq +r} = (a m) q a r = h q a r.</me>
+					Assim <m>a r = a k h {- q}</m>. Como <m>a k</m> e <m>h {- q}</m> estão em <m>H</m>, <m>a r</m> também deve estar em <m>H</m>.  Mas <m>m</m> era o menor número positivo tal que <m>a m</m> está em<m>H</m>; portanto, <m>r=0</m> e <m>k=mq</m>. Em seguida, o 
+						<me>h' = a k = a {mq} =  h q</me>
+e <m>H</m> é gerado por <m>h</m>.</p>
+				</proof>
+			</theorem>
+ 
+			<corollary>
+				<statement>
+					<p>Os subgrupos de <m>{\mathbb Z}</m> são exatamente <m>n{\mathbb Z}</m> com <m>n = 0, 1, 2,\ldots</m>.</p>
+				</statement>
+			</corollary>
+ 
+			<proposition xml:id="proposition-cyclic-subgrp-order">
+				<statement>
+					<p>Seja <m>G</m> um grupo cíclico de ordem <m>n</m> e suponhamos que <m>a</m> é um gerador para <m>G</m>. Então <m>a k=e</m> se e apenas se <m>n</m> divide a <m>k</m>.</p>
+				</statement>
+				<proof>
+					<p>Suponhamos primeiro que <m>a k=e</m>. Pelo algoritmo da divisão, <m>k = nq + r</m> com <m>0 \leq r \lt n</m>; logo, 
+						<me>e = a k = a {nq + r} = a {nq} a r = e a r = a r.</me>
+					Como o menor inteiro <m>m</m> tal que <m>a m = e</m> é <m>n</m>, <m>r= 0</m>.</p>
+ 
+					<p>Reciprocamente, se <m>n</m> divide a <m>k</m>, então <m>k=ns</m> para algum inteiro <m>s</m>. Por conseguinte, o 
+						<me>a k = a {ns} = (a n) s = e s = e.</me></p>
+				</proof>
+			</proposition>
+ 
+ 			<theorem xml:id="theorem-cyclic-orders">
+				<statement>
+					<p>Seja <m>G</m> um grupo cíclico de ordem <m>n</m> e suponhamos que <m>a \in G</m> é um 
+ gerador do grupo.  Se<m>b = a k</m>, então a ordem de <m>b</m> é <m>n/d</m>, com <m>d =  gcd(k,n)</m>.</p>
+				</statement>
+				<proof>
+					<p>Procuramos o menor inteiro positivo<m>m</m> tal que <m>e = b m = a {km}</m>. Para a Proposta<nbsp /><xref ref="proposition-cyclic-subgrp-order" />, este é o menor inteiro positivo<m>m</m> tal que <m>n</m> divide a <m>km</m> ou, por sua vez, <m>n/d</m> divide a <m>m(k/d)</m>.  Como <m>d</m> é o máximo divisor comum de <m>n</m> e <m>k</m>, <m>n/d</m> e <m>k/d</m> são relativamente primos. Em seguida, para que <m>n/d</m> divida <m>m(k/d)</m> deve dividir a <m>m</m>.  O menor tal <m>m</m> é <m>n/d</m>.</p>
+				</proof>
+			</theorem>
+ 
+			<corollary xml:id="corollary-cyclic-modngenerators">
+				<statement>
+					<p>Os geradores de <m>{\mathbb Z}_n</m> são os inteiros <m>r</m> tais que <m>1 \leq r \lt n</m> e <m>gcd(r,n) =  1</m>.</p>
+					</statement>
+				</corollary>
+ 
+			<example xml:id="example-cyclic-z16">
+				<p>Vamos considerar o grupo <m>{\mathbb Z}_{16}</m>.  Os números 1, 3, 5, 7, 9, 11, 13 e 15 são os elementos de <m>{\mathbb Z}_{16}</m> que são relativamente primos com 16.  Cada um destes elementos gera <m>{\mathbb Z}_{16}</m>. Por exemplo: 
+					<md>
+						<mrow>1 \cdot 9  &amp; =  9  &amp;  2 \cdot 9  &amp; = 2  &amp; 3 \cdot 9  &amp; = 11</mrow>
+						<mrow>4 \cdot 9  &amp; =  4  &amp;  5 \cdot 9  &amp; = 13 &amp; 	6 \cdot 9 &amp; = 6</mrow>
+						<mrow>7 \cdot 9  &amp; =  15 &amp; 8 \cdot 9  &amp; = 8  &amp; 	9 \cdot 9 &amp;  = 1</mrow>
+						<mrow>10 \cdot 9 &amp; =  10 &amp; 11 \cdot 9 &amp; = 3  &amp; 12 \cdot 9 &amp;  = 12</mrow>
+						<mrow>13 \cdot 9 &amp; =  5 &amp; 14 \cdot 9 &amp; = 14 &amp;  	15 \cdot 9 &amp; = 7.</mrow>
+					</md></p>
+			</example>
+
+		</subsection>
+ 
+	</section>
+
+	<section xml:id="section-mult-group-c">
+		<title>Grupo multiplicativo dos números complexos</title>
+
+		<introduction>
+ 
+			<p>Os <term>números complexos</term> são definidos como
+				<me>{\mathbb C} = \{ a + bi : a, b in {\mathbb R} \},</me>
+com <m>i 2 = -1</m>.  Se <m>z = a + bi</m>, então <m>a</m> é a <term>parte real</term> de <m>z</m> e <m>b</m> é a <term>parte imaginária</term> de <m>z</m>.</p>
+	 
+			<p>Para adicionar dois números complexos <m>z=a+bi</m> e <m>w= c+di</m>, devemos simplesmente somar as partes reais e imaginárias respectivamente:
+				<me>z + w=(a + bi ) + (c + di)  =  (a + c) + (b + d)i.</me>
+			Recordando que <m>i 2 = -1</m>Podemos multiplicar os números complexos como se fossem polinômios. O produto de <m>z</m> e <m>w w</m> é 
+				<me>(a + bi )(c + di)  =   ac + Bdi 2 + adi + Bci =  (ac -bd) +(ad + bc)i.</me></p>
+	 
+	 		<p>Todos os números complexos não nulos <m>z = a +bi</m> tem um inverso multiplicativo; ou seja, existe um <m>z^{-1} \in {\mathbb C}^\ast</m> tal que <m>z {- 1} = z {- 1} z = 1</m>. Se <m>z = a + bi</m>, então
+				<me>z {- 1} = \frac{a- bi}{ a 2 + b 2 \}.</me>
+			O <term>conjugado</term><idx><h>Conjugado, complexo</h></idx> de um número complexo <m>z = a + bi</m> é definido como <m>overline{z} = a- bi</m>.  O <term>valor absoluto</term> ou <term>módulo</term> de <m>z = a + bi</m> é <m>|z| = \sqrt{a 2 + b 2}</m>.</p>  
+ 
+			<example xml:id="example-cyclic-complex-add">
+				<p>Sejam<m>z = 2 + 3i</m> e <m>w = 1-2i</m>. Então
+<me>z + w = (2 + 3i) + (1 - 2i) = 3 + i</me>
+e
+					<me>z w = (2 + 3i)(1 - 2i ) = 8 - i.</me>
+				Além disso,
+					<md>
+						<mrow>z {- 1} &amp; = \frac{2}{13} - \frac{3}{13}i</mrow>
+						<mrow>|z| &amp; = \sqrt{13}</mrow>
+						<mrow>overline{z} &amp; = 2- 3i.</mrow>
+					</md></p>
+			</example>
+
+			<figure xml:id="figure-rectcoord">
+				<caption>Coordenadas cartesianas de um número complexo</caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 5/6/2010 -->
+				<image xml:id="cyclic-complex-rectangular">
+					<latex-image-code><![CDATA[
+begin{tikzpicture}[scale=0.5]
+
+draw [->]  (0,-5) -(0,5);
+						draw  [->] (- 8,0) - (8,0);
+						node [right] at (0,5) {$e$};
+						node [Below] at (8,0) {$x$};
+						node [Below] at (0.5,0) {$0$};
+
+						filldraw[fill=black, draw=black] (2,3) circle (0,05cm);
+						node [right] at (2,3) {$z_1 = 2 + 3i$};
+
+						filldraw[fill=black, draw=black] (-3,2) circle (0,05cm);
+						node [left] at (-3, 2) {$z_3 = -3 + 2i$};
+
+						filldraw[fill=black, draw=black] (1,-2) circle (0,05cm);
+						node [right] at (1, - 2) {$z_2 = 1 -  2i$};
+
+						end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+			<p>Existem várias formas de representar graficamente os números complexos. Podemos representar um número complexo <m>z = a +bi</m> como um par ordenado no plano <m>xy</m> onde <m>a</m> é a coordenada <m>x</m> (ou real) e <m>b</m> é a coordenada <m>e</m> (ou imaginária). Esta se chama representação <term>retangular</term> ou <term>cartesiana</term> . As representações cartesianas de <m>z_1 = 2 + 3i</m>, <m>z_2 = 1 - 2i</m>, e <m>z_3 = - 3 + 2i</m> são ilustrados na Figura<nbsp /><xref ref="figure-rectcoord" />.</p>
+
+			<figure xml:id="figure-polarcoord">
+				<caption>Coordenadas polares de um número complexo</caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 5/6/2010 -->
+				<image xml:id="cyclic-complex-polar">
+					<latex-image-code><![CDATA[
+begin{tikzpicture}[scale=0.5]
+
+draw [->]  (0,-5) -(0,5);
+						draw  [->] (- 8,0) - (8,0);
+						node [right] at (0,5) {$e$};
+						node [Below] at (8,0) {$x$};
+						node [Below] at (0.5,0) {$0$};
+
+						draw (0,0) -(35:6);
+						\draw (2,0) arc (0:35:2);
+
+						filldraw[fill=black, draw=black] (35:6) circle (0,05cm);
+						node [right] at (35:6) {$a + bi$};
+						node [Above] at (35:3) {$r$};
+						node [right] at (17:2) {$\theta$};
+
+						end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+
+
+			</figure>
+
+			<p>Números complexos não nulos podem ser representados também com seus<term>coordenadas polares</term>.  Para especificar um ponto não-zero no plano, basta dar um ângulo <m>\theta</m> a partir do eixo <m>x</m> positivo na direcção anti-horário e uma distância <m>r</m> desde a origem, como na Figura<nbsp /><xref ref="figure-polarcoord" />. Podemos ver que
+				<me>z = a + bi = r( \cos \theta + i \sin \theta).</me>
+			Então
+				<me>r = |z| = \sqrt{a 2 + b 2}</me>
+e
+				<md>
+					<mrow>a &amp; = r \cos \theta</mrow>
+					<mrow>b &amp; = r sem\theta.</mrow>
+				</md>
+			Às vezes nós abreviamos <m>r( \cos \theta + i \sin \theta)</m> como <m>r \cis \theta</m>. <notation><usage>\cis \theta</usage><description><m>\cos \theta + i \sin \theta</m></description></notation> Para garantir que a representação de <m>z</m> esteja bem definida, também pediremos que <m>0 {\Circ}  leq\theta\lt 360 {\Circ}</m>.  Se a medida estiver em radianos, então <m>0 \leq \theta \lt2 \pi</m>.</p>
+
+			<example xml:id="example-cyclic-polar">
+				<p>Suponha que <m>z = 2\cis 60 {\Circ}</m>. Então
+<me>a  =  2\cos 60 {\Circ}  =   1</me>
+e
+					<me>b  =  2\sin 60 {\Circ}  =  \sqrt{3}.</me>
+				Então, a representação cartesiana é <m>z = 1+\sqrt{3} , i</m>.</p>
+ 
+ 				<p>Reciprocamente, se nos entregarem a representação cartesiana de um número complexo, pode ser útil conhecer sua representação polar. Se <m>z = 3\sqrt{2} - 3\sqrt{2} , i</m>, então 
+					<me>r = \sqrt{a 2 + b 2} = \sqrt{36 } = 6</me>
+e
+					<me>theta = \arctan\left( \frac{b}{a} \right) = \arctan( - 1) = 315 {\Circ},</me>
+ assim<m>3\sqrt{2} - 3\sqrt{2} , i=6\cis 315 {\Circ}</m>.</p>
+			</example>
+ 
+			<p>A representação polar de um número complexo facilita o cálculo de produtos e potências de números complexos.  A demonstração da seguinte proposta é direta e a deixamos como exercício.</p>
+ 
+			<proposition xml:id="proposition-polar-mult">
+				<statement>
+					<p>Sejam<m>z = r \cis \theta</m> e <m>w = s \cis \phi</m> dois números complexos. Então 
+						<me>zw = r s \cis( \theta + \phi).</me></p>
+				</statement>
+			</proposition>
+ 
+			<example xml:id="example-cyclic-polar-mult">
+				<p>Se <m>z =  3\cis( \pi / 3 )</m> e <m>w = 2\cis(\pi / 6 )</m>, então <m>Zw = 6\cis( \pi / 2 ) = 6i</m>.</p>
+			</example>
+
+			<theorem>
+				<title>DeMoivre</title>
+				<idx><h>Teorema de DeMoivre</h></idx>
+				<statement>
+					<p>Seja <m>z = r \cis  \theta</m> um número complexo diferente de zero. Então 
+						<me>[r \cis \theta  ]^n = r^n \cis( n \theta)</me>
+para <m>n = 1, 2, \ldots</m>.</p>
+				</statement>
+				<proof>
+					<p>Procederemos por indução em <m>n</m>. Para <m>n = 1</m> o teorema é trivial. Suponhamos que o teorema é verdadeiro para tudo <m>k</m> tal que <m>1  \leq k \leq n</m>. Então 
+					<md>
+						<mrow>z {n+1} &amp; = z n z</mrow>
+						<mrow>&amp; = r^n( \cos  n \theta + i \sin n \theta ) r( \cos \theta + i\sin \theta )</mrow>
+						<mrow>&amp; = r^{n+1} [( \cos n \theta \cos \theta - \sin n \theta \sin \theta ) + i ( \sin n \theta \cos \theta + \cos n \theta \sin \theta)]</mrow>
+						<mrow>&amp; = r^{n+1} [ \cos( n\theta ¹ \theta) + i\sin( n\theta %  \theta) ]</mrow>
+						<mrow>&amp; = r^{n+1} [ \cos( n +1) \theta + i\sin( n+1) \theta  ].</mrow>
+					</md></p>
+				</proof>
+			</theorem>
+ 
+			<example xml:id="theorem-demoivre">
+				<p>Suponha que <m>z= 1+i</m> e queremos calcular <m>z {10}</m>. Em vez de calcular <m>(1 + i) {10}</m> diretamente, é muito mais fácil passar para as coordenadas polares e calcular <m>z {10}</m> usando o Teorema de DeMoivre:
+					<md>
+						<mrow>z {10} &amp; = (1+i) {10}</mrow>
+						<mrow>&amp; = \left( \sqrt{2} \cis\left( \frac{\pi }{4} \right) \right) {10}</mrow>
+						<mrow> &amp; = ( \sqrt{2} , ) {10} \cis\left( \frac{5\pi }{2} \right)</mrow>
+						<mrow>&amp; = 32\cis\left( \frac{\pi }{2} \right)</mrow>
+						<mrow>&amp; = 32i.</mrow>
+					</md></p>
+			</example>
+		</introduction>
+
+		<subsection xml:id="cyclic-subsection-circle-group">
+			<title>O grupo da circunferência e as raízes da unidade</title>
+ 
+		 	<p>O grupo multiplicativo dos números complexos, <m>{\mathbb C}^*</m>possui alguns subgrupos interessantes.  Enquanto <m>{\mathbb Q}^*</m> e <m>{\mathbb R}^*</m> não têm subgrupos interessantes de ordem finita, <m>{\mathbb C}^*</m> tem muitos. Consideremos primeiro o <term>grupo da circunferência</term><idx><h>Circunferência</h><h>grupo da</h></idx>, <notation><usage>\mathbb T</usage><description>o grupo da circunferência</description></notation>
+				<me>{\mathbb T} = \{ z in {\mathbb C} : |z| = 1 \}.</me>
+			A seguinte proposta é consequência direta da Proposta<nbsp /><xref ref="proposition-polar-mult" />.</p>
+ 
+			<proposition>
+				<statement>
+					<p>O grupo da circunferência é um subgrupo de<m>{\mathbb C}^*</m>.</p>
+				</statement>
+			</proposition>
+ 
+			<p>Embora o grupo do circunferência tenha a ordem infinita, tem muitos subgrupos finitos interessantes. Suponha que <m>H = \{ 1, -1, i, -i \}</m>. Então <m>H</m> é um subgrupo do grupo do circunferência. Também, <m>1</m>, <m>-1</m>, <m>i</m>, e <m>-i</m> são precisamente os números complexos que satisfazem a equação <m>z 4 = 1</m>. Os números complexos que satisfazem a equação<m>z n=1</m> são chamados raízes <term><m>n</m>-ésimas da unidade</term><idx><h>raiz <m>n</m>-ésima da unidade</h></idx>.</p>
+
+			<theorem>
+				<statement>
+					<p>Se <m>z n = 1</m>, então as raízes <m>n</m>-ésima de um são
+						<me>z = \cis\left( \frac{2 k\pi}{n } \right),</me>
+com <m>k = 0, 1, \ldots, n-1</m>. Mais ainda, as raízes <m>n</m>-ésimos de um formam um subgrupo cíclico de <m>{\mathbb T}</m> de ordem <m>n</m></p>
+				</statement>
+				<proof>
+					<p>Pelo Teorema de DeMoivre,
+						<me>z n = \cis\left( n\frac{2 k\pi}{n } \right) = \cis( 2 k\pi ) = 1.</me>
+					As <m>z</m>'s são diferentes entre si porque os números <m>2 k \pi /n</m> são todos diferentes e maiores ou iguais a 0 mas menores que <m>2 \pi</m>. O facto de estas serem todas as raízes da equação <m>z n=1</m> é conseqüência do Corolário<nbsp /><xref ref="corollary-poly-zeros" />, que diz que um polinômio de grau <m>n</m> pode ter ao máximo<m>n</m> raízes.  Deixaremos ao leitor a demonstração de que as raízes <m>n</m>-ésimos de um formam um subgrupo cíclico de <m>{\mathbb T}</m>.</p>
+				</proof>
+			</theorem>
+ 
+			<p>Um gerador para o grupo de raízes <m>n</m>-ésimos de um se chama <term>raiz <m>n</m>-ésima primitiva da unidade</term><idx><h>Raiz <m>n</m>-ésima primitiva da unidade</h></idx>.</p> 
+ 
+			<example xml:id="example-roots_unity">
+				<p>As raízes oitavas da unidade podem ser representadas como oito pontos equidistantes no círculo unitário (Figura<nbsp /><xref ref="figure-rtsunity" />).  As raizes oitavas primitivas da unidade são
+					<md>
+						<mrow>omega &amp; = \frac{\sqrt{2}}{2} \{\frac{\sqrt{2}}{2} i</mrow>
+						<mrow>omega 3 &amp; = -\frac{\sqrt{2}}{2}  = \frac{\sqrt{2}}{2} i</mrow>
+						<mrow>omega 5 &amp; = -\frac{\sqrt{2}}{2}  - \frac{\sqrt{2}}{2} i</mrow>
+						<mrow>omega 7 &amp; = \frac{\sqrt{2}}{2}  - \frac{\sqrt{2}}{2}i. </mrow>
+					</md></p>
+			</example>
+ 
+			<figure xml:id="figure-rtsunity">
+				<caption>Raízes oitavas da unidade</caption>
+
+				<!-- Replaced figure with tikz figure - TWJ 5/6/2010 -->
+				<image width="80%" xml:id="cyclic-roots-unity">
+					<latex-image-code><![CDATA[
+begin{tikzpicture}[scale=1.65]
+
+draw [->]  (0,-1.5) -(0,1.5);
+						draw  [->] (-1.75.0) -(1.75.0);
+						node [right] at (0,1.5) {$y$};
+						node [Below] at (1.75,0) {$x$};
+						node [Below] at (0.1,0) {$0$};
+
+						\draw (0,0) circle (1);
+
+						filldraw[fill=black, draw=black] (0:1) circle (0.03);
+						filldraw[fill=black, draw=black] (45:1) circle (0.03);
+						filldraw[fill=black, draw=black] (90:1) circle (0.03);
+						filldraw[fill=black, draw=black] (135:1) circle (0.03);
+						filldraw[fill=black, draw=black] (180:1) circle (0.03);
+						filldraw[fill=black, draw=black] (225:1) circle (0.03);
+						filldraw[fill=black, draw=black] (270:1) circle (0.03);
+						filldraw[fill=black, draw=black] (315:1) circle (0.03);
+
+
+						node [right] at (1,-0.15) {1};
+						node [right] at (45:1) {$ omega$};
+						node [left] at (0,1.15) {$i$};
+						node [left] at (135:1) {$ omega 3$};
+						node [left] at (- 1,- 0,15) {$- 1$};
+						node [left] at (225:1) {$ omega 5$};
+						node [left] at (0,-1.15) {$-i$};
+						node [right] at (315:1) {$ omega 7$};
+
+						end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+ 		</subsection>
+
+ 	</section>
+
+	<section xml:id="section-method-of-repeated-squares">
+		<title>O método dos quadrados repetidos</title>
+ 
+		<p>Calcular grandes potências pode levar muito tempo. Assim como qualquer um pode calcular <m>2 2</m> ou <m>2 8</m>Qualquer um sabe como calcular 
+			<me>2 {2 {1000000} }.</me>
+		No entanto, tais números são tão grandes que nem sequer queremos tentar fazer os cálculos; Além disso, depois de certo ponto, o cálculo não seria realizável mesmo que tivéssemos à nossa disposição todos os computadores do mundo. Mesmo escrever a representação decimal de um número demasiado grande pode não ser prático. Pode ter milhares ou até milhões de dígitos. No entanto, se pudéssemos calcular algo como 
+<me>2 {37398332 }  pmod{ 46389},</me>
+poderíamos facilmente escrever o resultado porque seria um número entre 0 e 46,388. Se queremos calcular potências módulo <m>n</m> rápida e eficientemente, deveremos ser astutos.<fn>Os resultados desta seção só são necessários no Capítulo<nbsp /><xref ref="crypt" /></fn></p>
+ 
+		<p>A primeira coisa que devemos notar é que qualquer número <m>a</m> pode ser escrito como uma soma de potências de 2 distintas; ou seja, podemos escrever
+			<me>a = 2 {k_1} + 2 {k_2} { \cdots + 2 {k_n},</me>
+com <m>k_1\lt k_2\lt\cdots\lt k_n</m>.  Esta é simplesmente a representação binária de <m>a</m>. Por exemplo, a representação binária de 57 é 111001, pois <m>57 = 2 0 + 2 3 + 2 4 + 2 5</m>.</p>
+ 
+		<p>As regras dos expoentes são cumpridas em<m>{\mathbb Z}_n</m>; ou seja, se <m>b equiv a x pmod{ n}</m> e <m>c equiv a y pmod{ n}</m>, então <m>bc equiv a {x+y}  pmod{ n}</m>. Podemos calcular <m>â {2 k}  pmod{ n}</m> em <m>k</m> passos calculando
+			<md>
+				<mrow>â {2 0}  pmod{ n}</mrow>
+				<mrow>â {2 1}  pmod{ n }</mrow>
+				<mrow>\vdots</mrow>
+				<mrow>a {2 k}  pmod{ n}.</mrow>
+			</md>
+		Cada passo corresponde a elevar ao quadrado o resultado obtido na etapa anterior, dividir por <m>n</m>E deixar o resto.</p>
+  
+		<example xml:id="example-cyclic-repeated-squares">
+			<p>Calcularemos <m>271 {321}  pmod{ 481}</m>. Note que
+				<me>321 = 2 0 + 2 6 + 2 8;</me>
+em seguida, calcular <m>271 { 321}  pmod{ 481}</m> é o mesmo que calcular
+				<me>271 { 2 0 +2 6 + 2 8 }  equiv 271 { 2 0 } \cdot 271 {2 6 } \cdot 271 { 2 8 }  pmod{ 481}.</me>
+			Será suficiente com calcular <m>271 { 2 i }  pmod{ 481}</m> com <m>i = 0, 6, 8</m>. É muito fácil ver que 
+				<me>271 { 2 1}  =  text{73,441}   equiv 329 pmod{ 481}.</me>
+			Podemos elevar ao quadrado este resultado, obtendo um valor para <m>271 { 2 2}  pmod{481}</m>: 
+			<md>
+				<mrow>271 { 2 2}  &amp;  equiv (271 { 2 1}) 2 pmod{ 481}</mrow>
+				<mrow>&amp;  equiv (329) 2 pmod{ 481}</mrow>
+				<mrow>&amp;  equiv text{108,241}  pmod{ 481}</mrow>
+				<mrow>&amp;  equiv 16 pmod{ 481}.</mrow>
+			</md>
+			Estamos usando o fato de que <m>(a {2 n})  2 equiv a {2\cdot 2 n}  equiv a { 2 {n+1} } pmod{ n}</m>. Continuando, podemos calcular
+				<me>271 { 2 6 }  equiv 419 pmod{ 481}</me>
+e
+				<me>271 { 2 8 }   equiv 16 pmod{ 481}.</me>
+			Por conseguinte, o
+				<md>
+					<mrow>271 { 321} &amp;  equiv 271 { 2 0 +2 6 + 2 8 }  pmod{ 481}</mrow>
+					<mrow>&amp;  equiv 271 { 2 0 } \cdot 271 { 2 6 } \cdot 271 { 2 8 }  pmod{ 481}</mrow>
+					<mrow>&amp; \equiv 271 \cdot 419 \cdot 16 \pmod{ 481}</mrow>
+					<mrow>&amp;  equiv text{1,816,784}  pmod{ 481}</mrow>
+					<mrow>&amp;  equiv 47 pmod{ 481}.</mrow>
+				</md></p>
+		</example>
+
+<!-- Reformatted example.  TWJ 2/5/2013 -->
+ 
+		<p> O método do quadrado repreendido resultará ser uma ferramenta muito útil quando nós explorarmos a criptografia<acro>RSA</acro> no capítulo<nbsp /><xref ref="crypt" />. Para codificar e descodificar uma mensagem de forma razoável, é necessário calcular grandes potências de inteiros moded <m>n</m> de forma rápida.</p>
+
+		<xi:include href="./sage/cyclic-info.xml" />
+
+	</section>
+
+	<xi:include href="./exercises/cyclic.xml" />
+
+	<exercises xml:id="cyclic-exercises-programming">
+		<title>Exercícios de programação</title>
+ 
+		<exercise>
+			<statement>
+				<p>Escreva um programa que escreva qualquer número inteiro como uma soma de potências diferentes de 2.  Qual é o maior número inteiro para o qual o seu programa funciona?</p>
+			</statement>
+		</exercise>
+ 
+		<exercise>
+			<statement>
+				<p>Digite um programa para calcular <m>a x pmod{ n}</m> com o método dos quadrados repetidos.  Quais são os maiores valores de <m>n</m> e <m>x</m> aceites pelo seu programa?</p>
+			</statement>
+		</exercise>
+ 
+ 	</exercises>
+ 
+	<references xml:id="cyclic-references">
+		<title>Referências e leituras recomendadas</title>
+
+		 <!-- was [1] -->
+		 <!-- reference updated - TWJ 5/6/2010 -->
+		<biblio type="raw">Koblitz, N.<title>A Course in Number Theory and Cryptography</title>. 2nd ed. Springer, New York, 1994.</biblio>
+ 
+		<!-- was [2] -->
+		<biblio type="raw" xml:id="biblio-pomerance-1990">Pomerance, C.<q>Cryptology and Computational Number Theory<mdash />An Introduction,</q> in <title>Cryptology and Computational Number Theory</title>, Pomerance, C., ed. Proceedings of Symposia in Applied Mathematics, vol. 42, American Mathematical Society, Providence, RI, 1990.  This book gives an Excellent account of how the method of Repeated squares is used in Cryptography.</biblio>
+
+	</references>
+ 
+	<xi:include href="./sage/cyclic-sage.xml" />
+	<xi:include href="./sage/cyclic-sage-exercises.xml" />
+
+</chapter>
+ 
