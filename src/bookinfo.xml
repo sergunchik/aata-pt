@@ -25,8 +25,8 @@
 \newcommand{\cis}{\operatorname{cis}}
 \newcommand{\chr}{\operatorname{char}}
 \newcommand{\Null}{\operatorname{Null}}
-\renewcommand{\gcd}{\operatorname{mcd}}
-\renewcommand{\lcm}{\operatorname{mcm}}
+\renewcommand{\gcd}{\operatorname{mdc}}
+\renewcommand{\lcm}{\operatorname{mmc}}
 \renewcommand{\deg}{\operatorname{gr}}
 \renewcommand{\chr}{\operatorname{car}}
     </macros>
