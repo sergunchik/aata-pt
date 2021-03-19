@@ -28,7 +28,7 @@
         <xi:include href="./sets.xml" />                        <!-- Set Theory  -->
         <xi:include href="./integers.xml" />                    <!-- Integers -->
         <xi:include href="./groups.xml" />                      <!-- Groups -->
-        <xi:include href="./cyclic-pt.xml" />                   <!-- Cyclic Groups -->
+        <xi:include href="./cyclic-pt-2.xml" />                   <!-- Cyclic Groups -->
         <xi:include href="./permute.xml" />                     <!-- Permutation Groups -->
         <xi:include href="./cosets.xml" />                      <!-- Cosets and Lagrange's Theorem -->
         <xi:include href="./crypt.xml" />                       <!-- Cryptography -->
