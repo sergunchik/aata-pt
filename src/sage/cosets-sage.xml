@@ -18,17 +18,17 @@
 	<title>Sage</title>
 
 	<introduction>
-		<p>Sage puede crear todos las clases laterales de un subgrupo, y todos los subgrupos de un grupo. Aunque estos métodos pueden ser algo lentos, hay muchas veces en que son mejores que experimentar con papel y lápiz, y pueden ser de gran ayuda para entender la estructura de los grupos finitos.</p>
+		<p>Sage pode criar todas as classes laterais de um subgrupo e todos os subgrupos de um grupo. Por mais que estes métodos possam ser um pouco lentos, eles são em muitos casos, eles podem te fornecer caminhos muito melhores do que o papel e o lápis e podem te ajudar a entender a estrutura de grupos finitos.</p>
 	</introduction>
 
 	<subsection>
-		<title>Clases Laterales</title>
+		<title>Classes Laterais</title>
 
-		<p>Sage creará todas las clases laterales derechas (o izquierdas) de un subgrupo.  Escritas matemáticamente, las clases laterales son conjuntos, y el orden de los elementos dentro es irrelevante.  En Sage, las listas son más naturales, y acá es una ventaja.</p>
+		<p>Sage criará todas as classes laterais direitas (ou esquerdas) de um subgrupo.  Escritas matematicamente, as classes laterais são conjuntos, e a ordem dos elementos de dentro é irrelevante.  Em Sage, as listas são mais naturais e aqui isso é uma vantagem.</p>
 
-		<p>Sage crea las clases laterales de un subgrupo como lista de listas.  Cada lista interna es una clase lateral particular.  La primera clase lateral siempre es el subgrupo mismo, y el primer elemento de esta clase es la identidad.  Cada una de las otrar clases se puede entender construída para tener su representante como primer elemento, y si usamos este elemento como representante, los elementos de la clase están en el mismo orden en que serían creados multiplicando este representante por los elementos de la primera clase (el subgrupo).</p>
+		<p>Sage cria as classes laterais de um subgrupo como lista de listas.  Cada lista interna é uma classe lateral particular.  A primeira classe lateral sempre é o próprio subgrupo e o primeiro elemento desta classe é a identidade.  Cada uma das outras classes podem ser construídas para terem seu primeiro elemento como seu representante e se você usar esse elemento como representante, os elementos da classe lateral terão a mesma ordem se tivessem sido criados pela multiplicação desse representante pelos elemento na primeira classe lateral (o subgrupo).</p>
 
-		<p>El parámetro opcional <c>side</c> puede ser  <c>'right'</c> o <c>'left'</c>, y si no está explicitado, entonces por defecto se entregarán las clases laterales derechas.  Las opciones se refieren a qué lado del producto está el representante.  Note que ahora los resultados de Sage estarán <q>al revés</q> comparados con el texto.  Acá hay un Ejemplo<nbsp /><xref ref="example-cosets-s3-cosets" /> reanudado, pero en un orden ligeramente diferente.</p>
+		<p>O parâmetro opcional <c>side</c> pode ser  <c>'right'</c> ou <c>'left'</c>, se não está explicitado, a opção padrão é escolher as classes laterais direitas.  As opções se referem a que lado do produto está o representante.  Note que agora os resultados de Sage estaram <q>ao contrário</q> comparados com o texto.  Aqui temos um Exemplo<nbsp /><xref ref="example-cosets-s3-cosets" /> reprisado, mas em uma ordem ligeiramente diferente.</p>
 
 		<sage>
 			<input>
@@ -45,7 +45,7 @@
 			<output>[[(), (1,2)], [(2,3), (1,2,3)], [(1,3,2), (1,3)]]</output>
 		</sage>
 
-		<p>Si miramos cuidadosamente, podemos ver la diferencia entre las clases laterales derechas y las izquierdas.  Compare estas clases laterales con las del texto y note que derecha e izquierda están intercambiadas.  No debiera ser un problema <mdash /> solo téngalo presente.</p>
+		<p>Se olhamos cuidadosamente, podemos ver a diferença entre as classes laterais direitas e esquerdas.  Compare estas classes laterais com as do texto e note que direita e esquerda estão trocadas.  Não deve ser um problema <mdash /> só fique com isso em mente.</p>
 
 		<sage>
 			<input>
@@ -62,14 +62,14 @@
 			<output>[[(), (1,2,3), (1,3,2)], [(2,3), (1,2), (1,3)]]</output>
 		</sage>
 
-		<p>Si analizamos la lista compuesta, podemos ver que las clases laterales derechas y las izquierdas son las mismas.  Veamos lo que piensa Sage:</p>
+		<p>Se analizamos a lista composta, podemos ver que as classes laterais direitas e esquerdas são as mesmas. Vejamos o que Sage pensa:</p>
 
 		<sage>
 			<input>rc == lc</input>
 			<output>False</output>
 		</sage>
 
-		<p>Matemáticamente, necesitamos conjuntos, pero Sage está trabajando con listas ordenadas, y el orden importa.  Sin embargo, si sabemos que nuestras listas no contienen duplicados (el método <c>.cosets()</c> nunca producirá duplicados) entonces podemos ordenar las listas y la verificación de igualdad tendrá el resultado esperado.  Los elementos de un grupo de permutaciones tienen un orden definido para ellos <mdash /> no es tan importante <em>cuál</em> es ese orden, solo que <em>algún</em> orden está definido.  La función <c>sorted()</c> tomará cualquier lista devolviendo una versión ordenada.  Así para cada lista de clases laterales, ordenaremos las clases individuales y luego ordenaremos la lista de clases ordenadas.  Esta es una maniobra típica, aunque un poco complicada para las listas anidadas.</p>
+		<p>Matematicamente, precisamos de conjuntos, mas a Sage está trabalhando com listas ordenadas e a ordem importa.  No entanto, se sabemos que nossa listas não contém duplicados (o método <c>.cosets()</c> nunca produzirá duplicados) então podemos ordenar as listas e um teste de igualdade ocorrerá como planejado.  Os elementos de um grupo de permutação têm uma ordem definida para eles <mdash /> não é tão importante <em>qual</em> é essa ordem, só que <em>alguma</em> ordem está definida.  A função <c>sorted()</c> pegará qualquier lista devolvendo uma versão ordenada.  Assim, para cada lista de classes laterais, ordenaremos as classes individualmente e, então, ordenaremos a lista de classes ordenadas.  Esta é uma manobra típica, ainda que um pouco complicada para as listas aninhadas.</p>
 
 		<sage>
 			<input>
@@ -92,7 +92,7 @@
 			<output>True</output>
 		</sage>
 
-		<p>La lista de todas las clases laterales puede ser bastante larga (contendrá todos los elementos del grupo) y puede tomar varios segundos en ser completada, incluso para grupos pequeños.  Existen formas más sofisticadas, y más rápidas, de estudiar clases laterales (como simplemente usar sus representantes), pero para entender estas técnicas es necesario tener más teoría.</p>
+		<p>A lista de todas as classes laterais pode ser bastante longa (conterá todos os elementos do grupo) e pode tomar vários segundos para ser completada, inclusive para grupos pequenos.  Existem formas mais sofisticadas, e mais rápidas, de estudar classes laterais (como simplesmente usar seus representantes), mas para entender estas técnicas é necessário ter mais teoria.</p>
 
 		<sage type="practice"/>
 	</subsection>
@@ -100,7 +100,7 @@
 	<subsection>
 		<title>Subgrupos</title>
 
-		<p>Sage puede calcular todos los subgrupos de un grupo.  Esto puede producir una respuesta aún más larga que el método de clases laterales y puede ser mucho más lento, dependiendo de la estructura del grupo.  La lista está ordenada según el tamaño de los subgrupos, con los más pequeños primero.  Como una demostración, calcularemos primero una lista de todos los subgrupos de un grupo pequeño, y luego extraeremos uno de estos subgrupos de la lista para estudio posterior.</p>
+		<p>Sage pode calcular todos os subgrupos de um grupo.  Isto pode produzir uma resposta ainda mais longa que o método de classes laterais e pode ser muito mais lento, dependendo da estrutura do grupo.  A lista está ordenada pelo tamnho dos subgrupos, com os menores primeiros. Como uma demonstação iremos computar primeiro uma lista de todos os subgrupos de um grupo pequeno e, depois, extrair somente um desses subgrupos da lista para mais estudos futuros.</p>
 
 		<sage>
 			<input>
@@ -138,7 +138,7 @@
 		</sage>
 
 		<!-- RAB 2014/08/18 ref is to a proposition, not a Corollary? -->
-		<p>La salida del método <c>.subgroups()</c> suele ser grande, y podemos estar interesados en las propiedades de ciertos subgrupos específicos (como en el ejemplo anterior) o preguntas más amplias como la <q>estructura de subgrupos</q> del grupo.  Acá extendemos el Corolario<nbsp /><xref ref="proposition-cosets-theorem-10" />.  Note que el hecho de que Sage <em>calcule</em> un subgrupo de orden  6 en <m>A_4</m>, no es un sustituto válido de una  <em>demostración</em> como la dada para el corolario.  Pero el resultado computacional nos anima para buscar la demostración teórica con mayor confianza.</p>
+		<p>A saída do método <c>.subgroups()</c> pode ser grande, podemos estar interessados nas propriedades de certos subgrupos específicos (como no exemplo anterior) ou perguntas mais amplas como a <q>estrutura dos subgrupos</q> do grupo.  Aqui estendemos o Corolário<nbsp /><xref ref="proposition-cosets-theorem-10" />.  Note que o fato de que Sage <em>calcula</em> um subgrupo de ordem  6 em <m>A_4</m>, não é um substituto válido de uma  <em>demonstração</em> como é dada pelo corolário.  Mas o resultado computacional nos anima para buscar a demostração teórica con mayor confianza.</p>
 
 		<sage>
 			<input>
@@ -149,7 +149,7 @@
 			<output>[1, 2, 2, 2, 3, 3, 3, 3, 4, 12]</output>
 		</sage>
 
-		<p>Así que no vemos un subgrupo de orden 6 en la lista de subgrupos de <m>A_4</m>.  Note como el Teorema de Lagrange (Teorema<nbsp /><xref ref="theorem-lagrange" />) está en evidencia <mdash /> todos los subgrupos tienen órdenes que dividen a <m>12</m>, el orden de <m>A_4</m>.</p>
+		<p>Assim que não vemos um subgrupo de ordem 6 na lista de subgrupos de <m>A_4</m>.  Note como o Teorema de Lagrange (Teorema<nbsp /><xref ref="theorem-lagrange" />) está em evidência <mdash /> todos os subgrupos têm ordens que dividem <m>12</m>, a ordem de <m>A_4</m>.</p>
 
 		<sage>
 			<input>
@@ -163,7 +163,7 @@
 			</output>
 		</sage>
 
-		<p>Nuevamente, aprecie el Teorema de Lagrange en acción.  Pero aún más interesante, <m>S_4</m> tiene un subgrupo de orden 6.  Cuatro de ello, para ser precisos.  Estos cuatro subgrupos de orden 6 son similares entre ellos, ¿puede describirlos de forma simple (<em>antes</em> de escarbar en la lista <c>sg</c> para obtener más información)?  Si quiere saber cuántos subgrupos tiene <m>S_4</m>, podría simplemente contar el número de subgrupos en la lista <c>sg</c>.  La función <c>len()</c> hace esto para <em>cualquier</em> lista y es usualmente una forma sencilla de contar cosas.</p>
+		<p>Novamente, note o Teorema de Lagrange em ação.  Mas, ainda mais interessante, <m>S_4</m> tem um subgrupo de ordem 6.  Quatro deles, para ser preciso.  Esses quatro subgrupos de ordem 6 são similares entre eles, pode descrevê-los de forma simples (<em>antes</em> de entrar na lista <c>sg</c> para obter mais informações)?  Se quiser saber quantos subgrupos tem <m>S_4</m>, pode simplesmente contar o número de subgrupos na lista <c>sg</c>.  A função <c>len()</c> faz isto para <em>qualquer</em> lista e é usualmente uma forma fácil de contar coisas.</p>
 
 		<sage>
 		<input>len(sg)</input>
@@ -177,7 +177,7 @@
 	<subsection>
 		<title>Subgrupos de Grupos Cíclicos</title>
 
-		<p>Ahora que estamos más familiarizados con los grupos de permutaciones, y conocemos el método <c>.subgroups()</c>, podemos revisitar una idea del Capítulo<nbsp /><xref ref="cyclic" />.  Los subgrupos de un grupo cíclico siempre son cíclicos, pero ¿cuántos hay y qué órdenes tienen?</p>
+		<p>Agora que estamos mais familiarizados com os grupos de permutações e conhecemos o método <c>.subgroups()</c>, podemos revisitar uma idea do Capítulo<nbsp /><xref ref="cyclic" />. Os subgrupos de um grupo cíclico sempre são cíclicos, mas quantos existem e que ordens têm?</p>
 
 		<sage>
 			<input>
@@ -195,7 +195,7 @@
 			<output>[1, 19]</output>
 		</sage>
 
-		<p>Podríamos hacer esto todo el día, pero ahora que tiene Sage a su disposición, varíe el orden de <c>G</c> cambiando el valor de <c>n</c> y estudie varios de estos resultados.  Quizás podría intentar un grupo cíclico de orden 24 y comparar con el grupo simétrico <m>S_4</m> (arriba) que también tiene orden 24. ¿Se le ocurre alguna conjetura?</p>
+		<p>Poderiamos fazer isso o dia todo, mas agora que temos Sage a nossa disposição, varie a ordem de <c>G</c> trocando o valor de <c>n</c> e estude vários desses resultados.  Pode tentar um grupo cíclico de ordem 24 e comparar com o grupo simétrico <m>S_4</m> (acima) que também tem ordem 24. Você percebe alguma conjectura?</p>
 
 		<sage>
 			<input>
@@ -211,16 +211,16 @@
 	</subsection>
 
 	<subsection>
-		<title>Función Phi de Euler</title>
+		<title>Função Phi de Euler</title>
 
-		<p>Para sumar a nuestras funciones de teoría de números del Capítulo<nbsp /><xref ref="integers" />, notemos que Sage pone a nuestra disposición la función <m>\phi</m> de Euler como <c>euler_phi()</c>.</p>
+		<p>Para acrescentar a nossas funções de teoria dos números do Capítulo<nbsp /><xref ref="integers" />, notemos que Sage põe a nossa disposição a função <m>\phi</m> de Euler como <c>euler_phi()</c>.</p>
 
 		<sage>
 			<input>euler_phi(345)</input>
 			<output>176</output>
 		</sage>
 
-		<p>Acá viene un experimento interesante que puede ejecutar múltiples veces.</p>
+		<p>Aqui segue um experimento interessante que você pode tentar rodar quantas vezes quiser.</p>
 
 		<sage doctest="random">
 			<input>
@@ -231,7 +231,7 @@
 			<output>(5881, 1277, True)</output>
 		</sage>
 
-		<p>¿Alguna otra conjetura? ¿Puede generalizar este resultado?</p>
+		<p>Alguma outra conjectura? Podemos generalizar este resultado?</p>
 
 		<sage type="practice"/>
 

@@ -11,20 +11,20 @@
 <!-- edits can be made against this file for       -->
 <!-- the purpose of a pull request.                -->
 <exercises xml:id="cosets-sage-exercises">
-	<title>Ejercicios en Sage</title>
+	<title>Exercícios em Sage</title>
 
 	<introduction>
-		<p>Los siguientes ejercicios más que sobre clases laterales y subgrupos, son sobre el uso de Sage como herramienta experimental.  Están diseñados para ayudarle a ser más eficiente y más expresivo, a la hora de escribir comandos en Sage.  Tendremos muchas oportunidades de trabajar con clases laterales y subgrupos en los capítulos que vienen.  Estos ejercicios no son tan guiados y su dificultad va en aumento.  Están diseñados para explorar, o confirmar, resultados presentados en este o anteriores capítulos.</p>
+		<p>Os seguintes exercícios são menos sobre subgrupos e mais sobre como usar Sage como uma ferramenta experimental.  Eles são criados para ajudar você ser mais experiente e expressivo enquanto você escreve os comandos em Sage.  Teremos várias oportunidades de trabalhar com classes laterais e subconjuntos nos próximos capítulos.  Estes exercícios não contém muita orientação e ficam cada vez mais desafiantes a medida que continuamos.  Eles são formulados para que você explore,  ou confirme, resultados apresentados neste capítulo ou em capítulos anteriores.</p>
 
-		<p><alert>Importante</alert>: Debiese contestar cada uno de los últimos tres problemas con una sola línea (complicada) de Sage cuyo resultado sea <c>True</c>.  Una <q>sola línea</q> quiere decir que tendrá varios comandos de Sage usados juntos de formas complejas.  No quiere decir varios comandos Sage separados por punto y coma, tipeados en una sola línea.  Asegúrese de incluir algunos pasos intermedios usados en construir su solución, pero usando rangos de números más pequeños para no abrumar al lector con demasiado para mirar.  Esto le ayudará a usted y al corrector de su trabajo para tener confianza en que la versión final es correcta.</p>
+		<p><alert>Importante</alert>: Você deve responder cada um dos três problemas com uma única (complicada) linha de Sage que tenha como resultado <c>True</c>.  Uma <q>única linha</q> quer dizer que você terá vários comandos aglomerados de jeitos complexos.  Não significa vários comando em Sage separados por semi-colunas e escritos em uma única linha.  Não esqueça de incluir passos intermediários usados para construir sua solução, mas use intervalos de valores menores para que o sistema não fica sobrecarregado com várias outputs.  Isso irá ajudar você e o corretor do seu trabalho, tenha confiança que a versão final está correta.</p>
 
-		<p>Cuando verifique la divisibilidad de enteros, recuerde que <c>range()</c> produce enteros comunes, cuya funcionalidad es básica.  El comando <c>srange()</c> produce enteros Sage, que tienen más capacidades.  (Vea el último ejercicio como ejemplo.)  Y recuerde que una lista es una forma compacta de examinar muchas posibilidades a la vez.</p>
+		<p>Quando você verificar a divisibilidade dos inteiros, lembre que <c>range()</c> gera inteiros comuns, que são simples com relação sua funcionalidade. O comando <c>srange()</c> produz inteiros Sage, que tem  mais capacidades.  (Vejo o último exercíci como um exemplo.)  E recorde que uma lista é uma forma compacta de examinar muitoas possibilidades de uma vez.</p>
 	</introduction>
 
 
 	<exercise number="1">
 		<statement>
-			<p>Use <c>.subgroups()</c> para encontrar un ejemplo de un grupo <m>G</m> y un entero  <m>m</m>, tal que  (a) <m>m</m> divide el orden de  <m>G</m>, y (b) <m>G</m> no tiene subgrupo de orden  <m>m</m>.  (No use el grupo  <m>A_4</m> como <m>G</m>, pues ese está en el texto.)  Escriba una sola línea de código Sage que contenga toda la lógica necesaria para producir  <m>m</m> como respuesta.  (Puede darle un nombre simple a su grupo en una línea previa y luego referirse a él por ese nombre.)  A continuación un ejemplo muy simple que le puede ayudar a estructurar su respuesta.</p>
+			<p>Use <c>.subgroups()</c> para encontrar um exemplo de um grupo <m>G</m> e um inteiro  <m>m</m>, tal que  (a) <m>m</m> divide a ordem de  <m>G</m>, e (b) <m>G</m> não tem subgrupo de ordem  <m>m</m>.  (Não use o grupo  <m>A_4</m> como <m>G</m>, pois este está no texto.)  Escreva somente uma linha de código Sage que contenha toda a lógica necessária para produzir  <m>m</m> como resposta.  (Pode dar um nome simples a seu grupo em uma linha anterior e então chamar ele por esse nome.) A seguir temos um exemplo mutio simples que pode ajudar a estrutura da sua resposta.</p>
 
 			<sage>
 				<input>
@@ -53,9 +53,9 @@
 
 	<exercise number="2">
 		<statement>
-			<p>Ejemplifique el Pequeño Teorema de Fermat (en cualquiera de sus variantes) usando el número compuesto <m>391=17\cdot 23</m> como elección de base (ya sea <m>a</m> o <m>b</m>), y para <m>p</m> recorriendo todos los valores primos entre  <m>100</m> y <m>1000</m>.</p>
+			<p>Verifique a veracidade do Pequeno Teorema de Fermat (em qualquer uma de suas variantes) usando o número composto <m>391=17\cdot 23</m> como escolha de base (ou <m>a</m> ou <m>b</m>), e para <m>p</m> passando por todos os valores primos entre  <m>100</m> e <m>1000</m>.</p>
 
-			<p>Construya paulatinamente una solución <mdash/> haga una lista de potencias (empezando por unos pocos primos), luego haga una lista de potencias reducidas en la aritmética modular, luego una lista de comparaciones con el valor predicho, luego verifique todos estos valores lógicos resultantes de la comparación.  Esta es una estrategia útil en muchos problemas similares.  Finalmente podrá escribir una sola línea que realice la verificación completa y devuelva <c>True</c>.  A continuación hay algunas sugerencias de funciones útiles.</p>
+			<p>Construa a construção de forma devagar <mdash/> faça uma lista de potências (começando com poucos primos), então faça uma lista de potências reduzidas pela aitmética modular e depois uma lista de comparações com o valor previsto, agora verifique todos estes valores lógicos resultantes da comparação.  Esta é uma estratégia útil em muitos problemas similares.  Finalmente você poderá escrever uma só linha que realize a verificação completa e devolva <c>True</c>.  A seguir temos algumas dicas que podem ser úteis.</p>
 
 			<sage>
 				<input>
@@ -87,14 +87,14 @@
 
 	<exercise number="3">
 		<statement>
-			<p>Verifique que el grupo de unidades  mód <m>n</m> tiene orden  <m>n-1</m> cuando  <m>n</m> es primo, nuevamente para todos los primos entre <m>100</m> y <m>1000</m>.  Como antes, su resultado debe ser simplemente  <c>True</c>, una única vez, indicando que la proposición respecto al orden es verdadera para todos los primos examinados.  Como antes, construya su solución paso a paso, y con conjuntos menores de primos en el comienzo.  Exprese su respuesta como una sola línea de código  Sage.</p>
+			<p>Verifique que o grupo de unidades  mod <m>n</m> tem ordem  <m>n-1</m> quando  <m>n</m> é primo, novamente para todos os primos entre <m>100</m> e <m>1000</m>.  Assim como antes, seu resultado deve ser simplesmente  <c>True</c>, uma única vez, indicando que a proposição sobre a ordem é verdadeira para todos os primos examinados.  Como antes, construa sua solução passo a passo e com conjuntos menores de primos no começo.  Expresse sua resposta como uma só linha de código  Sage.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="4">
 		<statement>
-			<p>Verifique el Teorema de  Euler para todos los valores <m>0\lt n\lt 100</m> y para <m>1\leq a \leq n</m>.  Esto requerirá bucles <c>for</c> anidados con un condicional.  Nuevamente, a continuación un pequeño ejemplo que puede ser útil para construir su línea única de código Sage.  Note el uso de <c>srange()</c> en este ejemplo.</p>
+			<p>Verifique o Teorema de  Euler para todos os valores <m>0\lt n\lt 100</m> y para <m>1\leq a \leq n</m>.  Isso requerirá proposições <c>for</c> aninhadas com um condicional.  Novamente, a seguir temos um pequeno exemplo que pode ser útil para construir sua linha única de código Sage.  Note o uso de <c>srange()</c> neste ejemplo.</p>
 
 			<sage>
 				<input>[a/b for a in srange(9) for b in srange(1,a) if gcd(a,b)==1]</input>
@@ -110,19 +110,19 @@
 
 	<exercise number="5">
 		<statement>
-			<p>El grupo simétrico en  <m>7</m> símbolos, <m>S_7</m>, tiene <m>7! = 5040</m> elementos.  Considere las siguientes preguntas sin utilizar Sage, basado en lo que sabemos sobre los órdenes de los elementos en grupos de permutaciones (Ejercicio<nbsp/><xref ref="exercise-permute-order-product-cycles"/>).<ul>
-				<li><p>¿Cuál es el mayor orden posible?</p></li>
-				<li><p>¿Cuántos elementos hay de orden <m>10</m>?</p></li>
-				<li><p>¿Cuántos elementos hay de orden <m>1</m>?</p></li>
-				<li><p>¿Cuántos elementos hay de orden <m>2</m>?</p></li>
-				<li><p>¿Cuál es el menor entero positivo para el que no hay elemento de ese orden?</p></li>
+			<p>O grupo simétrico em  <m>7</m> símbolos, <m>S_7</m>, tem <m>7! = 5040</m> elementos.  Considere as seguintes perguntas sem utilizar Sage, baseado no que sabemos sobre as ordens dos elementos em grupos de permutações (Exercício<nbsp/><xref ref="exercise-permute-order-product-cycles"/>).<ul>
+				<li><p>Qual é a maior ordem possível?</p></li>
+				<li><p>Quantos elementos existem de ordem <m>10</m>?</p></li>
+				<li><p>Quantos elementos existem de ordem <m>1</m>?</p></li>
+				<li><p>Quantos elementos existem de ordem <m>2</m>?</p></li>
+				<li><p>Qual é o menor inteiro positivo para que não haja elemento dessa ordem?</p></li>
 			</ul></p>
 
-			<p>Estas preguntas resultan más fáciles si sabe usar los coeficientes binomiales para contar en situaciones similarmenate complejas.  En cualquier caso, reflexione seriamente sobre cada una de esta preguntas (y quizás alguna otra que se le ocurra) antes de lanzarse con Sage.</p>
+			<p>Estas perguntas serão mais fáceis se você for mais familiar com uso de coeficientes binomiais para contar em situações similarmente complexas.  Em qualquer caso, pense um pouco em cada questão (e talvez em alguma outra que lhe venha na cabeça) antes de começar a escrever em Sage.</p>
 
-			<p>Ahora, calcule cuántos elementos hay de cada orden usando el método <c>.order()</c>, e incluya esto en una lista exhaustiva que contenga el número de elementos de cada orden.  Puede verificar su trabajo (o el de Sage) usando el comando  <c>sum()</c>  para sumar esta lista y ojalá obteniendo <m>5040</m>.</p>
+			<p>Agora, calcule quantos elementos existem de cada ordem usando o método <c>.order()</c>, e inclua isto em uma lista exaustiva que contenha o número de elemntos de cada ordem.  Você pode verificar seu trabalho (ou checar Sage) usando o comando  <c>sum()</c>  para somar esta lista e esperando econtrar <m>5040</m>.</p>
 
-			<p>Comente el proceso de primero estudiar estas preguntas sin ayuda computacional, y luego nuevamente con Sage.  ¿Para qué valores de <m>n</m> cree que Sage sería demasiado lento y su mente más rápida?</p>
+			<p>Comente o processo de primeiro estudar estas perguntas sem ajuda computacional e depois novamente com Sage.  Para que valores de <m>n</m> você acha que Sage seria um tanto quanto lento e sua mente mais rápida?</p>
 		</statement>
 		
 	</exercise>
