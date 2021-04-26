@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+
+<chapter xml:id="fields" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>Cuerpos</title>
+
+	<introduction>
+		<p>É natural se perguntar se certo corpo <m>F</m> está contido em um corpo maior.  Pensemos nos números racionais, que estão contidos dentro dos números reais, que por sua vez estão contidos dentro dos números complexos.  Também podemos estudar os corpos que se encontram entre <m>{\mathbb Q}</m> e <m>{\mathbb R}</m> e nos perguntamos sobre a natureza destes corpos.</p>
+
+		<p>Mais especificamente, se nos dão um corpo <m>F</m> e um polinômio <m>p(x) \in F[x]</m>, podemos perguntar se é possível, ou não, encontrar um corpo <m>E</m> que contenha <m>F</m> tal que <m>p(x)</m> é fatorado em fatores lineares sobre  <m>E[x]</m>.  Por exemplo, se consideramos o polinômio   
+			<me>p(x) = x^4 -5 x^2 + 6</me>
+		em <m>{\mathbb Q}[x]</m>,  então <m>p(x)</m> é fatorado como <m>(x^2 - 2)(x^2 - 3)</m>. No entanto, ambos fatores são irredutíveis em <m>{\mathbb Q}[x]</m>. Se queremos encontrar um zero de <m>p(x)</m>, devemos ir a um corpo maior. Certamente serve o corpo dos números reais, pois
+			<me>p(x) = (x - \sqrt{2} ) (x + \sqrt{2} )( x - \sqrt{3})(x + \sqrt{3}).</me>
+		É possível encontrar um corpo menor tal que <m>p(x)</m> tenha um zero, por exemplo
+			<me>{\mathbb Q }( \sqrt{2} ) = \{ a + b \sqrt{2} : a, b \in {\mathbb Q} \}.</me>
+		Queremos ser capazes de calcular e estudar tais corpos para polinômios arbitrários sobre um corpo <m>F</m>. </p>
+	</introduction>
+
+	<section xml:id="section-extension-fields">
+		<title>Extensões de corpos</title>
+
+		<introduction>
+
+			<p>Um corpo <m>E</m> é uma <term>extensão de corpos</term><idx><h>Extensão</h><h>de corpos</h></idx><idx><h>Corpo</h><h>de extensão</h></idx> de um corpo <m>F</m> se <m>F</m> é um subcorpo de <m>E</m>. O corpo <m>F</m> se chama <term>corpo base</term><idx><h>Corpo</h><h>base</h></idx>.  Escrevemos <m>F \subset E</m>.</p>
+
+			<example xml:id="example-fields-q-sqrt2">
+				<p>Por exemplo, seja 
+					<me>F = {\mathbb Q}( \sqrt{2}\,) = \{ a + b \sqrt{2} : a, b \in {\mathbb Q} \}</me>
+				e seja <m>E =  {\mathbb Q }( \sqrt{2} +  \sqrt{3}\,)</m> o menor corpo que contém <m>{\mathbb Q}</m> e <m>\sqrt{2} + \sqrt{3}</m>. Tanto <m>E</m> como <m>F</m> são extensões dos números racionais. Afirmamos que  <m>E</m> é uma extensão do corpo <m>F</m>. Para ver isto, só precisamos mostrar que <m>\sqrt{2}</m> está em <m>E</m>. Como <m>\sqrt{2} + \sqrt{3}</m> está em <m>E</m>, <m>1 / (\sqrt{2} + \sqrt{3}\,) = \sqrt{3} - \sqrt{2}</m> também deve estar em <m>E</m>. Tomando combinacões lineares de <m>\sqrt{2} + \sqrt{3}</m> y <m>\sqrt{3} - \sqrt{2}</m>, encontramos que tanto <m>\sqrt{2}</m> como <m>\sqrt{3}</m> devem estar em <m>E</m>.</p>
+			</example>
+
+			<example xml:id="example-fields-finite-f4">
+				<p>Seja <m>p(x) = x^2 + x + 1 \in {\mathbb Z}_2[x]</m>. Como nem 0 nem 1 é uma raíz deste polinômio, sabemos que <m>p(x)</m> é irredutível sobre <m>{\mathbb Z}_2</m>. Construiremos uma extensão do corpo <m>{\mathbb Z}_2</m> que contenha um elemento <m>\alpha</m> tal que <m>p(\alpha) = 0</m>. Pelo Teorema<nbsp /><xref ref="theorem-max-ideal-poly" />, o ideal <m>\langle p(x) \rangle</m> gerado por <m>p(x)</m> é maximal; logo, <m>{\mathbb Z}_2[x] / \langle p(x) \rangle</m> é um corpo.  Seja <m>f(x) + \langle p(x) \rangle</m> um elemento arbitrário de <m>{\mathbb Z}_2[x] / \langle p(x) \rangle</m>. Pelo algorítmo de divisão,   
+					<me>f(x) = (x^2 + x + 1) q(x) + r(x),</me>
+				donde o grau de <m>r(x)</m> é menor que o grau de <m>x^2 + x + 1</m>. Portanto, 
+					<me>f(x) + \langle x^2 + x + 1 \rangle = r(x) + \langle x^2 + x + 1 \rangle.</me>
+				Dessa forma, as únicas posibilidades para <m>r(x)</m> são <m>0</m>, <m>1</m>, <m>x</m>, y <m>1 + x</m>. Consequentemente, <m>E = {\mathbb Z}_2[x] / \langle x^2 + x + 1 \rangle</m> é um corpo com quatro elementos e deve ser uma extensão de  <m>{\mathbb Z}_2</m>, que contém um zero <m>\alpha</m> de <m>p(x)</m>. O corpo <m>{\mathbb Z}_2(  \alpha)</m> consiste dos elementos  
+					<md>
+						<mrow>0 + 0 \alpha &amp; = 0</mrow>
+						<mrow>1 + 0 \alpha &amp; = 1</mrow>
+						<mrow>0 + 1 \alpha &amp; = \alpha</mrow>
+						<mrow>1 + 1 \alpha &amp; = 1 + \alpha.</mrow>
+					</md>
+				Notemos que <m>{\alpha}^2 + {\alpha} + 1 = 0</m>; daqui, se calcularmos <m>(1 + \alpha)^2</m>,  
+					<me>(1 + \alpha)(1 + \alpha)= 1 + \alpha + \alpha + (\alpha)^2 = \alpha.</me>
+				Outros cálculos se realizam de forma similar.  Resumimos esses resultados nas seguintes tabelas, que nos dizem como somar e multiplicar elementos em <m>E</m>.</p>
+			</example>
+
+			<table xml:id="table-addition-z2-alpha"> <!-- math table -->
+				<caption>Tabela de somas para <m>{\mathbb Z}_2(\alpha)</m></caption>
+
+				<p><me>\begin{array}{c|cccc}
+				<![CDATA[+ & 0 & 1 & \alpha & 1 + \alpha \\
+				\hline
+				  0 & 0 & 1 & \alpha & 1 + \alpha \\
+				  1 & 1 & 0 & 1 + \alpha & \alpha \\
+				  \alpha & \alpha & 1 + \alpha & 0 & 1  \\
+				  1 + \alpha & 1 + \alpha & \alpha & 1 & 0]]>
+				\end{array}</me></p>
+
+			</table>
+
+			<table xml:id="table-multiplication-z2-alpha"> <!-- math table -->
+				<caption>Tabela de produtos para <m>{\mathbb Z}_2(\alpha)</m></caption>
+				
+				<p><me>\begin{array}{c|cccc}
+				<![CDATA[\cdot & 0 & 1 & \alpha & 1 + \alpha \\
+				\hline
+				  0 & 0 & 0 & 0 & 0 \\
+				  1 & 0 & 1 & \alpha & 1 + \alpha \\
+				  \alpha & 0 & \alpha & 1 + \alpha & 1  \\
+				  1 + \alpha & 0 & 1 + \alpha & 1 & \alpha]]>
+				\end{array}</me></p>
+
+			</table>
+
+			<p>O seguinte teorema, de Kronecker, é tão importante e básico para nossa compreensão dos corpos que frequentemente é conhecido como Teorema Fundamental da Teoria dos Corpos.</p>
+	 
+			<theorem xml:id="theorem-fundamental-of-field-theory">
+				<statement>
+					<p>Seja <m>F</m> um corpo e seja <m>p(x)</m> um polinômio não constante em <m>F[x]</m>.  Então existe um corpo de extensão <m>E</m> de <m>F</m> e um elemento <m>\alpha \in E</m> tal que <m>p(\alpha) = 0</m>.</p>
+				</statement>
+				<proof>
+					<p>Para demonstrar este teorema, usaremos o método usado no Exemplo <nbsp /><xref ref="example-fields-finite-f4" />. Claramente, podemos supor que <m>p(x)</m> é um polinômio irredutível. Queremos encontrar uma extensão <m>E</m> de <m>F</m> que contenha um elemento <m>\alpha</m> tal que <m>p(\alpha) = 0</m>. O ideal <m>\langle p(x) \rangle</m> gerado por <m>p(x)</m> é um ideal maximal em <m>F[x]</m> pelo  Teorema<nbsp /><xref ref="theorem-max-ideal-poly" />; logo, <m>F[x]/\langle p(x) \rangle</m> é um corpo. Afirmamos que  <m>E = F[x]/\langle p(x) \rangle</m> é o corpo buscado.</p> 
+
+					<p>Demostraremos primeiro que  <m>E</m> é uma extensão de <m>F</m>. Podemos definir um homomorfismo de anéis conmutativos <m>\psi:F \rightarrow F[x]/\langle p(x) \rangle</m>, donde <m>\psi(a) = a + \langle p(x)\rangle</m> para <m>a \in F</m>. É fácil verificar que <m>\psi</m> é realmente un homomorfismo de anéis. Observe que  
+						<me>\psi( a ) + \psi( b ) = (a + \langle p(x) \rangle) + (b + \langle p(x) \rangle) = (a + b) + \langle p(x) \rangle = \psi( a + b )</me>
+					y
+						<me>\psi( a )  \psi( b ) = (a  + \langle p(x) \rangle)  (b + \langle p(x) \rangle) = a  b  + \langle p(x) \rangle = \psi( a  b ).</me>
+					Para demostrar que <m>\psi</m> é 1-1, suponhemos que
+						<me>a + \langle p(x) \rangle = \psi(a) = \psi(b) = b + \langle p(x) \rangle.</me>
+					Então <m>a - b</m> é um  múltiplo de <m>p(x)</m>, dado que está no ideal <m>\langle p(x) \rangle</m>. Como <m>p(x)</m> é um polinômio não constante, a única possibilidade é que <m>a - b = 0</m>. Portanto, <m>a = b</m> e <m>\psi</m> é injetivo. Como <m>\psi</m> é 1-1, podemos identificar <m>F</m> com o subcorpo <m>\{ a + \langle p(x) \rangle : a \in F \}</m> de <m>E</m> e ver <m>E</m> como un corpo de extensão de <m>F</m>.</p>
+	 
+	 <!-- \alpha is in E not F - TWJ 4/23/2011 -->
+
+					<p>Falta demonstrar  que <m>p(x)</m> tem um zero <m>\alpha \in E</m>. Seja <m>\alpha = x + \langle p(x) \rangle</m>. Então <m>\alpha</m> pertence a <m>E</m>. Se <m>p(x) = a_0 + a_1 x + \cdots + a_n x^n</m>, então
+						<md>
+							<mrow>p( \alpha ) &amp; =  a_0 + a_1( x + \langle p(x) \rangle) + \cdots + a_n ( x + \langle p(x) \rangle)^n</mrow>
+							<mrow>&amp; = a_0 + ( a_1 x + \langle p(x) \rangle) + \cdots + (a_n  x^n + \langle p(x) \rangle)</mrow>
+							<mrow>&amp; = a_0 + a_1 x + \cdots + a_n x^n + \langle p(x) \rangle</mrow>
+							<mrow>&amp; = 0 + \langle p(x) \rangle.</mrow>
+						</md>
+					Portanto, encontramos um elemento <m>\alpha \in E = F[x]/\langle p(x) \rangle</m> tal que <m>\alpha</m> é um zero de <m>p(x)</m>.</p>
+				</proof>
+			</theorem>
+
+			<example xml:id="example-fields-finite-f8">
+				<p>Seja <m>p(x) = x^5 + x^4 + 1 \in {\mathbb Z}_2[x]</m>. Então <m>p(x)</m> tem fatores irredutíveis <m>x^2 + x + 1</m> y <m>x^3 + x + 1</m>. Para um corpo de extensão <m>E</m> de <m>{\mathbb Z}_2</m> tal que <m>p(x)</m> tenha uma raiz em <m>E</m>, podemos tomar <m>E</m> como <m>{\mathbb Z}_2[x] / \langle x^2 + x + 1 \rangle</m> o como <m>{\mathbb Z}_2[x] / \langle x^3 + x + 1 \rangle</m>.  Deixaremos de exercício mostrar que <m>{\mathbb Z}_2[x] / \langle x^3 + x + 1 \rangle</m> é um corpo com <m>2^3=8</m> elementos.</p>
+			</example>
+
+		</introduction>
+
+		<subsection xml:id="fields-subsection-algebraic-elements">
+			<title>Elementos Algebraicos</title>
+ 
+			<p>Um elemento <m>\alpha</m> em uma extensão de corpos <m>E</m> sobre <m>F</m> é <term>algébrico</term> sobre <m>F</m> se <m>f(\alpha)=0</m> para algum polinômio não nulo <m>f(x) \in F[x]</m>. Um elemento em <m>E</m> que não é algébrico sobre <m>F</m> é  <term>transcendente</term><idx><h>transcendente</h><h>Elemento</h></idx><idx><h>Elemento transcendente</h></idx> sobre <m>F</m>. Um corpo de extensão <m>E</m> de um corpo <m>F</m> é uma <term>extensão algébrica</term><idx><h>Extensão algébrica</h></idx><idx><h>Algébrica</h><h>extensão</h></idx> de <m>F</m> se cada elemento em <m>E</m> é algébrico sobre <m>F</m>. Se <m>E</m> é uma extensão de corpos de <m>F</m> e <m>\alpha_1, \ldots, \alpha_n</m> estão contidos em <m>E</m>, denotamos por <m>F( \alpha_1, \ldots, \alpha_n)</m> o menor corpo que contém <m>F</m> e <m>\alpha_1, \ldots, \alpha_n</m>.  <notation><usage>F( \alpha_1, \ldots, \alpha_n)</usage><description>menor corpo que contém <m>F</m> e <m>\alpha_1, \ldots, \alpha_n</m></description></notation> Se <m>E = F( \alpha )</m> para certo <m>\alpha \in E</m>, então <m>E</m> é uma <term>extensão simples </term><idx><h>Extensão simples</h></idx><idx><h>Simples</h><h>Extensão</h></idx> de <m>F</m>. </p>
+
+			<example xml:id="example-fields-extension-pi">
+				<p>Tanto <m>\sqrt{2}</m> como <m>i</m> são algébricos sobre <m>{\mathbb Q}</m> pois são zeros dos polinômios <m>x^2 -2</m> y <m>x^2 + 1</m>, respectivamente. Claramente <m>\pi</m> e <m>e</m> são algébricos sobre os números reais; porém, não é trivial que sejam transcendentes sobre <m>{\mathbb Q}</m>. Números em <m>{\mathbb R}</m> que são algébricos sobre <m>{\mathbb Q}</m> são a minoria. Quase todos os números reais são transcendentes sobre <m>{\mathbb Q}</m>.<fn>A probabilidade que um número real escolhido aleatoriamente no intervalo <m>[0, 1]</m> seja transcendente sobre os números racionais é um.</fn> (Em muitos casos não se sabe se um número específico é transcendente ou não; por exemplo ainda não se sabe se <m>\pi + e</m> é transcendente ou algébrico.)</p>
+			</example>
+
+			<p>Um número complexo que seja algébrico sobre <m>{\mathbb Q}</m> é um <term>número algébrico</term><idx><h>Número algébrico</h></idx>. Um <term>número transcendente</term><idx><h>Número transcendente</h></idx> é um elemento de <m>{\mathbb C}</m> que é trascendente sobre <m>{\mathbb Q}</m>.</p>
+
+			<example xml:id="example-fields-sqrt2-sqrt3">
+				<p>Mostraremos que <m>\sqrt{2 + \sqrt{3} }</m> é algébrico sobre <m>{\mathbb Q}</m>. Se <m>\alpha = \sqrt{2 + \sqrt{3} }</m>, então <m>\alpha^2 = 2 + \sqrt{3}</m>. Portanto, <m>\alpha^2 -  2 = \sqrt{3}</m> y <m>( \alpha^2 -  2)^2 = 3</m>. Como <m>\alpha^4 - 4 \alpha^2 + 1 = 0</m>, deve ser verdade que <m>\alpha</m> é um zero do polinômio <m>x^4 - 4 x^2 + 1 \in {\mathbb Q}[x]</m>.</p>
+			</example>
+ 
+			<p>É muito fácil dar um exemplo de uma extensão de corpos <m>E</m> sobre um corpo <m>F</m>, tal que  <m>E</m> contenha um elemento transcendente sobre <m>F</m>. O seguinte teorema caracteriza as extensões trascendentais.</p>
+ 
+			<theorem>
+				<statement>
+					<p>Seja <m>E</m> um corpo de extensão de <m>F</m> y <m>\alpha \in E</m>. Então <m>\alpha</m> é transcendente sobre <m>F</m> se e somente se <m>F( \alpha )</m> é isomorfo com relação a <m>F(x)</m>, o corpo de frações de <m>F[x]</m>.</p>
+				</statement>
+				<proof>
+					<p>Seja <m>\phi_{\alpha} : F[x] \rightarrow E</m> o homomorfismo de avaliação em <m>\alpha</m>. Então <m>\alpha</m> é transcendente sobre  <m>F</m> se e somente se <m>\phi_{\alpha} (p(x)) = p(\alpha) \neq 0</m> para todo polinômio não constante  <m>p(x) \in F[x]</m>.  Isto é verdadeiro se e somente sr <m>\ker \phi_{\alpha} = \{ 0 \}</m>; isso é, é verdadeiro precisamente quando <m>\phi_{\alpha}</m> é 1-1. Logo, <m>E</m> deve conter uma cópia de <m>F[x]</m>.  O menor corpo que contem a <m>F[x]</m> é o corpo de frações <m>F(x)</m>.  Pelo Teorema<nbsp /><xref ref="theorem-field-of-quotients" />, <m>E</m> deve conter uma cópia deste corpo.</p>
+				</proof>
+			</theorem>
+ 
+			<p>Temos uma situação mais interessante para o caso das extensões algébricas.</p>
+
+			<theorem>
+				<statement>
+					<p>Seja <m>E</m> uma extensão de um corpo <m>F</m> e <m>\alpha \in E</m> com <m>\alpha</m> algébrico sobre <m>F</m>. Então há um único polinômio mônico e irredutível <m>p(x) \in F[x]</m> tal que <m>p( \alpha ) = 0</m>. Se <m>f(x)</m> é outro polinômio em <m>F[x]</m> tal que <m>f(\alpha) = 0</m>, então <m>p(x)</m> divide <m>f(x)</m>.</p>
+				</statement>
+
+<!--  Removed the hypothesis that f(x) be monic.  Suggested by Davis Schubert. - TWJ 4/24/2013 -->
+ 
+				<proof>
+                    <p>Seja <m>\phi_{\alpha} : F[x] \rightarrow E</m> o homomorfismo de avaliação. O núcleo de <m>\phi_{\alpha}</m> é um ideal principal gerado por algum polinômio <m>p(x) \in F[x]</m> com <m>\deg p(x) \geq 1</m>. Sabemos que tal polinômio existe, pois <m>F[x]</m> é um domínio de ideais principais e <m>\alpha</m> é algébrico. O ideal <m>\langle p(x) \rangle</m> consiste exatamente daqueles elementos de <m>F[x]</m> que têm a <m>\alpha</m> como zero. Se <m>f( \alpha ) = 0</m> e <m>f(x)</m> não é o polinômio nulo, então <m>f(x) \in \langle p(x) \rangle</m> e <m>p(x)</m> divide <m>f(x)</m>. Assim <m>p(x)</m> é um polinômio de grau mínimo que tem em <m>\alpha</m> um zero. Qualquer outro polinômio do mesmo grau que se anule em <m>\alpha</m> deve ser da forma <m>\beta p( x)</m> para certo <m>\beta \in F</m>.</p>
+ 
+					<p>Suponha agora que <m>p(x) = r(x) s(x)</m> é uma fatoração de <m>p(x)</m> em fatores de grau menor. Como <m>p( \alpha ) = 0</m>, <m>r( \alpha ) s( \alpha ) = 0</m>; teremos que, <m>r( \alpha )=0</m> ou <m>s( \alpha ) = 0</m>, que contradiz o fato de que <m>p</m> é de grau mínimo. Portanto, <m>p(x)</m> deve ser irredutível.</p>
+				</proof>
+			</theorem>
+
+			<p>Seja <m>E</m> uma extensão do corpo <m>F</m> e <m>\alpha \in E</m> um elemento algébrico sobre <m>F</m>. O polinômio mônico único <m>p(x)</m> do teorema anterior se chama <term>polinômio minimal </term><idx><h>Minimal</h><h>polinômio</h></idx><idx><h>Polinômio minimal</h></idx> de <m>\alpha</m> sobre <m>F</m>. O grau de <m>p(x)</m> é o <term>grau de <m>\alpha</m> sobre <m>F</m></term>.</p>
+
+			<example xml:id="example-fields-minimal-poly">
+				<p>Seja <m>f(x) = x^2 - 2</m> y <m>g(x) = x^4 - 4 x^2 + 1</m>. Esses são os polinômios minimais de <m>\sqrt{2}</m> e <m>\sqrt{2 + \sqrt{3} }</m>, respectivamente.</p>
+			</example>
+ 
+			<proposition xml:id="proposition-minimal-poly">
+				<statement>
+					<p>Seja <m>E</m> uma extensão do corpo <m>F</m> e <m>\alpha \in E</m> algébrico sobre <m>F</m>.  Então <m>F( \alpha ) \cong F[x] / \langle p(x) \rangle</m>, donde <m>p(x)</m> é o polinômio minimal de <m>\alpha</m> sobre <m>F</m>.</p>
+				</statement>
+				<proof>
+					<p>Seja <m>\phi_{\alpha} : F[x] \rightarrow E</m> o homomorfismo de avaliação. O núcleo desta função é <m>\langle p(x) \rangle</m>, donde <m>p(x)</m> é o polinômio minimal de <m>\alpha</m>. Pelo Primeiro Teorema de Isomorfia de anéis, a imagem de <m>\phi_{\alpha}</m> em <m>E</m> é isomorfa com relação a <m>F( \alpha )</m> pois contém tanto <m>F</m> como <m>\alpha</m>.</p>
+				</proof>
+			</proposition>
+<!--  Corrected the kernel of <m>\phi_{\alpha}</m>.  Suggested by Aleks Vlasev. - TWJ 8/10/2011 -->
+
+			<theorem xml:id="theorem-simple_extension">
+				<statement>
+					<p>Seja <m>E = F( \alpha )</m> uma extensão simples de <m>F</m>, com <m>\alpha \in E</m> algébrico sobre <m>F</m>.  Suponha que o grau de <m>\alpha</m> sobre <m>F</m> é <m>n</m>. Então todo elemento <m>\beta \in E</m> pode ser expressado de forma única como 
+						<me>\beta = b_0 + b_1 \alpha + \cdots + b_{n-1} \alpha^{n - 1}</me>
+					com <m>b_i \in F</m>.</p>
+				</statement>
+				<proof>
+					<p>Dado que <m>\phi_{\alpha} ( F[x] ) \cong F( \alpha )</m>,  todo elemento em <m>E = F( \alpha )</m> deve ser da forma <m>\phi_{\alpha} ( f(x) ) = f( \alpha )</m>, donde <m>f(\alpha)</m> é um polinômio em <m>\alpha</m> com coeficientes em <m>F</m>. Seja 
+						<me>p(x) = x^n + a_{n - 1} x^{n - 1} + \cdots + a_0</me>
+					o polinômio minimal de <m>\alpha</m>. Então <m>p( \alpha ) = 0</m>; logo,
+						<me>{\alpha}^n = - a_{n - 1} {\alpha}^{n - 1} - \cdots - a_0.</me>
+					Similarmente,
+						<md>
+							<mrow>{\alpha}^{n + 1} &amp; = {\alpha} {\alpha}^n</mrow>
+							<mrow>&amp; = - a_{n - 1} {\alpha}^n - a_{n - 2} {\alpha}^{n - 1} - \cdots - a_0 {\alpha}</mrow>
+							<mrow>&amp; = - a_{n - 1}( - a_{n - 1} {\alpha}^{n - 1} - \cdots - a_0) - a_{n - 2} {\alpha}^{n - 1} - \cdots - a_0 {\alpha}.</mrow>
+						</md>
+					Continuando desta maneira, podemos expresar qualquer monômio <m>{\alpha}^m</m>, <m>m \geq n</m>, como combinação linear de potências de <m>{\alpha}</m> menores que <m>n</m>. Portanto, qualquer <m>\beta \in F( \alpha )</m> pode ser escrito como  
+						<me>\beta = b_0 + b_1 \alpha + \cdots + b_{n - 1} \alpha^{n - 1}.</me></p>
+ 
+					<p>Para mostrar a unicidade, suponha que
+						<me>\beta =  b_0 + b_1 \alpha + \cdots + b_{n-1} \alpha^{n-1} = c_0 + c_1 \alpha + \cdots + c_{n - 1} \alpha^{n - 1}</me>
+					para <m>b_i</m> e <m>c_i</m> em <m>F</m>. Então
+						<me>g(x) = (b_0 - c_0) + (b_1 - c_1) x + \cdots + (b_{n - 1} - c_{n - 1})x^{n - 1}</me>
+					está em <m>F[x]</m> e <m>g( \alpha ) = 0</m>. Como o grau de <m>g(x)</m> é menor que o grau de <m>p( x )</m>,  o polinômio irredutível de <m>\alpha</m>, <m>g(x)</m> deve ser o polinômio nulo. Concluímos, 
+						<me>b_0 - c_0 = b_1 - c_1 = \cdots = b_{n - 1} - c_{n - 1} = 0,</me>
+					é dizer, <m>b_i = c_i</m> para <m>i = 0, 1, \ldots, n-1</m>. Demonstramos a unicidade.</p>
+				</proof>
+			</theorem>
+<!--  Changed = to \cong.  Suggested by Aleks Vlasev. - TWJ 8/10/2011 -->
+
+			<example xml:id="example-fields-isomorph">
+				<p>Como <m>x^2 + 1</m> é irredutível sobre <m>{\mathbb R}</m>, <m>\langle x^2 + 1 \rangle</m> é um ideal maximal em <m>{\mathbb R}[x]</m>. Assim <m>E = {\mathbb R}[x]/\langle x^2 + 1 \rangle</m> é uma extensão de corpos de <m>{\mathbb R}</m> que contém una raiz de <m>x^2 + 1</m>. Seja <m>\alpha = x + \langle x^2 + 1 \rangle</m>. Podemos identificar <m>E</m> com os números complexos. Pela Proposicão <nbsp /><xref ref="proposition-minimal-poly" />, <m>E</m> é isomorfo a <m>{\mathbb R}( \alpha ) = \{ a + b \alpha : a, b \in {\mathbb R} \}</m>. Sabemos que <m>\alpha^2 = -1</m> está em <m>E</m>, dado que 
+					<md>
+						<mrow>\alpha^2 + 1 &amp; = (x + \langle  x^2 + 1  \rangle)^2 + (1 + \langle  x^2 + 1  \rangle)</mrow>
+						<mrow>&amp; = (x^2 + 1) +  \langle  x^2 + 1  \rangle</mrow>
+						<mrow>&amp; = 0.</mrow>
+					</md>
+				Logo, temos um isomorfismo de <m>{\mathbb R}( \alpha )</m> com <m>{\mathbb C}</m> definido pela função que envia <m>a + b \alpha</m> para <m>a + bi</m>.</p>
+			</example>
+ 
+			<p>Seja <m>E</m> uma extensão de um corpo <m>F</m>.  Se consideramos <m>E</m> como un espaço vetorial sobre <m>F</m>, então podemos usar toda a maquinaria de álgebra linear para trabalhar com problemas que encontraremos em nosso estudo de corpos. Os elementos no corpo <m>E</m> são vetores; os elementos no corpo <m>F</m> são escalares. Podemos pensar na adição em <m>E</m> como uma soma de vetores.  Quando multiplicamos um elemento em <m>E</m> por um elemento de <m>F</m>, estamos multiplicando um vetor por um escalar.  Este ponto de vista para as extensões de corpos é especialmente frutífero se una extensão <m>E</m> de <m>F</m> é um espaço vetorial de dimensão finita sobre <m>F</m>, e o Teorema<nbsp /><xref ref="theorem-simple_extension" /> diz que <m>E = F(\alpha )</m> é de dimensão finita sobre <m>F</m> com base <m>\{ 1, \alpha, {\alpha}^2, \ldots, {\alpha}^{n - 1} \}</m>.</p>
+ 
+			<p>Se um corpo de extensão <m>E</m> de um corpo  <m>F</m> é um espaço vetorial  sobre <m>F</m> de dimensão finita <m>n</m>, então diremos que <m>E</m> é uma  <term>extensão de grau finito  <m>n</m> sobre <m>F</m></term><idx><h>Finita</h><h>extensão</h></idx>.  Escrevemos  
+				<me>[E:F]= n.</me>
+			para indicar a dimensão de <m>E</m> sobre <m>F</m>. <notation><usage>[E:F]</usage><description>dimensão da extensão de corpos <m>E</m> sobre <m>F</m></description></notation></p>
+
+			<theorem xml:id="theorem-finite-extension">
+				<statement>
+					<p>Toda extensão finita <m>E</m> de um corpo <m>F</m> é uma extensão algébrica.</p>
+				</statement>
+				<proof>
+					<p>Seja <m>\alpha \in E</m>. Como <m>[E:F] = n</m>, os elementos
+						<me>1, \alpha, \ldots, {\alpha}^n</me>
+					não podem ser linearmente independentes.  Logo existem <m>a_i \in F</m>, não todos zero, tais que 
+						<me>a_n {\alpha}^n + a_{n - 1} {\alpha}^{n - 1} + \cdots + a_1 \alpha + a_0 = 0.</me>
+					Portanto,
+						<me>p(x) = a_n x^n + \cdots + a_0 \in F[x]</me>
+					é um polinômio não nulo com <m>p( \alpha ) = 0</m>.</p>
+				</proof>
+			</theorem>
+
+			<remark>
+				<p>Teorema<nbsp /><xref ref="theorem-finite-extension" /> diz que toda extensão finita de um corpo <m>F</m> é uma extensão algébrica. No entanto, o recíproco é falso. Deixaremos como um exercício demonstrar que o conjunto de todos os elementos em <m>{\mathbb R}</m> que são algébricos sobre <m>{\mathbb Q}</m> formam uma extensão infinita de <m>{\mathbb Q}</m>.</p>
+			</remark> 
+
+			<p>O seguinte teorema é um teorema de contagem, similar com Teorema de Lagrange em teoria de grupos. Teorema<nbsp /><xref ref="theorem-tower-indices" /> provará uma ferramenta de grande utilidade em nossa investigação de extensões finitas de corpos.</p>
+<!--Changed the refrerence in the preceding paragraph to the next theorem instead of the previous theorem.  TWJ 13/6/2014-->
+
+			<theorem xml:id="theorem-tower-indices">
+				<statement>
+					<p>Se <m>E</m> é uma extensão finita de <m>F</m>, e <m>K</m> é uma extensão finita de <m>E</m>, então <m>K</m> é uma extensão finita de <m>F</m> e
+						<me>[K:F]= [K:E] [E:F].</me></p>
+				</statement>
+				<proof>
+					<p>Seja <m>\{ \alpha_1, \ldots, \alpha_n \}</m> uma base para <m>E</m> tal que este seja um espaço vetorial sobre <m>F</m> e seja <m>\{ \beta_1, \ldots, \beta_m \}</m>  uma base para <m>K</m> tal que este seja um espaço vetorial sobre <m>E</m>. Afirmamos que <m>\{ \alpha_i \beta_j \}</m> é uma base para  <m>K</m> sobre <m>F</m>.  Provaremos primeiro que esses vetores geram <m>K</m>. Seja <m>u \in K</m>. Então <m>u = \sum_{j = 1}^{m} b_j \beta_j</m> e <m>b_j = \sum_{i = 1}^{n} a_{ij} \alpha_i</m>, donde <m>b_j \in E</m> e <m>a_{ij} \in F</m>. Então 
+						<me>u = \sum_{j = 1}^{m} \left( \sum_{i = 1}^{n} a_{ij} \alpha_i  \right) \beta_j = \sum_{i,j} a_{ij} ( \alpha_i \beta_j ).</me>
+					Assim os  <m>mn</m> vetores <m>\alpha_i \beta_j</m> geram <m>K</m> sobre <m>F</m>.</p>
+
+					<p>Devemos mostrar que os <m> \alpha_i \beta_j </m> são linearmente independentes. Recorde que um conjunto de vetores <m>\{v_1, v_2, \ldots, v_n\}</m> em um espaço vetorial <m>V</m> é linearmente independente se 
+						<me>c_1 v_1 + c_2 v_2 + \cdots + c_n v_n = 0</me>
+					implica que
+						<me>c_1 = c_2 = \cdots = c_n = 0.</me>
+					Seja 
+						<me>u = \sum_{i,j} c_{ij} ( \alpha_i \beta_j ) = 0</me>
+					para <m>c_{ij} \in F</m>. Devemos demonstrar que todos os <m>c_{ij}</m>'s são zero. Podemos reescrever <m>u</m> como
+						<me>\sum_{j = 1}^{m} \left( \sum_{i = 1}^{n} c_{ij} \alpha_i \right) \beta_j = 0,</me>
+					donde <m>\sum_i c_{ij} \alpha_i \in E</m>.  Como os <m>\beta_j</m> são linearmente independentes sobre <m>E</m>, deve ser o caso em que 
+						<me>\sum_{i = 1}^n c_{ij} \alpha_i = 0</me>
+					para todo <m>j</m>. No entanto, os <m>\alpha_j</m> também são linearmente independentes  sobre <m>F</m>.  Portanto, <m>c_{ij} = 0</m> para todo <m>i</m> e <m>j</m>, o que completa a demostração.</p>
+				</proof>
+			</theorem>
+
+			<p>O seguinte corolário se demonstra facilmente por indução.</p>
+ 
+			<corollary>
+				<statement>
+					<p>Se <m>F_i</m> são corpos para <m>i = 1, \dots, k</m> e <m>F_{i+1}</m> é uma extensão finita de <m>F_i</m>, então <m>F_k</m> é uma extensão finita de <m>F_1</m> e 
+						<me>[F_k : F_1] = [F_k : F_{k-1} ] \cdots [F_2 : F_1 ].</me></p>
+				</statement>
+			</corollary>
+ 
+			<corollary>
+				<statement>
+					<p>Seja <m>E</m> uma extensão de corpos de <m>F</m>. Se <m>\alpha \in E</m> é algébrico sobre <m>F</m> com polinômio minimal <m>p(x)</m> e <m>\beta \in F( \alpha )</m> com polinômio minimal <m>q(x)</m>, então <m>\deg q(x)</m> divide <m>\deg p(x)</m>.</p>
+				</statement>
+				<proof>
+					<p>Sabemos que  <m>\deg p(x) = [F( \alpha ) : F ]</m> e <m>\deg q(x) = [F( \beta ) : F ]</m>. Como <m>F \subset F( \beta ) \subset F( \alpha )</m>,
+						<me>[F( \alpha ) : F ]= [ F( \alpha ) : F( \beta ) ] [ F( \beta ) : F ].</me></p>
+				</proof>
+			</corollary>
+ 
+			<example xml:id="example-fields-sqrt3-sqrt5"> 
+				<p>Determinemos uma extensão de corpos de <m>{\mathbb Q}</m> que contenha <m>\sqrt{3} + \sqrt{5}</m>. É fácil determinar que o polinômio minimal de <m>\sqrt{3} + \sqrt{5}</m> é <m>x^4 - 16 x^2 + 4</m>. Segue que
+					<me>[{\mathbb Q}( \sqrt{3} + \sqrt{5}\, ) : {\mathbb Q} ] = 4.</me>
+				Sabemos que <m>\{ 1, \sqrt{3}\, \}</m> é uma base para  <m>{\mathbb Q}( \sqrt{3}\, )</m> sobre <m>{\mathbb Q}</m>. Logo, <m>\sqrt{3} + \sqrt{5}</m> não pode estar em <m>{\mathbb Q}( \sqrt{3}\, )</m>. Segue que <m>\sqrt{5}</m> também não pode estar em <m>{\mathbb Q}( \sqrt{3}\, )</m>. Portanto, <m>\{ 1, \sqrt{5}\, \}</m> é uma base para <m>{\mathbb Q}( \sqrt{3}, \sqrt{5}\, ) = ( {\mathbb Q}(\sqrt{3}\, ))( \sqrt{5}\, )</m> sobre <m>{\mathbb Q}( \sqrt{3}\, )</m> e <m>\{ 1, \sqrt{3}, \sqrt{5}, \sqrt{3} \sqrt{5} = \sqrt{15}\,  \}</m> é uma base para <m>{\mathbb Q}( \sqrt{3}, \sqrt{5}\, ) = {\mathbb Q}( \sqrt{3} + \sqrt{5}\, )</m> sobre <m>{\mathbb Q}</m>.  Este exemplo mostra que é possível que certa extensão <m>F( \alpha_1, \ldots, \alpha_n )</m> seja realmente uma extensão simples de <m>F</m> ainda que <m>n \gt 1</m>.</p>
+			</example>
+<!-- Changed minimal polynomial from  <m>x^4 - 16 x + 4</m> to <m>x^4 - 16 x^2 + 4</m>.  Discovered by Bradley Noyes - TWJ 3/25/2011 -->
+
+			<example xml:id="example-fields-cubert5-sqrt5-i">
+				<p>Calculemos uma base para <m>{\mathbb Q}( \sqrt[3]{5}, \sqrt{5} \, i )</m>, donde <m>\sqrt{5}</m> é a raiz quadrada positiva de 5 e <m>\sqrt[3]{5}</m> é a raiz cúbica real de 5.  Sabemos que  <m>\sqrt{5} \, i \notin {\mathbb Q}(\sqrt[3]{5}\, )</m>, então 
+					<me>[ {\mathbb Q}(\sqrt[3]{5}, \sqrt{5}\, i) : {\mathbb Q}(\sqrt[3]{5}\, )] = 2.</me>
+				É fácil determinar que  <m>\{ 1, \sqrt{5}i\,  \}</m> é uma base para <m>{\mathbb Q}( \sqrt[3]{5}, \sqrt{5}\, i )</m> sobre <m>{\mathbb Q}( \sqrt[3]{5}\, )</m>.  Também sabemos que <m>\{ 1, \sqrt[3]{5}, (\sqrt[3]{5}\, )^2  \}</m> é uma base para <m>{\mathbb Q}(\sqrt[3]{5}\, )</m> sobre <m>{\mathbb Q}</m>. Logo, uma base para <m>{\mathbb Q}(\sqrt[3]{5}, \sqrt{5}\, i )</m> sobre <m>{\mathbb Q}</m> é
+					<me>\{ 1, \sqrt{5}\, i, \sqrt[3]{5}, (\sqrt[3]{5}\, )^2, (\sqrt[6]{5}\, )^5 i, (\sqrt[6]{5}\, )^7 i = 5 \sqrt[6]{5}\, i \text{ o } \sqrt[6]{5}\, i \}.</me>
+				Notemos que <m>\sqrt[6]{5}\, i</m> é um zero de <m>x^6 + 5</m>. Podemos demonstrar que este polinômio é irredutível sobre <m>{\mathbb Q}</m> usando o Critério de Eisenstein, com  <m>p = 5</m>. Portanto, 
+					<me>{\mathbb Q} \subset {\mathbb Q}( \sqrt[6]{5}\, i) \subset {\mathbb Q}( \sqrt[3]{5}, \sqrt{5}\, i ).</me>
+				Mas deve ser o caso que <m>{\mathbb Q}( \sqrt[6]{5}\, i) = {\mathbb Q}( \sqrt[3]{5}, \sqrt{5}\, i )</m>, dado que ambas são extensões de grau 6.</p>
+			</example>
+<!-- Corrected typo in the last set inclusion.  Suggest2/9/2013 -->
+ 
+			<theorem>
+				<statement>
+					<p>Seja <m>E</m>  uma extensão de corpos de <m>F</m>. Então as seguintes afirmações são equivalentes.
+						<ol>
+
+							<li><p><m>E</m> é uma extensão finita de <m>F</m>.</p></li>
+
+							<li><p>Existe um número finito de elementos algébricos <m>\alpha_1,  \ldots, \alpha_n \in E</m> tais que  <m>E = F(\alpha_1, \ldots, \alpha_n)</m>.</p></li>
+
+							<li><p>Existe uma suquência de corpos
+								<me>E = F(\alpha_1, \ldots, \alpha_n) \supset F(\alpha_1, \ldots, \alpha_{n-1} ) \supset \cdots \supset F( \alpha_1 ) \supset F,</me>
+							donde cada corpo <m>F(\alpha_1, \ldots, \alpha_i)</m> é algébrico sobre <m>F(\alpha_1, \ldots, \alpha_{i-1})</m>.</p></li>
+
+						</ol></p>
+				</statement>
+				<proof>
+					<p>(1) <m>\Rightarrow</m> (2). Seja <m>E</m> uma extensão algébrica finita de <m>F</m>.  Então <m>E</m> é um espaço vetorial de dimensão finita sobre <m>F</m> e existe uma base que consiste de elementos <m>\alpha_1, \ldots, \alpha_n</m> em <m>E</m> tais que <m>E = F(\alpha_1, \ldots, \alpha_n)</m>. Cada <m>\alpha_i</m> é algébrico sobre <m>F</m> pelo  Teorema<nbsp /><xref ref="theorem-finite-extension" />.</p>
+
+					<p>(2) <m>\Rightarrow</m> (3). Suponha que  <m>E = F(\alpha_1, \ldots, \alpha_n)</m>, donde cada <m>\alpha_i</m> é algébrico sobre <m>F</m>. Então 
+						<me>E = F(\alpha_1, \ldots, \alpha_n) \supset F(\alpha_1, \ldots, \alpha_{n - 1} ) \supset \cdots \supset F( \alpha_1 ) \supset F,</me>
+					donde cada corpo <m>F(\alpha_1, \ldots, \alpha_i)</m> é algébrico sobre <m>F(\alpha_1, \ldots, \alpha_{i - 1})</m>.</p>
+ 
+					<p>(3) <m>\Rightarrow</m> (1). Seja 
+						<me>E = F(\alpha_1, \ldots, \alpha_n) \supset F(\alpha_1, \ldots, \alpha_{n - 1} ) \supset \cdots \supset F( \alpha_1 ) \supset F,</me>
+					donde cada corpo <m>F(\alpha_1, \ldots, \alpha_i)</m> é algébrico sobre  <m>F(\alpha_1, \ldots, \alpha_{i - 1})</m>. Como 
+						<me>F(\alpha_1, \ldots, \alpha_i) =  F(\alpha_1, \ldots, \alpha_{i - 1} )(\alpha_i)</me>
+					é uma extensão simples e <m>\alpha_i</m> é algébrico sobre <m>F(\alpha_1, \ldots, \alpha_{i - 1})</m>, segue que
+						<me>[ F(\alpha_1, \ldots, \alpha_i) : F(\alpha_1, \ldots, \alpha_{i - 1} )]</me>
+					é finita para cada <m>i</m>. Portanto, <m>[E : F]</m> é finita.</p>
+				</proof>
+			</theorem>
+
+		</subsection>
+
+		<subsection xml:id="fields-subsection-algebraic-closure">
+			<title>Fechamento Algébrica</title>
+
+			<p>Dado um corpo <m>F</m>, surge a pergunta sobre se é possível encontrar um corpo <m>E</m> tal que todo polinômio <m>p(x)</m> tenha uma raiz em <m>E</m>. Isto nos leva ao seguinte teorema.</p>
+ 
+			<theorem>
+				<statement>
+					<p>Seja <m>E</m> um corpo de extensão de <m>F</m>. O conjunto dos elementos de <m>E</m> que são algébricos sobre <m>F</m> formam um corpo.</p>
+				</statement>
+<!--  Changed <m>\alpha \pm \beta</m>, $\alpha / -->
+<!-- \beta<m>, and </m>\alpha / \beta<m> to </m>\alpha \pm \beta<m>, </m>\alpha  -->
+<!-- \beta<m>, and </m>\alpha / \beta$  Suggested by Aleks Vlasev. - TWJ 8/10/2011 -->
+				<proof>
+					<p>Sejam <m>\alpha, \beta \in E</m>  algébricos sobre <m>F</m>. Então <m>F( \alpha, \beta )</m> é uma extensão finita de <m>F</m>.  Como todo elemento de <m>F( \alpha, \beta )</m> é algébrico sobre <m>F</m>, <m>\alpha \pm \beta</m>, <m>\alpha  \beta</m>, e <m>\alpha / \beta</m> (<m>\beta \neq 0</m>) são todos algébricos sobre <m>F</m>. Portanto, o conjunto dos elementos em <m>E</m> que são algébricos sobre <m>F</m> forma um corpo.</p>
+				</proof>
+			</theorem>
+ 
+			<corollary xml:id="corollary-algebraic-numbers-field">
+				<statement>
+					<p>O conjunto de todos os números algébricos forma um corpo; isso é, o conjunto de todos os números complexos que são algébricos sobre <m>{\mathbb Q}</m> constitui um corpo.</p>
+				</statement>
+			</corollary>
+
+			<p>Seja <m>E</m> uma extensão de corpos de um corpo <m>F</m>. Definimos o <term>fechamento algébrico </term><idx><h>Fechamento algébrico</h></idx>  de um corpo <m>F</m> em <m>E</m> como o corpo que consiste de todos os elementos em <m>E</m> que são algébricos sobre <m>F</m>. Um corpo <m>F</m> é <term>algebricamente fechado</term><idx><h>corpo</h><h>algebricamente fechado</h></idx> se todo polinômio não constante em <m>F[x]</m> tem uma raiz em <m>F</m>.</p>
+
+ 			<theorem>
+				<statement>
+					<p>Um corpo <m>F</m> é algebricamente fechado se e somente se todo polinômio não constante em <m>F[x]</m> se fatoriza em fatores lineares sobre <m>F[x]</m>.</p>
+				</statement>
+				<proof>
+					<p>Seja <m>F</m> um corpo algebricamente fechado. Se <m>p(x) \in F[x]</m> é um polinômio  não constante, então <m>p(x)</m> tem uma raiz em <m>F</m>, digamos <m>\alpha</m>. Logo, <m>x-\alpha</m> deve ser um fator de <m>p(x)</m> de maneira que <m>p(x) = (x - \alpha) q_1(x)</m>, donde <m>\deg q_1(x) = \deg p(x) - 1</m>. Continue este processo com <m>q_1(x)</m> para encontrar a fatoracão
+						<me>p(x) = (x - \alpha)(x - \beta)q_2(x),</me>
+					donde <m>\deg q_2(x) = \deg p(x) -2</m>. Este processo deve terminar em algum momento pois o grau de <m>p(x)</m> é finito.</p>
+ 
+					<p>Reciprocamente, suponha que todo polinômio não constante <m>p(x)</m> em <m>F[x]</m> se fatoriza como produto de fatores lineares. Seja <m>ax - b</m> um desses fatores. Então <m>p( b/a) = 0</m>. Logo, <m>F</m> é algebricamente fechado.</p>
+				</proof>
+			</theorem>
+ 
+			<corollary>
+				<statement>
+					<p>Um corpo algebricamente fechado <m>F</m> não tem extensões  algébricas  <m>E</m> com <m>E\neq F</m>.</p>
+				</statement>
+				<proof>
+					<p>Seja <m>E</m> uma extensão algébrica de <m>F</m>; Então <m>F \subset E</m>. Para <m>\alpha \in E</m>, o polinômio minimal de <m>\alpha</m> é <m>x - \alpha</m>. Portanto, <m>\alpha \in F</m> e <m>F = E</m>.</p>
+				</proof>
+			</corollary>
+
+			<theorem>
+				<statement>
+					<p>Todo corpo <m>F</m> tem um único fechamento algébrico.</p>
+				</statement>
+			</theorem>
+
+			<p>É um fato não trivial que todo corpo tenha um único fechamento algébrica. A demonstração não é muito difícil, mas requere algumas ferramentas mais sofisticadas de teoria de conjuntos. O leitor interesado pode encontrar uma demonstração deste fato em [3], [4], o [8].</p>  
+
+<!-- not sure how to number these references within the chapter - 19 August 2010 - TWJ -->
+
+			<p>Enunciamos agora o Teorema Fundamental da Álgebra, demonstrado primeiramente por Gauss aos 22 anos de idade em sua tese de doutorado. Este teorema diz que todo polinômio com coeficientes nos números complexos tem uma raiz nos números complexos.  A demonstração deste teorema se dará no Capítulo <nbsp /><xref ref="galois" />.</p>
+ 
+			<theorem>
+				<title>Teorema Fundamental da Álgebra</title>
+				<idx><h>Teorema Fundamental</h><h>da Álgebra</h></idx>
+				<statement>
+					<p>O corpo dos números complexos é algebricamente fechado.</p>
+				</statement>
+			</theorem>
+
+	 	</subsection>
+
+	</section>
+	
+	<section xml:id="section-splitting-fields">
+		<title>Corpos de decomposição</title>
+
+		<p>Seja <m>F</m> um corpo e <m>p(x)</m> um polinômio não constante em <m>F[x]</m>. Já sabemos que podemos encontrar uma extensão de corpos de <m>F</m> que contém uma raiz de <m>p(x)</m>. No entanto, queremos saber se existe uma extensão <m>E</m> de <m>F</m> que contenha todas as raízes de <m>p(x)</m>. Em outras palavras, podemos encontrar uma extensão de corpos de <m>F</m> tal que <m>p(x)</m> se fatora como produto de polinômios lineares? Qual é a <q>menor</q> extensão que contém todas as raízes de <m>p(x)</m>?</p>
+
+		<p>Seja <m>F</m> um corpo e <m>p(x) = a_0 + a_1 x + \cdots + a_n x^n</m> um polinômio não constante em <m>F[x]</m>. Uma extensão de corpos <m>E</m> de <m>F</m> é um <term>corpo de decomposição </term><idx><h>Corpo de decomposição</h></idx><idx><h>decomposição</h><h>corpo</h></idx> de <m>p(x)</m> se existem <m>\alpha_1, \ldots, \alpha_n</m> em <m>E</m> tais que <m>E = F( \alpha_1, \ldots, \alpha_n )</m> e 
+			<me>p(x) = ( x - \alpha_1 )(x - \alpha_2) \cdots (x - \alpha_n).</me>
+		Um polinômio <m>p(x) \in F[x]</m> <term>se decompõe</term> em <m>E</m> se é produto de fatores lineares em <m>E[x]</m>.</p>
+
+		<example xml:id="example-fields-splitting">
+			<p>Seja <m>p(x) = x^4 + 2x^2 - 8</m> em <m>{\mathbb Q}[x]</m>. Então <m>p(x)</m> tem fatores irredutíveis <m>x^2 -2</m> y <m>x^2 + 4</m>. Portanto, o corpo <m>{\mathbb Q}( \sqrt{2}, i )</m> é um corpo de decomposição para <m>p(x)</m>.</p>
+		</example>
+ 
+
+		<example xml:id="example-fields-cube-root-not-splitting">
+			<p>Seja <m>p(x) = x^3 -3</m> em <m>{\mathbb Q}[x]</m>. Então <m>p(x)</m> tem uma raíz no corpo <m>{\mathbb Q}( \sqrt[3]{3}\, )</m>. No entanto, este corpo não é um corpo de decomposição para <m>p(x)</m> pois as raízes cúbicas complexas de 3,
+				<me>\frac{ -\sqrt[3]{3} \pm (\sqrt[6]{3}\, )^5 i }{2},</me>
+			não estão em <m>{\mathbb Q}( \sqrt[3]{3}\, )</m>.</p>
+		</example>
+ 
+		<theorem>
+			<statement>
+				<p>Seja <m>p(x) \in F[x]</m> um polinômio não constante. Então há um corpo de decomposição <m>E</m> para <m>p(x)</m>.</p>
+			</statement>
+			<proof>
+				<p>Procederemos por indução sobre o grau de <m>p(x)</m>.  Se <m>\deg p(x) = 1</m>, então <m>p(x)</m> é um polinômio linear e <m>E = F</m>.  Suponha que o teorema é verdadeiro para todos os polinômios de grau <m>k</m> com <m>1 \leq k \lt n</m> e seja <m>\deg p(x) = n</m>. Podemos supor que <m>p(x)</m> é irredutível; caso contrário, pela hipótese de indução, provamos sua veracidade. Pelo Teorema<nbsp /><xref ref="theorem-fundamental-of-field-theory" />, há um corpo <m>K</m> tal que <m>p(x)</m> tem uma raiz <m>\alpha_1</m> em <m>K</m>. Logo, <m>p(x) = (x - \alpha_1)q(x)</m>, com <m>q(x) \in K[x]</m>. Como <m>\deg q(x) = n -1</m>, há um corpo de decomposição <m>E \supset K</m> para <m>q(x)</m> que contém los zeros <m>\alpha_2, \ldots, \alpha_n</m> de <m>p(x)</m> pela hipótese de indução. Portanto,
+					<me>E = K(\alpha_2, \ldots, \alpha_n) = F(\alpha_1, \ldots, \alpha_n)</me>
+				é um corpo de decomposição para <m>p(x)</m>.</p>
+			</proof>
+		</theorem>
+
+		<p>Surge agora a pergunta sobre a unicidade do corpo de decomposição. Esta pergunta tem resposta afirmativa. Dados dois corpos de decomposição <m>K</m> e <m>L</m> de um polinômio <m>p(x) \in F[x]</m>, há um isomorfismo de corpos <m>\phi : K \rightarrow L</m> que preserve <m>F</m>. Para demonstrar este resultado, começaremos com um lema.</p>
+
+		<lemma xml:id="lemma-field-isomorphism">
+			<statement>
+				<p>Seja <m>\phi : E \rightarrow F</m> um isomorfismo de corpos. Seja <m>K</m> uma extensão de corpos de <m>E</m> e <m>\alpha \in K</m> algébrico sobre <m>E</m> com polinômio minimal <m>p(x)</m>. Suponha que <m>L</m> é uma extensão de corpos de <m>F</m> tal que <m>\beta</m> é raíz do polinômio em <m>F[x]</m> obtido a partir de <m>p(x)</m> como imagem por <m>\phi</m>.  Então <m>\phi</m> se extende a um único isomorfismo <m>\overline{\phi} : E( \alpha ) \rightarrow F( \beta )</m> tal que <m>\overline{\phi}( \alpha ) = \beta</m> e <m>\overline{\phi}</m> coincide com <m>\phi</m> em <m>E</m>.</p>
+			</statement>
+			<proof>
+				<p>Se <m>p(x)</m> tem grau <m>n</m>, então pelo Teorema<nbsp /><xref ref="theorem-simple_extension" /> podemos escrever qualquer elemento em <m>E( \alpha )</m> como combinação linear de <m>1, \alpha, \ldots, \alpha^{n - 1}</m>. Portanto, o isomorfismo que buscamos deve ser    
+					<me>\overline{\phi}( a_0 + a_1 \alpha + \cdots + a_{n - 1} \alpha^{n - 1}) = \phi(a_0) + \phi(a_1) \beta + \cdots + \phi(a_{n - 1}) \beta^{n - 1},</me>
+				donde
+					<me>a_0 + a_1 \alpha + \cdots + a_{n - 1} \alpha^{n - 1}</me>
+				é um elemento em <m>E(\alpha)</m>. O fato de que <m>\overline{\phi}</m> seja um isomorfismo pode se verificar de forma direta; todavia, é mais fácil notar que <m>\overline{\phi}</m> é uma composição de função que já sabemos que são homomorfismos.</p>
+
+				<p>Podemos estender <m>\phi</m> a um isomorfismo de <m>E[x]</m> a <m>F[x]</m>, que também denotaremos por <m>\phi</m>, fazendo
+					<me>\phi( a_0 + a_1 x + \cdots + a_n x^n ) =  \phi( a_0 ) + \phi(a_1) x + \cdots + \phi(a_n) x^n.</me>
+				Esta extensão coincide com o isomorfismo original <m>\phi : E \rightarrow F</m>, pois os polinômios constantes são enviados a polinômios constantes.  Por hipóteses, <m>\phi(p(x)) = q(x)</m>; logo, <m>\phi</m> envia <m>\langle p(x) \rangle</m> em <m>\langle q(x) \rangle</m>. Portanto, temos um isomorfismo <m>\psi : E[x] / \langle p(x) \rangle \rightarrow F[x]/\langle q(x) \rangle</m>. Pela Proposição<nbsp /><xref ref="proposition-minimal-poly" />, temos isomorfismos <m>\sigma: E[x]/\langle p(x) \rangle \rightarrow E(\alpha)</m> e <m>\tau : F[x]/\langle q(x) \rangle \rightarrow F( \beta )</m>, definidos pela avaliação em <m>\alpha</m> e <m>\beta</m>, respectivamente. Portanto, <m>\overline{\phi} = \tau \psi \sigma^{-1}</m> é o isomorfismo requerido.</p>
+
+				<!-- Replaced figure with tikz figure - TWJ 8/29/2010 -->
+				<sidebyside width="60%" margins="auto"> <!-- duplicate widths? -->
+					<image width="60%" xml:id="fields-extension-isomorph">
+						<latex-image-code><![CDATA[
+							\begin{tikzpicture}[scale=0.8]
+
+							\draw [<-] (0,0.5) -- (0,1.5);
+							\draw [<-] (0,2.5) -- (0,3.5);
+
+
+							\draw [<-] (4,0.5) -- (4,1.5);
+							\draw  [<-] (4,2.5) -- (4,3.5);
+
+
+							\draw [->] (1.5,0) -- (2.5,0);
+							\draw [->] (1.5,2) -- (2.5,2);
+							\draw [->] (1.5,4) -- (2.5,4);
+
+
+							\node at (0,0)  {$E$};
+							\node at (4,0)  {$F$};
+
+							\node at (0,2)  {$E(\alpha)$};
+							\node at (4,2)  {$F(\beta)$};
+
+							\node at (0,4)  {$E[x] / \langle p(x) \rangle$};
+							\node at (4,4)  {$F[x]/\langle q(x) \rangle$};
+
+							\node [above] at (2,0) {$\phi$};
+							\node [above] at (2,2) {$\overline{\phi}$};
+							\node [above] at (2,4) {$\psi$};
+
+							\node [right] at (0,3) {$\sigma$};
+							\node [right] at (4,3) {$\tau$};
+
+							\end{tikzpicture}]]>
+						</latex-image-code>
+					</image>
+				</sidebyside>
+
+				<p>Deixamos a demostração da unicidade como exercício.</p>
+			</proof>
+		</lemma>
+
+		<theorem xml:id="theorem-isomorphism-extension">
+			<statement>
+				<p>Seja <m>\phi : E \rightarrow F</m> um isomorfismo de corpos e seja  <m>p(x)</m> um polinômio no constante em <m>E[x]</m> e <m>q(x)</m> o correspondente polinômio em <m>F[x]</m> sib o isomorfismo. Se <m>K</m> é um corpo de decomposição para <m>p(x)</m> e <m>L</m> é um corpo de decomposição para <m>q(x)</m>, então <m>\phi</m> se estende a um isomorfismo <m>\psi : K \rightarrow L</m>.</p>
+			</statement>
+			<proof>
+				<p>Procederemos por indução no grau de <m>p(x)</m>. Podemos supor que  <m>p(x)</m> é irredutível sobre <m>E</m>. Portanto, <m>q(x)</m> também é irredutível sobre <m>F</m>. Se <m>\deg p(x) = 1</m>, então pela definição de corpo de descomposição, <m>K = E</m> e <m>L = F</m> e não há nada que demonstrar.</p>
+
+				<p>Supomos que o teorema vale para todos os polinômios de grau menor a <m>n</m>. Como <m>K</m> é um corpo de descomposição para <m>p(x)</m>, todas a raízes de <m>p(x)</m> estão en <m>K</m>. Digamos que <m>\alpha</m> é uma dessas raízes, tal que <m>E \subset E( \alpha ) \subset K</m>. De forma similar, podemos encontrar uma raiz <m>\beta</m> de <m>q(x)</m> en <m>L</m> tal que <m>F \subset F( \beta) \subset L</m>. Pelo Lema<nbsp /><xref ref="lemma-field-isomorphism" />, hay un isomorfismo <m>\overline{\phi} : E(\alpha ) \rightarrow F( \beta)</m> tal que <m>\overline{\phi}( \alpha ) = \beta</m> e <m>\overline{\phi}</m> coincide com <m>\phi</m> em <m>E</m>.</p>
+
+				<!-- Replaced figure with tikz figure - TWJ 8/29/2010 -->
+				<sidebyside width="50%" margins="auto"> <!-- duplicate widths? -->
+					<image width="50%" xml:id="fields-splitting-isomorph">
+						<latex-image-code><![CDATA[
+							\begin{tikzpicture}[scale=0.8]
+
+							\draw [<-] (0,0.5) -- (0,1.5);
+							\draw [<-] (0,2.5) -- (0,3.5);
+
+
+							\draw [<-] (3,0.5) -- (3,1.5);
+							\draw  [<-] (3,2.5) -- (3,3.5);
+
+
+							\draw [->] (0.75,0) -- (2.25,0);
+							\draw [->] (0.75,2) -- (2.25,2);
+							\draw [->] (0.75,4) -- (2.25,4);
+
+
+							\node at (0,0)  {$E$};
+							\node at (3,0)  {$F$};
+
+							\node at (0,2)  {$E( \alpha )$};
+							\node at (3,2)  {$F( \beta )$};
+
+							\node at (0,4)  {$K$};
+							\node at (3,4)  {$L$};
+
+							\node [above] at (1.5,0) {$\phi$};
+							\node [above] at (1.5,2) {$\overline{\phi}$};
+							\node [above] at (1.5,4) {$\psi$};
+
+							\end{tikzpicture}]]>
+						</latex-image-code>
+					</image>
+				</sidebyside>
+
+				<p>Escrevemos agora <m>p(x) = (x - \alpha ) f(x)</m> e <m>q(x) = ( x - \beta) g(x)</m>, donde os graus de  <m>f(x)</m> e <m>g(x)</m> são menores que os graus de <m>p(x)</m> e <m>q(x)</m>, respectivamente. A extensão <m>K</m> é um corpo de decomposição para <m>f(x)</m> sobre <m>E( \alpha)</m>, e <m>L</m> é um corpo de decomposição para <m>g(x)</m> sobre <m>F( \beta )</m>. Pela hipotése de indução há um isomorfismo  <m>\psi : K \rightarrow L</m> tal que <m>\psi</m> coincide com <m>\overline{\phi}</m> em <m>E( \alpha)</m>. Logo, há um isomorfismo <m>\psi : K \rightarrow L</m> tal que <m>\psi</m> coincide com <m>\phi</m> em <m>E</m>.</p>
+			</proof>
+		</theorem>
+
+		<corollary xml:id="corollary-poly-splitting-field">
+			<statement>
+				<p>Seja <m>p(x)</m> um polinômio em <m>F[x]</m>. Então há um corpo de decomposição <m>K</m> para <m>p(x)</m> que é único com exceção do isomorfismo.</p>
+			</statement>
+		</corollary>
+
+	</section>
+
+	<section xml:id="section-constructions">
+		<title>Construções Geométricas</title>
+
+		<introduction>
+
+			<p>Na Grécia Antiga, foram postos em discussão três problemas clássicos. Esses problemas são sobre a geometria na natureza e involvem construções com régua e compasso do que agora constitue a geometria que é ensinada no colégio; isso é, somente temos direito a usar uma régua e um compasso para resolvê-los. Os problemas podem ser formulados como segue.    
+				<ol>
+
+					<li><p>Dado um ângulo arbitrário, pode este ser trissecado usando somente régua e compasso?</p></li>
+
+					<li><p>Dado um círculo arbitrário, ¿podemos construi um quadrado da mesma área usando somente régua e compasso?</p></li>
+
+					<li><p>Dado um cubo, podemos construir a aresta de outro cubo cujo volume seja o dobro do original usando somente régua e compasso?</p></li>
+
+				</ol>
+			Despois de gerar dúvida aos matemáticos durante mais de dois mil anos, finalmente foi demonstrado que cada umq destas construções são impossíveis.  Usaremos a teora de corpos para dar uma demonstração de que as solução não existem.  É bastante surpreendente que as soluções amplamente buscadas desses três problemas finalmente se encontrem na álgebra abstrata.</p>
+
+			<p>Em primeiro lugar, determinemos mais especificamente o que queremos dizer com uma régua e um compasso, e, além disso, examinemos a naturaleza desses problemas um pouco mais a fundo.  Para começar, a régua permitida <em>não tem marcas</em>. Não podemos medir distâncias arbitrárias com esta régua. É somente uma ferramienta para traçar a reta que passa por dois pontos. A afirmação da impossibilidade de trissecar um ângulo arbitrário significa que existe ao menos um ângulo que não se pode trissecar com régua e compasso. Certamente alguns ângulos particulares podemos trissecar.  Podemos construir um ângulo de  <m>30^\circ</m>; portanto, é possível trissecar um ângulo de <m>90^\circ</m>.  Todavia, mostraremos que é impossível  construir un ângulo de <m>20^\circ</m>.  Portanto, não podemos trissecar um ângulo de <m>60^\circ</m>.</p>
+
+		</introduction>
+
+		<subsection xml:id="fields-subsection-constructible-numbers">
+			<title>Números Construtíveis</title>
+
+			<p>Um número real <m>\alpha</m> é <term>construtível</term><idx><h>Número construtível</h></idx> se podemos construir um segmento de comprimento <m>| \alpha |</m> em um número finito de passos a partir de um segmento de comprimento um usando régua e compasso exclusivamente.</p> 
+ 
+			<theorem xml:id="theorem-constructible-numbers">
+				<statement>
+					<p>O conjunto de todos os números reais constructíveis forma um subcorpo <m>F</m> do corpo dos números reais.</p>
+				</statement>
+				<proof>
+					<p>Sejam <m>\alpha</m> e <m>\beta</m> números construtíveis.  Devemos mostrar que <m>\alpha + \beta</m>, <m>\alpha - \beta</m>, <m>\alpha \beta</m>, e <m>\alpha / \beta</m> (<m>\beta \neq 0</m>) também são números construtíveis. Podemos supor que tanto <m>\alpha</m> como <m>\beta</m> são positivos com <m>\alpha \gt \beta</m>. É bastante claro como construir <m>\alpha + \beta</m> e <m>\alpha - \beta</m>. Para encontrar um segmento de comprimento <m>\alpha \beta</m>, supomos que <m>\beta \gt 1</m> e construíremos o triângulo da Figura<nbsp /><xref ref="figure-multiplication-construction" /> de maneira que os triângulos <m>\triangle ABC</m> e <m>\triangle ADE</m> sejam semelhantes. Como <m>\alpha / 1 = x / \beta</m>, o segmento <m>x</m> tem comprimento <m>\alpha \beta</m>.  Uma construção similar pode ser feita se <m>\beta \lt 1</m>. Deixaremos como exercício mostrar que o mesmo triângulo pode ser usado para construir <m>\alpha / \beta</m> se <m>\beta \neq 0</m>.</p>
+				</proof>
+			</theorem>
+
+			<figure xml:id="figure-multiplication-construction">
+				<caption>Construção de produtos</caption>
+
+				<!-- Replaced figure with tikz figure and corrected figure - TWJ 8/19/2010 -->
+				<image width="80%" xml:id="fields-multiply">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=0.7]
+
+						\draw  (0,0) node [left] {$A$} -- (9,0) node [right] {$E$} -- (6,4) -- cycle;
+						\draw  (6,0)  -- (4,2.667);
+
+						\draw  (0,-0.1) -- (0,-0.7);
+						\draw  (9,-0.1) -- (9,-0.7);
+						\draw [<-] (0,-0.4) -- (4,-0.4);
+						\draw [->] (5,-0.4) -- (9,-0.4);
+
+						\draw (-0.1,0.133) -- (-0.5,0.667);
+						\draw (5.9,4.133) -- (5.5,4.667);
+						\draw [<-]  (-0.3, 0.4) -- (2.7,2.4);
+						\draw [->]  (3.3,2.8) -- (5.7,4.4);
+
+						\node [right] at (4.15,2.667)  {$B$};
+						\node [above] at (6.15,0)  {$C$};
+						\node [right] at (6.1,4)  {$D$};
+						\node [below] at (2.5,1.6)  {$1$};
+						\node [above] at (3,0)  {$\alpha$};
+						\node at (3,2.6)  {$\beta$};
+						\node at (4.5,-0.4)  {$x$};
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+			<lemma>
+				<statement>
+					<p>Se <m>\alpha</m> é um número construtível, então <m>\sqrt{\alpha}</m> é um número construtível.</p>
+				</statement>
+				<proof>
+					<p>Na Figura<nbsp /><xref ref="figure-root-construction" /> os triângulos <m>\triangle ABD</m>, <m>\triangle BCD</m>, e <m>\triangle ABC</m> são semelhantes; logo, <m>1 /x = x / \alpha</m>, e <m>x^2 = \alpha</m>.</p>
+				</proof>
+			</lemma>
+
+			<figure xml:id="figure-root-construction">
+				<caption>Construção de raízes</caption>
+
+				<!-- Replaced figure with tikz figure and corrected figure - TWJ 8/19/2010 -->
+				<image  width="80%" xml:id="fields-root">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=0.7]
+
+						\draw  (-5.5,0) -- (5.5,0);
+						\draw (5,0) arc (0:180:5);
+						\draw (5,0) -- (110:5) -- (-5,0);
+						\draw (110:5) -- (110:5 |- 0,0) node [below] {$D$};
+
+						\node [below] at (-5,0)  {$A$};
+						\node [below] at (5,0)  {$C$};
+						\node [above] at (110:5)  {$B$};
+						\node [above] at (1.3,0)  {$\alpha$};
+						\node [above] at (-3.3,0)  {1};
+						\node [right] at (110:5 |- 0,2.2) {$x$};
+
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+			</figure>
+
+			<p>Pelo Teorema<nbsp /><xref ref="theorem-constructible-numbers" />, podemos localizar no plano qualquer ponto <m>P =( p, q)</m> que tenha coordenadas racionais <m>p</m> e <m>q</m>. Necesitamos saber que outros pontos podem ser construídos com régua e compasso a partir dos pontos de coordenadas racionais.</p>
+
+			<lemma>
+				<statement>
+					<p>Seja <m>F</m> um subcorpo de <m>{\mathbb R}</m>.
+						<ol>
+
+							<li><p>Se uma reta contém dos pontos com coordenadas em <m>F</m>, então satisfaz a equação <m>a x + by + c = 0</m>, com <m>a</m>, <m>b</m>, e <m>c</m> em <m>F</m>.</p></li>
+
+							<li><p>Se uma circunferência tem seu centro em um ponto com coordenadas em <m>F</m> e seu raio também está em  <m>F</m>, então satisfaz a equação <m>x^2 + y^2 + d x + e y + f = 0</m>, com <m>d</m>, <m>e</m>, e <m>f</m> em <m>F</m>.</p></li>
+
+						</ol></p>
+				</statement>
+				<proof>
+					<p>Sejam <m>(x_1, y_1)</m> e <m>(x_2, y_2)</m> pontos em uma reta com <m>x_1, y_1,x_2,y_2</m> em <m>F</m>.  Se <m>x_1 = x_2</m>, então uma equação da reta que passa pelos dois pontos é <m>x - x_1 = 0</m>, que tem a forma <m>a x + by + c = 0</m>.  Se <m>x_1 \neq x_2</m>, então uma equação da reta que passa pelos dois pontos é
+						<me>y - y_1 = \left( \frac{y_2 - y_1}{x_2 - x_1} \right) (x - x_1),</me>
+					que também pode ser colocada na forma buscada.</p>
+
+					<p>Para demonstrar a segunda parte do lema, supongamos que <m>(x_1, y_1)</m> é o centro de uma circunferência de raio <m>r</m>.  Então uma equação para a circunferência é
+						<me>(x - x_1)^2 + (y - y_1)^2 - r^2 = 0.</me>
+					Esta equação pode ser facilmente posta na forma buscada.</p>
+				</proof>
+			</lemma>
+
+			<p>Começando por um corpo de números construtíveis <m>F</m>, temos três possibilidades para construir pontos adicionais em <m>{\mathbb R^2}</m> usando régua e compasso. 
+				<ol>
+
+					<li><p>Para encontrar pontos, possivelmente novos, em <m>{\mathbb R^2}</m>, podemos tomar a interseção de duas retas, cada uma das quais passa por dois pontos cujas coordenadas estão em <m>F</m>.</p></li>
+
+					<li><p>A  interseção de uma reta que passa por dois pontos cujas coordenadas estão em <m>F</m> e um círculo cujo centro tem suas coordenadas em <m>F</m> com raio de comprimento em <m>F</m> poderá dar novos pontos em <m>{\mathbb R^2}</m>.</p></li>
+
+					<li><p>Podemos obter novos pontos em <m>{\mathbb R^2}</m> intersectando dois círculos cujos centros tenham coordenadas em <m>F</m> e cujos raios tenham longitudes em <m>F</m>.</p></li>
+
+				</ol>
+ 			O primeiro caso não entrega novos pontos em <m>{\mathbb R^2}</m>, pois a solução de um sistema de duas equações da forma <m>a x + by + c = 0</m> com coeficientes em <m>F</m> sempre estará em <m>F</m>. O terceiro caso pode ser reduzido ao segundo.  Sejam
+				<md>
+					<mrow>x^2 + y^2 + d_1 x +e_1 y + f_1 = 0</mrow>
+					<mrow>x^2 + y^2 + d_2 x +e_2 y + f_2 = 0</mrow>
+				</md> <!-- corrected equation - 28 April 2012 - TWJ -->
+			as equações de dois círculos, com <m>d_i</m>, <m>e_i</m>, e <m>f_i</m> em <m>F</m> para <m>i = 1, 2</m>. Esses círculos tem a mesma interseção que o círculo   
+				<me>x^2 + y^2 + d_1 x +e_1 x + f_1 = 0 </me>
+			e a reta
+				<me>(d_1 - d_2) x + b(e_2 - e_1)y + (f_2 - f_1) = 0.</me>
+			A última equação corresponde a corda que passa pelos pontos de interseção dos dois círculos (quando estes pontos existem). Portanto, a interseção de dois círculos pode ser reduzida ao caso da interseção de uma reta com um círculo.</p>
+
+			<p>Considerando o caso da interseção de uma reta com um círculo, devemos determinar a natureza das soluções do sistema de equação
+				<md>
+					<mrow>a x + by + c &amp; = 0</mrow>
+					<mrow>x^2 + y^2 + d x + e y + f &amp; = 0.</mrow>
+				</md>
+			Se eliminamos <m>y</m> destas equações, obtemos uma equações da forma <m>Ax^2 + B x + C = 0</m>, com <m>A</m>, <m>B</m>, e <m>C</m> em <m>F</m>. A coordenada <m>x</m> do ponto de interseção é dada por 
+			<me>x = \frac{- B \pm \sqrt{B^2 - 4 A C} }{2 A}</me> e está em  <m>F[ \sqrt{\alpha}\, ]</m>, con <m>\alpha = B^2 - 4 A C \gt 0</m>. Demonstramos o seguinte lema.</p>
+
+			<lemma xml:id="lemma-lines-and-circles">
+				<statement>
+					<p>Seja <m>F</m> um corpo de números construtíveis. Então os pontos determinados pela interseção de círculos e retas em <m>F</m> estão no corpo <m>F[ \sqrt{\alpha}\, ]</m> para algum <m>\alpha</m> em <m>F</m>.</p>
+				</statement>
+			</lemma>
+
+			<theorem>
+				<statement>
+					<p>Um número real <m>\alpha</m> é um número construtível si e somente se existe uma sequência de corpos
+						<me>{\mathbb Q} = F_0 \subset F_1 \subset \cdots \subset F_k</me>
+					tais que <m>F_i = F_{i-1}( \sqrt{ \alpha_i}\, )</m> com <m>\alpha_i \in F_i</m> e <m>\alpha \in F_k</m>. Em particular, existe um inteiro <m>k \gt 0</m> tal que <m>[{\mathbb Q}(\alpha) : {\mathbb Q} ] = 2^k</m>.</p>
+				</statement>
+				<proof>
+					<p>A existência dos <m>F_i</m> e dos <m>\alpha_i</m> é uma consequência direta do Lema<nbsp /><xref ref="lemma-lines-and-circles" /> e o fato de que
+						<me>[F_k: {\mathbb Q}] = [F_k : F_{k - 1}][F_{k - 1} : F_{k - 2}] \cdots [F_1: {\mathbb Q} ] = 2^k.</me></p>
+				</proof>
+			</theorem> 
+<!-- Clarified where <m>\alpha_i</m> lives - TWJ 4/23/2011 -->
+ 
+			<corollary>
+				<statement>
+					<p>O corpo de todos os números construtíveis é uma extensão algébrica de <m>{\mathbb Q}</m>.</p>
+				</statement>
+			</corollary>
+
+			<p>Como podemos ver com o corpo dos número construtíveis, nem toda extensão algébrica de um corpo é uma extensão finita.</p>
+ 
+		</subsection>
+
+		<subsection xml:id="fields-subsection-doubling-the-cube">
+			<title>Duplicando o cubo e enquadrando o círculo</title>
+ 
+			<p>Estamos prontos para investigar os problemas clássicos de duplicação do cubo e do enquadramento do círculo. Podemos usar o corpo dos números construtíveis para determinar exatamente quando uma construção geométrica particular é possível.</p>   
+
+			<paragraphs>
+				<title>Duplicar o cubo é impossível</title>
+				<idx><h>Duplicando o cubo</h></idx>
+				<p>Dada a aresta de um cubo, é impossível construir a aresta de um cubo do dobro de seu volume usando somente régua e compasso. Digamos que o cubo original tem uma aresta de comprimento 1 e, portanto, seu volume é 1. Se pudermos construir um cubo de volume 2, então a aresta de este novo cubo teria comprimento <m>\sqrt[3]{2}</m>. No entanto, <m>\sqrt[3]{2}</m> é um zero do polinômio irredutível <m>x^3 -2</m> sobre <m>{\mathbb Q}</m>; logo, 
+					<me>[{\mathbb Q}(\sqrt[3]{2}\, ) : {\mathbb Q}] = 3</me>
+				Isso é impossível, pois 3 não é uma potência inteira de 2.</p>
+			</paragraphs>
+ 
+			<paragraphs>
+				<title>Enquadrando o círculo</title>
+				<idx><h>Quadricular o círculo é impossível</h></idx>
+				<p>Suponha que temos um círculo de raio 1.  A área do círculo é <m>\pi</m>; portanto, devemos ser capazes de construir um quadrado de lado <m>\sqrt{\pi}</m>. Isto é impossível pois <m>\pi</m> e portanto <m>\sqrt{\pi}</m> são ambos trascendentes. Sendo assim não podemos construir um quadrado de mesma área que um círculo usando régua e compasso.</p>
+			</paragraphs>
+		</subsection>
+
+		<subsection xml:id="fields-subsection-trisect-angle">
+			<title>Trissecando um Ângulo</title>
+			<idx><h>Trisseção de um Ângulo</h></idx>
+ 
+			<p><em>Trissecar um ângulo arbitrário é impossível</em>.  Demonstraremos que é impossível construir um ângulo de <m>20^\circ</m>. Portanto, um ângulo de <m>60^{\circ}</m> não pode ser trissecado. Primeiro obteremos a fórmula do cosseno para o ângulo triplo: 
+				<md>
+					<mrow>\cos 3 \theta &amp; = \cos( 2 \theta + \theta )</mrow>
+					<mrow>&amp; = \cos 2 \theta \cos \theta - \sin 2 \theta \sin \theta</mrow>
+					<mrow>&amp; = ( 2 \cos^2 \theta - 1) \cos \theta - 2 \sin^2 \theta \cos \theta</mrow>
+					<mrow>&amp; = ( 2 \cos^2 \theta - 1) \cos \theta - 2 (1- \cos^2 \theta) \cos \theta</mrow>
+					<mrow>&amp; = 4 \cos^3 \theta - 3 \cos \theta. </mrow>
+				</md>
+			O ângulo <m>\theta</m> pode ser construído se e somente se <m>\alpha = \cos \theta</m> é construtível. Seja <m>\theta = 20^{\circ}</m>. Então <m>\cos 3 \theta =  \cos 60^\circ = 1/2</m>. Pela fórmula do cosseno do ângulo triplo,
+				<me>4 \alpha^3 - 3 \alpha = \frac{1}{2}.</me>
+			Portanto, <m>\alpha</m> é uma raiz de <m>8 x^3 - 6 x -1</m>. Este polinômio não tem fatores em <m>{\mathbb Z}[x]</m>, e portanto é irredutível sobre <m>{\mathbb Q}[x]</m>. Logo, <m>[{\mathbb Q}( \alpha ) : {\mathbb Q }] = 3</m>. Concluímos que <m>\alpha</m> não é um número construtível.</p>
+
+			<xi:include href="./sage/fields-info.xml" />
+
+		</subsection>
+		
+		<subsection xml:id="fields-subsection-historical-note">
+			<title>Nota Histórica</title>
+
+			<p>A Teoria Algébrica de números usa as ferramentas da álgebra para resolver certos problemas em teoria de números. A teoría algébrica de números moderna começou com Pierre de Fermat<idx><h>Fermat, Pierre de</h></idx> (1601<ndash />1665). Certamente é possível encontrar muitos inteiros positivos que satisfaçam a equação <m>x^2 + y^2 = z^2</m>; Fermat conjecturou que a equação <m>x^n + y^n = z^n</m> não tem soluções inteiras positivas se <m>n \geq 3</m>.  Em sua cópia da tradução latina do livro <booktitle>Arithmetica</booktitle> de Diofanto afirmou que havia encontrado uma demonstração maravilhosa deste teorema, mas que o margem do livro era muito fina para contê-la.    Se baseando no trabalho de outros matemáticos, foi Andrew Wiles quem finalmente conseguiu provar o Último Teorema de Fermat no anos 1990s. A conquista de Wiles foi destacada na primera página do <booktitle>New York Times</booktitle>.</p>
+
+			<p>Tentativas de demonstrar o Último Teorema de Fermat levaram a contribuições importantes a teoria algébrica de números por parte de matemáticos tão notáveis como Leonhard Euler<idx><h>Euler, Leonhard</h></idx> (1707<ndash />1783). Avanços significativos na compreensão do Último Teorema de Fermat foram feitos por Ernst Kummer<idx><h>Kummer, Ernst</h></idx> (1810<ndash />1893). Leopold Kronecker, um aluno de Kummer <idx><h>Kronecker, Leopold</h></idx> (1823<ndash />1891), se tornou em um dos pricipais algebristas do século XIX. A teoria de ideais de Kronecker e seu estudo de teoria algébrica de números contribuiu muito a compreensão dos corpos.</p>
+
+			<p>David Hilbert<idx><h>Hilbert, David</h></idx> (1862<ndash />1943) e Hermann Minkowski<idx><h>Minkowski, Hermann</h></idx> (1864<ndash />1909) estão entre os matemáticos que lideraram a área no começo do século XX.  Hilbert y Minkowski trabalhavam na Universidade de Göttingen na Alemanha. Göttingen foi um dos mais importantes centros de investigações em matemáticas durante os últimos séculos. O grande número de matemáticos excepcionais que estudaram ali inclusive Gauss, Dirichlet, Riemann, Dedekind, Noether e Weyl.</p>
+
+			<p>André Weil<idx><h>Weil, André</h></idx> contestou perguntas na teoria de números usando geometria algébrica, uma área das matemáticas que estuda geometria estudando anéis comutativos. Desde 1955 até 1970, Alexander Grothendieck<idx><h>Grothendieck, Alexander</h></idx> dominou a área da geometría algébrica. Pierre Deligne<idx><h>Deligne, Pierre</h></idx>, um  aluno de Grothendieck, resolveu várias das conjecturas de Weil nas teoria de números. Uma das mais recentes contribuições para álgebra e para teoria dos números é a demonstração por partes de Gerd Falting<idx><h>Faltings, Gerd</h></idx> da conjectura de Mordell-Weil <idx><h>Conjectura de Mordell-Weil</h></idx>. Esta conjectura de Mordell e Weil essencialmente disse que certos polinômios <m>p(x, y)</m> em <m>{\mathbb Z}[x,y]</m> tem somente um número finito de soluções inteiras.</p>
+
+		</subsection>
+	</section>
+ 
+ <xi:include href="./exercises/fields.xml" />
+ 
+	<references xml:id="fields-references">
+		<title>Referências e Leituras sugeridas</title>
+
+		<biblio type="raw"> <!-- was [1] -->
+<!-- Out of print  - 19 August 2010 - TWJ -->
+		Dean, R. A. <title>Elements of Abstract Algebra</title>. Wiley, New York, 1966.</biblio>
+
+		<biblio type="raw"> <!-- was [2] -->
+<!-- Out of print  - 19 August 2010 - TWJ -->
+		Dudley, U. <title>A Budget of Trisections</title>. Springer-Verlag, New York, 1987. An interesting and entertaining account of how not to  trisect an angle.</biblio>
+
+		<biblio type="raw"> <!-- was [3] -->
+<!-- Reference updated - 19 August 2010 - TWJ -->
+		Fraleigh, J. B. <title>A First Course in Abstract Algebra</title>. 7th ed. Pearson, Upper Saddle River, NJ, 2003.</biblio>
+
+		<biblio type="raw"> <!-- was [4] -->
+<!-- Out of print  - 19 August 2010 - TWJ -->
+		Kaplansky, I. <title>Fields and Rings</title>, 2nd ed. University of Chicago Press, Chicago, 1972.</biblio>
+
+		<biblio type="raw"> <!-- was [5] -->
+<!-- This book is available through Nabu Press, a print on demand publisher that sells through Amazon  - 19 August 2010 - TWJ -->
+		Klein, F. <title>Famous Problems of Elementary Geometry</title>. Chelsea, New York, 1955.</biblio>
+
+		<biblio type="raw"> <!-- was [6] -->
+<!-- Reference added - 19 August 2010 - TWJ -->
+		Martin, G. <title>Geometric Constructions</title>. Springer, New York, 1998.</biblio>
+
+		<biblio type="raw"> <!-- was [7] -->
+<!-- Reference updated - 19 August 2010 - TWJ -->
+		H. Pollard and H. G. Diamond. <title>Theory of Algebraic Numbers</title>, Dover, Mineola, NY, 2010.</biblio>
+
+		<biblio type="raw"> <!-- was [8] -->
+<!-- Out of print  - 19 August 2010 - TWJ -->
+		Walker, E. A. <title>Introduction to Abstract Algebra</title>. Random House,  New York, 1987. This work contains a proof showing that every field has an algebraic closure.</biblio>
+
+	</references>
+ 
+
+	<xi:include href="./sage/fields-sage.xml" />
+	<xi:include href="./sage/fields-sage-exercises.xml" />
+
+</chapter>
