@@ -12,7 +12,7 @@
 	<title>Os Inteiros</title>
 
 	<introduction>
-	<p>O conjunto dos números inteiros é um componente básico das matemáticas. Neste capítulo investigaremos as propiedades fundamentais dos inteiros, incluindo o princípio de indução matemática, o algoritmo de divisão, e o Teorema Fundamental da Aritmética.</p>
+	<p>O conjunto dos números inteiros é um componente básico da matemática. Neste capítulo investigaremos as propriedades fundamentais dos inteiros, incluindo o princípio de indução matemática, o algoritmo de divisão, e o Teorema Fundamental da Aritmética.</p>
 		</introduction>
 
 		<section xml:id="section-math-induction">
@@ -20,7 +20,7 @@
 
 			<p>Suponhamos que queremos demonstrar que
 				<me>1 + 2 + \cdots + n = \frac{n(n + 1)}{2}</me>
-			para qualquer número natural  <m>n</m>. Esta fórmula se pode verificar facilmente para números pequenos tais como <m>n = 1</m>, 2, 3, ou 4, mas é impossível de verificar para todos os números naturais um por um.  Para demonstrar que a fórmula é verdadeira em geral, é necessario um método mais genérico.</p>
+			para qualquer número natural  <m>n</m>. Esta fórmula se pode verificar facilmente para números pequenos tais como <m>n = 1</m>, 2, 3, ou 4, mas é impossível de verificar para todos os números naturais um por um.  Para demonstrar que a fórmula é verdadeira em geral, é necessário um método mais genérico.</p>
 
 			<p>Suponhamos que temos verificado a equação para os primeiros <m>n</m> casos.  Intentaremos demonstrar que podemos gerar uma fórmula para o caso <m>(n + 1)</m> a partir deste conhecimento.  A fórmula é verdadeira para <m>n = 1</m> pois 
 				<me>1 = \frac{1(1 + 1)}{2}.</me>
@@ -32,7 +32,7 @@
 				</md>
 			Isso corresponde exatamente à fórmula para o caso <m>(n + 1)</m>.</p>
 			 
-			<p>Este método de demonstração se conhece como <term>indução matemática</term> ou simplesmente <term>indução</term> se não há risco de confusão.  Em vez de tentar verificar uma proposição sobre um subconjunto <m>S</m> dos inteiros positivos <m>{\mathbb N}</m> um por um, uma tarefa impossível se <m>S</m> é um conjunto infinito, entregamos uma demonstração direita para o primeirp inteiro considerado, seguida de um argumento genérico mostrando que se a proposição se cumpre num certo caso, então também se cumpre para o seguinte caso na sucessão.  Resumimos a indução matemática no seguinte axioma. </p>
+			<p>Este método de demonstração se conhece como <term>indução matemática</term> ou simplesmente <term>indução</term> se não há risco de confusão.  Em vez de tentar verificar uma proposição sobre um subconjunto <m>S</m> dos inteiros positivos <m>{\mathbb N}</m> um por um, uma tarefa impossível se <m>S</m> é um conjunto infinito, entregamos uma demonstração direita para o primeiro inteiro considerado, seguida de um argumento genérico mostrando que se a proposição se cumpre num certo caso, então também se cumpre para o seguinte caso na sucessão.  Resumimos a indução matemática no seguinte axioma. </p>
 
 			<principle xml:id="principle-integers-first-pmi">
 				<title>Primeiro Princípio de Indução</title>
@@ -67,7 +67,7 @@
 			<example xml:id="example-integers-binomial-theorem">
 				<p>Demonstraremos o teorema do binômio por indução; ou seja, 
 					<me>(a + b)^n = \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k},</me>
-				onde <m>a</m> e <m>b</m> são números reais, <m>n \in \mathbb{N}</m>, y
+				onde <m>a</m> e <m>b</m> são números reais, <m>n \in \mathbb{N}</m>, e
 					<me>\binom{n}{k} = \frac{n!}{k! (n - k)!}</me>
 				é o coeficiente binomial.  <notation><usage>n!</usage><description><m>n</m> fatorial</description></notation><notation><usage>\binom{n}{k}</usage><description>coeficiente binomial <m>n!/(k!(n-k)!)</m></description></notation> Primeiro mostraremos que
 					<me>\binom{n + 1}{k} = \binom{n}{k} + \binom{n}{k - 1}.</me>
@@ -88,14 +88,14 @@
 					</md></p>
 			</example>
 	 
-			<p>Temos uma proposição equivalente ao Primeiro Princípio de Indução que as vezes será necessaria.</p>
+			<p>Temos uma proposição equivalente ao Primeiro Princípio de Indução que as vezes será necessária.</p>
 	 
 
 			<principle xml:id="principle-integers-second-pmi">
 				<title>Segundo Princípio de Indução</title>
-				<idx><h>Induccion</h><h>segundo princípio de</h></idx>
+				<idx><h>Indução</h><h>segundo princípio de</h></idx>
 				<statement>
-					<p>Seja <m>S(n)</m> uma afirmação sobre inteiros para <m>n \in {\mathbb N}</m> e suponhamos que <m>S(n_0)</m> é verdadeira para algum inteiro  <m>n_0</m>.  Se <m>S(n_0), S(n_0 + 1), \ldots, S(k)</m> implican <m>S(k + 1)</m> para <m>k \geq n_0</m>, então <m>S(n)</m> é verdadeira para todos os inteiros <m>n \geq n_0</m>. </p>
+					<p>Seja <m>S(n)</m> uma afirmação sobre inteiros para <m>n \in {\mathbb N}</m> e suponhamos que <m>S(n_0)</m> é verdadeira para algum inteiro  <m>n_0</m>.  Se <m>S(n_0), S(n_0 + 1), \ldots, S(k)</m> implicam <m>S(k + 1)</m> para <m>k \geq n_0</m>, então <m>S(n)</m> é verdadeira para todos os inteiros <m>n \geq n_0</m>. </p>
 				</statement>
 			</principle>		
 
@@ -130,18 +130,18 @@
 					<p>O Princípio de Indução implica o Princípio da Bem-Ordem.  Ou seja, todo subconjunto não vazio de <m>\mathbb N</m> contém um menor elemento.</p>
 				</statement>
 				<proof>
-					<p>Devemos mostrar que se <m>S</m> é um subconjunto não vazio dos números naturais, então <m>S</m> contém um elemento mínimo.  Se <m>S</m> contém a  1, o teorema é verdadeiro pelo Lema<nbsp /><xref ref="lemma-integers-smallest-number" />. Suponhamos que se <m>S</m> contém um inteiro <m>k</m> tal que <m>1 \leq k \leq n</m>, então <m>S</m> contém um elemento mínimo. Mostraremos que se um conjunto <m>S</m> contém um inteiro menor ou igual a <m>n + 1</m>, então <m>S</m> tem um elemento mínimo.  Se <m>S</m> não contém um elemento menor a <m>n+1</m>, então <m>n+1</m> é o menor inteiro em  <m>S</m>.  Do contrário, <m>S</m> deve contener um inteiro menor ou igual a <m>n</m>. Nesse caso, pela hipótese de indução, <m>S</m> contém um elemento mínimo.</p>
+					<p>Devemos mostrar que se <m>S</m> é um subconjunto não vazio dos números naturais, então <m>S</m> contém um elemento mínimo.  Se <m>S</m> contém a  1, o teorema é verdadeiro pelo Lema<nbsp /><xref ref="lemma-integers-smallest-number" />. Suponhamos que se <m>S</m> contém um inteiro <m>k</m> tal que <m>1 \leq k \leq n</m>, então <m>S</m> contém um elemento mínimo. Mostraremos que se um conjunto <m>S</m> contém um inteiro menor ou igual a <m>n + 1</m>, então <m>S</m> tem um elemento mínimo.  Se <m>S</m> não contém um elemento menor a <m>n+1</m>, então <m>n+1</m> é o menor inteiro em  <m>S</m>.  Do contrário, <m>S</m> deve conter um inteiro menor ou igual a <m>n</m>. Nesse caso, pela hipótese de indução, <m>S</m> contém um elemento mínimo.</p>
 				</proof>
 			</theorem>
 
 	<!-- wording change.  Suggested by P. Diethelm.  TWJ 22/4/2013 -->
 	 
-			<p>A Indução pode ser muy útil na formulação de definições. Por exemplo, há duas formas de definir <m>n!</m>, o fatorial de um inteiro positivo <m>n</m>. 
+			<p>A Indução pode ser muito útil na formulação de definições. Por exemplo, há duas formas de definir <m>n!</m>, o fatorial de um inteiro positivo <m>n</m>. 
 				<ul>
 	 
 					<li><p>A definição <em>explícita</em>: <m>n! = 1 \cdot 2 \cdot 3 \cdots (n - 1) \cdot n</m>.</p></li>  
 	 
-					<li><p>A definição <em>inductiva</em> ou <em>recursiva</em>: <m>1! = 1</m> e <m>n! = n(n - 1)!</m> para <m>n \gt 1</m>.</p></li> 
+					<li><p>A definição <em>indutiva</em> ou <em>recursiva</em>: <m>1! = 1</m> e <m>n! = n(n - 1)!</m> para <m>n \gt 1</m>.</p></li> 
 	 
 			</ul>Olhar um problema de forma recursiva, em vez de explícita, frequentemente resulta numa melhor compreensão de situações complexas.</p>
 
@@ -169,10 +169,10 @@
 							<me>S = \{ a - bk : k \in {\mathbb Z} \text{ e } a - bk \geq 0 \}.</me>
 						Se <m>0 \in S</m>, então <m>b</m> divide a <m>a</m>, e podemos tomar <m>q = a/b</m> e <m>r = 0</m>.  Se <m>0 \notin S</m>, podemos usar o Princípio da Bem-Ordem.  Devemos primeiro mostrar que <m>S</m> é não vazio.  Se <m>a \gt 0</m>, então <m>a - b \cdot 0 \in S</m>. Se <m>a \lt 0</m>, então <m>a - b(2a) = a(1 - 2b) \in S</m>.  Em qualquer caso <m>S \neq \emptyset</m>.  Pelo Princípio da Bem-Ordem, <m>S</m> tem um elemento mínimo, digamos <m>r = a - bq</m>. Portanto, <m>a = bq + r</m>, <m>r \geq 0</m>. Mostremos agora que <m>r \lt b</m>. Suponhamos que <m>r \gt b</m>. Então   
 							<me>a - b(q + 1)= a - bq - b = r - b \gt 0.</me>
-						Neste caso tendríamos <m>a - b(q + 1)</m> no conjunto <m>S</m>. Mas então <m>a - b(q + 1) \lt a - bq</m>, o que nos trazeria a uma contradição do fato que  <m>r = a - bq</m> é o menor elemento de <m>S</m>. Assim <m>r \leq b</m>.  Como <m>0 \notin S</m>, <m>r \neq b</m> e assim <m>r \lt b</m>.</p>
+						Neste caso teríamos <m>a - b(q + 1)</m> no conjunto <m>S</m>. Mas então <m>a - b(q + 1) \lt a - bq</m>, o que nos levaria a uma contradição do fato que  <m>r = a - bq</m> é o menor elemento de <m>S</m>. Assim <m>r \leq b</m>.  Como <m>0 \notin S</m>, <m>r \neq b</m> e assim <m>r \lt b</m>.</p>
 		 
 						<p><em>Unicidade de <m>q</m> e <m>r</m>.</em> Suponhamos que existem inteiros <m>r</m>, <m>r'</m>, <m>q</m>, e <m>q'</m> tais que
-							<me>a = bq + r, 0 \leq r \lt b \quad \text{y}\quad a = bq' + r', 0 \leq r' \lt b.</me>
+							<me>a = bq + r, 0 \leq r \lt b \quad \text{e}\quad a = bq' + r', 0 \leq r' \lt b.</me>
 						Então <m> bq + r =  bq' + r'</m>.  Suponhamos que <m>r' \geq r</m>.  Da última equação temos <m>b(q - q') = r' - r</m>; portanto, <m>b</m> deve dividir a <m>r' - r</m> e <m>0 \leq r'- r \leq r' \lt b</m>.  Isso é possível só se <m>r' - r = 0</m>.  Logo, <m>r = r'</m> e  <m>q = q'</m>.</p>
 					</proof>
 				</theorem>
@@ -298,7 +298,7 @@
 					<statement>
 						<p>Seja <m>n</m> um inteiro tal que <m>n \gt 1</m>. Então
 							<me>n = p_1 p_2 \cdots p_k,</me>
-						com <m>p_1, \ldots, p_k</m> primos (não necessariamente distintos).  Alem disso, esta fatorização é única; ou seja, se 
+						com <m>p_1, \ldots, p_k</m> primos (não necessariamente distintos).  Alem disso, esta fatoração é única; ou seja, se 
 							<me>n = q_1 q_2 \cdots q_l,</me>
 						então <m>k = l</m> e os <m>q_i</m> são iguais aos <m>p_i</m> possivelmente noutra ordem.</p>
 					</statement>
@@ -307,7 +307,7 @@
 							<me>n = p_1 p_2 \cdots p_k = q_1 q_2 \cdots q_l,</me>
 						com <m>p_1 \leq p_2 \leq \cdots \leq p_k</m> e <m>q_1 \leq q_2 \leq \cdots \leq q_l</m>. Pelo Lema<nbsp /><xref ref="theorem-integers-prime-divisor" />, <m>p_1  \mid  q_i</m> para certos <m>i = 1, \ldots, l</m> e <m>q_1  \mid  p_j</m> para certos <m>j = 1, \ldots, k</m>.  Como todos os <m>p_i</m> e os <m>q_i</m> são primos, <m>p_1 = q_i</m> e  <m>q_1 = p_j</m>. Logo, <m>p_1 = q_1</m> pois <m>p_1 \leq p_j = q_1 \leq q_i = p_1</m>.  Por a hipótese de indução, 
 							<me>n' = p_2 \cdots p_k = q_2 \cdots q_l</me>
-						tem uma fatorização única.  Logo, <m>k = l</m> e <m>q_i = p_i</m> para <m>i = 1, \ldots, k</m>.</p>
+						tem uma fatoração única.  Logo, <m>k = l</m> e <m>q_i = p_i</m> para <m>i = 1, \ldots, k</m>.</p>
 
 						<p><em>Existência.</em> Para demonstrar a existência, suponhamos que existe algum inteiro que não pode ser escrito como produto de primos.  Seja <m>S</m> o conjunto de tais números.  Pelo Princípio da Bem-Ordem, <m>S</m> contém um elemento mínimo, digamos <m>a</m>.  Se os únicos fatores positivos de <m>a</m> são <m>a</m> e 1, então <m>a</m> é primo, o que é uma contradição.  Logo, <m>a = a_1 a_2</m> com <m>1 \lt a_1 \lt a</m> e <m>1 \lt a_2 \lt a</m>.  Nem <m>a_1\in S</m> nem <m>a_2 \in S</m>, pois <m>a</m> é o menor elemento de <m>S</m>.  Assim 
 							<md>
@@ -325,9 +325,9 @@
 			<subsection  xml:id="integers-subsection-historical-note">
 				<title>Nota Histórica</title>
 				
-				<p>Os números primos já foram estudados pelos antigos Griegos.  Dos resultados importantes da Antiguidade são a demonstração de Euclides de que existe uma infinidade de primos e a crivo de Eratóstenes, um método para calcular todos os números primos menores do que um inteiro positivo dado.  Um problema em teoria de números é encontrar uma função <m>f</m> tal que <m>f(n)</m> é primo para cada inteiro <m>n</m>. Pierre Fermat (1601?<ndash />1665) conjeturou que <m>2^{2^n} + 1</m> era primo para todo <m>n</m>, mas posteriormente Leonhard Euler (1707<ndash />1783) demonstrou que
+				<p>Os números primos já foram estudados pelos antigos Gregos.  Dos resultados importantes da Antiguidade são a demonstração de Euclides de que existe uma infinidade de primos e a crivo de Eratóstenes, um método para calcular todos os números primos menores do que um inteiro positivo dado.  Um problema em teoria de números é encontrar uma função <m>f</m> tal que <m>f(n)</m> é primo para cada inteiro <m>n</m>. Pierre Fermat (1601?<ndash />1665) conjeturou que <m>2^{2^n} + 1</m> era primo para todo <m>n</m>, mas posteriormente Leonhard Euler (1707<ndash />1783) demonstrou que
 					<me>2^{2^5} + 1 = \text{4,294,967,297}</me>
-				é um número composto. Uma das muitas conjeturas não demonstradas sobre números primos é a conjetura de Goldbach.  Numa carta ao Euler em 1742, Christian Goldbach enunciou a conjetura que todo inteiro positivo com a excepção de 2 parecia ser uma soma de dois primos:  <m>4 = 2 + 2</m>, <m>6 = 3 + 3</m>, <m>8 =3 + 5</m>, <m>\ldots</m>.  Enquanto a conjetura foi verificada para todos os números até <m>4 \times 10^{18}</m>, ainda não foi demonstrada em geral.  Como os números primos têm um papel importante na criptografia de chave pública, há atualmente grande interesse em determinar se um número grande é primo ou não.</p>
+				é um número composto. Uma das muitas conjeturas não demonstradas sobre números primos é a conjetura de Goldbach.  Numa carta ao Euler em 1742, Christian Goldbach enunciou a conjetura que todo inteiro positivo com a exceção de 2 parecia ser uma soma de dois primos:  <m>4 = 2 + 2</m>, <m>6 = 3 + 3</m>, <m>8 =3 + 5</m>, <m>\ldots</m>.  Enquanto a conjetura foi verificada para todos os números até <m>4 \times 10^{18}</m>, ainda não foi demonstrada em geral.  Como os números primos têm um papel importante na criptografia de chave pública, há atualmente grande interesse em determinar se um número grande é primo ou não.</p>
 
 				<xi:include href="./sage/integers-info.xml" />
 
@@ -346,7 +346,7 @@
 				<title>A Crivo de Eratóstenes</title>
 				<idx><h>Crivo de Eratóstenes</h></idx>  
 				<statement>
-					<p>Um método para calcular todos os números primos menores do que um certo inteiro positivo dado <m>N</m> é listar todos os números <m>n</m> tais que <m>1 \lt n \lt N</m>.  Comece eleminando todos os múltiplos de 2.  Depois elimine todos os múltiplos de 3. Agora elimine todos os múltiplos de 5.  Note que 4 já foi eliminado.  Continue desta maneira, notando que não é necessario chegar até <m>N</m>; é suficiente parar no <m>\sqrt{N}</m>. Usando este método, calcule todos os números primos menores do que <m>N = 250</m>.  Também podemos usar este método para encontrar todos os inteiros que são relativamente primos a um inteiro <m>N</m>.  Simplemente elimine os fatores primos de <m>N</m> e todos seus múltiplos.  Usando este método, encontre todos os números que são relativamente primos com <m>N= 120</m>.  Usando a Crivo de Eratóstenes, escreva um programa que calcule todos os primos menores do que um inteiro <m>N</m>. </p>
+					<p>Um método para calcular todos os números primos menores do que um certo inteiro positivo dado <m>N</m> é listar todos os números <m>n</m> tais que <m>1 \lt n \lt N</m>.  Comece eliminando todos os múltiplos de 2.  Depois elimine todos os múltiplos de 3. Agora elimine todos os múltiplos de 5.  Note que 4 já foi eliminado.  Continue desta maneira, notando que não é necessário chegar até <m>N</m>; é suficiente parar no <m>\sqrt{N}</m>. Usando este método, calcule todos os números primos menores do que <m>N = 250</m>.  Também podemos usar este método para encontrar todos os inteiros que são relativamente primos a um inteiro <m>N</m>.  Simplesmente elimine os fatores primos de <m>N</m> e todos seus múltiplos.  Usando este método, encontre todos os números que são relativamente primos com <m>N= 120</m>.  Usando a Crivo de Eratóstenes, escreva um programa que calcule todos os primos menores do que um inteiro <m>N</m>. </p>
 				</statement>
 			</exercise>
 
@@ -365,7 +365,7 @@
 
 			<exercise>
 				<statement>
-					<p>Escreve um programa que implemente o algoritmo de Euclides.  O programa deve aceitar os inteiros positivos <m>a</m> e <m>b</m> como entrada e a saida deve ser tanto <m>\gcd( a,b)</m> como inteiros <m>r</m> e <m>s</m> tais que 
+					<p>Escreve um programa que implemente o algoritmo de Euclides.  O programa deve aceitar os inteiros positivos <m>a</m> e <m>b</m> como entrada e a saída deve ser tanto <m>\gcd( a,b)</m> como inteiros <m>r</m> e <m>s</m> tais que 
 					<me>\gcd( a,b) = ra + sb.</me></p>
 			</statement>
 		</exercise>
