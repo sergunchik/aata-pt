@@ -32,32 +32,31 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     <localization string-id="theorem">Teorema</localization>
     <localization string-id="corollary">Corolário</localization>
     <localization string-id="lemma">Lema</localization>
-    <!-- Translation needed for Brazilian Portugese -->
-    <!-- <localization string-id='algorithm'><xsl:text>XX</xsl:text></localization> -->
+    <localization string-id='algorithm'><xsl:text>Algoritmo</xsl:text></localization>
     <localization string-id='proposition'><xsl:text>Proposição</xsl:text></localization>
     <localization string-id='claim'><xsl:text>Afirmação</xsl:text></localization>
     <localization string-id='fact'><xsl:text>Fato</xsl:text></localization>
-    <!-- <localization string-id='identity'><xsl:text>Identity</xsl:text></localization> -->
+    <localization string-id='identity'><xsl:text>Identidade</xsl:text></localization>
     <localization string-id='proof'><xsl:text>Demonstração</xsl:text></localization>
-    <!-- <localization string-id='case'><xsl:text>Case</xsl:text></localization> -->
+    <localization string-id='case'><xsl:text>Caso</xsl:text></localization>
     <!-- Mathematical statements without proofs -->
     <!-- AXIOM-LIKE blocks -->
     <localization string-id='axiom'><xsl:text>Axioma</xsl:text></localization>
     <localization string-id='conjecture'><xsl:text>Conjectura</xsl:text></localization>
     <localization string-id='principle'><xsl:text>Princípio</xsl:text></localization>
-    <!-- <localization string-id='heuristic'><xsl:text>Heuristic</xsl:text></localization> -->
-    <!-- <localization string-id='hypothesis'><xsl:text>Hypothesis</xsl:text></localization> -->
-    <!-- <localization string-id='assumption'><xsl:text>Assumption</xsl:text></localization> -->
+    <localization string-id='heuristic'><xsl:text>Heurística</xsl:text></localization>
+    <localization string-id='hypothesis'><xsl:text>Hipótese</xsl:text></localization>
+    <localization string-id='assumption'><xsl:text>Suposição</xsl:text></localization>
     <!-- Definitions -->
     <localization string-id='definition'><xsl:text>Definição</xsl:text></localization>
     <!-- Translation needed for Brazilian Portugese -->
     <!-- Single Line Mathematics -->
-    <!-- <localization string-id='me'><xsl:text>Equation</xsl:text></localization> -->
-    <!-- <localization string-id='men'><xsl:text>Equation</xsl:text></localization> -->
-    <!-- <localization string-id='mrow'><xsl:text>Equation</xsl:text></localization> -->
+    <localization string-id='me'><xsl:text>Equação</xsl:text></localization>
+    <localization string-id='men'><xsl:text>Equação</xsl:text></localization>
+    <localization string-id='mrow'><xsl:text>Equação</xsl:text></localization>
     <!-- Display Mathematics -->
-    <!-- <localization string-id='md'><xsl:text>Display Mathematics</xsl:text></localization> -->
-    <!-- <localization string-id='mdn'><xsl:text>Display Mathematics</xsl:text></localization> -->
+    <localization string-id='md'><xsl:text>Mostra Matemática</xsl:text></localization>
+    <localization string-id='mdn'><xsl:text>Mostra Matemática</xsl:text></localization>
     <!-- Types of documents, mostly for informational messages -->
     <localization string-id='volume'><xsl:text>Volume</xsl:text></localization>
     <localization string-id='book'><xsl:text>Livro</xsl:text></localization>
@@ -73,15 +72,14 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     <localization string-id='section'><xsl:text>Seção</xsl:text></localization>
     <localization string-id='subsection'><xsl:text>Subseção</xsl:text></localization>
     <localization string-id='subsubsection'><xsl:text>Subsubseção</xsl:text></localization>
-    <!-- Translation needed for Brazilian Portugese -->
-    <!-- <localization string-id='introduction'><xsl:text>Introduction</xsl:text></localization> -->
-    <!-- <localization string-id='conclusion'><xsl:text>Conclusion</xsl:text></localization> -->
+    <localization string-id='introduction'><xsl:text>Introdução</xsl:text></localization>
+    <localization string-id='conclusion'><xsl:text>Conclusão</xsl:text></localization>
     <localization string-id='exercises'><xsl:text>Exercícios</xsl:text></localization>
-    <localization string-id='references'><xsl:text>Referêcias</xsl:text></localization>
+    <localization string-id='references'><xsl:text>Referências</xsl:text></localization>
     <!-- Translation needed for Brazilian Portugese -->
     <!-- <localization string-id='backmatter'><xsl:text>Back Matter</xsl:text></localization> -->
     <!-- paragraph is deprecated, getting plural correct is not super critical, just in messages -->
-    <localization string-id='paragraphs'><xsl:text>Parágrafo</xsl:text></localization>
+    <localization string-id='paragraphs'><xsl:text>Parágrafos</xsl:text></localization>
     <localization string-id='subparagraph'><xsl:text>Subparágrafo</xsl:text></localization>
     <!-- Components of the narrative -->
     <!-- REMARK-LIKE blocks -->
@@ -100,8 +98,8 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     <!-- <localization string-id='historical'><xsl:text>Historical Aside</xsl:text></localization> -->
     <!-- EXAMPLE-LIKE blocks -->
     <localization string-id='example'><xsl:text>Exemplo</xsl:text></localization>
-    <!-- <localization string-id='question'><xsl:text>Question</xsl:text></localization> -->
-    <!-- <localization string-id='problem'><xsl:text>Problem</xsl:text></localization> -->
+    <localization string-id='question'><xsl:text>Pergunta</xsl:text></localization>
+    <localization string-id='problem'><xsl:text>Problema</xsl:text></localization>
     <!-- PROJECT-LIKE blocks -->
     <!-- <localization string-id='project'><xsl:text>Project</xsl:text></localization> -->
     <!-- <localization string-id='activity'><xsl:text>Activity</xsl:text></localization> -->
@@ -122,14 +120,14 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     <!-- <localization string-id='listing'><xsl:text>Listing</xsl:text></localization> -->
     <!-- Translation needed for Brazilian Portugese -->
     <localization string-id='fn'><xsl:text>Nota de rodapé</xsl:text></localization>
-    <!-- <localization string-id='contributor'><xsl:text>Contributor</xsl:text></localization> -->
+    <localization string-id='contributor'><xsl:text>Contribuitor</xsl:text></localization>
     <!-- Lists and their items -->
     <!-- Translations needed for Brazilian Portugese -->
-    <!-- <localization string-id='list'><xsl:text>List</xsl:text></localization> -->
-    <!-- <localization string-id='li'><xsl:text>Item</xsl:text></localization> -->
+    <localization string-id='list'><xsl:text>Lista</xsl:text></localization>
+    <localization string-id='li'><xsl:text>Item</xsl:text></localization>
     <!-- A regular paragraph, not the old sectioning structure -->
     <localization string-id='p'><xsl:text>Parágrafo</xsl:text></localization>
-    <!-- <localization string-id='blockquote'><xsl:text>Quotation</xsl:text></localization> -->
+    <localization string-id='blockquote'><xsl:text>Citação</xsl:text></localization> -->
     <!-- Parts of an exercise and it's solution -->
     <localization string-id='exercise'><xsl:text>Exercício</xsl:text></localization>
     <localization string-id='webwork'><xsl:text>WeBWorK</xsl:text></localization>
@@ -138,7 +136,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     <localization string-id='solution'><xsl:text>Solução</xsl:text></localization>
     <!-- Translation needed for Brazilian Portugese -->
     <!-- A group of sectional exercises (with introduction and conclusion) -->
-    <!-- <localization string-id='exercisegroup'><xsl:text>Exercise Group</xsl:text></localization> -->
+    <localization string-id='exercisegroup'><xsl:text>Grupo de Exercícios</xsl:text></localization>
     <!-- Bibliographic items (note is distinct from sidebar "Annotations" below) -->
     <!-- <localization string-id='biblio'><xsl:text>Bibliographic Entry</xsl:text></localization> -->
     <!-- Front matter components -->
@@ -148,8 +146,8 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     <localization string-id='acknowledgement'><xsl:text>Agradecimentos</xsl:text></localization>
     <localization string-id='biography'><xsl:text>Biografia do Autor</xsl:text></localization>
     <!-- singular and plural titles for biography subdivision -->
-    <!-- <localization string-id='about-author'><xsl:text>About the Author</xsl:text></localization> -->
-    <!-- <localization string-id='about-authors'><xsl:text>About the Authors</xsl:text></localization> -->
+    <localization string-id='about-author'><xsl:text>Sobre o Autor</xsl:text></localization>
+    <localization string-id='about-authors'><xsl:text>Sobre os Autores</xsl:text></localization>
     <localization string-id='foreword'><xsl:text>Preâmbulo</xsl:text></localization>
     <localization string-id='dedication'><xsl:text>Dedicatória</xsl:text></localization>
     <localization string-id='colophon'><xsl:text>Ficha técnica</xsl:text></localization>
@@ -157,7 +155,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     <!-- index-part is deprecated, but not abandoned          -->
     <!-- NB: repurpose translations, maybe move appendix here -->
     <localization string-id='index-part'><xsl:text>Índice</xsl:text></localization>
-    <!-- <localization string-id='jump-to'><xsl:text>Jump to:</xsl:text></localization> -->
+    <localization string-id='jump-to'><xsl:text>Salta a:</xsl:text></localization>
     <!-- Parts of the Index -->
     <localization string-id='index'><xsl:text>Índice</xsl:text></localization>
     <localization string-id='see'><xsl:text>veja</xsl:text></localization>
