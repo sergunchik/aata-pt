@@ -14,6 +14,7 @@ são idênticas as classes -> são idênticas às classes
 
 fields.xml:
  Curepos -> Corpos (no título)
+ no constante -> não constante
 
 exer/fields.xml
 
@@ -24,3 +25,7 @@ trbalhar -> trabalhar
 {+as duas possam ser avaliadas por traduzir+} ambas [-serán de gran valor para traducir tanto las preguntas como las respuestas.</p>-]{+perguntas e respostas.
 
 a tradução também tem um sentido que é útil?
+
+sage/corpos.
+
+done -> onde
