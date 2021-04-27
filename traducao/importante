@@ -1,0 +1,11 @@
+:%s/ no / não /g
+:%s/ [ou] / ou /g
+:%s/ y / e /g
+:%s/ dos / dois /g
+:%s/ es / é /g
+:%s/ son / são /g
+:%s/ si / se /g
+:%s/ a a / à /g
+:%s/ pero / mas /gc
+:%s/ del / do /g
+:%s/ hay / há /g

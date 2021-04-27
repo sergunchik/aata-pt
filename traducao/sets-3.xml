@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory y Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<chapter xml:id="sets" xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<!-- % TWJ, 2010/03/31 -->
+<!-- % Chapters now begin with Chapter 1 -->
+
+<title>Preliminares</title>
+
+
+	<introduction>
+		<p>É necessária alguma maturidade matemática para encontrar e estudar aplicações da álgebra abstrata.  Um conhecimento básico de teoria de conjuntos, indução matemática, relações de equivalência e matrizes é necessário. Ainda mais importante é a habilidade de ler e entender demonstrações matemáticas.  Neste capítulo resumiremos os pré-requisitos necessários para um curso de álgebra abstrata.</p>
+	</introduction>
+
+	<section xml:id="section-note-on-proofs">
+		<title>Uma Breve Nota sobre Demonstrações</title>
+ 
+		<introduction>
+
+			<p>A matemática abstrata é diferente das outras ciências. Nas ciências de laboratório, como química e física, os cientistas fazem experiências para descobrir novos princípios e verificar teorias.  Embora a matemática seja muitas vezes motivada por experiências físicas ou simulações computacionais, elas são feitas rigorosamente através do uso de argumentos lógicos. Ao estudar matemática abstrata, usamos o que se chama o método axiomático; Digo, pegamos uma coleção de objetos <m>\mathcal S</m> e assumimos certas regras sobre a sua estrutura. Estas regras são chamadas <term>axiomas</term>. Usando os axiomas para <m>\mathcal S</m>, queremos deduzir outras informações sobre <m>\mathcal S</m> usando argumentos lógicos.  Exigimos que nossos axiomas sejam consistentes; isto é, não devem contradizer-se entre si. Também exigimos que não haja muitos axiomas. Se um sistema de axiomas é muito restritivo, haverá muito poucos exemplos da estrutura matemática.</p>  
+
+			<p>Um <term>enunciado</term> (S: proposição?) em lógica ou matemática é uma afirmação ou frase, em linguagem natural ou usando simbologia matemática, que é verdadeira ou falsa. Considere os seguintes exemplos:
+				<ul>
+	 
+					<li><p><m>3 + 56 - 13 + 8/2 </m>.</p></li>
+
+					<li><p>Todos os gatos são negros.</p></li>
+	 
+					<li><p><m>2 + 3 = 5</m>.</p></li>
+	 
+					<li><p><m>2x = 6</m> se e apenas se <m>x = 4</m>.</p></li>
+	 
+					<li><p>Se <m>ax^2 + bx + c = 0</m> e <m>a \neq 0</m>, então <me>x =  frac{- b pm sqrt{b 2 - 4ac}}{2a}.</me></p></li>
+	 
+					<li><p><m>x 3 - 4x 2 + 5 x - 6</m>.</p></li>
+	 
+				</ul>
+			Todos exceto o primeiro e o último são enunciados, e devem ser verdadeiros ou falsos.</p> 
+	 
+			<p>Uma <term>demonstração matemática</term> não é mais nem menos que um argumento convincente da veracidade de um enunciado. Tal argumento deve conter detalhes suficientes para convencer a audiência; por exemplo podemos ver que o enunciado <q><m>2x = 6</m> se e apenas se <m>x = 4</m></q> é falso avaliando <m>2 \cdot 4</m> e notando que <m>6 \neq 8</m>, um argumento que satisfará qualquer um. Claro que as audiências são muito diversas: demonstrações podem ser dirigidas a outro estudante, a um professor, ou ao leitor de um escrito.  Se for apresentado mais detalhe do que o necessário numa demonstração, esta pode ser muito longa ou mesmo confusa.  Se muitos detalhes forem omitidos, o argumento pode não ser convincente.  É importante levar em conta a audiência ao escrever a demonstração.  Estudantes do ensino médio exigirão muito mais detalhes do que alunos de pós-graduação.  Uma boa regra de ouro em um curso introdutório de álgebra abstrata é que a demonstração deva ser escrita pensando nos companheiros de um, sejam estes outros estudantes ou sejam leitores do texto.</p>
+
+			<p>Examinemos diferentes tipos de afirmações.  Uma frase pode ser tão simples como <q><m>10/5 = 2</m>;</q> mas, os matemáticos geralmente estão interessados em formulações mais complexas tais como <q>Se <m>p</m>, então <m>q</m>,</q> onde <m>p</m> e <m>q</m> são por sua vez enunciados.  Se um certo enunciado é conhecido ou supomos que é certo, queremos saber o que podemos dizer sobre outros enunciados.  Aqui <m>p</m> se chama <term>hipótese</term> e <m>q</m> é conhecida como <term>conclusão</term>.  Considere o seguinte enunciado: Se <m>ax^2 + bx + c = 0</m> e <m>a \neq 0</m>, então 
+				<me>x =  frac{- b pm sqrt{b 2 - 4ac}}{2a}.</me>
+			A hipótese é que <m>ax^2 + bx + c = 0</m> e <m>a \neq 0</m>; a conclusão é 
+				<me>x =  frac{- b pm sqrt{b 2 - 4ac}}{2a}.</me>
+			Note que o enunciado não diz nada sobre se a hipótese é verdadeira ou não. Mas, se o enunciado completo é verdadeiro e podemos mostrar que <m>ax^2 + bx + c = 0</m> com <m>a \neq 0</m> é verdadeiro, então a conclusão <em>deve</em> ser verdadeira.  Uma demonstração deste enunciado pode ser simplesmente uma série de equações: 
+				<md>
+					<mrow>ax 2 + bx + c &amp; =  0</mrow>
+					<mrow>x 2 (  frac{b}{a}x &amp; =  -  frac{c}{a}</mrow>
+					<mrow>x 2 (  frac{b}{a}x (  left(  frac{b}{2a}  right) 2 &amp; =   left(  frac{b}{2a}  right) 2 -  frac{c}{a}</mrow>
+					<mrow>left(x «  frac{b}{2a}  right) 2 &amp; =   frac{b 2 - 4ac}{4a 2}</mrow>
+					<mrow>x (  frac{b}{2a}  &amp; =   frac{  pm sqrt{ b 2 -4ac}}{2a}</mrow>
+					<mrow>x &amp; =   frac{- b pm sqrt{b 2 - 4ac}}{2a}.</mrow>
+				</md></p>
+
+			<p>Se podemos demonstrar a veracidade do enunciado, então o enunciado se chama <term>proposição</term>.  Uma proposta de maior importância é chamada <term>Teorema</term>.  Às vezes, em vez de demonstrar um teorema ou proposição de uma só vez, decompomos a demonstração em módulos; ou seja, demonstramos várias proposições auxiliares, que se chamam <term>Lemas</term>, e usamos os resultados destas proposições para demonstrar o resultado principal. Se pudermos demonstrar uma proposição ou teorema, freqüentemente poderemos obter resultados relacionados com muito pouco esforço adicional, estes se chamam <term>Corolários</term>.</p>
+
+		</introduction>
+ 
+		<subsection xml:id="sets-subsection-cautions">
+			<title>Algumas Advertências e Sugestões</title>
+ 
+			<p>Existem diversas estratégias para demonstrar proposições.  Além de usar diferentes métodos de demonstração, os alunos geralmente cometem erros comuns quando começam a demonstrar teoremas. Para ajudar os primeiros alunos de matemática abstrata, listamos aqui algumas das dificuldades que podem encontrar e algumas das estratégias à sua disposição. É uma boa idéia voltar a olhar esta lista como lembrete. (Outras técnicas de demonstração aparecerão ao longo deste capítulo e no resto do texto.) 
+				<ul>
+ 
+					<li><p>Um teorema não pode ser demonstrado com um exemplo; mas, o método padrão para demonstrar que uma proposição não é verdadeira, é dar um contraexemplo.</p></li>
+ 
+					<li><p>Os quantificadores são importantes. Palavras e frases como <em>único</em>, <em>para todos</em>, <em>para cada</em>, e <em>para algum</em> Eles têm significados diferentes.</p></li>
+ 
+					<li><p>Nunca suponha uma hipótese que não se dê explicitamente em um teorema. <em>Não pode dar coisas como certas.</em></p></li>
+ 
+ 					<li><p>Suponha que você queira mostrar um objeto<em>existe</em> e é <em>único</em>.  Primeiro, mostre que o objeto realmente existe.  Para demonstrar que é único, suponha que há dois tais objetos, digamos <m>r</m> e <m>s</m>e, em seguida, demonstrar que <m>r = s</m>.</p></li>
+ 
+					<li><p>Às vezes é mais fácil demonstrar o contrapositivo de uma proposição.  Demonstrar a proposição <q>Se <m>p</m>, então <m>q</m></q> é exatamente o mesmo que demonstrar a proposta <q>Se não <m>q</m>, então não <m>p</m>.</q></p></li>
+ 
+					<li><p>Embora geralmente seja melhor encontrar uma demonstração direta de um teorema, isso pode ser difícil.  Poderia ser mais fácil supor que o teorema que está tratando de demonstrar é falso, e esperar que ao longo de seu argumento se veja obrigado a deduzir um enunciado que não possa ser verdadeiro.</p></li>
+ 
+				</ul>
+			Lembre-se que um dos objetivos principais da matemática superior é demonstrar teoremas. Os teoremas são ferramentas que permitem novas e produtivas aplicações da matemática.  Usamos exemplos para ilustrar teoremas existentes e para incentivar o desenvolvimento da intuição sobre a razão da possível veracidade de novos teoremas.  Aplicações, exemplos e demonstrações estão fortemente interligados<mdash />muito mais do que pode parecer em primeira instância.</p>
+ 
+		</subsection>
+
+	</section>
+
+	<section xml:id="section-sets-and-equivalence-relations">
+		<title>Conjuntos e Relações de Equivalência</title>
+ 
+		<subsection xml:id="sets-subsection-set-theory">
+			<title>Teoria de Conjuntos</title>
+ 
+			<p>Um <term>conjunto</term> é uma coleção bem-definida de objetos; ou seja, está definida de maneira que para um objeto <m>x</m> qualquer um, podemos determinar se <m>x</m> pertence ou não ao conjunto.  Os objetos que pertencem ao conjunto são chamados <term>elementos</term> ou <term>membros</term>. Denotaremos os conjuntos por letras maiúsculas, tais como: <m>A</m> ou <m>X</m>; se <m>a</m> é um elemento do conjunto <m>A</m>, escrevemos <m>a \in A</m>.
+			<notation><usage>a \in A</usage><description><m>a</m> está no conjunto <m>A</m></description></notation></p>
+
+			<todo>Make notation table</todo>
+
+			<p>Um conjunto é normalmente definido listando todos os itens que ele contém entre um par de chaves ou indicando a propriedade que determina se um objeto <m>x</m> pertence ou não ao conjunto. Podemos escrever
+				<me>X =  { x_1, x_2,  ldots, x_n  }</me>
+para um conjunto que contém os elementos <m>x_1, x_2,  ldots, x_n</m> ou
+				<me>X =  { x :x text{ satisfaz }{ mathcal P} }</me>
+se cada <m>x</m> em <m>X</m> satisfaz uma certa propriedade <m>{\mathcal P}</m>.  Por exemplo, se<m>E</m> é o conjunto de inteiros pares positivos, podemos descrever <m>E</m> escrevendo ou
+				<me>E =  {2, 4, 6,  ldots  }  quad text{o}  quad E =  { x : x text{ é um inteiro par e } x gt 0  }.</me>
+			Escrevemos <m>2 \in E</m> quando queremos dizer que 2 está no conjunto <m>E</m>, e <m>-3 \notin E</m> para dizer que<m>-3</m> não está no conjunto <m>E</m>.</p>
+
+			<p>Alguns dos conjuntos mais importantes que consideraremos são os seguintes: 
+			<md>
+				<mrow>{\mathbb N} =  {n: n text{ é um número natural} }  =  {1, 2, 3,  ldots  };</mrow>
+				<mrow>{\mathbb Z} =  {n : n text{ é um inteiro}  } =  { ldots, - 1, 0, 1,  2,  ldots  };</mrow>
+				<mrow>{\mathbb Q} =  {r : r text{ é um número racional} } =  {p/q : p, q in {\mathbb Z}  text{ con } q neq 0 };</mrow>
+				<mrow>{\mathbb R} =  { x : x text{ é um número real}  };</mrow>
+				<mrow>{\mathbb C} =  {z : z text{ é um número complexo} }.</mrow>
+			</md>
+			<notation><usage>{\mathbb N}</usage><description>os números naturais</description></notation><notation><usage>{\mathbb Z}</usage><description>os números inteiros</description></notation><notation><usage>{\mathbb Q}</usage><description>os números racionais</description></notation><notation><usage>{\mathbb R}</usage><description>os números reais</description></notation><notation><usage>{\mathbb C}</usage><description>os números complexos</description></notation></p>
+
+			<p>Podemos encontrar várias relações entre conjuntos e realizar operações entre eles.  Un conjunto <m>A</m> es un  <term>subconjunto</term> de <m>B</m>, denotado <m>A \subset B</m> ou <m>B \supset A</m>, si todo elemento de <m>A</m> también es un elemento de <m>B</m>. <notation><usage>A \subset B</usage><description><m>A</m> es un subconjunto de <m>B</m></description></notation> Por ejemplo,  
+				<me>{4,5,8 }  subset  {2, 3, 4, 5, 6, 7, 8, 9  }</me>
+e
+				<me>{\mathbb N} \subset {\mathbb Z} \subset {\mathbb Q} \subset {\mathbb R} \subset {\mathbb C}.</me>
+			Trivialmente, todo conjunto es subconjunto de sí mismo.  Un conjunto <m>B</m> es un <term>subconjunto propio</term> de un conjunto <m>A</m> si <m>B \subset A</m> pero <m>B \neq A</m>. Si <m>A</m> no es un subconjunto de <m>B</m>, escrevemos <m>A \notsubset B</m>; por ejemplo, <m>{4, 7, 9 }  notsubset  {2, 4, 5,  8, 9  }</m>.  Dos conjuntos son <term>iguales</term>, escrito <m>A = B</m>, si contienen los mismos elementos.  Esto es equivalente a que <m>A \subset B</m> e <m>B \subset A</m>.</p>
+
+			<p>Es conveniente tener un conjunto sin elementos.  Este conjunto se llama <term>conjunto vacío</term> y se denota por <m>\emptyset</m>.  Notemos que el conjunto vacío es un subconjunto de todo conjunto. <notation><usage>\emptyset</usage><description>el conjunto vacío</description></notation></p>  	
+
+			<p>Para construir conjuntos nuevos a partir de otros conjuntos, podemos realizar ciertas operaciones: la <term>unión</term> <m>A \cup B</m> de dos conjuntos <m>A</m> e <m>B</m> se define como
+				<me>A cup B =  {x : x in A text{ o } x in B  };</me>
+			la <term>intersección</term> de <m>A</m> e <m>B</m>  se define como
+				<me>A cap B =  {x :  x in A text{ y } x in B  }.</me>
+			<notation><usage>A \cup B</usage><description>la unión de los conjuntos <m>A</m> e <m>B</m></description></notation><notation><usage>A \cap B</usage><description>la intersección de los conjuntos <m>A</m> e <m>B</m></description></notation> Si <m>A =  {1, 3, 5 }</m> e <m>B =  { 1, 2, 3, 9  }</m>, entonces
+				<me>A cup B =  {1, 2, 3, 5, 9  }  quad text{y}  quad A cap B =  { 1, 3  }.</me>
+			Podemos considerar la unión y la intersección de más de dos conjuntos.  En este caso escribimos
+				<me>bigcup_{i = 1} {n} A_{i} = A_{1}  cup ldots cup A_n</me>
+e
+				<me>bigcap_{i = 1} {n} A_{i} = A_{1}  cap ldots cap A_n</me>
+			para la unión e intersección, respectivamente de los conjuntos <m>A_1,  ldots, A_n</m>.
+			
+			También se pueden definir la unión y la intersección de una colección infinita (o arbitraria) de conjuntos.  Si 
+			<m> mathcal S= {A_i:i in mathcal I }</m>, entonces
+			<me>\bigcup \mathcal S=\bigcup_{i \in \mathcal I} A_{i} = \{x:x\in A_i\text{ para algún } A_i\in\mathcal S\}</me>
+e
+				<me>\bigcap \mathcal S=\bigcap_{i \in \mathcal I} A_{i} = \{x:x\in A_i\text{ para todo } A_i\in\mathcal S\}</me>
+			para la unión e intersección, respectivamente, de los conjuntos en <m>\mathcal S</m> indexados por <m>\mathcal I</m>.</p>
+
+
+
+<!-- Added comma after \ldots - TWJ 12/16/2010 -->
+
+			<p>Cuando dos conjuntos no tienen elementos en común, se dice que son <term>disjuntos</term>; por ejemplo, si <m>P</m> es el conjunto de los enteros pares e <m>I</m> es el conjunto de los enteros impares, entonces <m>P</m> e <m>I</m> son disjuntos.  Dos conjuntos <m>A</m> e <m>B</m> son disjuntos precisamente cuando <m>A \cap B = \emptyset</m>.</p> 
+
+			<p>En ocasiones trabajaremos con un conjunto fijo <m>U</m>, llamado <term>conjunto universal</term>.  Para cualquier conjunto <m>A \subset U</m>, podemos definir el <term>complemento</term> de <m>A</m>, denotado por <m>A'</m>, como el conjunto <notation><usage>A'</usage><description>complemento del conjunto <m>A</m></description></notation>
+				<me>A' =  { x : x in U text{ y } x notin A  }.</me></p>		
+
+			<p>Definimos la <term>diferencia</term> de dos conjuntos <m>A</m> e <m>B</m> como <notation><usage>A \setminus B</usage><description>diferencia entre los conjuntos <m>A</m> e <m>B</m></description></notation>
+				<me>A setminus B = A cap B'  =  { x : x in A text{ y } x notin B  }.</me></p>
+
+		<example xml:id="example-sets-operations">
+			<p>Sea <m>{\mathbb R}</m> el conjunto universal y supongamos que
+				<me>A =  { x in {\mathbb R} : 0 lt x leq 3  }  quad text{y}  quad B =  { x in {\mathbb R} : 2 leq x lt 4  }.</me>
+			Entonces
+				<md>
+					<mrow>A \cap B &amp; =  \{ x \in {\mathbb R} : 2 \leq x \leq 3 \}</mrow>
+					<mrow>A cup B &amp; =   { x in {\mathbb R} : 0 lt x lt 4  }</mrow>
+					<mrow>A setminus B &amp; =   { x in {\mathbb R} : 0 lt x lt 2   }</mrow>
+					<mrow>A' &amp; =   { x in {\mathbb R} : x leq 0 text{ ou } x gt 3  }.</mrow>
+				</md></p>
+		</example>
+ 
+		<proposition>
+			<statement>
+				<p>Sean <m>A</m>, <m>B</m>, e <m>C</m> conjuntos. Entonces
+					<ol>
+ 
+						<li><p><m>A \cup A = A</m>, <m>A \cap A = A</m>, e <m>A \setminus A = \emptyset</m>;</p></li>
+ 
+
+						<li><p><m>A \cup \emptyset = A</m> e <m>A \cap \emptyset = \emptyset</m>;</p></li>
+
+						<li><p><m>A \cup (B \cup C) = (A \cup B) \cup C</m> e <m>A \cap (B \cap C) = (A \cap B) \cap C</m>;</p></li>
+ 
+						<li><p><m>A \cup B = B \cup A</m> e <m>A \cap B = B \cap A</m>;</p></li>
+ 
+						<li><p><m>A \cup (B \cap C) = (A \cup B) \cap (A \cup C)</m>;</p></li>
+ 
+						<li><p><m>A \cap (B \cup C) = (A \cap B) \cup (A \cap C)</m>.</p></li>
+ 
+					</ol></p>
+			</statement>
+			<proof>
+				<p>Demostraremos (1) y (3) y dejaremos las demostraciones de los demás resultados como ejercicios.</p>
+
+				<p>(1) Observe que
+					<md>
+						<mrow>A cup A &amp; =   { x :  x in A text{ o } x in A  }</mrow>
+						<mrow>&amp; =   { x : x in A  }</mrow>
+						<mrow>&amp; =  A</mrow>
+					</md>
+e
+					<md>
+						<mrow>A cap A &amp; =   { x : x in A text{ y } x in A  }</mrow>
+						<mrow>&amp; =   { x : x in A   }</mrow>
+						<mrow>&amp; =  A.</mrow>
+					</md>
+				Además, <m>A \setminus A = A \cap A' = \emptyset</m>.</p>
+ 
+				<p>(3) Para conjuntos <m>A</m>, <m>B</m>, e <m>C</m>,
+					<md>
+						<mrow>A cup (B cup C) &amp; = A cup  { x : x in B text{ o } x in C  }</mrow>
+						<mrow>&amp; =  { x : x in A text{ o } x in B,  text{ o } x in C  }</mrow>
+						<mrow>&amp; =  { x : x in A text{ o } x in B  }  cup C</mrow>
+						<mrow>&amp; = (A \cup B) \cup C. </mrow>
+					</md>
+				Un argumento similar demuestra que <m>A \cap (B \cap C) = (A \cap B) \cap C</m>.</p>
+			</proof>
+		</proposition>
+
+		<theorem>
+			<title>Leyes de De Morgan</title>
+			<idx><h>Leyes de De Morgan </h><h>para conjuntos</h></idx>
+			<statement>
+				<p>Sean <m>A</m> e <m>B</m> conjuntos. Entonces 
+					<ol>
+
+						<li><p><m>(A \cup B)' = A' \cap B'</m>;</p></li>
+ 
+						<li><p><m>(A \cap B)' = A' \cup B'</m>.</p></li>
+ 
+					</ol></p>
+			</statement>
+			<proof>
+				<p>(1) Si <m>A \cup B = \emptyset</m>, entonces el teorema es inmediato pues tanto <m>A</m> como <m>B</m> son el conjunto vacío. De otra manera, debemos mostrar que <m>(A \cup B)' \subset A' \cap B'</m> e <m>(A \cup B)' \supset A' \cap B'</m>. Sea <m>x \in (A \cup B)'</m>.  Entonces <m>x \notin A \cup B</m>. Así <m>x</m> no está en <m>A</m> ni en <m>B</m>, por la definición de la unión de conjuntos.  Por la definición del complemento, <m>x \in A'</m> e <m>x \in B'</m>.  Por lo tanto, <m>x \in A' \cap B'</m> y tenemos <m>(A \cup B)' \subset A' \cap B'</m>.</p>
+ 
+				<p>Para mostrar la inclusión inversa, supongamos que <m>x \in A' \cap B'</m>.  Entonces <m>x \in A'</m> e <m>x \in B'</m>, y así <m>x \notin A</m> e <m>x \notin B</m>. Luego <m>x \notin A \cup B</m> y así <m>x \in (A \cup B)'</m>.  Por lo tanto, <m>(A \cup B)' \supset A' \cap B'</m> y así <m>(A \cup B)' = A' \cap B'</m>.</p>
+
+				<p>La demostración de (2) la dejamos como ejercicio.</p>
+			</proof>
+		</theorem>
+ 
+		<example xml:id="example-sets-other-relations">
+			<p>Otras relaciones entre conjuntos son por ejemplo,
+				<me>( A \setminus B) \cap (B \setminus A) = \emptyset.</me>
+			Para ver que esta es verdadera, observe que
+				<md>
+					<mrow>( A \setminus B) \cap (B \setminus A) &amp; = ( A \cap B') \cap (B \cap A')</mrow>
+					<mrow>&amp; = A \cap A' \cap B \cap B'</mrow>
+					<mrow>&amp; =  emptyset.</mrow>
+				</md></p>
+		</example>
+ 
+	</subsection>
+
+	<subsection xml:id="sets-subsection-cartesian-products">
+		<title>Producto Cartesiano y Funciones</title>
+
+			<p>Dados dos conjuntos <m>A</m> e <m>B</m>, podemos definir un nuevo conjunto <m>A \times B</m>, llamado <term>producto Cartesiano</term>  de <m>A</m> e <m>B</m>, como conjunto de pares ordenados.  Esto es, <notation><usage>A \times B</usage><description>producto Cartesiano de conjuntos <m>A</m> e <m>B</m></description></notation>
+				<me>A times B =  { (a,b) : a in A text{ y } b in B  }.</me></p>
+
+		<example xml:id="example-sets-cartesian-products">
+			<p>Se <m>A =  { x, y  }</m>, <m>B =  { 1, 2, 3  }</m>, e <m>C = \emptyset</m>, então <m>A \times B</m> es el conjunto 
+				<me>{ (x, 1), (x, 2), (x, 3), (y, 1), (y, 2), (y, 3)  }</me>
+e
+				<me>A \times C = \emptyset.</me></p>
+		</example>
+
+		<p>Definimos el <term>producto Cartesiano de <m>n</m> conjuntos</term> como
+			<me>A_1 \times \cdots \times A_n = \{ (a_1, \ldots, a_n): a_i \in A_i \text{ para } i = 1, \ldots, n \}.</me>
+		Se <m>A = A_1 = A_2 =  cdots = A_n</m>, escribiremos <m>A n</m> para <m>A \times \cdots \times A</m> (donde <m>A</m> se escribiría <m>n</m> veces).  <notation><usage>A n</usage><description><m>A \times \cdots \times A</m> (<m>n</m> veces)</description></notation>Por ejemplo, el conjunto <m>{\mathbb R}^3</m> consiste de todas las  3-tuplas de números reales.</p>
+
+
+
+		<p>Subconjuntos de <m>A \times B</m> se llaman <term>relaciones</term>.  Definiremos un <term>mapeo</term><idx><h>Mapeo</h><see>Función</see></idx> ou <term>función</term><idx><h>Función</h><h>definición de</h></idx> <m>f \subset A \times B</m> de un conjunto <m>A</m> en un conjunto <m>B</m> como el tipo especial de relación donde <m>(a, b)  in f</m> si para todo elemento <m>a \in A</m> existe un único elemento <m>b \in B</m>. Otra forma de decir esto es que para cada elemento en <m>A</m>, <m>f</m> asigna un único elemento en <m>B</m>.  Usualmente escribimos <m>f:A \rightarrow B</m> ou <m>A stackrel{f}{ Rightarrow} B</m>.  En lugar de escribir pares ordenados <m>(a,b)   in A times B</m>, escrevemos <m>f(a) = b</m> ou <m>f : a \mapsto b</m>.  El conjunto <m>A</m> se chama <term>dominio</term><idx><h>Función</h><h>dominio de la</h></idx> de <m>f</m> e 
+			<me>f(A) =  { f(a) : a in A  }  subset B</me>
+		se llama <term>rango</term><idx><h>Función</h><h>rango de la</h></idx> ou <term>imagen</term> de <m>f</m>.  Podemos pensar los elementos del dominio de una función como valores de entrada y los elementos del rango de la función como valores de salida.</p>
+
+		<figure xml:id="figure-sets-mappings">
+			<caption>Funciones y Relaciones</caption> 
+			 <!-- Changed the figure to a tikz diagram - TWJ 5/4/2010 -->
+			<image width="60%" xml:id="sets-mappings">
+				<latex-image-code><![CDATA[
+					\begin{tikzpicture}[scale=0.5]
+					\draw (0,0) ellipse (2 and 3);
+					\draw (7,0) ellipse (2 and 3);
+					\draw (0,8) ellipse (2 and 3);
+					\draw (7,8) ellipse (2 and 3);
+					\draw [->] (0.5,9.5) -- (6.5,8);
+					\draw [->] (0.5,8) -- (6.5,6.7);
+					\draw [->] (0.5,6.5) -- (6.5,6.5);
+					\draw [->] (0.5,1.5) -- (6.5,1.5);
+					\draw [->] (0.5,1.3) -- (6.5,0);
+					\draw [->] (0.5,0) -- (6.5,-1.5);
+					\draw [->] (0.5,-1.5) -- (6.5,1.3);
+					\node at (0, 1.5) {1};
+					\node at (0, 0) {2};
+					node at (0, -1.5) {3};
+					node at (7, 1.5) {$a$};
+					node at (7, 0) {$b$};
+					node at (7, - 1.5) {$c$};
+					\node at (0, 9.5) {1};
+					\node at (0, 8) {2};
+					\node at (0, 6.5) {3};
+					node at (7, 9.5) {$a$};
+					node at (7, 8) {$b$};
+					node at (7, 6.5) {$c$};
+					node at (- 1.5,11) {$A$};
+					node at (5.5,11) {$B$};
+					node at (- 1.5,3) {$A$};
+					node at (5.5,3) {$B$};
+					node at (3.5,3) {$g$};
+					node at (3.5,10) {$f$};
+					end{tikzpicture}]]>
+				</latex-image-code>
+			</image>
+		<!-- Changed the caption to avoid confusion -->
+		<!--  Suggested by B. Torrence.  TWJ 10/1/2014 -->
+		</figure>
+
+		<example xml:id="example-sets-mappings">
+			<p>Supongamos <m>A =  {1, 2, 3  }</m> e <m>B =  {a, b, c  }</m>.  En la Figura<nbsp /><xref ref="figure-sets-mappings" /> definimos las relaciones <m>f</m> e <m>g</m> de <m>A</m> em <m>B</m>.  La relación <m>f</m> es una función, pero <m>g</m> no lo es pues a <m>1 \in A</m> no se le asigna una única imagen en <m>B</m>; es decir, <m>g(1) = a</m> e <m>g(1) = b</m>.</p>
+		</example>
+
+		<p>Dada una función <m>f : A \rightarrow B</m>, a veces es posible hacer una lista describiendo lo que le hace la función a cada elemento específico del dominio.  Pero no todas las funciones pueden ser descritas de esta manera.  Por ejemplo, la función  <m>f: {\mathbb R} \rightarrow {\mathbb R}</m> que envía a cada número real en su cubo es una función que debe ser descrita escribiendo <m>f(x) = x 3</m> ou <m>f:x \mapsto x^3</m>.</p>
+ 
+		<p>Considere la relación <m>f : {\mathbb Q} \rightarrow {\mathbb Z}</m> dada por <m>f(p/q) = p</m>.  Sabemos que <m>1/2 = 2/4</m>, pero es <m>f(1/2) = 1</m> o 2?  Esta relación no puede ser una función pues no está bien-definida.  Una relación está <term>bien-definida</term><idx><h>función bien-definida</h></idx> si a cada elemento en el dominio se le asigna un <em>único</em> elemento en el rango.</p>
+
+		<p>Se <m>f:A \rightarrow B</m> es una función y la imagen de <m>f</m> es <m>B</m>, es decir, <m>f(A) = B</m>, então <m>f</m> se dice <term>sobre</term><idx><h>Función</h><h>sobre</h></idx> ou <term>sobreyectiva</term><idx><h>Función</h><h>sobreyectiva</h></idx>. En otras palabras, si para cada <m>b \in B</m> existe <m>a \in A</m> tal que <m>f(a) = b</m>, então <m>f</m> es sobre. Una función es <term>1-1</term><idx><h>Función</h><h>1-1</h></idx> ou <term>inyectiva</term><idx><h>Función</h><h>inyectiva</h></idx> si <m>a_1 \neq a_2</m> implica <m>f(a_1) \neq f(a_2)</m>.  Equivalentemente, una función es 1-1 si <m>f(a_1) = f(a_2)</m> implica <m>a_1 = a_2</m>.  Una función que es 1-1 y sobre se llama <term>biyectiva</term><idx><h>Función</h><h>biyectiva</h></idx>.</p> 
+
+<!-- Added explanation for onto map - TWJ 1/25/2011 -->
+
+		<example xml:id="example-sets-one-to-one-onto">
+			<p>Sea <m>f:{\mathbb Z} \rightarrow {\mathbb Q}</m> definida como <m>f(n) = n/1</m>.  Entonces <m>f</m> es 1-1 pero no sobre.  Defina <m>g : {\mathbb Q} \rightarrow {\mathbb Z}</m> como <m>g(p/q) = p</m> onde <m>p/q</m> es un número racional en su forma reducida con denominador positivo.  La función <m>g</m> es sobre pero no 1-1.</p>
+		</example>
+
+		<p>Dadas dos funciones, podemos construir una nueva función usando el rango de la primera función como el dominio de la segunda.  Sean <m>f : A \rightarrow B</m> e <m>g : B \rightarrow C</m> funciones.  Definimos una nueva función, la <term>composición</term><idx><h>Función</h><h>composición de</h></idx> de <m>f</m> e <m>g</m> de <m>A</m> em <m>C</m>, como <m>(g Circ f)(x) = g(f(x))</m>.</p>
+
+		<figure xml:id="figure-sets-composition">
+			<caption>Composición de funciones</caption>
+
+			<!-- Changed the figure to a tikz diagram - TWJ 5/4/2010 -->
+			<image width="90%" xml:id="sets-composition">
+				<latex-image-code><![CDATA[
+begin{tikzpicture}[scale=0.5]
+draw (-6,8) Ellipse (2 e 3);
+draw (0,8) Ellipse (2 e 3);
+draw (6,8) Ellipse (2 e 3);
+
+node at (- 7.5,11) {$A$};
+node at (- 1.5,11) {$B$};
+node at (4.5,11) {$C$};
+node at (-6, 9.5) {1};
+node at (- 6, 8) {2};
+node at (-6, 6.5) {3};
+node at (0, 9.5) {$a$};
+node at (0, 8) {$b$};
+node at (0, 6.5) {$c$};
+node at (6, 9.5) {$X$};
+node at (6, 8) {$Y$};
+node at (6, 6.5) {$Z$};
+node at (- 3,10) {$f$};
+node at (3,10) {$g$};
+
+\draw [->] (0.5,9.5) -- (5.5,6.7);
+					\draw [->] (0.5,8) -- (5.5,6.5);
+					\draw [->] (0.5,6.5) -- (5.5,9.5);
+
+					\draw [->] (-5.5,9.5) -- (-0.5,8);
+					\draw [->] (-5.5,8) -- (-0.5,6.5);
+					\draw [->] (-5.5,6.5) -- (-0.5,9.5);
+
+					\draw (-3,0) ellipse (2 and 3);
+					\draw (3,0) ellipse (2 and 3);
+
+					node at (- 5,3) {$A$};
+					node at (1.5,3) {$C$};
+					node at (-3, 1.5) {1};
+					\node at (-3, 0) {2};
+					node at (-3, -1.5) {3};
+					node at (3, 1.5) {$X$};
+					node at (3, 0) {$Y$};
+					node at (3, - 1.5) {$Z$};
+					node at (0,2.5) {$g Circ f$};
+
+					\draw [->] (-2.5,1.5) -- (2.5,-1.3);
+					\draw [->] (-2.5,0) -- (2.5,1.5);
+					\draw [->] (-2.5,-1.5) -- (2.5,-1.5);
+
+					end{tikzpicture}]]>
+				</latex-image-code>
+			</image>
+		</figure>
+
+		<example xml:id="example-sets-composition">
+			<p>Considere las funciones <m>f: A \rightarrow B</m> e <m>g: B \rightarrow C</m> que están definidas en la Figura<nbsp /><xref ref="figure-sets-composition" /> (arriba).  La composición de estas funciones, <m>g \circ f: A \rightarrow C</m>, está definida en la Figura<nbsp /><xref ref="figure-sets-composition" /> (abajo).</p>
+		</example>
+
+<!-- Changed figure references.  Suggested by P. Diethelm.  TWJ 22/4/2013 -->
+
+		<example xml:id="example-sets-composition-noncommute">
+			<p>Sean <m>f(x) = x 2</m> e <m>g(x) = 2x + 5</m>. Entonces
+				<me>(f Circ g)(x) = f(g(x)) = (2x + 5) 2 = 4x 2 + 20x + 25</me>
+e
+				<me>(g Circ f)(x) = g(f(x)) = 2x 2 + 5.</me>
+			En general, el orden importa; es decir, en la mayoría de los casos <m>f \circ g \neq g \circ f</m>.</p>
+		</example>
+ 
+		<example xml:id="example-sets-composition-commute">
+			<p>A veces se cumple que <m>f \circ g= g \circ f</m>.  Sean <m>f(x) = x 3</m> e <m>g(x) =  sqrt[3]{x}</m>. Entonces 
+				<me>(f Circ g )(x) = f(g(x)) = f(  sqrt[3]{x} , ) = ( sqrt[3]{x} , ) 3 = x</me>
+e
+				<me>(g Circ f )(x) = g(f(x)) = g( x 3) =  sqrt[3]{ x 3} = x.</me></p>
+		</example>
+ 
+		<example xml:id="example-sets-linear-map">
+			<p>Dada  una matriz de <m>2 \times 2</m>
+				<me>A =
+begin{pmatrix}<![CDATA[
+a & b
+c & d
+				]]>end{pmatrix},</me>
+			podemos definir una función <m>T_A : {\mathbb R}^2 \rightarrow {\mathbb R}^2</m> como 
+				<me>T_A (x,y) = (ax + by, cx +dy)</me>
+			para <m>(x,y)</m> em <m>{\mathbb R}^2</m>.  Esto en realidad es multiplicación de matrices; es decir,
+				<me>begin{pmatrix}<![CDATA[
+a & b
+c & d
+				]]>end{pmatrix}
+begin{pmatrix}<![CDATA[
+x e
+				]]>end{pmatrix}
+=
+begin{pmatrix}<![CDATA[
+				ax + by \\
+				cx +dy
+				]]>end{pmatrix}.</me>
+			Funciones de <m>{\mathbb R}^n</m> em <m>{\mathbb R}^m</m> dadas por matrices se llaman <term>funciones lineales</term> ou <term>transformaciones lineales</term><idx><h>Transformación lineal</h><h>definición de</h></idx>.</p>
+		</example>
+
+		<example xml:id="example-sets-permutation">
+			<p>Supongamos que <m>S =  { 1,2,3   }</m>. Definamos una función <m>\pi :S\rightarrow S</m> como 
+				<me>pi( 1 )  = 2,  qquad pi( 2 )  = 1,  qquad pi( 3 )  = 3.</me>
+			Esta es una función biyectiva.  Una forma alternativa de escribir <m>\pi</m> es
+				<me>begin{pmatrix}<![CDATA[
+1 & 2 & 3
+pi(1) &  pi(2) &pi(3)
+				]]>end{pmatrix}
+=
+begin{pmatrix}<![CDATA[
+1 & 2 & 3
+2 & 1 & 3
+				]]>end{pmatrix}.</me>
+			Para cualquier conjunto <m>S</m>, una función biyectiva <m>\pi : S \rightarrow S</m> se chama <term>permutación</term><idx><h>Permutación</h><h>definición de</h></idx> de <m>S</m>.</p>
+		</example>
+
+		<theorem>
+			<statement>
+				<p>Sean <m>f : A \rightarrow B</m>, <m>g : B \rightarrow C</m>, e <m>h : C \rightarrow D</m>. Entonces  
+					<ol>
+ 
+						<li><p>La composición de funciones es asociativa; es decir, <m>(h \circ g) \circ f = h \circ (g \circ f)</m>;</p></li>  
+ 
+						<li><p>Se <m>f</m> e <m>g</m> son ambas 1-1, entonces la función <m>g \circ f</m> es 1-1;</p></li> 
+ 
+						<li><p>Se <m>f</m> e <m>g</m> son ambas sobre, entonces la función <m>g \circ f</m> es sobre;</p></li>
+
+						<li><p>Se <m>f</m> e <m>g</m> son ambas biyectivas, entonces la función <m>g \circ f</m> es biyectiva;</p></li>
+ 
+					</ol></p>
+			</statement>
+			<proof>
+				<p>Nós mostraremos (1) e (3). La parte (2) se deja como ejercicio.  La parte (4) es consecuencia directa de (2) y (3).</p> 
+ 
+				<p>(1) Debemos mostrar que
+					<me>h \circ (g \circ f) = (h \circ g) \circ f.</me>
+				Para <m>a \in A</m> tenemos
+					<md>
+						<mrow>(h Circ (g Circ f))(a) &amp; h(g Circ f)(a))</mrow>
+						<mrow>&amp; = h(g(f(a))) </mrow>
+						<mrow>&amp; = (h Circ g)(f(a))</mrow>
+						<mrow>&amp; = ((h \circ g) \circ f)(a).</mrow>
+				</md></p>
+ 
+				<p>(3) Supongamos que <m>f</m> e <m>g</m> son ambas sobreyectivas. Dado <m>c \in C</m>, debemos mostrar que existe <m>a \in A</m> tall que <m>(g Circ f)(a) = g(f(a)) = c</m>. Pero, como <m>g</m> es sobre, existe <m>b \in B</m> tal que <m>g(b) = c</m>. Similarmente, existe <m>a \in A</m> tal que <m>f(a) = b</m>. Por ende, 
+					<me>(g Circ f)(a) = g(f(a)) = g(b) = c.</me></p>
+			</proof>
+		</theorem>
+ 
+ 			<p>Se <m>S</m> es cualquier conjunto, usaremos <m>id_S</m> ou <m>id</m> para denotar a la <term>función identidad</term><idx><h>Función</h><h>identidad</h></idx> de <m>S</m> en sí mismo.  Definimos esta función como <m>id(s) = s</m> para todo <m>s \in S</m>.  Una función <m>g: B \rightarrow A</m> es una <term>función inversa</term> de <m>f: A \rightarrow B</m> si <m>g \circ f = id_A</m> e <m>f \circ g = id_B</m>; en otras palabras, la función inversa de una función simplemente <q>deshace</q> lo que hace la función.   Una función se dice <term>invertible</term><idx><h>Función</h><h>invertible</h></idx> si tiene una inversa.  Usualmente escribimos <m>f {- 1}</m> para la inversa de <m>f</m>. <notation><usage>id</usage><description>función identidad</description></notation><notation><usage>f {- 1}</usage><description>inversa de la función <m>f</m></description></notation></p> 
+
+		<example xml:id="example-sets-inverse-function">
+			<p>La función <m>f(x) = x 3</m> tiene inversa <m>f {- 1}(x) =  sqrt[3]{x}</m> por el Ejemplo<nbsp /><xref ref="example-sets-composition-commute" />.</p>
+		</example>
+
+		<example xml:id="example-sets-exponential">
+			<p>El logaritmo natural y la función exponencial, <m>f(x) =  ln x</m> e <m>f {- 1}(x) = e x</m>, son inversas, la una de la otra, con tal de que seamos cuidadosos en la elección de los dominios.  Observe que  
+				<me>f(f {- 1}(x)) = f(e x) =  ln e x = x</me>
+e
+				<me>f {- 1}(f(x)) = f {- 1}( ln x) = e { ln x} = x</me>
+			siempre que la composición tenga sentido.</p>
+		</example>
+
+		<example xml:id="example-sets-inverse-matrix">
+			<p>Supongamos que
+					<me>A =
+begin{pmatrix}<![CDATA[
+3 & 1
+5 & 2
+					]]>end{pmatrix}.</me>
+				Entonces <m>A</m> define una función de <m>{\mathbb R}^2</m> em <m>{\mathbb R}^2</m> como
+					<me>T_A (x,y) = (3x = y, 5x + 2y).</me>
+				Podemos encontrar la función inversa de <m>T_A</m> simplemente invirtiendo la matriz <m>A</m>; es decir, <m>T_A {- 1} = T_{A {- 1}}</m>. En este ejemplo,
+					<me>A {- 1} =
+begin{pmatrix}<![CDATA[
+2  & - 1
+- 5 &  3
+					]]>end{pmatrix};</me>
+				luego, la función inversa está dada por
+					<me>T_A {-1} (x,y) = (2x -  y, -5x + 3y).</me>
+				Es fácil verificar que
+					<me>T {-1}_A Circ T_A (x,y) = T_A Circ T_A {-1} (x,y) = (x,y).</me>
+				No toda función tiene inversa.  Si consideramos la función
+					<me>T_B (x,y) = (3x , 0 )</me>
+				dada por la matriz
+					<me>B =
+begin{pmatrix}<![CDATA[
+3 & 0
+0 & 0
+					]]>end{pmatrix},</me>
+				una función inversa tendría que ser de la forma
+					<me>T_B {-1} (x,y) = (ax + by, cx +dy)</me>
+e
+					<me>(x,y) = T Circ T_B {-1} (x,y) = (3ax + 3by, 0)</me>
+				para todo <m>x</m> e <m>e</m>.  Claramente esto es imposible pues <m>e</m> podría no ser 0.</p>
+		</example>
+
+		<example xml:id="example-sets-inverse-permutation">
+			<p>Dada la permutación
+				<me>pi =
+begin{pmatrix}<![CDATA[
+1 & 2 & 3
+2 & 3 & 1
+				]]>end{pmatrix}</me>
+			en <m>S =  { 1,2,3  }</m>, es fácil ver que la permutación definida por
+				<me>pi {- 1} =
+begin{pmatrix}<![CDATA[
+1 & 2 & 3
+3 & 1 & 2
+				]]>end{pmatrix}</me>
+			es la inversa de <m>\pi</m>.  De hecho, toda función biyectiva posee una inversa, como veremos en el próximo teorema.</p>
+		</example>
+ 
+		<theorem>
+			<statement>
+				<p>Una función es invertible si y solo si es biyectiva.</p>
+			</statement>
+			<proof>
+				<p>Supongamos primero que <m>f:A \rightarrow B</m> es invertible con inversa <m>g: B \rightarrow A</m>. Entonces <m>g \circ f = id_A</m> es la función identidad; es decir, <m>g(f(a)) = a</m>. Si <m>a_1, a_2 in A</m> com <m>f(a_1) = f(a_2)</m>, então <m>a_1 = g(f(a_1)) = g(f(a_2)) = a_2</m>.  Así, <m>f</m> es 1-1.  Ahora supongamos que <m>b \in B</m>. Para mostrar que <m>f</m> es sobre, es necesario encontrar <m>a \in A</m> tal que <m>f(a) = b</m>, pero <m>f(g(b)) = b</m> com <m>g(b)  in A</m>. Sea <m>a = g(b)</m>.</p>
+
+				<p>Recíprocamente, sea <m>f</m> una función biyectiva y sea <m>b \in B</m>.  Como <m>f</m> es sobre, existe <m>a \in A</m> tal que <m>f(a) = b</m>.  Como <m>f</m> es 1-1, <m>a</m> es único. Defina <m>g</m> como <m>g(b) = a</m>.  Hemos construído la inversa de <m>f</m>.</p>
+			</proof>
+		</theorem>
+
+		</subsection>
+
+		<subsection xml:id="sets-subsection-equivalence-relations">
+			<title>Relaciones de Equivalencia y Particiones</title>
+
+			<p>Una noción fundamental en matemáticas es la de igualdad.  Podemos generalizar la igualdad por medio de las relaciones de equivalencia y las clases de equivalencia.  Uma <term>relación de equivalencia</term><idx><h>Relación de equivalencia</h></idx> en un conjunto <m>X</m> es una relación <m>R \subset X \times X</m> tal que  
+				<ul>
+ 
+					<li><p><m>(x, x)  in R</m> para todo <m>x \in X</m> (<term>propiedad refleja</term>);</p></li>
+  
+					<li><p><m>(x, y)  in R</m> implica <m>(y, x)  in R</m> (<term>propiedad simétrica</term>);</p></li>
+ 
+					<li><p><m>(x, e)</m> e <m>(y, z)  in R</m> implica <m>(x, z)  in R</m> (<term>propiedad transitiva</term>).</p></li>
+ 
+			</ul>Dada una relación de equivalencia <m>R</m>  en un conjunto <m>X</m>, usualmente escribiremos  <m>x \sim y</m> en lugar de <m>(x, y)  in R</m>. Si la relación de equivalencia ya tiene asociada una notación como <m>=</m>, <m>\equiv</m>, ou <m>\cong</m>, usaremos esa notación.</p>
+
+			<example xml:id="example-sets-equivalent-fractions">
+				<p>Sean <m>p</m>, <m>q</m>, <m>r</m>, e <m>s</m> enteros, con <m>q</m> e <m>s</m> distintos de cero.  Definimos <m>p/q \sim r/s</m> si <m>ps = qr</m>.  Claramente <m>\sim</m> es refleja y simétrica.  Para mostrar que también es transitiva, supongamos que <m>p/q \sim r/s</m> e <m>r/s \sim t/u</m>, con <m>q</m>, <m>s</m>, e <m>u</m> todos distintos de cero.  Entonces <m>ps = qr</m> e <m>ru = st</m>. Por lo tanto, 
+					<me>psu = qru = qst.</me>
+				Como <m>s \neq 0</m>, <m>pu = qt</m>. Así, <m>p/q \sim t/u</m>.</p>
+			</example>
+
+			<example xml:id="example-sets-equivalent-derivative">
+				<p>Supongamos que <m>f</m> e <m>g</m> son funciones diferenciables en <m>{\mathbb R}</m>.  Podemos definir una relación de equivalencia en el conjunto de tales funciones definiendo <m>f(x) \sim g(x)</m> si <m>f'(x) = g'(x)</m>. Es claro que esta relación es refleja y simétrica.  Para demostrar la transitividad, supongamos que <m>f(x) \sim g(x)</m> e <m>g(x) \sim h(x)</m>.  De cálculo sabemos que <m>f(x) - g(x) = c_1</m> e <m>g(x)- h(x) = c_2</m>, donde <m>c_1</m> e <m>c_2</m> son ambos constantes. Luego, 
+					<me>f(x) - h(x) = ( f(x) - g(x)) + ( g(x)- h(x))  = c_1 - c_2</me>
+e <m>f'(x) - h'(x) = 0</m>. Por lo tanto, <m>f(x) \sim h(x)</m>.</p>
+			</example>
+
+			<example xml:id="example-sets-equivalent-circles">
+				<p>Para <m>(x_1, y_1 )</m> e <m>(x_2, y_2)</m> em <m>{\mathbb R}^2</m>, definamos <m>(x_1, y_1 )   sim (x_2, y_2)</m> si <m>x_1 2 + y_1 2 = x_2 2 + y_2 2</m>.  Entonces <m>\sim</m> es una relación de equivalencia en <m>{\mathbb R}^2</m>.</p>
+			</example>
+
+			<example xml:id="example-sets-equivalent-matrices">
+				<p>Sean <m>A</m> e <m>B</m> matrices de <m>2 \times 2</m> con coeficientes reales. Podemos definir una relación de equivalencia en el conjunto de la matrices de <m>2 \times 2</m>, diciendo que <m>A \sim B</m> si existe una matriz invertible  <m>P</m> tal que <m>PAP^{-1} = B</m>.  Por ejemplo, si 
+					<me>A =
+begin{pmatrix}<![CDATA[
+1 & 2
+- 1 & 1
+					]]>end{pmatrix}
+quad text{y}  quad
+					B =
+begin{pmatrix}<![CDATA[
+- 18 & 33
+- 11 & 20
+					]]>end{pmatrix},</me>
+				entonces <m>A \sim B</m> pues <m>PAP^{-1} = B</m> para
+					<me>P =
+begin{pmatrix}<![CDATA[
+2 & 5
+1 & 3
+					]]>end{pmatrix}.</me>
+					Sea <m>I</m> la matriz identidad de <m>2 \times 2</m>; es decir,
+					<me>I =
+begin{pmatrix}<![CDATA[
+1 & 0
+0 & 1
+					]]>end{pmatrix}.</me>
+				Entonces <m>IAI^{-1} = IAI = A</m>; por lo tanto, la relación es refleja.  Para demostrar simetría, supongamos que <m>A \sim B</m>.  Entonces existe una matriz invertible <m>P</m> tal que <m>PAP^{-1} = B</m>.  Así 
+					<me>A = P {-1} B P = P {-1} B (P {-1}) {-1}.</me>
+				Finalmente, supongamos que <m>A \sim B</m> e <m>B \sim C</m>.  Entonces existen matrices <m>P</m> e <m>Q</m> tales que <m>PAP^{-1} = B</m> e <m>QBQ^{-1} = C</m>.  Como 
+					<me>C = QBQ {-1} = QPAP {-1} Q {-1} = (QP)A(QP) {-1},</me>
+				la relación es transitiva.  Dos matrices equivalente de esta forma se dicen <term>similares</term><idx><h>Matrices</h><h>similares</h></idx>.</p>
+			</example>
+
+			<p>Uma <term>partición</term><idx><h>Partición</h></idx> <m>{\mathcal P}</m> de un conjunto <m>X</m> es una colección de conjuntos no vacíos <m>X_1, X_2, \ldots</m> tales que <m>X_i \cap X_j = \emptyset</m> para <m>i  \neq j</m> e <m>bigcup_k X_k = X</m>. Sea <m>\sim</m> una relación de equivalencia en un conjunto <m>X</m> y sea <m>x \in X</m>.  Entonces <m>[x] =  { e in X : y sim x  }</m> se chama <term>clase de equivalencia</term><idx><h>Clase de equivalencia</h></idx> de <m>x</m>.  Veremos que una relación de equivalencia da lugar a una partición vía clases de equivalencia.  Además, si tenemos una partición de un conjunto, entonces existe una relación de equivalencia subyacente, como demuestra el teorema siguiente.</p>  
+ 
+			<theorem>
+				<statement>
+					<p>Dada una relación de equivalencia <m>\sim</m> en un conjunto <m>X</m>, las clases de equivalencia de <m>X</m> forman una partición de <m>X</m>.  Recíprocamente, si <m>{ mathcal P} =  { X_i }</m> es una partición de un conjunto <m>X</m>, entonces existe una relación de equivalencia en <m>X</m> con clases de equivalencia <m>X_i</m>. </p>
+				</statement>
+				<proof>
+					<p>Supongamos que existe una relación de equivalencia <m>\sim</m> en el conjunto <m>X</m>.  Para cualquier <m>x \in X</m>, la propiedad refleja muestra que <m>x in [x]</m> de manera que <m>[x]</m> no es vacío.  Claramente <m>X =  bigcup_{x in X} [x]</m>.  Sean <m>x, y \in X</m>. Debemos probar que ya sea <m>[x] = [y]</m> ou <m>[x] \cap [y] = \emptyset</m>.  Supongamos que la intersección de <m>[x]</m> e <m>[y]</m> no es vacía y que <m>z \in [x] \cap [y]</m>. Entonces <m>z \sim x</m> e <m>z \sim y</m>.  Por simetría o por transitividad <m>x \sim y</m>; luego, <m>[x] \subset [y]</m>.  Similarmente, <m>[y] \subset [x]</m> y  así <m>[x] = [y]</m>.  Por lo tanto, dos clases de equivalencia pueden ser disjuntas o exactamente la misma.</p>
+ 
+					<p>Recíprocamente, supongamos que <m>{ mathcal P} =  {X_i }</m> es una partición de un conjunto <m>X</m>.  Definamos que dos elementos son equivalentes si y solo si están en el mismo conjunto de la partición.  Claramente, la relación es refleja.  Se <m>x</m> está en el mismo conjunto que <m>e</m>, então <m>e</m> está en el mismo conjunto que <m>x</m>, así <m>x \sim y</m> implica <m>y \sim x</m>.  Finalmente, si <m>x</m> está en el mismo conjunto que <m>e</m> e <m>e</m> está en el mismo conjunto que <m>z</m>, então <m>x</m> debe estar en el mismo conjunto que <m>z</m>, por lo que tenemos transitividad.</p>
+				</proof>
+			</theorem>
+
+			<corollary>
+				<statement>
+					<p>Dos clases de equivalencia en una relación de equivalencia ya sea son disjuntas o son iguales.</p>
+				</statement>
+			</corollary>
+ 
+			<p>Examinemos algunas de las particiones dadas por las clases de equivalencia de los últimos ejemplos.</p> 
+
+			<example xml:id="example-sets-fraction-partition">
+				<p>En la relación de equivalencia del Ejemplo<nbsp /><xref ref="example-sets-equivalent-fractions" />, dos pares de enteros, <m>(p,q)</m> e <m>(r,s)</m>, están en la misma clase de equivalencia cuando se reducen a la misma fracción reducida.</p>
+			</example>
+ 
+			<example xml:id="example-sets-matrix-partition">
+				<p>En la relación de equivalencia en el Ejemplo<nbsp /><xref ref="example-sets-equivalent-derivative" />, dos funciones <m>f(x)</m> e <m>g(x)</m> están en la misma clase cuando difieren por una constante.</p>
+			</example>
+
+			<example xml:id="example-sets-circle-partition">
+				<p>Hemos definido una clase de equivalencia en <m>{\mathbb R}^2</m> por <m>(x_1, y_1 )   sim (x_2, y_2)</m> si <m>x_1 2 + y_1 2 = x_2 2 + y_2 2</m>.  Dos pares de números reales están en la misma clase cuando representan puntos en una misma circunferencia centrada en el origen.</p>
+			</example>
+ 
+			<example xml:id="example-sets-congruent-integers">
+				<p>Sean <m>r</m> e <m>s</m> dos enteros y supongamos que <m>n \in {\mathbb N}</m>.  Diremos que <m>r</m> es <term>congruente</term><idx><h>Congruencia módulo <m>n</m></h></idx> a <m>s</m> <term>módulo</term> <m>n</m>, ou <m>r</m> es congruente a <m>s</m> mód <m>n</m>, si <m>r - s</m> es divisible por <m>n</m>; es decir, <m>r - s = nk</m>  para algún <m>k \in {\mathbb Z}</m>.  En este caso escribimos <m>r \equiv s \pmod{n}</m>. <notation><usage>a \equiv b \pmod{n}</usage><description><m>a</m> es congruente a <m>b</m> módulo <m>n</m></description></notation>  Por ejemplo, <m>41 \equiv 17 \pmod{ 8}</m> pues <m>41 - 17=24</m> es divisible por 8.  Afirmamos que congruencia módulo <m>n</m> es una relación de equivalencia en <m>{\mathbb Z}</m>.  Ciertamente cualquier entero <m>r</m> es equivalente a sí mismo pues <m>r - r = 0</m> es divisible por <m>n</m>.  Mostraremos ahora que la relación es simétrica.  Se <m>r \equiv s \pmod{ n}</m>, então <m>r - s = -(s -r)</m> es divisible por <m>n</m>. Así <m>s - r</m> es divisible por <m>n</m> e <m>s \equiv r \pmod{ n}</m>.  Ahora supongamos que <m>r \equiv s \pmod{ n}</m> e <m>s \equiv t \pmod{ n}</m>.  Entonces existen enteros <m>k</m> e <m>l</m> tales que <m>r -s = kn</m> e <m>s - t = ln</m>.  Para mostrar la transitividad, es necesario probar que <m>r - t</m> es divisible por <m>n</m>.  Pero,   
+					<me>r - t = r - s + s - t = kn + ln = (k + l)n,</me>
+				y así <m>r - t</m> es divisible por <m>n</m>.</p>
+
+
+ 
+				<p>Si consideramos la relación de equivalencia establecida por los enteros módulo 3, entonces 
+					<md>
+						<mrow>{[0]} &amp; =  {  ldots, - 3, 0, 3, 6,  ldots  },</mrow>
+						<mrow>{[1]} &amp; =  {  ldots, - 2, 1, 4, 7,  ldots  },</mrow>
+						<mrow>{[2]} &amp; =  {  ldots, - 1, 2, 5, 8,  ldots  }.</mrow>
+					</md>
+				Note que <m>[0] \cup [1] \cup [2] = {\mathbb Z}</m> y también que los conjuntos son disjuntos.  Los conjuntos <m>[0]</m>, <m>[1]</m>, e <m>[2]</m> forman una partición de los enteros.</p>
+
+				<p>Los enteros módulo <m>n</m> son ejemplos importantes en el estudio del álgebra abstracta y serán muy útiles en el estudio de diversas estructuras algebraicas tales como grupos y anillos.  En nuestra discusión de los enteros módulo <m>n</m> hemos asumido un resultado conocido como algoritmo de división, que será enunciado y demostrado en el Capítulo<nbsp /><xref ref="integers" />.</p>
+			</example>
+
+		</subsection>
+	</section>
+ 
+ <xi:include href="./exercises/sets.xml" />
+
+<todo>Figure out how to include comments in front of the list of references</todo>
+
+	<references xml:id="sets-references">
+		<title>Referencias y Lecturas Recomendadas</title>
+<!--
+		<p>The following list contains references suitable for further reading.  With the exception of [8] y [9] y perhaps [1] y [3], all of these books are more or less  at the same level as this text.  Interesting applications of algebra  can be found in [2], [5], [10], y [11].</p>
+-->
+		<biblio type="raw"> <!-- was [1] -->
+		 <!-- Reference updated 5/4/2010 - TWJ -->
+		Artin, M. <title>Abstract Algebra</title>. 2nd ed. Pearson, Upper Saddle River, NJ, 2011.</biblio>
+
+		<biblio type="raw"> <!-- was [2] -->
+		 <!-- Reference updated 5/4/2010 - TWJ -->
+		Childs, L. <title>A Concrete Introduction to Higher Algebra</title>. 2nd ed. Springer-Verlag, New York, 1995.</biblio>
+
+		<biblio type="raw"> <!-- was [3] -->
+		<!-- Reference updated 5/4/2010 - TWJ -->
+		Dummit, D. y Foote, R.  <title>Abstract Algebra</title>. 3rd ed. Wiley, New York, 2003.</biblio>
+
+		<biblio type="raw"> <!-- was [2] -->
+		<!--Seems to be out of print 5/4/2010 - TWJ -->
+		Ehrlich, G. <title>Fundamental Concepts of Algebra</title>. PWS-KENT, Boston, 1991.</biblio>
+
+		<biblio type="raw"> <!-- was [4] -->
+		 <!-- Reference updated 5/4/2010 - TWJ -->
+		Fraleigh, J. B. <title>A First Course in Abstract Algebra</title>. 7th ed. Pearson, Upper Saddle River, NJ, 2003.</biblio>
+
+		<biblio type="raw"> <!-- was [5] -->
+		 <!-- Reference updated 5/4/2010 - TWJ -->
+		Gallian, J. A. <title>Contemporary Abstract Algebra</title>. 7th ed. Brooks/Cole, Belmont, CA, 2009.</biblio>
+
+		<biblio type="raw"> <!-- was [6] -->
+		<!-- I believe that this is not still in print, but it is certainly available through amazon.com 5/4/2010 - TWJ -->
+		Halmos, P. <title>Naive Set Theory</title>.  Springer, New York, 1991. One of the best references for set theory.</biblio>
+
+		<biblio type="raw"> <!-- was [7] -->
+		<!-- Reference updated 5/4/2010 - TWJ -->
+		Herstein, I. N. 
+		<title>Abstract Algebra</title>. 3rd ed. Wiley, New York, 1996.</biblio>
+
+		<biblio type="raw"> <!-- was [8] -->
+		<!-- Reference updated 5/4/2010 - TWJ -->
+		Hungerford, T. W. 
+		<title>Algebra</title>. Springer, New York, 1974. One
+		of the standard graduate algebra texts.
+		</biblio>
+
+		<biblio type="raw"> <!-- was [9] -->
+		 <!-- Reference updated 5/4/2010 - TWJ -->
+		Lang, S. 
+		<title>Algebra</title>. 3rd ed. Springer, New York, 2002.
+		Another standard graduate text.
+		</biblio>
+
+		<biblio type="raw"> <!-- was [10] -->
+		 <!-- Reference updated 5/4/2010 - TWJ -->
+		Lidl, R. y Pilz, G. 
+		<title>Applied Abstract Algebra</title>. 2nd ed. Springer,
+		New York, 1998. 
+		</biblio>
+
+		<biblio type="raw"> <!-- was [11] -->
+		 <!-- No longer in print 5/4/2010 - TWJ -->
+		Mackiw, G. <title>Applications of Abstract Algebra</title>. Wiley, New York,
+		1985. 
+		</biblio>
+
+		<biblio type="raw"> <!-- was [12] -->
+		Nickelson, W. K. <!-- Reference updated 5/4/2010 - TWJ -->
+		<title>Introduction to Abstract Algebra</title>. 3rd ed. Wiley, New York,
+		2006. 
+		</biblio>
+
+		<biblio type="raw"> <!-- was [13] -->
+		 <!-- Reference updated 5/4/2010 - TWJ -->
+		Solow, D. 
+		<title>How to Read y Do Proofs</title>. 5th ed. Wiley, New York,
+		2009. 
+		</biblio>
+
+		<biblio type="raw"> <!-- was [14] -->
+		 <!-- No longer in print 5/4/2010 - TWJ -->
+		van der Waerden, B. L. 
+		<title>A History of Algebra</title>. Springer-Verlag,
+		New York, 1985. An account of the historical development of algebra. 
+		</biblio>
+
+	</references> <!-- References need to be updated -->
+
+	<xi:include href="./sage/sets-sage.xml" />
+	<xi:include href="./sage/sets-sage-exercises.xml" />
+
+</chapter>

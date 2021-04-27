@@ -1,0 +1,43 @@
+:%s/\([Pp]rime\)r/\1iro/g
+:%s/\([Pp]rime\)ro/\1iro/g
+:%s/siguiente/seguinte/g
+:%s/cumple/cumpre/g
+:%s/direct/direit/g
+:%s/ si / se /g
+:%s/tarea/tarefa/g
+:%s/uno por uno/um por um/g
+:%s/riesgo/risco/g
+:%s/simplemen/simplesmen/g
+:%s/ conoce / conhece /g
+:%s/ a a / à /g
+:%s/exacta/exata/g
+:%s/conocimiento/conhecimento/g
+:%s/primero/primeiro/g
+:%s/se requiere/é necessario/g
+:%s/verdadera/verdadeira/g
+:%s/imposible/impossível/g
+:%s/pequeño/pequeno/g
+:%s/fácilmente/facilmente/g
+:%s/ puede / pode /g
+:%s/uró/urou/gc
+:%s/ pero / mas /gc
+:%s/Por o /Pelo /g
+:%s/do Bem/da Bem/gc
+:%s/é no-vazio/não é vazio/gc
+:%s/vacío/vazio/g
+:%s/ordemad/ordenad/g
+:%s/pues/pois/gc
+:%s/uego/ogo/gc
+:%s/hipótesis/hipótese/g
+:%s/esi/essi/gc
+:%s/lineal/linear/g
+:%s/scribir/screver/g
+:%s/común/comum/g
+:%s/de atrás para adelante/de trás para frente/gc
+:%s/ del / do /g
+:%s/ lugar de/ vez de/gc
+:%s/ lugar de/vez de/gc
+:%s/ dos / dois /gc
+:%s/ suma / soma /g
+:%s/ hay / há /g
+:%s/ rol / papel /gc
