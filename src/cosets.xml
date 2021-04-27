@@ -12,7 +12,7 @@
 	<title>Classes Laterais e o Teorema de Lagrange</title>
 
 	<introduction>
-		<p>O Teorema de Lagrange, um dos resultados mais importantes na teoria de grupos finitos, diz que a ordem de um subgrupo deve dividir a ordem do grupo completo.  Este teorema entrega uma poderosa ferramenta para analisar os grupos finitos; ele dá uma ideia de exatamente quais tipos de subgrupos esperamos encontrar em um grupo finito.  A noção de classe lateral é essencial para a compreensão do Teorema de Lagrange.</p>
+		<p>O Teorema de Lagrange, um dos resultados mais importantes na teoria de grupos finitos, diz que a ordem de um subgrupo deve dividir a ordem do grupo ambiente.  Este teorema entrega uma poderosa ferramenta para analisar os grupos finitos; ele dá uma ideia de exatamente quais tipos de subgrupos esperamos encontrar em um grupo finito.  A noção de classe lateral é essencial para a compreensão do Teorema de Lagrange.</p>
 	</introduction>
 
 	<section xml:id="section-cosets">
