@@ -9,363 +9,363 @@
 
 
 <chapter xml:id="integers" xmlns:xi="http://www.w3.org/2001/XInclude">
-	<title>Los Enteros</title>
+	<title>Os Inteiros</title>
 
 	<introduction>
-    	<p>El conjunto de los números enteros es un componente básico de las matemáticas. En este capítulo investigaremos las propiedades fundamentales de los enteros, incluyendo el principio de inducción matemática, el algoritmo de división, y el Teorema Fundamental de la Aritmética.</p>
-	</introduction>
-
-	<section xml:id="section-math-induction">
-		<title>Principio de Inducción</title>
-
-		<p>Suponhamos que queremos demostrar que
-			<me>1 + 2 + \cdots + n = \frac{n(n + 1)}{2}</me>
-		para cualquier número natural  <m>n</m>. Esta fórmula se puede verificar fácilmente para números pequeños tales como <m>n = 1</m>, 2, 3, o 4, pero es imposible de verificar para todos los número naturales uno por uno.  Para demostrar que la fórmula es verdadera en general, se requiere un método más genérico.</p>
-
-		<p>Supongamos que hemos verificado la ecuación para los primeros <m>n</m> casos.  Intentaremos demostrar que podemos generar una fórmula para el caso <m>(n + 1)</m> a partir de este conocimiento.  La fórmula es verdadera para <m>n = 1</m> pues 
-			<me>1 = \frac{1(1 + 1)}{2}.</me>
-		Si hemos verificado los primeros <m>n</m> casos, entonces
-			<md>
-				<mrow>1 + 2 + \cdots + n + (n + 1) &amp; = \frac{n(n + 1)}{2} + n + 1</mrow>
-				<mrow>&amp; = \frac{n^2 + 3n + 2}{2}</mrow>
-				<mrow>&amp; = \frac{(n + 1)[(n + 1) + 1]}{2}.</mrow>
-			</md>
-		Esto corresponde exactamente a la fórmula para el caso <m>(n + 1)</m>.</p>
-		 
-		<p>Este método de demostración se conoce como <term>inducción matemática</term> o simplemente <term>inducción</term> si no hay riesgo de confusión.  En lugar de intentar verificar una proposición sobre un subconjunto <m>S</m> de los enteros positivos <m>{\mathbb N}</m> uno por uno, una tarea imposible si <m>S</m> es un conjunto infinito, entregamos una demostración directa para el primer entero considerado, seguida de un argumento genérico mostrando que si la proposición se cumple en un cierto caso, entonces también se cumple para el siguiente caso en la sucesión.  Resumimos la inducción matemática en el siguiente axioma. </p>
-
-		<principle xml:id="principle-integers-first-pmi">
-			<title>Primer Principio de Inducción</title>
-			<idx><h>Inducción</h><h>primer principio de</h></idx>
-			<statement>
-				<p>Sea <m>S(n)</m> una proposición sobre números enteros para <m>n \in {\mathbb N}</m> y supongamos que <m>S(n_0)</m> es verdadera para algún entero <m>n_0</m>.  Si para todos los enteros <m>k</m> con <m>k \geq n_0</m>, <m>S(k)</m> implica <m>S(k+1)</m>, es verdadera, entonces <m>S(n)</m> es verdadera para todos los enteros <m>n</m> mayores o iguales a <m>n_0</m>.</p>
-			</statement>
-		</principle>		
-				
-<!-- wording change.  Suggested by P. Diethelm.  TWJ 22/4/2013 -->
-
-		<example xml:id="example-integers-induction-greater-than">
-			<p>Para todos los enteros <m>n \geq 3</m>, <m>2^n \gt n + 4</m>. Como
-				<me>8 = 2^3 \gt 3 + 4 = 7,</me>
-			la afirmación es verdadera para <m>n_0 = 3</m>.  Supongamos que <m>2^k \gt k + 4</m> para <m>k \geq 3</m>.  Entonces <m>2^{k + 1} = 2 \cdot 2^{k} \gt 2(k + 4)</m>.  Pero
-				<me>2(k + 4) = 2k + 8 \gt k + 5 = (k + 1) + 4</me>
-			pues <m>k</m> es positivo.  Luego, por inducción, la afirmación se cumple para todos los enteros <m>n \geq 3</m>.</p>
-		</example>
-
-
-		<example xml:id="example-integers-induction-divisible">
-			<p>El entero <m>10^{n + 1} + 3 \cdot 10^n + 5</m> es divisible por 9 para todo <m>n \in {\mathbb N}</m>.  Para <m>n = 1</m>, 
-				<me>10^{1 + 1} + 3 \cdot 10 + 5 = 135 = 9 \cdot 15</me>
-			es divisible por 9.  Supongamos que <m>10^{k + 1} + 3 \cdot 10^k + 5</m> es divisible por 9 para <m>k \geq 1</m>.  Entonces 
-				<md>
-					<mrow>10^{(k + 1) + 1} + 3 \cdot 10^{k + 1} + 5&amp; = 10^{k + 2} + 3 \cdot 10^{k + 1} + 50 - 45</mrow>
-					<mrow>&amp; = 10 (10^{k + 1} + 3 \cdot 10^{k} + 5) - 45</mrow>
-				</md>
-			es divisible por 9.</p>
-		</example>
-
-		<example xml:id="example-integers-binomial-theorem">
-			<p>Demostraremos el teorema del binomio por inducción; es decir, 
-				<me>(a + b)^n = \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k},</me>
-			donde <m>a</m> y <m>b</m> son números reales, <m>n \in \mathbb{N}</m>, y
-				<me>\binom{n}{k} = \frac{n!}{k! (n - k)!}</me>
-			es el coeficiente binomial.  <notation><usage>n!</usage><description><m>n</m> factorial</description></notation><notation><usage>\binom{n}{k}</usage><description>coeficiente binomial <m>n!/(k!(n-k)!)</m></description></notation> Primero mostraremos que
-				<me>\binom{n + 1}{k} = \binom{n}{k} + \binom{n}{k - 1}.</me>
-			Este resultado es consecuencia de 
-				<md>
-					<mrow>\binom{n}{k} + \binom{n}{k - 1} &amp; = \frac{n!}{k!(n - k)!} +\frac{n!}{(k-1)!(n - k + 1)!}</mrow>
-					<mrow>&amp; = \frac{(n + 1)!}{k!(n + 1 - k)!}</mrow>
-					<mrow>&amp; =\binom{n + 1}{k}.</mrow>
-				</md>
-			Si <m>n = 1</m>, el teorema del binomio es fácil de verificar. Ahora supongamos que el resultado es verdadero para  <m>n</m> mayor o igual a 1.  Entonces
-				<md>
-					<mrow>(a + b)^{n + 1} &amp; = (a + b)(a + b)^n</mrow>
-					<mrow>&amp; = (a + b) \left( \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k}\right)</mrow>
-					<mrow>&amp; = \sum_{k = 0}^{n} \binom{n}{k} a^{k + 1} b^{n - k} + \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n + 1 - k}</mrow>
-					<mrow>&amp; = a^{n + 1} + \sum_{k = 1}^{n} \binom{n}{k - 1} a^{k} b^{n + 1 - k} + \sum_{k = 1}^{n} \binom{n}{k}  a^k b^{n + 1 - k} + b^{n + 1}</mrow>
-					<mrow>&amp;  = a^{n + 1} + \sum_{k = 1}^{n} \left[ \binom{n}{k - 1} + \binom{n}{k} \right]a^k b^{n + 1 - k} + b^{n + 1}</mrow>
-					<mrow>&amp;  = \sum_{k = 0}^{n + 1}   \binom{n + 1}{k} a^k b^{n + 1- k}.</mrow>
-				</md></p>
-		</example>
- 
-		<p>Tenemos una proposición equivalente al Primer Principio de Inducción que en ocasiones será necesaria.</p>
- 
-
-		<principle xml:id="principle-integers-second-pmi">
-			<title>Segundo Principio de Inducción</title>
-			<idx><h>Induccion</h><h>segundo principio de</h></idx>
-			<statement>
-				<p>Sea <m>S(n)</m> una afirmación sobre enteros para <m>n \in {\mathbb N}</m> y supongamos que <m>S(n_0)</m> es verdadera para algún entero  <m>n_0</m>.  Si <m>S(n_0), S(n_0 + 1), \ldots, S(k)</m> implican <m>S(k + 1)</m> para <m>k \geq n_0</m>, entonces <m>S(n)</m> es verdadera para todos los enteros <m>n \geq n_0</m>. </p>
-			</statement>
-		</principle>		
-
-<!-- wording change.  Suggested by P. Diethelm.  TWJ 22/4/2013 -->
- 
-		<p>Un subconjunto <m>S</m> de <m>{\mathbb Z}</m> está <term>bien-ordenado</term><idx><h>Conjunto bien-ordenado</h></idx> si todo subconjunto no vacío de <m>S</m> contiene un menor elemento.  Note que el conjunto <m>{\mathbb Z}</m> no está bien-ordenado pues no contiene un elemento mínimo.  Los números naturales sin ambargo, sí están bien-ordenados.</p> 
- 
-		<principle>
-			<title>Principio del Buen-Orden</title>
-			<statement>
-				<p>El conjunto de los números naturales está bien-ordenado.</p>
-			</statement>
-		</principle>		
- 
-		<p>El Principio del Buen-Orden es equivalente al Principio de Inducción.</p> 
- 
-
-		<lemma xml:id="lemma-integers-smallest-number">
-			<statement>
-				<p>El principio de Inducción implica que <m>1</m> es el menor número natural positivo.</p>
-			</statement>
-			<proof>
-				<p>Sea <m>S = \{ n \in {\mathbb N} : n \geq 1 \}</m>. Entonces <m>1 \in S</m>. Supongamos que <m>n \in S</m>. Como <m>0 \lt 1</m>, se debe tener que <m>n = n + 0 \lt n + 1</m>.  Por lo tanto, <m>1 \leq n \lt n + 1</m>.  Así, si <m>n \in S</m>, entonces <m>n + 1</m> también debe estar en <m>S</m>, y por el Principio de Inducción,  <m>S = \mathbb N</m>.</p>
-			</proof>
-		</lemma>
-
-<!--  Theorem reworded for clarity.  TWJ 12/17/2011 -->
-<!--  Suggested by K. Halasz and R. Beezer. -->
-
-		<theorem xml:id="theorem-integers-pmi-implies-pwo">
-			<statement>
-				<p>El Principio de Inducción implica el Principio del Buen-Orden.  Es decir, todo subconjunto no vacío de <m>\mathbb N</m> contiene un menor elemento.</p>
-			</statement>
-			<proof>
-				<p>Debemos mostrar que si <m>S</m> es un subconjunto no vacío de los números naturales, entonces <m>S</m> contiene un elemento mínimo.  Si <m>S</m> contiene a  1, el teorema es verdadero por el Lema<nbsp /><xref ref="lemma-integers-smallest-number" />. Supongamos que si <m>S</m> contiene un entero <m>k</m> tal que <m>1 \leq k \leq n</m>, entonces <m>S</m> contiene un elemento mínimo. Mostraremos que si un conjunto <m>S</m> contiene un entero menor o igual a <m>n + 1</m>, entonces <m>S</m> tiene un elemento mínimo.  Si <m>S</m> no contiene un elemento menor a <m>n+1</m>, entonces <m>n+1</m> es el menor entero en  <m>S</m>.  De  lo contrario, <m>S</m> debe contener un entero menor o igual a <m>n</m>. En ese caso, por la hipótesis de inducción, <m>S</m> contiene un elemento mínimo.</p>
-			</proof>
-		</theorem>
-
-<!-- wording change.  Suggested by P. Diethelm.  TWJ 22/4/2013 -->
- 
-		<p>La Inducción puede ser muy útil en la formulación de definiciones. Por ejemplo, hay dos formas de definir <m>n!</m>, el factorial de un entero positivo <m>n</m>. 
-			<ul>
- 
- 				<li><p>La definición <em>explícita</em>: <m>n! = 1 \cdot 2 \cdot 3 \cdots (n - 1) \cdot n</m>.</p></li>  
- 
-				<li><p>La definición <em>inductiva</em> o <em>recursiva</em>: <m>1! = 1</m> y <m>n! = n(n - 1)!</m> para <m>n \gt 1</m>.</p></li> 
- 
-		</ul>Mirar un problema de forma recursiva, en lugar de explícita, frecuentemente resulta en una mejor comprensión de situaciones complejas.</p>
-
-	</section>
-
-	<section xml:id="section-division-algorithm">
-		<title>El Algoritmo de División</title>
-
-		<introduction>
-
-			<p>Una aplicación del Principio del Buen-Orden que usaremos frecuentemente es el algoritmo de división.</p> 
-
-			<theorem xml:id="theorem-integers-division_algorithm">
-				<title>Algoritmo de División</title>
-				<idx><h>Algoritmo de división</h><h>para enteros</h></idx>
-				<statement>
-					<p>Sean <m>a</m> y <m>b</m> números enteros, con <m>b \gt 0</m>.  Entonces existen enteros únicos <m>q</m> y <m>r</m> tales que 
-						<me>a = bq + r</me>
-					donde <m>0 \leq r \lt b</m>.</p>
-				</statement>
-				<proof>
-					<p>Este es un ejemplo perfecto de una demostración de existencia y unicidad.  Debemos primero demostrar que los números <m>q</m> y <m>r</m> realmente existen. Después debemos mostrar que si  <m>q'</m> y <m>r'</m> también son tales números, entonces <m>q = q'</m> y <m>r = r'</m>.</p>
-	 
-					<p><em>Existencia de <m>q</m> y <m>r</m>.</em> Sea
-						<me>S = \{ a - bk : k \in {\mathbb Z} \text{ y } a - bk \geq 0 \}.</me>
-					Si <m>0 \in S</m>, entonces <m>b</m> divide a <m>a</m>, y podemos tomar <m>q = a/b</m> y <m>r = 0</m>.  Si <m>0 \notin S</m>, podemos usar el Principio del Buen-Orden.  Debemos primero mostrar que <m>S</m> es no vacío.  Si <m>a \gt 0</m>, entonces <m>a - b \cdot 0 \in S</m>. Si <m>a \lt 0</m>, entonces <m>a - b(2a) = a(1 - 2b) \in S</m>.  En cualquier caso <m>S \neq \emptyset</m>.  Por el Principio del Buen-Orden, <m>S</m> tiene un elemento mínimo, digamos <m>r = a - bq</m>. Por lo tanto, <m>a = bq + r</m>, <m>r \geq 0</m>. Mostremos ahora que <m>r \lt b</m>. Supongamos que <m>r \gt b</m>. Entonces   
-						<me>a - b(q + 1)= a - bq - b = r - b \gt 0.</me>
-					En este caso tendríamos <m>a - b(q + 1)</m> en el conjunto <m>S</m>. Pero entonces <m>a - b(q + 1) \lt a - bq</m>, lo que llevaría a una contradicción del hecho que  <m>r = a - bq</m> es el menor elemento de <m>S</m>. Así <m>r \leq b</m>.  Como <m>0 \notin S</m>, <m>r \neq b</m> y así <m>r \lt b</m>.</p>
-	 
-					<p><em>Unicidad de <m>q</m> y <m>r</m>.</em> Supongamos que existen enteros <m>r</m>, <m>r'</m>, <m>q</m>, y <m>q'</m> tales que
-						<me>a = bq + r, 0 \leq r \lt b \quad \text{y}\quad a = bq' + r', 0 \leq r' \lt b.</me>
-					Entonces <m> bq + r =  bq' + r'</m>.  Supongamos que <m>r' \geq r</m>.  De la última ecuación tenemos <m>b(q - q') = r' - r</m>; por lo tanto, <m>b</m> debe dividir a <m>r' - r</m> y <m>0 \leq r'- r \leq r' \lt b</m>.  Estos es posible solo si <m>r' - r = 0</m>.  Luego, <m>r = r'</m> y  <m>q = q'</m>.</p>
-				</proof>
-			</theorem>
-
-			<p>Sean <m>a</m> y <m>b</m> enteros.  Si <m>b = ak</m> para algún entero <m>k</m>, escribiremos <m>a \mid b</m>.  Un entero <m>d</m> se llama <term>divisor común</term> de <m>a</m> y <m>b</m> si <m>d \mid a</m> y <m>d \mid b</m>.  El <term>máximo común divisor</term><idx><h>Máximo común divisor</h><h>de dos enteros</h></idx> de los enteros <m>a</m> y <m>b</m> es un entero positivo <m>d</m> tal que <m>d</m> es un divisor común de <m>a</m> y <m>b</m> y si <m>d'</m> es cualquier otro divisor común de <m>a</m> y <m>b</m>, entonces <m>d' \mid d</m>. <notation><usage>a \mid b</usage><description><m>a</m> divide a <m>b</m></description></notation><notation><usage>\gcd(a, b)</usage><description>máximo común divisor de <m>a</m> y <m>b</m></description></notation>  Escribiremos <m>d = \gcd(a, b)</m>; por ejemplo, <m>\gcd( 24, 36) = 12</m> y <m>\gcd(120, 102) = 6</m>.  Decimos que dos enteros <m>a</m> y <m>b</m> son <term>relativamente primos </term> si <m>\gcd( a, b ) = 1</m>.</p>
-
-			
-
-			<theorem xml:id="theorem-integers-gcd">
-				<statement>
-					<p>Sean <m>a</m> y <m>b</m> enteros distintos de cero. Entonces existen enteros <m>r</m> y <m>s</m> tales que
-						<me>\gcd( a, b) = ar + bs.</me>
-					Más aún, el máximo común divisor de <m>a</m> y <m>b</m> es único.</p>
-				</statement>
-				<proof>
-					<p>Sea
-						<me>S = \{ am + bn : m, n \in {\mathbb Z} \text{ y } am + bn \gt 0 \}.</me>
-					Claramente, el conjunto <m>S</m> es no-vacío; luego, por el Principio del Buen-Orden <m>S</m> tiene un elemento mínimo, digamos <m>d = ar + bs</m>.  Afirmamos que <m>d = \gcd( a, b)</m>.  Escriba <m>a = dq + r'</m> con  <m>0 \leq r' \lt d</m>. Si <m>r' \gt 0</m>, entonces <!-- r changed to r' - TWJ 1/31/2011 -->
-						<md>
-							<mrow>r'&amp; = a - dq</mrow>
-							<mrow>&amp; = a - (ar + bs)q</mrow>
-							<mrow>&amp; = a - arq - bsq</mrow>
-							<mrow>&amp; = a( 1 - rq ) + b( -sq ),</mrow>
-						</md>
-					que está en <m>S</m>.  Pero esto estaría en contradicción con el hecho de que <m>d</m> es el menor  miembro de <m>S</m>.  Luego, <m>r' = 0</m> y <m>d</m> divide a <m>a</m>.  Un argumento similar muestra que <m>d</m> divide a <m>b</m>.  Por lo tanto, <m>d</m> es un divisor común de <m>a</m> y <m>b</m>.</p>
-
-					<p>Supongamos que <m>d'</m> es otro divisor común de <m>a</m> y <m>b</m>, y queremos mostrar que <m>d' \mid d</m>. Si <m>a = d'h</m> y <m>b = d'k</m>, entonces
-						<me>d = ar + bs = d'hr + d'ks = d'(hr + ks).</me>
-					Es decir <m>d'</m> divide a <m>d</m>. Luego, <m>d</m> es el único máximo común divisor de <m>a</m> y <m>b</m>.</p>
-				</proof>
-				<!-- Notation error in proof fixed (pointed out by Rocco Rossi) - TWJ 9/13/2010 -->
-			</theorem>
-
-			<corollary xml:id="corollary-integers-coprime">
-				<statement>
-					<p>Sean <m>a</m> y <m>b</m> enteros relativamente primos. Entonces existen enteros <m>r</m> y <m>s</m> tales que <m>ar + bs = 1</m>.</p>
-				</statement>
-			</corollary>
-
+	<p>O conjunto dos números inteiros é um componente básico das matemáticas. Neste capítulo investigaremos as propiedades fundamentais dos inteiros, incluindo o princípio de indução matemática, o algoritmo de divisão, e o Teorema Fundamental da Aritmética.</p>
 		</introduction>
 
-		<subsection xml:id="integers-subsection-euclidean-algorithm">
-			<title>El Algoritmo de Euclides</title>
+		<section xml:id="section-math-induction">
+			<title>Princípio de Indução</title>
 
-			<p>Entre otras cosas, el Teorema<nbsp /><xref ref="theorem-integers-gcd" /> nos permite calcular el máximo común divisor de dos enteros.</p>
+			<p>Suponhamos que queremos demonstrar que
+				<me>1 + 2 + \cdots + n = \frac{n(n + 1)}{2}</me>
+			para qualquer número natural  <m>n</m>. Esta fórmula se pode verificar facilmente para números pequenos tais como <m>n = 1</m>, 2, 3, ou 4, mas é impossível de verificar para todos os números naturais um por um.  Para demonstrar que a fórmula é verdadeira em geral, é necessario um método mais genérico.</p>
 
+			<p>Suponhamos que temos verificado a equação para os primeiros <m>n</m> casos.  Intentaremos demonstrar que podemos gerar uma fórmula para o caso <m>(n + 1)</m> a partir deste conhecimento.  A fórmula é verdadeira para <m>n = 1</m> pois 
+				<me>1 = \frac{1(1 + 1)}{2}.</me>
+			Se temos verificado os primeiros <m>n</m> casos, então
+				<md>
+					<mrow>1 + 2 + \cdots + n + (n + 1) &amp; = \frac{n(n + 1)}{2} + n + 1</mrow>
+					<mrow>&amp; = \frac{n^2 + 3n + 2}{2}</mrow>
+					<mrow>&amp; = \frac{(n + 1)[(n + 1) + 1]}{2}.</mrow>
+				</md>
+			Isso corresponde exatamente à fórmula para o caso <m>(n + 1)</m>.</p>
+			 
+			<p>Este método de demonstração se conhece como <term>indução matemática</term> ou simplesmente <term>indução</term> se não há risco de confusão.  Em vez de tentar verificar uma proposição sobre um subconjunto <m>S</m> dos inteiros positivos <m>{\mathbb N}</m> um por um, uma tarefa impossível se <m>S</m> é um conjunto infinito, entregamos uma demonstração direita para o primeirp inteiro considerado, seguida de um argumento genérico mostrando que se a proposição se cumpre num certo caso, então também se cumpre para o seguinte caso na sucessão.  Resumimos a indução matemática no seguinte axioma. </p>
 
-			<example xml:id="example-integers-gcd">
-				<p>Calculemos el máximo común divisor de <m>945</m> y <m>2415</m>.  Primero observemos que
-					<md>
-						<mrow>2415 &amp; = 945 \cdot 2 + 525</mrow>
-						<mrow>945 &amp; = 525 \cdot 1 + 420</mrow>
-						<mrow>525 &amp; = 420 \cdot 1 + 105</mrow>
-						<mrow>420 &amp; = 105 \cdot 4 + 0.</mrow>
-					</md>
-				Usando los pasos de atrás para adelante, 105 divide a 420, 105 divide a 525, 105 divide a 945, y 105 divide a 2415.  Luego, 105 divide tanto a 945 como a 2415.  Si <m>d</m> fuese otro divisor común de 945 y 2415, entonces <m>d</m> también dividiría a 105.  Por lo tanto, <m>\gcd( 945, 2415 ) = 105</m>.</p>
+			<principle xml:id="principle-integers-first-pmi">
+				<title>Primeiro Princípio de Indução</title>
+				<idx><h>Indução</h><h>primeiro princípio de</h></idx>
+				<statement>
+					<p>Seja <m>S(n)</m> uma proposição sobre números inteiros para <m>n \in {\mathbb N}</m> e suponhamos que <m>S(n_0)</m> é verdadeira para algum inteiro <m>n_0</m>.  Se para todos os inteiros <m>k</m> com <m>k \geq n_0</m>, <m>S(k)</m> implica <m>S(k+1)</m>, é verdadeira, então <m>S(n)</m> é verdadeira para todos os inteiros <m>n</m> maiores ou iguais a <m>n_0</m>.</p>
+				</statement>
+			</principle>		
+					
+	<!-- wording change.  Suggested by P. Diethelm.  TWJ 22/4/2013 -->
 
-				<p>Volviendo a recorrer las ecuaciones anteriores de abajo para arriba, podemos obtener números enteros <m>r</m> y <m>s</m> tales que <m>945 r + 2415 s = 105</m>.  Note que  
-					<md>
-						<mrow>105 &amp; = 525 + (-1) \cdot 420</mrow>
-						<mrow>&amp; = 525 + (-1) \cdot [945 + (-1) \cdot 525]</mrow>
-						<mrow>&amp; = 2 \cdot 525 + (-1) \cdot 945</mrow>
-						<mrow>&amp; = 2 \cdot [2415 + (-2) \cdot 945] + (-1) \cdot 945</mrow>
-						<mrow>&amp; = 2 \cdot 2415 + (-5) \cdot 945.</mrow>
-					</md>
-				Así <m>r = -5</m> y <m>s= 2</m>.  Note que <m>r</m> y <m>s</m> no son únicos, pues por ejemplo <m>r = 41</m> y <m>s = -16</m> también funcionarían.</p>
+			<example xml:id="example-integers-induction-greater-than">
+				<p>Para todos os inteiros <m>n \geq 3</m>, <m>2^n \gt n + 4</m>. Como
+					<me>8 = 2^3 \gt 3 + 4 = 7,</me>
+				a afirmação é verdadeira para <m>n_0 = 3</m>.  Suponhamos que <m>2^k \gt k + 4</m> para <m>k \geq 3</m>.  Então <m>2^{k + 1} = 2 \cdot 2^{k} \gt 2(k + 4)</m>.  Mas
+					<me>2(k + 4) = 2k + 8 \gt k + 5 = (k + 1) + 4</me>
+				pois <m>k</m> é positivo.  Logo, por indução, a afirmação se cumpre para todos os inteiros <m>n \geq 3</m>.</p>
 			</example>
 
-			<p>Para calcular <m>\gcd(a,b) = d</m>, estamos usando sucesivas divisiones para obtener una sucesión decreciente de enteros positivos <m>r_1 \gt r_2 \gt \cdots \gt r_n = d</m>; es decir,
-				<md><mrow>b &amp; = a q_1 + r_1</mrow>
-					<mrow>a &amp; = r_1 q_2 + r_2</mrow>
-					<mrow>r_1 &amp; = r_2 q_3 + r_3</mrow>
-					<mrow>&amp; \vdots </mrow>
-					<mrow>r_{n - 2} &amp; = r_{n - 1} q_{n} + r_{n}</mrow>
-					<mrow>r_{n - 1} &amp; = r_n q_{n + 1}.</mrow>
-				</md>
-			Para encontrar <m>r</m> y <m>s</m> tales que <m>ar + bs = d</m>, empezamos con la última ecuación y sustituímos los resultados obtenidos de las ecuaciones anteriores:
-				<md>
-					<mrow>d &amp; = r_n</mrow>
-					<mrow>&amp; = r_{n - 2} - r_{n - 1} q_n</mrow>
-					<mrow>&amp; = r_{n - 2} - q_n( r_{n - 3} - q_{n - 1} r_{n - 2} )</mrow>
-					<mrow>&amp; = -q_n r_{n - 3} + ( 1+ q_n q_{n-1} ) r_{n - 2} </mrow>
-					<mrow>&amp; \vdots </mrow>
-					<mrow>&amp; = ra + sb.</mrow>
-				</md>
-			El algoritmo que acabamos de usar para encontrar el máximo común divisor <m>d</m> de dos enteros <m>a</m> y <m>b</m> y escribir <m>d</m> como combinación lineal de <m>a</m> y <m>b</m> se conoce como el <term>algoritmo de Euclides</term><idx><h>algoritmo de Euclides</h></idx><idx><h>Algoritmo</h><h>de Euclides</h></idx>.</p> 
 
-		</subsection>
+			<example xml:id="example-integers-induction-divisible">
+				<p>O inteiro <m>10^{n + 1} + 3 \cdot 10^n + 5</m> é divisível por 9 para todo <m>n \in {\mathbb N}</m>.  Para <m>n = 1</m>, 
+					<me>10^{1 + 1} + 3 \cdot 10 + 5 = 135 = 9 \cdot 15</me>
+				é divisível por 9.  Suponhamos que <m>10^{k + 1} + 3 \cdot 10^k + 5</m> é divisível por 9 para <m>k \geq 1</m>.  Então 
+					<md>
+						<mrow>10^{(k + 1) + 1} + 3 \cdot 10^{k + 1} + 5&amp; = 10^{k + 2} + 3 \cdot 10^{k + 1} + 50 - 45</mrow>
+						<mrow>&amp; = 10 (10^{k + 1} + 3 \cdot 10^{k} + 5) - 45</mrow>
+					</md>
+				é divisível por 9.</p>
+			</example>
 
-		<subsection  xml:id="integers-subsection-prime-numbers">
-			<title>Números Primos</title>
+			<example xml:id="example-integers-binomial-theorem">
+				<p>Demonstraremos o teorema do binômio por indução; ou seja, 
+					<me>(a + b)^n = \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k},</me>
+				onde <m>a</m> e <m>b</m> são números reais, <m>n \in \mathbb{N}</m>, y
+					<me>\binom{n}{k} = \frac{n!}{k! (n - k)!}</me>
+				é o coeficiente binomial.  <notation><usage>n!</usage><description><m>n</m> fatorial</description></notation><notation><usage>\binom{n}{k}</usage><description>coeficiente binomial <m>n!/(k!(n-k)!)</m></description></notation> Primeiro mostraremos que
+					<me>\binom{n + 1}{k} = \binom{n}{k} + \binom{n}{k - 1}.</me>
+				Este resultado é a consequência de 
+					<md>
+						<mrow>\binom{n}{k} + \binom{n}{k - 1} &amp; = \frac{n!}{k!(n - k)!} +\frac{n!}{(k-1)!(n - k + 1)!}</mrow>
+						<mrow>&amp; = \frac{(n + 1)!}{k!(n + 1 - k)!}</mrow>
+						<mrow>&amp; =\binom{n + 1}{k}.</mrow>
+					</md>
+				Se <m>n = 1</m>, o teorema do binômio é fácil de verificar. Agora suponhamos que o resultado é verdadeiro para  <m>n</m> maior ou igual a 1.  Então
+					<md>
+						<mrow>(a + b)^{n + 1} &amp; = (a + b)(a + b)^n</mrow>
+						<mrow>&amp; = (a + b) \left( \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k}\right)</mrow>
+						<mrow>&amp; = \sum_{k = 0}^{n} \binom{n}{k} a^{k + 1} b^{n - k} + \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n + 1 - k}</mrow>
+						<mrow>&amp; = a^{n + 1} + \sum_{k = 1}^{n} \binom{n}{k - 1} a^{k} b^{n + 1 - k} + \sum_{k = 1}^{n} \binom{n}{k}  a^k b^{n + 1 - k} + b^{n + 1}</mrow>
+						<mrow>&amp;  = a^{n + 1} + \sum_{k = 1}^{n} \left[ \binom{n}{k - 1} + \binom{n}{k} \right]a^k b^{n + 1 - k} + b^{n + 1}</mrow>
+						<mrow>&amp;  = \sum_{k = 0}^{n + 1}   \binom{n + 1}{k} a^k b^{n + 1- k}.</mrow>
+					</md></p>
+			</example>
+	 
+			<p>Temos uma proposição equivalente ao Primeiro Princípio de Indução que as vezes será necessaria.</p>
+	 
 
-			<p>Sea <m>p</m> un entero tal que <m>p \gt 1</m>.  Decimos que <m>p</m> es un <term>número primo</term><idx><h>Entero primo</h></idx>, o simplemente <m>p</m> es <term>primo</term>, si y solo si los únicos números enteros positivos que dividen a <m>p</m> son 1 y el mismo <m>p</m>.  Un entero <m>n \gt 1</m> que no es primo se llama <term>compuesto</term><idx><h>Entero compuesto</h></idx>.</p>
-
-			<lemma xml:id="theorem-integers-prime-divisor">
-				<title>Euclides</title>
-				
+			<principle xml:id="principle-integers-second-pmi">
+				<title>Segundo Princípio de Indução</title>
+				<idx><h>Induccion</h><h>segundo princípio de</h></idx>
 				<statement>
-					<p>Sean <m>a</m> y <m>b</m> enteros y <m>p</m> un número primo.  Si <m>p \mid ab</m>, entonces ya sea <m>p \mid a</m> o <m>p \mid b</m>.</p>
+					<p>Seja <m>S(n)</m> uma afirmação sobre inteiros para <m>n \in {\mathbb N}</m> e suponhamos que <m>S(n_0)</m> é verdadeira para algum inteiro  <m>n_0</m>.  Se <m>S(n_0), S(n_0 + 1), \ldots, S(k)</m> implican <m>S(k + 1)</m> para <m>k \geq n_0</m>, então <m>S(n)</m> é verdadeira para todos os inteiros <m>n \geq n_0</m>. </p>
+				</statement>
+			</principle>		
+
+	<!-- wording change.  Suggested by P. Diethelm.  TWJ 22/4/2013 -->
+	 
+			<p>Um subconjunto <m>S</m> de <m>{\mathbb Z}</m> está <term>bem-ordenado</term><idx><h>Conjunto bem-ordenado</h></idx> se todo subconjunto não vazio de <m>S</m> contém um menor elemento.  Note que o conjunto <m>{\mathbb Z}</m> não está bem-ordenado pois não contém um elemento mínimo.  Os números naturais no entanto, sim estão bem-ordenados.</p> 
+	 
+			<principle>
+				<title>Princípio da Bem-Ordem</title>
+				<statement>
+					<p>O conjunto dos números naturais está bem-ordenado.</p>
+				</statement>
+			</principle>		
+	 
+			<p>O Princípio da Bem-Ordem é equivalente ao Princípio de Indução.</p> 
+	 
+
+			<lemma xml:id="lemma-integers-smallest-number">
+				<statement>
+					<p>O princípio de Indução implica que <m>1</m> é o menor número natural positivo.</p>
 				</statement>
 				<proof>
-					<p>Supongamos que <m>p</m> no divide a <m>a</m>.  Debemos mostrar que <m>p \mid b</m>. Como <m>\gcd( a, p ) = 1</m>, existen enteros <m>r</m> y <m>s</m> tales que <m>ar + ps = 1</m>.  Así
-						<me>b = b(ar + ps) = (ab)r + p(bs).</me>
-					Como <m>p</m> divide tanto a <m>ab</m> como a sí mismo, <m>p</m> divide a <m>b = (ab)r + p(bs)</m>.</p>
+					<p>Seja <m>S = \{ n \in {\mathbb N} : n \geq 1 \}</m>. Então <m>1 \in S</m>. Suponhamos que <m>n \in S</m>. Como <m>0 \lt 1</m>, temos <m>n = n + 0 \lt n + 1</m>.  Portanto, <m>1 \leq n \lt n + 1</m>.  Assim, se <m>n \in S</m>, então <m>n + 1</m> também deve estar em <m>S</m>, e pelo Princípio de Indução,  <m>S = \mathbb N</m>.</p>
 				</proof>
 			</lemma>
 
-			<theorem xml:id="theorem-integers-infinite-primes">
-				<title>Euclides</title>
+	<!--  Theorem reworded for clarity.  TWJ 12/17/2011 -->
+	<!--  Suggested by K. Halasz and R. Beezer. -->
+
+			<theorem xml:id="theorem-integers-pmi-implies-pwo">
 				<statement>
-					<p>Existe una cantidad infinita de números primos.</p>
+					<p>O Princípio de Indução implica o Princípio da Bem-Ordem.  Ou seja, todo subconjunto não vazio de <m>\mathbb N</m> contém um menor elemento.</p>
 				</statement>
 				<proof>
-					<p>Demostraremos este teorema por contradicción.  Supongamos que existe solo una cantidad finita de primos, digamos <m>p_1, p_2, \ldots, p_n</m>.  Sea <m>P = p_1  p_2  \cdots  p_n + 1</m>.    Entonces <m>P</m> debe ser divisible por algún <m>p_i</m> con <m>1 \leq i \leq n</m>. En este caso, <m>p_i</m> debe dividir a <m>P - p_1 p_2 \cdots p_n = 1</m>, lo que es una contradicción.  Luego, ya sea  <m>P</m> es primo o existe un primo adicional <m>p \neq p_i</m> que divide a <m>P</m>.</p>
+					<p>Devemos mostrar que se <m>S</m> é um subconjunto não vazio dos números naturais, então <m>S</m> contém um elemento mínimo.  Se <m>S</m> contém a  1, o teorema é verdadeiro pelo Lema<nbsp /><xref ref="lemma-integers-smallest-number" />. Suponhamos que se <m>S</m> contém um inteiro <m>k</m> tal que <m>1 \leq k \leq n</m>, então <m>S</m> contém um elemento mínimo. Mostraremos que se um conjunto <m>S</m> contém um inteiro menor ou igual a <m>n + 1</m>, então <m>S</m> tem um elemento mínimo.  Se <m>S</m> não contém um elemento menor a <m>n+1</m>, então <m>n+1</m> é o menor inteiro em  <m>S</m>.  Do contrário, <m>S</m> deve contener um inteiro menor ou igual a <m>n</m>. Nesse caso, pela hipótese de indução, <m>S</m> contém um elemento mínimo.</p>
 				</proof>
 			</theorem>
 
-<!-- Error in proof fixed.  Suggested by R. Rossi.  TWJ 12/19/2011 -->
+	<!-- wording change.  Suggested by P. Diethelm.  TWJ 22/4/2013 -->
+	 
+			<p>A Indução pode ser muy útil na formulação de definições. Por exemplo, há duas formas de definir <m>n!</m>, o fatorial de um inteiro positivo <m>n</m>. 
+				<ul>
+	 
+					<li><p>A definição <em>explícita</em>: <m>n! = 1 \cdot 2 \cdot 3 \cdots (n - 1) \cdot n</m>.</p></li>  
+	 
+					<li><p>A definição <em>inductiva</em> ou <em>recursiva</em>: <m>1! = 1</m> e <m>n! = n(n - 1)!</m> para <m>n \gt 1</m>.</p></li> 
+	 
+			</ul>Olhar um problema de forma recursiva, em vez de explícita, frequentemente resulta numa melhor compreensão de situações complexas.</p>
 
-			<theorem xml:id="theorem-fund-theorem-arithmetic">
-				<title>Teorema Fundamental de la Aritmética</title>
-				<idx><h>Teorema Fundamental</h><h>de la Aritmética</h></idx>
-				<statement>
-					<p>Sea <m>n</m> un entero tal que <m>n \gt 1</m>. Entonces
-						<me>n = p_1 p_2 \cdots p_k,</me>
-					con <m>p_1, \ldots, p_k</m> primos (no necesariamente distintos).  Más aún, esta factorización es única; es decir, si 
-						<me>n = q_1 q_2 \cdots q_l,</me>
-					entonces <m>k = l</m> y los <m>q_i</m> son iguales a los <m>p_i</m> posiblemente en otro orden.</p>
-				</statement>
-				<proof>
-					<p><em>Unicidad.</em>  Para demostrar la unicidad procederemos por inducción en <m>n</m>. El teorema es claramente verdadero para <m>n = 2</m> pues en este caso <m>n</m> es primo.  Ahora supongamos que el resultado se cumple para todos los enteros <m>m</m> tales que <m>1 \leq m \lt n</m>, y 
-						<me>n = p_1 p_2 \cdots p_k = q_1 q_2 \cdots q_l,</me>
-					con <m>p_1 \leq p_2 \leq \cdots \leq p_k</m> y <m>q_1 \leq q_2 \leq \cdots \leq q_l</m>. Por el Lema<nbsp /><xref ref="theorem-integers-prime-divisor" />, <m>p_1  \mid  q_i</m> para ciertos <m>i = 1, \ldots, l</m> y <m>q_1  \mid  p_j</m> para ciertos <m>j = 1, \ldots, k</m>.  Como todos los <m>p_i</m> y los <m>q_i</m> son primos, <m>p_1 = q_i</m> y  <m>q_1 = p_j</m>. Luego, <m>p_1 = q_1</m> pues <m>p_1 \leq p_j = q_1 \leq q_i = p_1</m>.  Por la hipótesis de inducción, 
-						<me>n' = p_2 \cdots p_k = q_2 \cdots q_l</me>
-					tiene una factorización única.  Luego, <m>k = l</m> y <m>q_i = p_i</m> para <m>i = 1, \ldots, k</m>.</p>
+		</section>
 
-					<p><em>Existencia.</em> Para demostrar la existencia, supongamos que existe algún entero que no puede ser escrito como producto de primos.  Sea <m>S</m> el conjunto de tales números.  Por el Principio del Buen-Orden, <m>S</m> contiene un elemento mínimo, digamos <m>a</m>.  Si los únicos factores positivos de <m>a</m> son <m>a</m> y 1, entonces <m>a</m> es primo, lo que es una contradicción.  Luego, <m>a = a_1 a_2</m> con <m>1 \lt a_1 \lt a</m> y <m>1 \lt a_2 \lt a</m>.  Ni <m>a_1\in S</m> ni <m>a_2 \in S</m>, pues <m>a</m> es el menor elemento de <m>S</m>.  Así 
+		<section xml:id="section-division-algorithm">
+			<title>O Algoritmo de Divisão</title>
+
+			<introduction>
+
+				<p>Uma aplicação do Princípio da Bem-Ordem que usaremos frequentemente é o algoritmo de divisão.</p> 
+
+				<theorem xml:id="theorem-integers-division_algorithm">
+					<title>Algoritmo de Divisão</title>
+					<idx><h>Algoritmo de divisão</h><h>para inteiros</h></idx>
+					<statement>
+						<p>Sejam <m>a</m> e <m>b</m> números inteiros, com <m>b \gt 0</m>.  Então existem inteiros únicos <m>q</m> e <m>r</m> tais que 
+							<me>a = bq + r</me>
+						onde <m>0 \leq r \lt b</m>.</p>
+					</statement>
+					<proof>
+						<p>Este é um exemplo perfeito de uma demonstração de existência e unicidade.  Devemos primeiro demonstrar que os números <m>q</m> e <m>r</m> realmente existem. Depois devemos mostrar que se  <m>q'</m> e <m>r'</m> também são tais números, então <m>q = q'</m> e <m>r = r'</m>.</p>
+		 
+						<p><em>Existência de <m>q</m> e <m>r</m>.</em> Seja
+							<me>S = \{ a - bk : k \in {\mathbb Z} \text{ e } a - bk \geq 0 \}.</me>
+						Se <m>0 \in S</m>, então <m>b</m> divide a <m>a</m>, e podemos tomar <m>q = a/b</m> e <m>r = 0</m>.  Se <m>0 \notin S</m>, podemos usar o Princípio da Bem-Ordem.  Devemos primeiro mostrar que <m>S</m> é não vazio.  Se <m>a \gt 0</m>, então <m>a - b \cdot 0 \in S</m>. Se <m>a \lt 0</m>, então <m>a - b(2a) = a(1 - 2b) \in S</m>.  Em qualquer caso <m>S \neq \emptyset</m>.  Pelo Princípio da Bem-Ordem, <m>S</m> tem um elemento mínimo, digamos <m>r = a - bq</m>. Portanto, <m>a = bq + r</m>, <m>r \geq 0</m>. Mostremos agora que <m>r \lt b</m>. Suponhamos que <m>r \gt b</m>. Então   
+							<me>a - b(q + 1)= a - bq - b = r - b \gt 0.</me>
+						Neste caso tendríamos <m>a - b(q + 1)</m> no conjunto <m>S</m>. Mas então <m>a - b(q + 1) \lt a - bq</m>, o que nos trazeria a uma contradição do fato que  <m>r = a - bq</m> é o menor elemento de <m>S</m>. Assim <m>r \leq b</m>.  Como <m>0 \notin S</m>, <m>r \neq b</m> e assim <m>r \lt b</m>.</p>
+		 
+						<p><em>Unicidade de <m>q</m> e <m>r</m>.</em> Suponhamos que existem inteiros <m>r</m>, <m>r'</m>, <m>q</m>, e <m>q'</m> tais que
+							<me>a = bq + r, 0 \leq r \lt b \quad \text{y}\quad a = bq' + r', 0 \leq r' \lt b.</me>
+						Então <m> bq + r =  bq' + r'</m>.  Suponhamos que <m>r' \geq r</m>.  Da última equação temos <m>b(q - q') = r' - r</m>; portanto, <m>b</m> deve dividir a <m>r' - r</m> e <m>0 \leq r'- r \leq r' \lt b</m>.  Isso é possível só se <m>r' - r = 0</m>.  Logo, <m>r = r'</m> e  <m>q = q'</m>.</p>
+					</proof>
+				</theorem>
+
+					<p>Sejam <m>a</m> e <m>b</m> inteiros.  Se <m>b = ak</m> para algum inteiro <m>k</m>, escreveremos <m>a \mid b</m>.  Um inteiro <m>d</m> se chama <term>divisor comum</term> de <m>a</m> e <m>b</m> se <m>d \mid a</m> e <m>d \mid b</m>.  O <term>máximo divisor comum</term><idx><h>Máximo divisor comum</h><h>de dois inteiros</h></idx> dos inteiros <m>a</m> e <m>b</m> é um inteiro positivo <m>d</m> tal que <m>d</m> é um divisor comum de <m>a</m> e <m>b</m> e se <m>d'</m> é qualquer outro divisor comum de <m>a</m> e <m>b</m>, então <m>d' \mid d</m>. <notation><usage>a \mid b</usage><description><m>a</m> divide a <m>b</m></description></notation><notation><usage>\gcd(a, b)</usage><description>máximo divisor comum de <m>a</m> e <m>b</m></description></notation>  Escreveremos <m>d = \gcd(a, b)</m>; por exemplo, <m>\gcd( 24, 36) = 12</m> e <m>\gcd(120, 102) = 6</m>.  Dizemos que dois inteiros <m>a</m> e <m>b</m> são <term>relativamente primos </term> se <m>\gcd( a, b ) = 1</m>.</p>
+
+				
+
+				<theorem xml:id="theorem-integers-gcd">
+					<statement>
+						<p>Sejam <m>a</m> e <m>b</m> inteiros distintos de zero. Então existem inteiros <m>r</m> e <m>s</m> tais que
+							<me>\gcd( a, b) = ar + bs.</me>
+						Alem disso, o máximo divisor comum de <m>a</m> e <m>b</m> é único.</p>
+					</statement>
+					<proof>
+						<p>Seja
+							<me>S = \{ am + bn : m, n \in {\mathbb Z} \text{ e } am + bn \gt 0 \}.</me>
+						Claramente, o conjunto <m>S</m> não é vazio; logo, pelo Princípio da Bem-Ordem <m>S</m> tem um elemento mínimo, digamos <m>d = ar + bs</m>.  Afirmamos que <m>d = \gcd( a, b)</m>.  Escreve <m>a = dq + r'</m> com  <m>0 \leq r' \lt d</m>. Se <m>r' \gt 0</m>, então <!-- r changed to r' - TWJ 1/31/2011 -->
+							<md>
+								<mrow>r'&amp; = a - dq</mrow>
+								<mrow>&amp; = a - (ar + bs)q</mrow>
+								<mrow>&amp; = a - arq - bsq</mrow>
+								<mrow>&amp; = a( 1 - rq ) + b( -sq ),</mrow>
+							</md>
+						que está em <m>S</m>.  Mas isso estaria em contradição com o fato de que <m>d</m> é o menor  membro de <m>S</m>.  Logo, <m>r' = 0</m> e <m>d</m> divide a <m>a</m>.  Um argumento similar mostra que <m>d</m> divide a <m>b</m>.  Portanto, <m>d</m> é um divisor comum de <m>a</m> e <m>b</m>.</p>
+
+						<p>Suponhamos que <m>d'</m> é outro divisor comum de <m>a</m> e <m>b</m>, e queremos mostrar que <m>d' \mid d</m>. Se <m>a = d'h</m> e <m>b = d'k</m>, então
+							<me>d = ar + bs = d'hr + d'ks = d'(hr + ks).</me>
+						Ou seja <m>d'</m> divide a <m>d</m>. Logo, <m>d</m> é o único máximo divisor comum de <m>a</m> e <m>b</m>.</p>
+					</proof>
+					<!-- Notation error in proof fixed (pointed out by Rocco Rossi) - TWJ 9/13/2010 -->
+				</theorem>
+
+				<corollary xml:id="corollary-integers-coprime">
+					<statement>
+						<p>Sejam <m>a</m> e <m>b</m> inteiros relativamente primos. Então existem inteiros <m>r</m> e <m>s</m> tais que <m>ar + bs = 1</m>.</p>
+					</statement>
+				</corollary>
+
+			</introduction>
+
+			<subsection xml:id="integers-subsection-euclidean-algorithm">
+				<title>O Algoritmo de Euclides</title>
+
+				<p>Entre outras coisas, o Teorema<nbsp /><xref ref="theorem-integers-gcd" /> nos permite calcular o máximo divisor comum de dois inteiros.</p>
+
+
+				<example xml:id="example-integers-gcd">
+					<p>Calculemos o máximo divisor comum de <m>945</m> e <m>2415</m>.  Primeiro observemos que
 						<md>
-							<mrow>a_1 &amp; = p_1 \cdots p_r</mrow>
-							<mrow>a_2 &amp; = q_1 \cdots q_s.</mrow>
+							<mrow>2415 &amp; = 945 \cdot 2 + 525</mrow>
+							<mrow>945 &amp; = 525 \cdot 1 + 420</mrow>
+							<mrow>525 &amp; = 420 \cdot 1 + 105</mrow>
+							<mrow>420 &amp; = 105 \cdot 4 + 0.</mrow>
 						</md>
-					Por lo tanto,
-						<me>a = a_1 a_2 = p_1 \cdots p_r q_1 \cdots q_s.</me>
-					Así <m>a \notin S</m>, lo que es una contradicción.</p>
-				</proof>
-			</theorem>
+					Usando os passos de trás para frente, 105 divide a 420, 105 divide a 525, 105 divide a 945, e 105 divide a 2415.  Logo, 105 divide tanto a 945 como a 2415.  Se <m>d</m> foi outro divisor comum de 945 e 2415, então <m>d</m> também dividiria a 105.  Portanto, <m>\gcd( 945, 2415 ) = 105</m>.</p>
 
-		</subsection>
+					<p>Recorrendo as equações anteriores de baixo para cima, podemos obter números inteiros <m>r</m> e <m>s</m> tais que <m>945 r + 2415 s = 105</m>.  Note que  
+						<md>
+							<mrow>105 &amp; = 525 + (-1) \cdot 420</mrow>
+							<mrow>&amp; = 525 + (-1) \cdot [945 + (-1) \cdot 525]</mrow>
+							<mrow>&amp; = 2 \cdot 525 + (-1) \cdot 945</mrow>
+							<mrow>&amp; = 2 \cdot [2415 + (-2) \cdot 945] + (-1) \cdot 945</mrow>
+							<mrow>&amp; = 2 \cdot 2415 + (-5) \cdot 945.</mrow>
+						</md>
+					Assim <m>r = -5</m> e <m>s= 2</m>.  Note que <m>r</m> e <m>s</m> não são únicos, pois por exemplo <m>r = 41</m> e <m>s = -16</m> também funcionariam.</p>
+				</example>
 
-		<subsection  xml:id="integers-subsection-historical-note">
-			<title>Nota Histórica</title>
-			
-			<p>Los números primos ya fueron estudiados por los antiguos Griegos.  Dos resultados importantes de la Antigüedad son la demostración de Euclides de que existe una infinidad de primos y la criba de Ertóstenes, un método para calcular todos los números primos menores a un entero positivo dado.  Un problema en teoría de números es encontrar una función <m>f</m> tal que <m>f(n)</m> es primo para cada entero <m>n</m>. Pierre Fermat (1601?<ndash />1665) conjeturó que <m>2^{2^n} + 1</m> era primo para todo <m>n</m>, pero posteriormente Leonhard Euler (1707<ndash />1783) demostró que
-				<me>2^{2^5} + 1 = \text{4,294,967,297}</me>
-			es un número compuesto. Una de las muchas conjeturas no demostradas sobre números primos es la conjetura de Goldbach.  En una carta a Euler en 1742, Christian Goldbach enunció la conjetura que todo entero positivo con la excepción de 2 parecía ser suma de dos primos:  <m>4 = 2 + 2</m>, <m>6 = 3 + 3</m>, <m>8 =3 + 5</m>, <m>\ldots</m>.  Si bien la conjetura ha sido verificada para todos los números hasta <m>4 \times 10^{18}</m>, aún no ha sido demostrada en general.  Como los números primos tienen un rol importante en la criptografía de clave pública, hay actualmente gran interés en determinar si un número grande es primo o no.</p>
-
-			<xi:include href="./sage/integers-info.xml" />
-
-		</subsection>
-
-		<!--Updated the numbers for which Goldbach's conjcture has been verified.  TWJ 4/7/2014-->
-
-	</section>
-
-<xi:include href="./exercises/integers.xml" />
-
-	<exercises xml:id="integers-exercises-programming">
-		<title>Ejercicios de Programación</title>
- 
-		<exercise>
-			<title>La Criba de Eratóstenes</title>
-			<idx><h>Criba de Eratóstenes</h></idx>  
-			<statement>
-				<p>Un método para calcular todos los números primos menores a un cierto entero positivo dado <m>N</m> es listar todos los números <m>n</m> tales que <m>1 \lt n \lt N</m>.  Comience eleminando todos los múltiplos de 2.  Después elimine todos los múltiplos de 3. Ahora elimine todos los múltiplos de 5.  Note que 4 ya ha sido eliminado.  Continúe de esta manera, notando que no es necesario llegar hasta <m>N</m>; es suficiente con parar en <m>\sqrt{N}</m>. Usando este método, calcule todos los números primos menores a <m>N = 250</m>.  También podemos usar este método para encontrar todos los enteros que son relativamente primos a un entero <m>N</m>.  Simplemente elimine los factores primos de <m>N</m> y todos sus múltiplos.  Usando este método, encuentre todos los números que son relativamente primos con <m>N= 120</m>.  Usando la Criba de Eratóstenes, escriba un programa que calcule todos los primos menores que un entero <m>N</m>. </p>
-			</statement>
-		</exercise>
-
-		<exercise>
-			<idx><h>Función de Ackermann</h></idx>
-			<statement>
-				<p>Sea <m>{\mathbb N}^0 = {\mathbb N} \cup \{ 0 \}</m>. La función de Ackermann es la función <m>A :{\mathbb N}^0 \times {\mathbb N}^0 \rightarrow {\mathbb N}^0</m> definida por las ecuaciones
-					<md>
-						<mrow>A(0, y) &amp; = y + 1,</mrow>
-						<mrow>A(x + 1, 0) &amp; = A(x, 1),</mrow>
-						<mrow>A(x + 1, y + 1) &amp; = A(x, A(x + 1, y)).</mrow>
+				<p>Para calcular <m>\gcd(a,b) = d</m>, estamos usando sucessivas divisões para obter uma sucessão decrescente de inteiros positivos <m>r_1 \gt r_2 \gt \cdots \gt r_n = d</m>; ou seja,
+					<md><mrow>b &amp; = a q_1 + r_1</mrow>
+						<mrow>a &amp; = r_1 q_2 + r_2</mrow>
+						<mrow>r_1 &amp; = r_2 q_3 + r_3</mrow>
+						<mrow>&amp; \vdots </mrow>
+						<mrow>r_{n - 2} &amp; = r_{n - 1} q_{n} + r_{n}</mrow>
+						<mrow>r_{n - 1} &amp; = r_n q_{n + 1}.</mrow>
 					</md>
-				Use esta definición para calcular <m>A(3, 1)</m>.  Escriba un programa para evaluar la función de Ackermann.  Modifique el programa para que cuente el número de comandos ejecutados en el programa cuando se evalúa la función de Ackermann.  ¿Cuántos comandos se ejecutan en la evaluación de <m>A(4, 1)</m>?  ¿<m>A(5, 1)</m>?</p>
-			</statement>
-		</exercise>
+				Para encontrar <m>r</m> e <m>s</m> tais que <m>ar + bs = d</m>, começamos com a última equação e substituímos os resultados obtidos das equações anteriores:
+					<md>
+						<mrow>d &amp; = r_n</mrow>
+						<mrow>&amp; = r_{n - 2} - r_{n - 1} q_n</mrow>
+						<mrow>&amp; = r_{n - 2} - q_n( r_{n - 3} - q_{n - 1} r_{n - 2} )</mrow>
+						<mrow>&amp; = -q_n r_{n - 3} + ( 1+ q_n q_{n-1} ) r_{n - 2} </mrow>
+						<mrow>&amp; \vdots </mrow>
+						<mrow>&amp; = ra + sb.</mrow>
+					</md>
+				O algoritmo que acabamos de usar para encontrar o máximo divisor comum <m>d</m> de dois inteiros <m>a</m> e <m>b</m> e escrever <m>d</m> como combinação linear de <m>a</m> e <m>b</m> se conhece como o <term>algoritmo de Euclides</term><idx><h>algoritmo de Euclides</h></idx><idx><h>Algoritmo</h><h>de Euclides</h></idx>.</p> 
 
-		<exercise>
-			<statement>
-				<p>Escriba un programa que implemente el algoritmo de Euclides.  El programa debiese aceptar dos enteros positivos <m>a</m> y <m>b</m> como entrada y la salida debiese ser tanto <m>\gcd( a,b)</m> como enteros <m>r</m> y <m>s</m> tales que 
+			</subsection>
+
+			<subsection  xml:id="integers-subsection-prime-numbers">
+				<title>Números Primos</title>
+
+				<p>Seja <m>p</m> um inteiro tal que <m>p \gt 1</m>.  Dizemos que <m>p</m> é um <term>número primo</term><idx><h>Inteiro primo</h></idx>, ou simplesmente <m>p</m> é <term>primo</term>, se e só se os únicos números inteiros positivos que dividem a <m>p</m> são 1 e o mesmo <m>p</m>.  Um inteiro <m>n \gt 1</m> que não é primo se chama <term>composto</term><idx><h>Inteiro composto</h></idx>.</p>
+
+				<lemma xml:id="theorem-integers-prime-divisor">
+					<title>Euclides</title>
+					
+					<statement>
+						<p>Sejam <m>a</m> e <m>b</m> inteiros e <m>p</m> um número primo.  Se <m>p \mid ab</m>, então já seja <m>p \mid a</m> ou <m>p \mid b</m>.</p>
+					</statement>
+					<proof>
+						<p>Suponhamos que <m>p</m> não divide a <m>a</m>.  Devemos mostrar que <m>p \mid b</m>. Como <m>\gcd( a, p ) = 1</m>, existem inteiros <m>r</m> e <m>s</m> tais que <m>ar + ps = 1</m>.  Assim
+							<me>b = b(ar + ps) = (ab)r + p(bs).</me>
+						Como <m>p</m> divide tanto <m>ab</m> como si mesmo, <m>p</m> divide <m>b = (ab)r + p(bs)</m>.</p>
+					</proof>
+				</lemma>
+
+				<theorem xml:id="theorem-integers-infinite-primes">
+					<title>Euclides</title>
+					<statement>
+						<p>Existe uma quantidade infinita de números primos.</p>
+					</statement>
+					<proof>
+						<p>Demonstraremos este teorema por contradição.  Suponhamos que existe só uma quantidade finita de primos, digamos <m>p_1, p_2, \ldots, p_n</m>.  Seja <m>P = p_1  p_2  \cdots  p_n + 1</m>.    Então <m>P</m> deve ser divisível por algum <m>p_i</m> com <m>1 \leq i \leq n</m>. Neste caso, <m>p_i</m> deve dividir <m>P - p_1 p_2 \cdots p_n = 1</m>, o que é uma contradição.  Logo, já seja  <m>P</m> é primo ou existe um primo adicional <m>p \neq p_i</m> que divide <m>P</m>.</p>
+					</proof>
+				</theorem>
+
+	<!-- Error in proof fixed.  Suggested by R. Rossi.  TWJ 12/19/2011 -->
+
+				<theorem xml:id="theorem-fund-theorem-arithmetic">
+					<title>Teorema Fundamental da Aritmética</title>
+					<idx><h>Teorema Fundamental</h><h>da Aritmética</h></idx>
+					<statement>
+						<p>Seja <m>n</m> um inteiro tal que <m>n \gt 1</m>. Então
+							<me>n = p_1 p_2 \cdots p_k,</me>
+						com <m>p_1, \ldots, p_k</m> primos (não necessariamente distintos).  Alem disso, esta fatorização é única; ou seja, se 
+							<me>n = q_1 q_2 \cdots q_l,</me>
+						então <m>k = l</m> e os <m>q_i</m> são iguais aos <m>p_i</m> possivelmente noutra ordem.</p>
+					</statement>
+					<proof>
+						<p><em>Unicidade.</em>  Para demonstrar a unicidade procederemos por indução em <m>n</m>. O teorema é claramente verdadeiro para <m>n = 2</m> pois neste caso <m>n</m> é primo.  Agora suponhamos que o resultado se cumpre para todos os inteiros <m>m</m> tais que <m>1 \leq m \lt n</m>, e 
+							<me>n = p_1 p_2 \cdots p_k = q_1 q_2 \cdots q_l,</me>
+						com <m>p_1 \leq p_2 \leq \cdots \leq p_k</m> e <m>q_1 \leq q_2 \leq \cdots \leq q_l</m>. Pelo Lema<nbsp /><xref ref="theorem-integers-prime-divisor" />, <m>p_1  \mid  q_i</m> para certos <m>i = 1, \ldots, l</m> e <m>q_1  \mid  p_j</m> para certos <m>j = 1, \ldots, k</m>.  Como todos os <m>p_i</m> e os <m>q_i</m> são primos, <m>p_1 = q_i</m> e  <m>q_1 = p_j</m>. Logo, <m>p_1 = q_1</m> pois <m>p_1 \leq p_j = q_1 \leq q_i = p_1</m>.  Por a hipótese de indução, 
+							<me>n' = p_2 \cdots p_k = q_2 \cdots q_l</me>
+						tem uma fatorização única.  Logo, <m>k = l</m> e <m>q_i = p_i</m> para <m>i = 1, \ldots, k</m>.</p>
+
+						<p><em>Existência.</em> Para demonstrar a existência, suponhamos que existe algum inteiro que não pode ser escrito como produto de primos.  Seja <m>S</m> o conjunto de tais números.  Pelo Princípio da Bem-Ordem, <m>S</m> contém um elemento mínimo, digamos <m>a</m>.  Se os únicos fatores positivos de <m>a</m> são <m>a</m> e 1, então <m>a</m> é primo, o que é uma contradição.  Logo, <m>a = a_1 a_2</m> com <m>1 \lt a_1 \lt a</m> e <m>1 \lt a_2 \lt a</m>.  Nem <m>a_1\in S</m> nem <m>a_2 \in S</m>, pois <m>a</m> é o menor elemento de <m>S</m>.  Assim 
+							<md>
+								<mrow>a_1 &amp; = p_1 \cdots p_r</mrow>
+								<mrow>a_2 &amp; = q_1 \cdots q_s.</mrow>
+							</md>
+						Portanto,
+							<me>a = a_1 a_2 = p_1 \cdots p_r q_1 \cdots q_s.</me>
+						Assim <m>a \notin S</m>, o que é uma contradição.</p>
+					</proof>
+				</theorem>
+
+			</subsection>
+
+			<subsection  xml:id="integers-subsection-historical-note">
+				<title>Nota Histórica</title>
+				
+				<p>Os números primos já foram estudados pelos antigos Griegos.  Dos resultados importantes da Antiguidade são a demonstração de Euclides de que existe uma infinidade de primos e a crivo de Eratóstenes, um método para calcular todos os números primos menores do que um inteiro positivo dado.  Um problema em teoria de números é encontrar uma função <m>f</m> tal que <m>f(n)</m> é primo para cada inteiro <m>n</m>. Pierre Fermat (1601?<ndash />1665) conjeturou que <m>2^{2^n} + 1</m> era primo para todo <m>n</m>, mas posteriormente Leonhard Euler (1707<ndash />1783) demonstrou que
+					<me>2^{2^5} + 1 = \text{4,294,967,297}</me>
+				é um número composto. Uma das muitas conjeturas não demonstradas sobre números primos é a conjetura de Goldbach.  Numa carta ao Euler em 1742, Christian Goldbach enunciou a conjetura que todo inteiro positivo com a excepção de 2 parecia ser uma soma de dois primos:  <m>4 = 2 + 2</m>, <m>6 = 3 + 3</m>, <m>8 =3 + 5</m>, <m>\ldots</m>.  Enquanto a conjetura foi verificada para todos os números até <m>4 \times 10^{18}</m>, ainda não foi demonstrada em geral.  Como os números primos têm um papel importante na criptografia de chave pública, há atualmente grande interesse em determinar se um número grande é primo ou não.</p>
+
+				<xi:include href="./sage/integers-info.xml" />
+
+			</subsection>
+
+			<!--Updated the numbers for which Goldbach's conjcture has been verified.  TWJ 4/7/2014-->
+
+		</section>
+
+	<xi:include href="./exercises/integers.xml" />
+
+		<exercises xml:id="integers-exercises-programming">
+			<title>Exercícios de Programação</title>
+	 
+			<exercise>
+				<title>A Crivo de Eratóstenes</title>
+				<idx><h>Crivo de Eratóstenes</h></idx>  
+				<statement>
+					<p>Um método para calcular todos os números primos menores do que um certo inteiro positivo dado <m>N</m> é listar todos os números <m>n</m> tais que <m>1 \lt n \lt N</m>.  Comece eleminando todos os múltiplos de 2.  Depois elimine todos os múltiplos de 3. Agora elimine todos os múltiplos de 5.  Note que 4 já foi eliminado.  Continue desta maneira, notando que não é necessario chegar até <m>N</m>; é suficiente parar no <m>\sqrt{N}</m>. Usando este método, calcule todos os números primos menores do que <m>N = 250</m>.  Também podemos usar este método para encontrar todos os inteiros que são relativamente primos a um inteiro <m>N</m>.  Simplemente elimine os fatores primos de <m>N</m> e todos seus múltiplos.  Usando este método, encontre todos os números que são relativamente primos com <m>N= 120</m>.  Usando a Crivo de Eratóstenes, escreva um programa que calcule todos os primos menores do que um inteiro <m>N</m>. </p>
+				</statement>
+			</exercise>
+
+			<exercise>
+				<idx><h>Função de Ackermann</h></idx>
+				<statement>
+					<p>Seja <m>{\mathbb N}^0 = {\mathbb N} \cup \{ 0 \}</m>. A função de Ackermann é a função <m>A :{\mathbb N}^0 \times {\mathbb N}^0 \rightarrow {\mathbb N}^0</m> definida pelas equações
+						<md>
+							<mrow>A(0, y) &amp; = y + 1,</mrow>
+							<mrow>A(x + 1, 0) &amp; = A(x, 1),</mrow>
+							<mrow>A(x + 1, y + 1) &amp; = A(x, A(x + 1, y)).</mrow>
+						</md>
+					Use esta definição para calcular <m>A(3, 1)</m>.  Escreve um programa para avaliar a função de Ackermann.  Modifique o programa para que conta o número de comandos executados no programa quando se avalia a função de Ackermann.  Quantos comandos se executam na avaliação de <m>A(4, 1)</m>?  <m>A(5, 1)</m>?</p>
+				</statement>
+			</exercise>
+
+			<exercise>
+				<statement>
+					<p>Escreve um programa que implemente o algoritmo de Euclides.  O programa deve aceitar os inteiros positivos <m>a</m> e <m>b</m> como entrada e a saida deve ser tanto <m>\gcd( a,b)</m> como inteiros <m>r</m> e <m>s</m> tais que 
 					<me>\gcd( a,b) = ra + sb.</me></p>
 			</statement>
 		</exercise>
@@ -375,14 +375,14 @@
 <todo>Fix intro to references</todo>
 
 	<references xml:id="integers-references">
-			<title>Referencias y Lecturas Recomendadas</title>
+			<title>Referências e Leituras Recomendadas</title>
 <!-- References updated - TWJ 5/4/2010 -->
 
 <!--			<p>References [2], [3], and [4] are good sources for elementary number
 theory.</p> -->
 
 		<biblio type="raw"> <!-- was [1] -->
-		Brookshear, J. G. <title>Theory of Computation: Formal Languages, Automata, and Complexity</title>.  Benjamin/Cummings, Redwood City, CA, 1989. Muestra la relación entre computación teórica y teoría de conjuntos.</biblio>
+		Brookshear, J. G. <title>Theory of Computation: Formal Languages, Automata, and Complexity</title>.  Benjamin/Cummings, Redwood City, CA, 1989. Mostra a relação entre computação teórica e teoria de conjuntos.</biblio>
 
  		<biblio type="raw"> <!-- was [2] -->
 		<!-- Updated - TWJ 5/4/2010 -->
