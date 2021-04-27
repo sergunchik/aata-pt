@@ -12,13 +12,13 @@
 	<title>Classes Laterais e o Teorema de Lagrange</title>
 
 	<introduction>
-		<p>O Teorema de Lagrange, um dos resultados mais importantes na teoria de grupos finitos, diz que a ordem de um subgrupo deve dividir a ordem do grupo completo.  Este teorema entrega uma poderosa ferramenta para analizar os grupos finitos; ele dá uma ideia de exatamente quais tipos de subgrupos esperamos encontrar em um grupo finito.  A noção de classe lateral é essencial para a compreensão do Teorema de Lagrange.</p>
+		<p>O Teorema de Lagrange, um dos resultados mais importantes na teoria de grupos finitos, diz que a ordem de um subgrupo deve dividir a ordem do grupo completo.  Este teorema entrega uma poderosa ferramenta para analisar os grupos finitos; ele dá uma ideia de exatamente quais tipos de subgrupos esperamos encontrar em um grupo finito.  A noção de classe lateral é essencial para a compreensão do Teorema de Lagrange.</p>
 	</introduction>
 
 	<section xml:id="section-cosets">
 		<title>Classes Laterais</title>
 
-		<p>Seja <m>G</m> um grupo e <m>H</m> um subgrupo de <m>G</m>.  Defina uma <term>classe lateral esquerda</term><idx><h>Esquerda</h><h>classe lateral</h></idx> de <m>H</m> com <term>representante</term><idx><h>Representante</h><h>de clase lateral</h></idx> <m>g \in G</m> como o conjunto
+		<p>Seja <m>G</m> um grupo e <m>H</m> um subgrupo de <m>G</m>.  Defina uma <term>classe lateral esquerda</term><idx><h>Esquerda</h><h>classe lateral</h></idx> de <m>H</m> com <term>representante</term><idx><h>Representante</h><h>de classe lateral</h></idx> <m>g \in G</m> como o conjunto
 			<me>gH = \{ gh : h \in H \}.</me>
 		As <term>classes laterais direitas</term><idx><h>Direitas</h><h>classes laterais</h></idx> podem ser definidas similarmente como
 			<me>Hg = \{ hg : h \in H \}.</me>
@@ -111,7 +111,7 @@
 				<p>Seja <m>H</m> um subgrupo de um grupo <m>G</m>.  O número de classes laterais esquerdas de <m>H</m> em <m>G</m> é o mesmo que o número de classes laterais direitas de  <m>H</m> em <m>G</m>.</p>
 			</statement>
 			<proof>
-				<p>Sejam <m>{\mathcal L}_H</m> e  <m>{\mathcal R}_H</m> os conjuntos de classses laterais esquerdas e direitas respectivamente de <m>H</m> em <m>G</m>.  <notation><usage>\mathcal L_H</usage><description>o conjunto de classes laterais esquerdas de um subgrupo <m>H</m> em um grupo <m>G</m></description></notation><notation><usage>\mathcal R_H</usage><description>o conjunto de classes laterais direitas de um subgrupo <m>H</m> em um grupo <m>G</m></description></notation> Se podemos definir uma função bijetiva <m>\phi :  {\mathcal L}_H \rightarrow {\mathcal R}_H</m>, então teremos demonstrado o teorema.  Se <m>gH \in {\mathcal L}_H</m>, seja <m>\phi( gH ) = Hg^{-1}</m>.  Pelo Lema<nbsp /><xref ref="lemma-cosets-theorem-1" />, a função <m>\phi</m> está bem definida; isto é, se <m>g_1 H = g_2 H</m>, então <m>H g_1^{-1} = H g_2^{-1}</m>.  Para demonstrar que  <m>\phi</m> é 1-1, suponha que  
+				<p>Sejam <m>{\mathcal L}_H</m> e  <m>{\mathcal R}_H</m> os conjuntos de classes laterais esquerdas e direitas respectivamente de <m>H</m> em <m>G</m>.  <notation><usage>\mathcal L_H</usage><description>o conjunto de classes laterais esquerdas de um subgrupo <m>H</m> em um grupo <m>G</m></description></notation><notation><usage>\mathcal R_H</usage><description>o conjunto de classes laterais direitas de um subgrupo <m>H</m> em um grupo <m>G</m></description></notation> Se podemos definir uma função bijetiva <m>\phi :  {\mathcal L}_H \rightarrow {\mathcal R}_H</m>, então teremos demonstrado o teorema.  Se <m>gH \in {\mathcal L}_H</m>, seja <m>\phi( gH ) = Hg^{-1}</m>.  Pelo Lema<nbsp /><xref ref="lemma-cosets-theorem-1" />, a função <m>\phi</m> está bem definida; isto é, se <m>g_1 H = g_2 H</m>, então <m>H g_1^{-1} = H g_2^{-1}</m>.  Para demonstrar que  <m>\phi</m> é 1-1, suponha que  
 					<me>H g_1^{-1} = \phi( g_1 H ) = \phi( g_2 H ) = H g_2^{-1}.</me>
 				Novamente pelo Lema<nbsp /><xref ref="lemma-cosets-theorem-1" />, <m>g_1 H = g_2 H</m>.  A função <m>\phi</m> é sobrejetiva pois <m>\phi(g^{-1} H ) = H g</m>.</p>
 			</proof>
@@ -138,7 +138,7 @@
 				<p>Seja <m>G</m> um grupo finito e seja <m>H</m> um subgrupo de <m>G</m>.  Então <m>|G|/|H| = [G : H]</m> é o número de classes laterais esquerdas diferentes de <m>H</m> em <m>G</m>.  Em particular, o número de elementos em <m>H</m> deve dividir o número de elementos em <m>G</m>.</p>
 			</statement>
 			<proof>
-				<p>O grupo <m>G</m> está particionado em <m>[G : H]</m> classes laterais esquerdas diferentes.  Cada classe lateral esquerda tem <m>|H|</m> elementos; potanto, <m>|G| = [G : H] |H|</m>.</p>
+				<p>O grupo <m>G</m> está particionado em <m>[G : H]</m> classes laterais esquerdas diferentes.  Cada classe lateral esquerda tem <m>|H|</m> elementos; portanto, <m>|G| = [G : H] |H|</m>.</p>
 			</proof>
 		</theorem>
 
@@ -271,7 +271,7 @@
 		
 		<subsection xml:id="cosets-subsection-historical-note">
 			<title>Nota Histórica</title>
-				<p>Joseph-Louis Lagrange<idx><h>Lagrange, Joseph-Louis</h></idx> (1736<ndash />1813), nasceu en Torino, Italia, tinha origem franco-italiano. Seu talento  na matemática se tornou evidente desde muito jovem. Leonhard Euler<idx><h>Euler, Leonhard</h></idx> reconheceu suas habilidades quando Lagrange, que tinha somente 19 anos, mostrou a Euler um trabalho que havia realizado em cálculo variacional. Nesse ano foi nomeado profesor da Escola Real de Artilharia em Torino.  Aos 23 chegou a Academia de Berlim. Federico o Grande havia escrito a Lagrange proclamando que o <q>melhor rei da Europa</q> devia ter o <q>melhor matemático da Europa</q> em sua corte. Durante 20 anos Lagrange ocupou a posição deixada por seu mentor, Euler. Seus trabalhos incluem contribuições a teoria dos números, teoria dos grupos, física e mecânica, o cálculo variacional, a teoria das equações e as equações diferenciais. Junto com Laplace e Lavoisier, Lagrange foi uma das pessoas responsáveis por criar o sistema métrico. Lagrange teve uma grande influência no desenvolvimento da matemática, deixando muito para as próximas generações no que se diz respeito a exemplos e novos problemas a resolver.</p>
+				<p>Joseph-Louis Lagrange<idx><h>Lagrange, Joseph-Louis</h></idx> (1736<ndash />1813), nasceu em Turim, Itália, tinha origem franco-italiano. Seu talento  na matemática se tornou evidente desde muito jovem. Leonhard Euler<idx><h>Euler, Leonhard</h></idx> reconheceu suas habilidades quando Lagrange, que tinha somente 19 anos, mostrou a Euler um trabalho que havia realizado em cálculo variacional. Nesse ano foi nomeado professor da Escola Real de Artilharia em Turim.  Aos 23 chegou a Academia de Berlim. Federico o Grande havia escrito a Lagrange proclamando que o <q>melhor rei da Europa</q> devia ter o <q>melhor matemático da Europa</q> em sua corte. Durante 20 anos Lagrange ocupou a posição deixada por seu mentor, Euler. Seus trabalhos incluem contribuições a teoria dos números, teoria dos grupos, física e mecânica, o cálculo variacional, a teoria das equações e as equações diferenciais. Junto com Laplace e Lavoisier, Lagrange foi uma das pessoas responsáveis por criar o sistema métrico. Lagrange teve uma grande influência no desenvolvimento da matemática, deixando muito para as próximas gerações no que se diz respeito a exemplos e novos problemas a resolver.</p>
 		</subsection> 
 
 	</section>
