@@ -15,7 +15,7 @@
 
 	<exercise number="1">
 		<statement>
-			<p>Escriba las siguientes permutaciones en notación cíclica.
+			<p>Escreva as seguintes permutações em notação cíclica.
 				<ol cols="2">
  
 					<li><p><me>\begin{pmatrix}
@@ -48,7 +48,7 @@
 
 	<exercise number="2">
 	<statement>
-		<p>Escriba cada una de las siguientes como producto de ciclos disjuntos.
+		<p>Escreva cada uma das seguintes como produto de ciclos disjuntos.
 			<ol cols="2">
 	 
 				<li><p><m>(1345)(234)</m></p></li>
@@ -94,7 +94,7 @@
 
 	<exercise number="3">
 		<statement>
-			<p>Exprese las siguientes permutaciones como producto de transposiciones e identifíquelas como pares o impares.
+			<p>Expresse as seguintes permutações como produto de transposições e identifique-as como pares ou ímpares.
 				<ol cols="2">
  
 					<li><p><m>(14356)</m></p></li>
@@ -117,7 +117,7 @@
 
 	<exercise number="4">
 		<statement>
-			<p>Encuentre <m>(a_1, a_2, \ldots, a_n)^{-1}</m>.</p>
+			<p>Encontre <m>(a_1, a_2, \ldots, a_n)^{-1}</m>.</p>
 		</statement>
 		<hint>
 			<p><m>(a_1, a_2, \ldots, a_n)^{-1} = (a_1, a_{n}, a_{n-1}, \ldots, a_2)</m></p>
@@ -127,7 +127,7 @@
 
 	<exercise number="5">
 		<statement>
-			<p>Liste todos los subgrupos de <m>S_4</m>. Encuentre cada uno de los siguientes conjuntos. 
+			<p>Liste todos os subgrupos de <m>S_4</m>. Encontre cada um dos seguintes conjuntos.
 				<ol>
  
 					<li><p><m>\{ \sigma \in S_4 : \sigma(1) = 3 \}</m></p></li>
@@ -137,31 +137,31 @@
 					<li><p><m>\{ \sigma \in S_4 : \sigma(1) = 3</m> y <m>\sigma(2) = 2 \}</m></p></li>
  
 				</ol>
-			¿Es alguno de estos conjuntos un subgrupo de <m>S_4</m>?</p>
+			¿Algum destes conjuntos é um subgrupo de <m>S_4</m>?</p>
 		</statement>
 		<hint>
-			<p>(a) <m>\{ (13), (13)(24), (132), (134), (1324), (1342) \}</m> no es un subgrupo.</p>
+			<p>(a) <m>\{ (13), (13)(24), (132), (134), (1324), (1342) \}</m> não é um subgrupo.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="6">
 		<statement>
-			<p>Encuentre todos los subgrupos de <m>A_4</m>. ¿Cuál es el orden de cada uno de ellos?</p>
+			<p>Encontre todos os subgrupos de <m>A_4</m>. ¿Qual é a ordem de cada um deeles?</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="7">
 		<statement>
-			<p>Encuentre todos los posibles órdenes de elementos en <m>S_7</m> y en <m>A_7</m>.</p>
+			<p>Encontre todas as possíveis ordens de elementos em <m>S_7</m> e em <m>A_7</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="8">
 		<statement>
-			<p>Muestre que <m>A_{10}</m> contiene un elemento de orden 15.</p>
+			<p>Mostre que <m>A_{10}</m> contém um elemento de ordem 15.</p>
 		</statement>
 		<hint>
 			<p><m>(12345)(678)</m>.</p>
@@ -171,137 +171,137 @@
 
 	<exercise number="9">
 		<statement>
-			<p>¿Contiene <m>A_8</m> un elemento de orden 26?</p>
+			<p> <m>A_8</m> contém um elemento de ordem 26?</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="10">
 		<statement>
-			<p>Encuentre un elemento de orden maximal en <m>S_n</m> para <m>n = 3, \ldots, 10</m>.</p>
+			<p>Encontre um elemento de ordem maximal em <m>S_n</m> para <m>n = 3, \ldots, 10</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="11">
 		<statement>
-			<p>¿Cuáles son las posibles estructuras de ciclos de los elementos de <m>A_5</m>? ¿Y de <m>A_6</m>?</p>
+			<p>Quais são as possíveis estruturas de ciclos dos elementos de <m>A_5</m>? E de <m>A_6</m>?</p>
 		</statement>
 		<hint>
-			<p>Permutaciones de la forma 
+			<p>Permutações da forma
 				<me>(1), (a_1, a_2)(a_3, a_4), (a_1, a_2, a_3), (a_1, a_2, a_3, a_4, a_5)</me>
-			son posibles en <m>A_5</m>.</p>
+			são possíveis em <m>A_5</m>.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="12">
 		<statement>
-			<p>Sea <m>\sigma \in S_n</m> un elemento de orden <m>n</m>. Muestre que para todos los enteros <m>i</m> y <m>j</m>, <m>\sigma^i = \sigma^j</m> si y solo si <m>i \equiv j \pmod{n}</m>.</p>
+			<p>Seja <m>\sigma \in S_n</m> um elemento de ordem <m>n</m>. Mostre que para todos os inteiros <m>i</m> e <m>j</m>, <m>\sigma^i = \sigma^j</m> se e só se <m>i \equiv j \pmod{n}</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="13" xml:id="exercise-permute-order-product-cycles">
 		<statement>
-			<p>Sea <m>\sigma = \sigma_1 \cdots \sigma_m \in S_n</m> el producto disjunto de ciclos. Demuestre que el orden de <m>\sigma</m> es el mínimo común múltiplo de los largos de los ciclos <m>\sigma_1, \ldots, \sigma_m</m>.</p>
+			<p>Seja <m>\sigma = \sigma_1 \cdots \sigma_m \in S_n</m> o produto disjunto de ciclos. Demonstre que a ordem de <m>\sigma</m> é o mínimo múltiplo comum dos tamanhos dos ciclos <m>\sigma_1, \ldots, \sigma_m</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="14">
 		<statement>
-			<p>Usando notación cíclica, liste los elementos en <m>D_5</m>.  ¿Cuáles son <m>r</m> y <m>s</m>?  Escriba todo elemento como producto de <m>r</m> y <m>s</m>.</p>
+			<p>Usando notação cíclica, liste os elementos em <m>D_5</m>. Quais são <m>r</m> e <m>s</m>?  Escreva todo elemento como produto de <m>r</m> e <m>s</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="15">
 		<statement>
-			<p>Si las diagonales de un cubo están etiquetadas como en la Figura<nbsp/><xref ref="figure-motions"/>, ¿a qué movimiento del cubo corresponde la permutación <m>(12)(34)</m>? ¿Y las otras permutaciones de las diagonales?</p>
+			<p>Se as diagonais de um cubo estão numeradas como na Figura<nbsp/><xref ref="figure-motions"/>, a que movimento do cubo corresponde a permutação <m>(12)(34)</m>? E as outras permutações das diagonais?</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="16">
 		<statement>
-			<p>Encuentre el grupo de movimientos rígidos de un tetraedro.  Muestre que este es el mismo grupo que <m>A_4</m>.</p>
+			<p>Encontre o grupo de movimentos rígidos de um tetraedro. Mostre que este é o mesmo grupo que <m>A_4</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="17">
 		<statement>
-			<p>Demuestre que <m>S_n</m> es no abeliano para <m>n \geq 3</m>.</p>
+			<p>Demonstre que <m>S_n</m> é não abeliano para <m>n \geq 3</m>.</p>
 		</statement>
 		<hint>
-			<p>Calcule <m>(123)(12)</m> y <m>(12)(123)</m>.</p>
+			<p>Calcule <m>(123)(12)</m> e <m>(12)(123)</m>.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="18">
 		<statement>
-			<p>Muestre que  <m>A_n</m> es no abeliano para <m>n \geq 4</m>.</p>
+			<p>Mostre que  <m>A_n</m> é não abeliano para <m>n \geq 4</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="19">
 		<statement>
-			<p>Demuestre que <m>D_n</m> es no abeliano para <m>n \geq 3</m>.</p>
+			<p>Demonstre que <m>D_n</m> é não abeliano para <m>n \geq 3</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="20" xml:id="exercise-permute-cycle-n-1-transpositions">
 		<statement>
-			<p>Sea <m>\sigma \in S_n</m> un ciclo. Demuestre que <m>\sigma</m> puede ser escrito como el producto de a lo más <m>n-1</m> transposiciones.</p>
+			<p>Seja <m>\sigma \in S_n</m> um ciclo. Demonstre que <m>\sigma</m> pode ser escrito como o produto de, no máximo, <m>n-1</m> transposições.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="21">
 		<statement>
-			<p>Sea <m>\sigma \in S_n</m>. Si <m>\sigma</m> no es un ciclo, demuestre que <m>\sigma</m> puede ser escrita como el producto de a lo más <m>n-2</m> transposiciones.</p>
+			<p>Seja <m>\sigma \in S_n</m>. Se <m>\sigma</m> não é um ciclo, demonstre que <m>\sigma</m> pode ser escrita como o produto de, no máximo, <m>n-2</m> transposições.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="22">
 		<statement>
-			<p>Si <m>\sigma</m> puede ser expresada como un producto de un número par de transposiciones, muestre que cualquier otro producto de transposiciones que sea igual a <m>\sigma</m> también debe contener un número impar de estas.</p>
+			<p>Se <m>\sigma</m> pode ser expressa como um produto de um número ímpar de transposições, mostre que qualquer outro produto de transposições que seja igual a <m>\sigma</m> também deve conter um número ímpar destas.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="23">
 		<statement>
-			<p>Si <m>\sigma</m> es un ciclo de largo impar, demuestre que <m>\sigma^2</m> también es un ciclo.</p>
+			<p>Se <m>\sigma</m> é um ciclo de tamanho ímpar, demonstre que <m>\sigma^2</m> também é un ciclo.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="24">
 		<statement>
-			<p>Muestre que un 3-ciclo es una permutación par.</p>
+			<p>Mostre que um 3-ciclo é uma permutação par.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="25">
 		<statement>
-			<p>Demuestre que en <m>A_n</m> con <m>n \geq 3</m>, culaquier permutación es un producto de ciclos de largo 3.</p>
+			<p>Demonstre que em <m>A_n</m> com <m>n \geq 3</m>, qualquer permutação é um produto de ciclos de tamanho 3.</p>
 		</statement>
 		<hint>
-			<p>Considere los casos <m>(ab)(bc)</m> y <m>(ab)(cd)</m>.</p>
+			<p>Considere os casos <m>(ab)(bc)</m> e <m>(ab)(cd)</m>.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="26">
 		<statement>
-			<p>Demuestre que todo elemento en <m>S_n</m> puede ser escrito como un producto finito de las siguientes permutaciones.
+			<p>Demonstre que todo elemento em <m>S_n</m> pode ser escrito como un produto finito das seguintes permutações.
 				<ol>
 		 
 					<li><p><m>(1 2), (13), \ldots, (1n)</m></p></li>
@@ -317,74 +317,74 @@
 
 	<exercise number="27">
 		<statement>
-			<p>Sea <m>G</m> un grupo y sea <m>\lambda_g : G \rightarrow G</m> una función definida por <m>\lambda_g(a) = g a</m>. Demuestre que <m>\lambda_g</m> es una permutación de <m>G</m>.</p>
+			<p>Seja <m>G</m> um grupo e seja <m>\lambda_g : G \rightarrow G</m> uma função definida por <m>\lambda_g(a) = g a</m>. Demonstre que <m>\lambda_g</m> é uma permutação de <m>G</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="28">
 		<statement>
-			<p>Demuestre que existen <m>n!</m> permutaciones de un conjunto con <m>n</m> elementos.</p>
+			<p>Demonstre que existem <m>n!</m> permutações de um conjunto com <m>n</m> elementos.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="29">
 	<statement>
-		<p>Recuerde que el <term>centro</term> de un grupo <m>G</m> es
+		<p>Recorde que o <term>centro</term> de um grupo <m>G</m> é
 			<me>Z(G) = \{ g \in G : gx = xg \text{ para todo } x \in G \}.</me>
-		Encuentre el centro de <m>D_8</m>. ¿Y el centro de <m>D_{10}</m>? ¿Cuál es el  centro de <m>D_n</m>? </p>
+		Encontre o centro de <m>D_8</m>. E o centro de <m>D_{10}</m>? Qual é o centro de <m>D_n</m>? </p>
 	</statement>
 	
 	</exercise>
 
 	<exercise number="30">
 		<statement>
-			<p>Sea <m>\tau = (a_1, a_2, \ldots, a_k)</m> un ciclo de largo <m>k</m>.
+			<p>Seja <m>\tau = (a_1, a_2, \ldots, a_k)</m> um ciclo de tamanho <m>k</m>.
 				<ol>
  
-					<li><p>Demuestre que si <m>\sigma</m> es cualquier permutación, entonces
+					<li><p>Demonstre que se <m>\sigma</m> é qualquer permutação, então
 						<me>\sigma \tau \sigma^{-1 } = ( \sigma(a_1), \sigma(a_2), \ldots, \sigma(a_k))</me>
-					es un ciclo de largo <m>k</m>.</p></li>
+					é um ciclo de tamanho <m>k</m>.</p></li>
  
-					<li><p>Sea <m>\mu</m> un ciclo de largo <m>k</m>. Demuestre que existe una permutación <m>\sigma</m> tal que <m>\sigma \tau \sigma^{-1 } = \mu</m>.</p></li>
+					<li><p>Seja <m>\mu</m> um ciclo de tamnho <m>k</m>. Demonstre que existe uma permutação <m>\sigma</m> tal que <m>\sigma \tau \sigma^{-1 } = \mu</m>.</p></li>
  
 				</ol></p>
 		</statement>
 		<hint>
-			<p>Para la parte (a), muestre que <m>\sigma \tau \sigma^{-1 }(\sigma(a_i)) = \sigma(a_{i + 1})</m>.</p>
+			<p>Para a parte (a), mostre que <m>\sigma \tau \sigma^{-1 }(\sigma(a_i)) = \sigma(a_{i + 1})</m>.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="31">
 		<statement>
-			<p>Para <m>\alpha</m> y <m>\beta</m> en <m>S_n</m>, defina <m>\alpha \sim \beta</m> si existe <m>\sigma \in S_n</m> tal que <m>\sigma \alpha \sigma^{-1} = \beta</m>.  Muestre que <m>\sim</m> es una relación de equivalencia en <m>S_n</m>.</p>
+			<p>Para <m>\alpha</m> e <m>\beta</m> em <m>S_n</m>, defina <m>\alpha \sim \beta</m> se existe <m>\sigma \in S_n</m> tal que <m>\sigma \alpha \sigma^{-1} = \beta</m>.  Mostre que <m>\sim</m> é uma relação de equivalência em <m>S_n</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="32">
 		<statement>
-			<p>Sea <m>\sigma \in S_X</m>. Si <m>\sigma^n(x) = y</m>, diremos que <m>x \sim y</m>. 
+			<p>Seja <m>\sigma \in S_X</m>. Se <m>\sigma^n(x) = y</m>, diremos que <m>x \sim y</m>. 
 				<ol>
  
-					<li><p>Muestre que <m>\sim</m> es una relación de equivalencia en <m>X</m>.</p></li>
+					<li><p>Mostre que <m>\sim</m> é uma relação de equivalência em <m>X</m>.</p></li>
  
-					<li><p>Si <m>\sigma \in A_n</m> y <m>\tau \in S_n</m>, muestre que <m>\tau^{-1} \sigma \tau \in A_n</m>.</p></li> 
+					<li><p>Se <m>\sigma \in A_n</m> e <m>\tau \in S_n</m>, mostre que <m>\tau^{-1} \sigma \tau \in A_n</m>.</p></li> 
  
-					<li><p>Defina la <term>órbita</term> de <m>x \in X</m> bajo <m>\sigma \in S_X</m> como el conjunto 
+					<li><p>Defina a <term>órbita</term> de <m>x \in X</m> baixo <m>\sigma \in S_X</m> como o conjunto
 						<me>{\mathcal O}_{x, \sigma} = \{ y : x \sim y  \}.</me>
-					Calcule las órbitas de cada uno de los siguientes elementos en <m>S_5</m>:
+					Calcule as órbitas de cada um dos seguintes elementos em <m>S_5</m>:
 						<md>
 							<mrow>\alpha &amp; = (1254)</mrow>
 							<mrow>\beta &amp; = (123)(45)</mrow>
 							<mrow>\gamma &amp; = (13)(25).</mrow>
 						</md></p></li>
  
-					<li><p>Si <m>{\mathcal O}_{x, \sigma} \cap {\mathcal O}_{y, \sigma} \neq \emptyset</m>, demuestre que <m>{\mathcal O}_{x, \sigma} = {\mathcal O}_{y, \sigma}</m>. Las órbitas bajo una permutación <m>\sigma</m> son las clases de equivalencia correspondientes a la relación <m>\sim</m>.</p></li>
+					<li><p>Se <m>{\mathcal O}_{x, \sigma} \cap {\mathcal O}_{y, \sigma} \neq \emptyset</m>, demonstre que <m>{\mathcal O}_{x, \sigma} = {\mathcal O}_{y, \sigma}</m>. As órbitas baixo uma permutação <m>\sigma</m> são as classes de equivalência correspondentes à relação <m>\sim</m>.</p></li>
 
-					<li><p>Un subgrupo <m>H</m> de <m>S_X</m> es <term>transitivo</term> si para cada <m>x, y \in X</m>, existe un <m>\sigma \in H</m> tal que <m>\sigma(x) = y</m>. Demuestre que <m>\langle \sigma \rangle</m> es transitivo si y solo si <m>{\mathcal O}_{x, \sigma} = X</m> para algún <m>x \in X</m>.</p></li>
+					<li><p>Um subgrupo <m>H</m> de <m>S_X</m> é <term>transitivo</term> se para cada <m>x, y \in X</m>, existe um <m>\sigma \in H</m> tal que <m>\sigma(x) = y</m>. Demonstre que <m>\langle \sigma \rangle</m> é transitivo se y só se <m>{\mathcal O}_{x, \sigma} = X</m> para algum <m>x \in X</m>.</p></li>
  
  				</ol></p>
 		</statement>
@@ -393,35 +393,35 @@
 
 	<exercise number="33">
 		<statement>
-			<p>Sea <m>\alpha \in S_n</m> con <m>n \geq 3</m>. Si <m>\alpha \beta = \beta \alpha</m> para todo <m>\beta \in S_n</m>, demuestre que <m>\alpha</m> debe ser la permutación identidad; luego, el centro de <m>S_n</m> es el subgrupo trivial.</p>
+			<p>Seja <m>\alpha \in S_n</m> com <m>n \geq 3</m>. Se <m>\alpha \beta = \beta \alpha</m> para todo <m>\beta \in S_n</m>, demonstre que <m>\alpha</m> deve ser a permutação identidade; logo, o centro de <m>S_n</m> é o subgrupo trivial.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="34" xml:id="permute-exercise-inverse-even">
 		<statement>
-			<p>Si <m>\alpha</m> es par, demuestre que <m>\alpha^{-1}</m> también es par. ¿Hay un resultado análogo si <m>\alpha</m> es impar?</p>
+			<p>Se <m>\alpha</m> é par, demonstre que <m>\alpha^{-1}</m> também é par. Exsite um resultado análogo se <m>\alpha</m> é ímpar?</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="35">
 		<statement>
-			<p>Muestre que <m>\alpha^{-1} \beta^{-1} \alpha \beta</m> es par para todo <m>\alpha, \beta \in S_n</m>.</p>
+			<p>Mostre que <m>\alpha^{-1} \beta^{-1} \alpha \beta</m> é par para todo <m>\alpha, \beta \in S_n</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="36">
 		<statement>
-			<p>Sean <m>r</m> y <m>s</m> los elementos en <m>D_n</m> descritos en el Teorema<nbsp /><xref ref="theorem-dn-generator" />.
+			<p>Sejam <m>r</m> e <m>s</m> os elementos em <m>D_n</m> descritos no Teorema<nbsp /><xref ref="theorem-dn-generator" />.
 				<ol>
  
-					<li><p>Muestre que <m>srs = r^{-1}</m>.</p></li>
+					<li><p>Mostre que <m>srs = r^{-1}</m>.</p></li>
 					 
-					<li><p>Muestre que <m>r^k s = s r^{-k}</m> en <m>D_n</m>.</p></li>
+					<li><p>Mostre que <m>r^k s = s r^{-k}</m> en <m>D_n</m>.</p></li>
 					 
-					<li><p>Demuestre que el orden de <m>r^k \in D_n</m> es <m>n / \gcd(k,n)</m>.</p></li>
+					<li><p>Demonstre que a ordem de <m>r^k \in D_n</m> es <m>n / \gcd(k,n)</m>.</p></li>
   
 				</ol></p>
 		</statement>

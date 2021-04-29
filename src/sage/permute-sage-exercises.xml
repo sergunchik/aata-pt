@@ -11,22 +11,22 @@
 <!-- edits can be made against this file for       -->
 <!-- the purpose of a pull request.                -->
 <exercises xml:id="permute-sage-exercises">
-	<title>Ejercicios en Sage</title>
+	<title>Exercícios em Sage</title>
 
 	<introduction>
-		<p>Estos ejercicios tienen el objetivo de familiarizarle con los grupos de permutaciones en Sage.</p>
+		<p>Estes exercícios têm o objetivo de familiarizar-le com os grupos de permutações em Sage.</p>
 	</introduction>
 
 	<exercise number="1">
 		<statement>
-			<p>Cree el grupo simétrico completo <m>S_{10}</m> con el comando <c>G = SymmetricGroup(10)</c>.</p>
+			<p>Crie o grupo simétrico completo <m>S_{10}</m> com o comando <c>G = SymmetricGroup(10)</c>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="2">
 		<statement>
-			<p>Cree elementos de <c>G</c> con los siguientes métodos.  Preste atención a las comas, comillas, corchetes, paréntesis.  Los primeros dos usan cadenas de caracteres (texto) como entrada, imitando la forma en que escribimos las permutaciones (pero con comas).  La siguientes dos usan listas de tuplas.</p>
+			<p>Crie elementos de <c>G</c> com os seguintes métodos. Preste atenção às virgulas, aspas, colchetes, parénteses. Os primeiros dois usam cadeias de caracteres (texto) como entrada, imitando a forma em que escrevemos as permutações (mas com vírgulas). As seguintes duas usam listas de tuplas.</p>
 
 			<ul>
 				<li><p><c>a = G("(5,7,2,9,3,1,8)")</c></p></li>
@@ -37,15 +37,15 @@
 
 			<ol>
 				<li><p>Calcule <m>a^3</m>, <m>bc</m>, <m>ad^{-1}b</m>.</p></li>
-				<li><p>Calcule los órdenes de cada uno de los elemetos individuales (<c>a</c> hasta <c>d</c>) usando un solo método de los elementos del grupo de permutaciones.</p></li>
-				<li><p>Use el método <c>.sign()</c> para determinar si <m>a,b,c,d</m> son pares o impares.</p></li>
-				<li><p>Cree dos subgrupos cíclicos de <m>G</m> con los comandos:
+				<li><p>Calcule as ordens de cada um dos elementos individuais (<c>a</c> hasta <c>d</c>) usando um só método dos elementos do grupo de permutações.</p></li>
+				<li><p>Use o método <c>.sign()</c> para determinar se <m>a,b,c,d</m> são pares ou ímpares.</p></li>
+				<li><p>Crie dois subgrupos cíclicos de <m>G</m> com os comandos:
 				<ul>
 					<li><p><c>H = G.subgroup([a])</c></p></li>
 					<li><p><c>K = G.subgroup([d])</c></p></li>
 				</ul>
-				Liste, y estudie, los elementos de cada subgrupo.  Sin usar Sage, indique el orden de cada subgrupo de <m>K</m>.  Luego use  Sage para construir un subgrupo de <m>K</m> de orden 10.</p></li>
-				<li><p>Subgrupos más complicados se pueden formar usando dos o más generadores.  Construya un subgrupo <m>L</m> de <m>G</m> con el comando <c>L = G.subgroup([b,c])</c>.  Calcule el orden de <m>L</m> y liste todos sus elementos.</p></li>
+				Liste, e estude, os elementos de cada subgrupo. Sem usar Sage, indique a ordem de cada subgrupo de <m>K</m>. Logo use Sage para construir um subgrupo de <m>K</m> de ordem 10.</p></li>
+				<li><p>Subgrupos mais complicados podem se formar usando dois ou mais geradores. Construa um subgrupo <m>L</m> de <m>G</m> com o comando <c>L = G.subgroup([b,c])</c>.  Calcule a ordem de <m>L</m> e liste todos seus elementos.</p></li>
 			</ol>
 		</statement>
 		
@@ -54,9 +54,9 @@
 
 	<exercise number="3">
 		<statement>
-			<p>Construya el grupo de simetrías del tetraedro (también es el grupo alternante en 4 símbolos, <m>A_4</m>) con el comando <c>A=AlternatingGroup(4)</c>.  Usando herramientas tales como órdenes de elementos, y generadores de subgrupos, vea si puede encontrar <em>todos</em> los subgrupos de <m>A_4</m> (cada uno exactamente una vez).  Haga esto sin usar el método <c>.subgroups()</c> para justificar que su respuesta es correcta (aunque puede ser una forma conveniente de verificar su resultado).</p>
+			<p>Construa o grupo de simetrias do tetraedro (também é o grupo alternante em 4 símbolos, <m>A_4</m>) com o comando <c>A=AlternatingGroup(4)</c>.  Usando ferramentas tais como órdens de elementos, e geradores de subgrupos, veja se pode encontrar <em>todos</em> os subgrupos de <m>A_4</m> (cada um exatamente uma vez).  Faça isto sem usar o método <c>.subgroups()</c> para justificar que sua resposta é correcta (ainda que possa ser uma forma conveniente de verificar seu resultado).</p>
 
-			<p>Escriba un resumen ordenado de su respuesta<mdash/>no simplemente una lista larga escupida por Sage.  La idea es usar Sage como una herramienta, en la medida en que sea necesario, pero básicamente su respuesta debe ser un párrafo conciso y/o una tabla. Esta es la única parte de esta tarea sin instrucciones precisas y claras, así es que dedique el tiempo suficiente a esta parte para que le quede bien.  Ayuda: ningún subgrupo de  <m>A_4</m> requiere más de dos generadores.</p>
+			<p>Escreva um resumo ordenado de sua resposta<mdash/>não simplemente uma lista larga esculpida por Sage. A idea es usar Sage como uma ferramenta, na medida em que sjea necessário, mas basicamente sua resposta deve ser um parágrafo conciso e/ou uma tabela. Esta é a única parte desta tarefa sem instruções precisas e claras, assim é que dedique o tempo suficiente a esta parte para que entenda bien.  Ajuda: nenhum subgrupo de  <m>A_4</m> requer mais de dois geradores.</p>
 		</statement>
 		
 
@@ -64,17 +64,17 @@
 
 	<exercise number="4" xml:id="exercise-cube-symmetry">
 		<statement>
-		<p>La subsección<nbsp /><xref ref="subsection-motion-group-cube" text="title"/> describe las <m>24</m> simetrías de un cubo como un subgrupo del grupo simétrico <m>S_8</m> generado por tres rotaciones.  Conteste las siguientes preguntas sobre este grupo de simetrías.</p>
+		<p>A subseção<nbsp /><xref ref="subsection-motion-group-cube" text="title"/> descreve as <m>24</m> simetrias de um cubo como um subgrupo do grupo simétrico <m>S_8</m> gerado por três rotações. Conteste as seguintes perguntas sobre este grupo de simetrias.</p>
 		<ol>
-			<li><p>De la lista de elementos del grupo, ¿puede localizar la 10 rotaciones en torno a los ejes?  (Ayuda: la identidad es fácil, las otras nueve nunca envían un símbolo en sí mismo.)</p></li>
+			<li><p>Da lista de elementos do grupo, você consegue localizar as 10 rotações em torno dos eixos?  (Ajuda: a identidade é fácil, as outras nove nunca enviam um símbolo a si mesmo.)</p></li>
 
-			<li><p>¿Puede identificar las seis simetrías que son transposición de diagonales?  (Ayuda: <c>[g for g in cube if g.order() == 2]</c> es un buen filtro inicial.)</p></li>
+			<li><p>Você consegue identificar as seis simetrias que são transposição de diagonais?  (Ajuda: <c>[g for g in cube if g.order() == 2]</c> é um bom filtro inicial.)</p></li>
 
-			<li><p>Verifique que cualquiera dos de las rotaciones (<c>above</c>, <c>front</c>, <c>right</c>) son suficientes para generar el grupo completo.  ¿Cómo sabe que cada par genera el grupo completo?</p></li>
+			<li><p>Verifique que quaisquer duas rotações (<c>above</c>, <c>front</c>, <c>right</c>) são suficientes para gerar o grupo completo. Como sabe que cada par gera o grupo completo?</p></li>
 
-			<li><p>¿Puede expresar una de las transposiciones diagonales como productos de rotaciones?  Este puede ser un problema notablemente difícil, especialmente para un software.  Se conoce como el <q>problema de las palabras.</q></p></li>
+			<li><p>Você consegue expressar uma das transposições diagonais como productos de rotações?  Este pode ser um problema notavelmente difícil, especialmente para um software. É conhecido como o <q>problema das palavras.</q></p></li>
 
-			<li><p>Numere las seis caras del cubo con los números del <m>1</m> al <m>6</m> (de cualquier forma que desee).  Ahora considere las mismas tres simetrías usadas antes (rotaciones en cuarto de vuelta en torno a los ejes), pero ahora vistas como permutaciones de las seis caras.  De esta manera, podemos construir cada simetría como un elemento de  <m>S_6</m>.  Verifique que el subgrupo generado por estas simetrías es el grupo completo de simetrías del cubo.  Nuevamente, en lugar de usar tres generadores, intente usando solo dos.</p></li>
+			<li><p>Numere as seis faces do cubo com os números de <m>1</m> a <m>6</m> (de qualquer forma que deseje). Agora considere as mesmas três simetrias usadas antes (rotações en quarto de volta em torno dos eixos), mas agora vistas como permutações das seis faces.  Dsta maneira, podemos construir cada simetria como um elemento de  <m>S_6</m>.  Verifique que o subgrupo gerado por estas simetrias é o grupo completo de simetrias do cubo. Novamente, no lugar de usar três geradores, tente usando apenas dois.</p></li>
 		</ol>
 		</statement>
 		
@@ -82,7 +82,7 @@
 
 	<exercise number="5">
 		<statement>
-			<p>Guarde su trabajo, y vea si puede lograr que Sage se caiga construyendo el subgrupo de <m>S_{10}</m> generado por los elementos <c>b</c> y <c>d</c> de orden <m>2</m> y <m>30</m> de antes.  <em>No entregue</em> la lista de elementos de <c>N</c> como parte de su trabajo.</p>
+			<p>Salve seu trabalho, e veja se consegue finalizar sua sessão Sage construindo o subgrupo de <m>S_{10}</m> gerado pelos elementos <c>b</c> e <c>d</c> de ordem <m>2</m> e <m>30</m> de antes. <em>Não entregue</em> a lista de elementos de <c>N</c> como parte de seu trabalho.</p>
 
 			<sage type="display">
 				<input>
@@ -91,7 +91,7 @@
 				</input>
 			</sage>
 
-			<p>¿Cuál es el orden de <m>N</m>?</p>
+			<p>Qual é a ordem de <m>N</m>?</p>
 		</statement>
 		
 	</exercise>
