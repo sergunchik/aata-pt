@@ -37,7 +37,7 @@
 
 			<ol>
 				<li><p>Calcule <m>a^3</m>, <m>bc</m>, <m>ad^{-1}b</m>.</p></li>
-				<li><p>Calcule as ordens de cada um dos elementos individuais (<c>a</c> hasta <c>d</c>) usando um só método dos elementos do grupo de permutações.</p></li>
+				<li><p>Calcule as ordens de cada um dos elementos individuais (<c>a</c> até <c>d</c>) usando um só método dos elementos do grupo de permutações.</p></li>
 				<li><p>Use o método <c>.sign()</c> para determinar se <m>a,b,c,d</m> são pares ou ímpares.</p></li>
 				<li><p>Crie dois subgrupos cíclicos de <m>G</m> com os comandos:
 				<ul>
