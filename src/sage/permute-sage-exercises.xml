@@ -14,7 +14,7 @@
 	<title>Exercícios em Sage</title>
 
 	<introduction>
-		<p>Estes exercícios têm o objetivo de familiarizar-le com os grupos de permutações em Sage.</p>
+		<p>Estes exercícios têm o objetivo de familiarizar-lhe com os grupos de permutações em Sage.</p>
 	</introduction>
 
 	<exercise number="1">
@@ -26,7 +26,7 @@
 
 	<exercise number="2">
 		<statement>
-			<p>Crie elementos de <c>G</c> com os seguintes métodos. Preste atenção às virgulas, aspas, colchetes, parénteses. Os primeiros dois usam cadeias de caracteres (texto) como entrada, imitando a forma em que escrevemos as permutações (mas com vírgulas). As seguintes duas usam listas de tuplas.</p>
+			<p>Crie elementos de <c>G</c> com os seguintes métodos. Preste atenção às virgulas, aspas, colchetes, parênteses. Os primeiros dois usam cadeias de caracteres (texto) como entrada, imitando a forma em que escrevemos as permutações (mas com vírgulas). As seguintes duas usam listas de tuplas.</p>
 
 			<ul>
 				<li><p><c>a = G("(5,7,2,9,3,1,8)")</c></p></li>
@@ -54,9 +54,9 @@
 
 	<exercise number="3">
 		<statement>
-			<p>Construa o grupo de simetrias do tetraedro (também é o grupo alternante em 4 símbolos, <m>A_4</m>) com o comando <c>A=AlternatingGroup(4)</c>.  Usando ferramentas tais como órdens de elementos, e geradores de subgrupos, veja se pode encontrar <em>todos</em> os subgrupos de <m>A_4</m> (cada um exatamente uma vez).  Faça isto sem usar o método <c>.subgroups()</c> para justificar que sua resposta é correcta (ainda que possa ser uma forma conveniente de verificar seu resultado).</p>
+			<p>Construa o grupo de simetrias do tetraedro (também é o grupo alternante em 4 símbolos, <m>A_4</m>) com o comando <c>A=AlternatingGroup(4)</c>.  Usando ferramentas tais como ordens de elementos, e geradores de subgrupos, veja se pode encontrar <em>todos</em> os subgrupos de <m>A_4</m> (cada um exatamente uma vez).  Faça isto sem usar o método <c>.subgroups()</c> para justificar que sua resposta é correta (ainda que possa ser uma forma conveniente de verificar seu resultado).</p>
 
-			<p>Escreva um resumo ordenado de sua resposta<mdash/>não simplemente uma lista larga esculpida por Sage. A idea es usar Sage como uma ferramenta, na medida em que sjea necessário, mas basicamente sua resposta deve ser um parágrafo conciso e/ou uma tabela. Esta é a única parte desta tarefa sem instruções precisas e claras, assim é que dedique o tempo suficiente a esta parte para que entenda bien.  Ajuda: nenhum subgrupo de  <m>A_4</m> requer mais de dois geradores.</p>
+			<p>Escreva um resumo ordenado de sua resposta<mdash/>não simplesmente uma lista larga esculpida por Sage. A ideia es usar Sage como uma ferramenta, na medida em que seja necessário, mas basicamente sua resposta deve ser um parágrafo conciso e/ou uma tabela. Esta é a única parte desta tarefa sem instruções precisas e claras, assim é que dedique o tempo suficiente a esta parte para que entenda bem.  Ajuda: nenhum subgrupo de  <m>A_4</m> requer mais de dois geradores.</p>
 		</statement>
 		
 
@@ -72,9 +72,9 @@
 
 			<li><p>Verifique que quaisquer duas rotações (<c>above</c>, <c>front</c>, <c>right</c>) são suficientes para gerar o grupo completo. Como sabe que cada par gera o grupo completo?</p></li>
 
-			<li><p>Você consegue expressar uma das transposições diagonais como productos de rotações?  Este pode ser um problema notavelmente difícil, especialmente para um software. É conhecido como o <q>problema das palavras.</q></p></li>
+			<li><p>Você consegue expressar uma das transposições diagonais como produtos de rotações?  Este pode ser um problema notavelmente difícil, especialmente para um software. É conhecido como o <q>problema das palavras.</q></p></li>
 
-			<li><p>Numere as seis faces do cubo com os números de <m>1</m> a <m>6</m> (de qualquer forma que deseje). Agora considere as mesmas três simetrias usadas antes (rotações en quarto de volta em torno dos eixos), mas agora vistas como permutações das seis faces.  Dsta maneira, podemos construir cada simetria como um elemento de  <m>S_6</m>.  Verifique que o subgrupo gerado por estas simetrias é o grupo completo de simetrias do cubo. Novamente, no lugar de usar três geradores, tente usando apenas dois.</p></li>
+			<li><p>Numere as seis faces do cubo com os números de <m>1</m> a <m>6</m> (de qualquer forma que deseje). Agora considere as mesmas três simetrias usadas antes (rotações em quarto de volta em torno dos eixos), mas agora vistas como permutações das seis faces.  Desta maneira, podemos construir cada simetria como um elemento de  <m>S_6</m>.  Verifique que o subgrupo gerado por estas simetrias é o grupo completo de simetrias do cubo. Novamente, no lugar de usar três geradores, tente usando apenas dois.</p></li>
 		</ol>
 		</statement>
 		

@@ -11,7 +11,7 @@
 <!-- edits can be made against this file for       -->
 <!-- the purpose of a pull request.                -->
 <exercises xml:id="exercises-permute">
-	<title>Ejercicios</title>
+	<title>Exercícios</title>
 
 	<exercise number="1">
 		<statement>
@@ -147,7 +147,7 @@
 
 	<exercise number="6">
 		<statement>
-			<p>Encontre todos os subgrupos de <m>A_4</m>. ¿Qual é a ordem de cada um deeles?</p>
+			<p>Encontre todos os subgrupos de <m>A_4</m>. ¿Qual é a ordem de cada um deles?</p>
 		</statement>
 		
 	</exercise>
@@ -277,7 +277,7 @@
 
 	<exercise number="23">
 		<statement>
-			<p>Se <m>\sigma</m> é um ciclo de tamanho ímpar, demonstre que <m>\sigma^2</m> também é un ciclo.</p>
+			<p>Se <m>\sigma</m> é um ciclo de tamanho ímpar, demonstre que <m>\sigma^2</m> também é um ciclo.</p>
 		</statement>
 		
 	</exercise>
@@ -301,7 +301,7 @@
 
 	<exercise number="26">
 		<statement>
-			<p>Demonstre que todo elemento em <m>S_n</m> pode ser escrito como un produto finito das seguintes permutações.
+			<p>Demonstre que todo elemento em <m>S_n</m> pode ser escrito como um produto finito das seguintes permutações.
 				<ol>
 		 
 					<li><p><m>(1 2), (13), \ldots, (1n)</m></p></li>
@@ -347,7 +347,7 @@
 						<me>\sigma \tau \sigma^{-1 } = ( \sigma(a_1), \sigma(a_2), \ldots, \sigma(a_k))</me>
 					é um ciclo de tamanho <m>k</m>.</p></li>
  
-					<li><p>Seja <m>\mu</m> um ciclo de tamnho <m>k</m>. Demonstre que existe uma permutação <m>\sigma</m> tal que <m>\sigma \tau \sigma^{-1 } = \mu</m>.</p></li>
+					<li><p>Seja <m>\mu</m> um ciclo de tamanho <m>k</m>. Demonstre que existe uma permutação <m>\sigma</m> tal que <m>\sigma \tau \sigma^{-1 } = \mu</m>.</p></li>
  
 				</ol></p>
 		</statement>
@@ -400,7 +400,7 @@
 
 	<exercise number="34" xml:id="permute-exercise-inverse-even">
 		<statement>
-			<p>Se <m>\alpha</m> é par, demonstre que <m>\alpha^{-1}</m> também é par. Exsite um resultado análogo se <m>\alpha</m> é ímpar?</p>
+			<p>Se <m>\alpha</m> é par, demonstre que <m>\alpha^{-1}</m> também é par. Existe um resultado análogo se <m>\alpha</m> é ímpar?</p>
 		</statement>
 		
 	</exercise>
@@ -419,7 +419,7 @@
  
 					<li><p>Mostre que <m>srs = r^{-1}</m>.</p></li>
 					 
-					<li><p>Mostre que <m>r^k s = s r^{-k}</m> en <m>D_n</m>.</p></li>
+					<li><p>Mostre que <m>r^k s = s r^{-k}</m> em <m>D_n</m>.</p></li>
 					 
 					<li><p>Demonstre que a ordem de <m>r^k \in D_n</m> es <m>n / \gcd(k,n)</m>.</p></li>
   

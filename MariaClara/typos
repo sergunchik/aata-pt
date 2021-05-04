@@ -1,3 +1,12 @@
+permute.xml:
+
+fixaraa=?   :  pois a identidade não fixaraa <m>a</m> nesta situação.
+ 0: fixara-a
+ 1: fixara a
+ 3: fixara
+ 5: fixaria
+
+
 exercicios :
 
    deeles -> deles
