@@ -11,7 +11,7 @@
 	<title>Sage</title>
 
 	<introduction>
-		<p>Uma boa parte da implementação de teoria de grupos em Sage está basada em rotinas de <acro>GAP</acro> (Groups, Algorithms, and Programming) em <url href="http://www.gap-system.org/">www.gap-system.org</url>, que está incluído em cada cópia de Sage.  Este é um pacote de código aberto maduro, que existe desde 1986.</p>
+		<p>Uma boa parte da implementação de teoria de grupos em Sage está baseada em rotinas de <acro>GAP</acro> (Groups, Algorithms, and Programming) em <url href="http://www.gap-system.org/">www.gap-system.org</url>, que está incluído em cada cópia de Sage.  Este é um pacote de código aberto maduro, que existe desde 1986.</p>
 
 		<p>Como vimos, os grupos podem ser descritos de muitas maneiras diferentes, tais como conjuntos de matrizes, conjuntos de números complexos, ou conjuntos de símbolos sujeitos a certas relações. Uma maneira muito concreta de representar grupos é via permutações (funções bijetivas dos inteiros de <m>1</m> a <m>n</m>), usando a composição de funções como a operação no grupo. Sage tem muitas rotinas desenhadas para trabalhar com grupos deste tipo e são também uma boa forma para que as pessoas que queiram aprender teoria de grupos ganhem experiência com as ideias básicas da teoria de grupos. Por estas duas razões, nos concentraremos neste tipo de grupos.</p>
 	</introduction>
@@ -101,7 +101,7 @@
 			<output>[3, 5, 1, 2, 4]</output>
 		</sage>
 
-		<p>A segunda versão de <m>\sigma</m> é uma lista de <q>tuplas</q>, que requer muitas vírgulas e devem ser incluídas em uma lista. (Uma tupla de tamanho um deve ser escrita como <c>(4,)</c> para distinguir-la do uso de parenteses para agrupar, como em <c>5*(4)</c>.)  A terceira versão usa a <q>fila inferior</q> da notação mais incômoda de duas filas introduzida no começo do capítulo <mdash /> é uma lista ordenada das <em>imagens</em> da permutação quando é considerada como uma função.</p>
+		<p>A segunda versão de <m>\sigma</m> é uma lista de <q>tuplas</q>, que requer muitas vírgulas e devem ser incluídas em uma lista. (Uma tupla de tamanho um deve ser escrita como <c>(4,)</c> para distinguir-la do uso de parênteses para agrupar, como em <c>5*(4)</c>.)  A terceira versão usa a <q>fila inferior</q> da notação mais incômoda de duas filas introduzida no começo do capítulo <mdash /> é uma lista ordenada das <em>imagens</em> da permutação quando é considerada como uma função.</p>
 
 		<p>Vemos que sem importar as três formas diferentes de início, todas as versões de <m>\sigma</m> se mostram da mesma maneira, e, mais ainda, são iguais entre si. (Esta é uma sutil diferença entre <mdash /> o que um objeto <em>é</em> em Sage versus como um objeto se <em>mostra</em>.)</p>
 
@@ -402,7 +402,7 @@
             </output>
 		</sage>
 
-		<p>Como sabemos pala discussão no texto que o grupo de simetrias tem <m>24</m> elementos, vemos que estes três geradores são suficientes para criar todas as simetrias. Isto sugere várias perguntas que se encontram no Exercício<nbsp /><xref ref="exercise-cube-symmetry" />.</p>
+		<p>Como sabemos pela discussão no texto que o grupo de simetrias tem <m>24</m> elementos, vemos que estes três geradores são suficientes para criar todas as simetrias. Isto sugere várias perguntas que se encontram no Exercício<nbsp /><xref ref="exercise-cube-symmetry" />.</p>
 
 		<sage type="practice" />
 

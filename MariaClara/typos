@@ -10,9 +10,13 @@ fixaraa=?   :  pois a identidade não fixaraa <m>a</m> nesta situação.
 
 exercicios/permute.xml :
 
-"pode ser expressa" em vez de expressada?
+"pode ser expressa" - o Vinícius em uma das suas soluções use "pode ser expressada",
+pode ser que ambas frases são corretas
+
+---
 
 sage/sage-info.xml :
+
 [-convirtiendo a-]{+fazendo da+} Sage [-en un-]{+em um+} lugar
 
 convirtiendo a Sage en un lugar -> fazendo da Sage em um lugar  [ pode ser que com "fazendo da" não precisamor "em"? ]
@@ -21,12 +25,8 @@ convirtiendo a Sage en un lugar -> fazendo da Sage em um lugar  [ pode ser que c
 
 sage/permute-sage.xml:
 
-basada -> baseada ?
-parenteses -> parênteses
 aces?  			  [caras opuestas, con cuartos-]{+duas aces opostas, com quartos+}
-pala discussão -> pela discussão
 
 ---
 
 permute-sage-exercises.xml
-(<c>a</c> hasta <c>d</c>) : hasta -> até
