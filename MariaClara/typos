@@ -6,36 +6,27 @@ fixaraa=?   :  pois a identidade não fixaraa <m>a</m> nesta situação.
  3: fixara
  5: fixaria
 
+---
 
-exercicios :
+exercicios/permute.xml :
 
-   deeles -> deles
-   "pode ser expressa" em vez de expressada?
+"pode ser expressa" em vez de expressada?
 
-sage-info
+sage/sage-info.xml :
 [-convirtiendo a-]{+fazendo da+} Sage [-en un-]{+em um+} lugar
 
 convirtiendo a Sage en un lugar -> fazendo da Sage em um lugar  [ pode ser que com "fazendo da" não precisamor "em"? ]
 
+---
 
-permute-sage.xml:
+sage/permute-sage.xml:
 
 basada -> baseada ?
-diferen -> diferem ?
-comutan -> comutam ?
-coagit -> coagir ?  	[-coercionamos una cadena-]{+possamos coagit uma cadeia+}
-duass -> duas
-composiçã -> composição
-deven -> devem ?          (ao menos 2 vezes)
 parenteses -> parênteses
-Algunos -> Alguns
-recinhecer -> reconhecer
 aces?  			  [caras opuestas, con cuartos-]{+duas aces opostas, com quartos+}
-meias-volltas -> meias-voltas 
 pala discussão -> pela discussão
 
+---
+
 permute-sage-exercises.xml
-parénteses -> parênteses
 (<c>a</c> hasta <c>d</c>) : hasta -> até
-sjea -> seja
-Dsta -> Desta
