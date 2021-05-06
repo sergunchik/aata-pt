@@ -343,7 +343,7 @@
 				 
 					<p>Em cada um dos outros três casos, podemos substituir <m>\tau_{r - 1} \tau_r</m> com o lado direito da equação correspondente para obter um novo produto de <m>r</m> transposições para a identidade. Neste novo produto, a última ocorrência de <m>a</m> será na penúltima transposição. Podemos continuar este processo com <m>\tau_{r - 2} \tau_{r - 1}</m> para obter ou um produto de <m>r - 2</m> transposições ou um novo produto de <m>r</m> transposições, em que a última ocorrência de <m>a</m> é em <m>\tau_{r - 2}</m>. Se a identidade é o produto de <m>r - 2</m> transposições, então novamente está provado, pela hipótese de indução; senão, repetiremos o procedimento com <m>\tau_{r - 3} \tau_{r - 2}</m>.</p>
 
-					<p>Em algum momento, teremos duas transposições adjacentes iguais, que se cancelarão, ou apenas <m>a</m>  estará presente na primeira transposição. Mas este último caso não pode ocorrer, pois a identidade não fixaraa <m>a</m> nesta situação. Portanto, a identidade deve ser o produto de <m>r-2</m> transposições e, novamente pela hipótese de indução, está provado.</p>
+					<p>Em algum momento, teremos duas transposições adjacentes iguais, que se cancelarão, ou apenas <m>a</m>  estará presente na primeira transposição. Mas este último caso não pode ocorrer, pois a identidade não fixaria <m>a</m> nesta situação. Portanto, a identidade deve ser o produto de <m>r-2</m> transposições e, novamente pela hipótese de indução, está provado.</p>
 				</proof>
 			</lemma>
 
