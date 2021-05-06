@@ -8,12 +8,12 @@
 <!-- See the file COPYING for copying conditions.  -->
 
 <chapter xml:id="permute" xmlns:xi="http://www.w3.org/2001/XInclude">
-	<title>Grupos de Permutaciones</title>
+	<title>Grupos de Permutações</title>
 
 	<introduction>
-		<p>Los grupos de permutaciones tienen un rol central en el estudio de simetrías geométricas y en la teoría de Galois, el estudio de la búsqueda de soluciones de ecuaciones polinomiales.  Además son una fuente de muchos ejemplos de grupos no abelianos.</p>
+		<p>Os grupos de permutações têm um papel central no estudo de simetrias geométricas e na teoria de Galois, o estudo da busca por soluções de equações polinomiais. Além disso, são fonte de muitos exemplos do grupos não abelianos.</p>
 
-		<p>Recordemos por un momento las simetrías del triángulo equilátero <m>\bigtriangleup ABC</m> del Capítulo<nbsp /><xref ref="groups" />. Las simetrías de hecho consisten en permutaciones de los tres vértices, donde una <term>permutación</term><idx><h>Permutación</h><h>definición de</h></idx> del conjunto <m>S = \{ A, B, C \}</m> es una biyección <m>\pi :S \rightarrow S</m>. Los tres vértices tienen la siguientes seis permutaciones.
+		<p>Vamos recordar, por um momento, as simetrias do triângulo equilátero <m>\bigtriangleup ABC</m> do Capítulo<nbsp /><xref ref="groups" />. As simetrias de fato consistem em permutações dos 3 vértices, em que uma  <term>permutação</term><idx><h>Permutação</h><h>definição de</h></idx> do conjunto <m>S = \{ A, B, C \}</m> é uma bijeção <m>\pi :S \rightarrow S</m>. Os três vértices têm as seguintes seis permutações.
 			<md>
 				<mrow>\begin{pmatrix}<![CDATA[
 				A & B & C \\
@@ -45,40 +45,40 @@
 				]]>\end{pmatrix}</mrow>
 			</md></p>
 
-		<p>Hemos usado el arreglo
+		<p>Usamos o arranjo
 			<me>\begin{pmatrix}<![CDATA[
 			A & B & C \\
 			B & C & A
 			]]>\end{pmatrix}</me>
-		para denotar la permutación que envía <m>A</m> en <m>B</m>, <m>B</m> en <m>C</m>, y <m>C</m> en <m>A</m>. Es decir,
+		para denotar a permutação que leva <m>A</m> em <m>B</m>, <m>B</m> em <m>C</m>, e <m>C</m> em <m>A</m>. Isto é,
 			<md>
 				<mrow> A &amp; \mapsto  B</mrow>
 				<mrow> B &amp; \mapsto  C</mrow>
 				<mrow> C &amp; \mapsto  A.</mrow>
 			</md>
-		Las simetrías de un triángulo forman un grupo. En este capítulo estudiaremos grupos de ese tipo.</p>
+		As simetrias de um triângulo formam um grupo. Neste capítulo estudaremos grupos desse tipo.</p>
 	</introduction>
  
 	<section xml:id="section-permutation-definitions">
-		<title>Definiciones y Notación</title>
+		<title>Definições e Notação</title>
  
  		<introduction>
-			<p>En general, las permutaciones de un conjunto <m>X</m> forman el grupo <m>S_X</m>. Si <m>X</m> es un conjunto finito, podemos suponer que <m>X=\{ 1, 2, \ldots, n\}</m>. En este caso escribiremos <m>S_n</m> en lugar de <m>S_X</m>. <notation><usage>S_n</usage><description>el grupo simétrico en <m>n</m> símbolos</description></notation> El siguiente teorema dice que <m>S_n</m> es un grupo. A este grupo lo llamaremos <term>grupo simétrico</term><idx><h>Simétrico</h><h>grupo</h></idx> en <m>n</m> símbolos.</p>
+			<p>Em geral, as permutações de um conjunto <m>X</m> formam o grupo <m>S_X</m>. Se <m>X</m> é um conjunto finito, podemos supor que <m>X=\{ 1, 2, \ldots, n\}</m>. Neste caso, escrevemos <m>S_n</m> no lugar de <m>S_X</m>. <notation><usage>S_n</usage><description>o grupo simétrico em <m>n</m> símbolos</description></notation> O seguinte teorema diz que <m>S_n</m> é um grupo. Chamaremos este grupo <term>grupo simétrico</term><idx><h>Simétrico</h><h>grupo</h></idx> em <m>n</m> símbolos.</p>
 
 			<theorem>
 				<statement>
-					<p>El grupo simétrico en <m>n</m> símbolos, <m>S_n</m>, es un grupo con <m>n!</m> elementos, con la operación binaria de composición de funciones.</p>
+					<p>O grupo simétrico em <m>n</m> símbolos, <m>S_n</m>, é um grupo com <m>n!</m> elementos, com a operação binária de composição de funções.</p>
 				</statement>
 
 				<proof>
-					<p>La identidad de <m>S_n</m> es simplemente la función identidad que envía 1 en 1, 2 en 2, <m>\ldots</m>, <m>n</m> en <m>n</m>. Si <m>f : S_n \rightarrow S_n</m> es una permutación, entonces <m>f^{-1}</m> existe, pues <m>f</m> es biyectiva; luego, toda permutación tiene una inversa. La composición de funciones es asociativa, lo que hace que  la operación del grupo sea asociativa. Dejamos como ejercicio la demostración de que <m>|S_n|= n!</m>.</p>
+					<p>A identidade de <m>S_n</m> é simplesmente a função identidade que leva 1 em 1, 2 em 2, <m>\ldots</m>, <m>n</m> em <m>n</m>. Se <m>f : S_n \rightarrow S_n</m> é uma permutação, então <m>f^{-1}</m> existe, pois <m>f</m> é bijetiva; logo, toda permutação tem uma inversa. A composição de funções é associativa, o que faz da operação do grupo associativa. Deixamos como exercício a demonstração de que <m>|S_n|= n!</m>.</p>
 				</proof>
 			</theorem>
 
-			<p>Un subgrupo de <m>S_n</m> se llama <term>grupo de permutaciones</term><idx><h>Permutaciones</h><h>grupo de</h></idx><idx><h>Grupo de permutaciones</h></idx>.</p>
+			<p>Um subgrupo de <m>S_n</m> se chama <term>grupo de permutações</term><idx><h>Permutações</h><h>grupo de</h></idx><idx><h>Grupo de permutações</h></idx>.</p>
 
 			<example xml:id="example-permute-s5">
-				<p>Considere el subgrupo <m>G</m> de <m>S_5</m> que consiste de la permutación <m>\identity</m> y las permutaciones 
+				<p>Considere o subgrupo <m>G</m> de <m>S_5</m> que consiste da permutação <m>\identity</m> e das permutações
 					<md>
 						<mrow>\sigma
 						&amp; =
@@ -99,7 +99,7 @@
 						3 & 2 & 1 & 5 & 4
 						]]>\end{pmatrix}.</mrow>
 					</md>
-				La siguiente tabla nos indica como multiplicar elementos en el grupo de permutaciones <m>G</m>.</p>
+				A seguinte tabela nos informa como multiplicar elementos no grupo de permutações <m>G</m>.</p>
 
 			<sidebyside width="100%"> <!-- math table -->
 				<p><me>\begin{array}{c|cccc}
@@ -115,11 +115,11 @@
 			</example>
 	 
 			<remark>
-				<p>Si bien es natural multiplicar los elementos en un grupo de izquierda a derecha, las funciones se componen de derecha a izquierda.  Sean <m>\sigma</m> y <m>\tau</m> permutaciones en un conjunto <m>X</m>. Para componer <m>\sigma</m> y <m>\tau</m> como funciones, calculamos <m>(\sigma \circ \tau)(x) = \sigma( \tau(x))</m>. Es decir, aplicamos primero <m>\tau</m>, luego <m>\sigma</m>. Hay diversas formas de resolver esta inconsistencia. <em>Nosotros adoptaremos la convención de multiplicar permutaciones de derecha a izquierda. Para calcular <m>\sigma \tau</m>, haga <m>\tau</m> primero y luego <m>\sigma</m>.</em> Es decir, por <m>\sigma \tau (x)</m> queremos decir <m>\sigma( \tau( x))</m>. (Otra manera de resolver este problema sería escribir las funciones a la derecha; es decir, en lugar de escribir <m>\sigma(x)</m>, podríamos escribir <m>(x)\sigma</m>. También podríamos multiplicar las permutaciones de izquierda a derecha para coincidir con la forma usual de multiplicar elementos en un grupo. Cada una de estas soluciones ha sido usada.)</p>
+				<p>Apesar de ser natural multiplicar os elementos em um grupo da esquerda para a direita, as funções são compostas da direita para a esquerda. Sejam <m>\sigma</m> e <m>\tau</m> permutações em um conjunto <m>X</m>. Para compor <m>\sigma</m> e <m>\tau</m> como funções, calculamos <m>(\sigma \circ \tau)(x) = \sigma( \tau(x))</m>. Isto é, aplicamos primeiro <m>\tau</m>, depois <m>\sigma</m>. Há diversas formas de resolver esta inconsistência. <em>Nós adotaremos a convenção de multiplicar permutações da direita para a esquerda. Para calcular <m>\sigma \tau</m>, faça <m>\tau</m> primeiro e depois <m>\sigma</m>.</em> Isto é, por <m>\sigma \tau (x)</m> queremos dizer <m>\sigma( \tau( x))</m>. (Outra maneira de resolver este problema seria escrever as funções na direita; isto é, em vez de escrever  <m>\sigma(x)</m>, poderíamos escrever <m>(x)\sigma</m>. Também poderíamos  multiplicar as permutações da esquerda para a direita para coincidir com a forma usual de multiplicar elementos em um grupo. Cada uma destas soluções já foi usada.)</p>
 			</remark>
 	 
 			<example xml:id="example-permute-s4-nonabelian">
-				<p>La multiplicación de permutaciones no es conmutativa en general. Sean
+				<p>A multiplicação de permutações não é comutativa, em geral. Sejam
 					<md>
 						<mrow>\sigma
 						&amp; =
@@ -134,14 +134,14 @@
 						2 & 1 & 4 & 3
 						]]>\end{pmatrix}.</mrow>
 					</md>
-				Entonces
+				Então
 					<me>\sigma \tau
 					=
 					\begin{pmatrix}<![CDATA[
 					1 & 2 & 3 & 4 \\
 					1 & 4 & 3 & 2
 					]]>\end{pmatrix},</me>
-				pero
+				mas
 					<me>\tau \sigma
 					=
 					\begin{pmatrix}<![CDATA[
@@ -153,21 +153,21 @@
  		</introduction>
 
 		<subsection xml:id="permute-subsection-cycle-notation">
-			<title>Notación cíclica</title>
+			<title>Notação cíclica</title>
  
-			<p>La notación que hemos usado hasta ahora para representar las permutaciones es engorrosa, para decir lo menos. Para trabajar efectivamente con grupos de permutaciones, necesitaremos un método más expedito de escribir y manipular permutaciones.</p>
+			<p>A notação que temos usado até aqui para representar as permutações é incômoda, para dizer o mínimo. Para trabalhar efetivamente com grupos de permutações, necessitaremos um método mais claro de escrever e manipular permutações.</p>
  
-			<p>Una permutación <m>\sigma \in S_X</m> es un <term>ciclo de largo </term><idx><h>Ciclo</h><h>definición de</h></idx> <m>k</m> si existen elementos <m>a_1, a_2, \ldots, a_k \in X</m> tales que <md>
+			<p>Uma permutação <m>\sigma \in S_X</m> é um <term>ciclo de tamanho </term><idx><h>Ciclo</h><h>definição de</h></idx> <m>k</m> se existem elementos <m>a_1, a_2, \ldots, a_k \in X</m> tais que <md>
 				<mrow>\sigma( a_1 ) &amp; = a_2</mrow>
 				<mrow>\sigma( a_2 ) &amp; = a_3</mrow>
 				<mrow>              &amp; \vdots</mrow>
               	<mrow>\sigma( a_k ) &amp; = a_1</mrow>
-             </md> y <m>\sigma( x) =x</m> para todos los demás elementos <m>x \in X</m>. Escribiremos <m>(a_1, a_2, \ldots, a_k )</m> para denotar al ciclo <m>\sigma</m>. <notation><usage>(a_1, a_2, \ldots, a_k )</usage><description>ciclo de largo <m>k</m></description></notation> Los ciclos son los bloques básicos para construir todas las permutaciones.</p>
+             </md> e <m>\sigma( x) =x</m> para todos os demais elementos <m>x \in X</m>. Escreveremos <m>(a_1, a_2, \ldots, a_k )</m> para denotar o ciclo <m>\sigma</m>. <notation><usage>(a_1, a_2, \ldots, a_k )</usage><description>ciclo de tamanho <m>k</m></description></notation> Os ciclos são blocos básicos para construir todas as permutações.</p>
 
 
  
 			<example xml:id="example-permute-cycle-notation">
-				<p>La permutación
+				<p>A permutação
 					<me>\sigma =
 					\begin{pmatrix}<![CDATA[
 					1 & 2 & 3 & 4 & 5 & 6 & 7\\
@@ -175,7 +175,7 @@
 					]]>\end{pmatrix}
 					=
 					(1 6 2 3 5 4 )</me>
-				es un ciclo de largo 6, mientras
+				é um ciclo de tamanho 6, enquanto
 					<me>\tau =
 					\begin{pmatrix}<![CDATA[
 					1 & 2 & 3 & 4 & 5 & 6 \\
@@ -183,47 +183,47 @@
 					]]>\end{pmatrix}
 					=
 					(2 4 3)</me>
-				es un ciclo de largo 3.</p>
+				é um ciclo de tamanho 3.</p>
 			 
-				<p>No toda permutación es  un ciclo. Considere la permutación
+				<p>Nem toda permutação é um ciclo. Considere a permutação
 					<me>\begin{pmatrix}<![CDATA[
 					1 & 2 & 3 & 4 & 5 & 6 \\
 					2 & 4 & 1 & 3 & 6 & 5
 					]]>\end{pmatrix}
 					 = (1 2 4 3)(5 6).</me>
-				Esta permutación de hecho contiene  un ciclo de largo 2 y un ciclo de largo 4.</p>
+				Esta permutação, na verdade, contém um ciclo de tamanho 2 e um ciclo de tamanho 4.</p>
 			</example>
  
  			<!-- TWJ, 2011/11/20 -->
 			<!-- Reworded this example to make cycle multiplication more clear. -->
 
 			<example xml:id="example-permute-cycle-mult">
-				<p>Es muy simple calcular el producto de ciclos. Supongamos que 
+				<p>É muito simples calcular o produto de ciclos. Suponhamos que
 					<me>\sigma  = (1 3 5 2 ) \quad \text{y} \quad \tau = (2 5 6).</me>
-				Si pensamos en <m>\sigma</m> como
+				Se pensamos em <m>\sigma</m> como
 				<me>1  \mapsto  3, \qquad
 				    3  \mapsto  5, \qquad
 				    5  \mapsto  2, \qquad
 				    2  \mapsto  1,</me>
-				y <m>\tau</m> como
+				e <m>\tau</m> como
 				<me>2  \mapsto  5, \qquad
 				    5  \mapsto  6, \qquad
 				    6  \mapsto  2,</me>
-				entonces para <m>\sigma \tau</m> recordando que primero debemos aplicar <m>\tau</m> y luego <m>\sigma</m>, debe ser el caso que 
+				então para <m>\sigma \tau</m>, lembrando que primeiro devemos aplicar <m>\tau</m> e depois <m>\sigma</m>, deve ser o caso que
 				<me>1  \mapsto  3, \qquad
 			        3  \mapsto  5, \qquad
 			        5  \mapsto  6, \qquad
 			        6  \mapsto  2 \mapsto 1,</me>
-				o <m>\sigma \tau =  (1 3 5 6 )</m>.  Si <m>\mu = (1634)</m>, entonces <m>\sigma \mu = (1 6 5 2)(3 4)</m>.</p>
+				ou <m>\sigma \tau =  (1 3 5 6 )</m>.  Se <m>\mu = (1634)</m>, então <m>\sigma \mu = (1 6 5 2)(3 4)</m>.</p>
 			</example>
 
-			<p>Dos ciclos en <m>S_X</m>, <m>\sigma = (a_1, a_2, \ldots, a_k )</m> y <m>\tau = (b_1, b_2, \ldots, b_l )</m>, son <term>disjuntos</term><idx><h>Disjuntos</h><h>ciclos</h></idx> si <m>a_i \neq b_j</m> para todo <m>i</m> y para todo <m>j</m>.</p>
+			<p>Dois ciclos em <m>S_X</m>, <m>\sigma = (a_1, a_2, \ldots, a_k )</m> e <m>\tau = (b_1, b_2, \ldots, b_l )</m>, são <term>disjuntos</term><idx><h>Disjuntos</h><h>ciclos</h></idx> se <m>a_i \neq b_j</m> para todo <m>i</m> e para todo <m>j</m>.</p>
 
 			<example xml:id="example-permute-cycles-disjoint">
-				<p>Los ciclos <m>(1 3 5)</m> y <m>(2 7 )</m> son disjuntos; mientras los ciclos <m>(1 3 5)</m> y <m>(3 4 7 )</m> no lo son.  Calculando sus productos, descubrimos que <md>
+				<p>Os ciclos <m>(1 3 5)</m> e <m>(2 7 )</m> são disjuntos; enquanto os ciclos <m>(1 3 5)</m> e <m>(3 4 7 )</m> não o são.  Calculando seus produtos, descobrimos que <md>
 					<mrow> (1 3 5)(2 7 ) &amp; = (1 3 5)(2 7 )</mrow>
 					<mrow> (1 3 5)(3 4 7 ) &amp; = (1 3 4 7 5).</mrow> 
-				</md> El producto de dos ciclos que no son disjuntos a veces se puede reducir a algo menos complicado; el producto de dos ciclos disjuntos no puede ser simplificado.</p>
+				</md> O produto de dois ciclos que não são disjuntos às vezes pode ser reduzido a algo menos complicado; o produto de dois ciclos disjuntos não pode ser simplificado.</p>
 			</example>
  
 			<!-- TWJ, 2011/11/20 -->
@@ -231,13 +231,13 @@
 
 			<proposition>
 				<statement>
-					<p> Sean <m>\sigma</m> y <m>\tau</m> dos ciclos disjuntos en <m>S_X</m>. Entonces <m>\sigma \tau = \tau \sigma</m>.</p>
+					<p> Sejam <m>\sigma</m> e <m>\tau</m> dois ciclos disjuntos em <m>S_X</m>. Então <m>\sigma \tau = \tau \sigma</m>.</p>
 				</statement>
 
 				<proof>
-					<p>Sea <m>\sigma = (a_1, a_2, \ldots, a_k )</m> y <m>\tau = (b_1, b_2, \ldots, b_l )</m>. Debemos mostrar que <m>\sigma \tau(x) = \tau \sigma(x)</m> para todo <m>x \in X</m>. Si <m>x</m> no está en <m>\{ a_1, a_2, \ldots, a_k \}</m> ni en <m>\{b_1, b_2, \ldots, b_l  \}</m>, entonces tanto <m>\sigma</m> como <m>\tau</m> fijan <m>x</m>. Es decir, <m>\sigma(x)=x</m> y <m>\tau(x)=x</m>. Luego, 
+					<p>Seja <m>\sigma = (a_1, a_2, \ldots, a_k )</m> e <m>\tau = (b_1, b_2, \ldots, b_l )</m>. Devemos mostrar que <m>\sigma \tau(x) = \tau \sigma(x)</m> para todo <m>x \in X</m>. Se <m>x</m> não está em <m>\{ a_1, a_2, \ldots, a_k \}</m> nem em <m>\{b_1, b_2, \ldots, b_l  \}</m>, então tanto <m>\sigma</m> como <m>\tau</m> fixam <m>x</m>. Isto é, <m>\sigma(x)=x</m> y <m>\tau(x)=x</m>. Logo,
 					<me>\sigma \tau(x) = \sigma( \tau(x)) = \sigma(x) = x = \tau(x) = \tau( \sigma(x)) =  \tau \sigma(x).</me> 
-					<em>No debemos olvidar que estamos multiplicando las permutaciones de derecha a izquierda,.</em>  Ahora supongamos que <m>x \in \{ a_1, a_2, \ldots, a_k \}</m>. Entonces <m>\sigma( a_i ) = a_{(i \bmod k) + 1}</m>; es decir,
+					<em>Não devemos esquecer que estamos multiplicando as permutações da direita para a esquerda,.</em>  Agora suponhamos que <m>x \in \{ a_1, a_2, \ldots, a_k \}</m>. Então <m>\sigma( a_i ) = a_{(i \bmod k) + 1}</m>; isto é,
 						<md>
 							<mrow>a_1 &amp; \mapsto  a_2</mrow>
 							<mrow>a_2 &amp; \mapsto  a_3</mrow>
@@ -245,7 +245,7 @@
 							<mrow>a_{k-1} &amp; \mapsto  a_k</mrow>
 							<mrow>a_k &amp; \mapsto  a_1. </mrow>
 						</md>
-					Pero, <m>\tau(a_i) = a_i</m> pues <m>\sigma</m> y <m>\tau</m> son disjuntos. Por lo tanto,
+					No entanto, <m>\tau(a_i) = a_i</m> pois <m>\sigma</m> e <m>\tau</m> são disjuntos. Portanto,
 						<md>
 							<mrow> \sigma \tau(a_i) &amp; = \sigma( \tau(a_i))</mrow>
 							<mrow>&amp; = \sigma(a_i)</mrow>
@@ -254,28 +254,28 @@
 							<mrow>&amp; = \tau( \sigma(a_i) )</mrow>
 							<mrow>&amp; = \tau \sigma(a_i).</mrow>
 						</md>
-					Similarmente, si <m>x \in \{b_1, b_2, \ldots, b_l  \}</m>, entonces <m>\sigma</m> y <m>\tau</m> también conmutan. </p>
+					Similarmente, se <m>x \in \{b_1, b_2, \ldots, b_l  \}</m>, então <m>\sigma</m> e <m>\tau</m> também comutam. </p>
 				</proof>
 			</proposition>
  
 			<theorem>
 				<statement>
-					<p>Toda permutación en <m>S_n</m> puede ser escrita como producto de ciclos disjuntos.</p>
+					<p>Toda permutação em <m>S_n</m> pode ser escrita como produto de ciclos disjuntos.</p>
 				</statement> 
 
 				<proof>
-					<p>Podemos suponer que <m>X = \{ 1, 2, \ldots, n \}</m>. Si <m>\sigma \in S_n</m> y definimos <m>X_1</m> como <m>\{ \sigma(1), \sigma^2(1), \ldots \}</m>, entonces el conjunto <m>X_1</m> es finito pues <m>X</m> es finito. Ahora sea <m>i</m> el primer entero en <m>X</m> que no está en <m>X_1</m> y definamos <m>X_2</m> como <m>\{ \sigma(i), \sigma^2(i), \ldots \}</m>. Nuevamente, <m>X_2</m> es un conjunto finito.  Continuando de esta manera, podemos definir conjuntos finitos disjuntos <m>X_3, X_4, \ldots</m>. Como <m>X</m> es un conjunto finito, estamos seguros que este proceso terminará y que habrá un número finito de estos conjuntos, digamos <m>r</m>. Si <m>\sigma_i</m> es el ciclo definido por 
+					<p>Podemos supor que <m>X = \{ 1, 2, \ldots, n \}</m>. Se <m>\sigma \in S_n</m> e definimos <m>X_1</m> como <m>\{ \sigma(1), \sigma^2(1), \ldots \}</m>, então o conjunto <m>X_1</m> é finito, pois <m>X</m> é finito. Agora seja <m>i</m> o primeiro inteiro em <m>X</m> que não está em <m>X_1</m> e definamos <m>X_2</m> como <m>\{ \sigma(i), \sigma^2(i), \ldots \}</m>. Novamente, <m>X_2</m> é um conjunto finito.  Continuando desta maneira, podemos definir conjuntos finitos disjuntos <m>X_3, X_4, \ldots</m>. Como <m>X</m> é um conjunto finito, estamos seguros de que este processo terminará e que haverá um número finito destes conjuntos, digamos <m>r</m>. Se <m>\sigma_i</m> é o ciclo definido por
 					<me>\sigma_i( x ) = 
 					\left\{\begin{array}{ll}
 					\sigma( x ) &amp; x \in X_i \\
 							x   &amp; x \notin X_i, 
 					\end{array}\right.</me> 
-					entonces <m>\sigma = \sigma_1 \sigma_2 \cdots \sigma_r</m>. Como los conjuntos <m>X_1, X_2, \ldots, X_r</m> son disjuntos, los ciclos <m>\sigma_1, \sigma_2, \ldots, \sigma_r</m> también lo son.</p>
+					então <m>\sigma = \sigma_1 \sigma_2 \cdots \sigma_r</m>. Como os conjuntos <m>X_1, X_2, \ldots, X_r</m> são disjuntos, os ciclos <m>\sigma_1, \sigma_2, \ldots, \sigma_r</m> também o são.</p>
 				</proof>
 			</theorem>
  
 			<example xml:id="example-permute-cycle-products">
-				<p>Sean
+				<p>Sejam
 					<md>
 						<mrow>\sigma &amp; =
 						\begin{pmatrix}<![CDATA[
@@ -288,7 +288,7 @@
 						3 & 2 & 1 & 5 & 6 & 4
 						]]>\end{pmatrix}.</mrow>
 					</md>
-				Usando notación cíclica, podemos escribir <md>
+				Usando notação cíclica, podemos escrever <md>
 					<mrow>\sigma      &amp; = (1624)</mrow>
 					<mrow>\tau        &amp; = (13)(456)</mrow>
 					<mrow>\sigma \tau &amp; = (1 3 6) ( 2 4 5)</mrow>
@@ -297,26 +297,26 @@
 			</example>
  
 			<remark>
-				<p>Desde ahora nos resultará conveniente usar la notación cíclica para representar las permutaciones. Cuando usemos la notación cíclica, frecuentemente representaremos la permutación identidad por <m>(1)</m> o por <m>()</m>.</p>
+				<p>A partir de agora, nos será conveniente usar a notação cíclica para representar as permutações. Ao usar a notação cíclica, comumente representaremos a permutação identidade por <m>(1)</m> ou por <m>()</m>.</p>
 			</remark>
 
 		</subsection>
 
 		<subsection xml:id="permute-subsection-transpositions">
-			<title>Transposiciones</title>
+			<title>Transposições</title>
 
-			<p>La permutación (no trivial) más simple es un ciclo de largo 2.  Tales ciclos se llaman <term>transposiciones</term><idx><h>Transposición</h></idx>. Como <me> (a_1, a_2, \ldots, a_n ) = (a_1 a_n ) (a_1 a_{n-1} ) \cdots ( a_1 a_3 ) (a_1 a_2 ), </me> cualquier ciclo puede ser escrito como el producto de transposiciones, llevándonos a la siguiente proposición.</p>
+			<p>A permutação (não trivial) mais simples é um ciclo de tamanho 2.  Tais ciclos se chamam <term>transposições</term><idx><h>transposição</h></idx>. Como <me> (a_1, a_2, \ldots, a_n ) = (a_1 a_n ) (a_1 a_{n-1} ) \cdots ( a_1 a_3 ) (a_1 a_2 ), </me> qualquer ciclo pode ser escrito como o produto de transposições, o que nos leva à seguinte proposição.</p>
 
 			<proposition>
 				<statement>
-					<p>Cualquier permutación de un conjunto finito que contenga al menos dos elementos puede ser escrita como producto de transposiciones. </p>
+					<p>Qualquer permutação de um conjunto finito que contenha ao menos dois elementos pode ser escrita como produto de transposições. </p>
 				</statement>
 			</proposition>
 
 			<example xml:id="example-permute-transpositions">
-				<p>Considere la permutación
+				<p>Considere a permutação
 					<me> ( 1 6 ) (2 5 3) = (1 6 )( 2 3 )( 2 5 ) = (1 6 )( 4 5 )(2 3 )( 4 5 )(2 5 ).</me>
-				Como podemos ver, no hay una única forma de representar la permutación como producto de transposiciones. Por ejemplo, podemos escribir la identidad como <m>(1 2 )(1 2 )</m>, como <m>(1 3 )(2 4 )(1 3 )( 2 4 )</m>, y en muchas otras formas. Sin embargo, resulta ser, que ninguna permutación se puede escribir tanto como un producto de un número par como de un número impar de transposiciones. Por ejemplo, podemos representar la permutación <m>(1 6)</m> por <me>(2 3 )(1 6)( 2 3)</me> o por <me>(3 5) (1 6) (1 3) (1 6) (1 3) (3 5) (5 6),</me> pero <m>(1 6)</m> siempre será el producto de un número impar de transposiciones. </p>
+				Como podemos ver, não há uma única forma de representar a permutação como produto de transposições. Por exemplo, podemos escrever a identidade como <m>(1 2 )(1 2 )</m>, como <m>(1 3 )(2 4 )(1 3 )( 2 4 )</m>, e de muitas outras formas. Ainda assim, como ocorre, nenhuma permutação pode ser escrita tanto como um produto de um número par como de um número ímpar de transposições. Por exemplo, podemos representar a permutação <m>(1 6)</m> por <me>(2 3 )(1 6)( 2 3)</me> ou por <me>(3 5) (1 6) (1 3) (1 6) (1 3) (3 5) (5 6),</me> mas <m>(1 6)</m> sempre será o produto de um número ímpar de transposições. </p>
 			</example>
 
 			<!-- TWJ, 2010/03/31 -->
@@ -324,91 +324,91 @@
 
 			<lemma xml:id="lemma-identity-even-trans">
 				<statement>
-					<p>Si la identidad se escribe como el producto de <m>r</m> transposiciones,
+					<p>Se a identidade é escrita como o produto de <m>r</m> transposições,
 						<me>\identity = \tau_1 \tau_2 \cdots \tau_r, </me>
-					entonces <m>r</m> es un número par.</p>
+					então <m>r</m> é um número par.</p>
 				</statement>
 
 				<proof>
-					<p>Procederemos por inducción en <m>r</m>.  Una transposición no puede ser la identidad; luego,   <m>r \gt 1</m>. Si <m>r=2</m>, estamos listos. Supongamos que <m>r \gt 2</m>. En este caso el producto de al menos dos de estas transposiciones, <m>\tau_{r-1} \tau_r</m>, debe estar en uno de los casos siguientes: <md>
+					<p>Procederemos por indução em <m>r</m>.  Uma transposição não pode ser a identidade; logo,   <m>r \gt 1</m>. Se <m>r=2</m>, está provado. Suponhamos que <m>r \gt 2</m>. Neste caso o produto de ao menos duas destas transposições, <m>\tau_{r-1} \tau_r</m>, deve estar em um dos casos seguintes: <md>
 						<mrow>(a b)(a b) &amp; = \identity</mrow>
 						<mrow>(b c)(a b) &amp; = (a c)(b c)</mrow>
 						<mrow>(c d)(a b) &amp; = (a b)(c d)</mrow>
 						<mrow>(a c)(a b) &amp; = (a b)(b c),</mrow>
-					</md> donde <m>a</m>, <m>b</m>, <m>c</m>, y <m>d</m> son distintos.</p>
+					</md> em que <m>a</m>, <m>b</m>, <m>c</m>, e <m>d</m> são distintos.</p>
 
-					<p>La primera ecuación simplemente dice que una transposición es su propia inversa. Si ocurre este caso, borre <m>\tau_{r-1} \tau_r</m> del producto para obtener
+					<p>A primeira equação simplesmente diz que uma transposição é sua própria inversa. Se isto ocorre, apague <m>\tau_{r-1} \tau_r</m> do produto para obter
 						<me> \identity = \tau_1 \tau_2 \cdots \tau_{r - 3} \tau_{r - 2}.</me>
-					Por inducción <m>r - 2</m> es par; luego, <m>r</m> debe ser par.</p>
+					Por indução <m>r - 2</m> é par; logo, <m>r</m> deve ser par.</p>
 				 
-					<p>En cada uno de los otros tres casos, podemos reemplazar <m>\tau_{r - 1} \tau_r</m> con el lado derecho de la ecuación correspondiente para obtener un nuevo producto de <m>r</m> transposiciones para la identidad. En este nuevo producto, la última aparición de <m>a</m> será en la penúltima transposición. Podemos continuar este proceso con <m>\tau_{r - 2} \tau_{r - 1}</m> para obtener ya sea un producto de <m>r - 2</m> transposiciones o un nuevo producto de <m>r</m> transposiciones donde la última aparición de <m>a</m> es en <m>\tau_{r - 2}</m>. Si la identidad es el producto de <m>r - 2</m> transposiciones, entonces nuevamente estamos listos, por la hipótesis de inducción; de otro modo, repetiremos el procedimiento con <m>\tau_{r - 3} \tau_{r - 2}</m>.</p>
+					<p>Em cada um dos outros três casos, podemos substituir <m>\tau_{r - 1} \tau_r</m> com o lado direito da equação correspondente para obter um novo produto de <m>r</m> transposições para a identidade. Neste novo produto, a última ocorrência de <m>a</m> será na penúltima transposição. Podemos continuar este processo com <m>\tau_{r - 2} \tau_{r - 1}</m> para obter ou um produto de <m>r - 2</m> transposições ou um novo produto de <m>r</m> transposições, em que a última ocorrência de <m>a</m> é em <m>\tau_{r - 2}</m>. Se a identidade é o produto de <m>r - 2</m> transposições, então novamente está provado, pela hipótese de indução; senão, repetiremos o procedimento com <m>\tau_{r - 3} \tau_{r - 2}</m>.</p>
 
-					<p>En algún momento, tendremos dos transposiciones adyacentes iguales, que se cancelarán o <m>a</m> solamente estará presente en la primera transposición. Pero este último caso no puede ocurrir, pues la identidad no fijaría <m>a</m> en esta situación. Por lo tanto, la identidad debe ser el producto de <m>r-2</m> transposiciones y, nuevamente por la hipótesis de inducción, estamos listos.</p>
+					<p>Em algum momento, teremos duas transposições adjacentes iguais, que se cancelarão, ou apenas <m>a</m>  estará presente na primeira transposição. Mas este último caso não pode ocorrer, pois a identidade não fixaria <m>a</m> nesta situação. Portanto, a identidade deve ser o produto de <m>r-2</m> transposições e, novamente pela hipótese de indução, está provado.</p>
 				</proof>
 			</lemma>
 
 			<theorem xml:id="theorem-even-and-odd">
 				<statement>
-					<p>Si una permutación <m>\sigma</m> puede ser expresada como el producto de un número par de transposiciones, entonces cualquier otro producto de transposiciones igual a <m>\sigma</m> debe también contener un número par de transposiciones.  De forma similar, si <m>\sigma</m> puede ser expresada como el producto de un número impar de transposiciones, entonces cualquier otro producto de transposiciones igual a <m>\sigma</m> debe también contener un número impar de transposiciones.</p>
+					<p>Se uma permutação <m>\sigma</m> pode ser expressa como o produto de um número par de transposições, então qualquer outro produto de transposições igual a <m>\sigma</m> deve também conter um número par de transposições.  Igualmente, se <m>\sigma</m> pode ser expressa como o produto de um número ímpar de transposições, então qualquer outro produto de transposições igual a <m>\sigma</m> deve também conter um número ímpar de transposições.</p>
 				</statement> 
 
 				<proof>
-					<p>Supongamos que <me> \sigma = \sigma_1 \sigma_2 \cdots \sigma_m = \tau_1 \tau_2 \cdots \tau_n, </me> con <m>m</m> par. Debemos mostrar que <m>n</m> también es un número par.  La inversa de <m>\sigma</m> es <m>\sigma_m \cdots \sigma_1</m>. Como <me> \identity = \sigma \sigma_m \cdots \sigma_1 = \tau_1  \cdots \tau_n \sigma_m \cdots \sigma_1, </me> <m>n</m> debe ser par por el Lema<nbsp /><xref ref="lemma-identity-even-trans" />. La demostración del caso en el que <m>\sigma</m> puede ser expresada como el producto de un número impar de transposiciones lo dejamos como ejercicio.</p>
+					<p>Suponhamos que <me> \sigma = \sigma_1 \sigma_2 \cdots \sigma_m = \tau_1 \tau_2 \cdots \tau_n, </me> com <m>m</m> par. Devemos mostrar que <m>n</m> também é um número par.  A inversa de <m>\sigma</m> é <m>\sigma_m \cdots \sigma_1</m>. Como <me> \identity = \sigma \sigma_m \cdots \sigma_1 = \tau_1  \cdots \tau_n \sigma_m \cdots \sigma_1, </me> <m>n</m> deve ser par pelo Lema<nbsp /><xref ref="lemma-identity-even-trans" />. A demonstração do caso em que <m>\sigma</m> pode ser expressa como o produto de um número ímpar de transposições é deixada como exercício.</p>
 				</proof>
 			</theorem>
 
 			<!-- Typo corrected.  Suggested by B. Whetter -->
 			<!-- TWJ 0212/10/21 -->
  
-			<p>A la luz del Teorema<nbsp /><xref ref="theorem-even-and-odd" />, definimos que una permutación es <term>par</term><idx><h>Par</h><h>permutación</h></idx> si puede ser expresada como el producto de un número par de transposiciones e <term>impar</term><idx><h>Impar</h><h>permutación</h></idx> si puede ser expresada como el producto de un número impar de transposiciones.</p>
+			<p>À luz do Teorema<nbsp /><xref ref="theorem-even-and-odd" />, definimos que uma permutação é <term>par</term><idx><h>Par</h><h>permutação</h></idx> se pode ser expressa como o produto de um número par de transposições e <term>ímpar</term><idx><h>Ímpar</h><h>permutação</h></idx> se pode ser expressa como o produto de um número ímpar de transposições.</p>
 		
 		</subsection>
 
 		<subsection xml:id="permute-subsection-alternating-groups">
-			<title>Los Grupos Alternantes</title>
+			<title>Os Grupos Alternantes</title>
 
-			<p>Uno de los subgrupos más importantes de <m>S_n</m> es el conjunto de todas las permutaciones pares, <m>A_n</m>.  <notation><usage>A_n</usage><description>el grupo alternante en <m>n</m> símbolos</description></notation> El grupo <m>A_n</m> se llama <term>grupo alternante en <m>n</m> símbolos</term><idx><h>Alternante</h><h>grupo</h></idx>.</p>
+			<p>Um dos subgrupos mais importantes de <m>S_n</m> é o conjunto de todas as permutações pares, <m>A_n</m>.  <notation><usage>A_n</usage><description>o grupo alternante em <m>n</m> símbolos</description></notation> O grupo <m>A_n</m> se chama <term>grupo alternante em <m>n</m> símbolos</term><idx><h>Alternante</h><h>grupo</h></idx>.</p>
 
 
  
 			<theorem>
 				<statement>
-					<p>El conjunto <m>A_n</m> es un subgrupo de <m>S_n</m>.</p>
+					<p>O conjunto <m>A_n</m> é um subgrupo de <m>S_n</m>.</p>
 				</statement>
 
 				<proof>
-					<p>Como el producto de dos permutaciones pares es también una permutación par, <m>A_n</m> es cerrado.  La identidad es una permutación par y por lo tanto está en <m>A_n</m>. Si <m>\sigma</m> es una permutación par, entonces 
+					<p>Como o produto de duas permutações pares é também uma permutação par, <m>A_n</m> é fechado.  A identidade é uma permutação par e portanto está em <m>A_n</m>. Se <m>\sigma</m> é uma permutação par, então
 						<me>\sigma = \sigma_1 \sigma_2 \cdots \sigma_r,</me>
-					donde <m>\sigma_i</m> son transposiciones y  <m>r</m> es par. Como la inversa de una transposición es ella misma, 
+					em que <m>\sigma_i</m> são transposições e  <m>r</m> é par. Como a inversa de uma transposição é ela mesma,
 						<me>\sigma^{-1} = \sigma_r \sigma_{r-1} \cdots \sigma_1</me>
-					también está en <m>A_n</m>.</p>
+					também está em <m>A_n</m>.</p>
 				</proof>
 			</theorem>
 
 			<proposition>
 				<statement>
-					<p>El número de permutaciones pares en <m>S_n</m>, <m>n \geq 2</m>, es igual al número de permutaciones impares; luego, el orden de <m>A_n</m> es <m>n!/2</m>.</p>
+					<p>O número de permutações pares em <m>S_n</m>, <m>n \geq 2</m>, é igual ao número de permutações ímpares; logo, a ordem de <m>A_n</m> é <m>n!/2</m>.</p>
 				</statement>
 				
 				 <proof>
-				 	<p>Sea <m>A_n</m> el conjunto de permutaciones pares en <m>S_n</m> y <m>B_n</m> el conjunto de permutaciones impares.  Si podemos mostrar que existe una biyección entre estos conjuntos, habremos demostrado que contienen el mismo número de elementos. Fijemos una transposición <m>\sigma</m> en <m>S_n</m>.  Como <m>n \geq 2</m>, tal  <m>\sigma</m> existe.  Defina 
+				 	<p>Seja <m>A_n</m> o conjunto de permutações pares em <m>S_n</m> e <m>B_n</m> o conjunto de permutações ímpares.  Se pudermos mostrar que existe una bijeção entre estes conjuntos, demonstraremos que contém o mesmo número de elementos. Fixemos uma transposição <m>\sigma</m> em <m>S_n</m>.  Como <m>n \geq 2</m>, tal  <m>\sigma</m> existe.  Defina
 				 		<me>\lambda_{\sigma} : A_n \rightarrow B_n</me>
-				 	como 
+				 	como
 				 		<me>\lambda_{\sigma} ( \tau ) = \sigma  \tau .</me>
-				 	Supongamos que <m>\lambda_{\sigma} ( \tau ) = \lambda_{\sigma} ( \mu )</m>. Entonces <m>\sigma  \tau = \sigma  \mu</m> y así 
+				 	Suponhamos que <m>\lambda_{\sigma} ( \tau ) = \lambda_{\sigma} ( \mu )</m>. Então <m>\sigma  \tau = \sigma  \mu</m> e assim
 				 		<me> \tau = \sigma^{-1} \sigma \tau = \sigma^{-1} \sigma \mu = \mu. </me>
-				 	Por lo tanto, <m>\lambda_{\sigma}</m> es 1-1.  Dejaremos la demostración de que <m>\lambda_{\sigma}</m> es sobreyectiva como ejercicio.</p>
+				 	Portanto, <m>\lambda_{\sigma}</m> é 1-1.  Deixaremos a demonstração de que <m>\lambda_{\sigma}</m> é sobrejetiva como exercício.</p>
 				</proof>
 			</proposition>
  
 			<example xml:id="example-permute-s4">
-				<p>El grupo <m>A_4</m> es el subgrupo de <m>S_4</m> que consiste de las permutaciones pares.  Hay doce elementos en <m>A_4</m>: 
+				<p>O grupo <m>A_4</m> é o subgrupo de <m>S_4</m> que consiste das permutações pares. Há doze elementos em <m>A_4</m>: 
 					<md>
 						<mrow>&amp; (1)    &amp;&amp; (12)(34) &amp;&amp; (13)(24) &amp;&amp; (14)(23) </mrow>
 						<mrow>&amp; (123)  &amp;&amp; (132)    &amp;&amp; (124)    &amp;&amp; (142)    </mrow>
 						<mrow>&amp; (134)  &amp;&amp; (143)    &amp;&amp; (234)    &amp;&amp; (243).   </mrow>
 					</md>
-				Uno de los ejercicios al final del capítulo será el de encontrar todos los subgrupos de <m>A_4</m>. Descubrirá que no hay ningún subgrupo de orden 6.  ¿Le sorprende?</p>
+				Um dos exercícios ao final do capítulo será encontrar todos os subgrupos de <m>A_4</m>. Você descobrirá que não há nenhum subgrupo de ordem 6.  ¿Isso te surpreende?</p>
 			</example>
 
 		</subsection>
@@ -416,22 +416,22 @@
 		<subsection xml:id="permute-historical-note">
 			<title>Note Histórica</title>
 			
-			<p>Lagrange<idx><h>Lagrange, Joseph-Louis</h></idx> fue el primero en pensar las permutaciones como funciones de un conjunto en sí mismo, pero fue Cauchy quién desarrolló los teoremas básicos y la notación para las permutaciones. Él fue el primero en usar la notación cíclica. Augustin-Louis Cauchy<idx><h>Cauchy, Augustin-Louis</h></idx> (1789<ndash />1857) nació en París durante en el apogeo de la Revolución Francesa. Su familia dejó París y se fue al pueblo de Arcueil para escapar del Reino del Terror. Uno de los vecinos de la familia allí, fue Pierre-Simon Laplace<idx><h>Laplace, Pierre-Simon</h></idx> (1749<ndash />1827), quien lo motivó a iniciar una carrera en matemáticas. Cauchy comenzó su carrera como matemático resolviendo un problema de geometría que le planteó Lagrange. Cauchy escribió más de 800 trabajos en diversos tópicos, como ecuaciones diferenciales, grupos finitos, matemáticas aplicadas, y análisis complejo. Fue uno de los matemáticos responsables de hacer que el Cálculo Diferencial fuera riguroso. Es probable que haya más teoremas y conceptos en matemáticas asociados al nombre de Cauchy que al de cualquier otro matemático.</p>
+			<p>Lagrange<idx><h>Lagrange, Joseph-Louis</h></idx> foi o primeiro a pensar nas permutações como funções de um conjunto em si mesmo, mas foi Cauchy quem desenvolveu os teoremas básicos e a notação para as permutações. Ele foi o primeiro a usar a notação cíclica. Augustin-Louis Cauchy<idx><h>Cauchy, Augustin-Louis</h></idx> (1789<ndash />1857) nasceu em Paris durante o apogeu a Revolução Francesa. Sua família deixou Paris e foi para o povoado de Arcueil para escapar do Reino do Terror. Um dos vizinhos da família era Pierre-Simon Laplace<idx><h>Laplace, Pierre-Simon</h></idx> (1749<ndash />1827), que o motivou a iniciar uma carreira na matemática. Cauchy começou sua carreira como matemático resolvendo um problema de geometria que Lagrange o entregou. Cauchy escreveu mais de 800 trabalhos em diversos tópicos, como equações diferenciais, grupos finitos, matemática aplicada e análise complexa. Foi um dos matemáticos responsáveis por dar rigor ao Cálculo Diferenciável. Provavelmente há mais teoremas e conceitos na matemática associados ao nome de Cauchy que a qualquer outro matemático.</p>
 
 		</subsection>
 		
 	</section>
 
 	<section xml:id="section-dihedral-groups">
-		<title>Grupos Dihedrales</title>
+		<title>Grupos Diedrais</title>
  
 		<introduction>
 
-			<p>Otro tipo especial de grupo de permutaciones es el de los grupos dihedrales. Recordemos el grupo de las simetrías del triángulo equilátero en el Capítulo<nbsp /><xref ref="groups" />. Tales grupos consisten de los movimientos rígidos de un polígono regular de <m>n</m> lados o <m>n</m>-ágono regular. Para <m>n = 3, 4, \ldots</m>, definimos el <term>n-ésimo grupo dihedral</term><idx><h>Dihedral</h><h>grupo</h></idx> como el grupo de los movimientos rígidos de n <m>n</m>-ágono regular.  Denotaremos este grupo por  <m>D_n</m>.  <notation><usage>D_n</usage><description>el grupo dihedral</description></notation> Podemos numerar los vértices de un <m>n</m>-ágono regular con <m>1, 2, \ldots, n</m> (Figura<nbsp /><xref ref="figure-regular" />).  Note que hay exactamente <m>n</m> posibilidades para reemplazar al primer vértice.  Si reemplazamos al primer vértice por <m>k</m>, entonces el segundo vértice debe ser reemplazado por el vértice <m>k+1</m> o por el vértice <m>k-1</m>; luego, hay <m>2n</m> movimientos rígidos posibles del <m>n</m>-ágono.  Resumimos estos resultados en el siguiente teorema.</p>
+			<p>Outro tipo especial de grupo de permutações é o dos grupos diedrais. Recordemos o grupo das simetrias do triângulo equilátero no Capítulo<nbsp /><xref ref="groups" />. Tais grupos consistem dos movimentos rígidos de um polígono regular de <m>n</m> lados, ou <m>n</m>-ágono regular. Para <m>n = 3, 4, \ldots</m>, definimos o <term>n-ésimo grupo diedral</term><idx><h>Diedral</h><h>grupo</h></idx> como o grupo dos movimentos rígidos de n <m>n</m>-ágono regular.  Denotaremos este grupo por  <m>D_n</m>.  <notation><usage>D_n</usage><description>o grupo diedral</description></notation> Podemos numerar os vértices de um <m>n</m>-ágono regular com <m>1, 2, \ldots, n</m> (Figura<nbsp /><xref ref="figure-regular" />).  Note que há exatamente <m>n</m> possibilidades para substituir o primeiro vértice.  Se substituímos o primeiro vértice por <m>k</m>, então o segundo vértice deve ser substituído pelo vértice <m>k+1</m> ou pelo vértice <m>k-1</m>; logo, há <m>2n</m> movimentos rígidos possíveis do <m>n</m>-ágono. Resumimos estes resultados no seguinte teorema.</p>
 
 						<!-- Replaced figure with tikz figure - TWJ 5/7/2010 -->
 			<figure xml:id="figure-regular">
-				<caption>Un <m>n</m>-ágono regular</caption>
+				<caption>Um <m>n</m>-ágono regular</caption>
 				<image width="60%" xml:id="permute-ngon">
 					<latex-image-code><![CDATA[
 						\begin{tikzpicture}[scale=1.5]
@@ -453,13 +453,13 @@
 	 
 			<theorem>
 				<statement> 
-					<p>El grupo dihedral, <m>D_n</m>,  es un subgrupo de <m>S_n</m> de orden <m>2n</m>.</p>
+					<p>O grupo diedral, <m>D_n</m>, é um subgrupo de <m>S_n</m> de ordem <m>2n</m>.</p>
 				</statement>
 			</theorem>
 
 			<!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/7/2010 -->
 			<figure xml:id="figure-rotations">
-				<caption>Rotaciones y reflexiones de un <m>n</m>-ágono regular</caption>
+				<caption>Rotações e reflexões de um <m>n</m>-ágono regular</caption>
 				<image xml:id="permute-motions-ngon">
 					<latex-image-code><![CDATA[
 						\begin{tikzpicture}[scale=1.3]
@@ -468,14 +468,14 @@
 
 						\draw (-2,0)  +(45:1) node [right] {2} -- +(90:1) node [above] {1} -- +(135:1) node [left] {8} -- +(180:1) node [left] {7} -- +(225:1) node [left] {6} -- +(270:1) node [below] {5} -- +(315:1) node [right] {4} -- +(360:1) node [right] {3} -- cycle;
 						\draw [->] (-0.5,0) -- (0.5,0);
-						\node [above] at (0,0) {\emph{reflexión}};
+						\node [above] at (0,0) {\emph{reflexão}};
 
 						\draw (2,2.75)  +(45:1) node [right] {3} -- +(90:1) node [above] {2} -- +(135:1) node [left] {1} -- +(180:1) node [left] {8} -- +(225:1) node [left] {7} -- +(270:1) node [below] {6} -- +(315:1) node [right] {5} -- +(360:1) node [right] {4} -- cycle;
 
 						\draw (-2,2.75)  +(45:1) node [right] {2} -- +(90:1) node [above] {1} -- +(135:1) node [left] {8} -- +(180:1) node [left] {7} -- +(225:1) node [left] {6} -- +(270:1) node [below] {5} -- +(315:1) node [right] {4} -- +(360:1) node [right] {3} -- cycle;
 
 						\draw [->] (-0.5,2.75) -- (0.5,2.75);
-						\node [above] at (0,2.75) {\emph{rotación}};
+						\node [above] at (0,2.75) {\emph{rotação}};
 
 						\end{tikzpicture}]]>
 					</latex-image-code>
@@ -484,7 +484,7 @@
 
 			<!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010 -->
 			<figure xml:id="figure-types">
-				<caption>Tipos de reflexiones de un <m>n</m>-ágono regular</caption>
+				<caption>Tipos de reflexões de um <m>n</m>-ágono regular</caption>
 
 				<image xml:id="permute-reflections-ngon">
 					<latex-image-code><![CDATA[
@@ -513,7 +513,7 @@
 
 			<theorem xml:id="theorem-dn-generator">
 				<statement>
-					<p>El grupo <m>D_n</m>, <m>n \geq 3</m>, consiste de todos los productos de los dos elementos <m>r</m> y <m>s</m>, que satifacen las relaciones <md>
+					<p>O grupo <m>D_n</m>, <m>n \geq 3</m>, consiste de todos os produtos dos dois elementos <m>r</m> e <m>s</m>, que satisfazem as relações <md>
 						<mrow>r^n &amp; = 1</mrow>
 						<mrow> s^2 &amp; = 1</mrow>
 						<mrow> srs &amp; = r^{-1}.</mrow>
@@ -523,36 +523,36 @@
 				<!-- TWJ, 2010/03/31 -->
 				<!-- I think that this is a correct proof and simplified, but the proof needs to be checked. -->
 				<proof>
-					<p>Los posibles movimientos de un <m>n</m>-ágono regular son reflexiones y rotaciones (Figura<nbsp /><xref ref="figure-rotations" />). Hay exactamente <m>n</m> rotaciones posibles: 
+					<p>Os possíveis movimentos de um <m>n</m>-ágono regular são reflexões e rotações (Figura<nbsp /><xref ref="figure-rotations" />). Há exatamente <m>n</m> rotações possíveis:
 						<me>\identity, \frac{360^{\circ} }{n}, 2 \cdot \frac{360^{\circ} }{n}, \ldots, (n-1) \cdot \frac{360^{\circ} }{n}.</me> 
-					Denotaremos la rotación en <m>360^{\circ} /n</m> por <m>r</m>. La rotación <m>r</m> genera todas las rotaciones. Es decir, 
+					Denotaremos a rotação em <m>360^{\circ} /n</m> por <m>r</m>. A rotação <m>r</m> gera todas as rotações. Isto é,
 						<me> r^k = k \cdot \frac{360^{\circ} }{n}.</me></p>
 
-					<p> Etiquete las <m>n</m> reflexiones <m>s_1, s_2, \ldots, s_n</m>, donde <m>s_k</m> es la reflexión que fija el vértice <m>k</m>. Hay dos casos, dependiendo de si <m>n</m> es par o impar. Si hay un número par de vértices, entonces una reflexión fija dos de ellos, y <m>s_1 = s_{n/2 + 1}, s_2 = s_{n/2 + 2}, \ldots, s_{n/2}  = s_n</m>. Si hay un número impar de vértices, entonces una reflexión fija solamente un vértice y <m>s_1, s_2, \ldots, s_n</m> son distintas (Figura<nbsp /><xref ref="figure-types" />). 
+					<p> Nomeie as <m>n</m> reflexões <m>s_1, s_2, \ldots, s_n</m>, em que <m>s_k</m> és a reflexão que fixa o vértice <m>k</m>. Há dois casos, dependendo de se <m>n</m> é par ou ímpar. Se há um número par de vértices, então uma reflexão fixa dois deles, e <m>s_1 = s_{n/2 + 1}, s_2 = s_{n/2 + 2}, \ldots, s_{n/2}  = s_n</m>. Se há um número ímpar de vértices, então uma reflexão fixa somente um vértice e <m>s_1, s_2, \ldots, s_n</m> são distintas (Figura<nbsp /><xref ref="figure-types" />). 
 					<!-- Hence, if <m>n = 2m</m> for some integer <m>m</m>, then <m>s_i = s_{i+m}</m> for <m>1 \leq i \leq m</m>.  --> 
-					En cualquier caso, el orden de cada <m>s_k</m> es dos. Sea <m>s = s_1</m>. Entonces <m>s^2 = 1</m> y <m>r^n = 1</m>. Como cualquier movimiento rígido <m>t</m> del <m>n</m>-ágono reemplaza al primer  vértice por el vértice <m>k</m>, el segundo vértice  será reemplazado por el <m>k+1</m> o por el <m>k-1</m>. Si el segundo se reemplaza por <m>k+1</m>, entonces <m>t = r^k</m>. Si el segundo se reemplaza por <m>k-1</m>, entonces <m>t = s r^k</m>. Luego, <m>r</m> y <m>s</m> generan <m>D_n</m>. Es decir, <m>D_n</m> consiste de todos los productos finitos de <m>r</m> y <m>s</m>,
+					Em qualquer caso, a ordem de cada <m>s_k</m> é dois. Seja <m>s = s_1</m>. então <m>s^2 = 1</m> e <m>r^n = 1</m>. Como qualquer movimento rígido <m>t</m> do <m>n</m>-ágono substitui o primeiro vértice pelo vértice <m>k</m>, o segundo vértice será substituído por <m>k+1</m> ou por <m>k-1</m>. Se o segundo é substituído por <m>k+1</m>, então <m>t = r^k</m>. Se o segundo é substituído por <m>k-1</m>, então <m>t = s r^k</m>. Logo, <m>r</m> e <m>s</m> geram <m>D_n</m>. Isto é, <m>D_n</m> consiste de todos os produtos finitos de <m>r</m> e <m>s</m>,
 						<me>D_n = \{1, r, r^2, \ldots, r^{n-1}, s, sr, sr^2, \ldots, sr^{n-1}\}.</me>
-					Dejaremos la demostración de que <m>srs = r^{-1}</m> como un ejercicio. </p>
+					Deixaremos a demonstração de que <m>srs = r^{-1}</m> como um exercício. </p>
 				</proof>
 			</theorem>
 
 			<example xml:id="example-permute-d4-group">
-				<p>El grupo de movimientos de un cuadrado, <m>D_4</m>, consiste de ocho elementos. Con los vértices numerados 1, 2, 3, 4 (Figura<nbsp /><xref ref="figure-d4" />), las rotaciones son <md>
+				<p>O grupo de movimentos de um quadrado, <m>D_4</m>, consiste de oito elementos. Com os vértices numerados 1, 2, 3, 4 (Figura<nbsp /><xref ref="figure-d4" />), as rotações são <md>
 					<mrow>r   &amp; = (1234)</mrow>
 					<mrow>r^2 &amp; = (13)(24)</mrow>
 					<mrow>r^3 &amp; = (1432)</mrow>
 					<mrow>r^4 &amp; = (1)</mrow>
-				</md> y las  reflexiones son <md>
+				</md> e as  reflexões são <md>
 					<mrow>s_1 &amp; = (24)</mrow>
 					<mrow>s_2 &amp; = (13).</mrow>
-				</md> El orden de <m>D_4</m> es 8. Los dos elementos restantes son <md>
+				</md> A ordem de <m>D_4</m> é 8. Os dois elementos restantes são <md>
 					<mrow>r s_1   &amp; = (12)(34)</mrow>
 					<mrow>r^3 s_1 &amp; = (14)(23).</mrow>
 				</md></p>
 			</example>
 
 			<figure xml:id="figure-d4">
-				<caption>El grupo <m>D_4</m></caption>
+				<caption>O grupo <m>D_4</m></caption>
 
 				<!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010 -->
 				<image width="60%" xml:id="permute-dihedral-four">
@@ -574,12 +574,12 @@
 		</introduction>
 
 		<subsection xml:id="permute-subsection-motion-group-cube">
-			<title>El grupo de movimientos de un Cubo</title>
+			<title>O grupo de movimentos de um Cubo</title>
  
-			<p>Podemos investigar los grupos de movimientos de objetos geométricos diferentes de los polígonos de <m>n</m> lados para obtener ejemplos interesantes de grupos de permutaciones. Consideremos el grupo de movimientos rígidos de un cubo. Una de las primeras preguntas que podemos hacer sobre este grupo es <q>¿cuál es su orden?</q>  Un cubo tiene 6 caras. Si una cara en particular está apuntado hacia arriba, entonces existen cuatro rotaciones posibles del cubo que preservarán la cara apuntando hacia arriba. Luego, el orden del grupo es <m>6 \cdot 4 = 24</m>. Acabamos de demostrar la siguiente proposición.</p>
+			<p>Podemos investigar os grupos de movimentos de objetos geométricos diferentes dos polígonos de <m>n</m> lados para obter exemplos interessantes de grupos de permutações. Consideremos o grupo de movimentos rígidos de um cubo. Uma das primeiras perguntas que podemos fazer sobre este grupo é <q>qual é sua ordem?</q>  Um cubo tem 6 faces. Se uma face em particular está voltada para cima, então existem quatro rotações possíveis do cubo que preservam a cara voltada para cima. Logo, a ordem do grupo é <m>6 \cdot 4 = 24</m>. Acabamos de demostrar a seguinte proposição.</p>
 
 			<figure xml:id="figure-motions">
-				<caption>El grupo de movimientos de un cubo</caption>
+				<caption>O grupo de movimentos de um cubo</caption>
 
 				<!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010 -->
 				<image width="60%" xml:id="permute-motions-cube">
@@ -604,22 +604,22 @@
  
 			<proposition xml:id="proposition-motions-cube">
 				<statement>
-					<p>El grupo de movimientos rígidos de un cubo contiene <m>24</m> elementos.</p>
+					<p>O grupo de movimentos rígidos de um cubo contém <m>24</m> elementos.</p>
 				</statement>
 			</proposition>
  
 			<theorem>
 				<statement>
-					<p>El grupo de movimientos rígidos de un cubo es <m>S_4</m>.</p>
+					<p>O grupo de movimentos rígidos de um cubo é <m>S_4</m>.</p>
 				</statement>
 
 				<proof>
-					<p>De la Proposición<nbsp /><xref ref="proposition-motions-cube" />, ya sabemos que el grupo de movimientos del cubo tiene 24 elementos, el mismo número de  elementos que hay en <m>S_4</m>.  Hay exactamente cuatro diagonales en el cubo.  Si etiquetamos estas diagonales con 1, 2, 3, y 4, debemos mostrar que el grupo de movimientos del cubo nos dará cualquier permutación de las diagonales (Figura<nbsp /><xref ref="figure-motions" />). Si podemos obtener todas estas permutaciones, entonces <m>S_4</m> y el grupo de movimientos rígidos del cubo tendrán que ser el mismo. Para obtener una transposición, podemos  rotar el cubo en <m>180^{\circ}</m> en torno al eje que une los puntos medios de aristas opuestas (Figura<nbsp /><xref ref="figure-transpose" />). Hay seis de tales ejes, dando todas las transposiciones en <m>S_4</m>. Como todo elemento en <m>S_4</m> es el producto de un número finito de transposiciones, el grupo de movimientos de un cubo tiene que ser <m>S_4</m>.</p>
+					<p>Da proposição<nbsp /><xref ref="proposition-motions-cube" />, já sabemos que o grupo de movimentos do cubo tem 24 elementos, o mesmo número de  elementos que há em <m>S_4</m>.  Há exatamente quatro diagonais no cubo. Se numeramos estas diagonais com 1, 2, 3, e 4, devemos mostrar que o grupo de movimentos do cubo nos dará qualquer permutação das diagonais (Figura<nbsp /><xref ref="figure-motions" />). Se pudermos obter todas estas permutações, então <m>S_4</m> e o grupo de movimentos rígidos do cubo deverão ser o mesmo. Para obter uma transposição, podemos rodar o cubo em <m>180^{\circ}</m> em torno do eixo que une os pontos médios de arestas opostas (Figura<nbsp /><xref ref="figure-transpose" />). Há seis de tais eixos, resultando em todas as transposições em <m>S_4</m>. Como todo elemento em <m>S_4</m> é o produto de um número finito de transposições, o grupo de movimentos de um cubo deve ser <m>S_4</m>.</p>
 				</proof>
 			</theorem>
  
 			<figure xml:id="figure-transpose">
-				<caption>Transposiciones en el grupo de movimientos de un cubo</caption>
+				<caption>Transposições no grupo de movimentos de um cubo</caption>
 				<!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010 -->
 				<image xml:id="permute-transpositions-cube">
 					<latex-image-code><![CDATA[

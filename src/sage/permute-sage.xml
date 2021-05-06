@@ -11,15 +11,15 @@
 	<title>Sage</title>
 
 	<introduction>
-		<p>Una buena parte de de la implementación de teoría de grupos en Sage está basada en rutinas de <acro>GAP</acro> (Groups, Algorithms, and Programming) en <url href="http://www.gap-system.org/">www.gap-system.org</url>, que está incluido en cada copia de Sage.  Este es un paquete de código abierto maduro, que existe desde 1986.</p>
+		<p>Uma boa parte da implementação de teoria de grupos em Sage está baseada em rotinas de <acro>GAP</acro> (Groups, Algorithms, and Programming) em <url href="http://www.gap-system.org/">www.gap-system.org</url>, que está incluído em cada cópia de Sage.  Este é um pacote de código aberto maduro, que existe desde 1986.</p>
 
-		<p>Como hemos visto, los grupos pueden ser descritos de muchas maneras diferentes, tales como conjuntos de matrices, conjuntos de números complejos, o conjuntos de símbolos sujetos a ciertas relaciones.  Una manera muy concreta de repersentar grupos es vía permutaciones (funciones biyectivas de los enteros del <m>1</m> al <m>n</m>), usando la composición de funciones como la operación en el grupo.  Sage tiene muchas rutinas diseñadas para trabajar con grupos de este tipo y son también una buena forma para que las personas que quieran aprender teoría de grupos ganen experiencia con las ideas básicas de la teoría de grupos.  Por estas dos razones, nos concentraremos en este tipo de grupos.</p>
+		<p>Como vimos, os grupos podem ser descritos de muitas maneiras diferentes, tais como conjuntos de matrizes, conjuntos de números complexos, ou conjuntos de símbolos sujeitos a certas relações. Uma maneira muito concreta de representar grupos é via permutações (funções bijetivas dos inteiros de <m>1</m> a <m>n</m>), usando a composição de funções como a operação no grupo. Sage tem muitas rotinas desenhadas para trabalhar com grupos deste tipo e são também uma boa forma para que as pessoas que queiram aprender teoria de grupos ganhem experiência com as ideias básicas da teoria de grupos. Por estas duas razões, nos concentraremos neste tipo de grupos.</p>
 	</introduction>
 
 	<subsection>
-		<title>Grupos de Permutaciones y sus Elementos</title>
+		<title>Grupos de permutações e seus elementos</title>
 
-		<p>La forma más fácil de trabajar con elementos de grupos de permutación en Sage es escribirlos con notación cíclica.  Como estos son productos de ciclos disjuntos (que conmutan), no necesitamos preocuparnos por el orden en que aparecen los ciclos.  Si escribimos <c>(1,3)(2,4)</c> probablemente entenderemos que se trata de una permutación (el contenido de este capítulo!) y sabemos que podría ser un elemento de <m>S_4</m>, o quizás de un grupo simétrico en más de 4 símbolos.  Sage no puede comenzar tan fácilmente y necesita un poco de contexto, así es que coercionamos una cadena de caracteres escritos con notación de ciclos a pertenecer a un grupo simétrico para producir elementos del grupo.  A continuación algunos ejemplos y cálculos de muestra.  Recuerde que Sage y el texto difieren en el orden usado para componer dos permutaciones en un producto.</p>
+		<p>A forma mais fácil de trabalhar com elementos de grupos de permutação em Sage é escrevê-los com notação cíclica. Como estes são produtos de ciclos disjuntos (que comutam), não necessitamos preocupar-nos pela ordem em que aparecem os ciclos. Se escrevemos <c>(1,3)(2,4)</c> provavelmente entenderemos que se trata de uma permutação (o conteúdo deste capítulo!) e sabemos que poderia ser um elemento de <m>S_4</m>, o até de um grupo simétrico em mais de 4 símbolos. Sage não pode começar tão facilmente e necessita um pouco de contexto, para que possamos coagir uma cadeia de caracteres escritos com notação de ciclos a pertencer a um grupo simétrico para produzir elementos do grupo.  Aqui estão alguns exemplos e cálculos. Recorde que Sage e o texto diferem na ordem usada para compor duas permutações em um produto.</p>
 
 		<sage>
 			<input>
@@ -38,7 +38,7 @@
 			<output>(1,5)(2,4)</output>
 		</sage>
 
-		<p>Si los próximos tres ejemplos parecen confusos, o <q>al revés</q>, entonces sería un buen momento para revisar la discusión respecto al orden de la composición de permutaciones en Sage hecha en la subsección<nbsp /><xref ref="subsection-groups-of-symmetries" text="title" />.</p>
+		<p>Se os próximos três exemplos parecem confusos, ou <q>ao contrário</q>, então seria um bom momento para revisar a discussão a respeito da ordem da composição de permutações em Sage feita na subseção<nbsp /><xref ref="subsection-groups-of-symmetries" text="title" />.</p>
 
 		<sage>
 			<input>sigma*rho</input>
@@ -55,7 +55,7 @@
 			<output>(1,2,4)(3,5)</output>
 		</sage>
 
-		<p>Hay formas alternativas de crear elementos de un grupo de permutaciones, que pueden ser útiles en alguna situación particular, pero que no son de uso muy frecuente.</p>
+		<p>Há formas alternativas de criar elementos de um grupo de permutações, que podem ser úteis em alguma situação particular, mas que não são de uso muito frequente.</p>
 
 		<sage>
 			<input>
@@ -101,11 +101,11 @@
 			<output>[3, 5, 1, 2, 4]</output>
 		</sage>
 
-		<p>La segunda versión de <m>\sigma</m> es una lista de <q>tuplas</q>, que requiere muchas comas y estas deben ser incluidas a su vez en una lista.  (Una tupla de largo uno debe ser escrita como <c>(4,)</c> para distinguirla del uso de paréntesis para agrupar, como en <c>5*(4)</c>.)  La tercera versión usa la <q>fila inferior</q> de la notación más engorrosa de dos filas introducida al comienzo del capítulo <mdash /> es una lista ordenada de las <em>imágenes</em> de la permutación cuando es considerada como una función.</p>
+		<p>A segunda versão de <m>\sigma</m> é uma lista de <q>tuplas</q>, que requer muitas vírgulas e devem ser incluídas em uma lista. (Uma tupla de tamanho um deve ser escrita como <c>(4,)</c> para distinguir-la do uso de parênteses para agrupar, como em <c>5*(4)</c>.)  A terceira versão usa a <q>fila inferior</q> da notação mais incômoda de duas filas introduzida no começo do capítulo <mdash /> é uma lista ordenada das <em>imagens</em> da permutação quando é considerada como uma função.</p>
 
-		<p>Vemos que sin importar las tres formas diferentes de ingreso, todas las versiones de <m>\sigma</m> se muestran de la misma manera, y más aún son iguales entre sí.  (Esta es una sutil diferencia entre <mdash /> lo que un objeto <em>es</em> en Sage versus como un objeto se <em>muestra</em>.)</p>
+		<p>Vemos que sem importar as três formas diferentes de início, todas as versões de <m>\sigma</m> se mostram da mesma maneira, e, mais ainda, são iguais entre si. (Esta é uma sutil diferença entre <mdash /> o que um objeto <em>é</em> em Sage versus como um objeto se <em>mostra</em>.)</p>
 
-		<p>Podemos ser aún más cuidadosos sobre la naturaleza de nuestros elementos.  Note que una vez que Sage comienza, puede promover el producto <m>\tau\sigma</m> al grupo mayor de permutaciones.  Podemos <q>promover</q> elementos a grupos mayores de permutaciones, pero sería un error tratar de forzar un elemento en un grupo simétrico demasiado pequeño.</p>
+		<p>Podemos ser ainda mais cuidadosos sobre a natureza de nossos elementos. Note que uma vez que Sage começa, pode promover o produto <m>\tau\sigma</m> ao grupo maior de permutações.  Podemos <q>promover</q> elementos a grupos maiores de permutações, mas seria um erro tentar forçar um elemento em um grupo simétrico demasiado pequeno.</p>
 
 		<sage>
 			<input>
@@ -147,7 +147,7 @@
 			<output>Symmetric group of order 6! as a permutation group</output>
 		</sage>
 
-		<p>Es un error intentar coercionar una permutación con demasiados símbolos a un grupo de permutaciones que use menos símbolos.</p>
+		<p>É um erro tentar coagir uma permutação com demasiados símbolos a um grupo de permutações que use menos símbolos.</p>
 
 		<sage>
 			<input>tauH = H(tau)</input>
@@ -158,41 +158,41 @@
 			</output>
 		</sage>
 
-		<p>Mejor que trabajar simplemente con elementos del grupo simétrico, podemos crear diversos grupos de permutaciones en Sage.  A continuación una muestra para comenzar:</p>
+		<p>Melhor que trabalhar simplesmente com elementos do grupo simétrico, podemos criar diversos grupos de permutações em Sage. A seguir temos uma mostra para começar:</p>
 
 		<table xml:id="table-sage-permutation-groups">
-			<caption>Algunos grupos de permutaciones en Sage</caption>
+			<caption>Alguns grupos de permutações em Sage</caption>
 		    <tabular halign="left" top="medium">
 	    		<row bottom="medium">
 	    			<cell>Comando Sage</cell>
-	    			<cell>Descripción</cell>
+	    			<cell>Descrição</cell>
 	    		</row>
 				<row>
 					<cell><c>SymmetricGroup(n)</c> </cell>
-					<cell>Grupo simétrico en <m>n</m> símbolos, <m>n!</m> elementos</cell>
+					<cell>Grupo simétrico em <m>n</m> símbolos, <m>n!</m> elementos</cell>
 				</row>
 				<row>
 					<cell><c>DihedralGroup(n)</c></cell>
-					<cell>Simetrías de un <m>n</m>-ágono, <m>2n</m> elementos.</cell>
+					<cell>Simetrias de um <m>n</m>-ágono, <m>2n</m> elementos.</cell>
 				</row>
 				<row>
 					<cell><c>CyclicPermutationGroup(n)</c></cell>
-					<cell>Rotaciones de un <m>n</m>-ágono, <m>n</m> elementos</cell>
+					<cell>Rotações de um <m>n</m>-ágono, <m>n</m> elementos</cell>
 				</row>
 				<row>
 					<cell><c>AlternatingGroup(n)</c></cell>
-					<cell>Grupo alternante en <m>n</m> símbolos, <m>n!/2</m> elementos</cell>
+					<cell>Grupo alternante em <m>n</m> símbolos, <m>n!/2</m> elementos</cell>
 				</row>
 				<row bottom="medium">
 					<cell><c>KleinFourGroup()</c></cell>
-					<cell>Un grupo no cíclico de orden 4</cell>
+					<cell>Um grupo no cíclico de ordem 4</cell>
 				</row> 
 		    </tabular>
 		</table>
 
 		<sage type="practice" />
 
-		<p>Usted también puede localizar grupos de permutaciones en Sage usando el catálogo de <c>grupos</c>.  En la próxima celda ponga el cursor después del punto final y presione la tecla de tabular (TAB).  Obtendrá una lista de métodos que puede usar para crear grupos de permutaciones.  Como siempre, ponga un signo de interrogación después de un método y presione la tecla de tabular para obtener documentación en línea del método.  (esto funciona en una celda de Sage normal pero no parece funcionar en el "libro")</p>
+		<p>Você também pode localizar grupos de permutações em Sage usando o catálogo de <c>grupos</c>. Na próxima célula ponha o cursor depois do ponto final e pressione a tecla de tabular (TAB). Você obterá uma lista de métodos que pode usar para criar grupos de permutações. Como sempre, ponha um ponto de interrogação depois de um método e pressione a tecla de tabular para obter documentação na linha do método. (isto funciona em uma célula de Sage normal mas não parece funcionar no  "libro")</p>
 
 		<sage doctest="not tested">
 			<input>groups.permutation.</input>
@@ -201,9 +201,9 @@
 	</subsection>
 
 	<subsection>
-		<title>Propiedades de Permutaciones (Elementos)</title>
+		<title>Propriedades de permutações (Elementos)</title>
 
-		<p>A veces es más fácil tomar un elemento de una lista de elementos en un grupo de permutaciones, así ya está asociado a un "parent" y no hay necesidad de hacer ninguna coerción.  En lo que sigue, <c>rotate</c> y <c>flip</c> son automáticamente elementos de <c>G</c> por la forma en que fueron obtenidos.</p>
+		<p>Às vezes é mais fácil tomar um elemento de uma lista de elementos em um grupo de permutações, assim já está associado a um "parent" e não há necessidade de fazer nenhuma coerção. A seguir, <c>rotate</c> e <c>flip</c> são automaticamente elementos de <c>G</c> pela forma com que foram obtidos.</p>
 
 		<sage>
 			<input>
@@ -225,7 +225,7 @@
 			<output>False</output>
 		</sage>
 
-		<p>Vemos con esta última prueba que el grupo de simetrías de un pentágono es no abeliano.  Pero hay una manera más fácil.</p>
+		<p>Vemos com esta última prova que o grupo de simetrias de um pentágono é não abeliano. Mas há uma maneira mais fácil.</p>
 
 		<sage>
 			<input>
@@ -235,11 +235,11 @@
 			<output>False</output>
 		</sage>
 
-		<p>Existen muchos métodos, tanto para los grupos de permutaciones como para sus elementos.  Use la celda vacía de más abajo para crear un grupo de permutaciones (el que quiera) y un elemento de un grupo de permutaciones (cualquiera).  A continuación usa la tab-completion para ver todos los métodos disponibles para un elemento, o para un grupo (nombre, punto, tecla-tab).  Algunos nombres los puede reconocer, otros los aprenderemos en los capítulos siguientes, algunos son herramientas muy especializadas de investigación que podría usar para desarrollar su tesis de doctorado en  teoría de grupos.  Para cualquiera de estos métodos, recuerde que puede escribir el nombre, seguido de un signo de interrogación, para ver la documentación y ejemplos.  <em>Experimente y explore</em> <mdash /> es realmente difícil hechar a perder algo. </p> 
+		<p>Existem muitos métodos, tanto para os grupos de permutações como para seus elementos. Use a célula vazia abaixo para criar um grupo de permutações (o que quiser) e um elemento de um grupo de permutações (qualquer).  A continuação usa a tab-completion para ver todos os métodos disponíveis para um elemento, ou para um grupo (nome, punto, tecla-tab). Você pode reconhecer alguns nomes, outros aprenderemos nos capítulos seguintes, alguns são ferramentas muito especializadas de investigação que poderiam ser usadas para desenvolver uma tese de doutorado em teoria de grupos.  Para qualquer destes métodos, recorde que pode escrever o nome, seguido de um ponto de interrogação, para ver a documentação y exemplos.  <em>Experimente e explore</em> <mdash /> é realmente difícil perder algo. </p>
 
 		<sage type="practice" />
 
-		<p>Acá hay algunos ejemplos de varios métodos disponibles.</p>
+		<p>Aqui há alguns exemplos de vários métodos disponíveis.</p>
 
 		<sage>
 			<input>
@@ -277,7 +277,7 @@
 			<output>3</output>
 		</sage>
 
-		<p>Un método útil al estudiar el grupo alternante es el <c>.sign()</c> implementado para elementos de un grupo de permutaciones.  Retorna <c>1</c> si la permutación es par y <c>-1</c> si es impar.</p>
+		<p>Um método útil para estudar o grupo alternante é o <c>.sign()</c> implementado para elementos de um grupo de permutações. Retorna <c>1</c> se a permutação é par e <c>-1</c> se é ímpar.</p>
 
 		<sage>
 			<input>
@@ -295,9 +295,9 @@
 			<output>1</output>
 		</sage>
 
-		<p>Podemos crear subgrupos entregándole al grupo una lista de <q>generadores.</q>  Estos elementos se usan para <q>generar</q> un subgrupo <mdash /> imagine multiplicar estos elementos (y sus inversos) una y otra vez, creando nuevos elementos que también deben estar en el subgrupo y que también participan de nuevos productos, hasta que no aparezcan nuevos elementos.  Esta definición termina con un enunciado terriblemente impreciso, pero debiera se suficiente por ahora.  Una mejor definición es que el subgrupo generado por los elementos es el menor subgrupo que contiene todos los generadores <mdash /> lo que está bien si conocemos todos los subgrupos de antemano.</p>
+		<p>Podemos criar subgrupos dando ao grupo uma lista de <q>geradores.</q>  Estes elementos são usados para <q>gerar</q> um subgrupo <mdash /> imagine multiplicar estes elementos (e seus inversos) uma e outra vez, criando novos elementos que também devem estar no subgrupo e que também participam de novos produtos, até que não apareçam novos elementos. Esta definição termina com um enunciado terrivelmente impreciso, mas deveria ser suficiente por enquanto. Uma melhor definição é que o subgrupo gerado pelos elementos é o menor subgrupo que contém todos os geradores <mdash /> o que está certo se conhecemos todos os subgrupos de antemão.</p>
 
-		<p>Con un único generador, los productos repetidos son simplemente las potencias del generador.  El grupo generado en este caso es cíclico.  Con dos (o más) generadores, especialmente en un grupo no abeliano, la situación puede ser mucho, mucho más complicada.  Empecemos con un generador.  Pero no olvide ponerlo en una lista de todas formas.</p>
+		<p>Com um único gerador, os produtos repetidos são simplesmente as potências do gerador. O grupo gerado neste caso é cíclico.  Com dois (ou mais) geradores, especialmente em um grupo não abeliano, a situação pode ser muito, muito mais complicada. Começamos com um gerador. Mas não esqueça de colocar-lo em uma lista de qualquer forma.</p>
 
 		<sage>
 			<input>
@@ -337,7 +337,7 @@
 			<output>True</output>
 		</sage>
 
-		<p>Podemos ahora rehacer el ejemplo del principio del capítulo.  Traducimos los elementos a notación cíclica, construimos el subgrupo formado a partir de dos generadores (el subgrupo no es cíclico), y como el subgrupo es abeliano, no es necesario que veamos la tabla de Cayley de Sage como una reflexión diagonal de la tabla obtenida en el ejemplo<nbsp /><xref ref="example-permute-s5" />.</p>
+		<p>Podemos agora refazer o exemplo do princípio do capítulo. Traduzimos os elementos a notação cíclica, construímos o subgrupo formado a partir de dois geradores (o subgrupo não é cíclico), e como o subgrupo é abeliano, não é necessário que vejamos a tabela de Cayley de Sage como uma reflexão diagonal da tabela obtida no exemplo<nbsp /><xref ref="example-permute-s5" />.</p>
 
 		<sage>
 			<input>
@@ -370,11 +370,11 @@
 	</subsection>
 
 	<subsection xml:id="subsection-motion-group-cube">
-		<title>Grupo de Movimientos de un Cubo</title>
+		<title>Grupo de Movimentos de um Cubo</title>
 
-		<p>Podríamos imitar el ejemplo en el texto y crear elementos de <m>S_4</m> como permutaciones de las diagonales.  Una construcción más obvia, pero menos esclarecedora, es considerar las  8 esquinas del cubo como los elementos a permutar.  Entonces algunas simetrías obvias del cubo provienen de pasar un eje por los centros de dos caras opuestas, con cuartos de vueltas y medias vueltas en torno a estos ejes. Con tres ejes y cuatro rotaciones por eje, obtenemos 12 simetrías, excepto que hemos contado la identidad tres veces.</p>
+		<p>Poderíamos imitar o exemplo no texto e criar elementos de <m>S_4</m> como permutações das diagonais. Uma construção mais óbvia, mas menos esclarecedora, é considerar as  8 quinas do cubo como os elementos a permutar. Então algumas simetrias óbvias do cubo provém de passar um eixo pelos centros de duas faces opostas, com quartos de voltas e meias-voltas em torno destes eixos. Com três eixos e quatro rotações por eixo, obtemos 12 simetrias, exceto que contamos a identidade três vezes.</p>
 
-		<p>Etiquete las cuatro esquinas superiores del <m>1</m> al <m>4</m>, poniendo el <m>1</m> en la esquina delantera-izquierda, y continuando en sentido horario visto desde arriba.  Use del <m>5</m> al <m>8</m> para las esquinas inferiores, de manera que  <m>5</m> quede directamente bajo el <m>1</m>, <m>6</m> bajo <m>2</m>, etc.  Usaremos cuartos de vuelta, en sentido horario, en torno a cada eje, mirando desde arriba, el frente y el lado derecho respectivamente.</p>
+		<p>Numere as quatro quinas superiores de <m>1</m> a <m>4</m>, pondo o <m>1</m> na quina frontal-esquerda, e continuando em sentido horário visto de cima.  Use de <m>5</m> a <m>8</m> para as quinas inferiores, de maneira que  <m>5</m> fique diretamente abaixo de <m>1</m>, <m>6</m> abaixo de <m>2</m>, etc.  Usaremos quartos de volta, em sentido horário, em torno de cada eixo, vendo de cima, de frente e do lado direito respectivamente.</p>
 
 		<sage>
 			<input>
@@ -402,7 +402,7 @@
             </output>
 		</sage>
 
-		<p>Como sabemos por la discusión en el texto que el grupo de simetrías tiene <m>24</m> elementos, vemos que estos tres generadores son suficientes para crear todas las simetrías.  Esto sugiere varias preguntas que se pueden encontrar en el Ejercicio<nbsp /><xref ref="exercise-cube-symmetry" />.</p>
+		<p>Como sabemos pela discussão no texto que o grupo de simetrias tem <m>24</m> elementos, vemos que estes três geradores são suficientes para criar todas as simetrias. Isto sugere várias perguntas que se encontram no Exercício<nbsp /><xref ref="exercise-cube-symmetry" />.</p>
 
 		<sage type="practice" />
 

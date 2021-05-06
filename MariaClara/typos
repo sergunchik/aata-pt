@@ -1,0 +1,32 @@
+permute.xml:
+
+fixaraa=?   :  pois a identidade não fixaraa <m>a</m> nesta situação.
+ 0: fixara-a
+ 1: fixara a
+ 3: fixara
+ 5: fixaria
+
+---
+
+exercicios/permute.xml :
+
+"pode ser expressa" - o Vinícius em uma das suas soluções use "pode ser expressada",
+pode ser que ambas frases são corretas
+
+---
+
+sage/sage-info.xml :
+
+[-convirtiendo a-]{+fazendo da+} Sage [-en un-]{+em um+} lugar
+
+convirtiendo a Sage en un lugar -> fazendo da Sage em um lugar  [ pode ser que com "fazendo da" não precisamor "em"? ]
+
+---
+
+sage/permute-sage.xml:
+
+aces?  			  [caras opuestas, con cuartos-]{+duas aces opostas, com quartos+}
+
+---
+
+permute-sage-exercises.xml
