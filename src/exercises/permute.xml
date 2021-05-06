@@ -137,7 +137,7 @@
 					<li><p><m>\{ \sigma \in S_4 : \sigma(1) = 3</m> y <m>\sigma(2) = 2 \}</m></p></li>
  
 				</ol>
-			¿Algum destes conjuntos é um subgrupo de <m>S_4</m>?</p>
+			Algum destes conjuntos é um subgrupo de <m>S_4</m>?</p>
 		</statement>
 		<hint>
 			<p>(a) <m>\{ (13), (13)(24), (132), (134), (1324), (1342) \}</m> não é um subgrupo.</p>
@@ -147,7 +147,7 @@
 
 	<exercise number="6">
 		<statement>
-			<p>Encontre todos os subgrupos de <m>A_4</m>. ¿Qual é a ordem de cada um deles?</p>
+			<p>Encontre todos os subgrupos de <m>A_4</m>. Qual é a ordem de cada um deles?</p>
 		</statement>
 		
 	</exercise>
