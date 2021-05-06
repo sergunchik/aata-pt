@@ -1,32 +1,13 @@
-permute.xml:
+Todas as gralhas que vi, já foram fixadas.
 
-fixaraa=?   :  pois a identidade não fixaraa <m>a</m> nesta situação.
- 0: fixara-a
- 1: fixara a
- 3: fixara
- 5: fixaria
+permute.xml
+sage/sage-info.xml
+sage/permute-sage.xml
+sage/permute-sage-exercises.xml
+exercicios/permute.xml
 
----
+"pode ser expressa" X "pode ser expressada":
+a Maria Clara traduziu "pueder ser expresada" como "pode ser expressada",
+e o Vinícius em uma das suas soluções use "pode ser expressada".
+Será que ambas as frases são corretas em português?
 
-exercicios/permute.xml :
-
-"pode ser expressa" - o Vinícius em uma das suas soluções use "pode ser expressada",
-pode ser que ambas frases são corretas
-
----
-
-sage/sage-info.xml :
-
-[-convirtiendo a-]{+fazendo da+} Sage [-en un-]{+em um+} lugar
-
-convirtiendo a Sage en un lugar -> fazendo da Sage em um lugar  [ pode ser que com "fazendo da" não precisamor "em"? ]
-
----
-
-sage/permute-sage.xml:
-
-aces?  			  [caras opuestas, con cuartos-]{+duas aces opostas, com quartos+}
-
----
-
-permute-sage-exercises.xml
