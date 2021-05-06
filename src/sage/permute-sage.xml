@@ -372,7 +372,7 @@
 	<subsection xml:id="subsection-motion-group-cube">
 		<title>Grupo de Movimentos de um Cubo</title>
 
-		<p>Poderíamos imitar o exemplo no texto e criar elementos de <m>S_4</m> como permutações das diagonais. Uma construção mais óbvia, mas menos esclarecedora, é considerar as  8 quinas do cubo como os elementos a permutar. Então algumas simetrias óbvias do cubo provém de passar um eixo pelos centros de duas aces opostas, com quartos de voltas e meias-voltas em torno destes eixos. Com três eixos e quatro rotações por eixo, obtemos 12 simetrias, exceto que contamos a identidade três vezes.</p>
+		<p>Poderíamos imitar o exemplo no texto e criar elementos de <m>S_4</m> como permutações das diagonais. Uma construção mais óbvia, mas menos esclarecedora, é considerar as  8 quinas do cubo como os elementos a permutar. Então algumas simetrias óbvias do cubo provém de passar um eixo pelos centros de duas faces opostas, com quartos de voltas e meias-voltas em torno destes eixos. Com três eixos e quatro rotações por eixo, obtemos 12 simetrias, exceto que contamos a identidade três vezes.</p>
 
 		<p>Numere as quatro quinas superiores de <m>1</m> a <m>4</m>, pondo o <m>1</m> na quina frontal-esquerda, e continuando em sentido horário visto de cima.  Use de <m>5</m> a <m>8</m> para as quinas inferiores, de maneira que  <m>5</m> fique diretamente abaixo de <m>1</m>, <m>6</m> abaixo de <m>2</m>, etc.  Usaremos quartos de volta, em sentido horário, em torno de cada eixo, vendo de cima, de frente e do lado direito respectivamente.</p>
 
