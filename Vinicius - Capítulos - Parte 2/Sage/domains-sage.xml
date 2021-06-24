@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="domains-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Já vimos alguns domínios de integridade e de fatoração única nos capítulos anteriores. Além do que já vimos, Sage pode ser usada para alguns dos tópicos deste capítulo, mas a implementação é limitada. Algumas funções podem ser usadas com alguns anéis e não com outros, enquanto outras funções ainda não fazem parte de Sage. Daremos alguns exemplos, mas isto está longe de ser compreensível.</p>
+	</introduction>
+
+
+	<subsection>
+		<title>Corpo de Frações</title>
+
+		<p>Muitas vezes Sage é capaz de construir um corpo de frações, ou de identificar um certo corpo como um corpo de frações. Por exemplo, o anel de inteiros e o corpo dos números racionais, estão ambos implementados em Sage, e os inteiros <q>sabem</q> que os racionais formam seu corpo de frações.</p>
+
+		<sage>
+		<input>
+		Q = ZZ.fraction_field(); Q
+		</input>
+		<output>
+		Rational Field
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q == QQ
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Nos outros casos Sage constrói um corpo de frações, no espírito do Lema<nbsp /><xref ref="lemma-field-of-fractions" />.  Logo é possível fazer cálculos básicos no corpo construído.</p>
+
+		<sage>
+		<input>
+		R.&lt;x&gt; = ZZ[]
+		P = R.fraction_field();P
+		</input>
+		<output>
+		Fraction Field of Univariate Polynomial Ring in x over Integer Ring
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		f = P((x^2+3)/(7*x+4))
+		g = P((4*x^2)/(3*x^2-5*x+4))
+		h = P((-2*x^3+4*x^2+3)/(x^2+1))
+		((f+g)/h).numerator()
+		</input>
+		<output>
+		3*x^6 + 23*x^5 + 32*x^4 + 8*x^3 + 41*x^2 - 15*x + 12
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		((f+g)/h).denominator()
+		</input>
+		<output>
+		-42*x^6 + 130*x^5 - 108*x^4 + 63*x^3 - 5*x^2 + 24*x + 48
+		</output>
+		</sage>
+
+	</subsection>
+
+	<subsection>
+		<title>Subcorpos Primos</title>
+
+		<p>O Corolário<nbsp /><xref ref="corollary-char-p-zp" /> diz que todo corpo de característica <m>p</m> tem um subcorpo isomorfo a <m>{\mathbb Z}_p</m>.  Para um corpo finito, a natureza exata deste subcorpo não é uma surpresa, e Sage nos permite extraí-lo facilmente.</p>
+
+		<sage>
+		<input>
+		F.&lt;c&gt; = FiniteField(3^5)
+		F.characteristic()
+		</input>
+		<output>
+		3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		G = F.prime_subfield(); G
+		</input>
+		<output>
+		Finite Field of size 3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		G.list()
+		</input>
+		<output>
+		[0, 1, 2]
+		</output>
+		</sage>
+
+		<p>Mais geralmente, os corpos mencionados nas conclusões do Corolário<nbsp /><xref ref="corollary-char-zero-rationals" /> e do Corolário<nbsp /><xref ref="corollary-char-p-zp" /> são conhecidos como o <q>subcorpo primo</q> do anel que os contém.  Aqui temos um exemplo do caso de característica zero.</p>
+
+		<sage>
+		<input>
+		K.&lt;y&gt;=QuadraticField(-7); K
+		</input>
+		<output>
+		Number Field in y with defining polynomial x^2 + 7
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		K.prime_subfield()
+		</input>
+		<output>
+		Rational Field
+		</output>
+		</sage>
+
+		<p>A grosso modo, todo corpo de característica zero contém uma cópia dos números racionais (o corpo de frações dos inteiros), o que pode explicar o extenso suporte em Sage dos anéis e corpos que estendem os inteiros e os racionais.</p>
+
+	</subsection>
+
+	<subsection>
+		<title>Domínios Integrais</title>
+
+		<p>Sage pode determinar se alguns anéis são domínios integrais e podemos comprovar produtos neles. Mas, noções de unidade, elementos irredutíveis, ou primos não estão implementados em geral (fora do que vimos para polinômios no capítulo anterior). Pior ainda, a construção que segue cria um anel dentro de um corpo maior e algumas funções (como <c>.is_unit()</c>) são herdadas e nos dão resultados enganosos. Isto é devido a construção abaixo cria um anel conhecido como uma <q>ordem em um corpo de números.</q></p>
+
+		<sage>
+		<input>
+		K.&lt;x&gt; = ZZ[sqrt(-3)]; K
+		</input>
+		<output>
+		Order in Number Field in a with defining polynomial x^2 + 3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		K.is_integral_domain()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		K.basis()
+		</input>
+		<output>
+		[1, a]
+		</output>
+		</sage>
+
+		<sage>
+		<input>x</input>
+		<output>a</output>
+		</sage>
+
+		<sage>
+		<input>
+		(1+x)*(1-x) == 2*2
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>O seguinte exemplo é um pouco enganoso, pois <m>4</m>, como elemento de <m>{\mathbb Z}[\sqrt{3}i]</m> não tem inverso multiplicativo, mas aparentemente podemos calcular um.  (Nota de AB: porque isso te incomoda aqui e não em <m>{\mathbb Z}</m>?)</p>
+
+		<sage>
+		<input>
+		four = K(4)
+		four.is_unit()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		four^-1
+		</input>
+		<output>
+		1/4
+		</output>
+		</sage>
+
+	</subsection>
+
+	<subsection>
+		<title>Ideais Principais</title>
+
+		<p>Quando um anel é um domínio de ideais principais, como os inteiros, ou polinômios sobre um corpo, Sage funciona bem. Mas, desconsiderando isso, a coisa enfraquece.</p>
+
+		<sage>
+		<input>
+		T.&lt;x&gt;=ZZ[]
+		T.is_integral_domain()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		J = T.ideal(5, x); J
+		</input>
+		<output>
+		Ideal (5, x) of Univariate Polynomial Ring in x over Integer Ring
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q = T.quotient(J); Q
+		</input>
+		<output>
+		Quotient of Univariate Polynomial Ring in x over
+		Integer Ring by the ideal (5, x)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		J.is_principal()
+		</input>
+		<output>
+		Traceback (most recent call last):
+		...
+		NotImplementedError
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.is_field()
+		</input>
+		<output>
+		Traceback (most recent call last):
+		...
+		NotImplementedError
+		</output>
+		</sage>
+
+	</subsection>
+</section>
+
+
+
+

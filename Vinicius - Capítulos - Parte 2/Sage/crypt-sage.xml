@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section xml:id="crypt-sage">
+	<title>Sage</title>
+
+	<introduction>
+		<p>Como Sage começou como um software para o apoio na pesquisa de teoria dos números, podemos fácil e rapidamente demonstrar os mecanismos internos no algoritmo <acro>RSA</acro>.  Reconheça que, na prática, muitos outros detalhes tais como codificar letras e inteiros, ou proteger uma chave privada, são igualmente importantes para a segurança da comunicação.  <acro>RSA</acro> por si só é somente um fundamento teórico.</p>
+	</introduction>
+
+	<subsection>
+		<title>Construindo chaves</title>
+
+		<p>Suponha que Alice quer enviar uma mensagem secreta para Bob, junto com uma mensagem de verificação (também conhecida como assinatura digital).  Começaremos com a construção de um par de chaves (privada e pública) para Alice e para Bob. Primeiro necessitamos de dois primos grandes e seu produto para cada um deles. Na prática, valores de <m>n</m> teriam centenas de dígitos, no lugar de somente <m>21</m>, como fizemos aqui.</p>
+
+		<sage>
+			<input>
+			p_a = next_prime(10^10)
+			q_a = next_prime(p_a)
+			p_b = next_prime((3/2)*10^10)
+			q_b = next_prime(p_b)
+			n_a = p_a * q_a
+			n_b = p_b * q_b
+			n_a, n_b
+			</input>
+			<output>(100000000520000000627, 225000000300000000091)</output>
+		</sage>
+
+		<p>Computacionalmente, o valor da função <m>\phi</m> de Euler do produto de dois primos <m>pq</m> pode ser obtida como <m>(p-1)(q-1)</m>, mas podemos igualmente usar a função interna da Sage.</p>
+
+		<sage>
+			<input>
+			m_a = euler_phi(n_a)
+			m_b = euler_phi(n_b)
+			m_a, m_b
+			</input>
+			<output>(100000000500000000576, 225000000270000000072)</output>
+		</sage>
+
+		<p>Agora podemos criar os expoentes de encriptação e decriptação.  Escolhemos o expoente de encriptação como um número (pequeno) relativamente primo com o valor de <m>m</m>.  Com Sage pode fatorar <m>m</m> rapidamente para escolher este valor.  Na prática não queremos fazer esse cálculo para valores grande de <m>m</m>, assim podemos escolher mais facilmente valores <q>aleatórios</q> e verificar até o primeiro valor relativamente primo com <m>m</m>.  O expoente de decriptação é o inverso multiplicativo, mod <m>m</m>, do expoente de encriptação.  Se você construir um expoente de encriptação inadequado (não relativamente primo com <m>m</m>), o cálculo do inverso multiplicativo irá falhar (e a Sage irá te falar).  Fazemos isto duas vezes <mdash /> para Alice e para Bob.</p>
+
+		<sage>
+		<input>factor(m_a)</input>
+		<output>2^6 * 3 * 11 * 17 * 131 * 521 * 73259 * 557041</output>
+		</sage>
+
+		<sage>
+		<input>
+		E_a = 5*23
+		D_a = inverse_mod(E_a, m_a)
+		D_a
+		</input>
+		<output>20869565321739130555</output>
+		</sage>
+
+		<sage>
+			<input>factor(m_b)</input>
+			<output>2^3 * 3^4 * 107 * 1298027 * 2500000001</output>
+		</sage>
+
+		<sage>
+			<input>
+			E_b = 7*29
+			D_b = inverse_mod(E_b, m_b)
+			D_b
+			</input>
+			<output>24384236482463054195</output>
+		</sage>
+
+		<p>Nesta etapa, cada indivíduo publicaria seus valores de <m>n</m> e <m>E</m>, guardando <m>D</m> em forma privada e segura.  Na prática <m>D</m> deve estar protegido no disco rígido do usuário por uma chave que só o dono conheça. Para uma maior segurança, uma pessoa poderia ter só duas cópias de sua chave privada, uma em memória <acro>USB</acro> que sempre leve consigo e uma copia de reserva em sua caixa de segurança na Sage.  Cada vez que a pessoa usa <m>D</m> deverá indicar sua chave.  O valor de  <m>m</m> pode ser descartado.  Para o registro, aqui estão todas as chaves:</p>
+
+		<sage>
+			<input>print("Alice's public key, n:", n_a, "E:", E_a)</input>
+			<output>Alice's public key, n: 100000000520000000627 E: 115</output>
+		</sage>
+
+		<sage>
+			<input>print("Alice's private key, D:", D_a)</input>
+			<output>Alice's private key, D: 20869565321739130555</output>
+		</sage>
+
+		<sage>
+			<input>print("Bob's public key, n:", n_b, "E:", E_b)</input>
+			<output>Bob's public key, n: 225000000300000000091 E: 203</output>
+		</sage>
+
+		<sage>
+			<input>print("Bob's private key, D:", D_b)</input>
+			<output>Bob's private key, D: 24384236482463054195</output>
+		</sage>
+
+		<sage type="practice" />
+
+	</subsection>
+
+	<subsection>
+		<title>Assinando e Encriptando uma Mensagem</title>
+
+		<p>Alice construirá uma mensagem que consiste de uma palavra de quatro letras em inglês.  A partir destas quatro letras construiremos um número que represente a mensagem na forma que necessitamos para usar no algoritmo  <acro>RSA</acro>. A função <c>ord()</c> converterá uma letra em seu valor <acro>ASCII</acro>, um número entre 0 e 127.  Se usamos esses números como <q>dígitos</q> mod 128, podemos estar seguros que a palavra de quatro letras de Alice se codificará como um inteiro menor que <m>128^4=268,435,456</m>.  O valor particular não tem importância, por mais que seja menor que o nosso valor <m>n</m> pois toda a aritmética que segue é mod <m>n</m>.  Escolhemos uma palabra popular de quatro letras, a convertemos em <q>dígitos</q> <acro>ASCII</acro> com uma lista e construímos o inteiro a partir dos dígitos na base correta.  Note como podemos tratar a palavra como uma lista e que o primeiro dígito na lista está no lugar das <q>unidades</q>.</p>
+
+		<sage>
+			<input>
+			word = 'Sage'
+			digits = [ord(letter) for letter in word]
+			digits
+			</input>
+			<output>[83, 97, 103, 101]</output>
+		</sage>
+
+		<sage>
+			<input>
+			message = ZZ(digits, 128)
+			message
+			</input>
+			<output>213512403</output>
+		</sage>
+
+		<p>Primero, Alice assinará sua mensagem para fornecer uma verificação. Para isso ela usa sua chave privada, pois isto é algo que só ela deve ser capaz de fazer.</p>
+
+		<sage>
+			<input>
+			signed = power_mod(message, D_a, n_a)
+			signed
+			</input>
+			<output>47838774644892618423</output>
+		</sage>
+
+		<p>Logo Alice encripta a mensagem de maneira que só Bob possa ler. Para isso usa a chave pública de Bob. Note que não é necessário que ela conheça Bob <mdash /> por exemplo, ela poderia ter obtido a chave pública de Bob em sua página Web ou então Bob publicou no <booktitle>New York Times</booktitle>.</p>
+
+		<sage>
+			<input>
+			encrypted = power_mod(signed, E_b, n_b)
+			encrypted
+			</input>
+			<output>111866209291209840488</output>
+		</sage>
+
+		<p>A mensagem de Alice está pronta para ser transmitida por qualquer rede, não importando o quão segura a rede seja e não importando quantas pessoas possam estar vigiando-a.</p>
+
+		<sage type="practice" />
+
+		</subsection>
+
+		<subsection>
+		<title>Decriptação e Verificação da Mensagem</title>
+
+		<p>Agora suponha que o valor de <c>encrypted</c> chegou a Bob.  Bob poderia não conhecer Alice nem necessariamente crer que recebeu uma mensagem genuinamente enviada por ela. Um adversário poderia estar tentando confundir Bob enviando mensagens que supostamente vieram de Alice. Primeiro, Bob sabe desfazer a encriptação feita por Alice. Isso é algo que somente Bob, como o receptor intencionado, deve ser capaz de realizar. E pode fazer isso usando sua chave privada, que só ele conhece, e que ele mantém segura.</p>
+
+		<sage>
+			<input>
+			decrypted = power_mod(encrypted, D_b, n_b)
+			decrypted
+			</input>
+			<output>47838774644892618423</output>
+		</sage>
+
+		<p>Neste momento, a mensagem não tem grande significado para Bob. Qualquer um poderia ter enviado uma mensagem encriptada para ele. Mas, esta era uma mensagem assinada pela Alice. Vamos desfazer a assinatura. Note que isso requer a chave pública de Alice. Bob não precisa conhecer Alice <mdash /> por exemplo, poderia obter a chave pública de Alice de sua página web ou então Alice a publicou no <booktitle>New York Times</booktitle>.</p>
+
+		<sage>
+			<input>
+			received = power_mod(decrypted, E_a, n_a)
+			received
+			</input>
+			<output>213512403</output>
+		</sage>
+
+		<p>Bob precisa transformar esta representação inteira de volta a uma palavra com letras. A função <c>chr()</c> converte valores <acro>ASCII</acro> em letras, e usamos uma lista para fazer isso de forma repetida.</p>
+
+		<sage>
+			<input>
+			digits = received.digits(base=128)
+			letters = [chr(ascii) for ascii in digits]
+			letters
+			</input>
+			<output>['S', 'a', 'g', 'e']</output>
+		</sage>
+
+		<p>Se queremos um resultado mais reconhecível, podemos combinar estas letras em uma string.</p>
+
+		<sage>
+			<input>''.join(letters)</input>
+			<output>'Sage'</output>
+		</sage>
+
+		<p>Bob está contente em obeter uma mensagem tão informativa quanto a mensagem de Alice. Agora, o que aconteceria se um impostor tivesse enviado a mensagem fingindo ser Alice, ou e se o adversário tivesse interceptado a mensagem original de Alice e adulterado-a? (a segunda pergunta é o que conhecemos como um ataque do <q>homem no meio</q>.)</p>
+
+		<p>Em qualquer um dos casos, o terceiro não seria capaz de duplicar a primeira ação de Alice <mdash /> assinar sua mensagem.  Se um adversário assina a mensagem de alguma maneira, isso irá alterá-la de alguma forma, o resultado quando Bob desfaz a assinatura produzirá lixo. (Tente!)  Como Bob recebeu uma palavra legítima, devidamente capitalizada, pode confiar que a mensagem que obteve é a mesma que foi assinada por Alice. Na prática, se Alice envia centenas de palavras em sua mensagem, a probabilidade de obter um texto coerente a partir da mensagem adulterada, é astronomicamente pequena.</p>
+
+		<p>O que foi mostrado?</p>
+
+		<ol>
+			<li><p>Alice pode enviar mensagens que somente Bob possa ler.</p></li>
+
+			<li><p>Bob pode receber mensagens secretas de qualquer um.</p></li>
+
+			<li><p>Alice pode assinar mensagens, de maneira que Bob sabe que genuinamente vieram de Alice.</p></li>
+		</ol>
+
+		<p>Claramente, sem fazer novas chaves, podemos trocar os papéis de Alice e Bob. E se Carol criar um par de chaves, ela pode se comunicar tanto com Alice como com Bob da mesma forma.</p>
+
+		<p>Se você deseja usar encriptação <acro>RSA</acro> de chave pública seriamente, investigue o software GNU Privacy Guard, mais conhecido como <c>GPG</c>, que está livremente disponível em <url href="https://www.gnupg.org/">www.gnupg.org/</url>.  Notemos que só tem sentido usar programas de encriptação que permitam conhecer o código fonte.</p>
+
+		<sage type="practice" />
+
+	</subsection>
+
+</section>

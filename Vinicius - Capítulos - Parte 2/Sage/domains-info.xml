@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+<paragraphs>
+	<title>Sage</title>
+
+	<p>Sage permite que você diferencie nos anéis em geral, domínio, domínio de ideais principais e corpos. Geralmente tudo ocorre bem com as construções e com os cálculos com DIP's, mas as coisas podem se complicar bastante (computacionalmente) quando o anel tem menos estrutura. Nem todas as perguntas podem ser respondidas com Sage neste contexto mais geral.</p>
+</paragraphs>
