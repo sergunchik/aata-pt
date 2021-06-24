@@ -11,18 +11,18 @@
 <!-- edits can be made against this file for       -->
 <!-- the purpose of a pull request.                -->
 <exercises xml:id="exercises-poly">
-	<title>Ejercicios</title>
+	<title>Exercícios</title>
 
 	<exercise number="1">
 		<statement>
-			<p>Liste todos los polinomios de grado menor o igual a 3 en <m>{\mathbb Z}_2[x]</m>.</p>
+			<p>Liste todos os polinômios de grau menor ou igual a 3 em <m>{\mathbb Z}_2[x]</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="2">
 		<statement>
-			<p>Calcule cada uno de los siguientes.
+			<p>Calcule cada um dos seguintes.
 				<ol>
 				 
 					<li><p><m>(5x^2 + 3x - 4) + (4x^2 - x + 9)</m> in <m>{\mathbb Z}_{12}</m></p></li>
@@ -47,16 +47,16 @@
 
 	<exercise number="3">
 		<statement>
-				<p>Use el algoritmo de división para encontrar <m>q(x)</m> y <m>r(x)</m> tales que <m>a(x) = q(x) b(x) + r(x)</m> con <m>\deg r(x) \lt \deg b(x)</m> para cada uno de los siguientes pares de polinomios.  
+				<p>Use o algoritmo da divisão para encontrar <m>q(x)</m> e <m>r(x)</m> tais que <m>a(x) = q(x) b(x) + r(x)</m> com <m>\deg r(x) \lt \deg b(x)</m> para cada um dos seguintes pares de polinômios.  
 				<ol>
 				 
-					<li><p><m>a(x) = 5 x^3 + 6x^2 -  3 x + 4</m> y <m>b(x) = x - 2</m> in <m>{\mathbb Z}_7[x]</m></p></li>
+					<li><p><m>a(x) = 5 x^3 + 6x^2 -  3 x + 4</m> e <m>b(x) = x - 2</m> in <m>{\mathbb Z}_7[x]</m></p></li>
 					 
-					<li><p><m>a(x) = 6 x^4 - 2 x^3 +  x^2 - 3 x + 1</m> y <m>b(x) = x^2 + x - 2</m> in <m>{\mathbb Z}_7[x]</m></p></li>
+					<li><p><m>a(x) = 6 x^4 - 2 x^3 +  x^2 - 3 x + 1</m> e <m>b(x) = x^2 + x - 2</m> in <m>{\mathbb Z}_7[x]</m></p></li>
 					 
-					<li><p><m>a(x) = 4 x^5 - x^3 + x^2 + 4</m> y <m>b(x) = x^3 - 2</m> in <m>{\mathbb Z}_5[x]</m> </p></li>
+					<li><p><m>a(x) = 4 x^5 - x^3 + x^2 + 4</m> e <m>b(x) = x^3 - 2</m> in <m>{\mathbb Z}_5[x]</m> </p></li>
 					 
-					<li><p><m>a(x) = x^5 + x^3 -x^2 - x</m> y <m>b(x) = x^3 + x</m> in <m>{\mathbb Z}_2[x]</m></p></li>
+					<li><p><m>a(x) = x^5 + x^3 -x^2 - x</m> e <m>b(x) = x^3 + x</m> in <m>{\mathbb Z}_2[x]</m></p></li>
 				 
 				</ol></p>
 		</statement>
@@ -68,16 +68,16 @@
 
 	<exercise number="4">
 		<statement>
-			<p>Encuentre el máximo común divisor para cada uno de los siguientes pares <m>p(x)</m> y <m>q(x)</m> de polinomios. Si <m>d(x) = \gcd( p(x), q(x) )</m>, encuentre dos polinomios <m>a(x)</m> y <m>b(x)</m> tales que <m>a(x) p(x) + b(x) q(x) = d(x)</m>. 
+			<p>Encontre o máximo divisor comum para cada um dos seguintes pares <m>p(x)</m> e <m>q(x)</m> de polinômios. Se <m>d(x) = \gcd( p(x), q(x) )</m>, encontre dois polinômios <m>a(x)</m> e <m>b(x)</m> tais que <m>a(x) p(x) + b(x) q(x) = d(x)</m>. 
 				<ol>
 			 
-					<li><p><m>p(x) = x^3 - 6x^2 + 14x - 15</m> y <m>q(x) = x^3 - 8x^2 + 21x - 18</m>, donde <m>p(x), q(x) \in {\mathbb Q}[x]</m></p></li> 
+					<li><p><m>p(x) = x^3 - 6x^2 + 14x - 15</m> e <m>q(x) = x^3 - 8x^2 + 21x - 18</m>, donde <m>p(x), q(x) \in {\mathbb Q}[x]</m></p></li> 
 					 
-					<li><p><m>p(x) = x^3 + x^2 - x + 1</m> y <m>q(x) = x^3 + x - 1</m>, donde <m>p(x), q(x) \in {\mathbb Z}_2[x]</m></p></li> 
+					<li><p><m>p(x) = x^3 + x^2 - x + 1</m> e <m>q(x) = x^3 + x - 1</m>, donde <m>p(x), q(x) \in {\mathbb Z}_2[x]</m></p></li> 
 					 
-					<li><p><m>p(x) = x^3 + x^2 - 4x + 4</m> y <m>q(x) = x^3 + 3 x -2</m>, donde <m>p(x), q(x) \in {\mathbb Z}_5[x]</m></p></li> 
+					<li><p><m>p(x) = x^3 + x^2 - 4x + 4</m> e <m>q(x) = x^3 + 3 x -2</m>, donde <m>p(x), q(x) \in {\mathbb Z}_5[x]</m></p></li> 
 					 
-					<li><p><m>p(x) = x^3 - 2 x + 4</m> y <m>q(x) = 4 x^3 + x + 3</m>, donde <m>p(x), q(x) \in {\mathbb Q}[x]</m></p></li> 
+					<li><p><m>p(x) = x^3 - 2 x + 4</m> e <m>q(x) = 4 x^3 + x + 3</m>, donde <m>p(x), q(x) \in {\mathbb Q}[x]</m></p></li> 
 
 				</ol></p>
 		</statement>
@@ -86,35 +86,35 @@
 
 	<exercise number="5">
 		<statement>
-			<p>Encuentre todos los ceros de cada uno de los polinomios siguientes.
+			<p>Encontre todos os zeros de cada um dos seguintes polinômios.
 				<ol cols="2">
 
-					<li><p><m>5x^3 + 4x^2 - x + 9</m> en <m>{\mathbb Z}_{12}</m></p></li>
+					<li><p><m>5x^3 + 4x^2 - x + 9</m> em <m>{\mathbb Z}_{12}</m></p></li>
 
-					<li><p><m>3x^3 - 4x^2 - x + 4</m> en <m>{\mathbb Z}_{5}</m></p></li>
+					<li><p><m>3x^3 - 4x^2 - x + 4</m> em <m>{\mathbb Z}_{5}</m></p></li>
 
-					<li><p><m>5x^4 + 2x^2 - 3</m> en <m>{\mathbb Z}_{7}</m></p></li>
+					<li><p><m>5x^4 + 2x^2 - 3</m> em <m>{\mathbb Z}_{7}</m></p></li>
 
-					<li><p><m>x^3 + x + 1</m> en <m>{\mathbb Z}_2</m></p></li>
+					<li><p><m>x^3 + x + 1</m> em <m>{\mathbb Z}_2</m></p></li>
 
 				</ol></p>
 		</statement>
 		<hint>
-			<p>(a) No tiene ceros en <m>{\mathbb Z}_{12}</m>; (c) 3, 4.</p>
+			<p>(a) Não tem zeros em <m>{\mathbb Z}_{12}</m>; (c) 3, 4.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="6">
 		<statement>
-			<p>Encuentre todas las unidades en <m>{\mathbb Z}[x]</m>.</p>
+			<p>Encontre todas as unidades em <m>{\mathbb Z}[x]</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="7">
 		<statement>
-			<p>Encuentre una unidad <m>p(x)</m> en <m>{\mathbb Z}_4[x]</m> tal que <m>\deg p(x) \gt 1</m>.</p>
+			<p>Encontre uma unidade <m>p(x)</m> em <m>{\mathbb Z}_4[x]</m> tal que <m>\deg p(x) \gt 1</m>.</p>
 		</statement>
 		<hint>
 			<p>Considere <m>(2x + 1)</m>.</p>
@@ -124,7 +124,7 @@
 
 	<exercise number="8">
 		<statement>
-			<p>¿Cuáles de los siguientes polinomios son irreducibles sobre <m>{\mathbb Q}[x]</m>?
+			<p>Quais dos seguintes polinômios são irredutíveis sobre <m>{\mathbb Q}[x]</m>?
 				<ol cols="2">
 
 					<li><p><m>x^4 - 2x^3 + 2x^2 + x + 4</m></p></li>
@@ -138,38 +138,38 @@
 				</ol></p>
 		</statement>
 		<hint>
-			<p>(a) Reducible; (c) irreducible.</p>
+			<p>(a) Redutível; (c) Irredutível.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="9">
 		<statement>
-			<p>Encuentre todos los polinomios irreducibles de grado 2 y 3 en <m>{\mathbb Z}_2[x]</m>. </p>
+			<p>Encontre todos os polinômios irredutíveis de grau 2 e 3 em <m>{\mathbb Z}_2[x]</m>. </p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="10">
 		<statement>
-			<p>Dé dos factorizaciones diferentes de <m>x^2 + x + 8</m> en <m>{\mathbb Z}_{10}[x]</m>.</p>
+			<p>Dê duas fatorações diferentes de <m>x^2 + x + 8</m> em <m>{\mathbb Z}_{10}[x]</m>.</p>
 		</statement>
 		<hint>
-			<p>Una factorización es <m>x^2 + x + 8 = (x + 2)(x + 9)</m>.</p>
+			<p>Uma fatoração é <m>x^2 + x + 8 = (x + 2)(x + 9)</m>.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="11">
 		<statement>
-			<p>Demuestre o refute: Existe un polinomio <m>p(x)</m> en <m>{\mathbb Z}_6[x]</m> de grado <m>n</m> con más de <m>n</m> ceros distintos.</p>
+			<p>Demonstre ou refute: Existe um polinômio <m>p(x)</m> em <m>{\mathbb Z}_6[x]</m> de grau <m>n</m> com mais de <m>n</m> zeros distintos.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="12">
 		<statement>
-			<p>Si <m>F</m> es un cuerpo, muestre que <m>F[x_1, \ldots, x_n]</m> es un dominio integral. </p>
+			<p>Se <m>F</m> é um corpo, mostre que <m>F[x_1, \ldots, x_n]</m> é um domínio integral. </p>
 		</statement>
 		
 	</exercise>
@@ -178,17 +178,17 @@
 
 	<exercise number="13">
 		<statement>
-			<p>Muestre que el algoritmo de división no se cumple en <m>{\mathbb Z}[x]</m>.  ¿Por qué falla?</p>
+			<p>Mostre que o algoritmo de divisão não é respeitado em <m>{\mathbb Z}[x]</m>.  Porque isso acontece?</p>
 		</statement>
 		<hint>
-			<p>Los enteros <m>\mathbb Z</m> no forman un cuerpo.</p>
+			<p>Os inteiros <m>\mathbb Z</m> não formam um corpo.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="14">
 		<statement>
-			<p>Demuestre o refute: <m>x^p + a</m> es irreducible para cualquier <m>a \in {\mathbb Z}_p</m>, donde <m>p</m> es primo.</p>
+			<p>Demonstre ou refute: <m>x^p + a</m> é irredutível para qualquer <m>a \in {\mathbb Z}_p</m>, donde <m>p</m> é primo.</p>
 		</statement>
 		<hint>
 			<p>Falso.</p>
@@ -198,17 +198,17 @@
 
 	<exercise number="15">
 		<statement>
-			<p>Sea <m>f(x)</m> irreducible en <m>F[x]</m>, donde <m>F</m> es un cuerpo.  Si <m>f(x) \mid p(x)q(x)</m>, demuestre que ya sea <m>f(x) \mid p(x)</m> o <m>f(x) \mid q(x)</m>.</p>
+			<p>Seja <m>f(x)</m> irredutível em <m>F[x]</m>, donde <m>F</m> é um corpo.  Se <m>f(x) \mid p(x)q(x)</m>, demonstre que ou <m>f(x) \mid p(x)</m> ou <m>f(x) \mid q(x)</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="16">
 		<statement>
-			<p>Supongamos que <m>R</m> y <m>S</m> son anillos isomorfos.  Demuestre que <m>R[x] \cong S[x]</m>.</p>
+			<p>Suponha que <m>R</m> e <m>S</m> são anéis isomorfos.  Demonstre que <m>R[x] \cong S[x]</m>.</p>
 		</statement>
 		<hint>
-			<p>Sea <m>\phi : R \rightarrow S</m> un isomorfismo. Defina <m>\overline{\phi} : R[x] \rightarrow S[x]</m> como <m>\overline{\phi}(a_0 + a_1 x + \cdots + a_n x^n) = \phi(a_0) + \phi(a_1) x + \cdots + \phi(a_n) x^n</m>.</p>
+			<p>Seja <m>\phi : R \rightarrow S</m> um isomorfismo. Defina <m>\overline{\phi} : R[x] \rightarrow S[x]</m> como <m>\overline{\phi}(a_0 + a_1 x + \cdots + a_n x^n) = \phi(a_0) + \phi(a_1) x + \cdots + \phi(a_n) x^n</m>.</p>
 		</hint>
 		
 	</exercise>
@@ -217,24 +217,24 @@
 
 	<exercise number="17">
 		<statement>
-			<p>Sea <m>F</m> un cuerpo y <m>a \in F</m>.  Si <m>p(x) \in F[x]</m>, muestre que <m>p(a)</m> es el resto obtenido al dividir <m>p(x)</m> por <m>x - a</m>.</p>
+			<p>Seja <m>F</m> um corpo e <m>a \in F</m>.  Se <m>p(x) \in F[x]</m>, mostre que <m>p(a)</m> é o resto obtido ao dividir <m>p(x)</m> por <m>x - a</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="18">
-		<title>Teorema de la Raíz Racional</title>
+		<title>Teorema da Raiz Racional</title>
 		<statement>
-			<p>Sea
+			<p>Seja
 				<me>p(x) = a_n x^n + a_{n - 1}x^{n - 1} + \cdots + a_0 \in \mathbb Z[x],</me>
-			donde <m>a_n \neq 0</m>.  Demuestre que si <m>p(r/s) = 0</m>, donde <m>\gcd(r, s) = 1</m>, entonces <m>r \mid a_0</m> y <m>s \mid a_n</m>.</p>
+			donde <m>a_n \neq 0</m>.  Demonstre que se <m>p(r/s) = 0</m>, donde <m>\gcd(r, s) = 1</m>, então <m>r \mid a_0</m> e <m>s \mid a_n</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="19">
 		<statement>
-			<p>Sea <m>{\mathbb Q}^*</m> el grupo multiplicativo de los números racionales positivos. Demuestre que <m>{\mathbb Q}^*</m> es isomorfo a <m>( {\mathbb Z}[x], +)</m>.</p>
+			<p>Seja <m>{\mathbb Q}^*</m> o grupo multiplicativo dos números racionais positivos. Demonstre que <m>{\mathbb Q}^*</m> é isomorfo a <m>( {\mathbb Z}[x], +)</m>.</p>
 		</statement>
 		
 	</exercise>
@@ -242,14 +242,14 @@
 	<todo>Finish the proof.</todo>
 
 	<exercise number="20" xml:id="exercise-poly-cyclotomic-polynomials">
-		<title>Polinomios Ciclotómicos</title>
+		<title>Polinômios Ciclotômicos</title>
 		<statement>
-			<p>El polinomio
+			<p>O polinômio
 				<me>\Phi_n(x) = \frac{x^n - 1}{x - 1} = x^{n - 1} + x^{n - 2} + \cdots + x + 1</me>
-			se llama <term>polinomio ciclotómico.</term> Muestre que <m>\Phi_p(x)</m> es irreducible sobre <m>{\mathbb Q}</m> para cualquier primo <m>p</m>. </p>
+			se chama <term>polinômio ciclotômico.</term> Mostre que <m>\Phi_p(x)</m> é irredutível sobre <m>{\mathbb Q}</m> para qualquer primo <m>p</m>. </p>
 		</statement>
 		<hint>
-			<p>El polinomio <m>\Phi_n(x+1)</m> es irreducible sobre <m>{\mathbb Q}</m> si y solo si <m>\Phi_n(x)</m> es irreducible sobre <m>{\mathbb Q}</m>. </p>
+			<p>O polinômio <m>\Phi_n(x+1)</m> é irredutível sobre <m>{\mathbb Q}</m> se e somente se <m>\Phi_n(x)</m> é irredutível sobre <m>{\mathbb Q}</m>. </p>
 		</hint>
 		
 	</exercise>
@@ -258,7 +258,7 @@
 
 	<exercise number="21">
 		<statement>
-			<p>Si <m>F</m> es un  cuerpo, muestre que existen infinitos polinomios irreducibles en <m>F[x]</m>.</p>
+			<p>Se <m>F</m> é um corpo, mostre que existem infinitos polinômios irredutíveis em <m>F[x]</m>.</p>
 		</statement>
 		
 	</exercise>
@@ -267,14 +267,14 @@
 
 	<exercise number="22">
 		<statement>
-			<p>Sea <m>R</m> un anillo conmutativo con identidad. Demuestre que la multiplicación en <m>R[x]</m> es conmutativa.</p>
+			<p>Seja <m>R</m> um anel comutativo com identidade. Demonstre que a multiplicação em <m>R[x]</m> é comutativa.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="23">
 		<statement>
-			<p>Sea <m>R</m> un anillo conmutativo con identidad. Demuestre que la multiplicación en <m>R[x]</m> es distributiva.</p>
+			<p>Seja <m>R</m> um anel comutativo com unidade. Demonstre que a multiplicação em <m>R[x]</m> é distributiva.</p>
 		</statement>
 
 		
@@ -282,7 +282,7 @@
 
 	<exercise number="24">
 		<statement>
-			<p>Demuestre que <m>x^p - x</m> tiene <m>p</m> ceros distintos en <m>{\mathbb Z}_p</m>, para cualquier primo <m>p</m>. Concluya que 
+			<p>Demonstre que <m>x^p - x</m> tem <m>p</m> zeros distintos em <m>{\mathbb Z}_p</m>, para qualquer primo <m>p</m>. Conclua que 
 				<me>x^p - x = x(x - 1)(x - 2) \cdots (x - (p - 1)).</me></p>
 		</statement>
 		
@@ -290,23 +290,23 @@
 
 	<exercise number="25">
 		<statement>
-			<p>Sea <m>F</m> un cuerpo y sea <m>f(x) = a_0 + a_1 x + \cdots + a_n x^n</m> en <m>F[x]</m>. Defina <m>f'(x) = a_1  + 2 a_2 x + \cdots + n a_n x^{n - 1}</m> como la <term>derivada</term> de <m>f(x)</m>. 
+			<p>Seja <m>F</m> um corpo e seja <m>f(x) = a_0 + a_1 x + \cdots + a_n x^n</m> em <m>F[x]</m>. Defina <m>f'(x) = a_1  + 2 a_2 x + \cdots + n a_n x^{n - 1}</m> como a <term>derivada</term> de <m>f(x)</m>. 
 				<ol>
 				 
-				<li><p>Demuestre que
+				<li><p>Demonstre que
 					<me>(f + g)'(x) = f'(x) + g'(x).</me>
-				Concluya que podemos definir un homomorfismo de grupos abelianos <m>D : F[x] \rightarrow F[x]</m> como <m>D(f(x)) = f'(x)</m>.</p></li>
+				Conclua que podemos definir um homomorfismo de grupos abelianos <m>D : F[x] \rightarrow F[x]</m> como <m>D(f(x)) = f'(x)</m>.</p></li>
 				 
-				<li><p>Calcule el núcleo de <m>D</m> si <m>\chr F = 0</m>.</p></li>
+				<li><p>Calcule o núcleo de <m>D</m> se <m>\chr F = 0</m>.</p></li>
 				 
-				<li><p>Calcule el núcleo de <m>D</m> si <m>\chr F = p</m>.</p></li>
+				<li><p>Calcule o núcleo de <m>D</m> se <m>\chr F = p</m>.</p></li>
 				 
-				<li><p>Demuestre que
+				<li><p>Demonstre que
 					<me>(fg)'(x) = f'(x)g(x) + f(x) g'(x).</me></p></li>
 				 
-				<li><p>Supongamos que es posible factorizar un polinomio <m>f(x) \in F[x]</m> en factores lineales, digamos
+				<li><p>Suponha que é possível fatorar um polinômio <m>f(x) \in F[x]</m> em fatores lineares, digamos
 					<me>f(x) = a(x - a_1) (x - a_2) \cdots ( x - a_n).</me>
-				Demuestre que <m>f(x)</m> no tiene factores repetidos si y solo si <m>f(x)</m> y <m>f'(x)</m> son relativamente primos.</p></li>
+				Demonstre que <m>f(x)</m> não tem fatores se e somente se <m>f(x)</m> e <m>f'(x)</m> são relativamente primos.</p></li>
 				 
 				</ol></p>
 		</statement>
@@ -315,31 +315,31 @@
 
 	<exercise number="26">
 		<statement>
-			<p>Sea <m>F</m> un cuerpo. Muestre que <m>F[x]</m> nunca es un cuerpo.</p>
+			<p>Seja <m>F</m> um corpo. Mostre que <m>F[x]</m> nunca é um corpo.</p>
 		</statement>
 		<hint>
-			<p>Ecuentre un ideal propio no trivial en <m>F[x]</m>.</p>
+			<p>Econtre um ideal próprio não trivial em <m>F[x]</m>.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="27">
 		<statement>
-			<p>Sea <m>R</m> un dominio integral. Demuestre que <m>R[x_1, \ldots, x_n]</m> es un dominio integral.</p>
+			<p>Seja <m>R</m> um domínio integral. Demonstre que <m>R[x_1, \ldots, x_n]</m> é um domínio integral.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="28">
 		<statement>
-			<p>Sea <m>R</m> un anillo conmutativo con identidad. Muestre que <m>R[x]</m> tiene un subanillo <m>R'</m> isomorfo a <m>R</m>.</p>
+			<p>Seja <m>R</m> um anel comutativo com unidade. Mostre que <m>R[x]</m> tem um subanel <m>R'</m> isomorfo a <m>R</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="29">
 		<statement>
-			<p>Sean <m>p(x)</m> y <m>q(x)</m> polinomios en <m>R[x]</m>, donde <m>R</m> es un anillo conmutativo con identidad. Demuestre que <m>\deg( p(x) + q(x) ) \leq \max( \deg p(x), \deg q(x) )</m>.</p>
+			<p>Sejam <m>p(x)</m> e <m>q(x)</m> polinômios em <m>R[x]</m>, donde <m>R</m> é um anel comutativo com unidade. Demonstre que <m>\deg( p(x) + q(x) ) \leq \max( \deg p(x), \deg q(x) )</m>.</p>
 		</statement>
 		
 	</exercise>

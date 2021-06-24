@@ -9,5 +9,5 @@
 <paragraphs>
 	<title>Sage</title>
 
-	<p>Sage permite diferenciar entre anillos en general, dominios, dominios de ideales principales y cuerpos.  Todo suele ir bien con las construcciones y los cálculos con DIP's, pero las cosas se pueden complicar bastante (computacionalmente) cuando el anillo tiene menos estructura.  No todas las preguntas se pueden contestar con Sage en este contexto más general.</p>
+	<p>Sage permite que você diferencie nos anéis em geral, domínio, domínio de ideais principais e corpos. Geralmente tudo ocorre bem com as construções e com os cálculos com DIP's, mas as coisas podem se complicar bastante (computacionalmente) quando o anel tem menos estrutura. Nem todas as perguntas podem ser respondidas com Sage neste contexto mais geral.</p>
 </paragraphs>

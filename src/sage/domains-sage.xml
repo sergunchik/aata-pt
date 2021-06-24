@@ -11,14 +11,14 @@
 	<title>Sage</title>
 
 	<introduction>
-		<p>Ya hemos visto algunos dominios de integridad y de factorización única en los dos capítulos precedentes.  Además de lo que ya hemos visto, Sage se puede usar para algunos de los tópicos de este capítulo, pero la implementación es limitada.  Algunas funciones se pueden usar con algunos anillos y no con otros, mientras otras funciones aún no son parte de Sage.  Daremos algunos ejemplos, pero esto está lejos de ser exhaustivo.</p>
+		<p>Já vimos alguns domínios de integridade e de fatoração única nos capítulos anteriores. Além do que já vimos, Sage pode ser usada para alguns dos tópicos deste capítulo, mas a implementação é limitada. Algumas funções podem ser usadas com alguns anéis e não com outros, enquanto outras funções ainda não fazem parte de Sage. Daremos alguns exemplos, mas isto está longe de ser compreensível.</p>
 	</introduction>
 
 
 	<subsection>
-		<title>Cuerpo de Fracciones</title>
+		<title>Corpo de Frações</title>
 
-		<p>Sage muchas veces es capaz de construir un cuerpo de fracciones, o de identificar un cierto cuerpo como un cuerpo de fracciones.  Por ejemplo, el anillo de enteros y el cuerpo de los números racionales, están ambos implementados en Sage, y los enteros <q>saben</q> que los racionales forman su cuerpo de fracciones.</p>
+		<p>Muitas vezes Sage é capaz de construir um corpo de frações, ou de identificar um certo corpo como um corpo de frações. Por exemplo, o anel de inteiros e o corpo dos números racionais, estão ambos implementados em Sage, e os inteiros <q>sabem</q> que os racionais formam seu corpo de frações.</p>
 
 		<sage>
 		<input>
@@ -38,7 +38,7 @@
 		</output>
 		</sage>
 
-		<p>En los otros casos Sage construye un cuerpo de fracciones, en el espíritu del Lema<nbsp /><xref ref="lemma-field-of-fractions" />.  Luego es posible hacer cálculos básicos en el cuerpo construido.</p>
+		<p>Nos outros casos Sage constrói um corpo de frações, no espírito do Lema<nbsp /><xref ref="lemma-field-of-fractions" />.  Logo é possível fazer cálculos básicos no corpo construído.</p>
 
 		<sage>
 		<input>
@@ -74,9 +74,9 @@
 	</subsection>
 
 	<subsection>
-		<title>Subcuerpos Primos</title>
+		<title>Subcorpos Primos</title>
 
-		<p>El Corolario<nbsp /><xref ref="corollary-char-p-zp" /> dice que todo cuerpo de característica <m>p</m> tiene un subcuerpo isomorfo a <m>{\mathbb Z}_p</m>.  Para un cuerpo finito, la naturaleza exacta de este subcuerpo no es una sorpresa, y Sage nos permite extraerlo fácilmente.</p>
+		<p>O Corolário<nbsp /><xref ref="corollary-char-p-zp" /> diz que todo corpo de característica <m>p</m> tem um subcorpo isomorfo a <m>{\mathbb Z}_p</m>.  Para um corpo finito, a natureza exata deste subcorpo não é uma surpresa, e Sage nos permite extraí-lo facilmente.</p>
 
 		<sage>
 		<input>
@@ -106,7 +106,7 @@
 		</output>
 		</sage>
 
-		<p>Más en general, los cuerpos mencionados en las conclusiones del Corolario<nbsp /><xref ref="corollary-char-zero-rationals" /> y del Corolario<nbsp /><xref ref="corollary-char-p-zp" /> se conocen como el <q>subcuerpo primo</q> del anillo que los contiene.  Acá un ejemplo en el caso de característica cero.</p>
+		<p>Mais geralmente, os corpos mencionados nas conclusões do Corolário<nbsp /><xref ref="corollary-char-zero-rationals" /> e do Corolário<nbsp /><xref ref="corollary-char-p-zp" /> são conhecidos como o <q>subcorpo primo</q> do anel que os contém.  Aqui temos um exemplo do caso de característica zero.</p>
 
 		<sage>
 		<input>
@@ -126,14 +126,14 @@
 		</output>
 		</sage>
 
-		<p>A grosso modo, todo cuerpo de característica cero contiene una copia de los números racionales (el cuerpo de fracciones de los enteros), lo que puede explicar el extenso soporte en Sage de los anillos y cuerpos que extienden a los enteros y los racionales.</p>
+		<p>A grosso modo, todo corpo de característica zero contém uma cópia dos números racionais (o corpo de frações dos inteiros), o que pode explicar o extenso suporte em Sage dos anéis e corpos que estendem os inteiros e os racionais.</p>
 
 	</subsection>
 
 	<subsection>
-		<title>Dominios Integrales</title>
+		<title>Domínios Integrais</title>
 
-		<p>Sage puede determinar si algunos anillos son dominios integrales y podemos comprobar productos en ellos.  Pero, nociones de unidades, elementos irreducibles o primos no están implementadas en general (fuera de lo que vimos para polinomios en el capítulo anterior).  Peor aún, la construcción que sigue crea un anillo dentro de un cuerpo mayor y por ello algunas de las funciones (como <c>.is_unit()</c>) se heredan y dan resultados engañosos.  Esto debido a que la construcción de abajo crea un anillo conocido como un <q>orden en un cuerpo de números.</q></p>
+		<p>Sage pode determinar se alguns anéis são domínios integrais e podemos comprovar produtos neles. Mas, noções de unidade, elementos irredutíveis, ou primos não estão implementados em geral (fora do que vimos para polinômios no capítulo anterior). Pior ainda, a construção que segue cria um anel dentro de um corpo maior e algumas funções (como <c>.is_unit()</c>) são herdadas e nos dão resultados enganosos. Isto é devido a construção abaixo cria um anel conhecido como uma <q>ordem em um corpo de números.</q></p>
 
 		<sage>
 		<input>
@@ -176,7 +176,7 @@
 		</output>
 		</sage>
 
-		<p>Lo siguiente es un poco engañoso, pues <m>4</m>, como elemento de <m>{\mathbb Z}[\sqrt{3}i]</m> no tiene inverso multiplicativo, pero aparentemente podemos calcular uno.  (Nota de AB: ¿por qué les molesta acá y no en <m>{\mathbb Z}</m>?)</p>
+		<p>O seguinte exemplo é um pouco enganoso, pois <m>4</m>, como elemento de <m>{\mathbb Z}[\sqrt{3}i]</m> não tem inverso multiplicativo, mas aparentemente podemos calcular um.  (Nota de AB: porque isso te incomoda aqui e não em <m>{\mathbb Z}</m>?)</p>
 
 		<sage>
 		<input>
@@ -200,9 +200,9 @@
 	</subsection>
 
 	<subsection>
-		<title>Ideales Principales</title>
+		<title>Ideais Principais</title>
 
-		<p>Cuando un anillo es un dominio de ideales principales, como los enteros, o polinomios sobre un cuerpo, Sage funciona bien.  Más allá de eso la cosa se debilita.</p>
+		<p>Quando um anel é um domínio de ideais principais, como os inteiros, ou polinômios sobre um corpo, Sage funciona bem. Mas, desconsiderando isso, a coisa enfraquece.</p>
 
 		<sage>
 		<input>

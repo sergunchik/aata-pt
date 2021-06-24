@@ -11,19 +11,19 @@
 <!-- edits can be made against this file for       -->
 <!-- the purpose of a pull request.                -->
 <exercises xml:id="exercises-algcodes">
-	<title>Ejercicios</title>
+	<title>Exercícios</title>
 
 	<exercise number="1">
 		<statement>
-			<p>¿Por qué no es aceptable el siguiente sistema de codificación?</p>
+			<p>Por que o seguinte sistema de codificação não é aceitável?</p>
 
 			<sidebyside width="100%"> <!-- check centering -->
 				<tabular halign="center" top="medium">
 		        	<row bottom="medium">
-		        		<cell>Información</cell><cell>0</cell><cell>1</cell><cell>2</cell><cell>3</cell><cell>4</cell><cell>5</cell><cell>6</cell><cell>7</cell><cell>8</cell>
+		        		<cell>Informação</cell><cell>0</cell><cell>1</cell><cell>2</cell><cell>3</cell><cell>4</cell><cell>5</cell><cell>6</cell><cell>7</cell><cell>8</cell>
 		        	</row>
 					<row bottom="medium">
-						<cell>Palabra del Código</cell><cell>000</cell><cell>001</cell><cell>010</cell><cell>011</cell><cell>101</cell><cell>110</cell><cell>111</cell><cell>000</cell><cell>001</cell>
+						<cell>Palavra do Código</cell><cell>000</cell><cell>001</cell><cell>010</cell><cell>011</cell><cell>101</cell><cell>110</cell><cell>111</cell><cell>000</cell><cell>001</cell>
 					</row>
 			   </tabular>
 			</sidebyside>
@@ -34,18 +34,18 @@
 
 	<exercise number="2">
 		<statement>
-			<p>Sin realizar ninguna suma, explique por qué el siguiente conjunto de 4-tuplas en <m>{\mathbb Z}_2^4</m> no puede ser un código de grupo. 
+			<p>Sem realizar nenhuma soma, explique porquê o seguinte conjunto de 4-tuplas em <m>{\mathbb Z}_2^4</m> não pode ser um código de grupo. 
 				<me>(0110) \quad (1001) \quad (1010) \quad (1100)</me></p>
 		</statement>
 		<hint>
-			<p>No puede ser un código de grupos pues <m>(0000) \notin C</m>.</p>
+			<p>Não pode ser um código de grupos pois <m>(0000) \notin C</m>.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="3">
 		<statement>
-			<p>Calcule las distancias de Hamming entre las siguientes pares de <m>n</m>-tuplas.
+			<p>Calcule as distâncias de Hamming entre os seguintes pares de <m>n</m>-tuplas.
 				<ol cols="2">
 
 					<li><p><m>(011010), (011100)</m></p></li>
@@ -66,7 +66,7 @@
 
 	<exercise number="4">
 		<statement>
-			<p>Calcule los pesos de las siguientes <m>n</m>-tuplas.
+			<p>Calcule os pesos das seguintes <m>n</m>-tuplas.
 				<ol cols="2">
 
 					<li><p><m>(011010)</m></p></li>
@@ -87,14 +87,14 @@
 
 	<exercise number="5">
 		<statement>
-			<p>Si un código lineal <m>C</m> tiene peso mínimo 7, ¿cuáles son las capacidades de detección y corrección de errores de  <m>C</m>?</p>
+			<p>Se um código linear <m>C</m> tem peso mínimo 7, quais são as capacidades de detecção e correção de erros de <m>C</m>?</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="6">
 		<statement>
-			<p>Para cada uno de los siguientes códigos, ¿cuál es la distancias mínima del código? ¿Cuál es la mejor situación que podemos esperar en relación a detección y corrección de errores? 
+			<p>Para cada um dos seguintes códigos, qual é a distância mínima do código? Qual é a melhor situação que podemos esperar em relação a detecção e correção de erros? 
 				<ol>
 				 
 					<li><p><m>(011010) \; (011100) \; (110111) \; (110000)</m></p></li>
@@ -115,7 +115,7 @@
 
 	<exercise number="7">
 		<statement>
-			<p>Calcule el espacio nulo de cada una de las siguientes matrices.  ¿Qué tipo de códigos de bloque <m>(n,k)</m> son los espacios nulos? ¿Puede encontrar una matriz (no necesariamente una matriz generadora estándar) que genere cada código? ¿Son únicas sus matrices generadoras?
+			<p>Calcule o espaço nulo de cada uma das seguintes matrizes. Que tipo de códigos de blocos <m>(n,k)</m> são os espaços nulos? Podemos encontrar uma matriz (não necessariamente uma matriz geradora padrão) que gere cada código? São únicas suas matrizes geradoras?
 				<ol cols="2">
 
 					<li><p><me>\begin{pmatrix}
@@ -176,40 +176,40 @@
 
 	<exercise number="8">
 		<statement>
-			<p>Construya un código de bloque <m>(5,2)</m>. Discuta las capacidades de detección y corrección de errores de su código.</p>
+			<p>Construa um código de blocos <m>(5,2)</m>. Discuta as capacidades de detecção e correção de erros de seu código.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="9">
 		<statement>
-			<p>Sea <m>C</m> el código obtenido como espacio nulo de la matriz
+			<p>Seja <m>C</m> o código obtido como espaço nulo da matriz
 				<me>H =
 				\begin{pmatrix}
 				0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 \\
 				1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
 				0 &amp; 0 &amp; 1 &amp; 1 &amp; 1
 				\end{pmatrix}.</me>
-			Decodifique el mensaje
+			Decodifique a mensagem
 				<me>01111 \quad 10101 \quad 01110 \quad 00011</me>
-			si es posible.</p>
+			se possível.</p>
 		</statement>
 		<hint>
-			<p>Múltiples errores ocurren en una de las palabras recibidas.</p>
+			<p>Múltiplos erros ocorrem em uma das palavras recebidas.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="10">
 		<statement>
-			<p>Supongamos que se transmite un mensaje binario de 1000 bits, que la probabilidad de error en un bit es <m>p</m> y que los errores que puedan ocurrir en bits diferentes son independientes entre ellos. Si <m>p = 0.01</m>, ¿Cuál es la probabilidad de que ocurra más de un error? ¿Cuál es la probabilidad de que ocurran exactamente dos errores?  Repita el problema para <m>p = 0.0001</m>.</p>
+			<p>Suponha que é transmitida uma mensagem de 1000 bits, que a probabilidade de erro em um bit é <m>p</m> e que os erros que possam ocorrer em bits diferentes são independentes entre eles. Se <m>p = 0.01</m>, qual é a probabilidade de que ocorra mais de um erro? Qual é a probilidade de que ocorram exatamente dois erros?  Repita o problema para <m>p = 0.0001</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="11" xml:id="exercise-algcodes-check-matrices">
 		<statement>
-			<p>¿Qué matrices son matrices verificadoras canónicas? Para aquella matrices que sean matrices verificadoras canónicas, ¿cuáles son las correspondientes matrices generadoras estándar? ¿Cuáles son las capacidades de detección y corrección de errores de cada una de  estas matrices?
+			<p>Que matrizes são matrizes verificadoras canônicas? Para essas matrizes, quais são as correspondentes matrizes geradoras padrão? Quais são as capacidades de detecção e correção de erros de cada uma dessas matrizes?
 				<ol cols="2">
 
 					<li><p><me>\begin{pmatrix}
@@ -241,13 +241,13 @@
 				</ol></p>
 		</statement>
 		<hint>
-			<p>(a) Es matriz verificadora canónica con matriz generadora estándar
+			<p>(a) É matriz verificadora canônica com matriz geradora padrão
 					<me>G = 
 					\begin{pmatrix}
 					1 \\ 1 \\ 0 \\ 0 \\ 1
 					\end{pmatrix}.</me></p>
 
-			<p>(c) Es matriz verificadora canónica con matriz generadora estándar
+			<p>(c) É matriz verificadora canônica com matriz geradora padrão
 					<me>G = 
 					\begin{pmatrix}
 					1 &amp; 0 \\
@@ -261,33 +261,33 @@
 
 	<exercise number="12">
 		<statement>
-			<p>Liste todos los posible síndromes para los códigos generados por cada una de las matrices del Ejercicio<nbsp/><xref ref="exercise-algcodes-check-matrices"/>.</p>
+			<p>Liste toda as possíveis síndromes para os códigos gerados por cada uma das matrizes do Exercício<nbsp/><xref ref="exercise-algcodes-check-matrices"/>.</p>
 		</statement>
 		<hint>
-			<p>(a) Ocurren todos los posibles síndromes.</p>
+			<p>(a) Todas as possíveis síndromes ocorrem.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="13">
 		<statement>
-			<p>Sea
+			<p>Seja
 				<me>H =
 				\begin{pmatrix}
 				0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
 				0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
 				1 &amp; 0 &amp; 1 &amp; 0 &amp; 1
 				\end{pmatrix}.</me>
-			Calcule el síndrome causado por cada uno de los siguientes errores de transmisión. 
+			Calcule a síndrome causada por cada um dos seguintes erros de transmissão. 
 				<ol>
 				 
-					<li><p>Un error en el primer bit.</p></li>
+					<li><p>Um erro no primeiro bit.</p></li>
 					 
-					<li><p>Un error en el tercer bit.</p></li>
+					<li><p>Um erro no terceiro bit.</p></li>
+					
+					<li><p>Um erro no último bit.</p></li>
 					 
-					<li><p>Un error en el último bit.</p></li>
-					 
-					<li><p>Errores en el tercer y cuarto bits.</p></li>
+					<li><p>Erros no terceiro e quarto bits.</p></li>
 				 
 				</ol></p>
 		</statement>
@@ -296,14 +296,14 @@
 
 	<exercise number="14">
 		<statement>
-			<p>Sea <m>C</m> el código de grupo en <m>{\mathbb Z}_2^3</m> definido por las palabras <m>(000)</m> y <m>(111)</m>. Calcule las clases laterales de <m>H</m> en <m>{\mathbb Z}_2^3</m>. ¿Por qué no es necesario especificar si se trata de clases laterales derechas o izquierdas? Entregue el error singular de transmisión, si lo hay, que corresponda con cada clase lateral.</p>
+			<p>Seja <m>C</m> o código de grupo em <m>{\mathbb Z}_2^3</m> definido pelas palavras <m>(000)</m> e <m>(111)</m>. Calcule as classes laterais de <m>H</m> em <m>{\mathbb Z}_2^3</m>. Por que não é necessário especificar se tratamos de classes laterais direitas ou esquerdas? Encontre o erro singular de transmissão, se existir, diga a qual classe lateral corresponda.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="15">
 		<statement>
-		<p>Para cada una de las siguientes matrices, encuentre las clases laterales para el código <m>C</m> correspondiente. Entregue una tabla de decodificación para cada código si es posible.
+		<p>Para cada uma das seguintes matrizes, encontre as classes laterais para o código <m>C</m> correspondente. Encontre uma tabela de decodificação para cada código se for possível.
 			<ol cols="2">
 
 				<li><p><me>\begin{pmatrix}
@@ -334,14 +334,14 @@
 			</ol></p>
 		</statement>
 		<hint>
-			<p>(a) <m>C</m>, <m>(10000) + C</m>, <m>(01000) + C</m>, <m>(00100) + C</m>, <m>(00010) + C</m>, <m>(11000) + C</m>, <m>(01100) + C</m>, <m>(01010) + C</m>.  No hay tabla de decodificación para <m>C</m> pues este es solo un código detector de un error.</p>
+			<p>(a) <m>C</m>, <m>(10000) + C</m>, <m>(01000) + C</m>, <m>(00100) + C</m>, <m>(00010) + C</m>, <m>(11000) + C</m>, <m>(01100) + C</m>, <m>(01010) + C</m>.  Não existe tabela de decodificação para <m>C</m>, pois este é somente um código detector de um erro.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="16">
 		<statement>
-			<p>Sean <m>{\mathbf x}</m>, <m>{\mathbf y}</m>, y <m>{\mathbf z}</m>  <m>n</m>-tuplas binarias. Demuestre cada uno de los siguientes enunciados. 
+			<p>Sejam <m>{\mathbf x}</m>, <m>{\mathbf y}</m> e <m>{\mathbf z}</m>  <m>n</m>-tuplas binárias. Demonstre cada um dos seguintes enunciados. 
 				<ol>
 				 
 					<li><p><m>w({\mathbf x}) = d( {\mathbf x}, {\mathbf 0})</m></p></li>
@@ -357,7 +357,7 @@
 
 	<exercise number="17">
 		<statement>
-			<p>Una <term>métrica</term> en un conjunto <m>X</m> es una función <m>d: X \times X \rightarrow {\mathbb R}</m> que satisface las siguientes condiciones. 
+			<p>Uma <term>métrica</term> em um conjunto <m>X</m> é uma função <m>d: X \times X \rightarrow {\mathbb R}</m> que satisfaz as seguintes condição. 
 				<ol>
 		 
 					<li><p><m>d( {\mathbf x}, {\mathbf y}) \geq 0</m> para todo <m>{\mathbf x}, {\mathbf y} \in X</m>;</p></li>
@@ -368,82 +368,82 @@
 		 
 					<li><p><m>d( {\mathbf x}, {\mathbf y}) \leq d( {\mathbf x}, {\mathbf z}) + d( {\mathbf z}, {\mathbf y})</m>.</p></li>
 		 
-				</ol>En otros palabras, una métrica es simplemente una generalización de la noción de distancia. Demuestre que la distancia de Hamming es una métrica en <m>{\mathbb Z}_2^n</m>. Decodificar un mensaje en realidad corresponde a decidir cuál es la palabra del código más cercana en términos de la distancia de Hamming.</p>
+				</ol>Em outras palavras, uma métrica é simplesmente uma generalização da noção de distância. Demonstre que a distância de Hamming é uma métrica em <m>{\mathbb Z}_2^n</m>. Decodificar uma mensagem na realidade corresponde a decidir qual é a palavra do código mais próxima em termos da distância de Hamming.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="18">
 		<statement>
-			<p>Sea <m>C</m> un código lineal binario. Muestre que entre las <m>i</m>-ésimas coordenadas de la palabras en <m>C</m> hay puros ceros o exactamente la mitad son ceros.</p>
+			<p>Seja <m>C</m> um código linear binário. Mostre que entre as <m>i</m>-ésimas coordenadas das palavras em <m>C</m> são todas zeros ou exatamente metade são zeros.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="19">
 		<statement>
-			<p>Sea <m>C</m> un código lineal binario. Muestre que ya sea todas las palabras tienen peso par o exactamente la mitad de ellas tienen peso par.</p>
+			<p>Seja <m>C</m> um código linear binário. Mostre que ou todas as palavras tem peso par ou exatamente a metade delas tem o peso par.</p>
 		</statement>
 		<hint>
-			<p>Sea <m>{\mathbf x} \in C</m> una palabra de peso impar y defina una función y defina una función del conjunto de todas las palabras de peso impar al conjunto de las palabras de peso par como <m>{\mathbf y} \mapsto {\mathbf x} + {\mathbf y}</m>. Muestre que esta función es una biyección.</p>
+			<p>Seja <m>{\mathbf x} \in C</m> uma palavra de peso ímpar e defina uma função e defina uma função do conjunto de todas as palavras de peso ímpar ao conjunto das palavras de peso par como <m>{\mathbf y} \mapsto {\mathbf x} + {\mathbf y}</m>. Mostre que esta função é uma bijeção.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="20">
 		<statement>
-			<p>Muestre que las palabras de peso par en un código lineal binario <m>C</m> también forman un código lineal.</p>
+			<p>Mostre que as palavras de peso par em um código linear binário <m>C</m> também formam um código linear.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="21">
 		<statement>
-			<p>Si hemos de usar un código lineal corrector de errores para transmitir los 128 caracteres <acro>ASCII</acro>, ¿qué tamaño de matriz debe usarse? ¿Qué tamaño de matriz debe usarse para transmitir el conjunto <acro>ASCII</acro> extendido de 256 caracteres?  ¿Y si solo requerimos detección de errores en ambos casos?</p>
+			<p>Se temos de usar um código linear corretor de erros para transmitir os 128 caracteres <acro>ASCII</acro>, que tamanho de matriz deve ser usada? Que tamanho de matriz deve ser usada para transmitir o conjunto <acro>ASCII</acro> estendido de 256 caracteres?  E se só precisamos de detecção de erros em ambos casos?</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="22">
 		<statement>
-			<p>Encuentre la matriz verificadora canónica que da el código de verificación de paridad con tres posiciones de información. ¿Cuál es la matriz para siete posiciones de información?  ¿Cuáles son las matrices generadoras estándar correspondientes?</p>
+			<p>Encontre a matriz verificadora canônica que da o código de verificação de paridade com três posições de informação. Qual é a matriz para sete posições de informação? Quais são as matrizes geradoras padrões correspondentes?</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="23">
 		<statement>
-			<p>¿Cuántas posiciones de verificación se necesitan para un código de corrección de un error con 20 posiciones de información? ¿Con 32 posiciones de información?</p>
+			<p>Quantas posições de verificação são necessárias para um código de correção de um erro com 20 posições de informação? Com 32 posições de informação?</p>
 		</statement>
 		<hint>
-			<p>Para 20 posiciones de información, se requieren al menor 6 bits de verificación para permitir un código de corrección de un error.</p>
+			<p>Para 20 posições de informação, são necessárias ao menos 6 bits para assegurar um código de correção de um erro.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="24">
 		<statement>
-			<p>Sea <m>{\mathbf e}_i</m> la  <m>n</m>-tupla binaria con un 1 en la <m>i</m>-ésima coordenada y <m>0</m> en las demás y supongamos que  <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m>. Muestre que <m>H{\mathbf e}_i</m> es la <m>i</m>-ésima columna de la matriz <m>H</m>. </p>
+			<p>Seja <m>{\mathbf e}_i</m> a <m>n</m>-tupla binária com um 1 na <m>i</m>-ésima coordenada e <m>0</m> nas demais e suponha que <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m>. Mostre que <m>H{\mathbf e}_i</m> é a <m>i</m>-ésima coluna da matriz <m>H</m>. </p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="25" xml:id="exercise-algcodes-dual-code">
 		<statement>
-			<p>Sea <m>C</m> un código lineal <m>(n,k)</m>. Definamos el <term>código dual</term> o <term>código ortogonal</term> de <m>C</m> como 
+			<p>Seja <m>C</m> um código linear <m>(n,k)</m>. Vamos definir o <term>código dual</term> ou <term>código ortogonal</term> de <m>C</m> como 
 				<me>C^\perp = \{ {\mathbf x} \in {\mathbb Z}_2^n :  {\mathbf x} \cdot {\mathbf y} = 0 \text{ para todo } {\mathbf y} \in C \}.</me>
 				<ol>
  
-					<li><p>Encuentre el código dual del código lineal <m>C</m> donde <m>C</m> está dado por la matriz 
+					<li><p>Encontre o código dual do código linear <m>C</m> donde <m>C</m> está dado pela matriz 
 						<me>\begin{pmatrix}
 						1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
 						0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
 						1 &amp; 0 &amp; 0 &amp; 1 &amp; 0
 						\end{pmatrix}.</me></p></li>
  
-					<li><p>Muestre que <m>C^\perp</m> es un código lineal <m>(n, n-k)</m>.</p></li>
+					<li><p>Mostre que <m>C^\perp</m> é um código linear <m>(n, n-k)</m>.</p></li>
  
-					<li><p>Encuentre las matrices verificadora canónica y generadora estándar de <m>C</m> y <m>C^\perp</m>. ¿Qué sucede en general? Demuestre su conjetura.</p></li>
+					<li><p>Encontre as matrizes verificadora canônica e geradora padrão de <m>C</m> e <m>C^\perp</m>. O que acontece no geral? Demonstre sua conjectura.</p></li>
  
 				</ol></p>
 		</statement>
@@ -452,23 +452,23 @@
 
 	<exercise number="26">
 		<statement>
-			<p>Sea <m>H</m> una matriz de <m>m \times n</m> sobre <m>{\mathbb Z}_2</m>, donde la <m>i</m>-ésima columna es el número <m>i</m> escrito en binario con <m>m</m> bits. El espacio nulo de una tal matriz se llama <term>código de Hamming</term>. 
+			<p>Seja <m>H</m> uma matriz de <m>m \times n</m> sobre <m>{\mathbb Z}_2</m>, donde a <m>i</m>-ésima coluna é o número <m>i</m> escrito em binário com <m>m</m> bits. O espaço nulo de tal matriz se chama <term>código de Hamming</term>. 
 				<ol>
  
-					<li><p>Muestre que la matriz
+					<li><p>Mostre que a matriz
 						<me>H =
 						\begin{pmatrix}
 						0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \\
 						0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 \\
 						1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0
 						\end{pmatrix}</me>
-				genera un código de Hamming. ¿Cuáles son las propiedades de corrección de errores de un código de Hamming?</p></li>
+				gera um código de Hamming. Quais são as propriedades de correção de erros de um código de Hamming?</p></li>
  
-					<li><p>La columna correspondiente al síndrome también marca el bit donde ocurrió el error; es decir, la <m>i</m>-ésima columna de la matriz es <m>i</m> escrito como número binario, y el síndrome inmediatamente nos dice cuál es el bit erróneo. Si la palabra recibida es <m>(101011)</m>, Calcule el síndrome. ¿En qué bit ocurrió el error en este caso, y cuál era la palabra originalmente transmitida?</p></li>
+					<li><p>A coluna correspondente a síndrome também marca o bit donde ocorreu o erro; isto é, a <m>i</m>-ésima coluna da matriz é <m>i</m> escrito como número binário, e a síndrome imediatamente nos diz qual é o bit incorreto. Se a palavra recebida é <m>(101011)</m>, calcule a síndrome. Em que bit ocorreu o erro neste caso, e qual era a palavra originalmente transmitida?</p></li>
  
-					<li><p>Entregue un matriz binaria <m>H</m> para el código de Hamming con seis posiciones de informacióny cuatro de verificación. ¿Cuáles son la posiciones de verificación y cuáles son las de información? Codifique los mensajes <m>(101101)</m> y <m>(001001)</m>. Decodifique las palabras recibidas <m>(0010000101)</m> y <m>(0000101100)</m>.  ¿Cuáles son los posibles síndromes para este código?</p></li>
+					<li><p>Entregue um matriz binária <m>H</m> para o código de Hamming com seis posições de informação e quatro de verificação. Quais são as posições de verificação e quais são as de informação? Codifique as mensagens <m>(101101)</m> e <m>(001001)</m>. Decodifique as palavras recebidas <m>(0010000101)</m> e <m>(0000101100)</m>.  Quais são as possíveis síndromes para este código?</p></li>
  
-					<li><p>¿Cuál es el número de bits de verificación y el número de bits de información en un código de Hamming de bloque <m>(m,n)</m>? Encuentre tanto una cota superior como una cota inferior para el número de bits de información en términos del número de bits de verificación. Códigos de Hamming que tengan el máximo posible número de bits de información con <m>k</m> bits de verificación se llaman <term>perfectos</term>. Cada posible síndrome a excepción de <m>{\mathbf 0}</m> ocurre como una columna. Si el número de bits de información es menor al máximo, entonces el código se llama <term>recortado</term>. En este caso, dé un ejemplo donde algunos síndromes puedan representar errores múltiples.</p></li>
+					<li><p>Qual é o número de bits de verificação e o número de bits de informação em um código de Hamming de blocos <m>(m,n)</m>? Encontre tanto uma cota superior como uma cota inferior para o número de bits de informação em termos do número de bits de verificação. Códigos de Hamming que tem o máximo número de bits possível de informação com <m>k</m> bits de verificação se chamam <term>perfeitos</term>. Cada possível síndrome com exceção de <m>{\mathbf 0}</m> ocorre como uma coluna. Se o número de bits de informação é menor que o máximo, então o código se chama <term>encurtado</term>. Neste caso, dê um exemplo donde algumas síndromes possam representar múltiplos erros.</p></li>
  
 				</ol></p>
 		</statement>

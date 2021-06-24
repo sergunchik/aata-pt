@@ -11,17 +11,17 @@
 <!-- edits can be made against this file for       -->
 <!-- the purpose of a pull request.                -->
 <exercises xml:id="algcodes-sage-exercises">
-    <title>Ejercicios en Sage</title>
+    <title>Exercícios em Sage</title>
 
     <exercise number="1">
         <statement>
-            <p>Construya el código (binario) Golay con el constructor <c>codes.GolayCode()</c>.  Lea la documentación para asegurarse de construir la versión binaria (y no la ternaria), y no construya la versión extendida (que es el default).</p>
+            <p>Construa o código (binário) Golay com o construtor <c>codes.GolayCode()</c>.  Leia a documentação para assegurar-se de construir a versão binária (e não a ternária), e não construa a versão estendida (que é a default).</p>
 
             <ol>
-                <li><p>Use métodos Sage para calcular el largo, la dimensión y la distancia mínima del código.</p></li>
-                <li><p>¿Cuántos errores puede detectar este código?  ¿Cuántos puede corregir?</p></li>
-                <li><p>Encuentre una palabra distinta de cero en el código e introduzca tres errores sumando un vector con tres 1's (de su elección) para crear un mensaje recibido.  Muestre que el mensaje se decodifica correctamente.</p></li>
-                <li><p>Recicle sus elecciones de la parte anterior, pero ahora agregue un error adicional.  ¿Se decodifica correctamente el mensaje recibido?</p></li>
+                <li><p>Use métodos Sage para calcular o comprimento, a dimensão e a distância mínima do código.</p></li>
+                <li><p>Quantos erros podem ser detectados neste código? Quantos pode corrigir?</p></li>
+                <li><p>Encontre uma palavra distinta de zero no código e introduza três erros somando um vetor com três 1's (de sua escolha) para criar uma mensagem recebida. Mostre que a mensagem se decodifica corretamente.</p></li>
+                <li><p>Recicle suas escolhas da parte anterior, mas agora adicione um outro erro. A mensagem recebida é decodificada corretamente?</p></li>
             </ol>
         </statement>
         
@@ -29,16 +29,16 @@
 
     <exercise number="2">
         <statement>
-            <p>Una técnica que permita mejorar las características de un código es agregar un bit de paridad general, tal como el bit de paridad del código <acro>ASCII</acro> descrito en el Ejemplo<nbsp/><xref ref="example-algcodes-even-parity"/>.  Tales códigos se conocen como versiones <term>extendidas</term> del código original.</p>
+            <p>Uma técnica que permita melhorar as características de um código é adicionar um bit de paridade geral, tal como o bit de paridade do código <acro>ASCII</acro> descrito no Exemplo<nbsp/><xref ref="example-algcodes-even-parity"/>.  Tais códigos são conhecidos como versões <term>estendidas</term> do código original.</p>
 
             <ol>
-                <li><p>Construya el código de Golay binario y obtenga la matriz evrificadora.  Use comandos Sage para extender esta matriz creando una nueva matriz de paridad que considere un bit de paridad global adicional.  los métodos <c>.augment()</c> y <c>.stack()</c> para matrices le pueden resultar útiles, así como los constructores <c>zero_vector()</c> y <c>ones_matrix()</c> (recordando que especificamos las entradas binarias como pertenecientes al cuerpo <c>GF(2)</c>.)</p>
+                <li><p>Construa o código de Golay binário e obtenha a matriz verificadora. Use comandos Sage para estender esta matriz criando uma nova matriz de paridade que considere um bit de paridade global adicional. Os métodos <c>.augment()</c> e <c>.stack()</c> para matrizes podem ser úteis, assim como os construtores <c>zero_vector()</c> e <c>ones_matrix()</c> (recordando que especificamos as entradas binárias como pertencentes ao corpo <c>GF(2)</c>.)</p>
 
-                <p>Cree el código extendido entregando la matriz de paridad aumentada al constructor <c>codes.from_parity_check_matrix()</c> y calcule la longitud, dimension y distancia mínima del código extendido.</p></li>
+                <p>Crie o código estendido entregando a matriz de paridade aumentada ao construtor <c>codes.from_parity_check_matrix()</c> e calcule o comprimento, dimensão e distância mínima de código estendido.</p></li>
 
-                <li><p>¿En qué sentido son mejores las características de este nuevo código? ¿A qué costo?</p></li>
+                <li><p>Em que sentido são melhores as características deste código novo? A que custo?</p></li>
 
-                <li><p>Ahora cree el código de Golay binario extendido con <c>codes.GolayCode()</c> y la opción apropiada para obtener la versión extendida.  Con algo de suerte, las listas ordenadas de sus palabras y las del código implementado en Sage, serán las mismas.  Si no, el método <c>.is_permutation_equivalent()</c> debiera retornar <c>True</c> indicando que su código y el de Sage son simplemente reordenamientos, el uno del otro.</p></li>
+                <li><p>Agora crie o código Golay binário estendido com <c>codes.GolayCode()</c> e a opção apropriada para obter a versão estendida. Com alguma sorte, as listas ordenadas de suas palavras e as do código implementado em Sage, serão as mesmas. Senão, o método <c>.is_permutation_equivalent()</c> deverá retornar <c>True</c> indicando que seu código e Sage são simplesmente rearranjos um do outro.</p></li>
             </ol>
         </statement>
         
@@ -49,22 +49,22 @@
             <!--
             <p><em>Note:</em> This problem is on holiday (as of Sage 6.7), while some buggy Sage code for the minimum distance of a Hamming code gets sorted out.  The <c>r = 2</c> case produces an error message and for <c>r &gt; 5</c> the computation of the minimum distance has become intolerably slow.  So it is a bit harder to make a reasonable conjecture from just <m>3</m> cases.</p>
             -->
-            <p>El dual de un código de bloque <m>(n,k)</m> está formado por el conjunto de los vectores bianrios ortogonales a todos los vectores del código original.  El Ejercicio<nbsp/><xref ref="exercise-algcodes-dual-code"/> describe esta construcción y pregunta por algunas de sus propiedades.</p>
+            <p>O dual de um código de blocos <m>(n,k)</m> é formado pelo conjunto dos vetores binários ortogonais a todos os vetores do código original. O Exercício<nbsp/><xref ref="exercise-algcodes-dual-code"/> descreve esta construção e pergunta por algumas de suas propriedades.</p>
 
-            <p>Se puede obtener el dual de un código en Sage con el método <c>.dual_code()</c>.  Construya los códigos de Hamming binarios, y sus duales, con el parámetro <c>r</c> variando desde <c>2</c> hasta <c>5</c>.  Construya una tabla con seis columnas (posiblemente usando la función <c>html.table()</c>) que liste <m>r</m>, el largo del código, la dimensión del código original, la de su dual, la distancia mínima del código y la de su dual.</p>
+            <p>Podemos obter o dual de um código em Sage com o método <c>.dual_code()</c>.  Construa os códigos de Hamming binários, e seus duais, com o parâmetro <c>r</c> variando desde <c>2</c> até <c>5</c>.  Construa uma tabela com seis colunas (possivelmente usando a função <c>html.table()</c>) que liste <m>r</m>, o comprimento do código, a dimensão do código original, a do seu dual, a distância mínima do código e de seu dual.</p>
 
-            <p>Conjeture fórmulas para la dimensión y distancia mínima del dual de un código de Hamming en términos del parámetro <m>r</m>.</p>
+            <p>Conjecture fórmulas para a dimensão e distância mínima do dual de um código de Hamming em termos do parâmetro <m>r</m>.</p>
         </statement>
         
     </exercise>
 
     <exercise number="4">
         <statement>
-            <p>Un código con distancia mínima <m>d</m> se llama <term>perfecto</term> si todo vector posible está a distancia menor o igual a <m>(d-1)/2</m> de alguna palabra del código.  Si expandimos nuestra idea de geometría para incluir la noción de distancia de Hamming como la métrica, entonces podemos hablar de una esfera de radio <m>r</m> en torno a un vector o palabra.  Para un código de longitud <m>n</m>, una esfera de este tipo contiene <me>1 + {n\choose 1} + {n\choose 2} + \cdots + {n\choose r}</me> vectores en su interior.  Para un código perfecto, las esferas de radio <m>(d-1)/2</m> centradas en las palabras del código particionan exactamente el espacio de todos los vectores posibles.  (Esto es lo que establece una relación entre la teoría de códigos y los problemas de empaquetamiento de esferas.)</p>
+            <p>Um código com distância mínima <m>d</m> se chama <term>perfeito</term> se todo vetor possível está a uma distância menor ou igual a <m>(d-1)/2</m> de alguma palavra do código.  Se expandimos nossa ideia de geometria para incluir a noção de distância de Hamming como a métrica, então  podemos falar de uma esfera de raio <m>r</m> em torno de um vetor ou palavra. Para um código de comprimento <m>n</m>, uma esfera deste tipo contém <me>1 + {n\choose 1} + {n\choose 2} + \cdots + {n\choose r}</me> vetores em seu interior.  Para um código perfeito, as esferas de raio <m>(d-1)/2</m> centradas nas palavras do código particionam exatamente o espaço de todos os vetores possíveis.  (Isto é o que estabelece uma relação entre a teoria de códigos e os problemas de empacotamento de esferas.)</p>
 
-            <p>Una consecuencia de que un código de dimensión <m>k</m> sea perfecto es que <me>2^k\left({n\choose 0} + {n\choose 1} + {n\choose 2} + \cdots + {n\choose \frac{d-1}{2}}\right) = 2^n</me>  Recíprocamente, si un código tiene distancia mínima <m>d</m> y cumple la condición anterior, entonces el código es perfecto.</p>
+            <p>Uma consequência de que um código de dimensão <m>k</m> seja perfeito é que <me>2^k\left({n\choose 0} + {n\choose 1} + {n\choose 2} + \cdots + {n\choose \frac{d-1}{2}}\right) = 2^n</me>  Reciprocamente, se um código tem distância mínima <m>d</m> e cumpre a condição anterior, então o código é perfeito.</p>
 
-            <p>Escriba una función en Sage, llamada <c>is_perfect()</c> que tome un código lineal como entrada y retorne <c>True</c> o <c>False</c> según si el código es o no perfecto.  Demuestre su función verificando que el código de Golay binario es perfecto, y use un bucle para verificar que los códigos de Hamming binarios son perfectos para longitudes menores a <m>32</m>.</p>
+            <p>Escreva uma função em Sage, chamada <c>is_perfect()</c> que tome um código linear como entrada e retorne <c>True</c> ou <c>False</c> se o código for ou não perfeito.  Demonstre sua função verificando que o código de Golay binário é perfeito, e use um loop para verificar que os códigos de Hamming binários são perfeitos para longitudes menores que <m>32</m>.</p>
         </statement>
         
     </exercise>

@@ -12,14 +12,13 @@
 
 	<introduction>
 
-		<p>Sage es particularmente bueno para construir, analizar y manipular anillos de polinomios. Hemos visto algo de esto en el capítulo
-		 anterior.  Comencemos creando tres anillos de polinomios y comprobemos algunas de sus propiedades básicas.  Existen difierentes formas de construir anillos de polinomios, pero la sintaxis usada acá es la más directa.</p>
+		<p>Sage é particularmente boa pra construir, analisar e manipular anéis de polinômios. Vimos algo relacionado a isso no capítulo anterior.  Comecemos criando três anéis de polinômios e comprovemos algumas de suas propriedades básicas. Existem diferentes formas de construir anéis de polinômios, mas a sintaxe usada aqui é mais direta.</p>
 
 	</introduction>
 
 
 	<subsection>
-		<title>Anillos de Polinomios y sus Elementos</title>
+		<title>Anéis de Polinômios e seus Elementos</title>
 
 		<sage>
 		<input>
@@ -48,7 +47,7 @@
 		</output>
 		</sage>
 
-		<p>Las propiedades básicas de los anillos se pueden usar en estos ejemplos.</p>
+		<p>As propriedades básicas dos anéis podem ser usadas nesses exemplos.</p>
 
 		<sage>
 		<input>
@@ -104,7 +103,7 @@
 		</output>
 		</sage>
 
-		<p>Con la construcción y la sintaxis de arriba, las variables se pueden usar para crear elementos del anillo de polinomios sin coercionarlos explícitamente (aunque tenemos que tener cuidado con los polinomios constantes).</p>
+		<p>Com a construção e a sintaxe acima, as variáveis podem ser usadas para criar elementos do anel de polinômios sem coerção explicitamente (ainda temos que ter cuidado com os polinômios constantes).</p>
 
 		<sage>
 		<input>
@@ -163,7 +162,7 @@
 		</output>
 		</sage>
 
-		<p>Los polinomios pueden ser evaluados como si fueran funciones, de manera que podemos imitar el homomorfismo de evaluación.</p>
+		<p>Os polinômios podem ser avaliados como se fossem funções, de maneira que podemos imitar o homomorfismo de avaliação.</p>
 
 		<sage>
 		<input>
@@ -193,7 +192,7 @@
 		</output>
 		</sage>
 
-		<p>Notemos que <c>p</c> es un polinomio de grado dos, sin embargo podemos verificar a fuerza-bruta que solo tiene una raíz, contrario a nuestra expectativa usual.  Puede ser incluso más inusual.</p>
+		<p>Notemos que <c>p</c> é um polinômio de grau dois, no entanto podemos verificar a força bruta que só tem uma raiz, indo de forma contrária a nossa expectativa usual. Pode ser ainda mais não usual.</p>
 
 		<sage>
 		<input>
@@ -205,7 +204,7 @@
 		</output>
 		</sage>
 
-		<p>Sage puede crear y manipular anillos de polinomios en más de una variable, pero no tendremos mayores oportunidades de analizar esa funcionalidad en este curso.</p>
+		<p>Sage puede criar e manipular anéis de polinômios de uma variável, mas não teremos maiores oportunidades de analisar essa funcionalidade neste curso.</p>
 
 		<sage>
 		<input>
@@ -219,11 +218,11 @@
 	</subsection>
 
 	<subsection>
-		<title>Polinomios Irreducibles</title>
+		<title>Polinômios Irredutíveis</title>
 
-		<p>Si un polinomio se factoriza o no, tomando en consideración el anillo usado para sus coeficientes, es una pregunta importante en este capítulo y en muchos de los que siguen.  Sage es capaz de factorizar, y de determinar irreducibilidad, sobre los enteros, los racionales, y los cuerpos finitos.</p>
+		<p>Se um polinômio se fatora ou não, tomando em consideração o anel usado para seus coeficientes, é uma pergunta importante neste capítulo e em muitos dos que se seguem. Sage é capaz de fatorar, e de determinar irredutibilidade, sobre os inteiros, os racionais, e os corpos finitos.</p>
 
-		<p>Primero, sobre los racionales.</p>
+		<p>Primero, sobre os racionais.</p>
 
 		<sage>
 		<input>
@@ -264,7 +263,7 @@
 		</output>
 		</sage>
 
-		<p>Factorizar sobre los enteros no es realmente diferente a hacerlo sobre los racionales.  Esto es lo que nos dice el Teorema<nbsp /><xref ref="theorem-gauss-lemma" /> <mdash /> encontrar una factorización sobre los enteros puede ser convertido en encontrar una factorización sobre los racionales.  Así es en Sage, hay poca diferencia entre trabajar sobre los racionales y sobre los enteros.  Es un poco diferente cuando trabajamos sobre un cuerpo finito.  Un comentario viene más adelante.</p>
+		<p>Fatorar sobre os inteiros não é realmente diferente que fazer sobre os racionais.  Isto é o que o Teorema<nbsp /><xref ref="theorem-gauss-lemma" /> <mdash /> nos diz, encontrar uma fatoração sobre os inteiros pode ser convertido em encontrar uma fatoração sobre os racionais.  Assim que funciona em Sage, tem pouca diferença entre trabalhar sobre os racionais e sobre os inteiros. É um pouco diferente quando trabalhamos sobre um corpo finito. Um comentário virá mais a frente.</p>
 
 		<sage>
 		<input>
@@ -314,7 +313,7 @@
 		</output>
 		</sage>
 
-		<p>Para verificar estas factorizaciones, debemos calcular en el cuerpo finito, <c>F</c>, por lo que necesitamos saber como se comporta el símbolo <c>a</c>.  Este símbolo corresponde a una raíz de un polinomio de grado 2 sobre los enteros mód 5, que podemos obtener con el método <c>.modulus()</c>.</p>
+		<p>Para verificar essas fatorações, devemos calcular no corpo finito, <c>F</c>, por que precisamos saber como se comporta o símbolo <c>a</c>.  Este símbolo corresponde a uma raiz de um polinômio de grau 2 sobre os inteiros mod 5, que podemos obter com o método <c>.modulus()</c>.</p>
 
 		<sage>
 		<input>
@@ -325,7 +324,7 @@
 		</output>
 		</sage>
 
-		<p>Así <m>a^2+4a+2=0</m>, o <m>a^2=-4a-3=a+2</m>.  Así, al verificar las factorizaciones, cada vez que aparezca <m>a^2</m> lo podemos reemplazar por <m>a+2</m>.  Notemos que por el Corolario<nbsp /><xref ref="corollary-poly-factor" /> podríamos encontrar el factor lineal de <c>r</c>, y los cuatro factores lineales de <c>s</c>, mediante una búsqueda a la bruta de sus raíces.  Esto es realizable dado que el cuerpo es finito.</p>
+		<p>Assim <m>a^2+4a+2=0</m>, ou <m>a^2=-4a-3=a+2</m>.  Assim, ao verificar as fatorações, cada vez que apareça <m>a^2</m> podemos substituir por <m>a+2</m>.  Notemos que pelo Corolário<nbsp /><xref ref="corollary-poly-factor" /> poderíamos encontrar o fator linear de <c>r</c>, e os quatro fatores lineares de <c>s</c>, mediante uma quantidade bruta de suas raízes.  Isso é realizável dado que o corpo é finito.</p>
 
 		<sage>
 		<input>
@@ -345,9 +344,9 @@
 		</output>
 		</sage>
 
-		<p>Pero, <c>q</c> se factoriza en dos polinomios de grado 2, de manera que ninguna búsqueda de raíces nos permitirá descubrir estos factores.</p>
+		<p>Mas, <c>q</c> se fatora em dois polinômios de grau 2, de maneira que nenhuma quantidade de raízes nos permitirá descobrir estes fatores.</p>
 
-		<p>Por el criterio de Eisenstein, podemos crear polinomios irreducibles, como en el Ejemplo<nbsp /><xref ref="example-poly-eisenstein" />.</p>
+		<p>Pelo critério de Eisenstein, podemos criar polinômios irredutíveis, como no Exemplo<nbsp /><xref ref="example-poly-eisenstein" />.</p>
 
 		<sage>
 		<input>
@@ -360,14 +359,14 @@
 		</output>
 		</sage>
 
-		<p>Sobre el cuerpo <m>{\mathbb Z}_p</m>, los polinomios de Conway son elecciones canónicas para un polinomio de grado <m>n</m> irreducible sobre <m>{\mathbb Z}_p</m>.  Vea los ejercicios para aprender más sobre estos polinomios.</p>
+		<p>Sobre o corpo <m>{\mathbb Z}_p</m>, os polinômios de Conway são escolhas canônicas para um polinômio de grau <m>n</m> irredutível sobre <m>{\mathbb Z}_p</m>.  Veja os exercícios para aprender mais sobre esses polinômios.</p>
 
 	</subsection>
 
 	<subsection>
-		<title>Polinomios sobre Cuerpos</title>
+		<title>Polinômios sobre Corpos</title>
 
-		<p>Si <m>F</m> es un cuerpo, entonces todo ideal de <m>F[x]</m> es principal (Teorema<nbsp /><xref ref="theorem-poly-principal-ideal" />).  Nada nos impide darle a Sage dos (o más) generadores para construir un ideal, pero Sage determinará un elemento para usarlo en la descripción del ideal como ideal principal.</p>
+		<p>Se <m>F</m> é um corpo, então todo ideal de <m>F[x]</m> é principal (Teorema<nbsp /><xref ref="theorem-poly-principal-ideal" />).  Nada nos impede de dar a Sage dois (ou mais) geradores para construir um ideal, mas Sage determinará um elemento para usá-lo na descrição do ideal como ideal principal.</p>
 
 		<sage>
 		<input>
@@ -392,7 +391,7 @@
 		</output>
 		</sage>
 
-		<p>El Teorema<nbsp /><xref ref="theorem-max-ideal-poly" /> es el hecho clave que nos permite construir cuerpos finitos fácilmente.  Acá hay una construcción de un cuerpo finito de orden <m>7^5=16\,807</m>.  Todo lo que necesitamos es un polinomio de grado <m>5</m> que sea irreducible sobre <m>{\mathbb Z}_7</m>.</p>
+		<p>O Teorema<nbsp /><xref ref="theorem-max-ideal-poly" /> é um ponto chave que nos permite construir corpos finitos facilmente. Aqui temos uma construção de um corpo finito de ordem <m>7^5=16\,807</m>.  Tudo que precisamos é um polinômio de grau <m>5</m> que seja irredutível sobre <m>{\mathbb Z}_7</m>.</p>
 
 		<sage>
 		<input>
@@ -435,7 +434,7 @@
 		</output>
 		</sage>
 
-		<p>El símbolo <c>xbar</c> es un generador del cuerpo, pero en este momento no es accesible.  <c>xbar</c> es la clase <m>x + \langle x^5+ x + 4\rangle</m>.  Una mejor construcción incluiría la especificación de este generador.</p>
+		<p>O símbolo <c>xbar</c> é um gerador do corpo, mas neste momento não é acessível.  <c>xbar</c> es la clase <m>x + \langle x^5+ x + 4\rangle</m>.  Uma melhor construção incluiria a especificação deste gerador.</p>
 
 		<sage>
 		<input>

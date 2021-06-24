@@ -11,11 +11,11 @@
 <!-- edits can be made against this file for       -->
 <!-- the purpose of a pull request.                -->
 <exercises xml:id="exercises-crypt">
-	<title>Ejercicios</title>
+	<title>Exercícios</title>
 
 	<exercise number="1">
 		<statement>
-			<p>Encripte <c>IXLOVEXMATH</c> usando el criptosistema del Ejemplo<nbsp /><xref ref="example-crypt-caesar" />.</p>
+			<p>Encripte <c>IXLOVEXMATH</c> usando o criptossistema do Exemplo<nbsp /><xref ref="example-crypt-caesar" />.</p>
 		</statement>
 		<hint>
 			<p><c>LAORYHAPDWK</c></p>
@@ -25,14 +25,14 @@
 
 	<exercise number="2">
 		<statement>
-			<p>Decodifique <c>ZLOOA WKLVA EHARQ WKHA ILQDO</c>, que fue codificado usando el criptosistema del Ejemplo<nbsp /><xref ref="example-crypt-caesar" />.</p>
+			<p>Decodifique <c>ZLOOA WKLVA EHARQ WKHA ILQDO</c>, que foi codificado usando o criptossistema do Exemplo<nbsp /><xref ref="example-crypt-caesar" />.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="3">
 		<statement>
-			<p>Suponiendo que un código monoalfabético fue usado para codificar el siguiente mensaje secreto, ¿cuál era el mensaje original?</p>
+			<p>Supondo que um código monoalfabético foi usado para codificar a seguinte mensagem secreta, qual era a mensagem original?</p>
 			
 			<pre>
 			APHUO EGEHP PEXOV FKEUH CKVUE CHKVE APHUO
@@ -41,17 +41,17 @@
 			PVEHP PEXOV ERYKP GERYT GVKEG XDRTE RGAGA
 			</pre>
 
-			<p>¿Cuál es la importancia de este mensaje en la historia de la criptografía?</p>
+			<p>Qual é a importância desta mensagem na história da criptografia?</p>
 		</statement>
 		<hint>
-			<p>Ayuda: <c>V = E</c>, <c>E = X</c> (también usado para espacios y puntuación), <c>K = R</c>.</p>
+			<p>Ajuda: <c>V = E</c>, <c>E = X</c> (também usado para espaços e pontuação), <c>K = R</c>.</p>
 		</hint>
 		
 	</exercise>
 
 	<exercise number="4">
 		<statement>
-			<p>¿Cuál es el número total de criptosistemas monoalfabéticos posibles? ¿Qué tan seguros son tales criptosistemas?</p>
+			<p>Qual é o número total de criptossistemas monoalfabéticos possíveis? Quão seguros são tais criptossistemas?</p>
 		</statement>
 		<hint>
 			<p><m>26! - 1</m></p>
@@ -61,27 +61,27 @@
 
 	<exercise number="5">
 		<statement>
-			<p>Demuestre que una matriz <m>A</m> de <m>2 \times 2</m> con coeficientes en <m>{\mathbb Z}_{26}</m> es invertible si y solo si <m>\gcd( \det(A), 26 ) = 1</m>.</p>
+			<p>Demonstre que uma matriz <m>A</m> de <m>2 \times 2</m> com coeficientes em <m>{\mathbb Z}_{26}</m> é inversível se e somente se <m>\gcd( \det(A), 26 ) = 1</m>.</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="6">
 		<statement>
-			<p>Dada la matriz 
+			<p>Dada a matriz 
 				<me>A =
 				\begin{pmatrix}
 				3 &amp; 4 \\
 				2 &amp; 3
 				\end{pmatrix},</me>
-			use la función de encriptación <m>f({\mathbf p}) = A {\mathbf p} + {\mathbf b}</m> para encriptar el mensaje <c>CRYPTOLOGY</c>, donde <m>{\mathbf b} = ( 2, 5)^{\rm t}</m>.  ¿Cuál es la función de decriptación?</p>
+			use a função de encriptação <m>f({\mathbf p}) = A {\mathbf p} + {\mathbf b}</m> para encriptar a mensagem <c>CRYPTOLOGY</c>, donde <m>{\mathbf b} = ( 2, 5)^{\rm t}</m>. Qual é a função de decriptação?</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="7">
 		<statement>
-			<p>Encripte cada uno de los siguientes mensajes <acro>RSA</acro>  <m>x</m> de manera que <m>x</m> se divida en bloques de enteros de longitud  2;  es decir, si <m>x = 142528</m>, entonces encripte 14, 25, y 28 por separado.
+			<p>Encripte cada uma das seguintes mensagens <acro>RSA</acro>  <m>x</m> de maneira que <m>x</m> se divida em blocos de inteiros de comprimento  2;  isto é, se <m>x = 142528</m>, então encripte 14, 25 e 28 separadamente.
 				<ol>
 				 
 					<li><p><m>n = 3551, E = 629, x = 31</m></p></li>
@@ -102,14 +102,14 @@
 
 	<exercise number="8">
 		<statement>
-			<p>Calcule la clave de decriptación <m>D</m> para cada una de las claves de encriptación en el Ejercicio 7. </p>
+			<p>Calcule a chave de decriptação <m>D</m> para cada uma das chaves de encriptação no Exercício 7. </p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="9">
 		<statement>
-			<p>Decripte cada uno de los siguientes mensajes <acro>RSA</acro>  <m>y</m>.
+			<p>Decripte cada uma das seguintes mensagens <acro>RSA</acro>  <m>y</m>.
 				<ol>
 				 
 					<li><p><m>n = 3551, D = 1997, y = 2791</m></p></li>
@@ -130,7 +130,7 @@
 
 	<exercise number="10">
 		<statement>
-			<p>Para cada una de las siguientes claves de encriptación <m>(n, E)</m> en el criptosistema <acro>RSA</acro>, calcule <m>D</m>.
+			<p>Para cada uma das seguintes chaves de encriptação <m>(n, E)</m> no criptossistema <acro>RSA</acro>, calcule <m>D</m>.
 				<ol>
 		 
 					<li><p><m>(n, E) = (451, 231)</m></p></li>
@@ -151,23 +151,23 @@
 
 	<exercise number="11">
 		<statement>
-			<p>Los mensajes encriptados frecuentemente se dividen en bloques de <m>n</m> letras. Un mensaje como <c>THE WORLD WONDERS WHY</c> puede ser encriptado como <c>JIW OCFRJ LPOEVYQ IOC</c> pero enviado como <c>JIW OCF RJL POE VYQ IOC</c>.  ¿Cuáles son las ventajas de usar bloques de <m>n</m> letras?</p>
+			<p>As mensagens encriptadas frequentemente se dividem em blocos de <m>n</m> letras. Uma mensagem como <c>THE WORLD WONDERS WHY</c> pode ser encriptada como <c>JIW OCFRJ LPOEVYQ IOC</c> mas enviada como <c>JIW OCF RJL POE VYQ IOC</c>.  Quais são as vantagens de usar blocos de <m>n</m> letras?</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="12">
 		<statement>
-			<p>Encuentre enteros <m>n</m>, <m>E</m>, y <m>X</m> tales que
+			<p>Encontre inteiros <m>n</m>, <m>E</m> e <m>X</m> tais que
 				<me>X^E \equiv X \pmod{n}.</me>
-			¿Es este un potencial problema en el criptosistema <acro>RSA</acro>?</p>
+		    Seria este um potencial problema no criptosistema <acro>RSA</acro>?</p>
 		</statement>
 		
 	</exercise>
 
 	<exercise number="13">
 		<statement>
-			<p>Toda persona en el curso debiera construir un criptosistema <acro>RSA</acro> usando primos que tengan entre 10 y 15 dígitos.  Entregue  <m>(n, E)</m> y un mensaje encriptado. Mantenga el secreto de <m>D</m>. Vean si pueden romper los cifrados de los demás.</p>
+			<p>Toda pessoa no curso deveria construir um criptossistema <acro>RSA</acro> usando primos que tenham entre 10 e 15 dígitos.  Entregue  <m>(n, E)</m> e uma mensagem encriptada. Mantenha o segredo de <m>D</m>. Veja se podemos romper os cifrados dos outros.</p>
 		</statement>
 		
 	</exercise>
