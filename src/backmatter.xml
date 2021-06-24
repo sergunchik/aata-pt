@@ -8,19 +8,19 @@
 <!-- See the file COPYING for copying conditions.  -->
 
 <backmatter xml:id="backmatter" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <title>Referencia</title> <!-- mostly for HTML sectioning -->
+    <title>Referência</title> <!-- mostly for HTML sectioning -->
 
     <xi:include href="./gfdl-mathbook.xml" />  <!-- GFDL License text -->
 
     <appendix>
-        <title>Pistas y Soluciones a Ejercicios Seleccionados</title>
+        <title>Dicas e Soluções dos Exercícios Selecionados</title>
         <solution-list />
     </appendix>
 
     <appendix>
-        <title>Notación</title>
+        <title>Notação</title>
         <introduction>
-            <p>La siguiente tabla deine la notación usada en este libro. Los números de página o referencias se refieren a la primera aparición de cada símbolo.</p>
+            <p>A seguinte tabela define a notação usada neste livro. Os números da página ou referências se refere a primeira aparição de cada símbolo.</p>
         </introduction>
         <notation-list />
     </appendix>

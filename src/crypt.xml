@@ -8,170 +8,170 @@
 <!-- See the file COPYING for copying conditions.  -->
 
 <chapter xml:id="crypt" xmlns:xi="http://www.w3.org/2001/XInclude">
-	<title>Introducción a la Criptografía</title>
+	<title>Introdução a Criptografia</title>
 
 	<introduction>
 
-		<p>La Criptografía trata del envío y recepción de mensaje secretos. El objetivo de la criptografía es enviar mensajes de manera que solo el destinatario deseado pueda leerlos. Además, al recibirlo, el destinatario requiere de cierta garantía de autenticidad; es decir que no ha sido enviado por alguien que lo esté tratando de engañar. La criptografía moderna depende fuertemente del álgebra abstracta y de la teoría de números.</p> 
+		<p>A Criptografia é a área que trata do envio e da recepção de mensagens secretas. O objetivo da criptografia é enviar mensagens de maneira que somente o destinatário desejado possa lê-los. Além disso, ao recebê-la, o destinatário requer alguma garantia de autenticidade, isto é, que não foi enviada por alguém que está tentando o enganar. A criptografia moderna depende fortemente da álgebra abstrata e da teoria de números.</p> 
 
-		<p>El mensaje a enviar lo llamaremos <term>texto claro</term><idx><h>Texto claro</h></idx>. El mensaje encubierto se llamará <term>texto cifrado</term><idx><h>Texto cifrado</h></idx>. Tanto el texto claro como el texto cifrado están escritos en un  <term>alfabeto</term>, que consiste de <term>letras</term> o <term>caracteres</term>. Los caracteres pueden incluir no solamente  las letras usuales como A, <m>\ldots</m>, Z y a, <m>\ldots</m>, z sino también dígitos, marcas de puntuación, y espacios. Un <term>criptosistema</term>,<idx><h>Criptosistema</h><h>definición de</h></idx> o <term>cifrado</term>,<idx><h>Cifrado</h></idx>  tiene dos partes: <term>encriptación</term>, el proceso de transformar un texto claro en un texto cifrado, y <term>decriptación</term>, la transformación inversa del texto cifrado al texto plano.</p>
+		<p>Chamaremos a mensagem que estamos enviando de <term>texto claro</term><idx><h>Texto claro</h></idx>. A mensagem codificada será chamada de <term>texto cifrado</term><idx><h>Texto cifrado</h></idx>. Tanto o texto claro como o texto cifrado estão escritos em um <term>alfabeto</term>, que consiste de <term>letras</term> ou <term>caracteres</term>. Os caracteres podem incluir não somente  as letras usuais como A, <m>\ldots</m>, Z e a, <m>\ldots</m>, z mas também dígitos, caracteres de pontuação e espaços. Um <term>criptossistema</term>,<idx><h>Criptossistema</h><h>definição de</h></idx> ou <term>cifrado</term>,<idx><h>Cifrado</h></idx>  tem duas partes: <term>encriptação</term>, o processo de transformar um texto claro em um texto cifrado, e <term>decriptação</term>, a transformação inversa do texto cifrado em texto plano.</p>
  
-		<p>Hay diversas familias de criptosistemas, cada una se distingue por un algoritmo particular de encriptación. Los criptosistemas en una familia específica se distinguen entre ellos por un parámetro de la función de encriptación llamado <term>key (clave)</term><idx><h>Key</h><h>definición de</h></idx>. Un criptosistema clásico tiene una sola clave, que debe ser mantenida en secreto,  solo conocida por el remitente y el destinatario del mensaje. Si una persona <m>A</m> desea enviar mensajes secretos a dos personas diferentes <m>B</m> y <m>C</m>, y no quiere que <m>B</m> entienda el mensaje enviado a <m>C</m> ni viceversa, entonces <m>A</m> debe usar dos claves diferentes, un criptosistema para intercambiar mensajes con <m>B</m>, y otro para intercambiar mensajes con <m>C</m>.</p>
+		<p>Existem diversas famílias de criptossistemas, cada uma se distingue por um algoritmo particular de encriptação. Os criptossistemas em uma família específica se distinguem entre eles por um parâmetro da função de encriptação chamado <term>key (chave)</term><idx><h>Key</h><h>definição de</h></idx>. Um criptossistema clássico tem uma chave, que deve ser mantida em segredo,  só é conhecida pelo remetente e pelo destinatário da mensagem. Se uma pessoa <m>A</m> deseja enviar mensagens secretas a duas pessoas diferentes <m>B</m> e <m>C</m>, e não quer que <m>B</m> entenda a mensagem enviada para <m>C</m> e vice-versa, então <m>A</m> deve usar duas chaves diferentes, um criptossistema para trocar mensagens com <m>B</m>, e outro para trocar mensagens com <m>C</m>.</p>
 
-		<p>Los sistemas que usan dos claves separadas, una para encriptar y otra para decriptar, se conocen como <term>criptosistemas de clave pública (public key cryptosystems)</term><idx><h>Criptosistemas de clave pública</h></idx>. Como el conocimiento de la clave de encriptación no le permite a nadie adivinar la clave de decriptación, la primera se puede hacer pública. Un criptosistema de clave pública le permite tanto a <m>A</m> como a <m>B</m> enviar mensajes a <m>C</m> usando la misma clave de encriptación.  Cualquiera puede encriptar mensajes para enviarselos a <m>C</m>, pero solo <m>C</m> sabe como decriptar estos mensajes.</p>
+		<p>Os sistemas que usam duas chaves separadas, uma para encriptar e outra para decriptar, são conhecidos como <term>criptossistemas de chave pública (public key cryptosystems)</term><idx><h>Criptossistemas de chave pública</h></idx>. Como o conhecimento da chave de encriptação não permite acesso a chave de decriptação, a primeira pode ser colocada como pública. Um criptossistema de chave pública permite tanto a <m>A</m> como a <m>B</m> enviar mensagens a <m>C</m> usando a mesma chave de encriptação.  Qualquer um pode encriptar mensagens para enviar a <m>C</m>, mas só <m>C</m> sabe como decriptar essas mensagens.</p>
 
 	</introduction>
 
 	<section xml:id="section-private-key-crypt">
-		<title>Criptografía de Clave Privada</title>
+		<title>Criptografia de Chave Privada</title>
 		
-		<p>En criptosistemas de clave <term>única</term><idx><h>Clave</h><h>única</h></idx><idx><h>Criptosistema</h><h>clave única</h></idx> o <term>criptosistema de clave privada</term><idx><h>Clave</h><h>privada</h></idx><idx><h>Criptosistema</h><h>clave privada</h></idx> la misma clave se usa tanto para encriptar como para decriptar los mensajes. Para encriptar un texto-claro, aplicamos al mensaje alguna función que se mantiene en secreto, digamos <m>f</m>. Esta función devuelve un mensaje encriptado.  Dada la forma encriptada del mensaje, podemos recuperar el mensaje original aplicando la transformación inversa <m>f^{-1}</m>. La transformación <m>f</m> debe ser relativamente fácil de calcular, así como también lo debe ser <m>f^{-1}</m>; pero, <m>f</m> tiene que ser muy difícil de adivinar a partir de ejemplos disponibles de mensajes encriptados.</p>
+		<p>Em criptossistemas de chave <term>única</term><idx><h>Chave</h><h>única</h></idx><idx><h>Criptossistema</h><h>chave única</h></idx> ou <term>criptossistema de chave privada</term><idx><h>Chave</h><h>privada</h></idx><idx><h>Criptossistema</h><h>chave privada</h></idx> a mesma clave é usada tanto para encriptar como para decriptar as mensagens. Para encriptar um texto claro, aplicamos na mensagem alguma função que é mantida em segredo, digamos <m>f</m>. Esta função devolve uma mensagem encriptada.  Dada a forma encriptada da mensagem, podemos recuperar a mensagem original aplicando a transformação inversa <m>f^{-1}</m>. A transformação <m>f</m> deve ser relativamente fácil de calcular, assim como também deve ser <m>f^{-1}</m>; mas, devemos ter em mente que <m>f</m> deve ser muito difícil de adivinhar a partir de exemplos disponíveis de mensagens encriptadas.</p>
 
 
 		<example xml:id="example-crypt-caesar">
-			<p>Uno de los primeros y más famosos criptosistemas fue el código de desplazamiento usado por Julio César.  Primero convertimos el alfabeto en números haciendo <m>\text{A}  = 00, \text{B}  = 01, \ldots, \text{Z} = 25</m>. La función codificadora será 
+			<p>Um dos primeiros e mais famosos criptossistemas foi o código de deslocamento usado por Júlio César.  Primeiro convertemos o alfabeto em números fazendo <m>\text{A}  = 00, \text{B}  = 01, \ldots, \text{Z} = 25</m>. A função codificadora será 
 				<me>f(p) = p + 3 \bmod 26;</me>
-			es decir, <m>A \mapsto D, B \mapsto E, \ldots, Z \mapsto C</m>. La función decodificadora es entonces 
+			isto é, <m>A \mapsto D, B \mapsto E, \ldots, Z \mapsto C</m>. A função decodificadora será 
 				<me>f^{-1}(p) = p - 3 \bmod 26 = p + 23 \bmod 26.</me>
-			Supongamos que recibimos el mensaje encriptado DOJHEUD. Para decriptar este mensaje, lo convertimos a números:  
+			Suponha que recebemos a mensagem encriptada DOJHEUD. Para decriptar esta mensagem, convertemos a números:  
 				<me>3, 14, 9, 7, 4, 20, 3.</me>
-			Luego le aplicamos la transformación inversa para obtener
+			Em seguida, aplicamos a transformação inversa para obter
 				<me>0, 11, 6, 4, 1, 17, 0,</me>
-			es decir ALGEBRA. Note que no hay nada especial en los números 3 y 26, podríamos usar un alfabeto mayor o un desplazamiento diferente.</p>
+			isto é ALGEBRA. Note que não exite nada de especial nos números 3 e 26, poderíamos usar um alfabeto maior ou um deslocamento diferente.</p>
 		</example>
  
-		<p>El <term>criptoanálisis</term><idx><h>Criptoanálisis</h></idx> se preocupa de descifrar un mensaje encriptado recibido o interceptado. Existen métodos de probabilidades y estadísticas que son de gran ayuda al descifrar mensajes interceptados; por ejemplo, el análisis de frecuencia de los caracteres que aparecen en el mensaje encriptado puede hacer posible su decriptación.</p>
+		<p>A <term>criptoanálise</term><idx><h>Criptoanálise</h></idx> se preocupa em decifrar uma mensagem encriptada recibida ou interceptada. Existem métodos de probabilidade e estatística que são de grande ajuda para decifrar mensagens interceptadas; por exemplo, a análise de frequência dos caracteres que aparecem na mensagem encriptada pode fazer sua decriptação possível.</p>
 
 		<example xml:id="example-crypt-analysis">
-			<p>Supongamos que recibimos un mensaje que sabemos fue encriptado usando un desplazamiento en las 26 letras del alfabeto. Para determinar el desplazamiento ocupado, debemos encontrar <m>b</m> en la ecuación <m>f(p) = p + b \bmod 26</m>. Podemos hacer esto usando análisis de frecuencia.  La letra <m>\text{E} = 04</m> es la más frecuente en el idioma inglés. Supongamos que <m>\text{S} = 18</m> es la letra que ocurre con más frecuencia en el texto-cifrado.  Entonces tenemos una buena razón para sospechar que <m>18 = 4 + b \bmod 26</m>, y <m>b= 14</m>. Por lo tanto, la función encriptadora más probable es 
+			<p>Suponha que recebemos uma mensagem que sabemos que foi encriptada usando um deslocamento nas 26 letras do alfabeto. Para determinar o deslocamento, devemos encontrar <m>b</m> na equação <m>f(p) = p + b \bmod 26</m>. Podemos fazer isto usando análise de frequência.  A letra <m>\text{E} = 04</m> é a mais frequente no idioma inglês. Suponha que <m>\text{S} = 18</m> é a letra que ocorre com mais frequência no texto-cifrado.  Então temos uma boa razão para suspeitar que <m>18 = 4 + b \bmod 26</m>, e <m>b= 14</m>. Portanto, a função encriptadora mais provável é 
 				<me>f(p) = p + 14 \bmod 26.</me>
-			La correspondiente función decriptadora es 
+			A função decriptadora correspondente é 
 				<me>f^{-1}(p) = p + 12 \bmod 26.</me>
-			En este punto es fácil determinar si la sospecha es o no correcta.</p>
+			Neste ponto é fácil determinar se a suspeita é ou não correta.</p>
 		</example>
 
-		<p>Códigos de desplazamiento simple son ejemplos de <term>criptosistemas monoalfabéticos</term><idx><h>Criptosistema</h><h>monoalfabético</h></idx>. En estos cifrados un caracter en el texto-cifrado representa exactamente un caracter en el mensaje original. Tales criptosistemas no son muy sofisticados y son muy fáciles de romper. De hecho, en un desplazamiento simple como el descrito en el Ejemplo<nbsp /><xref ref="example-crypt-caesar" />, existen solo 26 claves posibles. Sería muy fácil probarlas todas en lugar de usar el análisis de frecuencia.</p> 
+		<p>Códigos de deslocamento simples são exemplos de <term>criptossistemas monoalfabéticos</term><idx><h>Criptossistema</h><h>monoalfabético</h></idx>. Nestes cifrados um caractere no texto cifrado representa exatamente um caractere na mensagem original. Tais criptossistemas não são muito sofisticados e são muito fáceis de decifrar. De fato, em um deslocamento simples como o descrito no Exemplo<nbsp /><xref ref="example-crypt-caesar" />, existem só 26 chaves possíveis. Seria muito mais fácil testar todas do que usar a análise de frequência.</p> 
 
-		<p>Investigemos un criptosistema ligeramente más sofisticado. Supongamos que la función encriptadora está dada por  
+		<p>Investiguemos um criptossistema ligeiramente mais sofisticado. Suponha que a função encriptadora é dada por  
 			<me>f(p) = ap + b \bmod 26.</me>
-		Primero debemos determinar cuándo existe una función decriptadora <m>f^{-1}</m>. Tal función existe cuando podemos resolver la ecuación
+		Primeiro devemos determinar quando existe uma função decriptadora <m>f^{-1}</m>. Tal função existe quando podemos resolver a equação
 			<me>c = ap + b \bmod 26</me>
-		en <m>p</m>. Por la Proposición<nbsp /><xref ref="proposition-zn-equiv-classes" />, esto es posible precisamente cuando <m>a</m> tiene inverso, es decir cuando <m>\gcd( a, 26) =1</m>. En este caso 
+		em <m>p</m>. Pela Proposição<nbsp /><xref ref="proposition-zn-equiv-classes" />, isso é possível precisamente quando <m>a</m> tem inverso, isto é quando <m>\gcd( a, 26) =1</m>. Neste caso 
 			<me>f^{-1}(p) = a^{-1} p - a^{-1} b \bmod 26.</me>
-		Un criptosistema de este tipo se denomina <term>criptosistema afín</term><idx><h>Criptosistema</h><h>afín</h></idx>.</p>
+		Um criptossistema deste tipo se denomina <term>criptossistema afim</term><idx><h>Criptossistema</h><h>afim</h></idx>.</p>
  
 		<example xml:id="example-crypt-affine-crypt">
-			<p>Consideremos el criptosistema afín <m>f(p) = ap + b \bmod 26</m>. Para que este criptosistema funcione, debemos elegir <m>a \in {\mathbb Z}_{26}</m> que sea invertible. Esto solo es posible si <m>\gcd(a, 26) = 1</m>. Reconociendo este hecho,  elegiremos <m>a = 5</m> pues <m>\gcd(5, 26) = 1</m>. Es muy fácil ver que <m>a^{-1} = 21</m>. Por lo tanto, podemos definir nuestra función de encriptación como <m>f(p) = 5p + 3 \bmod 26</m>. Luego, ALGEBRA se encripta como <m>3, 6, 7, 23, 8, 10, 3</m>, o DGHXIKD. La función decriptadora será   
+			<p>Consideremos o criptossistema afim <m>f(p) = ap + b \bmod 26</m>. Para que este criptossistema funcione, devemos escolher <m>a \in {\mathbb Z}_{26}</m> que seja inversível. Isso só é possível se <m>\gcd(a, 26) = 1</m>. Reconhecendo este fato,  escolheremos <m>a = 5</m> pois <m>\gcd(5, 26) = 1</m>. É muito fácil ver que <m>a^{-1} = 21</m>. Portanto, podemos definir nossa função de encriptação como <m>f(p) = 5p + 3 \bmod 26</m>. Logo, ALGEBRA se encripta como <m>3, 6, 7, 23, 8, 10, 3</m>, ou DGHXIKD. A função decriptadora será   
 				<me>f^{-1}(p) = 21 p - 21 \cdot 3 \bmod 26 = 21 p + 15 \bmod 26.</me></p>
 		</example> 
  
-		<p>Un criptosistema sería más seguro si una letra del texto-cifrado pudiese representar más de una letra del texto-claro.  Para dar un ejemplo de este tipo de criptosistema, llamado <term>criptosistema polialfabético</term>,<idx><h>Criptosistema</h><h>polialfabético</h></idx> generalizaremos los códigos afines usando matrices. La idea funciona básicamente como antes; sin embargo, en lugar de encriptar una letra a la vez, encriptaremos pares de letras.  Podemo almacenar un par de letras <m>p_1</m> y <m>p_2</m> en un vector  
+		<p>Um criptossistema seria mais seguro se uma letra do texto cifrado pudesse representar mais de uma letra do texto claro.  Para dar um exemplo deste tipo de criptossistema, chamado <term>criptossistema polialfabético</term>,<idx><h>Criptosistema</h><h>polialfabético</h></idx> generalizaremos os códigos afins usando matrizes. A idea funciona basicamente como antes; no entanto, no lugar de encriptar uma letra por vez, encriptaremos pares de letras.  Podemos armazenar um par de letras <m>p_1</m> e <m>p_2</m> em um vetor  
 			<me>{\mathbf p} = 
 			\begin{pmatrix}<![CDATA[
 			p_1 \\ p_2
 			]]>\end{pmatrix}.</me>
-		Sea <m>A</m> una matriz invertible de <m>2 \times 2</m> con coeficientes en <m>{\mathbb Z}_{26}</m>. Podemos definir una función encriptadora como
+		Seja <m>A</m> uma matriz inversível de <m>2 \times 2</m> com coeficientes em <m>{\mathbb Z}_{26}</m>. Podemos definir uma função encriptadora como
 			<me>f({\mathbf p}) = A {\mathbf p} + {\mathbf b},</me>
-		donde <m>{\mathbf b}</m> es un vector columna fijo y las operaciones matriciales se llevan a cabo en <m>{\mathbb Z}_{26}</m>. La función decriptadora debe ser
+		donde <m>{\mathbf b}</m> é um vetor columa fixo e as operações matriciais são feitas em <m>{\mathbb Z}_{26}</m>. A função decriptadora deve ser
 			<me>f^{-1}({\mathbf p}) = A^{-1} {\mathbf p} - A^{-1} {\mathbf b}.</me></p>
  
 		<example xml:id="example-crypt-help">
-			<p>Supongamos que deseamos encriptar la palabra HELP. Los números correspondientes son <m>7, 4, 11, 15</m>. Si
+			<p>Suponha que desejamos encriptar a palavra HELP. Os números correspondentes são <m>7, 4, 11, 15</m>. Se
 				<me>A =
 				\begin{pmatrix}<![CDATA[
 				3 & 5 \\
 				1 & 2
 				]]>\end{pmatrix},</me>
-			entonces
+			então
 				<me>A^{-1} 
 				=
 				\begin{pmatrix}<![CDATA[
 				2 & 21 \\
 				25 & 3
 				]]>\end{pmatrix}.</me>
-			Si <m>{\mathbf b} = ( 2, 2)^{\rm t}</m>, entonces el mensaje encriptado queda como RRGR. La letra R representa más de una letra en el texto-claro.</p>
+			Se <m>{\mathbf b} = ( 2, 2)^{\rm t}</m>, então a mensagem encriptada fica como RRGR. A letra R representa mais de uma letra no texto claro.</p>
 		</example>
  
-		<p>El análisis de frecuencia aún es realizable en un criptosistema polialfabético, pues tenemos buena información sobre la frecuencia relativa de pares de letras en el idioma inglés. El par <em>th</em> aparece con gran frecuencia; el par <em>qz</em> nunca aparece.  Para evitar decriptación por parte de un tercero, debemos usar una matriz de mayor tamaño que la usada en el Ejemplo<nbsp /><xref ref="example-crypt-help" />.</p>
+		<p>A análise de frequência ainda é realizável em um criptosistema polialfabético, pois temos boa informação sobre a frequência relativa de pares de letras no idioma inglês. O par <em>th</em> aparece com grande frequência; o par <em>qz</em> nunca aparece.  Para evitar decriptação por parte de um terceiro, devemos usar uma matriz maior do que a usada no Exemplo<nbsp /><xref ref="example-crypt-help" />.</p>
 
 <!-- TWJ 4/7/2010 Need to resolve this reference -->
 
 	</section>
 
 	<section xml:id="section-public-key-crypt">
-		<title>Criptografía de Clave Pública</title>
+		<title>Criptografia de Chave Pública</title>
 
 		<introduction>
  
-			<p>Si se usan criptosistemas tradicionales, cualquiera que sea capaz de encriptar un mensaje, también tendrá información suficiente para decriptar un mensaje interceptado. En 1976, W. Diffie<idx><h>Diffie, W.</h></idx> y M. Hellman<idx><h>Hellman, M.</h></idx> propusieron la criptografía de clave pública, que está basada en la observación de que los procesos de encriptación y decriptación no necesitan tener la misma clave. Esto quita el requerimiento de que la clave de encriptación sea secreta. La función encriptadora <m>f</m> debe ser relativamente fácil de calcular, pero <m>f^{-1}</m> tiene que ser muy difícil de calcular sin alguna información adicional, de manera que alguien que conozca la clave de encriptación, no pueda descubrir la clave de decriptación sin pasar por cálculos prohibitivamente difíciles. Es interesante notar que hasta la fecha para ningún método propuesto se ha demostrado que es <q>unidireccional;</q> es decir, para ningún criptosistema de clave pública existente, se ha demostrado que sea computacionalmente prohibitivo descifrar el mensaje con el solo conocimiento de la clave de encriptación.</p>
+			<p>Se criptossistemas tradicionais são usados, qualquer um que saiba o suficiente de encriptar uma mensagem também saberá decriptar uma mensagem interceptada. Em 1976, W. Diffie<idx><h>Diffie, W.</h></idx> e M. Hellman<idx><h>Hellman, M.</h></idx> propuseram a criptografia de chave pública, que é baseada na observação de que os processos de encriptação e decriptação não precisam ter a mesma chave. Isso remove o requerimento de que a chave de encriptação seja secreta. A função encriptadora <m>f</m> deve ser relativamente fácil de calcular, mas <m>f^{-1}</m> tem que ser muito difícil de calcular sem alguma informação adicional, de maneira que alguém que conheça a chave de encriptação, não possa descobrir a clave de decriptação sem passar por cálculos bastante difíceis. É interessante notar que até hoje, nenhum sistema que foi proposto foi provado ser <q>unidirecional;</q> isto é, para nenhum criptossistema de chave pública existente, foi demonstrado que seja computacionalmente proibitivo decifrar a mensagem somente com o conhecimento da chave de encriptação.</p>
 
 		</introduction>
 
 		<subsection xml:id="crypt-subsection-rsa">
-			<title>El Criptosistema <acro>RSA</acro></title>
+			<title>O Criptossistema <acro>RSA</acro></title>
 
- 				<p>El Criptosistema <acro>RSA</acro> introducido por R. Rivest<idx><h>Rivest, R.</h></idx>, A.  Shamir<idx><h>Shamir, A.</h></idx>, y L. Adleman<idx><h>Adleman, L.</h></idx> en 1978, se basa en la dificultad de factorizar número grandes. Si bien no es difícil encontrar dos primos aleatorios grandes y multiplicarlos, factorizar un número de 150 dígitos que sea el producto de dos primos grandes requería de 100 millones de computadores operando 10 millones de instrucciones por segundo durante 50 millones de años con los mejores algoritmos conocidos a principios de la década de 1990.  Si bien los algoritmos se han mejorado, factorizar un producto de dos primos grandes sigue siendo computacionalmente prohibitivo.</p>
+ 				<p>O Criptossistema <acro>RSA</acro> introduzido por R. Rivest<idx><h>Rivest, R.</h></idx>, A.  Shamir<idx><h>Shamir, A.</h></idx>, e L. Adleman<idx><h>Adleman, L.</h></idx> em 1978, se baseia na dificultade de fatorar número grandes. Ainda que não seja difícil encontrar dois primos grandes e multiplicá-los, fatorar um número de 150 dígitos que seja o produto de dois primos grandes iria requerer 100 milhões computadores operando 10 milhões de instruções por segundo durantes 50 milhões de anos com os melhores algoritmos conhecidos no princípio da década de 1990.  Mesmo que os algoritmos tenham melhorado, fatorar um produto de dois primos grandes segue sendo computacionalmente proibitivo.</p>
 
-				<p>El Criptosistema <acro>RSA</acro><idx><h><acro>RSA</acro> criptosistema</h></idx><idx><h>Criptosistema</h><h><acro>RSA</acro></h></idx> funciona como sigue. Supongamos que escogemos al azar dos números primos <m>p</m> y <m>q</m> de 150 dígitos cada uno. Después calculamos su producto <m>n= pq</m> y también calculamos <m>\phi(n) = m = (p - 1)(q-1)</m>, donde <m>\phi</m> es la función <m>\phi</m> de Euler.  Ahora comenzamos a elegir enteros aleatorios <m>E</m> hasta que encontremos uno que sea relativamente primo con <m>m</m>; es decir, elegimos <m>E</m> tal que <m>\gcd(E, m) = 1</m>. Usando el algoritmo de Euclides, podemos encontrar un número <m>D</m> tal que <m>DE \equiv 1 \pmod{m}</m>. Los números <m>n</m> y <m>E</m> ahora se hacen públicos.</p>
+				<p>O Criptossistema <acro>RSA</acro><idx><h><acro>RSA</acro> criptossistema</h></idx><idx><h>Criptossistema</h><h><acro>RSA</acro></h></idx> funciona como segue. Suponha que escolhemos dois números primos <m>p</m> e <m>q</m> de 150 dígitos cada um. Depois calculamos seu produto <m>n= pq</m> e também calculamos <m>\phi(n) = m = (p - 1)(q-1)</m>, donde <m>\phi</m> é a função <m>\phi</m> de Euler.  Agora começamos a escolher inteiros aleatórios <m>E</m> até que encontremos um que seja relativamente primo com <m>m</m>; isto é, escolhemos <m>E</m> tal que <m>\gcd(E, m) = 1</m>. Usando o algoritmo de Euclides, podemos encontrar um número <m>D</m> tal que <m>DE \equiv 1 \pmod{m}</m>. Os números <m>n</m> e <m>E</m> agora são públicos.</p>
  
-				<p>Supongamos que la persona B (Bob) desea enviar a la persona A (Alice) un mensaje a través de un canal abierto (público). Como <m>E</m> y <m>n</m> son conocidos para todo el mundo, cualquiera puede encriptar mensajes. Bob primero convierte su mensaje en una cadena numérica de acuerdo a algún procedimiento, digamos <m>\text{A}  = 00, \text{B}  = 02, \ldots, \text{Z}= 25</m>. Si es necesario, descompondrá su mensaje de manera que cada pedazo sea un entero positivo menor a <m>n</m>.  Supongamos que <m>x</m> es uno de estos pedazos.  Bob forma el número <m>y = x^E \mod n</m> y envía <m>y</m> a Alice. Para que Alice recupere <m>x</m>, ella solo necesita calcular <m>x = y^D \bmod n</m>. Solo Alice conoce <m>D</m>.</p>
+				<p>Suponha que a pessoa B (Bob) deseja enviar para pessoa A (Alice) uma mensagem através de um canal aberto (público). Como <m>E</m> e <m>n</m> são conhecidos por todo mundo, qualquer um pode encriptar mensagens. Bob primeiro converte sua mensagem em uma cadeia numérica de acordo com algum procedimento, digamos <m>\text{A}  = 00, \text{B}  = 02, \ldots, \text{Z}= 25</m>. Se for necessário, decomponha sua mensagem de maneira que cada pedaço seja um inteiro positivo menor que <m>n</m>.  Suponha que <m>x</m> é um desses pedaços.  Bob forma o número <m>y = x^E \mod n</m> e envia <m>y</m> para Alice. Para que Alice recupere <m>x</m>, ela só precisa calcular <m>x = y^D \bmod n</m>. Só Alice conhece <m>D</m>.</p>
  
 			<example xml:id="example-crypt-rsa">
-				<p>Antes de explorar la teoría tras el criptosistema <acro>RSA</acro> o intentar usar enteros grandes, usaremos algunos enteros pequeños simplemente para ver que el sistema realmente funciona. Supongamos que el mensaje que deseamos enviar, una vez digitalizado es 25. Sean <m>p = 23</m> y <m>q = 29</m>. Entonces 
+				<p>Antes de explorar a teoria por trás do criptossistema <acro>RSA</acro> ou tentar usar inteiros grandes, usaremos alguns inteiros pequenos simplesmente para ver que o sistema realmente funciona. Suponha que a mensagem que desejamos enviar, uma vez digitalizado é 25. Sejam <m>p = 23</m> e <m>q = 29</m>. Então 
 					<me>n = pq = 667</me>
-				y
+				e
 					<me>\phi(n) = m = (p - 1)(q - 1) = 616.</me>
-				Podemos elegir <m>E = 487</m>, pues <m>\gcd(616, 487) = 1</m>. El mensaje codificado lo calculamos como 
+				Podemos escolher <m>E = 487</m>, pois <m>\gcd(616, 487) = 1</m>. A mensagem codificada é calculada da seguinte forma: 
 					<me>25^{487} \bmod 667 = 169.</me>
-				Este cálculo se puede realizar de forma razonable usando el método de los cuadrados repetidos descrito en el Capítulo<nbsp /><xref ref="cyclic" />. Usando el algoritmo de Euclides, determinamos que <m>191 E = 1 + 151 m</m>; por lo tanto, la clave de decriptación es <m>(n, D) = ( 667, 191)</m>. Podemos recuperar el mensaje original calculando  
+				Este cálculo pode ser realizado usando o método dos quadrados repetidos descrito no Capítulo<nbsp /><xref ref="cyclic" />. Usando o algoritmo de Euclides, determinamos que <m>191 E = 1 + 151 m</m>; portanto, a chave de decriptação é <m>(n, D) = ( 667, 191)</m>. Podemos recuperar a mensagem original calculando  
 					<me>169^{191} \bmod 667 = 25.</me></p>
 			</example>
 
 <!-- Message changed from 23 to 25 so that it does not match p.  Suggested by R. Beezer. -->
 <!-- TWJ - 12/19/2011 -->
 
-			<p>Examinemos ahora por qué funciona el criptosistema <acro>RSA</acro>.  Sabemos que <m>DE \equiv 1 \pmod{ m}</m>; luego, existe <m>k</m> tal que 
+			<p>Examinemos agora porque o criptossistema <acro>RSA</acro> funciona.  Sabemos que <m>DE \equiv 1 \pmod{ m}</m>; logo, existe <m>k</m> tal que 
 				<me>DE = km + 1 = k \phi(n) + 1.</me>
-			Debemos considerar dos casos.  En el primer caso supongamos que <m>\gcd(x, n) = 1</m>.  Entonces, por el Teorema<nbsp /><xref ref="theorem-eulers_theorem" />,
+			Devemos considerar dois casos.  No primeiro caso suponha que <m>\gcd(x, n) = 1</m>.  Então, pelo Teorema<nbsp /><xref ref="theorem-eulers_theorem" />,
 				<me>y^D = (x^E)^D = x^{DE} = x^{km + 1} = (x^{\phi(n)})^k x = (1)^k x = x \bmod n.</me>
-			De esta manera vemos que Alice recupera el mensaje original <m>x</m> cuando calcula <m>y^D \bmod n</m>.</p>
+			Desta maneira vemos que Alice recupera a mensagem original <m>x</m> quando calcula <m>y^D \bmod n</m>.</p>
 
-			<p>Para el otro caso, supongamos que <m>\gcd(x, n) \neq 1</m>.  Como <m>n = pq</m> y <m>x \lt n</m>, sabemos que <m>x</m> es un múltiplo de <m>p</m> o un múltiplo de <m>q</m>, pero no ambos.  Describiremos solo la primera posibilidad, pues la otra es completamente similar.  Entonces existe un entero <m>r</m>, con <m>r \lt q</m> y <m>x = rp</m>.  Notemos que tenemos <m>\gcd(x, q) = 1</m> y que <m>m=\phi(n)=(p - 1)(q - 1)=\phi(p)\phi(q)</m>.  Entonces, usando el Teorema<nbsp /><xref ref="theorem-eulers_theorem" />, pero ahora mód <m>q</m>,
+			<p>Para o outro caso, suponha que <m>\gcd(x, n) \neq 1</m>.  Como <m>n = pq</m> e <m>x \lt n</m>, sabemos que <m>x</m> é um múltiplo de <m>p</m> ou um múltiplo de <m>q</m>, mas não de ambos.  Descreveremos somente a primeira possibilidade, pois a outra é completamente similar.  Então existe um inteiro <m>r</m>, com <m>r \lt q</m> e <m>x = rp</m>.  Notemos que temos <m>\gcd(x, q) = 1</m> e que <m>m=\phi(n)=(p - 1)(q - 1)=\phi(p)\phi(q)</m>.  Então, usando o Teorema<nbsp /><xref ref="theorem-eulers_theorem" />, mas agora mod <m>q</m>,
 				<me>x^{km} = x^{k\phi(p)\phi(q)} = (x^{\phi(q)})^{k\phi(p)} = (1)^{k\phi(p)} = 1 \bmod q.</me>
-			Existe un entero <m>t</m> tal que <m>x^{km}=1 + tq</m>. Luego, Alice también recupera el mensaje en este caso,
+			Existe um inteiro <m>t</m> tal que <m>x^{km}=1 + tq</m>. Logo, Alice também recupera a mensagem neste caso,
 				<me>y^D = x^{km + 1} = x^{km} x = (1 + tq) x = x + tq(rp) = x + trn = x \bmod n.</me></p>
 
 
 <!-- Demonstration expanded to two cases.  Suggested by Kevin Halasz. -->
 <!-- RAB - 12/30/2011 -->
 
-			<p>Podemos preguntarnos ahora como uno intentaría violar el criptosistema <acro>RSA</acro>. Para encontrar <m>D</m> dados <m>n</m> y <m>E</m>, necesitamos factorizar <m>n</m> y encontrar <m>D</m> usando el algoritmo de Euclides. Si supiéramos que <m>667 = 23 \cdot 29</m> en el Ejemplo<nbsp /><xref ref="example-crypt-rsa" />, podríamos recuperar <m>D</m>.</p>    
+			<p>Podemos perguntar agora como alguém tentaria violar o criptossistema <acro>RSA</acro>. Para encontrar <m>D</m> dados <m>n</m> e <m>E</m>, necessitamos fatorar <m>n</m> e encontrar <m>D</m> usando o algoritmo de Euclides. Se sabemos que <m>667 = 23 \cdot 29</m> no Exemplo<nbsp /><xref ref="example-crypt-rsa" />, poderíamos recuperar <m>D</m>.</p>    
 
 		</subsection>
 		
 		<subsection xml:id="crypt-subsection-message-verification">
-			<title>Verificación del Mensaje</title>
+			<title>Verificação da Mensagem</title>
  				
- 			<p>Hay un problema de verificación de mensajes en los criptosistemas de clave pública. Como la clave codificadora es de público conocimiento, cualquiera tiene la capacidad de enviar un mensaje codificado.  Si Alice recibe un mensaje de Bob, a ella le gustaría poder verificar que realmente fue Bob quien envió el mensaje. Supongamos que la clave encriptadora de Bob es <m>(n', E')</m> y su clave decriptadora es <m>(n', D')</m>.  Además, supongamos que la clave encriptadora de Alice es <m>(n, E)</m> y que su clave decriptadora es <m>(n, D)</m>.  Como las claves encriptadoras son de conocimiento público, ambos pueden intercambiar mensajes cuando lo deseen.  Bob quiere poder asegurarle a Alice que el mensaje que le está enviando es auténtico. Antes de enviar el mensaje <m>x</m> a Alice, Bob decripta <m>x</m> con su propia clave secreta:
+ 			<p>Existe um problema de verificação de mensagens nos criptossistemas de chave pública. Como a chave codificadora é de conhecimento público, qualquer um tem a capacidade de enviar uma mensagem codificada.  Se Alice recebe uma mensagem de Bob, ela gostaria de poder verificar que realmente foi que Bob que enviou a mensagem. Suponha que a chave encriptadora de Bob é <m>(n', E')</m> e sua chave decriptadora é <m>(n', D')</m>.  Além disso, suponha que a chave encriptadora de Alice é <m>(n, E)</m> e que sua chave decriptadora é <m>(n, D)</m>.  Como as chaves encriptadoras são de conhecimento público, ambos podem trocar mensagens quando desejarem.  Bob quer garatir a Alice que a mensagem que está enviando é autêntica. Antes de enviar a mensagem <m>x</m> a Alice, Bob decripta <m>x</m> com sua própia chave secreta:
 				<me>x' = x ^{D'} \bmod n'.</me>
-			Cualquiera puede transformar <m>x'</m> de vuelta a <m>x</m> encriptando, pero solo Bob tiene la habilidad de formar <m>x'</m>. Ahora Bob encripta <m>x'</m> con la clave pública de Alice formando 
+			Qualquer um pode transformar <m>x'</m> de volta a <m>x</m> encriptando, mas só Bob tem a habilidade de formar <m>x'</m>. Agora Bob encripta <m>x'</m> com a chave pública de Alice formando 
 				<me>y' = {x'}^E  \bmod n,</me>
-			un mensaje que solo Alice puede decriptar.  Alice decripta el mensaje y luego encripta el resultado con la clave de encriptación de Bob para leer el mensaje original, un mensaje que solo puede haber sido enviado por Bob.</p>
+			uma mensagem que só Alice pode decriptar.  Alice decripta a mensagem e logo encripta o resultado com a chave de encriptação de Bob para ler a mensagem original, uma mensagem que só pode ter sido enviada por Bob.</p>
 
 		</subsection>
  
 		<subsection xml:id="crypt-subsection-historical-note">
 			<title>Nota Histórica</title>
 			
-			<p>La idea de encriptar mensajes secretos se remonta a la Antiguedad. Como sabemos, Julio César usaba un código de desplazamiento simple para enviar y recibir mensajes. Sin embargo, el estudio formal de la codificación y decodificación de mensajes probablemente comenzó con los árabes en el siglo XV. En los siglos XV y XVI, matemáticos como Alberti y Viete descubrieron que los criptosistemas monoalfabéticos no ofrecían ninguna seguridad real. En el siglo XIX, F. W. Kasiski estableció métodos para violar sistemas en los que una letra del texto encriptado puede representar más de una letra del texto claro, si la misma clave era usada varias veces. Este descubrimiento llevó al uso de criptosistemas con claves que se usaban solo una vez. La Criptografía obtuvo fundamentos matemáticos firmes con los trabajos de gente como W. Friedman y L. Hill a comienzos del siglo XX.</p>
+			<p>A ideia de encriptar mensagens secretas vem desde a Grécia e Roma Antiga. Como sabemos, Júlio César usou um código de deslocamento simples para mandar e receber mensagens. No entanto, o estudo formal de encriptar e decriptar mensagens provavelmente começou com os árabes nos anos 1400. Nos séculos XV e XVI, matemáticos, tais quais Alberti e Viete, descobriram que criptossistemas monoalfabéticos não ofereciam uma segurança real. No século XIX, F. W. Kasiski estabeleceu métodos para violar sistemas em que uma letra do texto encriptado podia representar mais de uma letra do texto claro, se a mesma chave fosse usada várias vezes. Este descobrimento levou ao uso de criptossistemas com chaves que eram usadas só uma vez. A criptografia obteve fundamentos matemáticos firmes com os trabalhos de gente como W. Friedman e L. Hill no começo do século XX.</p>
  
-			<p>El período que siguió a la Primera Guerra Mundial vio el desarrollo de máquinas especializadas para la encriptación y decriptación de mensajes, y los matemáticos trabajaron muy activamente en criptografía durante la Segunda Guerra Mundial. Los esfuerzos por penetrar los criptosistemas de las naciones del Eje fueron organizados en Inglaterra y en los Estados Unidos por matemáticos notables como Alan Turing y A. A. Albert.  Los Aliados obtuvieron una tremenda ventaja en la Segunda Guerra Mundial al romper los sistemas de encriptación producidos por la máquina Enigma de Alemania y los cifrados Púrpura de Japón.</p>
+			<p>O périodo que seguiu a Primeira Guerra Mundial viu a criação de máquinas especializadas na encriptação e decriptação de mensagens e os matemáticos trabalharam arduamente na criptografia durante a Segunda Guerra Mundial. Os esforços para violar os criptossistemas das nações do Eixo foram organizados na Inglaterra e nos Estados Unidos por matemáticos notáveis como Alan Turing e A. A. Albert. Os Aliados obtiveram uma tremenda vantagem na Segunda Guerra Mundial ao romper os sistemas de encriptação produzidos pela máquina Enigma da Alemanha e os cifrados Púrpura do Japão.</p>
 
-			<p>Hacia 1970, el interés en la criptografía comercial comenzó a solidificarse. Había una necesidad creciente de proteger transacciones bancarias, datos informáticos y correo electrónico. A comienzos de los 70, <acro>IBM</acro> desarrolló e implementó <acro>LUZIFER</acro>, el precursor de estándar de encriptación de datos del National Bureau of Standards de Estados Unidos.</p>
+			<p>Em 1970, o interesse na criptografia comercial começou a se solidificar. Havia uma necessidade crescente de proteger transações bancárias, dados informáticos e emails eletrônicos. No começo dos anos 1970, <acro>IBM</acro> desenvolveu e implementou <acro>LUZIFER</acro>, o precursor do padrão de encriptação de dados do National Bureau of Standards dos Estados Unidos.</p>
 
-			<p>El concepto de un criptosistema de clave pública, debido a Diffie y Hellman, es muy reciente (1976). Su desarrollo fue continuado por Rivest, Shamir, y Adleman con el criptosistema <acro>RSA</acro> (1978). No se sabe qué tan seguros son estos criptosistemas. El criptosistema de la mochila de decisión, desarrollado por Merkle y Hellman, ya fue roto. Es aún una pregunta abierta si el sistema <acro>RSA</acro> puede o no ser roto. En 1991, los Laboratorios <acro>RSA</acro> publicaron una lista de semiprimos (números que tienen exactamente dos factores primos) con un premio en dinero para quien pudiera factorizarlos (<url href="http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-challenge-numbers.htm">http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-challenge-numbers.htm</url>).  Si bien el desafío terminó en 2007, muchos de estos números aún no han sido factorizados.</p>
+			<p>O conceito de um criptossistema de chave pública, devido a Diffie e Hellman, é muito recente (1976). Ele foi mais tarde desenvolvido por Rivest, Shamir e Adleman com o criptossistema <acro>RSA</acro> (1978). Ainda não sabemos o quão seguro esse criptossistema é. O criptossistema da mochila de decisão, fundamentado por Merkle e Hellman, foi quebrado. É ainda uma pergunta se o sistema <acro>RSA</acro> pode ou não ser violado. Em 1991, os Laboratórios <acro>RSA</acro> publicaram uma lista de semiprimos (números que tem exatamente dois fatores primos) com um prêmio em dinheiro para quem pudesse fatorá-los (<url href="http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-challenge-numbers.htm">http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-challenge-numbers.htm</url>).  Por mais que o desafio tenha terminado em 2007, muitos desses números ainda não foram fatorados.</p>
 			
-			<p>Ha habido bastante controversia en relación a la investigación de criptosistemas, la criptografía en sí. En 1929, cuando Henry Stimson, Secretario de Estado de Herbert Hoover, disolvió la Cámara Negra (la división de criptografía del Departamento de Estado) con la justificación ética de que <q>los caballeros no leen la correspondencia de otros.</q>  Durante las últimas dos décadas del siglo XX, la Agencia Nacional de Seguridad (NSA) quería mantener en secreto la información sobre criptografía, mientras la comunidad científica peleó por el derecho de publicar la ciencia básica relacionada.  Actualmente, la investigación en criptografía matemática y la teoría de números computacional es muy activa, y los matemáticos tienen la libertad de publicar sus resultados en estas áreas.</p> 
+			<p>Houve bastante controversia com relação a investigação de criptossistemas e com a criptografia por si só. Em 1929, quando Henry Stimson, Secretário de Estado de Herbert Hoover, dissolveu a Câmara Negra (a divisão de criptografia do Departamento de Estado) com a justificativa ética de que <q>os cavalheiros leêm a correspondência de outros.</q>  Durante as últimas duas décadas do século XX, a Agência Nacional de Segurança (NSA) queria manter em segredo a informação sobre criptografia, ainda que a comunidade científica pedisse pelo direito de publicar a ciência básica relacionada ao assunto.  Atualmente, a pesquisa com relação a criptografia matemática e à teoria dos números computacionais é muito ativa, e os matemáticos têm a libertade de publicar seus resultados nestas áreas.</p> 
 
 		</subsection>
 
@@ -182,19 +182,19 @@
  <xi:include href="./exercises/crypt.xml" />
 
 	<exercises xml:id="crypt-exercises-additional">
-		<title>Ejercicios Adicionales: Primalidad y Factorización</title>
+		<title>Exercícios Adicionais: Primalidade e Fatoração</title>
 
-		<p>En el criptosistema <acro>RSA</acro> es importante ser capaz de encontrar números primos grandes con facilidad.  Asimismo, este criptosistema deja de ser seguro si somos capaces de factorizar un número entero que sea el producto de dos números primos grandes. Las soluciones teóricas de ambos problemas son bastante simples.  Para saber si un número <m>n</m> es primo o para factorizar <m>n</m>, podemos usar intentos de división. Simplemente dividimos <m>n</m> entre <m>d = 2, 3, \ldots, \sqrt{n}</m>. Ya sea obtendremos una factorización, o <m>n</m> es primo si ningún <m>d</m> divide a <m>n</m>.  El problema es que tales cálculos toman muchísimo tiempo si <m>n</m> es muy grande.</p>
+		<p>No criptossistema <acro>RSA</acro> é importante ser capaz de encontrar números primos grandes com facilidade.  Da mesma forma, este criptosistema deixa de ser seguro se somos capazes de fatorar um número inteiro que seja o produto de dois números primos grandes. As soluções teóricas de ambos problemas são bastante simples. Para saber se um número <m>n</m> é primo ou para fatorar <m>n</m>, podemos usar tentativas de divisão. Simplesmente dividimos <m>n</m> entre <m>d = 2, 3, \ldots, \sqrt{n}</m>. Dessa forma obteremos uma fatoração ou <m>n</m> será primo sem nenhum <m>d</m> dividindo <m>n</m>.  O problema é que tais cálculos tomam muito tempo se <m>n</m> é muito grande.</p>
 
 		<exercise>
 			<statement>
-				<p>Un mejor algoritmo para factorizar enteros positivos impares es el <term>algoritmo de factorización de Fermat</term><idx><h>Algoritmo de factorización de Fermat</h></idx>.</p>
+				<p>Um algoritmo melhor para fatorar inteiros positivos ímpares é o </term><idx><h>Algoritmo de fatoração de Fermat</h></idx>.</p>
 
 				<ol>
-					<li><p>Sea <m>n= ab</m> un número impar compuesto. Demuestre que <m>n</m> puede ser escrito como la diferencia de dos cuadrados perfectos:
+					<li><p>Seja <m>n= ab</m> um número ímpar composto. Demonstre que <m>n</m> pode ser escrito como a diferença de dois quadrados perfeitos:
 						<me>n = x^2 - y^2 = (x - y)(x + y).</me>
-					Por lo tanto, un entero positivo impar se puede factorizar si y solo si podemos encontrar enteros <m>x</m> e <m>y</m> tales que <m>n = x^2 - y^2</m>.</p></li>
-					<li><p>Escriba un programa para implementar el siguiente algoritmo de factorización basado en la observación en la parte (a).  La expresión <c>ceiling(sqrt(n))</c> se refiere al menor entero que es mayor o igual a la raíz cuadrada de <m>n</m>. Escriba otro programa que use intentos de división y compare la velocidad de los dos algoritmos. ¿Cuál de ellos es más rápido y por qué?</p></li>
+					Portanto, um inteiro positivo ímpar pode ser factorado se e somente se podemos encontrar inteiros <m>x</m> e <m>y</m> tais que <m>n = x^2 - y^2</m>.</p></li>
+					<li><p>Escreva um programa para implementar o seguinte algoritmo de fatoração baseado na observação da parte (a).  A expressão <c>ceiling(sqrt(n))</c> se refere ao menor inteiro que é maior ou igual a raiz quadrada de <m>n</m>. Escreva outro programa que use tentativas de divisão e compare a velocidade dos dois algoritmos. Qual deles é mais rápido e por quê?</p></li>
 				</ol>
 
 				<listing>
@@ -224,13 +224,13 @@
 		</exercise>
 
 		<exercise>
-			<title>Verificación de Primalidad</title>
+			<title>Verificação de Primalidade</title>
 			<statement>
-				<p>Recuerde el Pequeño Teorema de Fermat del Capítulo<nbsp /><xref ref="cosets" />. Sea <m>p</m> un primo con <m>\gcd(a, p) = 1</m>. Entonces <m>a^{p-1} \equiv 1 \pmod{p}</m>.  Podemos usar el Pequeño Teorema de Fermat como un examen para primos. Por ejemplo, 15 no puede ser primo pues <me>2^{15-1} \equiv 2^{14} \equiv 4 \pmod{15}.</me> Pero, 17 es potencialmente un primo pues
+				<p>Lembre do Pequno Teorema de Fermat do Capítulo<nbsp /><xref ref="cosets" />. Seja <m>p</m> um primo com <m>\gcd(a, p) = 1</m>. Então <m>a^{p-1} \equiv 1 \pmod{p}</m>.  Podemos usar o Pequeno Teorema de Fermat como um exame para primos. Por exemplo, 15 não pode ser primo pois <me>2^{15-1} \equiv 2^{14} \equiv 4 \pmod{15}.</me> Mas, 17 é potencialmente um primo pois
 					<me>2^{17-1} \equiv 2^{16} \equiv 1 \pmod{17}.</me>
-				Decimos que un número compuesto impar <m>n</m> es un <term>pseudoprimo</term><idx><h>Pseudoprimo</h></idx> si 
+				Dizemos que um número composto impar <m>n</m> é um <term>pseudoprimo</term><idx><h>Pseudoprimo</h></idx> se 
 					<me>2^{n-1} \equiv 1 \pmod{n}.</me>
-				¿Cuáles de los siguientes números son primos y cuáles son pseudoprimos?
+				Quais dos seguintes números são primos e quais são pseudoprimos?
 					<ol cols="3">
 					
 						<li><p>342</p></li>
@@ -251,21 +251,21 @@
 
 		<exercise>
 			<statement>
-				<p>Sea <m>n</m> un número impar compuesto y <m>b</m> un entero positivo tal que <m>\gcd(b, n) = 1</m>. Si <m>b^{n-1} \equiv 1 \pmod{n}</m>, entonces <m>n</m> es un <term>pseudoprimo en base</term> <m>b</m>. Muestre que 341 es un pseudoprimo en base 2 pero no es un  pseudoprimo en base 3.</p>
+				<p>Seja <m>n</m> um número ímpar composto e <m>b</m> um inteiro positivo tal que <m>\gcd(b, n) = 1</m>. Se <m>b^{n-1} \equiv 1 \pmod{n}</m>, então <m>n</m> é um <term>pseudoprimo na base</term> <m>b</m>. Mostre que 341 é um pseudoprimo na base 2 mas não é um pseudoprimo na base 3.</p>
 			</statement>
 		</exercise>
 
 		<exercise>
 			<statement>
-				<p>Escriba un programa para determinar todos los primos menores a 2000 usando intentos de división. Escriba un segundo programa que determine todos los números menores a 2000 que sean primos o pseudoprimos. Compare la velocidad de ambos programas.  ¿Cuántos pseudoprimos hay menores a 2000?</p>
+				<p>Escreve um programa para determinar todos os primos menores que 2000 usando tentativas de divisão. Escreva um segundo programa que determine todos os números menores que 2000 que sejam primos ou pseudoprimos. Compare a velocidade dos programas. Quantos pseudoprimos menores que 2000 existem?</p>
  
-				<p>Existen números compuestos que son pseudoprimos para todas la bases con que son relativamente primos.  Estos números se llaman <term>números de Carmichael</term><idx><h>Números de Carmichael</h></idx>. El primer número de Carmichael es el <m>561 = 3 \cdot 11 \cdot 17</m>.  En 1992, Alford, Granville, y Pomerance demostraron que hay infinitos números de Carmichael [4].  Pero, los números de Carmichael son muy escasos.  Existen solo <m>2163</m> números de Carmichael menores a <m>25 \times 10^9</m>. Para tests de primalidad más sofisticados, vea [1], [6], o [7].</p>
+				<p>Existem números compostos que são pseudoprimos para todas as bases que são relativamente primos.  Esses números se chamam <term>números de Carmichael</term><idx><h>Números de Carmichael</h></idx>. O primeiro número de Carmichael é o <m>561 = 3 \cdot 11 \cdot 17</m>.  Em 1992, Alford, Granville e Pomerance demostraram que existem infinitos números de Carmichael [4].  Todavia, os números de Carmichael são muito escassos. Existem somente <m>2163</m> números de Carmichael menores que <m>25 \times 10^9</m>. Para testes de primalidade mais sofisticados, veja [1], [6], ou [7].</p>
 			</statement>
 		</exercise>
 	</exercises>
  
 	<references xml:id="crypt-references">
-		<title>Referencias y Lecturas Recomendadas</title>
+		<title>Referências e Leituras Recomendadas</title>
 
 		<biblio type="raw"> <!-- was [1] -->
 		Bressoud, D. M. <title>Factorization and Primality Testing</title>. Springer-Verlag, New York, 1989.</biblio>
