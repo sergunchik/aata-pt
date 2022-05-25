@@ -15,7 +15,7 @@
 <!-- See the file COPYING for copying conditions.  -->
 
 <chapter xml:id="domains" xmlns:xi="http://www.w3.org/2001/XInclude">
-	<title>Dominios Integrales</title>
+	<title>Domínios de Integridade</title>
 
 	<introduction>
 		<p>Uno de los anillos más importantes que estudiamos es el de los enteros.  Fue nuestro primer ejemplo de una estructura algebraica: el primer anillo de polinomios que examinamos fue <m>{\mathbb Z}[x]</m>.  También sabemos que los enteros están contenidos naturalmente en el cuerpo de los números racionales, <m>{\mathbb Q}</m>.  El anillo de los enteros es el modelo para todos los dominios integrales (también se llaman dominios enteros).  En este capítulo estudiaremos dominios integrales en general, contestando preguntas sobre su estructura de ideales, anillos de polinomios sobre dominios integrales y si es posible incrustar un dominio integral en un cuerpo.</p>
