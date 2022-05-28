@@ -15,134 +15,134 @@
 <!-- See the file COPYING for copying conditions.  -->
 
 <chapter xml:id="actions" xmlns:xi="http://www.w3.org/2001/XInclude">
-	<title>Acciones de Grupo</title>
+	<title>Ações de Grupos</title>
 
 	<introduction>
-		<p>Las acciones de grupo generalizan la multiplicación en el grupo. Si <m>G</m> es un grupo y <m>X</m> es un conjunto arbitrario, entonces una acción de grupo de un elemento <m>g \in G</m> en un elemento <m>x \in X</m> es un producto, <m>gx</m>,  que está en <m>X</m>.  Muchos problemas en álgebra se pueden enfrentar mejor con acciones de grupo. Por ejemplo, las demostraciones de los teoremas de Sylow y del Teorema de Conteo de Burnside se entiende de mejor forma si son formuladas en términos de acciones de grupo.</p>
+		<p>Ações de grupos generalizam multiplicação de grupos. Se <m>G</m> é um grupo e <m>X</m> é um conjunto arbitrário, então uma ação de grupo de um elemento <m>g \in G</m> em um elemento <m>x \in X</m> é um produto, <m>gx</m>,  que pertence à <m>X</m>.  Muitos problemas em álgebra são melhor compeendidos via ações de grupos. Por exemplo, as demonstrações dos teoremas de Sylow e do Teorema de Contagem de Burnside são entendidas de melhor forma se são formuladas em termos de ações.</p>
 	</introduction>
 
 	<section xml:id="section-groups-acting-on-sets">
-		<title>Grupos Actuando en Conjuntos</title>
+		<title>Grupos Agindo em Conjuntos</title>
 
-		<p>Sea <m>X</m> un conjunto y sea <m>G</m> un grupo.  Una  <term>acción (izquierda)</term><idx><h>Acción de grupo</h></idx> de <m>G</m> en <m>X</m> es una función <m>G \times X \rightarrow X</m> dada por <m>(g,x) \mapsto gx</m>, donde
+		<p>Seja <m>X</m> um conjunto e seja <m>G</m> um grupo.  Uma  <term>ação (à esquerda)</term><idx><h>Ação de grupo</h></idx> de <m>G</m> em <m>X</m> é um mapa <m>G \times X \rightarrow X</m> dada por <m>(g,x) \mapsto gx</m>, onde
 			<ol>
 
 				<li><p><m>ex = x</m> para todo <m>x \in X</m>;</p></li>
 
-				<li><p><m>(g_1 g_2)x = g_1(g_2 x)</m> para todo <m>x \in X</m> y todo <m>g_1, g_2 \in G</m>.</p></li>
+				<li><p><m>(g_1 g_2)x = g_1(g_2 x)</m> para todo <m>x \in X</m> e todo <m>g_1, g_2 \in G</m>.</p></li>
  
 			</ol>
-		Con estas condiciones <m>X</m> se denomina <term><m>G</m>-conjunto</term><idx><h><m>G</m>-conjunto</h></idx>.  Notemos que no pedimos que <m>X</m> esté relacionado con <m>G</m> de ninguna forma.  Es verdad que cualquier grupo <m>G</m> actúa en cualquier <m>X</m> con la acción trivial <m>(g,x) \mapsto x</m>; pero, las acciones de grupo resultan más interesantes si el conjunto <m>X</m> tiene alguna relación con <m>G</m>.</p>
+		Sob estas condições, <m>X</m> se denomina um <term><m>G</m>-conjunto</term><idx><h><m>G</m>-conjunto</h></idx>.  Note que não é necessário que <m>X</m> esteja relacionado com <m>G</m> de nenhuma forma.  É verdade que qualquer grupo <m>G</m> age em qualquer <m>X</m> com a acão trivial <m>(g,x) \mapsto x</m>; contudo, ações de grupo se tornam mais interessantes se o conjunto <m>X</m> tem alguma relação com <m>G</m>.</p>
 
 		<example xml:id="example-actions-gl2">
-			<p>Sean <m>G = GL_2( {\mathbb R} )</m> y <m>X = {\mathbb R}^2</m>. Entonces <m>G</m> actúa en <m>X</m> por multiplicación a la izquierda.  Si <m>v \in {\mathbb R}^2</m> e <m>I</m> es la matriz identidad, entonces <m>Iv = v</m>.  Si <m>A</m> y <m>B</m> son matrices invertibles de <m>2 \times 2</m>, entonces <m>(AB)v = A(Bv)</m> pues la multiplicación de matrices es asociativa.</p>
+			<p>Sejam <m>G = GL_2( {\mathbb R} )</m> e <m>X = {\mathbb R}^2</m>. Então <m>G</m> age em <m>X</m> por multiplicação à esquerda.  Se <m>v \in {\mathbb R}^2</m> e <m>I</m> é a matriz identidade, então <m>Iv = v</m>.  Se <m>A</m> e <m>B</m> são matrizes inversíveis <m>2 \times 2</m>, então <m>(AB)v = A(Bv)</m> já que a multiplicação de matrizes é associativa.</p>
 		</example>
 
 		<example xml:id="example-actions-d4">
-			<p>Sea <m>G = D_4</m> el grupo de simentría de un cuadrado.  Si <m>X = \{ 1, 2, 3, 4 \}</m> es el conjunto de vértices del cuadrado, entonces podemos considerar <m>D_4</m> como el conjunto de las siguientes permutaciones: 
+			<p>Seja <m>G = D_4</m> o grupo de simetrias de um quadrado.  Se <m>X = \{ 1, 2, 3, 4 \}</m> é o conjunto de vértices do quadrado, então podemos considerar <m>D_4</m> como o conjunto das seguintes permutações: 
 				<me>\{ (1), (13), (24), (1432), (1234), (12)(34), (14)(23), (13)(24) \}.</me>
-			Los elementos de <m>D_4</m> actúan en <m>X</m> como funciones.  La permutación <m>(13)(24)</m> actúa en el vértice 1 enviándolo al vértice 3, en el vértice 2 enviándolo al vértice 4, y así sucesivamente.  Es fácil ver que se satisfacen los axiomas de acción de grupo.</p>
+			Os elementos de <m>D_4</m> agem em <m>X</m> como funções.  A permutação <m>(13)(24)</m> age no vértice 1, enviando-o ao vértice 3, no vértice 2 enviando-o ao vértice 4, e assim sucessivamente. É fácil verificar que os axiomas de ações de grupo são satisfeitos.</p>
 		</example>
 
-		<p>En general, si <m>X</m> es cualquier conjunto y <m>G</m> es un subgrupo de <m>S_X</m>, el grupo de todas las permutaciones actuando en <m>X</m>, entonces <m>X</m> es un <m>G</m>-conjunto con la acción de grupo
+		<p>Em geral, se <m>X</m> é um cojunto qualquer e <m>G</m> é um subgrupo de <m>S_X</m>, o grupo de todas as permutações agindo em <m>X</m>, então <m>X</m> é um <m>G</m>-conjunto com a ação de grupo
 		<me>(\sigma, x) \mapsto \sigma(x)</me>
-		para <m>\sigma \in G</m> y <m>x \in X</m>.</p>
+		para <m>\sigma \in G</m> e <m>x \in X</m>.</p>
  
 		<example xml:id="example-actions-left-mult">
-			<p>Si tomamos <m>X = G</m>, entonces cualquier grupo <m>G</m> actúa en sí mismo por medio de su representación regular izquierda; es decir, <m>(g,x) \mapsto \lambda_g(x) = gx</m>,  donde  <m>\lambda_g</m> es multiplicación a la izquierda:
+			<p>Se tomamos <m>X = G</m>, então qualquer grupo <m>G</m> age em si mesmo por meio da representação regular à esquerda; isto é, <m>(g,x) \mapsto \lambda_g(x) = gx</m>,  onde  <m>\lambda_g</m> é a multiplicação à esquerda:
 				<md>
 					<mrow>e \cdot x = \lambda_e x = ex = x</mrow>
 					<mrow>(gh) \cdot x = \lambda_{gh}x = \lambda_g \lambda_h x = \lambda_g(hx) = g \cdot ( h \cdot x).</mrow>
 				</md>
-			Si <m>H</m> es un subgrupo de <m>G</m>, entonces <m>G</m> es un <m>H</m>-conjunto bajo multiplicación izquierda por elementos de <m>H</m>.</p>
+			Se <m>H</m> é um subgrupo de <m>G</m>, então <m>G</m> é um <m>H</m>-conjunto sob multiplicação à esquerda por elementos de <m>H</m>.</p>
 		</example>
  
 		<example xml:id="example-actions-conjugation">
-			<p>Sea <m>G</m> un grupo y supongamos que <m>X=G</m>. Si <m>H</m> es un subgrupo de <m>G</m>, entonces <m>G</m> es un <m>H</m>-conjunto bajo <term>conjugación</term><idx><h>Conjugación</h></idx>; es decir, podemos definir una acción de <m>H</m> en <m>G</m>, 
+			<p>Seja <m>G</m> um grupo e suponha que <m>X=G</m>. Se <m>H</m> é um subgrupo de <m>G</m>, então <m>G</m> é um <m>H</m>-conjunto sob <term>conjugacão</term><idx><h>Conjugação</h></idx>; isto é, podemos definir uma ação de <m>H</m> em <m>G</m>, 
 				<me>H \times G \rightarrow G,</me>
-			vía
+			via
 				<me>(h,g) \mapsto hgh^{-1}</me>
-			para <m>h \in H</m> y <m>g \in G</m>.  Claramente, se satisface el primer axioma para una acción de grupo.  Observando que 
+			para <m>h \in H</m> y <m>g \in G</m>.  Claramente, o primeiro axioma de ação de grupo é satisfeito.  Observando que 
 				<md>
 					<mrow>(h_1 h_2, g) &amp; = h_1 h_2 g (h_1 h_2 )^{-1}</mrow>
 					<mrow>&amp; = h_1( h_2 g h_2^{-1}) h_1^{-1}</mrow>
 					<mrow> &amp; =  (h_1, (h_2, g) ),</mrow>
 				</md>
-			vemos que la segunda condición también se satisface.</p>
+			vemos que o segundo axioma também é satisfeito.</p>
 		</example>
  
 		<example xml:id="example-actions-left-cosets">
-			<p>Sea <m>H</m> un subgrupo de <m>G</m> y <m>{\mathcal L}_H</m> el conjunto de clases laterales izquierdas de <m>H</m>.  El conjunto <m>{\mathcal L}_H</m> es un <m>G</m>-conjunto bajo la acción
+			<p>Seja <m>H</m> um subgrupo de <m>G</m> e <m>{\mathcal L}_H</m> o conjunto de clases laterais à esquerda de <m>H</m>.  O conjunto <m>{\mathcal L}_H</m> é um <m>G</m>-conjunto sob a ação
 				<me>(g, xH) \mapsto gxH.</me>
-			Nuevamente, es fácil ver que se satisface el primer axioma. Como <m>(g g')xH = g( g'x H)</m>, el segundo axioma también es válido.</p>
+			Novamente, é fácil ver que se satisfaz o primeiro axioma. Como <m>(g g')xH = g( g'x H)</m>, o segundo axioma também é válido.</p>
 		</example>
  
-		<p>Si <m>G</m> actúa en un conjunto <m>X</m> y <m>x, y \in X</m>, entonces <m>x</m> se dice <term><m>G</m>-equivalente</term><idx><h><m>G</m>-equivalente</h></idx> a <m>y</m> si existe <m>g \in G</m> tal que <m>gx =y</m>. Escribimos <m>x \sim_G y</m> o <m>x \sim y</m> si dos elementos son <m>G</m>-equivalentes.</p>
+		<p>Se <m>G</m> age em um conjunto <m>X</m> e <m>x, y \in X</m>, então dizemos que <m>x</m> é <term><m>G</m>-equivalente</term><idx><h><m>G</m>-equivalente</h></idx> à <m>y</m>, se existe <m>g \in G</m> tal que <m>gx =y</m>. Escrevemos <m>x \sim_G y</m> ou <m>x \sim y</m> se dois elementos são <m>G</m>-equivalentes.</p>
 
 		<proposition>
 			<statement>
-				<p>Sea <m>X</m> un <m>G</m>-conjunto. Entonces la <m>G</m>-equivalencia es una relación de equivalencia en <m>X</m>.</p>
+				<p>Seja <m>X</m> um <m>G</m>-conjunto. Então a <m>G</m>-equivalencia é uma relação de equivalência em <m>X</m>.</p>
 			</statement>
 			<proof>
-				<p>La relación <m>\sim</m> es refleja pues <m>ex = x</m>. Supongamos que <m>x \sim y</m> para <m>x, y \in X</m>. Entonces existe <m>g</m> tal que <m>gx = y</m>. En ese caso <m>g^{-1}y=x</m>; por lo que <m>y \sim x</m>. Para mostrar que la relación es transitiva, supongamos que <m>x \sim y</m> e <m>y \sim z</m>. Entonces existen elementos <m>g</m> y <m>h</m> del grupo tale que <m>gx = y</m> y <m>hy= z</m>. Así <m>z = hy = (hg)x</m>, y  <m>x</m> es equivalente a <m>z</m>.</p>
+				<p>A relação <m>\sim</m> é reflexiva pois <m>ex = x</m>. Suponha que <m>x \sim y</m> com <m>x, y \in X</m>. Então existe <m>g</m> tal que <m>gx = y</m>. Neste caso <m>g^{-1}y=x</m>; portanto <m>y \sim x</m>. Para mostrar que a relação é transitiva, suponha que <m>x \sim y</m> e <m>y \sim z</m>. Então existem elementos <m>g</m> e <m>h</m> do grupo tais que <m>gx = y</m> e <m>hy= z</m>. Assim, <m>z = hy = (hg)x</m>, e  <m>x</m> é equivalente à <m>z</m>.</p>
 			</proof>
 		</proposition>
  
-		<p>Si <m>X</m> es un <m>G</m>-conjunto, entonces cualquier parte de la partición de <m>X</m> asociada a la <m>G</m>-equivalencia se denomina <term>órbita</term><idx><h>Órbita</h></idx> de <m>X</m> bajo <m>G</m>.  A la órbita que contiene un elemento <m>x</m> de <m>X</m> la denotaremos como <m>{\mathcal O}_x</m>.  <notation><usage>{\mathcal O}_x</usage><description>órbita de <m>x</m></description></notation></p>
+		<p>Se <m>X</m> é um <m>G</m>-conjunto, então qualquer partição de <m>X</m> associada à <m>G</m>-equivalencia se denomina <term>órbita</term><idx><h>Órbita</h></idx> de <m>X</m> sob <m>G</m>.  Para a órbita que contém um elemento <m>x</m> de <m>X</m>, usamos a notação <m>{\mathcal O}_x</m>.  <notation><usage>{\mathcal O}_x</usage><description>órbita de <m>x</m></description></notation></p>
 
 		<example xml:id="example-actions-permute">
-			<p>Sea <m>G</m> el grupo de permutaciones definido por
+			<p>Seja <m>G</m> o grupo de permutações definido por
 				<me>G =\{(1), (1 2 3), (1 3 2), (4 5), (1 2 3)(4 5), (1 3 2)(4 5) \}</me>
-			y <m>X = \{ 1, 2, 3, 4, 5\}</m>. Entonces <m>X</m> es un <m>G</m>-conjunto. Las órbitas son <m>{\mathcal O}_1 = {\mathcal O}_2 = {\mathcal O}_3 =\{1, 2, 3\}</m> y <m>{\mathcal O}_4 = {\mathcal O}_5 = \{4, 5\}</m>. </p>
+			e <m>X = \{ 1, 2, 3, 4, 5\}</m>. Então <m>X</m> é um <m>G</m>-conjunto. As órbitas são <m>{\mathcal O}_1 = {\mathcal O}_2 = {\mathcal O}_3 =\{1, 2, 3\}</m> e <m>{\mathcal O}_4 = {\mathcal O}_5 = \{4, 5\}</m>. </p>
 		</example>
  
-		<p>Ahora supongamos que <m>G</m> es un grupo actuando en un conjunto <m>X</m> y sea <m>g</m> un elemento de <m>G</m>. El <term>conjunto de puntos fijos</term><idx><h>Conjunto de puntos fijos</h></idx> de <m>g</m> en <m>X</m>, denotado por <m>X_g</m>, es el conjunto de todos los <m>x \in X</m> tales que <m>gx = x</m>.  <notation><usage>X_g</usage><description>conjunto de puntos fijos de <m>g</m></description></notation> Podemos también estudiar los elementos <m>g</m> del grupo que fijan un <m>x \in X</m> dado. Este conjunto es más que un subconjunto de <m>G</m>, es un subgrupo. Este subgrupo se llama el <term>subgrupo estabilizador</term><idx><h>Subgrupo</h><h>estabilizador</h></idx> o <term>subgrupo de isotropía</term><idx><h>Subgrupo</h><h>de isotropía</h></idx> de <m>x</m>. Denotaremos el subgrupo estabilizador de <m>x</m> por <m>G_x</m>. <notation><usage>G_x</usage><description>subgrupo de isotropía de <m>x</m></description></notation></p>
+		<p>Agora suponha que <m>G</m> é um grupo agindo em um conjunto <m>X</m> e seja <m>g</m> um elemento de <m>G</m>. O <term>conjunto de pontos fixos</term><idx><h>Conjunto de pontos fixos</h></idx> de <m>g</m> em <m>X</m>, denotado por <m>X_g</m>, é o conjunto de todos os <m>x \in X</m> tais que <m>gx = x</m>.  <notation><usage>X_g</usage><description>conjunto de pontos fixos de <m>g</m></description></notation>. Podemos também estudar os elementos <m>g</m> do grupo que fixam um <m>x \in X</m> dado. Este conjunto é mais do que um subconjunto de <m>G</m>, é um subgrupo. Este subgrupo se chama o <term>subgrupo estabilizador</term><idx><h>Subgrupo</h><h>estabilizador</h></idx> o <term>subgrupo de isotropía</term><idx><h>Subgrupo</h><h>de isotropía</h></idx> de <m>x</m>. Denotaremos o subgrupo estabilizador de <m>x</m> por <m>G_x</m>. <notation><usage>G_x</usage><description>subgrupo de isotropía de <m>x</m></description></notation></p>
  
 		<remark>
-			<p>Es importante recordar que <m>X_g \subset X</m> y <m>G_x \subset G</m>.</p>
+			<p>É importante recordar que <m>X_g \subset X</m> e <m>G_x \subset G</m>.</p>
 		</remark>  
  
 		<example xml:id="example-actions-stabilizer">
-			<p>Sea <m>X = \{1, 2, 3, 4, 5, 6\}</m> y supongamos que <m>G</m> es el grupo de permutaciones dado por las permutaciones
+			<p>Seja <m>X = \{1, 2, 3, 4, 5, 6\}</m> e suponha que <m>G</m> é o grupo de permutações dado pelas permutações
 				<me>\{ (1), (1 2)(3 4 5 6), (3 5)(4 6), (1 2)( 3 6 5 4) \}.</me>
-			Entonces los conjuntos de puntos fijos de <m>X</m> bajo la acción de <m>G</m> son
+			Então os conjuntos de pontos fixos de <m>X</m> sob a ação de <m>G</m> são
 				<md>
 					<mrow>X_{(1)}  =  X,</mrow>
 					<mrow>X_{(3 5)(4 6)}  =  \{1,2\},</mrow>
 					<mrow>X_{(1 2)(3 4 5 6)}  = X_{(1 2)(3 6 5 4)}  =  \emptyset,</mrow>
 				</md>
-			y los subgrupos estabilizadores son
+			e os subgrupos estabilizadores são
 				<md>
 					<mrow>G_1 =  G_2  =  \{(1), (3 5)(4 6) \},</mrow>
 					<mrow>G_3  = G_4  = G_5  = G_6 =  \{(1)\}.</mrow>
 				</md>
-			Es fácil ver que <m>G_x</m> es un subgrupo de <m>G</m> para cada <m>x \in X</m>.</p>
+			É fácil ver que <m>G_x</m> é subgrupo de <m>G</m> para cada <m>x \in X</m>.</p>
 		</example>
  
 		<proposition>
 			<statement>
-				<p>Sea <m>G</m> un grupo actuando en un conjunto <m>X</m> y sea <m>x \in X</m>. El estabilizador de <m>x</m>, <m>G_x</m>, es un subgrupo de <m>G</m>.</p>
+				<p>Seja <m>G</m> um grupo agindo em um conjunto <m>X</m> e seja <m>x \in X</m>. O estabilizador de <m>x</m>, <m>G_x</m>, é um subgrupo de <m>G</m>.</p>
 			</statement>
 			<proof>
-				<p>Claramente,  <m>e \in G_x</m> pues la identidad deja fijo cada elemento en el conjunto <m>X</m>. Sean <m>g, h \in G_x</m>. Entonces <m>gx = x</m> y <m>hx = x</m>. Entonces <m>(gh)x = g(hx) = gx = x</m>; luego, el producto de dos elementos en <m>G_x</m> también está en <m>G_x</m>. Finalmente, si <m>g \in G_x</m>, entonces <m>x = ex = (g^{-1}g)x = (g^{-1})gx = g^{-1} x</m>. Así <m>g^{-1}</m> está en <m>G_x</m>.</p>
+				<p>Claramente,  <m>e \in G_x</m> pois a identidade deixa fixo cada elemento no conjunto <m>X</m>. Sejam <m>g, h \in G_x</m>. Então <m>gx = x</m> e <m>hx = x</m>. Então <m>(gh)x = g(hx) = gx = x</m>; logo, o produto de dois elementos em <m>G_x</m> também está em <m>G_x</m>. Finalmente, se <m>g \in G_x</m>, entonces <m>x = ex = (g^{-1}g)x = (g^{-1})gx = g^{-1} x</m>. Assim, <m>g^{-1}</m> está em <m>G_x</m>.</p>
 			</proof>
 		</proposition>
  
-		<p>El número de elementos en el conjunto de puntos fijos de un elemento <m>g \in G</m> lo denotaremos por <m>|X_g|</m> y el número de elementos en la órbita de <m>x \in X</m> lo denotaremos por <m>|{\mathcal O}_x|</m>. Los siguientes teoremas establecen la relación entre las órbitas de un elemento <m>x \in X</m> y las clases laterales izquierdas de <m>G_x</m> en <m>G</m>.</p>
+		<p>O número de elementos no conjunto de pontos fixos de um elemento <m>g \in G</m> é denotado por <m>|X_g|</m> e o número de elementos na órbita de <m>x \in X</m> é denotado por <m>|{\mathcal O}_x|</m>. Os seguintes teoremas estabelecem a relação entre as órbitas de un elemento <m>x \in X</m> e as classes laterais à esquerda de <m>G_x</m> em <m>G</m>.</p>
 
 <!-- typo corrected.  Suggested by L. Franklin. -->
 <!-- TWJ - 12/19/2011 -->
  
 		<theorem xml:id="theorem-orbit">
 			<statement>
-				<p>Sea <m>G</m> un grupo finito y sea <m>X</m> un <m>G</m>-conjunto finito. Si <m>x \in X</m>, entonces <m>|{\mathcal O}_x| = [G:G_x]</m>.</p>
+				<p>Seja <m>G</m> um grupo finito e seja <m>X</m> um <m>G</m>-conjunto finito. Se <m>x \in X</m>, então <m>|{\mathcal O}_x| = [G:G_x]</m>.</p>
 			</statement>
 			<proof>
-				<p>Sabemos que <m>|G|/|G_x|</m> es el número de clases laterales izquierdas de <m>G_x</m> en <m>G</m> por el Teorema de Lagrange (Teorema<nbsp /><xref ref="theorem-lagrange" />). Definiremos una función biyetiva <m>\phi</m> de la órbita <m>{\mathcal O}_x</m> de <m>x</m> al conjunto de clases laterales izquierdas <m>{\mathcal L}_{G_x}</m> de <m>G_x</m> en <m>G</m>. Sea <m>y \in {\mathcal O}_x</m>. Entonces existe <m>g</m> en <m>G</m> tal que <m>g x = y</m>. Definamos <m>\phi</m> de forma que <m>\phi( y ) = g G_x</m>.  Para mostrar que <m>\phi</m> es 1-1, supongamos que <m>\phi(y_1) = \phi(y_2)</m>. Entonces
+				<p>Sabemos que <m>|G|/|G_x|</m> é o número de classes laterais à esquerda de <m>G_x</m> em <m>G</m> pelo Teorema de Lagrange (Teorema<nbsp /><xref ref="theorem-lagrange" />). Vamos definir uma bijeção <m>\phi</m> da órbita <m>{\mathcal O}_x</m> de <m>x</m> para o conjunto de clases laterais à esquerda <m>{\mathcal L}_{G_x}</m> de <m>G_x</m> em <m>G</m>. Seja <m>y \in {\mathcal O}_x</m>. Então existe <m>g</m> em <m>G</m> tal que <m>g x = y</m>. Defina <m>\phi</m> de forma que <m>\phi( y ) = g G_x</m>.  Para mostrar que <m>\phi</m> é 1-1, suponha que <m>\phi(y_1) = \phi(y_2)</m>. Então
 					<me>\phi(y_1) = g_1 G_x = g_2 G_x = \phi(y_2),</me>
-				donde <m>g_1 x = y_1</m> y <m>g_2 x = y_2</m>.  Como <m>g_1 G_x = g_2 G_x</m>, existe <m>g \in G_x</m> tal que <m>g_2 = g_1 g</m>, 
+				donde <m>g_1 x = y_1</m> e <m>g_2 x = y_2</m>.  Como <m>g_1 G_x = g_2 G_x</m>, existe <m>g \in G_x</m> tal que <m>g_2 = g_1 g</m>, 
 					<me>y_2 = g_2 x = g_1 g x = g_1 x = y_1;</me>
-				por lo tanto, la función <m>\phi</m> es 1-1. Finalmente, debemos mostrar que <m>\phi</m> es epiyectiva. Sea <m>g G_x</m> una clase lateral izquierda. Si <m>g x = y</m>, entonces <m>\phi(y) = g G_x</m>.</p>
+				portanto, a função <m>\phi</m> é 1-1. Finalmente, devemos mostrar que <m>\phi</m> é sobrejetora. Seja <m>g G_x</m> uma clase lateral à esquerda. Se <m>g x = y</m>, então <m>\phi(y) = g G_x</m>.</p>
 			</proof>
 		</theorem>
  
