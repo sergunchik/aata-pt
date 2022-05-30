@@ -13,10 +13,10 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
-<!-- Copy current file (aata-print.xsl) into mathbook/user -->
+<!-- Copy current file (aata-print.xsl) into pretext/user -->
 <!-- Then other imports are all relative to that directory -->
 
-<!-- Copy  aata-latex.xsl  into  mathbook/user                 -->
+<!-- Copy  aata-latex.xsl  into  pretext/user                 -->
 <!-- aata-latex.xsl  will subsequently import  aata-common.xsl -->
 <xsl:import href="aata-latex.xsl" />
 

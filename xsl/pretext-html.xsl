@@ -42,7 +42,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     extension-element-prefixes="exsl date str"
 >
 
-<xsl:import href="./mathbook-common.xsl" />
+<xsl:import href="./pretext-common.xsl" />
 
 <!-- Base 64 Library, MIT License -->
 <!-- Used to encode WeBWork problems           -->
@@ -55,7 +55,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- Parameters -->
 <!-- Parameters to pass via xsltproc "stringparam" on command-line            -->
 <!-- Or make a thin customization layer and use 'select' to provide overrides -->
-<!-- See more generally applicable parameters in mathbook-common.xsl file     -->
+<!-- See more generally applicable parameters in pretext-common.xsl file     -->
 
 <!-- Content as Knowls -->
 <!-- These parameters control if content is      -->
@@ -103,13 +103,13 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- or to specify the particular CSS file, which may have   -->
 <!-- different color schemes.  The defaults should work      -->
 <!-- fine and will not need changes on initial or casual use -->
-<!-- #0 to #5 on mathbook-modern for different color schemes -->
+<!-- #0 to #5 on pretext-modern for different color schemes -->
 <!-- We just like #3 as the default                          -->
 <!-- N.B.:  This scheme is transitional and may change             -->
 <!-- N.B.:  without warning and without any deprecation indicators -->
 <xsl:param name="html.js.server"  select="'https://aimath.org'" />
 <xsl:param name="html.css.server" select="'https://aimath.org'" />
-<xsl:param name="html.css.file"   select="'mathbook-3.css'" />
+<xsl:param name="html.css.file"   select="'pretext-3.css'" />
 <!-- A space-separated list of CSS URLs (points to servers or local files) -->
 <xsl:param name="html.css.extra"  select="''" />
 
@@ -189,11 +189,11 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
         <xsl:when test="$html.chunk.level != ''">
             <xsl:value-of select="$html.chunk.level" />
         </xsl:when>
-        <xsl:when test="/mathbook/book">2</xsl:when>
-        <xsl:when test="/mathbook/article/section">1</xsl:when>
-        <xsl:when test="/mathbook/article">0</xsl:when>
-        <xsl:when test="/mathbook/letter">0</xsl:when>
-        <xsl:when test="/mathbook/memo">0</xsl:when>
+        <xsl:when test="/pretext/book">2</xsl:when>
+        <xsl:when test="/pretext/article/section">1</xsl:when>
+        <xsl:when test="/pretext/article">0</xsl:when>
+        <xsl:when test="/pretext/letter">0</xsl:when>
+        <xsl:when test="/pretext/memo">0</xsl:when>
         <xsl:otherwise>
             <xsl:message>MBX:ERROR: HTML chunk level not determined</xsl:message>
         </xsl:otherwise>
@@ -276,7 +276,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <xsl:variable name="file-extension" select="'.html'" />
 
 <!-- A boolean variable for Google Custom Search Engine add-on -->
-<xsl:variable name="b-google-cse" select="boolean(/mathbook/docinfo/search/google)" />
+<xsl:variable name="b-google-cse" select="boolean(/pretext/docinfo/search/google)" />
 
 <!-- "presentation" mode is experimental, target        -->
 <!-- is in-class presentation of a textbook             -->
@@ -290,7 +290,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- ############## -->
 
 <!-- Deprecation warnings are universal analysis of source and parameters   -->
-<!-- There is always a "document root" directly under the mathbook element, -->
+<!-- There is always a "document root" directly under the pretext element, -->
 <!-- and we process it with the chunking template called below              -->
 <!-- Note that "docinfo" is at the same level and not structural, so killed -->
 <xsl:template match="/">
@@ -301,15 +301,15 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
         </xsl:call-template>
     </xsl:if>
     <!--  -->
-    <xsl:apply-templates select="mathbook" mode="generic-warnings" />
-    <xsl:apply-templates select="mathbook" mode="deprecation-warnings" />
+    <xsl:apply-templates select="pretext" mode="generic-warnings" />
+    <xsl:apply-templates select="pretext" mode="deprecation-warnings" />
     <xsl:apply-templates />
 </xsl:template>
 
-<!-- We process structural nodes via chunking routine in   xsl/mathbook-common.html -->
+<!-- We process structural nodes via chunking routine in   xsl/pretext-common.html -->
 <!-- This in turn calls specific modal templates defined elsewhere in this file     -->
 <!-- The xref-knowl templates run independently on content node of document tree    -->
-<xsl:template match="mathbook">
+<xsl:template match="pretext">
     <xsl:apply-templates mode="chunking" />
     <xsl:apply-templates select="*[not(self::docinfo)]" mode="xref-knowl" />
 </xsl:template>
@@ -407,7 +407,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- Structural Nodes -->
 <!-- ################ -->
 
-<!-- Read the code and documentation for "chunking" in xsl/mathbook-common.html -->
+<!-- Read the code and documentation for "chunking" in xsl/pretext-common.html -->
 <!-- This will explain document structure (not XML structure) and has the       -->
 <!-- routines which employ the realizations below of two abstract templates.    -->
 
@@ -498,7 +498,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     <!-- divisions like "exercises", "references", divisional  -->
     <!-- "introduction" and "conclusion", and "appendix".      -->
     <!-- Result is strict part -> subsubsection hierachy.      -->
-    <!-- Find it in mathbook-common.xsl                        -->
+    <!-- Find it in pretext-common.xsl                        -->
     <xsl:variable name="normalized-division-name">
         <xsl:apply-templates select="." mode="division-name" />
     </xsl:variable>
@@ -672,11 +672,11 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <xsl:template match="titlepage">
     <h1 class="heading">
         <span class="title">
-            <xsl:apply-templates select="/mathbook/*" mode="title-full" />
+            <xsl:apply-templates select="/pretext/*" mode="title-full" />
         </span>
-        <xsl:if test="/mathbook/*/subtitle">
+        <xsl:if test="/pretext/*/subtitle">
             <span class="subtitle">
-                <xsl:apply-templates select="/mathbook/*" mode="subtitle" />
+                <xsl:apply-templates select="/pretext/*" mode="subtitle" />
             </span>
         </xsl:if>
     </h1>
@@ -977,7 +977,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- Arbitrary Lists -->
 <!-- ############### -->
 
-<!-- See general routine in  xsl/mathbook-common.xsl -->
+<!-- See general routine in  xsl/pretext-common.xsl -->
 <!-- which expects the two named templates and the  -->
 <!-- two division'al and element'al templates below,  -->
 <!-- it contains the logic of constructing such a list -->
@@ -1381,7 +1381,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- interest and preserve the knowl-url, plus clickable text    -->
 <!-- One notable case: paragraph must be "top-level", just below -->
 <!-- a structural document node                                  -->
-<!-- Recursion always halts, since "mathbook" is structural      -->
+<!-- Recursion always halts, since "pretext" is structural      -->
 <!-- TODO: save knowl or section link                            -->
 <xsl:template match="*" mode="index-enclosure">
     <xsl:variable name="structural">
@@ -2464,7 +2464,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
             <xsl:text>exercisegroup-exercises</xsl:text>
             <xsl:if test="@cols">
                 <xsl:text> </xsl:text>
-                <!-- HTML-specific, but in mathbook-common.xsl -->
+                <!-- HTML-specific, but in pretext-common.xsl -->
                 <xsl:apply-templates select="." mode="number-cols-CSS-class" />
             </xsl:if>
         </xsl:attribute>
@@ -3630,7 +3630,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- broad array of capabilities, there are enough       -->
 <!-- differences that it is easier to maintain separate  -->
 <!-- routines for different outputs.  Still, we try to   -->
-<!-- isolate some routines in "xsl/mathbook-common.xsl". -->
+<!-- isolate some routines in "xsl/pretext-common.xsl". -->
 
 <!-- Numbering -->
 <!-- We manually "tag" numbered equations in HTML output,    -->
@@ -3638,7 +3638,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- automatically.  MathJax allows for custom labels, but   -->
 <!-- we handle cross-references with knowls.  So no need to  -->
 <!-- \label{} equations even, and indeed it once was a real  -->
-<!-- problem: https://github.com/rbeezer/mathbook/issues/143 -->
+<!-- problem: https://github.com/rbeezer/pretext/issues/143 -->
 
 
 <!-- NOTE -->
@@ -4019,7 +4019,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
         </xsl:if>
         <xsl:if test="@cols">
             <xsl:attribute name="class">
-                <!-- HTML-specific, but in mathbook-common.xsl -->
+                <!-- HTML-specific, but in pretext-common.xsl -->
                 <xsl:apply-templates select="." mode="number-cols-CSS-class" />
             </xsl:attribute>
         </xsl:if>
@@ -4253,7 +4253,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
             <!-- last in list that contains the image wins             -->
             <!-- Documented heavily as first "mid-range" specification -->
             <!-- A single @from puts us in mid-range mode              -->
-            <xsl:when test="/mathbook/docinfo/images/archive[@from]">
+            <xsl:when test="/pretext/docinfo/images/archive[@from]">
                 <!-- context of next "select" filters is "archive" -->
                 <!-- so save off the present context, the "image"  -->
                 <xsl:variable name="the-image" select="." />
@@ -4265,7 +4265,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
                 <!-- The pipe forms a union of the nodes in the subtrees    -->
                 <!-- "image" is on the subtree @from iff union is no larger -->
                 <xsl:variable name="containing-archives"
-                    select="/mathbook/docinfo/images/archive[@from][count($the-image/descendant-or-self::node()|id(@from)/descendant-or-self::node())=count(id(@from)/descendant-or-self::node())]" />
+                    select="/pretext/docinfo/images/archive[@from][count($the-image/descendant-or-self::node()|id(@from)/descendant-or-self::node())=count(id(@from)/descendant-or-self::node())]" />
                 <!-- We mimic XSL and the last applicable "archive" is effective -->
                 <!-- This way, big subtrees go first, included subtrees refine   -->
                 <!-- @from can be an empty string and turn off the behavior      -->
@@ -4273,8 +4273,8 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
                 <xsl:value-of select="$containing-archives[last()]/." />
             </xsl:when>
             <!-- global, presumes one only, ignores subtree versions -->
-            <xsl:when test="/mathbook/docinfo/images/archive[not(@from)]">
-                <xsl:value-of select="normalize-space(/mathbook/docinfo/images/archive)" />
+            <xsl:when test="/pretext/docinfo/images/archive[not(@from)]">
+                <xsl:value-of select="normalize-space(/pretext/docinfo/images/archive)" />
             </xsl:when>
             <!-- nothing begets nothing -->
             <xsl:otherwise />
@@ -4337,10 +4337,10 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- SideBySide Layouts -->
 <!-- ################## -->
 
-<!-- See xsl/mathbook-common.xsl for descriptions of the  -->
+<!-- See xsl/pretext-common.xsl for descriptions of the  -->
 <!-- five modal templates which must be implemented here  -->
 <!-- The main templates for "sidebyside" and "sbsgroup"   -->
-<!-- are in xsl/mathbook-common.xsl, as befits containers -->
+<!-- are in xsl/pretext-common.xsl, as befits containers -->
 
 <!-- When we use CSS margins (or padding), then percentage        -->
 <!-- widths are relative to the remaining space.  This utility    -->
@@ -4969,7 +4969,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
                 <!-- A hook could go here for some extras       -->
                 <!-- ########################################## -->
                 <xsl:call-template name="knowl" />
-                <xsl:call-template name="mathbook-js" />
+                <xsl:call-template name="pretext-js" />
                 <xsl:call-template name="fonts" />
                 <xsl:call-template name="css" />
             </head>
@@ -4977,8 +4977,8 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
                 <!-- the first class controls the default icon -->
                 <xsl:attribute name="class">
                     <xsl:choose>
-                        <xsl:when test="/mathbook/book">mathbook-book</xsl:when>
-                        <xsl:when test="/mathbook/article">mathbook-article</xsl:when>
+                        <xsl:when test="/pretext/book">pretext-book</xsl:when>
+                        <xsl:when test="/pretext/article">pretext-article</xsl:when>
                     </xsl:choose>
                     <!-- ################################################# -->
                     <!-- This is how the left sidebar goes away            -->
@@ -4999,14 +4999,14 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
                                 <h1 class="heading">
                                     <xsl:element name="a">
                                         <xsl:attribute name="href">
-                                            <xsl:apply-templates select="/mathbook/*[not(self::docinfo)]" mode="containing-filename" />
+                                            <xsl:apply-templates select="/pretext/*[not(self::docinfo)]" mode="containing-filename" />
                                         </xsl:attribute>
                                         <span class="title">
-                                            <xsl:apply-templates select="/mathbook/book|/mathbook/article" mode="title-simple" />
+                                            <xsl:apply-templates select="/pretext/book|/pretext/article" mode="title-simple" />
                                         </span>
-                                        <xsl:if test="normalize-space(/mathbook/book/subtitle|/mathbook/article/subtitle)">
+                                        <xsl:if test="normalize-space(/pretext/book/subtitle|/pretext/article/subtitle)">
                                             <span class="subtitle">
-                                                <xsl:apply-templates select="/mathbook/book|/mathbook/article" mode="subtitle" />
+                                                <xsl:apply-templates select="/pretext/book|/pretext/article" mode="subtitle" />
                                             </span>
                                         </xsl:if>
                                     </xsl:element>
@@ -5026,13 +5026,13 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
                     <!-- With sidebars killed, this stuff is extraneous     -->
                     <!-- <xsl:apply-templates select="." mode="sidebars" /> -->
                     <main class="main">
-                        <div id="content" class="mathbook-content">
+                        <div id="content" class="pretext-content">
                             <!-- This is content passed in as a parameter -->
                             <xsl:copy-of select="$content" />
                           </div>
                     </main>
                 </div>
-                <xsl:apply-templates select="/mathbook/docinfo/analytics" />
+                <xsl:apply-templates select="/pretext/docinfo/analytics" />
                 <!-- <xsl:call-template name="pytutor-footer" /> -->
             </xsl:element>
         </html>
@@ -5562,7 +5562,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     <!-- we bail out of recursion with no action taken -->
 </xsl:template>
 
-<xsl:template match="mathbook//tabular//line">
+<xsl:template match="pretext//tabular//line">
     <xsl:apply-templates />
     <!-- is there a next line to separate? -->
     <xsl:if test="following-sibling::line">
@@ -5575,7 +5575,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- Table construction utilities -->
 <!-- ############################ -->
 
-<!-- Utilities are defined in xsl/mathbook-common.xsl -->
+<!-- Utilities are defined in xsl/pretext-common.xsl -->
 
 <!-- "thickness-specification" : param "width"    -->
 <!--     none, minor, medium, major -> 0, 1, 2, 3 -->
@@ -5680,7 +5680,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- This is the implementation of an abstract template, -->
 <!-- to accomodate hard-coded HTML numbers and for       -->
 <!-- LaTeX the \ref and \label mechanism                 -->
-<!-- NB: we do exactly the same thing in the mathbook-webwork-pg.xsl -->
+<!-- NB: we do exactly the same thing in the pretext-webwork-pg.xsl -->
 <xsl:template match="*" mode="xref-number">
     <xsl:apply-templates select="." mode="number" />
 </xsl:template>
@@ -5690,7 +5690,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- and then condition on the location of the    -->
 <!-- actual link, which is sensitive to display   -->
 <!-- math in particular                           -->
-<!-- See xsl/mathbook-common.xsl for more info    -->
+<!-- See xsl/pretext-common.xsl for more info    -->
 <xsl:template match="*" mode="xref-link">
     <xsl:param name="content" select="'MISSING LINK CONTENT'"/>
     <xsl:param name="xref" select="/.." />
@@ -5704,7 +5704,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
             <xsl:value-of select="$content" />
         </xsl:when>
         <!-- 2nd exceptional case, xref in mrow of display math  -->
-        <!-- Requires http://aimath.org/mathbook/mathjaxknowl.js -->
+        <!-- Requires http://aimath.org/pretext/mathjaxknowl.js -->
         <!-- loaded as a MathJax extension for knowls to render  -->
         <xsl:when test="$xref/parent::mrow">
             <!-- MathJax expects similar constructions, variation is here -->
@@ -5833,7 +5833,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
             <xsl:value-of select="@prefix" />
         </xsl:variable>
         <xsl:variable name="short">
-            <xsl:for-each select="document('mathbook-units.xsl')">
+            <xsl:for-each select="document('pretext-units.xsl')">
                 <xsl:value-of select="key('prefix-key',concat('prefixes',$prefix))/@short"/>
             </xsl:for-each>
         </xsl:variable>
@@ -5846,7 +5846,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
                 <xsl:value-of select="@base" />
             </xsl:variable>
             <xsl:variable name="short">
-                <xsl:for-each select="document('mathbook-units.xsl')">
+                <xsl:for-each select="document('pretext-units.xsl')">
                     <xsl:value-of select="key('base-key',concat('bases',$base))/@short"/>
                 </xsl:for-each>
             </xsl:variable>
@@ -5873,7 +5873,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- TODO: add CSS for attribution, div flush right         -->
 <!-- And go slanted ("oblique"?)                            -->
 <!-- Maybe use CSS to right align as a block                -->
-<!-- https://github.com/BooksHTML/mathbook-assets/issues/64 -->
+<!-- https://github.com/BooksHTML/pretext-assets/issues/64 -->
 
 <!-- Single line, mixed-content          -->
 <!-- Quotation dash if within blockquote -->
@@ -6146,7 +6146,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     </xsl:element>
 </xsl:template>
 
-<!-- cline template is in xsl/mathbook-common.xsl -->
+<!-- cline template is in xsl/pretext-common.xsl -->
 <xsl:template match="cd[cline]">
     <xsl:element name="pre">
         <xsl:attribute name="class">
@@ -6160,7 +6160,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- The "interior" templates decide between two styles  -->
 <!--   (a) clean up raw text, just like for Sage code    -->
 <!--   (b) interpret cline as line-by-line structure     -->
-<!-- (See templates in xsl/mathbook-common.xsl file)     -->
+<!-- (See templates in xsl/pretext-common.xsl file)     -->
 <!-- Then wrap in a pre element that MathJax ignores     -->
 <xsl:template match="pre">
     <xsl:element name="pre">
@@ -6176,7 +6176,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- ################### -->
 
 <!-- Across all possibilities                     -->
-<!-- See mathbook-common.xsl for discussion       -->
+<!-- See pretext-common.xsl for discussion       -->
 
 <!--           -->
 <!-- XML, HTML -->
@@ -6451,7 +6451,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- ################## -->
 
 <!-- These are specific instances of abstract templates        -->
-<!-- See the similar section of  mathbook-common.xsl  for more -->
+<!-- See the similar section of  pretext-common.xsl  for more -->
 
 <xsl:template match="*" mode="nbsp">
     <xsl:text>&#xa0;</xsl:text>
@@ -6470,7 +6470,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!--        -->
 
 <!-- TODO: Address GitHub issues regarding poetry output:   -->
-<!-- https://github.com/BooksHTML/mathbook-assets/issues/65 -->
+<!-- https://github.com/BooksHTML/pretext-assets/issues/65 -->
 
 <xsl:template match="poem">
     <div class="poem" style="display: table; width: auto; max-width: 90%; margin: 0 auto;">
@@ -7001,12 +7001,12 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
                 <xsl:call-template name="webwork" />
             </xsl:if>
             <xsl:apply-templates select="." mode="sagecell" />
-            <xsl:if test="/mathbook//program">
+            <xsl:if test="/pretext//program">
                 <xsl:call-template name="goggle-code-prettifier" />
             </xsl:if>
             <xsl:call-template name="google-search-box-js" />
             <xsl:call-template name="knowl" />
-            <xsl:call-template name="mathbook-js" />
+            <xsl:call-template name="pretext-js" />
             <xsl:call-template name="fonts" />
             <xsl:call-template name="hypothesis-annotation" />
             <xsl:call-template name="jsxgraph" />
@@ -7017,8 +7017,8 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
             <!-- the first class controls the default icon -->
             <xsl:attribute name="class">
                 <xsl:choose>
-                    <xsl:when test="/mathbook/book">mathbook-book</xsl:when>
-                    <xsl:when test="/mathbook/article">mathbook-article</xsl:when>
+                    <xsl:when test="/pretext/book">pretext-book</xsl:when>
+                    <xsl:when test="/pretext/article">pretext-article</xsl:when>
                 </xsl:choose>
                 <xsl:if test="$b-has-toc">
                     <xsl:text> has-toc has-sidebar-left</xsl:text> <!-- note space, later add right -->
@@ -7037,14 +7037,14 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
                             <h1 class="heading">
                                 <xsl:element name="a">
                                     <xsl:attribute name="href">
-                                        <xsl:apply-templates select="/mathbook/*[not(self::docinfo)]" mode="containing-filename" />
+                                        <xsl:apply-templates select="/pretext/*[not(self::docinfo)]" mode="containing-filename" />
                                     </xsl:attribute>
                                     <span class="title">
-                                        <xsl:apply-templates select="/mathbook/book|/mathbook/article" mode="title-simple" />
+                                        <xsl:apply-templates select="/pretext/book|/pretext/article" mode="title-simple" />
                                     </span>
-                                    <xsl:if test="normalize-space(/mathbook/book/subtitle|/mathbook/article/subtitle)">
+                                    <xsl:if test="normalize-space(/pretext/book/subtitle|/pretext/article/subtitle)">
                                         <span class="subtitle">
-                                            <xsl:apply-templates select="/mathbook/book|/mathbook/article" mode="subtitle" />
+                                            <xsl:apply-templates select="/pretext/book|/pretext/article" mode="subtitle" />
                                         </span>
                                     </xsl:if>
                                 </xsl:element>
@@ -7062,12 +7062,12 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
             <div class="page">
                 <xsl:apply-templates select="." mode="sidebars" />
                 <main class="main">
-                    <div id="content" class="mathbook-content">
+                    <div id="content" class="pretext-content">
                         <xsl:copy-of select="$content" />
                     </div>
                 </main>
             </div>
-            <xsl:apply-templates select="/mathbook/docinfo/analytics" />
+            <xsl:apply-templates select="/pretext/docinfo/analytics" />
             <xsl:call-template name="pytutor-footer" />
         </xsl:element>
     </html>
@@ -7110,7 +7110,7 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
         <!-- TODO: needs some padding etc -->
         <body>
             <xsl:copy-of select="$content" />
-            <xsl:apply-templates select="/mathbook/docinfo/analytics" />
+            <xsl:apply-templates select="/pretext/docinfo/analytics" />
         </body>
     </html>
     </exsl:document>
@@ -7178,7 +7178,7 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
 
 <!-- Create the URL of the parent document node    -->
 <!-- Parent always exists, since the               -->
-<!-- structural check fails at <mathbook>          -->
+<!-- structural check fails at <pretext>          -->
 <!-- Identical in tree/linear schemes, up is up    -->
 <xsl:template match="*" mode="up-url">
     <xsl:if test="parent::*">
@@ -7190,7 +7190,7 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
             <xsl:apply-templates select="$parent" mode="url" />
         </xsl:if>
     </xsl:if>
-    <!-- will be empty precisely at children of <mathbook> -->
+    <!-- will be empty precisely at children of <pretext> -->
 </xsl:template>
 
 <!-- Next Linear URL -->
@@ -7224,7 +7224,7 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
 </xsl:template>
 
 <!-- Recursively look sideways to the right, else up     -->
-<!-- <mathbook> is not structural, so halt looking there -->
+<!-- <pretext> is not structural, so halt looking there -->
 <xsl:template match="*" mode="next-sideways-url">
     <xsl:variable name="url">
         <xsl:if test="following-sibling::*">
@@ -7242,7 +7242,7 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
     <xsl:value-of select="$url" /> <!-- no harm if empty -->
     <xsl:if test="$url=''">
         <!-- Try going up and then sideways                           -->
-        <!-- parent always exists, since <mathbook> is non-structural -->
+        <!-- parent always exists, since <pretext> is non-structural -->
         <xsl:variable name="parent" select="parent::*[1]" />
         <xsl:variable name="structural">
             <xsl:apply-templates select="$parent" mode="is-structural" />
@@ -7258,7 +7258,7 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
 <!-- Look sideways to the left                                  -->
 <!-- If present, move there and descend right branches          -->
 <!-- If nothing there, move up once                             -->
-<!-- <mathbook> is not structural, so halt if we go up to there -->
+<!-- <pretext> is not structural, so halt if we go up to there -->
 <xsl:template match="*" mode="previous-linear-url">
     <xsl:variable name="url">
         <xsl:if test="preceding-sibling::*">
@@ -7276,7 +7276,7 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
     <xsl:choose>
         <xsl:when test="$url=''">
             <!-- Go up to parent and get the URL there (not recursive)    -->
-            <!-- parent always exists, since <mathbook> is non-structural -->
+            <!-- parent always exists, since <pretext> is non-structural -->
             <xsl:variable name="parent" select="parent::*[1]" />
             <xsl:variable name="structural">
                 <xsl:apply-templates select="$parent" mode="is-structural" />
@@ -7740,10 +7740,10 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
             </nav>
             <div class="extras">
                 <nav>
-                    <xsl:if test="/mathbook/docinfo/feedback">
+                    <xsl:if test="/pretext/docinfo/feedback">
                         <xsl:call-template name="feedback-link" />
                     </xsl:if>
-                    <xsl:call-template name="mathbook-link" />
+                    <xsl:call-template name="pretext-link" />
                     <xsl:call-template name="powered-by-mathjax" />
                 </nav>
             </div>
@@ -7765,7 +7765,7 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
     <xsl:if test="$b-has-toc">
         <!-- Subtree for page this sidebar will adorn -->
         <xsl:variable name="this-page-node" select="descendant-or-self::*" />
-        <xsl:for-each select="/mathbook/book/*|/mathbook/article/*">
+        <xsl:for-each select="/pretext/book/*|/pretext/article/*">
             <xsl:variable name="structural">
                 <xsl:apply-templates select="." mode="is-structural" />
             </xsl:variable>
@@ -7878,8 +7878,8 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
 
 <!-- Branding in "extras", mostly hard-coded        -->
 <!-- HTTPS for authors delivering from secure sites -->
-<xsl:template name="mathbook-link">
-    <a class="mathbook-link" href="https://mathbook.pugetsound.edu">
+<xsl:template name="pretext-link">
+    <a class="pretext-link" href="https://pretext.pugetsound.edu">
         <xsl:call-template name="type-name">
             <xsl:with-param name="string-id" select="'authored'" />
         </xsl:call-template>
@@ -7932,7 +7932,7 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
         <xsl:text>        inlineMath: [['\\(','\\)']],&#xa;</xsl:text>
         <xsl:text>    },&#xa;</xsl:text>
         <xsl:text>    TeX: {&#xa;</xsl:text>
-        <xsl:text>        extensions: ["extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],&#xa;</xsl:text>
+        <xsl:text>        extensions: ["extpfeil.js", "autobold.js", "https://aimath.org/pretext/mathjaxknowl.js", ],&#xa;</xsl:text>
         <xsl:text>        // scrolling to fragment identifiers is controlled by other Javascript&#xa;</xsl:text>
         <xsl:text>        positionToHash: false,&#xa;</xsl:text>
         <xsl:text>        equationNumbers: { autoNumber: "none", },&#xa;</xsl:text>
@@ -8177,7 +8177,7 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
         <xsl:element name="script">
             <xsl:text>(function() {&#xa;</xsl:text>
             <xsl:text>  var cx = '</xsl:text>
-            <xsl:value-of select="/mathbook/docinfo/search/google/cx" />
+            <xsl:value-of select="/pretext/docinfo/search/google/cx" />
             <xsl:text>';&#xa;</xsl:text>
             <xsl:text>  var gcse = document.createElement('script');&#xa;</xsl:text>
             <xsl:text>  gcse.type = 'text/javascript';&#xa;</xsl:text>
@@ -8208,11 +8208,11 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
 </xsl:template>
 
 <!-- Mathbook Javascript header -->
-<xsl:template name="mathbook-js">
+<xsl:template name="pretext-js">
     <!-- condition first on toc present? -->
-    <script src="{$html.js.server}/mathbook/js/lib/jquery.sticky.js" ></script>
-    <script src="{$html.js.server}/mathbook/js/lib/jquery.espy.min.js"></script>
-    <script src="{$html.js.server}/mathbook/js/Mathbook.js"></script>
+    <script src="{$html.js.server}/pretext/js/lib/jquery.sticky.js" ></script>
+    <script src="{$html.js.server}/pretext/js/lib/jquery.espy.min.js"></script>
+    <script src="{$html.js.server}/pretext/js/Mathbook.js"></script>
 </xsl:template>
 
 <!-- Font header -->
@@ -8251,8 +8251,8 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
 
 <!-- CSS header -->
 <xsl:template name="css">
-    <link href="{$html.css.server}/mathbook/stylesheets/{$html.css.file}" rel="stylesheet" type="text/css" />
-    <link href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css" />
+    <link href="{$html.css.server}/pretext/stylesheets/{$html.css.file}" rel="stylesheet" type="text/css" />
+    <link href="https://aimath.org/pretext/pretext-add-on.css" rel="stylesheet" type="text/css" />
     <xsl:call-template name="external-css">
         <xsl:with-param name="css-list" select="normalize-space($html.css.extra)" />
     </xsl:call-template>
@@ -8335,9 +8335,9 @@ This is a Java Applet created using GeoGebra from www.geogebra.org - it looks li
 <!-- should allow specifying just URL and get default image -->
 <xsl:template name="brand-logo">
     <xsl:choose>
-        <xsl:when test="/mathbook/docinfo/brandlogo">
-            <a id="logo-link" href="{/mathbook/docinfo/brandlogo/@url}" target="_blank" >
-                <img src="{/mathbook/docinfo/brandlogo/@source}" alt="Logo image for document"/>
+        <xsl:when test="/pretext/docinfo/brandlogo">
+            <a id="logo-link" href="{/pretext/docinfo/brandlogo/@url}" target="_blank" >
+                <img src="{/pretext/docinfo/brandlogo/@source}" alt="Logo image for document"/>
             </a>
         </xsl:when>
         <xsl:otherwise>
@@ -8489,6 +8489,6 @@ var scJsHost = (("https:" == document.location.protocol) ? "https://secure." : "
 <!-- tie even with more specific webwork// versions -->
 <!-- Routines specific to converting a "webwork"    -->
 <!-- element into a problem in the PGML language    -->
-<xsl:include href="./mathbook-webwork-pg.xsl" />
+<xsl:include href="./pretext-webwork-pg.xsl" />
 
 </xsl:stylesheet>

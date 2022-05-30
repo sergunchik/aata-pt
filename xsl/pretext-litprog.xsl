@@ -34,7 +34,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     extension-element-prefixes="exsl date str"
 >
 
-<xsl:import href="./mathbook-common.xsl" />
+<xsl:import href="./pretext-common.xsl" />
 
 <!-- Intend output for rendering by pdflatex -->
 <xsl:output method="text" />
@@ -44,17 +44,17 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- ############## -->
 
 <!-- Deprecation warnings are universal analysis of source and parameters   -->
-<!-- There is always a "document root" directly under the mathbook element, -->
+<!-- There is always a "document root" directly under the pretext element, -->
 <!-- and we process it with the chunking template called below              -->
 <!-- Note that "docinfo" is at the same level and not structural, so killed -->
 <xsl:template match="/">
-    <xsl:apply-templates select="mathbook" mode="generic-warnings" />
-    <xsl:apply-templates select="mathbook" mode="deprecation-warnings" />
-    <xsl:apply-templates select="mathbook" />
+    <xsl:apply-templates select="pretext" mode="generic-warnings" />
+    <xsl:apply-templates select="pretext" mode="deprecation-warnings" />
+    <xsl:apply-templates select="pretext" />
 </xsl:template>
 
 <!-- Locate roots by the filename attribute -->
-<xsl:template match="mathbook">
+<xsl:template match="pretext">
     <xsl:apply-templates select="//fragment[@filename]" />
 </xsl:template>
 

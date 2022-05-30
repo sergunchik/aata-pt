@@ -35,7 +35,7 @@
 <!-- in a form that the Python  mbx  script can employ it to       -->
 <!-- query the server for a version of the problem with the images -->
 
-<xsl:import href="./mathbook-common.xsl" />
+<xsl:import href="./pretext-common.xsl" />
 
 <!-- Base 64 Library, MIT License -->
 <!-- Used to encode WeBWork problems           -->
@@ -44,7 +44,7 @@
 
 <!-- Routines specific to converting a "webwork"  -->
 <!-- element into a problem in the PGML language -->
-<xsl:include href="./mathbook-webwork-pg.xsl" />
+<xsl:include href="./pretext-webwork-pg.xsl" />
 
 <!-- Enclosing structure is a Python list -->
 <!-- Select WW problems with PG images    -->

@@ -12,7 +12,7 @@
     xmlns:math="http://exslt.org/math"
     extension-element-prefixes="exsl date math">
 
-<xsl:import href="./mathbook-html.xsl" />
+<xsl:import href="./pretext-html.xsl" />
 
 <!-- Intend output for rendering by browsers-->
 <xsl:output method="html" indent="yes"/>
@@ -39,14 +39,14 @@
 
 <!-- Deprecation warnings are universal analysis of source and parameters   -->
 <xsl:template match="/">
-    <xsl:apply-templates select="mathbook" mode="deprecation-warnings" />
+    <xsl:apply-templates select="pretext" mode="deprecation-warnings" />
     <xsl:apply-templates />
 </xsl:template>
 
-<!-- We process structural nodes via chunking routine in   xsl/mathbook-common.html -->
+<!-- We process structural nodes via chunking routine in   xsl/pretext-common.html -->
 <!-- This in turn calls specific modal templates defined elsewhere in this file     -->
 <!-- Contrary to HTML production, we do not have a pass through to build the knowls -->
-<xsl:template match="mathbook">
+<xsl:template match="pretext">
     <xsl:apply-templates mode="chunking" />
 </xsl:template>
 
@@ -189,7 +189,7 @@
     </xsl:apply-templates>
 </xsl:template>
 
-<!-- Most Sage options are implemented in  xsl/mathbook-common.xsl -->
+<!-- Most Sage options are implemented in  xsl/pretext-common.xsl -->
 <!-- We just output the input code, with no XHTML protections      -->
 <xsl:template name="sage-active-markup">
     <xsl:param name="in" />
@@ -313,7 +313,7 @@
 <!-- ##################### -->
 
 <!-- HTML code for CSS load -->
-<!-- Gets a div.mathbook-content wrapper      -->
+<!-- Gets a div.pretext-content wrapper      -->
 <!-- which seems to only produce excess space -->
 <xsl:template name="sage-css-setup">
     <xsl:apply-templates select="." mode="smc-html-cell">
@@ -326,7 +326,7 @@
                     <xsl:text>text/css</xsl:text>
                 </xsl:attribute>
                 <xsl:attribute name="href">
-                    <xsl:text>http://buzzard.ups.edu/mathbook-content.css</xsl:text>
+                    <xsl:text>http://buzzard.ups.edu/pretext-content.css</xsl:text>
                 </xsl:attribute>
             </xsl:element>
             <xsl:element name="link">
@@ -337,7 +337,7 @@
                     <xsl:text>text/css</xsl:text>
                 </xsl:attribute>
                 <xsl:attribute name="href">
-                    <xsl:text>https://aimath.org/mathbook/mathbook-add-on.css</xsl:text>
+                    <xsl:text>https://aimath.org/pretext/pretext-add-on.css</xsl:text>
                 </xsl:attribute>
             </xsl:element>
         </xsl:with-param>
@@ -360,7 +360,7 @@
 <!-- SMC HTML Cell -->
 <!-- Pass in HTML content, after templates applied -->
 <!-- USe SMC UUID markers on their own lines       -->
-<!-- Wrap in custom CSS class, mathbook-content    -->
+<!-- Wrap in custom CSS class, pretext-content    -->
 <xsl:template match="*" mode="smc-html-cell">
     <xsl:param name="content" />
     <xsl:apply-templates select="." mode="smc-input-marker" />
@@ -369,7 +369,7 @@
     <xsl:text>%html(hide=True)&#xa;</xsl:text>
     <xsl:element name="div">
         <xsl:attribute name="class">
-            <xsl:text>mathbook-content</xsl:text>
+            <xsl:text>pretext-content</xsl:text>
         </xsl:attribute>
         <xsl:copy-of select="$content" />
     </xsl:element>
@@ -385,7 +385,7 @@
 <!-- SMC Compute Cell -->
 <!-- Pass in content, after templates applied -->
 <!-- USe SMC UUID markers on their own lines       -->
-<!-- Wrap in custom CSS class, mathbook-content    -->
+<!-- Wrap in custom CSS class, pretext-content    -->
 <xsl:template match="*" mode="smc-compute-cell">
     <xsl:param name="content" />
     <xsl:apply-templates select="." mode="smc-input-marker" />

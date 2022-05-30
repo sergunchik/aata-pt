@@ -31,8 +31,8 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     extension-element-prefixes="exsl str"
     >
 
-<xsl:import href="./mathbook-common.xsl" />
-<xsl:import href="./mathbook-markdown-common.xsl" />
+<xsl:import href="./pretext-common.xsl" />
+<xsl:import href="./pretext-markdown-common.xsl" />
 
 <!-- Output is JSON -->
 <xsl:output method="text" />
@@ -50,11 +50,11 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
         <xsl:when test="$chunk.level != ''">
             <xsl:value-of select="$chunk.level" />
         </xsl:when>
-        <xsl:when test="/mathbook/book">2</xsl:when>
-        <xsl:when test="/mathbook/article/section">1</xsl:when>
-        <xsl:when test="/mathbook/article">0</xsl:when>
-        <xsl:when test="/mathbook/letter">0</xsl:when>
-        <xsl:when test="/mathbook/memo">0</xsl:when>
+        <xsl:when test="/pretext/book">2</xsl:when>
+        <xsl:when test="/pretext/article/section">1</xsl:when>
+        <xsl:when test="/pretext/article">0</xsl:when>
+        <xsl:when test="/pretext/letter">0</xsl:when>
+        <xsl:when test="/pretext/memo">0</xsl:when>
         <xsl:otherwise>
             <xsl:message>MBX:ERROR: Jupyter chunk level not determined</xsl:message>
         </xsl:otherwise>
@@ -70,20 +70,20 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- ############## -->
 
 <!-- Deprecation warnings are universal analysis of source and parameters   -->
-<!-- There is always a "document root" directly under the mathbook element, -->
+<!-- There is always a "document root" directly under the pretext element, -->
 <!-- and we process it with the chunking template called below              -->
 <!-- Note that "docinfo" is at the same level and not structural, so killed -->
 <xsl:template match="/">
     <xsl:call-template name="banner-warning">
         <xsl:with-param name="warning">Jupyter notebook conversion is experimental and incomplete&#xa;Please report major problems and/or send feature requests</xsl:with-param>
     </xsl:call-template>
-    <xsl:apply-templates select="mathbook" mode="deprecation-warnings" />
+    <xsl:apply-templates select="pretext" mode="deprecation-warnings" />
     <xsl:apply-templates />
 </xsl:template>
 
-<!-- We process structural nodes via chunking routine in  xsl/mathbook-common.html -->
+<!-- We process structural nodes via chunking routine in  xsl/pretext-common.html -->
 <!-- This in turn calls specific modal templates defined elsewhere in this file    -->
-<xsl:template match="mathbook">
+<xsl:template match="pretext">
     <xsl:apply-templates mode="chunking" />
 </xsl:template>
 
@@ -91,13 +91,13 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- Structural Nodes -->
 <!-- ################ -->
 
-<!-- Read the code and documentation for "chunking" in xsl/mathbook-common.html -->
+<!-- Read the code and documentation for "chunking" in xsl/pretext-common.html -->
 <!-- This will explain document structure (not XML structure) and has the       -->
 <!-- routines which call the necessary realizations of two abstract templates.  -->
 
 <!-- Three modal templates accomodate all document structure nodes -->
 <!-- and all possibilities for chunking.  Read the description     -->
-<!-- in  xsl/mathbook-common.xsl to understand these.              -->
+<!-- in  xsl/pretext-common.xsl to understand these.              -->
 <!-- The  "file-wrap"  template is defined elsewhre in this file.  -->
 
 <!-- Markup common to every structural node.                    -->
@@ -306,7 +306,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
             <!-- cannot get -> <- to center   -->
             <xsl:call-template name="begin-string" />
                 <xsl:text># </xsl:text>
-                <xsl:value-of select="/mathbook/article/title" />
+                <xsl:value-of select="/pretext/article/title" />
             <xsl:call-template name="end-string" />
             <!-- Remainder in order, as simple strings via template below -->
             <!-- Note, if these are not present, no harm                  -->
@@ -535,7 +535,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- Arbitrary Lists -->
 <!-- ############### -->
 
-<!-- See general routine in  xsl/mathbook-common.xsl -->
+<!-- See general routine in  xsl/pretext-common.xsl -->
 <!-- which expects the two named templates and the  -->
 <!-- two division'al and element'al templates below,  -->
 <!-- it contains the logic of constructing such a list -->
@@ -602,7 +602,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
     <xsl:text>)</xsl:text>
 </xsl:template>
 
-<!-- Straight copies, from mathbook-common, just double-slash-->
+<!-- Straight copies, from pretext-common, just double-slash-->
 <!-- LaTeX labels get used on MathJax content in HTML, so we -->
 <!-- put this template in the common file for universal use  -->
 <!-- Insert an identifier as a LaTeX label on anything       -->
@@ -822,7 +822,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- ################### -->
 
 <!-- Across all possibilities                 -->
-<!-- See mathbook-common.xsl for discussion   -->
+<!-- See pretext-common.xsl for discussion   -->
 <!-- We just override/extend Markdown to JSON -->
 
 <!-- Number Sign, Hash, Octothorpe -->

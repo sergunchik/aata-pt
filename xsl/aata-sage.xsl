@@ -12,7 +12,7 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
-<!-- Assumes this file is in mathbook/user, so it must be copied there -->
+<!-- Assumes this file is in pretext/user, so it must be copied there -->
 <xsl:import href="aata-latex.xsl" />
 
 <xsl:param name="latex.font.size" select="'11pt'" />

@@ -35,7 +35,7 @@
 <!-- query the server for a LaTeX version of the problem       -->
 
 <!-- Common needed for internal ID's -->
-<xsl:import href="mathbook-common.xsl" />
+<xsl:import href="pretext-common.xsl" />
 
 <!-- Enclosing structure is a Python list -->
 <!-- Select WW problems with  @source     -->

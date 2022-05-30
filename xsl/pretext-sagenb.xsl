@@ -7,7 +7,7 @@
 
 <!-- Trade on HTML markup, numbering, chunking, etc. -->
 <!-- Override as pecularities of Sage Notebook arise -->
-<xsl:import href="./mathbook-html.xsl" />
+<xsl:import href="./pretext-html.xsl" />
 
 <!-- TODO: free chunking level -->
 <!-- TODO: liberate GeoGebra, videos -->
@@ -32,7 +32,7 @@
 
 <xsl:template match="/">
     <xsl:if test="$purpose='files'">
-        <xsl:apply-templates select="mathbook/*" mode="dispatch" />
+        <xsl:apply-templates select="pretext/*" mode="dispatch" />
     </xsl:if>
     <!-- Determine filenames of chunks,             -->
     <!-- their titles and their assets within       -->
@@ -45,13 +45,13 @@
             <xsl:message>MBX:WARNING: syntax highlighting of program listings is not possible in the Sage Notebook - though you will see a display with a black monospace font</xsl:message>
         </xsl:if>
         <xsl:text>[</xsl:text>
-        <xsl:apply-templates select="mathbook" mode="filenames"/>
+        <xsl:apply-templates select="pretext" mode="filenames"/>
         <xsl:text>]</xsl:text>
     </xsl:if>
 </xsl:template>
 
 <!-- Root template, look at everything  -->
-<xsl:template match="mathbook">
+<xsl:template match="pretext">
     <xsl:apply-templates />
 </xsl:template>
 
@@ -212,7 +212,7 @@
         <xsl:copy-of select="$content" />
         <!--
         Script tags seem to confuse the notebook, so this is a broader problem
-        <xsl:apply-templates select="/mathbook/docinfo/analytics" />
+        <xsl:apply-templates select="/pretext/docinfo/analytics" />
         -->
     </exsl:document>
 </xsl:template>
@@ -225,7 +225,7 @@
 <!-- Note: we do not employ any javascript, leaving     -->
 <!-- that to the Sage Notebook, hence not specified     -->
 <xsl:param name="html.css.server" select="'http://aimath.org'" />
-<xsl:param name="html.css.file"   select="'mathbook-content-3.css'" />
+<xsl:param name="html.css.file"   select="'pretext-content-3.css'" />
 
 
 <!-- ################### -->

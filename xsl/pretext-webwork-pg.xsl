@@ -26,17 +26,17 @@
 
 <!-- This file is a library of routines to convert parts of      -->
 <!-- a webwork problem into PG and PGML code/markup.  It         -->
-<!-- depends on utility routines in xsl/mathbook-common.xsl,     -->
+<!-- depends on utility routines in xsl/pretext-common.xsl,     -->
 <!-- such as routines to santize blocks of code.  However        -->
-<!-- the present file does not import mathbook-common.xsl,       -->
+<!-- the present file does not import pretext-common.xsl,       -->
 <!-- nor should it, since imports will be applied                -->
 <!-- out-of-order that way.                                      -->
 <!--                                                             -->
 <!-- Instead, a conversion to some format, say HTML, should      -->
-<!-- import xsl/mathbook-html.xsl, for general HTML conversion,  -->
+<!-- import xsl/pretext-html.xsl, for general HTML conversion,  -->
 <!-- but this will additionally import the common file.          -->
 <!-- Then the conversion file may import the present file,       -->
-<!-- mathbook-webwork-pg.xsl, for its services in creating       -->
+<!-- pretext-webwork-pg.xsl, for its services in creating       -->
 <!-- a well-formed WeBWorK problem.                              -->
 <!--                                                             -->
 <!-- This should change as development stabilizes and the        -->
@@ -200,11 +200,11 @@
     <xsl:text>)&#xa;</xsl:text>
     <xsl:text>## TitleText1(</xsl:text>
         <xsl:choose>
-            <xsl:when test="/mathbook/book">
-                <xsl:apply-templates select="/mathbook/book" mode="title-full" />
+            <xsl:when test="/pretext/book">
+                <xsl:apply-templates select="/pretext/book" mode="title-full" />
             </xsl:when>
-            <xsl:when test="/mathbook/article">
-                <xsl:apply-templates select="/mathbook/article" mode="title-full" />
+            <xsl:when test="/pretext/article">
+                <xsl:apply-templates select="/pretext/article" mode="title-full" />
             </xsl:when>
         </xsl:choose>
     <xsl:text>)&#xa;</xsl:text>
@@ -212,16 +212,16 @@
     <xsl:text>)&#xa;</xsl:text>
     <xsl:text>## AuthorText1(</xsl:text>
         <xsl:choose>
-            <xsl:when test="/mathbook/book">
-                <xsl:for-each select="/mathbook/book/frontmatter/titlepage/author">
+            <xsl:when test="/pretext/book">
+                <xsl:for-each select="/pretext/book/frontmatter/titlepage/author">
                     <xsl:value-of select="personname"/>
                     <xsl:if test="not(position()=last())">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
                 </xsl:for-each>
             </xsl:when>
-            <xsl:when test="/mathbook/article">
-                <xsl:for-each select="/mathbook/article/frontmatter/titlepage/author">
+            <xsl:when test="/pretext/article">
+                <xsl:for-each select="/pretext/article/frontmatter/titlepage/author">
                     <xsl:value-of select="personname"/>
                     <xsl:if test="not(position()=last())">
                         <xsl:text>, </xsl:text>
@@ -801,8 +801,8 @@
 
 <!-- The cross-reference numbering scheme uses \ref, \hyperref -->
 <!-- for LaTeX and numbers elsewhere, so it is unimplmented in -->
-<!-- mathbook-common.xsl, hence we implement it here           -->
-<!-- This is identical to mathbook-html.xsl                    -->
+<!-- pretext-common.xsl, hence we implement it here           -->
+<!-- This is identical to pretext-html.xsl                    -->
 
 <xsl:template match="*" mode="xref-number">
     <xsl:apply-templates select="." mode="number" />
@@ -822,7 +822,7 @@
 <!-- NB: we allow the "var" element as a child -->
 
 <!-- Note: the default template for "text()" in             -->
-<!-- xsl/mathbook-common.xsl will drop "clause-ending"      -->
+<!-- xsl/pretext-common.xsl will drop "clause-ending"      -->
 <!-- punctuation that immediately follows a bit of math,    -->
 <!-- and possibly remove some resulting leading whitespace. -->
 <!-- For inline math "m" this behavior is under the control -->
@@ -913,7 +913,7 @@
 <!-- It only outputs LaTeX macro definitions that are explicitly used,   -->
 <!-- so if they are chained, then precursors will be missed              -->
 <!-- Macros are jammed together, but maybe needs protection, like {}     -->
-<!-- The $latex-macros sanitized list assumes  mathbook-common.xsl  used -->
+<!-- The $latex-macros sanitized list assumes  pretext-common.xsl  used -->
 <!-- TODO: This named template examines the current context              -->
 <!-- (see . in contains() below), so should be a match template          -->
 <xsl:template name="select-latex-macros">
@@ -949,7 +949,7 @@
 <!-- ################ -->
 
 <!-- The visual text of a cross-reference is         -->
-<!-- formed in the xsl/mathbook-common.xsl routines. -->
+<!-- formed in the xsl/pretext-common.xsl routines. -->
 <!-- But we in the WW source we can't really form    -->
 <!-- a link to a target outside the problem.         -->
 <!-- So we just duplicate the text.                  -->
@@ -1188,7 +1188,7 @@
 </xsl:template>
 
 <!-- These same three characters have modal    -->
-<!-- templates in  xsl/mathbook-common.xsl     -->
+<!-- templates in  xsl/pretext-common.xsl     -->
 <!-- to allow for some generic routines        -->
 <!-- (eg, xref with autoname) that only depend -->
 <!-- on variants of these.  Here we recognize  -->
@@ -1832,7 +1832,7 @@
 
 <!-- Recursively prepend to multiple lines -->
 <!-- Presumes pre-processing with line-feed at very end                      -->
-<!-- Borrowed from more complicated routine in xsl/mathbook-sage-doctest.xsl -->
+<!-- Borrowed from more complicated routine in xsl/pretext-sage-doctest.xsl -->
 <!-- Generalize: pass pre-pending string at invocation and each iteration    -->
 <!-- TODO: perhaps consolidate with similar routine for Sage doctesting      -->
 <xsl:template name="prepend-string">

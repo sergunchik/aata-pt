@@ -153,7 +153,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!-- ################### -->
 
 <!-- Across all possibilities                     -->
-<!-- See mathbook-common.xsl for discussion       -->
+<!-- See pretext-common.xsl for discussion       -->
 
 <!--           -->
 <!-- XML, HTML -->

@@ -33,8 +33,8 @@
     extension-element-prefixes="exsl date"
 >
 
-<xsl:import href="./mathbook-common.xsl" />
-<xsl:include href="./mathbook-webwork-pg.xsl" />
+<xsl:import href="./pretext-common.xsl" />
+<xsl:include href="./pretext-webwork-pg.xsl" />
 
 <!-- Intend output to be a PG/PGML problem -->
 <xsl:output method="text" />
@@ -65,7 +65,7 @@
 <!-- First, create the problem files in directories                           -->
 <!-- Organized in directories as in the document tree, cut off at chunk level -->
 <!-- Then chunk the document to write reasonable problem definition files     -->
-<xsl:template match="/mathbook">
+<xsl:template match="/pretext">
     <xsl:apply-templates select="." mode="generic-warnings" />
     <xsl:message>C: <xsl:value-of select="$chunk-level" /></xsl:message>
     <xsl:apply-templates mode="problems" />
@@ -93,7 +93,7 @@
 
 <!-- String for document root, but not docinfo -->
 <xsl:template name="root-directory">
-    <xsl:for-each select="/mathbook/*">
+    <xsl:for-each select="/pretext/*">
         <xsl:if test="not(self::docinfo)">
             <xsl:apply-templates select="." mode="numbered-title-filesafe" />
             <xsl:text>/</xsl:text>
@@ -119,7 +119,7 @@
         </xsl:choose>
     </xsl:variable>
     <xsl:choose>
-        <xsl:when test="self::mathbook" /> <!-- done -->
+        <xsl:when test="self::pretext" /> <!-- done -->
         <xsl:when test="$structural='false'">  <!-- skip up -->
             <xsl:apply-templates select="parent::*" mode="directory-path" />
         </xsl:when>

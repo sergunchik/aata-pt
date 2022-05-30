@@ -4,7 +4,7 @@
 # Sample usage on directory of *.xml files
 # Converts from current directory to "newdir" subdirectory
 #
-# for f in *.xml; do echo $f; sed -f mathbook/xsl/utilities/deprecate-index.sed $f > newdir/$f; done
+# for f in *.xml; do echo $f; sed -f pretext/xsl/utilities/deprecate-index.sed $f > newdir/$f; done
 
 
 # First, protect elements that begin with "index"

@@ -11,7 +11,7 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
-<!-- Assumes current file is in mathbook/user, so it must be copied there -->
+<!-- Assumes current file is in pretext/user, so it must be copied there -->
 <!-- These are defined in matbook-common.xsl, so these are overrides      -->
 <!-- Explanations are verbatim, from 2015/05/19                           -->
 

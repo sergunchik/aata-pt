@@ -15,7 +15,7 @@
 >
 
 <!-- For numbers, titles, text utilities, etc -->
-<xsl:import href="./mathbook-common.xsl" />
+<xsl:import href="./pretext-common.xsl" />
 
 <!-- Intend output for Python docstring -->
 <xsl:output method="text" />
@@ -23,7 +23,7 @@
 <!-- Doctest files are Python (docstring) -->
 <xsl:variable name="file-extension" select="'.py'" />
 
-<!-- Set the chunking level variable for the routines in mathbook-common.xsl. -->
+<!-- Set the chunking level variable for the routines in pretext-common.xsl. -->
 <!-- Default to zero, else use whatever an author specifies                   -->
 <xsl:variable name="chunk-level">
     <xsl:choose>
@@ -41,18 +41,18 @@
 <!-- ############## -->
 
 <!-- Deprecation warnings are universal analysis of source and parameters   -->
-<!-- There is always a "document root" directly under the mathbook element, -->
+<!-- There is always a "document root" directly under the pretext element, -->
 <!-- and we process it with the chunking template called below              -->
 <xsl:template match="/">
-    <xsl:apply-templates select="mathbook" mode="deprecation-warnings" />
+    <xsl:apply-templates select="pretext" mode="deprecation-warnings" />
     <xsl:apply-templates />
 </xsl:template>
 
 <!-- We process structural nodes via chunking        -->
-<!-- routine in   xsl/mathbook-common.html           -->
+<!-- routine in   xsl/pretext-common.html           -->
 <!-- The default templates there do everything       -->
 <!-- we need once we have "file-wrap" modal template -->
-<xsl:template match="mathbook">
+<xsl:template match="pretext">
     <xsl:apply-templates mode="chunking" />
 </xsl:template>
 

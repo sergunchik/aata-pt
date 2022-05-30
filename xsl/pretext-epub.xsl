@@ -15,8 +15,8 @@
 
 <!-- Trade on HTML markup, numbering, chunking, etc. -->
 <!-- Override as pecularities of EPUB conversion arise -->
-<xsl:import href="./mathbook-common.xsl" />
-<xsl:import href="./mathbook-html.xsl" />
+<xsl:import href="./pretext-common.xsl" />
+<xsl:import href="./pretext-html.xsl" />
 
 <!-- TODO: free chunking level -->
 <!-- TODO: liberate GeoGebra, videos -->
@@ -95,23 +95,23 @@
 <!-- ############## -->
 
 <!-- Deprecation warnings are universal analysis of source and parameters   -->
-<!-- There is always a "document root" directly under the mathbook element, -->
+<!-- There is always a "document root" directly under the pretext element, -->
 <!-- and we process it with the chunking template called below              -->
 <!-- Note that "docinfo" is at the same level and not structural, so killed -->
 <xsl:template match="/">
     <xsl:call-template name="banner-warning">
         <xsl:with-param name="warning">EPUB conversion is experimental and not supported.  In particular,&#xa;the XSL conversion alone is not sufficient to create an EPUB.</xsl:with-param>
     </xsl:call-template>
-    <xsl:apply-templates select="mathbook" mode="deprecation-warnings" />
+    <xsl:apply-templates select="pretext" mode="deprecation-warnings" />
     <xsl:call-template name="setup" />
     <xsl:call-template name="package-document" />
     <xsl:apply-templates />
 </xsl:template>
 
 <!-- First, we use the frontmatter element to trigger various necessary files     -->
-<!-- We process structural nodes via chunking routine in  xsl/mathbook-common.xsl -->
+<!-- We process structural nodes via chunking routine in  xsl/pretext-common.xsl -->
 <!-- This in turn calls specific modal templates defined elsewhere in this file   -->
-<xsl:template match="mathbook">
+<xsl:template match="pretext">
     <xsl:apply-templates select="//frontmatter" mode="epub" />
     <xsl:apply-templates mode="chunking" />
 </xsl:template>
@@ -120,7 +120,7 @@
 <!-- Structural Nodes -->
 <!-- ################ -->
 
-<!-- Read the code and documentation for "chunking" in xsl/mathbook-common.xsl -->
+<!-- Read the code and documentation for "chunking" in xsl/pretext-common.xsl -->
 
 <!-- At level 1, we can just kill book's summary page -->
 
@@ -218,7 +218,7 @@
         <!-- Required in EPUB 3.0.1 spec       -->
         <!-- TODO: title-types can refine this -->
         <xsl:element name="dc:title">
-            <xsl:apply-templates select="/mathbook/book" mode="title-full" />
+            <xsl:apply-templates select="/pretext/book" mode="title-full" />
         </xsl:element>
         <!-- Required in EPUB 3.0.1 spec                -->
         <!-- Repeatable and more complicated, see spec  -->
@@ -258,13 +258,13 @@
 <!-- Exactly one item has the "nav" property                   -->
 <xsl:template name="package-manifest">
     <manifest xmlns="http://www.idpf.org/2007/opf">
-        <!-- <item id="css" href="{$css-dir}/mathbook-content.css" media-type="text/css"/> -->
+        <!-- <item id="css" href="{$css-dir}/pretext-content.css" media-type="text/css"/> -->
         <item id="cover" href="{$xhtml-dir}/cover.xhtml" media-type="application/xhtml+xml"/>
         <item id="title-page" href="{$xhtml-dir}/title-page.xhtml" media-type="application/xhtml+xml"/>
         <item id="table-contents" href="{$xhtml-dir}/table-contents.xhtml" properties="nav" media-type="application/xhtml+xml"/>
         <item id="cover-image" href="{$xhtml-dir}/images/cover.png" properties="cover-image" media-type="image/png"/>
         <!-- <item id="cover-image" href="{$xhtml-dir}/images/cover.jpg" properties="cover-image" media-type="image/jpeg"/> -->
-        <xsl:apply-templates select="/mathbook/book" mode="manifest" />
+        <xsl:apply-templates select="/pretext/book" mode="manifest" />
     </manifest>
 </xsl:template>
 
@@ -320,7 +320,7 @@
         <itemref idref="cover" linear="yes" />
         <itemref idref="title-page" linear="yes"/>
         <itemref idref="table-contents" linear="yes"/>
-        <xsl:apply-templates select="/mathbook/book" mode="spine" />
+        <xsl:apply-templates select="/pretext/book" mode="spine" />
     </spine>
 </xsl:template>
 
@@ -360,10 +360,10 @@
             <head></head>
             <body>
                 <h1>
-                    <xsl:apply-templates select="/mathbook/book" mode="title-full" />
-                    <xsl:if test="/mathbook/book/subtitle">
+                    <xsl:apply-templates select="/pretext/book" mode="title-full" />
+                    <xsl:if test="/pretext/book/subtitle">
                         <br />
-                        <xsl:apply-templates select="/mathbook/book" mode="subtitle" />
+                        <xsl:apply-templates select="/pretext/book" mode="subtitle" />
                     </xsl:if>
                 </h1>
                 <h3>
@@ -383,7 +383,7 @@
                 <nav epub:type="toc" id="toc">
                     <h1>Table of Contents</h1>
                     <ol>
-                        <xsl:for-each select="/mathbook/book/chapter">
+                        <xsl:for-each select="/pretext/book/chapter">
                             <li>
                                 <xsl:element name="a">
                                     <xsl:attribute name="href">
