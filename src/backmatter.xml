@@ -10,7 +10,7 @@
 <backmatter xml:id="backmatter" xmlns:xi="http://www.w3.org/2001/XInclude">
     <title>Referência</title> <!-- mostly for HTML sectioning -->
 
-    <xi:include href="./gfdl-mathbook.xml" />  <!-- GFDL License text -->
+    <xi:include href="./gfdl-pretext.xml" />  <!-- GFDL License text -->
 
     <appendix>
         <title>Dicas e Soluções dos Exercícios Selecionados</title>
@@ -31,7 +31,7 @@
     </index>
 
     <colophon>
-        <p>This book was authored and produced with <url href="https://mathbook.pugetsound.edu">PreTeXt</url>.</p>
+        <p>This book was authored and produced with <url href="https://pretext.pugetsound.edu">PreTeXt</url>.</p>
     </colophon>
 
 </backmatter>

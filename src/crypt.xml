@@ -188,7 +188,7 @@
 
 		<exercise>
 			<statement>
-				<p>Um algoritmo melhor para fatorar inteiros positivos ímpares é o </term><idx><h>Algoritmo de fatoração de Fermat</h></idx>.</p>
+				<p>Um algoritmo melhor para fatorar inteiros positivos ímpares é o <idx><h><term>Algoritmo de fatoração de Fermat</term></h></idx>.</p>
 
 				<ol>
 					<li><p>Seja <m>n= ab</m> um número ímpar composto. Demonstre que <m>n</m> pode ser escrito como a diferença de dois quadrados perfeitos:
