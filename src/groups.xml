@@ -107,23 +107,23 @@
 				<todo>See if id/ref works on items in ordered lists</todo>
 
 				<proof>
-					<p>Demostraremos  (1) y (6) y dejaremos las demás propiedades para ser demostradas en los ejercicios.</p>
+					<p>Demostraremos  (1) e (6) e deixaremos as demais propriedades para serem demonstradas nos exercícios.</p>
 
-					<p>(1) Adición y multiplicación son conmutativas módulo <m>n</m> pues el resto obtenido al dividir <m>a + b</m> entre <m>n</m> es el mismo que el resto obtenido al dividir  <m>b + a</m> entre <m>n</m>.</p>
+					<p>(1) Adição e multiplicação são comutativas módulo <m>n</m> porque o resto obtivo ao dividir <m>a + b</m> por <m>n</m> é o mesmo que o resto obtido por dividir <m>b + a</m> por <m>n</m>.</p>
 				 
-					<p>(6) Supongamos que <m>\gcd(a, n) = 1</m>.  Entonces existen enteros <m>r</m> y <m>s</m> tales que <m>ar + ns = 1</m>.  Como <m>ns = 1 - ar</m>, se cumple que <m>ar \equiv 1 \pmod{n}</m>.  Si <m>b</m> es la clase de equivalencia de <m>r</m>, <m>a b \equiv 1\pmod{n}</m>.</p>
+					<p>(6) Suponhamos que <m>\gcd(a, n) = 1</m>. Então existem inteiros <m>r</m> e <m>s</m> tais que <m>ar + ns = 1</m>.  Como <m>ns = 1 - ar</m>, se cumpre que <m>ar \equiv 1 \pmod{n}</m>.  Se <m>b</m> é a classe de equivalência de <m>r</m>, <m>a b \equiv 1\pmod{n}</m>.</p>
 				 
-					<p>Recíprocamente, supongamos que hay un entero <m>b</m> tal que <m>ab  \equiv 1 \pmod{ n}</m>.  Entonces  <m>n</m> divide a <m>ab -1</m>, de manera que hay un entero <m>k</m> tal que <m>ab - nk = 1</m>.  Sea <m>d = \gcd(a,n)</m>.  Como <m>d</m> divide a <m>ab - nk</m>, <m>d</m> también divide a 1; luego, <m>d = 1</m>.</p>
+					<p>Recíprocamente, suponhamos que há um inteiro <m>b</m> tal que <m>ab  \equiv 1 \pmod{ n}</m>.  Então <m>n</m> divide <m>ab -1</m>, de maneira que há um inteiro <m>k</m> tal que <m>ab - nk = 1</m>.  Seja <m>d = \gcd(a,n)</m>.  Como <m>d</m> divide <m>ab - nk</m>, <m>d</m> tambmn divide 1; logo, <m>d = 1</m>.</p>
 				</proof>
 			</proposition>
 		</subsection>
 
 		<subsection xml:id="groups-subsection-symmetries">
-			<title>Simetrías</title>
+			<title>Simetrias</title>
 
   			<!-- Symmetries of a rectangle  Replaced diagram with a tikz figure - TWJ 5/4/2010 -->
 			<figure xml:id="figure-groups-rectangle">
-				<caption>Movimientos rígidos de un rectángulo</caption>
+				<caption>Movimentos rígidos de um retângulo</caption>
 				<image xml:id="groups-rectangle">
 					<latex-image-code><![CDATA[
 						\begin{tikzpicture}[scale=1.2]
@@ -187,11 +187,11 @@
 				</image>
 			</figure>
 
-			<p>Una <term>simetría</term> de una figura geométrica es un reposicionamiento de la figura que preserva las relaciones entre sus lados y vértices tal como las distancias y los ángulos.  Una función del plano en sí mismo que preserva la simetría de un objeto se llama <term>movimiento rígido</term><idx><h>Movimiento rígido</h></idx>.  Por ejemplo, si miramos el rectángulo de la Figura<nbsp /><xref ref="figure-groups-rectangle" />, es fácil ver que una rotación en <m>180^{\circ}</m> o <m>360^{\circ}</m> devuelve un rectángulo en el plano con la misma orientación como el rectángulo original y la misma relación entre sus vértices.  Una reflexión del rectángulo por su eje vertical o su eje horizontal también puede ser reconocida como simetría de éste.  Sin embargo, una rotación en <m>90^{\circ}</m> en cualquier dirección no puede ser una simetría del rectángulo a menos que sea un cuadrado.</p>
+			<p>Uma <term>simetria</term> de uma figura geométrica é um reposicionamento da figura que preserva as relações entre seus lados e vértices tal como as distâncias e os ângulos. Uma função do plano em si mesmo que preserva a simetria de um objeto se chama <term>movimento rígido</term><idx><h>Movimento rígido</h></idx>.  Por exemplo, se olhamos para o retângulo da Figura<nbsp /><xref ref="figure-groups-rectangle" />, é fácil ver que uma rotação de <m>180^{\circ}</m> ou <m>360^{\circ}</m> nos dá um retángulo no plano com a mesma orientação do retângulo original e a mesma relação entre seus vértices.  Uma reflexão do retângulo pelo seu eixo vertical ou seu eixo horizontal também pode ser reconhecida como simetria deste.  Não obstante, uma rotação por <m>90^{\circ}</m> em qualquer direção não pode ser uma simetria do retângulo a menos que seja um quadrado.</p>
 
  			<!-- Replaced diagram with a tikz figure - TWJ 5/5/2010 -->
 			<figure xml:id="figure-s3-symmetry">
-				<caption>Simetrías de un triángulo</caption>
+				<caption>Simetrias de um triângulo</caption>
 				<image xml:id="groups-s3-symmetry">
 					<latex-image-code><![CDATA[
 						\begin{tikzpicture}[scale=0.7]
