@@ -62,7 +62,7 @@ include Makefile.paths
 # MBUSR is where extension files get copied
 # so relative paths work properly
 MBXSL = $(MB)/xsl
-MBSCRIPT = $(MB)/script
+MBSCRIPT = $(MB)/pretext
 MBUSR = $(MB)/user
 MBDTD = $(MB)/schema/dtd
 
@@ -92,7 +92,7 @@ JUPYTEROUT = $(SCRATCH)/jupyter
 ###############
 
 # Diagrams
-#   invoke mbx script to manufacture diagrams
+#   invoke pretext script to manufacture diagrams
 #   tikz as SVG for HTML
 #   sageplot as PDF for LaTeX, SVG for HTML
 #   these outputs are in source repo now, and
@@ -102,9 +102,9 @@ JUPYTEROUT = $(SCRATCH)/jupyter
 diagrams:
 	install -d $(HTMLOUT)/images
 	-rm $(HTMLOUT)/images/*
-	$(MBSCRIPT)/mbx -v -c latex-image -f svg -d $(HTMLOUT)/images $(SRC)/aata.xml
-	$(MBSCRIPT)/mbx -v -c sageplot    -f pdf -d $(HTMLOUT)/images $(SRC)/aata.xml
-	$(MBSCRIPT)/mbx -v -c sageplot    -f svg -d $(HTMLOUT)/images $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -v -c latex-image -f svg -d $(HTMLOUT)/images $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -v -c sageplot    -f pdf -d $(HTMLOUT)/images $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -v -c sageplot    -f svg -d $(HTMLOUT)/images $(SRC)/aata.xml
 
 # Update exercises
 #   Extract problems, with statements and hints only,
@@ -264,7 +264,7 @@ doctest:
 	-rm $(DOCTEST)/*.py; \
 	install -d $(DOCTEST)
 	cd $(DOCTEST); \
-	xsltproc --xinclude --stringparam chunk.level 2 $(MBXSL)/mathbook-sage-doctest.xsl $(SRC)/aata.xml; \
+	xsltproc --xinclude --stringparam chunk.level 2 $(MBXSL)/pretext-sage-doctest.xsl $(SRC)/aata.xml; \
 	$(SAGE) -tp 0 .
 
 # Doctest Sage Solutions
@@ -281,7 +281,7 @@ doctest-exercises:
 	-rm $(DOCTEST)/*.py; \
 	install -d $(DOCTEST)
 	cd $(DOCTEST); \
-	xsltproc --xinclude  --stringparam chunk.level 2 $(MBXSL)/mathbook-sage-doctest.xsl $(PDFOUT)/aata-solution-manual.xml; \
+	xsltproc --xinclude  --stringparam chunk.level 2 $(MBXSL)/pretext-sage-doctest.xsl $(PDFOUT)/aata-solution-manual.xml; \
 	$(SAGE) -tp 0 .
 
 # SageMathCloud worksheets
@@ -291,7 +291,7 @@ doctest-exercises:
 smc:
 	install -d $(SMCOUT) $(MBUSR)
 	cp -a $(SRC)/images $(SMCOUT)
-	cp -a $(MB)/css/mathbook-content.css $(MB)/css/mathbook-add-on.css $(SMCOUT)
+	cp -a $(MB)/css/pretext-content.css $(MB)/css/pretext-add-on.css $(SMCOUT)
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-smc.xsl $(MBUSR)
 	cd $(SMCOUT); \
 	xsltproc --xinclude $(MBUSR)/aata-smc.xsl $(SRC)/aata.xml
@@ -314,7 +314,7 @@ smc:
 check:
 	install -d $(SCRATCH)
 	-rm $(SCRATCH)/dtderrors.*
-	-xmllint --xinclude --noout --dtdvalid $(MBDTD)/mathbook.dtd $(SRC)/aata.xml 2> $(SCRATCH)/dtderrors.txt
+	-xmllint --xinclude --noout --dtdvalid $(MBDTD)/pretext.dtd $(SRC)/aata.xml 2> $(SCRATCH)/dtderrors.txt
 	less $(SCRATCH)/dtderrors.txt
 
 viewcheck:
@@ -328,7 +328,7 @@ check-solutions:
 	mv $(PDFOUT)/exercises/*-sage-exercises.xml $(PDFOUT)/sage
 	mv $(PDFOUT)/exercises/aata-solution-manual.xml $(PDFOUT)
 	-rm $(SCRATCH)/dtderrors.*
-	-xmllint --xinclude --noout --dtdvalid $(MBDTD)/mathbook.dtd $(PDFOUT)/aata-solution-manual.xml 2> $(SCRATCH)/dtderrors.txt
+	-xmllint --xinclude --noout --dtdvalid $(MBDTD)/pretext.dtd $(PDFOUT)/aata-solution-manual.xml 2> $(SCRATCH)/dtderrors.txt
 	less $(SCRATCH)/dtderrors.txt
 
 viewchecksolutions:
@@ -358,7 +358,7 @@ sagenb:
 	install -d $(HTMLOUT)
 	cp -a $(SRC)/*.xml $(SRC)/images $(SRC)/exercises $(SRC)/sage $(SCRATCH)
 	cp -a $(HTMLOUT)/images $(SCRATCH)
-	$(MBSCRIPT)/mbx -v -c all -f sagenb -o $(SAGENBOUT)/aata.zip $(SCRATCH)/aata.xml
+	$(MBSCRIPT)/pretext -v -c all -f sagenb -o $(SAGENBOUT)/aata.zip $(SCRATCH)/aata.xml
 
 # EPUB 3.0 assembly
 #	TODO: fix retrieval of CSS (via wget?)
@@ -366,9 +366,9 @@ epub:
 	rm -rf $(EPUBOUT)
 	install -d $(EPUBOUT) $(EPUBOUT)/EPUB/css $(EPUBOUT)/EPUB/xhtml
 	cd $(EPUBOUT); \
-	xsltproc --xinclude  $(MBXSL)/mathbook-epub.xsl $(SRC)/aata.xml
+	xsltproc --xinclude  $(MBXSL)/pretext-epub.xsl $(SRC)/aata.xml
 	rm -rf $(EPUBOUT)/knowl
-	cp ~/mathbook/local/epub-trial/mathbook-content.css $(EPUBOUT)/EPUB/css/
+	cp ~/pretext/local/epub-trial/pretext-content.css $(EPUBOUT)/EPUB/css/
 	cp -a $(SRC)/images $(EPUBOUT)/EPUB/xhtml
 	cp -a $(EPUBOUT)/EPUB/xhtml/images/cover_aata_2014.png $(EPUBOUT)/EPUB/xhtml/images/cover.png
 	#

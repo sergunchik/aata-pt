@@ -30,7 +30,7 @@
 # each without a trailing slash
 
 # MathBook XML distribution root
-MB = /home/rob/mathbook/mathbook
+MB = /home/rob/pretext/pretext
 
 # AATA, AATA Solutions
 AATA = /home/rob/books/aata/aata
