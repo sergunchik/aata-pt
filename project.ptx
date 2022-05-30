@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    This file provides the overall configuration for your PreTeXt
+    project. To edit the content of your document, open `src/aata.xml`
+    (default location).
+-->
+<project>
+  <targets>
+    <target name="html">
+      <format>html</format>
+      <source>src/aata.xml</source>
+      <publication>publication/publication.ptx</publication>
+      <output-dir>output/html</output-dir>
+    </target>
+    <target name="latex">
+      <format>latex</format>
+      <source>src/aata.xml</source>
+      <publication>publication/publication.ptx</publication>
+      <output-dir>output/latex</output-dir>
+    </target>
+    <target name="pdf" pdf-method="pdflatex">
+      <format>pdf</format>
+      <source>src/aata.xml</source>
+      <publication>publication/publication.ptx</publication>
+      <output-dir>output/pdf</output-dir>
+    </target>
+    <target name="subset">
+      <format>html</format>
+      <source>src/aata.xml</source>
+      <publication>publication/publication.ptx</publication>
+      <output-dir>output/subset</output-dir>
+      <stringparam key="debug.skip-knowls" value="yes"/>
+      <!-- edit this to change the section/chapter/etc. to include
+           in your subset build -->
+      <xmlid-root>ch-first</xmlid-root>
+    </target>
+  </targets>
+  <executables>
+      <latex>latex</latex>
+      <pdflatex>pdflatex</pdflatex>
+      <xelatex>xelatex</xelatex>
+      <pdfsvg>pdf2svg</pdfsvg>
+      <asy>asy</asy>
+      <sage>sage</sage>
+      <pdfpng>convert</pdfpng>
+      <pdfeps>pdftops</pdfeps>
+      <pdfcrop>pdf-crop-margins</pdfcrop>
+      <pageres>pageres</pageres>
+      <node>node</node>
+      <liblouis>file2brl</liblouis>
+    </executables>
+</project>
+
+<!-- To process this file with PreTeXt-CLI do                                                     -->
+<!--                                                                                              -->
+<!-- (1) HTML:                                                                                    -->
+<!--     pretext build html                                                                       -->
+<!--                                                                                              -->
+<!-- (2) LaTeX:                                                                                   -->
+<!--     pretext build latex                                                                      -->
+<!--                                                                                              -->
+<!-- (3) PDF:                                                                                     -->
+<!--     pretext build pdf                                                                        -->
+
+
+<!-- To process this file with xsltproc do                                                        -->
+<!--                                                                                              -->
+<!-- (1) LaTeX/PDF:                                                                               -->
+<!--     xsltproc -o minimal.tex PATH_TO/mathbook/xsl/pretext-latex.xsl source/main.ptx           -->
+<!--     pdflatex minimal.tex                                                                     -->
+<!--     xelatex minimal.tex                                                                      -->
+<!--                                                                                              -->
+<!-- (2) HTML:                                                                                    -->
+<!--     xsltproc PATH_TO/mathbook/xsl/pretext-html.xsl source/main.ptx                           -->
+<!--     <browser>  minimal.html                                                                  -->
+<!--                                                                                              -->
+<!-- (3) CoCalc worksheet (parameter causes a single file for output)                             -->
+<!--     REMOVE the "X" in the double dash (which is not legal in an XML comment)                 -->
+<!--     xsltproc -X-stringparam chunk.level 0 PATH_TO/mathbook/xsl/pretext-smc.xsl source/main.ptx   -->
+<!--     <CoCalc> minimal.sagews                                                                  -->
+<!--                                                                                              -->
+<!-- (4) Sage doctesting                                                                          -->
+<!--     REMOVE the "X" in the double dash (which is not legal in an XML comment)                 -->
+<!--     xsltproc -X-stringparam chunk.level 0 PATH_TO/mathbook/xsl/pretext-sage-doctest.xsl source/main.ptx  -->
+<!--     <read further instructions in> minimal.py                                                -->
+
+
