@@ -149,9 +149,9 @@
 	</section>
 	
 	<section xml:id="section-class-equation">
-		<title>La Ecuación de Clase</title>
+		<title>A Equação de Clase</title>
  
-		<p>Sea <m>X</m> un <m>G</m>-conjunto finito y <m>X_G</m><!--NOTATION TABLE\label{noteXG}--> el conjunto de puntos fijos en <m>X</m>; es decir, 
+		<p>Seja <m>X</m> um <m>G</m>-conjunto finito e <m>X_G</m><!--NOTATION TABLE\label{noteXG}--> o conjunto de pontos fixos em <m>X</m>; es decir, 
 			<me>X_G = \{ x \in X : gx = x \text{ para todo } g \in G \}.</me>
 		Como las óribitas de la acción particionan a <m>X</m>,
 			<me>|X| = |X_G| + \sum_{i = k}^n |{\mathcal O}_{x_i}|,</me>
