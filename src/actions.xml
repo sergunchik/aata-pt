@@ -151,19 +151,19 @@
 	<section xml:id="section-class-equation">
 		<title>A Equação de Clase</title>
  
-		<p>Seja <m>X</m> um <m>G</m>-conjunto finito e <m>X_G</m><!--NOTATION TABLE\label{noteXG}--> o conjunto de pontos fixos em <m>X</m>; es decir, 
+		<p>Seja <m>X</m> um <m>G</m>-conjunto finito e <m>X_G</m><!--NOTATION TABLE\label{noteXG}--> o conjunto de pontos fixos em <m>X</m>; isto é, 
 			<me>X_G = \{ x \in X : gx = x \text{ para todo } g \in G \}.</me>
-		Como las óribitas de la acción particionan a <m>X</m>,
+		Como as órbitas da ação particionam <m>X</m>,
 			<me>|X| = |X_G| + \sum_{i = k}^n |{\mathcal O}_{x_i}|,</me>
-		donde <m>x_k, \ldots, x_n</m> son representantes de las distintas órbitas no triviales de <m>X</m> (aquellas órbitas que contienen más de un elemento).</p> 
+		onde <m>x_k, \ldots, x_n</m> são representantes das diferentes órbitas não triviais de <m>X</m> (as órbitas que contêm mais de um elemento).</p> 
  
-		<p>Ahora consideremos el caso especial en el que <m>G</m> actúa en sí mismo por conjugación, <m>(g,x) \mapsto gxg^{-1}</m>. El <term>centro</term><idx><h>Grupo</h><h>centro del</h></idx> de <m>G</m>, 
+		<p>Agora consideremos o caso especial no qual <m>G</m> age em si mesmo por conjugação, <m>(g,x) \mapsto gxg^{-1}</m>. O <term>centro</term><idx><h>Grupo</h><h>centro de</h></idx> de <m>G</m>, 
 			<me>Z(G) = \{x : xg = gx \text{ para todo } g \in G \},</me>
-		es el conjunto de puntos que quedan fijos por conjugación. La órbitas de la acción se llaman <term>clases de conjugación</term><idx><h>Clases de conjugación</h></idx> de <m>G</m>. Si <m>x_1, \ldots, x_k</m> son representantes de cada una de las clases de conjugación no-triviales de <m>G</m> y <m>|{\mathcal O}_{x_1}| = n_1, \ldots, |{\mathcal O}_{x_k}| = n_k</m>, entonces
+		é o conjunto de pontos que permanecem fixos por conjugação. As órbitas da ação se chamam <term>classes de conjugação</term><idx><h>Classes de conjugação</h></idx> de <m>G</m>. Se <m>x_1, \ldots, x_k</m> são representantes de cada classe de conjugação não-trivial de <m>G</m> e <m>|{\mathcal O}_{x_1}| = n_1, \ldots, |{\mathcal O}_{x_k}| = n_k</m>, então
 			<me>|G| = |Z(G)| + n_1 + \cdots + n_k.</me>
-		Cada uno de los subgrupos estabilizadores de uno de los <m>x_i</m>, <m>C(x_i) = \{ g \in G: g x_i = x_i g \}</m>, se llama <term>subgrupo centralizador</term><idx><h>Subgrupo</h><h>centralizador</h></idx> de <m>x_i</m>. Por el Teorema<nbsp /><xref ref="theorem-orbit" />, obtenemos la <term>ecuación de clase</term><idx><h>Ecuación de clase</h></idx>: 
+		Os subgrupos estabilizadores de cada um dos <m>x_i</m>'s, <m>C(x_i) = \{ g \in G: g x_i = x_i g \}</m>, se chama <term>subgrupo centralizador</term><idx><h>Subgrupo</h><h>centralizador</h></idx> de <m>x_i</m>. Pelo Teorema<nbsp /><xref ref="theorem-orbit" />, obtemos a <term>equação de classe</term><idx><h>Equação de classe</h></idx>: 
 			<me>|G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)].</me>
-		Una de las consecuencias de la ecuación de clase es que el orden de cada clase de conjugación divide al orden de <m>G</m>.</p>
+		Uma das consequências da equação de classe é que a ordem de cada classe de conjugação divide a ordem de <m>G</m>.</p>
 
 <!-- Reference repaired. TWJ 12/19/2011 -->
 <!-- Typo corrected. Suggested by A. Vance. TWJ 11/13/2011 -->
