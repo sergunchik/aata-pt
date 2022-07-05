@@ -66,22 +66,26 @@
 <!-- To process this file with xsltproc do                                                        -->
 <!--                                                                                              -->
 <!-- (1) LaTeX/PDF:                                                                               -->
-<!--     xsltproc -o minimal.tex PATH_TO/mathbook/xsl/pretext-latex.xsl source/main.ptx           -->
-<!--     pdflatex minimal.tex                                                                     -->
-<!--     xelatex minimal.tex                                                                      -->
+<!--     xsltproc -o output/latex/minimal.tex ~/pretext/xsl/pretext-latex.xsl src/aata.xml     -->
+<!--     cd output/latex                                                                          -->
+<!--     pdflatex aata.tex                                                                        -->
+<!--     xelatex aata.tex                                                                         -->
+<!--     lualatex aata.tex                                                                        -->
+<!--     latexmk aata                                                                             -->
+<!--  NB - latexmk makes it in one go, for *latex you have to do 2-3 times                        -->
 <!--                                                                                              -->
 <!-- (2) HTML:                                                                                    -->
-<!--     xsltproc PATH_TO/mathbook/xsl/pretext-html.xsl source/main.ptx                           -->
-<!--     <browser>  minimal.html                                                                  -->
+<!--     xsltproc -o output/html/ ~/pretext/xsl/pretext-html.xsl src/aata.xml                     -->
+<!--     <browser>  aata.html                                                                     -->
 <!--                                                                                              -->
 <!-- (3) CoCalc worksheet (parameter causes a single file for output)                             -->
 <!--     REMOVE the "X" in the double dash (which is not legal in an XML comment)                 -->
-<!--     xsltproc -X-stringparam chunk.level 0 PATH_TO/mathbook/xsl/pretext-smc.xsl source/main.ptx   -->
+<!--     xsltproc -X-stringparam chunk.level 0 ~/pretext/xsl/pretext-smc.xsl src/aata.xml         -->
 <!--     <CoCalc> minimal.sagews                                                                  -->
 <!--                                                                                              -->
 <!-- (4) Sage doctesting                                                                          -->
 <!--     REMOVE the "X" in the double dash (which is not legal in an XML comment)                 -->
-<!--     xsltproc -X-stringparam chunk.level 0 PATH_TO/mathbook/xsl/pretext-sage-doctest.xsl source/main.ptx  -->
+<!--     xsltproc -X-stringparam chunk.level 0 ~/pretext/xsl/pretext-sage-doctest.xsl src/aata.xml  -->
 <!--     <read further instructions in> minimal.py                                                -->
 
 
