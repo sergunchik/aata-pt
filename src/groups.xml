@@ -17,7 +17,7 @@
  	</introduction>
 
 	<section xml:id="section-mod-n-sym">
-		<title>Classes de Equivalencia dos Inteiros e Simetrias</title>
+		<title>Classes de Equivalência dos Inteiros e Simetrias</title>
  
  		<introduction>
 
@@ -30,7 +30,7 @@
 
 			<p>Os inteiros do modulo <m>n</m> tornaram-se indispensáveis na teoria e aplicações da álgebra.  Em matemática são utilizados em criptografia, teoria de códigos e detecção de erros em códigos de identificação.</p>
 
-			<p>Ya hemos visto que dos enteros  <m>a</m> y <m>b</m> son equivalentes mód <m>n</m> si <m>n</m> divide a <m>a - b</m>.  Los enteros mód <m>n</m> también particionan <m>{\mathbb Z}</m> en <m>n</m> distintas clases de equivalencia; denotaremos el conjunto de estas clases de equivalencia por <m>{\mathbb Z}_n</m>. <notation><usage>\mathbb Z_n</usage><description>os inteiros módulo <m>n</m></description></notation> Considere os inteiros módulo 12 e a partição correspondente dos inteiros:  
+			<p>Já vimos que dois inteiros <m>a</m> e <m>b</m> são equivalentes mod <m>n</m> se <m>n</m> divide a <m>a - b</m>.  Os inteiros mod <m>n</m> também particionam <m>{\mathbb Z}</m> em <m>n</m> distintas classes de equivalência; denotaremos o conjunto dessas classes de equivalência por <m>{\mathbb Z}_n</m>. <notation><usage>\mathbb Z_n</usage><description>os inteiros módulo <m>n</m></description></notation> Considere os inteiros módulo 12 e a partição correspondente dos inteiros:  
 				<md>
 					<mrow>{[0]} &amp; = \{ \ldots, -12, 0, 12, 24, \ldots \},</mrow>
 					<mrow> {[1]} &amp; = \{ \ldots, -11, 1, 13, 25, \ldots \},</mrow>
@@ -113,7 +113,7 @@
 				 
 					<p>(6) Suponhamos que <m>\gcd(a, n) = 1</m>. Então existem inteiros <m>r</m> e <m>s</m> tais que <m>ar + ns = 1</m>.  Como <m>ns = 1 - ar</m>, se cumpre que <m>ar \equiv 1 \pmod{n}</m>.  Se <m>b</m> é a classe de equivalência de <m>r</m>, <m>a b \equiv 1\pmod{n}</m>.</p>
 				 
-					<p>Recíprocamente, suponhamos que há um inteiro <m>b</m> tal que <m>ab  \equiv 1 \pmod{ n}</m>.  Então <m>n</m> divide <m>ab -1</m>, de maneira que há um inteiro <m>k</m> tal que <m>ab - nk = 1</m>.  Seja <m>d = \gcd(a,n)</m>.  Como <m>d</m> divide <m>ab - nk</m>, <m>d</m> tambmn divide 1; logo, <m>d = 1</m>.</p>
+					<p>Reciprocamente, suponhamos que há um inteiro <m>b</m> tal que <m>ab  \equiv 1 \pmod{ n}</m>.  Então <m>n</m> divide <m>ab -1</m>, de maneira que há um inteiro <m>k</m> tal que <m>ab - nk = 1</m>.  Seja <m>d = \gcd(a,n)</m>.  Como <m>d</m> divide <m>ab - nk</m>, <m>d</m> também divide 1; logo, <m>d = 1</m>.</p>
 				</proof>
 			</proposition>
 		</subsection>
@@ -391,31 +391,31 @@
 			</table>
 
 			<example xml:id="example-groups-nonabelian">
-				<p>Las simetrías de un triángulo equilátero descritas en la Sección<nbsp /><xref ref="section-mod-n-sym" /> forman un grupo no abeliano. Como observamos, no es necesariamente cierto que <m>\alpha \beta = \beta \alpha</m> para dos simetrías <m>\alpha</m> y <m>\beta</m>.  Usando el Cuadro<nbsp /><xref ref="table-s3" />, que es una tabla de Cayley para este grupo, podemos fácilmente verificar que las simetrías de un triángulo equilátero forman efectivamente un grupo. Denotaremos este grupo como <m>S_3</m> o <m>D_3</m>, por razones que explicaremos más adelante.</p>
+				<p>As simetrias de um triângulo equilátero descritas na Secção<nbsp /><xref ref="section-mod-n-sym" /> formam um grupo abeliano. Como observamos, não é necessariamente verdade que <m>\alpha \beta = \beta \alpha</m> para duas simetrias <m>alfa</m> e <m>beta</m>.  Usando a Tabela<nbsp /><xref ref="table-s3" />, que é uma tabela de Cayley para este grupo, podemos facilmente verificar que as simetrias de um triângulo equilátero formam de fato um grupo. Denotaremos este grupo como <m>S_3</m> ou <m>D_3</m>, por razões que explicaremos mais adiante.</p>
 			</example>
 
 			<example xml:id="example-groups-gl2">
-				<p>Usaremos  <m>{\mathbb M}_2 ( {\mathbb R})</m> para denotar al conjunto de todas las matrices de <m>2 \times 2</m>.  Sea <m>GL_2({\mathbb R})</m> el subconjunto de  <m>{\mathbb M}_2 ( {\mathbb R})</m> que consiste de las matrices invertibles; es decir, una matriz <notation><usage>\mathbb M_n(\mathbb R)</usage><description>las matrices de <m>n \times n</m> con entradas en <m>\mathbb R</m></description></notation>
+				<p>Usaremos  <m>{\mathbb M}_2 ( {\mathbb R})</m> para denotar o conjunto de todas as matrizes de <m>2 \times 2</m>.  Seja <m>GL_2({\mathbb R})</m> o subconjunto de  <m>{\mathbb M}_2 ( {\mathbb R})</m> que consiste das matrizes invertíveis; isto é, uma matriz <notation><usage>\mathbb M_n(\mathbb R)</usage><description>as matrizes de <m>n \times n</m> com entradas em <m>\mathbb R</m></description></notation>
 					<me>A =
 					\begin{pmatrix}<![CDATA[
 					a & b \\
 					c & d
 					]]>\end{pmatrix}</me> 
-				está en  <m>GL_2( {\mathbb R})</m> si existe una matriz <m>A^{-1}</m> tal que
-				<m>A A^{-1} = A^{-1} A = I</m>, donde <m>I</m> la matriz identidad de <m>2 \times 2</m>. Que <m>A</m> tenga una inversa es equivalente a que el determinante de <m>A</m> no sea cero; es decir, <m>\det A = ad - bc \neq 0</m>. <notation><usage>\det A</usage><description>el determinante de <m>A</m></description></notation> El conjunto de las matrices invertibles forma un grupo llamado el <term>grupo lineal general</term><idx><h>Lineal general</h><h>grupo</h></idx>.  <notation><usage>GL_n(\mathbb R)</usage><description>el grupo lineal general</description></notation> La identidad del grupo es la matriz identidad.
+				está em  <m>GL_2( {\mathbb R})</m> se existe uma matriz <m>A^{-1}</m> tal que
+				<m>A A^{-1} = A^{-1} A = I</m>, onde <m>I</m> é a matriz identidade de <m>2 \times 2</m>. Que <m>A</m> tenha una inversa é equivalente a que o determinante de <m>A</m> no seja zero; isto é, <m>\det A = ad - bc \neq 0</m>. <notation><usage>\det A</usage><description>o determinante de <m>A</m></description></notation> O conjunto das matrizes invertíveis formam um grupo chamado o <term>grupo linear general</term><idx><h>Linear general</h><h>grupo</h></idx>.  <notation><usage>GL_n(\mathbb R)</usage><description>o grupo linear general</description></notation> A identidade do grupo é a matriz identidade.
 					<me>I =
 					\begin{pmatrix}<![CDATA[
 					1 & 0 \\
 					0 & 1
 					]]>\end{pmatrix}.</me>
-				La inversa de <m>A \in GL_2( {\mathbb R})</m> es
+				A inversa de <m>A \in GL_2( {\mathbb R})</m> é
 					<me>A^{-1} =
 					\frac{1}{ad-bc}
 					\begin{pmatrix}<![CDATA[
 					d & -b \\
 					-c & a
 					]]>\end{pmatrix}.</me>
-				El producto de dos matrices invertibles es nuevamente invertible. La multiplicación de matrices es asociativa, satisfaciendo así el otro axioma de grupos. Para las matrices en general  no se cumple que <m>AB = BA</m>; por lo tanto, <m>GL_2({\mathbb R})</m> es otro ejemplo de un grupo no abeliano.</p>
+				O produto de duas matrizes invertíveis é novamente invertível. A multiplicação de matrizes é associativa, satisfazendo assim o outro axioma de grupos. Para as matrizes em geral, não se cumpre que <m>AB = BA</m>; Portanto, <m>GL_2({\mathbb R})</m> é outro exemplo de um grupo não abeliano.</p>
 			</example>
 
 			<!-- % Changed <m>AB \neq BA</m> to <m>AB = BA</m>. Suggested by Isaac Coombs. TWJ 8/24/2011 -->
@@ -447,115 +447,115 @@
 						0 & -i
 						]]>\end{pmatrix},</mrow>
 					</md> 
-				con <m>i^2 = -1</m>. Entonces las relaciones <m>I^2 = J^2 = K^2 = -1</m>, <m>IJ=K</m>, <m>JK = I</m>, <m>KI = J</m>, <m>JI = -K</m>, <m>KJ = -I</m>, y <m>IK = -J</m> se satisfacen. El conjunto <notation><usage>Q_8</usage><description>el grupo de cuaterniones</description></notation> <m>Q_8 = \{\pm 1, \pm I, \pm J, \pm K  \}</m> es un grupo llamado <term>grupo de cuaterniones</term><idx><h>Cuaterniones</h><h>grupo de</h></idx><idx><h>cuaterniones</h></idx>. Note que <m>Q_8</m> es no conmutativo.</p>
+				com <m>i^2 = -1</m>. Então as relações <m>I^2 = J^2 = K^2 = -1</m>, <m>IJ=K</m>, <m>JK = I</m>, <m>KI = J</m>, <m>JI = -K</m>, <m>KJ = -I</m>, y <m>IK = -J</m> se satisfazem. O conjunto <notation><usage>Q_8</usage><description>o grupo de quatérnions</description></notation> <m>Q_8 = \{\pm 1, \pm I, \pm J, \pm K  \}</m> é um grupo chaamado <term>grupo de quatérnions</term><idx><h>Cuaterniones</h><h>grupo de</h></idx><idx><h>quatérnions</h></idx>. Note que <m>Q_8</m> é não comutativo.</p>
 			</example>
 	 
 			<example xml:id="example-groups-c-star">
-				<p>Sea <m>{\mathbb C}^\ast</m>el conjunto de los números complejos no nulos. <notation><usage>\mathbb C^*</usage><description>el grupo multiplicativo de los complejos</description></notation> <m>{\mathbb C}^\ast</m> forma un grupo bajo la operación de multiplicación.  La identidad es 1. Si <m>z = a+bi</m> es un número complejo no nulo, entonces <me>z^{-1} = \frac{a -bi}{a^2 +b^2}</me> es el inverso de <m>z</m>.  Es fácil verificar que se cumplen los demás axiomas de grupo.</p>
+				<p>Seja <m>{\mathbb C}^\ast</m>o conjunto dos números complexos não nulos. <notation><usage>\mathbb C^*</usage><description>O grupo multiplicativo dos complexos</description></notation> <m>{\mathbb C}^\ast</m> forma um grupo com a operação de multiplicação. A identidade é 1. Se <m>z = a+bi</m> é um número complexo não nulo, então <me>z^{-1} = \frac{a -bi}{a^2 +b^2}</me> é o inverso de <m>z</m>.  É fácil verificar que se cumprem os demais axiomas de grupo.</p>
 			</example>
 	 
-			<p>Un grupo es <term>finito</term><idx><h>Finito</h><h>grupo</h></idx>, o tiene <term>orden finito</term>, si contiene un número finito de elementos; de otro modo, el grupo se dice <term>infinito</term> o que tiene <term>orden infinito</term><idx><h>Infinito</h><h>grupo</h></idx>. El <term>orden</term><idx><h>Grupo</h><h>orden de</h></idx> de un grupo finito es el número de elementos que contiene. Si <m>G</m> es un grupo que contiene <m>n</m> elementos, escribiremos <m>|G| = n</m>. <notation><usage>|G|</usage><description>el orden de un grupo</description></notation> El grupo <m>{\mathbb Z}_5</m> es un grupo finito de orden 5; los enteros <m>{\mathbb Z}</m> forman un grupo infinito bajo la adición, y en ocasiones escribiremos <m>|{\mathbb Z}| = \infty</m>.</p>
+			<p>Um grupo é <term>finito</term><idx><h>Finito</h><h>grupo</h></idx>, ou tem <term>ordem finita</term>, se contém um número finito de elementos; de outro modo, o grupo se diz <term>infinito</term> ou que tem <term>ordem infinita</term><idx><h>Infinita</h><h>grupo</h></idx>. A <term>ordem</term><idx><h>Grupo</h><h>ordem do</h></idx> de um grupo finito é o número de elementos que contém. Se <m>G</m> é um grupo que contém <m>n</m> elementos, escreveremos <m>|G| = n</m>. <notation><usage>|G|</usage><description>a ordem de um grupo</description></notation> O grupo <m>{\mathbb Z}_5</m> é um grupo finito de ordem 5; os inteiros <m>{\mathbb Z}</m> formam um grupo infinito com a adição, e em certas ocasiões escreveremos <m>|{\mathbb Z}| = \infty</m>.</p>
 	 
 		</introduction>
 
 		<subsection  xml:id="groups-subsection-basic-properties">
-			<title>Propiedades básicas de los Grupos</title>
+			<title>Propriedades básicas dos Grupos</title>
 	 
 			<proposition>
 
 				<statement>
-					<p>El elemento identidad en un grupo <m>G</m> es único; es decir, hay solo un elemento <m>e \in G</m> tal que <m>eg = ge = g</m> para todo <m>g \in G</m>.</p>
+					<p>O elemento identidade de um grupo <m>G</m> é único; isto é, há somente um elemento <m>e \in G</m> tal que <m>eg = ge = g</m> para todo <m>g \in G</m>.</p>
 				</statement>
 
 			 	<proof>
-			 		<p>Supongamos que <m>e</m> y <m>e'</m> son ambas identidades en <m>G</m>. Entonces <m>eg = ge = g</m> y <m>e'g = ge' = g</m> para todo <m>g \in G</m>. Debemos demostrar que <m>e = e'</m>. Si pensamos en  <m>e</m> como la identidad, entonces <m>ee' = e'</m>; pero si <m>e'</m> es la identidad, entonces <m>ee' = e</m>. Combinando estas dos ecuaciones, tenemos <m>e = ee' = e'</m>.</p>
+			 		<p>Suponhamos que <m>e</m> e <m>e'</m> são ambas identidades em <m>G</m>. Então <m>eg = ge = g</m> e <m>e'g = ge' = g</m> para todo <m>g \in G</m>. Devemos demonstrar que <m>e = e'</m>. Se pensamos em  <m>e</m> como a identidade, então <m>ee' = e'</m>; mas se <m>e'</m> é a identidade, então <m>ee' = e</m>. Combinando essas duas equacões, temos <m>e = ee' = e'</m>.</p>
 			 	</proof>
 			 </proposition>
 	 
-			<p>Los inversos en un grupo también son únicos. Si <m>g'</m> y <m>g''</m> son ambos inversos de un elemento <m>g</m> en un grupo <m>G</m>, entonces <m>gg' = g'g = e</m> y <m>gg'' = g''g = e</m>. Queremos mostrar que <m>g' = g''</m>, pero <m>g' = g'e = g'(gg'') = (g'g)g'' = eg'' = g''</m>. Resumimos este hecho en la siguiente proposición.</p>
+			<p>Os inversos em um grupo também são únicos. Se <m>g'</m> e <m>g''</m> são ambos inversos de um elemento <m>g</m> em um grupo <m>G</m>, então <m>gg' = g'g = e</m> y <m>gg'' = g''g = e</m>. Queremos mostrar que <m>g' = g''</m>, mas <m>g' = g'e = g'(gg'') = (g'g)g'' = eg'' = g''</m>. Resumimos este trecho na seguinte proposição.</p>
 	 
 			<proposition>
 				<statement>
-					<p>Si <m>g</m> es un elemento en un grupo <m>G</m>, entonces el inverso de <m>g</m>, denotado por <m>g^{-1}</m>, es único.</p>
+					<p>Se <m>g</m> é um elemento em um grupo <m>G</m>, então o inverso de <m>g</m>, denotado por <m>g^{-1}</m>, é único.</p>
 				</statement>
 			</proposition>
 	 
 			<proposition xml:id="proposition-inverse-of-products">
 				<statement>
-					<p>Sea <m>G</m> un grupo. Si <m>a, b \in G</m>, entonces <m>(ab)^{-1} = b^{-1}a^{-1}</m>.</p>
+					<p>Seja <m>G</m> um grupo. Se <m>a, b \in G</m>, então <m>(ab)^{-1} = b^{-1}a^{-1}</m>.</p>
 				</statement>
 				<proof>
-					<p> Sean <m>a, b \in G</m>. Entonces <m>abb^{-1}a^{-1} = aea^{-1} = aa^{-1} = e</m>. Similarmente, <m>b^{-1}a^{-1}ab = e</m>. Por la proposición anterior, los inversos son únicos; luego, <m>(ab)^{-1} = b^{-1}a^{-1}</m>.</p>
+					<p> Sejam <m>a, b \in G</m>. Então <m>abb^{-1}a^{-1} = aea^{-1} = aa^{-1} = e</m>. Similarmente, <m>b^{-1}a^{-1}ab = e</m>. Pela proposição anterior, os inversos são únicos; logo, <m>(ab)^{-1} = b^{-1}a^{-1}</m>.</p>
 				</proof>
 			</proposition>
 
 			<proposition>
 				<statement>
-					<p>Sea <m>G</m> un grupo.  Para cualquier  <m>a \in G</m>, <m>(a^{-1})^{-1} = a</m>.</p>
+					<p>Seja <m>G</m> um grupo.  Para qualquer  <m>a \in G</m>, <m>(a^{-1})^{-1} = a</m>.</p>
 				</statement>
 
 				<proof>
-					<p> Notemos que <m>a^{-1} (a^{-1})^{-1} = e</m>. Por lo tanto, multiplicando ambos lados de esta ecuación por <m>a</m>, tenemos <me>(a^{-1})^{-1} = e (a^{-1})^{-1} = a a^{-1} (a^{-1})^{-1} = ae = a.</me></p>
+					<p> Notemos que <m>a^{-1} (a^{-1})^{-1} = e</m>. Portanto, multiplicando ambos os lados dessa equação por <m>a</m>, temos <me>(a^{-1})^{-1} = e (a^{-1})^{-1} = a a^{-1} (a^{-1})^{-1} = ae = a.</me></p>
 				</proof>
 			</proposition>
 	 
-			<p>Tiene sentido escribir ecuaciones con elementos y operaciones de un grupo. Si <m>a</m> y <m>b</m> son dos elementos en un grupo <m>G</m>, ¿existe un elemento <m>x \in G</m> tal que <m>ax = b</m>? ¿Si tal <m>x</m> existe, es único? La siguiente proposición entrega una respuesta afirmativa a ambas preguntas.</p>
+			<p>Há sentido em escrever equações com elementos e operações de um grupo. Se <m>a</m> e <m>b</m> são dois elementos em um grupo <m>G</m>, existe um elemento <m>x \in G</m> tal que <m>ax = b</m>? Se tal <m>x</m> existe, é único? A seguente proposição entrega uma resposta afirmativa a ambas as perguntas.</p>
 	 
 			<proposition xml:id="proposition-group-equations"> 
 				<statement>
-					<p>Sea <m>G</m> un grupo y sean <m>a</m> y <m>b</m> dos elementos cualquiera en <m>G</m>. Entonces las ecuaciones <m>ax = b</m> y <m>xa = b</m> tienen una única solución en <m>G</m>.</p>
+					<p>Seja <m>G</m> um grupo e sejam <m>a</m> e <m>b</m> dois elementos quaisquer de <m>G</m>. Então as equações <m>ax = b</m> e <m>xa = b</m> têm uma única solução em <m>G</m>.</p>
 				</statement>
 
 				<proof>
-					<p>Supongamos que <m>ax = b</m>. Debemos demostrar que tal  <m>x</m> existe. Podemos multiplicar ambos lados de <m>ax = b</m> por <m>a^{-1}</m> para encontrar <m>x = ex = a^{-1}ax = a^{-1}b</m>.</p> 
+					<p>Suponhamos que <m>ax = b</m>. Devemos demonstrar que tal  <m>x</m> existe. Podemos multiplicar ambos os lados de <m>ax = b</m> por <m>a^{-1}</m> para encontrar <m>x = ex = a^{-1}ax = a^{-1}b</m>.</p> 
 
-					<p>Para demostrar la unicidad, supongamos que <m>x_1</m> y <m>x_2</m> son ambas soluciones de <m>ax = b</m>; entonces <m>ax_1 = b = ax_2</m>. Luego <m>x_1 = a^{-1}ax_1 = a^{-1}ax_2 = x_2</m>. La demostración de la existencia y unicidad de la solución de  <m>xa = b</m> es similar.</p>
+					<p>Para demostrar a unicidade, suponhamos que <m>x_1</m> e <m>x_2</m> são ambas soluções de <m>ax = b</m>; então <m>ax_1 = b = ax_2</m>. Logo <m>x_1 = a^{-1}ax_1 = a^{-1}ax_2 = x_2</m>. A demostração da existência e unicidade da solução de  <m>xa = b</m> é similar.</p>
 				</proof>
 			</proposition>
 	 
 			<proposition>
 				<statement>
-					<p>Si <m>G</m> es un grupo y <m>a, b, c \in G</m>, entonces <m>ba = ca</m> implica <m>b = c</m> y <m>ab = ac</m> implica <m>b = c</m>.</p>
+					<p>Se <m>G</m> é un grupo e <m>a, b, c \in G</m>, então <m>ba = ca</m> implica <m>b = c</m> y <m>ab = ac</m> implica <m>b = c</m>.</p>
 				</statement>
 			</proposition>
 
-			<p>Esta proposición nos dice que las <term>leyes de cancelación derecha e izquierda</term><idx><h>Ley de cancelación</h><h>para grupos</h></idx> se cumple para grupos.  Dejamos la demostración como ejercicio.</p>
+			<p>Esta proposição nos diz que as <term>leis de cancelamento à direita e esquerda</term><idx><h>Lei de cancelamento</h><h>para grupos</h></idx> se cumpre para grupos.  Deixamos a demostração como exercício.</p>
 	 
-			<p>Podemos utilizar la notación exponencial en grupos de la forma en que estamos acostumbrados. Si <m>G</m> es un grupo y <m>g \in G</m>, definimos <m>g^0 = e</m>. Para <m>n \in {\mathbb N}</m>, definimos 
+			<p>Podemos utilizar a notação exponencial em grupos da forma em que estamos acostumados. Se <m>G</m> é um grupo e <m>g \in G</m>, definimos <m>g^0 = e</m>. Para <m>n \in {\mathbb N}</m>, definimos 
 			<me>g^n = \underbrace{g \cdot g \cdots g}_{n \; \text{veces}} </me> 
 			y
 			<me>g^{-n} = \underbrace{g^{-1} \cdot g^{-1} \cdots g^{-1}}_{n \; \text{veces}}.</me></p>
 	 
 			<theorem xml:id="theorem-exponent-laws">
 				<statement>
-					<p>En un grupo, se cumplen las reglas usuales de los exponentes; es decir, para todo  <m>g, h \in G</m>, 
+					<p>Em um grupo, se cumprem aas regras usuais dos expoentes; isto é, para todo  <m>g, h \in G</m>, 
 						<ol>
 							<li><p><m>g^mg^n = g^{m+n}</m> para todo <m>m, n \in {\mathbb Z}</m>;</p></li>
 							<li><p><m>(g^m)^n = g^{mn}</m> para todo <m>m, n \in {\mathbb Z}</m>;</p></li>
-							<li><p><m>(gh)^n = (h^{-1}g^{-1})^{-n}</m> para todo <m>n \in {\mathbb Z}</m>. Más aún, si <m>G</m> es abeliano, entonces <m>(gh)^n = g^nh^n</m>.</p></li>
+							<li><p><m>(gh)^n = (h^{-1}g^{-1})^{-n}</m> para todo <m>n \in {\mathbb Z}</m>. Além disso, se <m>G</m> é abeliano, então <m>(gh)^n = g^nh^n</m>.</p></li>
 						</ol></p>
 				</statement> 
 			</theorem>
 	 
-				<p>Dejaremos la demostración de este teorema como un ejercicio. Note que <m>(gh)^n \neq g^nh^n</m> en general, pues el grupo puede no ser abeliano. Si el grupo es <m>{\mathbb Z}</m> o <m>{\mathbb Z}_n</m>, escribiremos la operación del grupo de forma aditiva y la operación exponencial como multiplicación; es decir, escribimos <m>ng</m> en lugar de <m>g^n</m>. Las leyes de los exponentes ahora son 
+				<p>Deixaremos a demostração desse teorema como um exercício. Note que <m>(gh)^n \neq g^nh^n</m> em general, pois o grupo pode não ser abeliano. Se o grupo é <m>{\mathbb Z}</m> o <m>{\mathbb Z}_n</m>, escreveremos a operação do grupo de forma aditiva e a operação exponencial como multiplicação; isto é, escrevemos <m>ng</m> no lugar de <m>g^n</m>. As leis dos expoentes agora são 
 				<ol>
 		 			<li><p><m>mg + ng = (m+n)g</m> para todo <m>m, n \in {\mathbb Z}</m>;</p></li>
 		 			<li><p><m>m(ng) = (mn)g</m> para todo <m>m, n \in {\mathbb Z}</m>;</p></li>
 		 			<li><p><m>m(g + h) = mg + mh</m> para todo <m>n \in {\mathbb Z}</m>.</p></li>
 		 		</ol></p>
 
-			<p>Es importante notar que esto solo es posible dado que <m>{\mathbb Z}</m> y  <m>{\mathbb Z}_n</m> son grupos conmutativos.</p>
+			<p>É importante notar que isso só é possível dado que <m>{\mathbb Z}</m> e  <m>{\mathbb Z}_n</m> são grupos comutativos.</p>
 	 
 		</subsection>
 
 		<subsection xml:id="groups-subsection-historical-note">
 			<title>Nota Histórica</title>
 
-			<p>Si bien la primera definición axiomática clara de grupo recién fue dada a finales del siglo XIX, los métodos de teoría de grupos ya habían sido usados anteriormente en el desarrollo de muchas áreas de las matemáticas, incluyendo la geometría y la teoría de ecuaciones algebraicas.</p>
+			<p>Embora a primeira definição axiomática clara de um grupo só tenha sido dada no final do século XIX, os métodos de teoria dos grupos tinham sido utilizados anteriormente no desenvolvimento de muitas áreas da matemática, incluindo a geometria e a teoria das equações algébricas.</p>
 
-			<p>Joseph-Louis Lagrange<idx><h>Lagrange, Joseph-Louis</h></idx> usó teoría de grupos en una memoria de 1770<ndash />1771 para estudiar métodos de resolución de ecuaciones polinomiales.  Más tarde, Évariste Galois<idx><h>Galois, Évariste</h></idx> (1811<ndash />1832) desarrolló con éxito las matemáticas necesarias para determinar exactamente cuáles ecuaciones polinomiales podían ser resueltas en términos de los coeficientes del polinomio en cuestión. La herramienta principal que usó Galois fue la teoría de grupos.</p>
+			<p>Joseph-Louis Lagrange<idx><h>Lagrange, Joseph-Louis</h></idx> utilizou a teoria do grupo numa memória de 1770<ndash />1771 para estudar métodos de resolução de equações polinomiais.  Mais tarde, Évariste Galois<idx><h>Galois, Évariste</h></idx> (1811<ndash />1832) desenvolveu com sucesso a matemática necessária para determinar exatamente quais as equações polinomiais que poderiam ser resolvidas em termos dos coeficientes do polinómio em questão. A principal ferramenta utilizada por Galois foi a teoria de grupos.</p>
 
-			<p>El estudio de la geometría sufrió cambios revolucionarios en 1872 cuando Felix Klein<idx><h>Klein, Felix</h></idx> propuso que los espacios geométricos debían ser estudiados examinandos aquellas propiedades que son invariantes bajo una trasformación del espacio. Sophus Lie<idx><h>Lie, Sophus</h></idx>, coetáneo de Klein, usó teoría de grupos para estudiar las soluciones de ecuaciones diferenciales parciales.  Uno de los primeros libros en tratar la teoría de grupos en forma moderna es el de William Burnside<idx><h>Burnside, William</h></idx> <booktitle>The Theory of Groups of Finite Order</booktitle> [1], publicado originalmente en 1897.</p>
+			<p>O estudo da geometria sofreu mudanças revolucionárias em 1872 quando Felix Klein<idx><h>Klein, Felix</h></idx> propôs que os espaços geométricos deveriam ser estudados examinando as propriedades invariantes sob uma transformação do espaço. Sophus Lie<idx><h>Lie, Sophus</h></idx>, um contemporâneo de Klein, utilizou a teoria de grupos para estudar as soluções de equações diferenciais parciais.  Um dos primeiros livros a tratar a teoria de grupos na forma moderna é William Burnside<idx><h>Burnside, William</h></idx> <booktitle> The Theory of Groups of Finite Order</booktitle> [1], publicado originalmente em 1897.</p>
 		</subsection>
 
 	</section>
@@ -564,39 +564,39 @@
 		<title>Subgrupos</title>
 
 		<subsection xml:id="groups-subsection-subgroup-examples">
-			<title>Definiciones y Ejemplos</title>
+			<title>Definições e Exemplos</title>
  
-			<p>En ocasiones necesitaremos estudiar grupos más pequeños dentro de un grupo mayor.   El conjunto de los enteros pares <m>2{\mathbb Z} = \{\ldots, -2, 0, 2, 4, \ldots \}</m> es un grupo bajo la operación de adición. Este grupo está naturalmente contenido en el grupo de enteros bajo adición.  Definimos un <term>subgrupo</term><idx><h>Subgrupo</h><h>definición de</h></idx> <m>H</m> de un grupo <m>G</m> como un subconjunto <m>H</m> de <m>G</m> tal que con la operación de <m>G</m> restringida a <m>H</m>, <m>H</m> es un grupo. Observe que todo grupo <m>G</m> con al menos dos elementos siempre tiene al menos dos subgrupos, el subgrupo que consiste únicamente del elemento identidad y el grupo completo. El subgrupo <m>H = \{ e \}</m> de un grupo <m>G</m> se llama <term>subgrupo trivial</term><idx><h>Trivial</h><h>subgrupo</h></idx>.  Un subgrupo que es un subconjunto propio de <m>G</m> se llama <term>subgrupo propio</term><idx><h>Propio</h><h>subgrupo</h></idx>. En muchos de los ejemplos que hemos considerado hasta ahora, existen otros subgrupos aparte de los subgrupos trivial e impropio.</p>
+			<p>Por vezes teremos de estudar grupos menores dentro de um grupo maior. O conjunto de números inteiros pares <m>2{\mathbb Z} = \{\ldots, -2, 0, 2, 4, \ldots \}</m> é um grupo sob a operação de adição. Este grupo está naturalmente contido no grupo de inteiros sob adição.  Definimos um <term>subgrupo</term><idx><h>Subgrupo</h><h>definição de</h></idx> <m>H</m> de um grupo <m>G</m> como um subconjunto <m>H</m> de <m>G</m> tal que com a operação de <m>G</m> restrita a <m>H</m>, <m>H</m> é um grupo. Nota-se que qualquer grupo <m>G</m> com pelo menos dois elementos tem sempre pelo menos dois subgrupos, o subgrupo que consiste apenas no elemento de identidade e o grupo completo. O subgrupo <m>H = { e \}</m> de um grupo <m>G</m> chama-se <term>subgrupo trivial</term><idx><h>Trivial</h><h>subgrupo</h></idx>.  Um sub-grupo que é um subconjunto próprio de <m>G</m> chama-se <term>subgrupo próprio</term><idx><h>Próprio</h><h>subgrupo</h></idx>. Em muitos dos exemplos que consideramos até agora, existem subgrupos para além dos subgrupos triviais e impróprios.</p>
  
 			<example xml:id="example-groups-multiplicative-subgroup">
-				<p>Considere el conjunto de los números reales no nulos, <m>{\mathbb R}^*</m>, con la operación de multiplicación para formar un grupo. <notation><usage>\mathbb R^*</usage><description>el grupo multiplicativo de los números reales</description></notation> La identidad de este grupo es 1 y el inverso de cualquier elemento  <m>a \in {\mathbb R}^*</m> es simplemente <m>1/a</m>. Mostraremos que
-					<me>{\mathbb Q}^* = \{ p/q : p \, {\rm y }\, q\, {\rm son\, enteros\, no\, nulos} \}</me>
-				es un subgrupo de <m>{\mathbb R}^*</m>. <notation><usage>\mathbb Q^*</usage><description>el grupo multiplicativo de los números racionales</description></notation> La identidad de <m>{\mathbb R}^*</m> es 1; sin embargo,  <m>1 = 1/1</m> es el cociente de dos enteros no nulos. Por lo tanto, la identidad de <m>{\mathbb R}^*</m> está en <m>{\mathbb Q}^*</m>. Dados dos elementos en <m>{\mathbb Q}^*</m>, digamos <m>p/q</m> y <m>r/s</m>, su producto <m>pr/qs</m> también está en <m>{\mathbb Q}^*</m>. El inverso de cualquier elemento <m>p/q \in {\mathbb Q}^*</m> está nuevamente en <m>{\mathbb Q}^*</m> pues <m>(p/q)^{-1} = q/p</m>. Como la multiplicación en <m>{\mathbb R}^*</m> es asociativa, multiplicación en <m>{\mathbb Q}^*</m> es asociativa. </p> 
+				<p>Considere o conjunto dos números reais não nulos, <m>{\mathbb R}^*</m>, com a operação de multiplicação para formar um grupo. <notation><usage>\mathbb R^*</usage><description>o grupo multiplicativo dos números reais</description></notation> A identidade desse grupo é 1 e o inverso de qualquer elemento  <m>a \in {\mathbb R}^*</m> é simplesmente <m>1/a</m>. Mostraremos que
+					<me>{\mathbb Q}^* = \{ p/q : p \, {\rm y }\, q\, {\rm são\, inteiros\, não\, nulos} \}</me>
+				é um subgrupo de <m>{\mathbb R}^*</m>. <notation><usage>\mathbb Q^*</usage><description>o grupo multiplicativo dos números racionais</description></notation> A identidad de <m>{\mathbb R}^*</m> é 1; no entanto,  <m>1 = 1/1</m> é o quociente de dois inteiros não nulos. Portanto, a identidade de <m>{\mathbb R}^*</m> está em <m>{\mathbb Q}^*</m>. Dados dois elementos em <m>{\mathbb Q}^*</m>, digamos <m>p/q</m> e <m>r/s</m>, seu produto <m>pr/qs</m> também está em <m>{\mathbb Q}^*</m>. O inverso de qualquer elemento <m>p/q \in {\mathbb Q}^*</m> está novamente em <m>{\mathbb Q}^*</m> pois <m>(p/q)^{-1} = q/p</m>. Como a multiplicação em <m>{\mathbb R}^*</m> é associativa, multiplicação em <m>{\mathbb Q}^*</m> é associativa. </p> 
 			</example>
  
 			<example xml:id="example-groups-subgroup-h">
-				<p>Recuerde que <m>{\mathbb C}^{\ast}</m>  es el grupo multiplicativo de los números complejo no nulos. Sea <m>H = \{ 1, -1, i, -i \}</m>. Entonces <m>H</m> es un subgrupo de <m>{\mathbb C}^{\ast}</m>. Es fácil verificar que <m>H</m> es un grupo con la operación de multiplicación y que <m>H \subset {\mathbb C}^{\ast}</m>.</p>
+				<p>Lembre-se que <m>{\mathbb C}^{\ast}</m>  é o grupo multiplicativo dos números complexo não nulos. Seja <m>H = \{ 1, -1, i, -i \}</m>. Então <m>H</m> é um subgrupo de <m>{\mathbb C}^{\ast}</m>. É fácil verificar que <m>H</m> é um grupo com a operação de multiplicação e que <m>H \subset {\mathbb C}^{\ast}</m>.</p>
 			</example>
  
 			<example xml:id="example-groups-sl2">
-				<p>Sea <m>SL_2( {\mathbb R})</m> el subconjunto de <m>GL_2( {\mathbb R })</m> que contiene las matrices de determinante uno; es decir, una matriz <notation><usage>SL_n(\mathbb R)</usage><description>el grupo lineal especial</description></notation>
+				<p>Seja <m>SL_2( {\mathbb R})</m> o subconjunto de <m>GL_2( {\mathbb R })</m> que contém as matrizes de determinante um; isto é, uma matriz <notation><usage>SL_n(\mathbb R)</usage><description>o grupo linear especial</description></notation>
 					<me>A =
 					\begin{pmatrix}<![CDATA[
 					a & b \\
 					c & d
 					]]>\end{pmatrix}</me>
-					está en <m>SL_2( {\mathbb R})</m> precisamente cuando <m>ad - bc = 1</m>. Para mostrar que <m>SL_2( {\mathbb R})</m> es un subgrupo del grupo lineal general, debemos demostrar que también es un grupo con la operación de multiplicación de matrices.  La matriz identidad de <m>2 \times 2</m> está en <m>SL_2( {\mathbb R})</m>, así como la inversa de la matriz <m>A</m>:  
+					está em <m>SL_2( {\mathbb R})</m> precisamente quando <m>ad - bc = 1</m>. Para mostrar que <m>SL_2( {\mathbb R})</m> é um subgrupo do grupo linear general, devemos demonstrar que também é um grupo com a operação de multiplicação de matrizes.  A matriz identidade de <m>2 \times 2</m> está em <m>SL_2( {\mathbb R})</m>, assim como a inversa da matriz <m>A</m>:  
 					<me>A^{-1} =
 				\begin{pmatrix}<![CDATA[
 				d  & -b \\
 				-c &  a
 				]]>\end{pmatrix}.</me>
-				Falta mostrar que la multiplicación es cerrada; es decir, que el producto de dos matrices de determinante uno también tiene determinante uno. Dejaremos esta tarea como ejercicio. El grupo <m>SL_2({\mathbb R})</m> se llama  <term>grupo lineal especial</term><idx><h>Lineal especial</h><h>grupo</h></idx>.</p>
+				Falta mostrar que a multiplicação é fechada; isto é, que o produto de duas matrizes de determinante um também tem determinante um. Deixaremos esta tarefa como exercício. O grupo <m>SL_2({\mathbb R})</m> se chama  <term>grupo linear especial</term><idx><h>Linear especial</h><h>grupo</h></idx>.</p>
 			</example>
  
  
 			<example xml:id="example-groups-gl2-subgroup">
-				<p>Es importante notar que un subconjunto <m>H</m> de un grupo <m>G</m> puede ser un grupo sin ser un subgrupo de <m>G</m>. Para que <m>H</m> sea un subgrupo de <m>G</m> debe heredar la operación binaria de <m>G</m>.  El conjunto de todas las matrices de <m>2 \times 2</m>, <m>{\mathbb M}_2(\mathbb R)</m>, forma un grupo con la operación de adición. El grupo lineal general <m>GL_2( {\mathbb R})</m> es un subconjunto de <m>{\mathbb M}_2(\mathbb R)</m> y es un grupo con la operación de multiplicación de matrices, pero no es un subgrupo de <m>{\mathbb M}_2(\mathbb R)</m>.  Si sumamos dos matrices invertibles no necesariamente obtendremos otra matriz invertible. Observe que<me>
+				<p>É importante notar que um subconjunto <m>H</m> de um grupo <m>G</m> pode ser um grupo sem ser um subgrupo de <m>G</m>. Para que <m>H</m> seja um subgrupo de <m>G</m> deve herdar a operação binária de <m>G</m>.  O conjunto de todas as matrizes de <m>2 \times 2</m>, <m>{\mathbb M}_2(\mathbb R)</m>, forma um grupo com a operação de adição. O grupo linear general <m>GL_2( {\mathbb R})</m> é um subconjunto de <m>{\mathbb M}_2(\mathbb R)</m> e é um grupo com a operação de multiplicação de matrizes, mas não é um subgrupo de <m>{\mathbb M}_2(\mathbb R)</m>.  Se somamos duas matrizes invertíveis não necessariamente obteremos outra matriz invertível. Observe que<me>
 				\begin{pmatrix}<![CDATA[
 				1 & 0 \\
 				0 & 1
@@ -612,15 +612,15 @@
 				0 & 0
 				]]>\end{pmatrix},
 				</me>
-				pero la matriz cero no está en <m>GL_2( {\mathbb R })</m>.</p>
+				mas a matriz zero não está em <m>GL_2( {\mathbb R })</m>.</p>
 			</example>
  
 			<example xml:id="example-groups-z2xz2">
-				<p>Una manera de saber si dos grupos son el mismo grupo, es examinando sus subgrupos.  Aparte del subgrupo trivial y del grupo mismo, el grupo <m>{\mathbb Z}_4</m> tiene exactamente un subgrupo adicional que consiste de los elementos 0 y 2. A partir del grupo <m>{\mathbb Z}_2</m>, podemos formar otro grupo de cuatro elementos como sigue.  Como conjunto, este grupo es <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>. Realizamos las operaciones coordenada a coordenada; es decir, <m>(a,b) + (c,d) = (a+c, b+d)</m>. El Cuadro<nbsp /><xref ref="table-z2xz2" /> es una tabla de sumas para <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>. Como hay tres subgrupos propios no triviales de  <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>, <m>H_1 = \{ (0,0), (0,1) \}</m>, <m>H_2 = \{ (0,0), (1,0) \}</m>, y <m>H_3 = \{ (0,0), (1,1) \}</m>, <m>{\mathbb Z}_4</m> y <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> deben ser grupos diferentes.</p>
+				<p>Uma maneira de saber se dois grupos são o mesmo grupo, é examinando seus subgrupos.  Para além do subgrupo trivial e do próprio grupo, o grupo <m>{\mathbb Z}_4</m> tem exatamente um subgrupo adicional que consiste dos elementos 0 e 2. A partir do grupo <m>{\mathbb Z}_2</m>, podemos formar outro grupo de quatro elementos como segue.  Como conjunto, este grupo é <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>. Realizamos as operações coordenada a coordenada; isto é, <m>(a,b) + (c,d) = (a+c, b+d)</m>. O Quadro<nbsp /><xref ref="table-z2xz2" /> é uma tabela de somas para <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>. Como há três subgrupos próprios não triviais de  <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>, <m>H_1 = \{ (0,0), (0,1) \}</m>, <m>H_2 = \{ (0,0), (1,0) \}</m>, y <m>H_3 = \{ (0,0), (1,1) \}</m>, <m>{\mathbb Z}_4</m> y <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> devem ser grupos diferentes.</p>
 			</example>
 
 			<table xml:id="table-z2xz2"> <!-- math table -->
-				<caption>Tabla de sumas para <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m></caption>
+				<caption>Tabela de somas para <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m></caption>
 
 				<p><me>\begin{array}{c|cccc}
 				<![CDATA[+     & (0,0) & (0,1) & (1,0) & (1,1) \\
@@ -636,35 +636,35 @@
 		</subsection>
 
 		<subsection xml:id="groups-subsection-subgroup-theorems">
-			<title>Algunos Teoremas para Subgrupos</title>
+			<title>Alguns Teoremas para Subgrupos</title>
  
-			<p>Examinemos algunos criterios para determinar exactamente cuándo un subconjunto de un  grupo es un subgrupo.</p>
+			<p>Examinemos alguns critérios para determinar exatamente quando um subconjunto de um  grupo é um subgrupo.</p>
 
 			<proposition>
 				<statement>
-					<p>Un subconjunto <m>H</m> de <m>G</m> es un subgrupo si y solo si satiface las siguientes condiciones. <ol> 
-						<li><p>La identidad  <m>e</m> de <m>G</m> está en <m>H</m>.</p></li>
-						<li><p>Si <m>h_1, h_2 \in H</m>, entonces <m>h_1h_2 \in H</m>.</p></li>
-						<li><p>Si <m>h \in H</m>, entonces <m>h^{-1} \in H</m>.</p></li>
+					<p>Um subconjunto <m>H</m> de <m>G</m> é um subgrupo se e somente se satifaz as seguintes condições. <ol> 
+						<li><p>A identidade  <m>e</m> de <m>G</m> está em <m>H</m>.</p></li>
+						<li><p>Se <m>h_1, h_2 \in H</m>, então <m>h_1h_2 \in H</m>.</p></li>
+						<li><p>Se <m>h \in H</m>, então <m>h^{-1} \in H</m>.</p></li>
 					</ol></p>
 				</statement> 
 
 				<proof>
-					<p> Primero supongamos que <m>H</m> es un subgrupo de <m>G</m>.  Debemos mostrar que se cumplen las tres condiciones. Como <m>H</m> es un grupo, debe tener una identidad <m>e_H</m>.  Debemos demostrar que <m>e_H = e</m>, donde <m>e</m> es la identidad de <m>G</m>. Sabemos que <m>e_H e_H = e_H</m> y que  <m>ee_H = e_H e = e_H</m>; por lo tanto, <m>ee_H = e_H e_H</m>.  Por cancelación a la derecha, <m>e =e_H</m>.  La segunda condición se cumple pues un subgrupo de <m>H</m> es un grupo.  Para demostrar la tercera condición, sea <m>h \in H</m>.  Como <m>H</m> es un grupo, hay un elemento <m>h' \in H</m> tal que <m>hh' = h'h = e</m>.  Por la unicidad del inverso en <m>G</m>, <m>h' = h^{-1}</m>.</p>
+					<p> Primero suponhamos que <m>H</m> é um subgrupo de <m>G</m>.  Devemos mostrar que se cumprem as três condições. Como <m>H</m> é um grupo, deve haver uma identidade <m>e_H</m>.  Devemos demonstrar que <m>e_H = e</m>, onde <m>e</m> é a identidade de <m>G</m>. Sabemos que <m>e_H e_H = e_H</m> e que  <m>ee_H = e_H e = e_H</m>; portanto, <m>ee_H = e_H e_H</m>.  Por cancelamento à direita, <m>e =e_H</m>.  A segunda condição se cumpre pois um subgrupo de <m>H</m> é um grupo.  Para demonstrar a terceira condição, seja <m>h \in H</m>.  Como <m>H</m> é um grupo, há um elemento <m>h' \in H</m> tal que <m>hh' = h'h = e</m>.  Pela unicidade do inverso em <m>G</m>, <m>h' = h^{-1}</m>.</p>
 
-					<p>Recíprocamente, si se cumplen la tres condiciones, debemos demostrar que <m>H</m> es un grupo con la misma operación que <m>G</m>; pero, estas tres condiciones más la asociatividad de la operación binaria son exactamente las condiciones de la definición de grupo.</p>
+					<p>Recíprocamente, se se cumprem as três condições, devemos demonstrar que <m>H</m> é um grupo com a mesma operação que <m>G</m>; mas, estas três condições mais a associatividade da operação binária são exatamente as condições da definição de grupo.</p>
 				</proof> 
 			</proposition>
 			 
 			<proposition xml:id="proposition-subgroup">
 				<statement>
-					<p>Sea <m>H</m> un subconjunto de un grupo <m>G</m>.  Entonces <m>H</m> es un subgrupo de  <m>G</m> si y solo si <m>H \neq \emptyset</m>, y para todo <m>g, h \in H</m> se tiene que <m>gh^{-1}</m> está en <m>H</m>.</p>
+					<p>Seja <m>H</m> um subconjunto de um grupo <m>G</m>.  Então <m>H</m> é um subgrupo de  <m>G</m> se e somente se <m>H \neq \emptyset</m>, e para todo <m>g, h \in H</m> se tem que <m>gh^{-1}</m> está em <m>H</m>.</p>
 				</statement>
 
 				<proof>
-					<p>Supongamos primero que <m>H</m> es un subgrupo de <m>G</m>.  Queremos mostrar que <m>gh^{-1} \in H</m> cada vez que <m>g</m> y <m>h</m> están en <m>H</m>.  Como <m>h</m> está en <m>H</m>, su inverso <m>h^{-1}</m> también debe estar en <m>H</m>.  Por la clausura de la operación de grupo, <m>gh^{-1} \in H</m>.</p>
+					<p>Suponhamos primero que <m>H</m> é um subgrupo de <m>G</m>.  Queremos mostrar que <m>gh^{-1} \in H</m> cada vez que <m>g</m> e <m>h</m> estão em <m>H</m>.  Como <m>h</m> está em <m>H</m>, seu inverso <m>h^{-1}</m> também deve estar em <m>H</m>.  Pela operação de grupo, <m>gh^{-1} \in H</m>.</p>
 
-					<p>Recíprocamente, supongamos que <m>H \subset G</m> tal que <m>H \neq \emptyset</m> y  <m>g h^{-1} \in H</m> cada vez que <m>g, h \in H</m>.  Si <m>g \in H</m>, entonces <m>gg^{-1} = e</m> está en <m>H</m>.  Si <m>g \in H</m>, entonces <m>eg^{-1} = g^{-1}</m> también está en <m>H</m>. Sean ahora <m>h_1, h_2 \in H</m>. Debemos demostrar que su producto está también en <m>H</m>.  pero, <m>h_1(h_2^{-1})^{-1} = h_1 h_2 \in H</m>.  Luego, <m>H</m> es un subgrupo de <m>G</m>.</p>
+					<p>Recíprocamente, suponhamos que <m>H \subset G</m> tal que <m>H \neq \emptyset</m> e  <m>g h^{-1} \in H</m> cada vez que <m>g, h \in H</m>.  Se <m>g \in H</m>, então <m>gg^{-1} = e</m> está em <m>H</m>.  Se <m>g \in H</m>, então <m>eg^{-1} = g^{-1}</m> também está em <m>H</m>. Sejam agora <m>h_1, h_2 \in H</m>. Devemos demonstrar que seu produto está também em <m>H</m>.  Mas, <m>h_1(h_2^{-1})^{-1} = h_1 h_2 \in H</m>.  Logo, <m>H</m> é um subgrupo de <m>G</m>.</p>
 				</proof>
 			</proposition>
 
@@ -681,7 +681,7 @@
  	<xi:include href="./exercises/groups.xml" />
  	
 	<exercises xml:id="groups-exercises-detecting-errors">
-		<title>Ejercicios Adicionales: Detectando Errores</title>
+		<title>Exercícios Adicionais: Detectando Error</title>
 
 <!--EXERCISE GROUP
 
@@ -702,15 +702,15 @@
 			<title>Códigos <acro>UPC</acro></title>
 
 			<statement>
-				<p>El Código Universal de Productos<idx><h>Código Universal de Productos</h></idx> (<acro>UPC</acro> por su sigla en inglés) se encuentra en la mayoría de los productos de supermercados y tiendas del retail. El <acro>UPC</acro> es un código de 12 dígitos que identifica al fabricante de un producto y al producto mismo (Figura<nbsp /><xref ref="figure-upc-codes" />). Los primeros 11 dígitos contienen información sobre el producto; el último dígito se usa para la detección de errores. Si <m>d_1 d_2 \cdots d_{12}</m> es un número <acro>UPC</acro> válido, entonces
+				<p>O Código Universal de Produtos<idx><h>Código Universal de Produtos</h></idx> (<acro>UPC</acro> com sua sigla em inglês) se encontra na maioria dos produtos de supermercados e lojas de varejo. O <acro>UPC</acro> é um código de 12 dígitos que identifica o fabricante de um produto e o produto mesmo (Figura<nbsp /><xref ref="figure-upc-codes" />). Os primeiros 11 dígitos contém informação sobre o produto; o último dígito se usa para a detecção de error. Se <m>d_1 d_2 \cdots d_{12}</m> é um número <acro>UPC</acro> válido, então
 				<me>3 \cdot d_1 + 1 \cdot d_2 + 3 \cdot d_3 + \cdots + 3 \cdot d_{11} + 1 \cdot d_{12} \equiv 0 \pmod{10}.</me>
 				<ol> 
-					<li><p>Muestre que el número <acro>UPC</acro> 0-50000-30042-6, que aparece en la Figura<nbsp /><xref ref="figure-upc-codes" />, es un número <acro>UPC</acro> válido.</p></li>
-					<li><p>Muestre que el número 0-50000-30043-6 no es un número <acro>UPC</acro> válido.</p></li>
-					<li><p>Escriba una fórmula para calcular el dígito verificador, <m>d_{12}</m>, de un número <acro>UPC</acro>.</p></li>
-					<li><p>El método de detección de errores del <acro>UPC</acro> puede detectar la mayor parte de los errores de transposición; es decir, puede tereminar si dos dígitos fueron intercambiados.  Muestre que el error de transposición 0-05000-30042-6 no es detectado.  Encuentre un error de transposición que sí sea detectado. ¿Puede encontrar una regla general sobre cuáles son los errores de transposición que son detectados? </p></li>
+					<li><p>Mostre que o número <acro>UPC</acro> 0-50000-30042-6, que aparece na Figura<nbsp /><xref ref="figure-upc-codes" />, é um número <acro>UPC</acro> válido.</p></li>
+					<li><p>Mostre que o número 0-50000-30043-6 não é um número <acro>UPC</acro> válido.</p></li>
+					<li><p>Escreva uma fórmula para calcular o dígito verificador, <m>d_{12}</m>, de um número <acro>UPC</acro>.</p></li>
+					<li><p>O método de detecção de erros do <acro>UPC</acro> pode detectar la maior parte dos erros de transposição; isto é, pode determinar se dois dígitos foram trocados.  Mostre que o erro de transposição 0-05000-30042-6 não é detectado.  Encontre um erro de transposição que sim seja detectado. Pode encontrar uma regra general sobre quais são os erros de transposição que são detectados? </p></li>
 					<!-- % Corrected exercise. Suggested by John Watterlond. TWJ 8/24/2011 -->
-					<li><p>Escriba un programa que determina si un número <acro>UPC</acro> es válido.</p></li>
+					<li><p>Escreva um programa que determina se um número <acro>UPC</acro> é válido.</p></li>
 				</ol>
 				</p>
 				<figure xml:id="figure-upc-codes">
@@ -723,18 +723,18 @@
 
 		<exercise>
 			<statement>
-				<p>Con frecuencia es útil usar la notación de producto interno para este método de detección de errores; de manera que usaremos la notación
+				<p>É frequentemente útil utilizar a notação de produto interno para este método de detecção de erros; por isso, utilizaremos a notação
 					<me>(d_1, d_2, \ldots, d_k ) \cdot (w_1, w_2, \ldots, w_k ) \equiv 0 \pmod{ n }</me>
-				para decir que
+				para dizer que
 					<me>d_1 w_1 +  d_2 w_2 + \cdots +  d_k w_k  \equiv 0  \pmod{ n}.</me></p>
 
-				<p>Supongamos que <m>(d_1, d_2, \ldots, d_k ) \cdot (w_1, w_2, \ldots, w_k ) \equiv 0 \pmod{ n}</m> es un método de detección de errores para el número de identificación de <m>k</m> dígitos <m>d_1 d_2 \cdots d_k</m>, donde <m>0 \leq d_i \lt n</m>.  Demuestre que todos los errores en un solo dígito son detectados si y solo si <m>\gcd( w_i, n ) = 1</m> para  <m>1 \leq i \leq k</m>.</p>
+				<p>Suponhamos que <m>(d_1, d_2, \ldots, d_k ) \cdot (w_1, w_2, \ldots, w_k ) \equiv 0 \pmod{ n}</m> é um método de detecção de erros para o número de identificação de <m>k</m> dígitos <m>d_1 d_2 \cdots d_k</m>, onde <m>0 \leq d_i \lt n</m>.  Demonstre que todos os erros em um só dígito são detectados se e somente se <m>\gcd( w_i, n ) = 1</m> para  <m>1 \leq i \leq k</m>.</p>
 			</statement>
 		</exercise>
 
 		<exercise>
 			<statement>
-				<p>Sea <m>(d_1, d_2, \ldots, d_k ) \cdot (w_1, w_2, \ldots, w_k ) \equiv 0 \pmod{ n}</m> un método de detección de errores para el número de identificación de <m>k</m> dígitos <m>d_1 d_2 \cdots d_k</m>, donde <m>0 \leq d_i \lt n</m>.  Demuestre que todas las transposiciones de dos dígitos <m>d_i</m> y <m>d_j</m> son detectadas si y solo si <m>\gcd( w_i - w_j, n ) = 1</m> para <m>i</m> y  <m>j</m> entre 1 y <m>k</m>.</p>
+				<p>Seja <m>(d_1, d_2, \ldots, d_k ) \cdot (w_1, w_2, \ldots, w_k ) \equiv 0 \pmod{ n}</m> um método de detecção de erros para o número de identificação de <m>k</m> dígitos <m>d_1 d_2 \cdots d_k</m>, onde <m>0 \leq d_i \lt n</m>.  Demonstre que todas as transposições de dois dígitos <m>d_i</m> e <m>d_j</m> são detectadas se e somente se <m>\gcd( w_i - w_j, n ) = 1</m> para <m>i</m> e  <m>j</m> entre 1 e <m>k</m>.</p>
 			</statement>
 		</exercise>
 
@@ -742,19 +742,19 @@
 			<title>Códigos <acro>ISBN</acro></title>
 
 			<statement>
-				<p>Todo libro tiene un International Standard Book Number<idx><h>International standard book number</h></idx> (<acro>ISBN</acro>).  Este es un código de 10 dígitos que indica la editorial y el título del libro.  El décimo dígito es un dígito verificador que satisface 
+				<p>Cada livro tem um International Standard Book Number<idx><h>International standard book number</h></idx> (<acro>ISBN</acro>). Este é um código de 10 dígitos que indica a editora e o título do livro.  O décimo dígito é um dígito verificador que satisfaz
 					<me>(d_1, d_2, \ldots, d_{10} ) \cdot (10, 9, \ldots, 1 )  \equiv 0 \pmod{11}.</me>
-				Un problema es que <m>d_{10}</m> puede tener que ser 10 para que el producto interno sea cero; en ese caso, se requieren 11 dígitos para que funcione el método.  Por lo tanto se usa una X como undécimo dígito para representar el 10.  Así el <acro>ISBN</acro> 3-540-96035-X es un código <acro>ISBN</acro> válido. <ol>
+				Um problema é que <m>d_{10}</m> pode ter de ser 10 para que o produto interior seja zero; nesse caso, são necessários 11 dígitos para que o método funcione.  Assim, um X é utilizado como décimo primeiro dígito para representar o 10. Assim o <acro>ISBN</acro> 3-540-96035-X é um código <acro>ISBN</acro> válido. <ol>
 	 
-		 			<li><p>¿Es el <acro>ISBN</acro> 0-534-91500-0 un código <acro>ISBN</acro> válido?  ¿Y el <acro>ISBN</acro> 0-534-91700-0 o el <acro>ISBN</acro> 0-534-19500-0?</p></li>
+		 			<li><p>É <acro>ISBN</acro> 0-534-91500-0 um código <acro>ISBN</acro> válido?  E é <acro>ISBN</acro> 0-534-91700-0 ou o <acro>ISBN</acro> 0-534-19500-0?</p></li>
 
-		 			<li><p>¿Sirve este método para detectar todos los errores en un solo dígito?  ¿y todos los errores de transposición?</p></li>
+		 			<li><p>Este método serve para detectar todos os erros em um só dígito?  E todos os erros de transposição?</p></li>
 
-		 			<li><p>¿Cuántos códigos <acro>ISBN</acro> diferentes hay?</p></li>
+		 			<li><p>Quantos códigos <acro>ISBN</acro> diferentes existem?</p></li>
 
-		 			<li><p>Escriba un programa que permita calcular el dígito verificador para los primeros nueve dígitos de un código <acro>ISBN</acro>.</p></li>
+		 			<li><p>Escreva um programa que permita calcular o dígito verificador para os primeiros nove dígitos de um código <acro>ISBN</acro>.</p></li>
 
-					<li><p>Una editorial tiene sedes en Alemania y Estados Unidos.  Su prefijo alemán es 3-540.  Si su prefijo en Estados Unidos es 0-<c>abc</c>, encuentre <c>abc</c> tal que el resto del código <acro>ISBN</acro> sea el mismo para un libro impreso en Alemania y los Estados Unidos. Bajo el método de codificación <acro>ISBN</acro> el primer dígito identifica el idioma; alemán es 3 y e inglés es 0.  El siguiente grupo de número identifica a la editorial, y el último grupo identifica el libro específico.</p></li>
+					<li><p>Uma editora tem escritórios na Alemanha e nos Estados Unidos.  O seu prefixo alemão é 3-540.  Se o seu prefixo americano for 0-<c>abc</c>, encontre <c>abc</c> tal que o resto do código <acro>ISBN</acro> seja o mesmo para um livro impresso na Alemanha e nos Estados Unidos da América. Sob o método de codificação <acro>ISBN</acro>, o primeiro dígito identifica a língua; o alemão é 3 e o inglês é 0. O próximo conjunto de números identifica a editora, e o último conjunto identifica o livro específico.</p></li>
 				</ol></p>
 			</statement>
 		</exercise>
@@ -763,7 +763,7 @@
 	 
 	<references xml:id="groups-references">
 	 <!--  references checked and updated - TWJ 6/22/2010 -->
-	 	<title>Referencias y Lecturas Recomendadas</title>
+	 	<title>Referências e Leituras Recomendadas</title>
 <!--Fix intro
 	 	<introduction>
 	 		<p>References [2] and [3] show how group theory can be used in error detection schemes.  Other sources cover more advanced topics in group theory.</p>
