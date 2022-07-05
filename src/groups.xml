@@ -11,49 +11,49 @@
 	<title>Grupos</title>
 
 	<introduction>
-		<p>Comenzaremos nuestro estudio de estructuras algebraicas investigando conjuntos dotados de una operación que satisfaga ciertos axiomas razonables; es decir, queremos definir una operación en un conjunto de forma de generalizar estructuras familiares como los enteros <m>{\mathbb Z}</m> con la operación única de suma, o matrices invertibles de <m>2 \times 2</m> con la operación única de multiplicación de matrices.  Los enteros y las matrices de <m>2 \times 2</m>, junto con sus respectivas operaciones únicas, son ejemplos de estructuras algebraicas conocidas como grupos.</p>
+		<p>Começaremos nosso estudo de estruturas algébricas investigando conjuntos dotados de uma operação que satisfaça certos axiomas razoáveis; isto é, queremos definir uma operação em um conjunto de forma a generalizar estruturas familiares como os inteiros <m>{\mathbb Z}</m> com a operação única de soma, as matrizes invertíveis <m>2 \times 2</m> com a operação única de multiplicação de matrizes.  Os inteiros e as matrizes <m>2 \times 2</m>, junto con suas respectivas operações únicas, são exemplos de estruturas algébricas conhecidas como grupos.</p>
 
-		<p>La teoría de grupos ocupa una posición central en matemáticas. La teoría moderna de grupos surgió del intento de encontrar las raíces de un polinomio en términos de sus coeficientes. Los grupos tienen hoy un rol central en áreas tales como teoría de códigos, conteo, y el estudio de simetrías; muchas áreas de la biología, la química, y la física se han visto beneficiadas por la teoría de grupos.</p>
+		<p>A teoria do grupo ocupa uma posição central na matemática. A teoria moderna dos grupos surgiu da tentativa de encontrar as raízes de um polinómio em termos dos seus coeficientes. Os grupos desempenham agora um papel central em áreas como a teoria dos códigos, a contagem, e o estudo das simetrias; muitas áreas da biologia, química e física beneficiaram da teoria dos grupos.</p>
  	</introduction>
 
 	<section xml:id="section-mod-n-sym">
-		<title>Clases de Equivalencia de Enteros y Simetrías</title>
+		<title>Classes de Equivalencia dos Inteiros e Simetrias</title>
  
  		<introduction>
 
-			<p>Investiguemos ahora ciertas estructuras matemáticas que pueden ser vistas como conjuntos con una sola operación.</p>
+			<p>Vamos agora investigar certas estruturas matemáticas que podem ser vistas como conjuntos com uma única operação.</p>
  
  		</introduction>
 
 		<subsection xml:id="groups-subsection-integers-mod-n">
-			<title>Los Enteros módulo <m>n</m></title>
+			<title>Os Inteiros Módulo <m>n</m></title>
 
-			<p>Los enteros mód <m>n</m> se han vuelto indispensables en la teoría y las aplicaciones del álgebra.  En matemáticas se usan en criptografía, teoría de códigos, y la detección de errores en códigos de identificación.</p>
+			<p>Os inteiros do modulo <m>n</m> tornaram-se indispensáveis na teoria e aplicações da álgebra.  Em matemática são utilizados em criptografia, teoria de códigos e detecção de erros em códigos de identificação.</p>
 
-			<p>Ya hemos visto que dos enteros  <m>a</m> y <m>b</m> son equivalentes mód <m>n</m> si <m>n</m> divide a <m>a - b</m>.  Los enteros mód <m>n</m> también particionan <m>{\mathbb Z}</m> en <m>n</m> distintas clases de equivalencia; denotaremos el conjunto de estas clases de equivalencia por <m>{\mathbb Z}_n</m>. <notation><usage>\mathbb Z_n</usage><description>los enteros módulo <m>n</m></description></notation> Considere los enteros  módulo 12 y la correspondiente partición de los enteros:  
+			<p>Ya hemos visto que dos enteros  <m>a</m> y <m>b</m> son equivalentes mód <m>n</m> si <m>n</m> divide a <m>a - b</m>.  Los enteros mód <m>n</m> también particionan <m>{\mathbb Z}</m> en <m>n</m> distintas clases de equivalencia; denotaremos el conjunto de estas clases de equivalencia por <m>{\mathbb Z}_n</m>. <notation><usage>\mathbb Z_n</usage><description>os inteiros módulo <m>n</m></description></notation> Considere os inteiros módulo 12 e a partição correspondente dos inteiros:  
 				<md>
 					<mrow>{[0]} &amp; = \{ \ldots, -12, 0, 12, 24, \ldots \},</mrow>
 					<mrow> {[1]} &amp; = \{ \ldots, -11, 1, 13, 25, \ldots \},</mrow>
 					<mrow> &amp; \vdots</mrow>
 					<mrow> {[11]} &amp; = \{ \ldots, -1, 11, 23, 35, \ldots \}.</mrow>
 				</md>
-			Cuando no haya posibilidad de confusión, usaremos  <m>0, 1, \ldots, 11</m> para indicar las clases de equivalencia <m>{[0]}, {[1]}, \ldots, {[11]}</m> respectivamente.  Podemos hacer aritmética en <m>{\mathbb Z}_n</m>.  Para dos enteros <m>a</m> y <m>b</m>, definimos adición módulo <m>n</m> como  <m>(a + b) \pmod{n}</m>; es decir, el resto de la división de <m>a + b</m> entre <m>n</m>.  Similarmente, la multiplicación módulo <m>n</m> se define como <m>(a  b) \pmod{ n}</m>, el resto de la división de <m>a  b</m> entre <m>n</m>.</p>
+			Quando não houver possibilidade de confusão, usaremos <m>0, 1, \ldots, 11</m> para indicar as classes de equivalência <m>{[0]}, {[1]}, {[11]}</m> respectivamente.  Podemos fazer aritmética em <m>{mathbb Z}_n</m>.  Para dois inteiros <m>a</m> e <m>b</m>, definimos a adição módulo <m>n</m> como <m>(a + b) \pmod{n}</m>; ou seja, o resto da divisão de <m>a + b</m> por <m>n</m>.  Do mesmo modo, a multiplicação módulo <m>n</m> é definido como <m>(a  b) \pmod{ n}</m>, o resto da divisão de <m>a b</m> por <m>n</m>.</p>
 
 			<example xml:id="example-groups-zn-addition">
-				<p>Los siguiente ejemplos ilustran la aritméticas de los enteros módulo <m>n</m>:<md>
+				<p>Os exemplos seguintes ilustram a aritmética dos inteiros módulo <m>n</m>:<md>
 						<mrow>7 + 4  &amp; \equiv  1 \pmod{ 5}   &amp; 7 \cdot 3 &amp; \equiv 1 \pmod{ 5}</mrow> 
 						<mrow>3 + 5  &amp; \equiv  0 \pmod{ 8}   &amp; 3 \cdot 5 &amp; \equiv 7 \pmod{ 8}</mrow>
 						<mrow>3 + 4  &amp; \equiv  7 \pmod{ 12}  &amp; 3 \cdot 4 &amp; \equiv 0 \pmod{ 12}</mrow>
-					</md>.  En particular, notemos que es posible que el producto de dos números no equivalentes a <m>0 </m> módulo <m>n</m> sea equivalente a <m>0 </m> módulo <m>n</m>. 
+					</md>.  Em particular, notemos que é possível que o produto de dois números não equivalentes a <m>0 </m> modulo <m>n</m> seja equivalente a <m>0 </m> modulo <m>n</m>.
 				</p>
 			</example>
 
 			<example xml:id="example-groups-zn-arithmetic-laws">
-				<p>La mayoría, pero no todas, las reglas usuales de la aritmética se cumplen para la adición y la multiplicación en <m>{\mathbb Z}_n</m>.  Por ejemplo, no es necesariamente cierto que haya un inverso multiplicativo.  Considere la tabla de multiplicación para <m>{\mathbb Z}_8</m> en el Cuadro<nbsp /><xref ref="table-z8-mult" />.  Note que 2, 4, y 6 no tienen inversos multiplicativos; es decir, para <m>n = 2</m>, 4, o 6, no hay un entero <m>k</m> tal que <m>k n \equiv 1 \pmod{ 8}</m>.</p>
+				<p>A maioria, mas não todas, das regras usuais da aritmética se cumprem para a adição e a multiplicação em <m>{mathbb Z}_n</m>. Por exemplo, não é necessariamente verdade que exista um inverso multiplicativo.  Considerar a tabela de multiplicação para <m>{\mathbb Z}_8</m> na Tabela<nbsp /><xref ref="table-z8-mult" />>.  Note-se que 2, 4, e 6 não têm inversos multiplicativos; isto é, para <m>n = 2</m>, 4, ou 6, não há um inteiro <m>k</m> tal que <m>k n \equiv 1 \pmod{ 8}</m>.</p>
 			</example>
 
             <table xml:id="table-z8-mult"> <!-- math table -->
-				<caption>Tabla de multiplicación para <m>{\mathbb Z_8}</m></caption>
+				<caption>Tabela de multiplicação para <m>{\mathbb Z_8}</m></caption>
 
 				<p><me>\begin{array}{c|cccccccc}
 					<![CDATA[\cdot & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
@@ -72,33 +72,33 @@
 
 			<proposition xml:id="proposition-zn-equiv-classes">
 				<statement>
-					<p>Sea <m>{\mathbb Z}_n</m> el conjunto de clases de equivalencia de los enteros mód <m>n</m> y sean <m>a, b, c \in {\mathbb Z}_n</m>.
+					<p>Seja <m>{\mathbb Z}_n</m> o conjunto de classes de equivalência de inteiros do módulo <m>n</m> e sejam <m>a, b, c \in {\mathbb Z}_n</m>.
 						<ol>
-							<li><p>Adición y multiplicación son conmutativas:
+							<li><p>A adição e multiplicação são comutativas:
 								<md>
 									<mrow> a + b  &amp; \equiv  b + a \pmod{ n}</mrow>
 									<mrow> a  b   &amp; \equiv  b  a \pmod{ n}. </mrow>
 								</md></p></li>
 
-							<li><p>Adición y multiplicación son asociativas:
+							<li><p>A adição e multiplicação são associativas:
 								<md>
 									<mrow> (a + b) + c  &amp; \equiv  a + (b + c)\pmod{ n}</mrow>
 									<mrow> (a  b)  c    &amp; \equiv  a   (b  c) \pmod{ n}.</mrow>
 								</md></p></li>
 
-							<li><p> Hay neutros para ambas operaciones:
+							<li><p> Há neutros para ambas as operações:
 								<md>
 									<mrow> a + 0  &amp; \equiv  a \pmod{ n}</mrow>
 									<mrow> a \cdot  1  &amp; \equiv  a \pmod{ n}.</mrow>
 								</md></p></li>
 
-							<li><p>La multiplicación distribuye sobre la adición: 
+							<li><p>A multiplicação distribui-se por adição: 
 								<me>a  (b  + c)  \equiv a  b + a  c  \pmod{ n}.</me></p></li>
 
-							<li><p>Para cada entero <m>a</m> hay un inverso aditivo <m>-a</m>: 
+							<li><p>Para cada número inteiro <m>a</m> há um inverso aditivo <m>-a</m>: 
 								<me> a + (-a)  \equiv 0 \pmod{ n}. </me></p></li>
 
-							<li><p>Sea <m>a</m> un entero no nulo.  Entonces <m>\gcd(a,n) = 1</m> si y solo si hay un inverso multiplicativo <m>b</m> para <m>a \pmod{n}</m>; es decir, un entero no nulo <m>b</m> tal que <me> a  b  \equiv 1 \pmod{ n}.</me></p></li> 
+							<li><p>Seja <m>a</m> um inteiro não-nulo.  Então <m>\gcd(a,n) = 1</m> se e só se houver um inverso multiplicativo <m>b</m> para <m>a \pmod{n}</m>; isto é, um inteiro não-nulo <m>b</m> tal que <me> a  b  \equiv 1 \pmod{ n}.</me></p></li> 
 
 						</ol> </p>
 				</statement>
@@ -107,23 +107,23 @@
 				<todo>See if id/ref works on items in ordered lists</todo>
 
 				<proof>
-					<p>Demostraremos  (1) y (6) y dejaremos las demás propiedades para ser demostradas en los ejercicios.</p>
+					<p>Demostraremos  (1) e (6) e deixaremos as demais propriedades para serem demonstradas nos exercícios.</p>
 
-					<p>(1) Adición y multiplicación son conmutativas módulo <m>n</m> pues el resto obtenido al dividir <m>a + b</m> entre <m>n</m> es el mismo que el resto obtenido al dividir  <m>b + a</m> entre <m>n</m>.</p>
+					<p>(1) Adição e multiplicação são comutativas módulo <m>n</m> porque o resto obtivo ao dividir <m>a + b</m> por <m>n</m> é o mesmo que o resto obtido por dividir <m>b + a</m> por <m>n</m>.</p>
 				 
-					<p>(6) Supongamos que <m>\gcd(a, n) = 1</m>.  Entonces existen enteros <m>r</m> y <m>s</m> tales que <m>ar + ns = 1</m>.  Como <m>ns = 1 - ar</m>, se cumple que <m>ar \equiv 1 \pmod{n}</m>.  Si <m>b</m> es la clase de equivalencia de <m>r</m>, <m>a b \equiv 1\pmod{n}</m>.</p>
+					<p>(6) Suponhamos que <m>\gcd(a, n) = 1</m>. Então existem inteiros <m>r</m> e <m>s</m> tais que <m>ar + ns = 1</m>.  Como <m>ns = 1 - ar</m>, se cumpre que <m>ar \equiv 1 \pmod{n}</m>.  Se <m>b</m> é a classe de equivalência de <m>r</m>, <m>a b \equiv 1\pmod{n}</m>.</p>
 				 
-					<p>Recíprocamente, supongamos que hay un entero <m>b</m> tal que <m>ab  \equiv 1 \pmod{ n}</m>.  Entonces  <m>n</m> divide a <m>ab -1</m>, de manera que hay un entero <m>k</m> tal que <m>ab - nk = 1</m>.  Sea <m>d = \gcd(a,n)</m>.  Como <m>d</m> divide a <m>ab - nk</m>, <m>d</m> también divide a 1; luego, <m>d = 1</m>.</p>
+					<p>Recíprocamente, suponhamos que há um inteiro <m>b</m> tal que <m>ab  \equiv 1 \pmod{ n}</m>.  Então <m>n</m> divide <m>ab -1</m>, de maneira que há um inteiro <m>k</m> tal que <m>ab - nk = 1</m>.  Seja <m>d = \gcd(a,n)</m>.  Como <m>d</m> divide <m>ab - nk</m>, <m>d</m> tambmn divide 1; logo, <m>d = 1</m>.</p>
 				</proof>
 			</proposition>
 		</subsection>
 
 		<subsection xml:id="groups-subsection-symmetries">
-			<title>Simetrías</title>
+			<title>Simetrias</title>
 
   			<!-- Symmetries of a rectangle  Replaced diagram with a tikz figure - TWJ 5/4/2010 -->
 			<figure xml:id="figure-groups-rectangle">
-				<caption>Movimientos rígidos de un rectángulo</caption>
+				<caption>Movimentos rígidos de um retângulo</caption>
 				<image xml:id="groups-rectangle">
 					<latex-image-code><![CDATA[
 						\begin{tikzpicture}[scale=1.2]
@@ -187,11 +187,11 @@
 				</image>
 			</figure>
 
-			<p>Una <term>simetría</term> de una figura geométrica es un reposicionamiento de la figura que preserva las relaciones entre sus lados y vértices tal como las distancias y los ángulos.  Una función del plano en sí mismo que preserva la simetría de un objeto se llama <term>movimiento rígido</term><idx><h>Movimiento rígido</h></idx>.  Por ejemplo, si miramos el rectángulo de la Figura<nbsp /><xref ref="figure-groups-rectangle" />, es fácil ver que una rotación en <m>180^{\circ}</m> o <m>360^{\circ}</m> devuelve un rectángulo en el plano con la misma orientación como el rectángulo original y la misma relación entre sus vértices.  Una reflexión del rectángulo por su eje vertical o su eje horizontal también puede ser reconocida como simetría de éste.  Sin embargo, una rotación en <m>90^{\circ}</m> en cualquier dirección no puede ser una simetría del rectángulo a menos que sea un cuadrado.</p>
+			<p>Uma <term>simetria</term> de uma figura geométrica é um reposicionamento da figura que preserva as relações entre seus lados e vértices tal como as distâncias e os ângulos. Uma função do plano em si mesmo que preserva a simetria de um objeto se chama <term>movimento rígido</term><idx><h>Movimento rígido</h></idx>.  Por exemplo, se olhamos para o retângulo da Figura<nbsp /><xref ref="figure-groups-rectangle" />, é fácil ver que uma rotação de <m>180^{\circ}</m> ou <m>360^{\circ}</m> nos dá um retángulo no plano com a mesma orientação do retângulo original e a mesma relação entre seus vértices.  Uma reflexão do retângulo pelo seu eixo vertical ou seu eixo horizontal também pode ser reconhecida como simetria deste.  Não obstante, uma rotação por <m>90^{\circ}</m> em qualquer direção não pode ser uma simetria do retângulo a menos que seja um quadrado.</p>
 
  			<!-- Replaced diagram with a tikz figure - TWJ 5/5/2010 -->
 			<figure xml:id="figure-s3-symmetry">
-				<caption>Simetrías de un triángulo</caption>
+				<caption>Simetrias de um triângulo</caption>
 				<image xml:id="groups-s3-symmetry">
 					<latex-image-code><![CDATA[
 						\begin{tikzpicture}[scale=0.7]
